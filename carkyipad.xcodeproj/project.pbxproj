@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
+		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
+		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
+		AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B31E6CCA8C00918646 /* Main.storyboard */; };
+		AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B61E6CCA8C00918646 /* Assets.xcassets */; };
+		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
+		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
+		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE7275C11E6CCA8D00918646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE72759F1E6CCA8C00918646 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE7275A61E6CCA8C00918646;
+			remoteInfo = carkyipad;
+		};
+		AE7275CC1E6CCA8D00918646 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE72759F1E6CCA8C00918646 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE7275A61E6CCA8C00918646;
+			remoteInfo = carkyipad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE7275AE1E6CCA8C00918646 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE7275B01E6CCA8C00918646 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AE7275B11E6CCA8C00918646 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AE7275B41E6CCA8C00918646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE7275B61E6CCA8C00918646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE7275B91E6CCA8C00918646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AE7275BB1E6CCA8C00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE7275C01E6CCA8D00918646 /* carkyipadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7275C41E6CCA8D00918646 /* carkyipadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadTests.m; sourceTree = "<group>"; };
+		AE7275C61E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
+		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE7275A41E6CCA8C00918646 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7275BD1E6CCA8D00918646 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7275C81E6CCA8D00918646 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE72759E1E6CCA8C00918646 = {
+			isa = PBXGroup;
+			children = (
+				AE7275A91E6CCA8C00918646 /* carkyipad */,
+				AE7275C31E6CCA8D00918646 /* carkyipadTests */,
+				AE7275CE1E6CCA8D00918646 /* carkyipadUITests */,
+				AE7275A81E6CCA8C00918646 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE7275A81E6CCA8C00918646 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275A71E6CCA8C00918646 /* carkyipad.app */,
+				AE7275C01E6CCA8D00918646 /* carkyipadTests.xctest */,
+				AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE7275A91E6CCA8C00918646 /* carkyipad */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
+				AE7275AE1E6CCA8C00918646 /* AppDelegate.m */,
+				AE7275B01E6CCA8C00918646 /* ViewController.h */,
+				AE7275B11E6CCA8C00918646 /* ViewController.m */,
+				AE7275B31E6CCA8C00918646 /* Main.storyboard */,
+				AE7275B61E6CCA8C00918646 /* Assets.xcassets */,
+				AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */,
+				AE7275BB1E6CCA8C00918646 /* Info.plist */,
+				AE7275AA1E6CCA8C00918646 /* Supporting Files */,
+			);
+			path = carkyipad;
+			sourceTree = "<group>";
+		};
+		AE7275AA1E6CCA8C00918646 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275AB1E6CCA8C00918646 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE7275C31E6CCA8D00918646 /* carkyipadTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275C41E6CCA8D00918646 /* carkyipadTests.m */,
+				AE7275C61E6CCA8D00918646 /* Info.plist */,
+			);
+			path = carkyipadTests;
+			sourceTree = "<group>";
+		};
+		AE7275CE1E6CCA8D00918646 /* carkyipadUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */,
+				AE7275D11E6CCA8D00918646 /* Info.plist */,
+			);
+			path = carkyipadUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE7275A61E6CCA8C00918646 /* carkyipad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE7275D41E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipad" */;
+			buildPhases = (
+				AE7275A31E6CCA8C00918646 /* Sources */,
+				AE7275A41E6CCA8C00918646 /* Frameworks */,
+				AE7275A51E6CCA8C00918646 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = carkyipad;
+			productName = carkyipad;
+			productReference = AE7275A71E6CCA8C00918646 /* carkyipad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE7275BF1E6CCA8D00918646 /* carkyipadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE7275D71E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadTests" */;
+			buildPhases = (
+				AE7275BC1E6CCA8D00918646 /* Sources */,
+				AE7275BD1E6CCA8D00918646 /* Frameworks */,
+				AE7275BE1E6CCA8D00918646 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE7275C21E6CCA8D00918646 /* PBXTargetDependency */,
+			);
+			name = carkyipadTests;
+			productName = carkyipadTests;
+			productReference = AE7275C01E6CCA8D00918646 /* carkyipadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AE7275CA1E6CCA8D00918646 /* carkyipadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE7275DA1E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadUITests" */;
+			buildPhases = (
+				AE7275C71E6CCA8D00918646 /* Sources */,
+				AE7275C81E6CCA8D00918646 /* Frameworks */,
+				AE7275C91E6CCA8D00918646 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE7275CD1E6CCA8D00918646 /* PBXTargetDependency */,
+			);
+			name = carkyipadUITests;
+			productName = carkyipadUITests;
+			productReference = AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE72759F1E6CCA8C00918646 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Nessos;
+				TargetAttributes = {
+					AE7275A61E6CCA8C00918646 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					AE7275BF1E6CCA8D00918646 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE7275A61E6CCA8C00918646;
+					};
+					AE7275CA1E6CCA8D00918646 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE7275A61E6CCA8C00918646;
+					};
+				};
+			};
+			buildConfigurationList = AE7275A21E6CCA8C00918646 /* Build configuration list for PBXProject "carkyipad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE72759E1E6CCA8C00918646;
+			productRefGroup = AE7275A81E6CCA8C00918646 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE7275A61E6CCA8C00918646 /* carkyipad */,
+				AE7275BF1E6CCA8D00918646 /* carkyipadTests */,
+				AE7275CA1E6CCA8D00918646 /* carkyipadUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE7275A51E6CCA8C00918646 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */,
+				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
+				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7275BE1E6CCA8D00918646 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7275C91E6CCA8D00918646 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE7275A31E6CCA8C00918646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
+				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
+				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7275BC1E6CCA8D00918646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE7275C71E6CCA8D00918646 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE7275C21E6CCA8D00918646 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE7275A61E6CCA8C00918646 /* carkyipad */;
+			targetProxy = AE7275C11E6CCA8D00918646 /* PBXContainerItemProxy */;
+		};
+		AE7275CD1E6CCA8D00918646 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE7275A61E6CCA8C00918646 /* carkyipad */;
+			targetProxy = AE7275CC1E6CCA8D00918646 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE7275B31E6CCA8C00918646 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE7275B41E6CCA8C00918646 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE7275B91E6CCA8C00918646 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE7275D21E6CCA8D00918646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		AE7275D31E6CCA8D00918646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE7275D51E6CCA8D00918646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = carkyipad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE7275D61E6CCA8D00918646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = carkyipad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AE7275D81E6CCA8D00918646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = carkyipadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/carkyipad.app/carkyipad";
+			};
+			name = Debug;
+		};
+		AE7275D91E6CCA8D00918646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = carkyipadTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipadTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/carkyipad.app/carkyipad";
+			};
+			name = Release;
+		};
+		AE7275DB1E6CCA8D00918646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = carkyipadUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = carkyipad;
+			};
+			name = Debug;
+		};
+		AE7275DC1E6CCA8D00918646 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = carkyipadUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipadUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = carkyipad;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE7275A21E6CCA8C00918646 /* Build configuration list for PBXProject "carkyipad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7275D21E6CCA8D00918646 /* Debug */,
+				AE7275D31E6CCA8D00918646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE7275D41E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7275D51E6CCA8D00918646 /* Debug */,
+				AE7275D61E6CCA8D00918646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AE7275D71E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7275D81E6CCA8D00918646 /* Debug */,
+				AE7275D91E6CCA8D00918646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AE7275DA1E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7275DB1E6CCA8D00918646 /* Debug */,
+				AE7275DC1E6CCA8D00918646 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE72759F1E6CCA8C00918646 /* Project object */;
+}
