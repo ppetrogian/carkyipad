@@ -15,6 +15,9 @@
 		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
+		AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275DF1E6CCBFF00918646 /* RMStep.m */; };
+		AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E11E6CCBFF00918646 /* RMStepsBar.m */; };
+		AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E31E6CCBFF00918646 /* RMStepsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE7275DE1E6CCBFF00918646 /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
+		AE7275DF1E6CCBFF00918646 /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
+		AE7275E01E6CCBFF00918646 /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
+		AE7275E11E6CCBFF00918646 /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
+		AE7275E21E6CCBFF00918646 /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
+		AE7275E31E6CCBFF00918646 /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 		AE7275A91E6CCA8C00918646 /* carkyipad */ = {
 			isa = PBXGroup;
 			children = (
+				AE7275DD1E6CCBFF00918646 /* RMStepsController */,
 				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
 				AE7275AE1E6CCA8C00918646 /* AppDelegate.m */,
 				AE7275B01E6CCA8C00918646 /* ViewController.h */,
@@ -138,6 +148,19 @@
 				AE7275D11E6CCA8D00918646 /* Info.plist */,
 			);
 			path = carkyipadUITests;
+			sourceTree = "<group>";
+		};
+		AE7275DD1E6CCBFF00918646 /* RMStepsController */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275DE1E6CCBFF00918646 /* RMStep.h */,
+				AE7275DF1E6CCBFF00918646 /* RMStep.m */,
+				AE7275E01E6CCBFF00918646 /* RMStepsBar.h */,
+				AE7275E11E6CCBFF00918646 /* RMStepsBar.m */,
+				AE7275E21E6CCBFF00918646 /* RMStepsController.h */,
+				AE7275E31E6CCBFF00918646 /* RMStepsController.m */,
+			);
+			path = RMStepsController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +297,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
+				AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */,
+				AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
+				AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
