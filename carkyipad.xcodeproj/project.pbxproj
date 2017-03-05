@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C871C8776B99A099382CA76 /* libPods-carkyipadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */; };
+		A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -18,6 +20,7 @@
 		AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275DF1E6CCBFF00918646 /* RMStep.m */; };
 		AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E11E6CCBFF00918646 /* RMStepsBar.m */; };
 		AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E31E6CCBFF00918646 /* RMStepsController.m */; };
+		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26072C39D64C71FFF6DF78B8 /* Pods-carkyipadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.release.xcconfig"; sourceTree = "<group>"; };
+		528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-carkyipadUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.debug.xcconfig"; sourceTree = "<group>"; };
+		5804DF45A609457D505A8C3F /* Pods-carkyipadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-carkyipadTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-carkyipad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +70,8 @@
 		AE7275E11E6CCBFF00918646 /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
 		AE7275E21E6CCBFF00918646 /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
 		AE7275E31E6CCBFF00918646 /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
+		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +95,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C871C8776B99A099382CA76 /* libPods-carkyipadUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		604D34F28EA76BDADD70C80C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */,
+				71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */,
+				528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE72759E1E6CCA8C00918646 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +119,8 @@
 				AE7275C31E6CCA8D00918646 /* carkyipadTests */,
 				AE7275CE1E6CCA8D00918646 /* carkyipadUITests */,
 				AE7275A81E6CCA8C00918646 /* Products */,
+				EA1831E84B4FFDDB910470C9 /* Pods */,
+				604D34F28EA76BDADD70C80C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +190,19 @@
 			path = RMStepsController;
 			sourceTree = "<group>";
 		};
+		EA1831E84B4FFDDB910470C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */,
+				934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */,
+				5804DF45A609457D505A8C3F /* Pods-carkyipadTests.debug.xcconfig */,
+				B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */,
+				B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */,
+				26072C39D64C71FFF6DF78B8 /* Pods-carkyipadUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,9 +210,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE7275D41E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipad" */;
 			buildPhases = (
+				DA5401BAA47A951861094269 /* [CP] Check Pods Manifest.lock */,
 				AE7275A31E6CCA8C00918646 /* Sources */,
 				AE7275A41E6CCA8C00918646 /* Frameworks */,
 				AE7275A51E6CCA8C00918646 /* Resources */,
+				CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */,
+				2F336A66542EBF7722C7BCA9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE7275D71E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadTests" */;
 			buildPhases = (
+				59E14EF6735218CC99453724 /* [CP] Check Pods Manifest.lock */,
 				AE7275BC1E6CCA8D00918646 /* Sources */,
 				AE7275BD1E6CCA8D00918646 /* Frameworks */,
 				AE7275BE1E6CCA8D00918646 /* Resources */,
+				EE8E4B48B32FBC1D39EF972E /* [CP] Embed Pods Frameworks */,
+				EDA094DB62E5CA68D59547C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,9 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE7275DA1E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadUITests" */;
 			buildPhases = (
+				7D0FF40D66117E51595D0FD7 /* [CP] Check Pods Manifest.lock */,
 				AE7275C71E6CCA8D00918646 /* Sources */,
 				AE7275C81E6CCA8D00918646 /* Frameworks */,
 				AE7275C91E6CCA8D00918646 /* Resources */,
+				7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */,
+				DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +339,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F336A66542EBF7722C7BCA9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59E14EF6735218CC99453724 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D0FF40D66117E51595D0FD7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA5401BAA47A951861094269 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDA094DB62E5CA68D59547C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE8E4B48B32FBC1D39EF972E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AE7275A31E6CCA8C00918646 /* Sources */ = {
@@ -448,6 +635,7 @@
 		};
 		AE7275D51E6CCA8D00918646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = carkyipad/Info.plist;
@@ -459,6 +647,7 @@
 		};
 		AE7275D61E6CCA8D00918646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = carkyipad/Info.plist;
@@ -470,6 +659,7 @@
 		};
 		AE7275D81E6CCA8D00918646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5804DF45A609457D505A8C3F /* Pods-carkyipadTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = carkyipadTests/Info.plist;
@@ -482,6 +672,7 @@
 		};
 		AE7275D91E6CCA8D00918646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = carkyipadTests/Info.plist;
@@ -494,6 +685,7 @@
 		};
 		AE7275DB1E6CCA8D00918646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = carkyipadUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -505,6 +697,7 @@
 		};
 		AE7275DC1E6CCA8D00918646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26072C39D64C71FFF6DF78B8 /* Pods-carkyipadUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = carkyipadUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
