@@ -20,6 +20,11 @@
 		AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275DF1E6CCBFF00918646 /* RMStep.m */; };
 		AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E11E6CCBFF00918646 /* RMStepsBar.m */; };
 		AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E31E6CCBFF00918646 /* RMStepsController.m */; };
+		AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E91E6CD01A00918646 /* IIAsyncData.m */; };
+		AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */; };
+		AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */; };
+		AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EF1E6CD01A00918646 /* IIAsyncView.m */; };
+		AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +75,18 @@
 		AE7275E11E6CCBFF00918646 /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
 		AE7275E21E6CCBFF00918646 /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
 		AE7275E31E6CCBFF00918646 /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
+		AE7275E81E6CD01A00918646 /* IIAsyncData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncData.h; sourceTree = "<group>"; };
+		AE7275E91E6CD01A00918646 /* IIAsyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncData.m; sourceTree = "<group>"; };
+		AE7275EA1E6CD01A00918646 /* IIAsyncMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncMessageView.h; sourceTree = "<group>"; };
+		AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncMessageView.m; sourceTree = "<group>"; };
+		AE7275EC1E6CD01A00918646 /* IIAsyncStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncStatusView.h; sourceTree = "<group>"; };
+		AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncStatusView.m; sourceTree = "<group>"; };
+		AE7275EE1E6CD01A00918646 /* IIAsyncView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncView.h; sourceTree = "<group>"; };
+		AE7275EF1E6CD01A00918646 /* IIAsyncView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncView.m; sourceTree = "<group>"; };
+		AE7275F01E6CD01A00918646 /* IIAsyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewController.h; sourceTree = "<group>"; };
+		AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncViewController.m; sourceTree = "<group>"; };
+		AE7275F21E6CD01A00918646 /* IIAsyncViewProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewProtocols.h; sourceTree = "<group>"; };
+		AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewInternals.h; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +154,7 @@
 		AE7275A91E6CCA8C00918646 /* carkyipad */ = {
 			isa = PBXGroup;
 			children = (
+				AE7275E71E6CD01A00918646 /* IIAsyncViewController */,
 				AE7275DD1E6CCBFF00918646 /* RMStepsController */,
 				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
 				AE7275AE1E6CCA8C00918646 /* AppDelegate.m */,
@@ -188,6 +206,33 @@
 				AE7275E31E6CCBFF00918646 /* RMStepsController.m */,
 			);
 			path = RMStepsController;
+			sourceTree = "<group>";
+		};
+		AE7275E71E6CD01A00918646 /* IIAsyncViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275E81E6CD01A00918646 /* IIAsyncData.h */,
+				AE7275E91E6CD01A00918646 /* IIAsyncData.m */,
+				AE7275EA1E6CD01A00918646 /* IIAsyncMessageView.h */,
+				AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */,
+				AE7275EC1E6CD01A00918646 /* IIAsyncStatusView.h */,
+				AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */,
+				AE7275EE1E6CD01A00918646 /* IIAsyncView.h */,
+				AE7275EF1E6CD01A00918646 /* IIAsyncView.m */,
+				AE7275F01E6CD01A00918646 /* IIAsyncViewController.h */,
+				AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */,
+				AE7275F21E6CD01A00918646 /* IIAsyncViewProtocols.h */,
+				AE7275F31E6CD01A00918646 /* Private */,
+			);
+			path = IIAsyncViewController;
+			sourceTree = "<group>";
+		};
+		AE7275F31E6CD01A00918646 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 		EA1831E84B4FFDDB910470C9 /* Pods */ = {
@@ -483,12 +528,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */,
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
 				AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */,
 				AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
+				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */,
+				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
+				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +776,7 @@
 				AE7275D61E6CCA8D00918646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE7275D71E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadTests" */ = {
 			isa = XCConfigurationList;
@@ -734,6 +785,7 @@
 				AE7275D91E6CCA8D00918646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE7275DA1E6CCA8D00918646 /* Build configuration list for PBXNativeTarget "carkyipadUITests" */ = {
 			isa = XCConfigurationList;
@@ -742,6 +794,7 @@
 				AE7275DC1E6CCA8D00918646 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
