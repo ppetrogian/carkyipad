@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7C871C8776B99A099382CA76 /* libPods-carkyipadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */; };
 		A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */; };
+		AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
+		AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -53,6 +55,8 @@
 		71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-carkyipadTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-carkyipad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
+		AE6351B71E6E865600065F0F /* CarkyApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyApiClient.h; sourceTree = "<group>"; };
+		AE6351B81E6E865600065F0F /* CarkyApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyApiClient.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */,
 				AE7275BB1E6CCA8C00918646 /* Info.plist */,
 				AE7275AA1E6CCA8C00918646 /* Supporting Files */,
+				AE6351B71E6E865600065F0F /* CarkyApiClient.h */,
+				AE6351B81E6E865600065F0F /* CarkyApiClient.m */,
 			);
 			path = carkyipad;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
 				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

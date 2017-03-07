@@ -25,6 +25,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  A `RMStep` is used to set the title of a certain step and to customize the appearance of this step in a `RMStepsBar`
