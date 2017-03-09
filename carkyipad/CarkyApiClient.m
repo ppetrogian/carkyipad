@@ -81,7 +81,19 @@ static CarkyApiClient *_sharedService = nil;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
     }];
+}
 
+-(void)GetAllCarCategories:(BlockArray)block {
+    [self GET:@"api/Helper/GetAllCarCategories" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *catArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            catArray[idx] = [CarCategory modelObjectWithDictionary:obj];
+        }];
+        block(catArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
 }
 
 @end

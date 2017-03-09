@@ -17,6 +17,8 @@
 		AE6351C71E71E32200065F0F /* LatLng.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C11E71E32200065F0F /* LatLng.m */; };
 		AE6351C81E71E32200065F0F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C31E71E32200065F0F /* Location.m */; };
 		AE6351C91E71E32200065F0F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C31E71E32200065F0F /* Location.m */; };
+		AE6351D01E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
+		AE6351D11E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -70,6 +72,8 @@
 		AE6351C11E71E32200065F0F /* LatLng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatLng.m; sourceTree = "<group>"; };
 		AE6351C21E71E32200065F0F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		AE6351C31E71E32200065F0F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		AE6351CE1E71F52700065F0F /* CarCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCategory.h; sourceTree = "<group>"; };
+		AE6351CF1E71F52700065F0F /* CarCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCategory.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				AE6351BD1E71E32200065F0F /* DataModels.h */,
+				AE6351CE1E71F52700065F0F /* CarCategory.h */,
+				AE6351CF1E71F52700065F0F /* CarCategory.m */,
 				AE6351BE1E71E32200065F0F /* FleetLocations.h */,
 				AE6351BF1E71E32200065F0F /* FleetLocations.m */,
 				AE6351C01E71E32200065F0F /* LatLng.h */,
@@ -574,6 +580,7 @@
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
@@ -584,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6351D11E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6351C51E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351C91E71E32200065F0F /* Location.m in Sources */,
 				AE6351C71E71E32200065F0F /* LatLng.m in Sources */,
