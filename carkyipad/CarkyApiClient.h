@@ -12,6 +12,9 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 typedef void(^BlockArray)(NSArray *array);
+typedef void(^BlockString)(NSString *string);
+typedef void(^BlockBoolean)(BOOL b);
+typedef void(^BlockError)(NSError *error);
 
 @interface CarkyApiClient : AFHTTPSessionManager
 //Shared Service
@@ -20,5 +23,18 @@ typedef void(^BlockArray)(NSArray *array);
 -(void)setAuthorizationHeader;
 @property (nonatomic) NSString *apiKey;
 @property (nonatomic) BOOL isOffline;
+@property (nonatomic, strong) BlockError blockErrorDefault;
+@property (nonatomic,strong) NSString *lastMessage;
+#pragma mark - Api calls
+//POST /api/Account/RegisterPartner  (register enos partner gia ta test)
 
+//POST /token  (auth)  gia to login otan anoigi h efarmogh
+-(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password withBlock:(BlockBoolean)block;
+
+//GET /api/Helper/GetFleetLocations  fleet locations ana poli
+
+//GET /api/Helper/GetAllCarCategories   car categories
+
+
+//GET /api/Helper/GetExtrasPerCarType  extras per car categories
 @end

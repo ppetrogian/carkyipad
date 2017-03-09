@@ -90,7 +90,7 @@
 		AE7275F01E6CD01A00918646 /* IIAsyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewController.h; sourceTree = "<group>"; };
 		AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncViewController.m; sourceTree = "<group>"; };
 		AE7275F21E6CD01A00918646 /* IIAsyncViewProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewProtocols.h; sourceTree = "<group>"; };
-		AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewInternals.h; sourceTree = "<group>"; };
+		AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIAsyncViewInternals.h; path = Private/IIAsyncViewInternals.h; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,17 +228,9 @@
 				AE7275F01E6CD01A00918646 /* IIAsyncViewController.h */,
 				AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */,
 				AE7275F21E6CD01A00918646 /* IIAsyncViewProtocols.h */,
-				AE7275F31E6CD01A00918646 /* Private */,
-			);
-			path = IIAsyncViewController;
-			sourceTree = "<group>";
-		};
-		AE7275F31E6CD01A00918646 /* Private */ = {
-			isa = PBXGroup;
-			children = (
 				AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */,
 			);
-			path = Private;
+			path = IIAsyncViewController;
 			sourceTree = "<group>";
 		};
 		EA1831E84B4FFDDB910470C9 /* Pods */ = {

@@ -8,7 +8,7 @@
 
 #import "CarkyApiClient.h"
 
-#define Base_URL @"http://carky-app.azurewebsites.net/%@"
+#define Base_URL @"http://carky-app.azurewebsites.net"
 
 @implementation CarkyApiClient
 static CarkyApiClient *_sharedService = nil;
@@ -32,6 +32,9 @@ static CarkyApiClient *_sharedService = nil;
         }];
         [_sharedService.reachabilityManager startMonitoring];
     });
+    _sharedService.blockErrorDefault = ^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+    };
     return _sharedService;
 }
 
@@ -46,5 +49,21 @@ static CarkyApiClient *_sharedService = nil;
 -(void)setAuthorizationHeader {
     NSString *finalyToken = [[NSString alloc]initWithFormat:@"Bearer %@", self.apiKey];
     [self.requestSerializer setValue:finalyToken forHTTPHeaderField:@"Authorization"];
+}
+
+#pragma mark API CALLS
+-(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password withTokenBlock:(BlockBoolean)block {
+    [self POST:@"token" parameters:@{@"grant_type":@"password",@"username":username, @"password":password} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject objectForKey:@"error"]) {
+            self.lastMessage = responseObject[@"error_description"];
+            block(NO);
+        } else {
+            self.apiKey = responseObject[@"access_token"];
+            block(YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
 }
 @end
