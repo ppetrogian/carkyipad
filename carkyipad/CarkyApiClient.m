@@ -7,6 +7,7 @@
 //
 
 #import "CarkyApiClient.h"
+#import "DataModels.h"
 
 #define Base_URL @"http://carky-app.azurewebsites.net"
 
@@ -35,6 +36,8 @@ static CarkyApiClient *_sharedService = nil;
     _sharedService.blockErrorDefault = ^(NSError *error) {
         NSLog(@"%@",error.localizedDescription);
     };
+    _sharedService.blockProgressDefault = ^(NSProgress *progress) {
+    };
     return _sharedService;
 }
 
@@ -53,7 +56,7 @@ static CarkyApiClient *_sharedService = nil;
 
 #pragma mark API CALLS
 -(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password withTokenBlock:(BlockBoolean)block {
-    [self POST:@"token" parameters:@{@"grant_type":@"password",@"username":username, @"password":password} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self POST:@"token" parameters:@{@"grant_type":@"password",@"username":username, @"password":password} progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject objectForKey:@"error"]) {
             self.lastMessage = responseObject[@"error_description"];
@@ -66,4 +69,19 @@ static CarkyApiClient *_sharedService = nil;
         self.blockErrorDefault(error);
     }];
 }
+
+-(void)GetFleetLocations:(BlockArray)block {
+    [self GET:@"api/Helper/GetFleetLocations" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *flockArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            flockArray[idx] = [FleetLocations modelObjectWithDictionary:obj];
+        }];
+        block(flockArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+
+}
+
 @end

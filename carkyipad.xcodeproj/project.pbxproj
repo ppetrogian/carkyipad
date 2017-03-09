@@ -11,6 +11,12 @@
 		A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */; };
 		AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
 		AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
+		AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351BF1E71E32200065F0F /* FleetLocations.m */; };
+		AE6351C51E71E32200065F0F /* FleetLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351BF1E71E32200065F0F /* FleetLocations.m */; };
+		AE6351C61E71E32200065F0F /* LatLng.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C11E71E32200065F0F /* LatLng.m */; };
+		AE6351C71E71E32200065F0F /* LatLng.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C11E71E32200065F0F /* LatLng.m */; };
+		AE6351C81E71E32200065F0F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C31E71E32200065F0F /* Location.m */; };
+		AE6351C91E71E32200065F0F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C31E71E32200065F0F /* Location.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -57,6 +63,13 @@
 		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
 		AE6351B71E6E865600065F0F /* CarkyApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyApiClient.h; sourceTree = "<group>"; };
 		AE6351B81E6E865600065F0F /* CarkyApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyApiClient.m; sourceTree = "<group>"; };
+		AE6351BD1E71E32200065F0F /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		AE6351BE1E71E32200065F0F /* FleetLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FleetLocations.h; sourceTree = "<group>"; };
+		AE6351BF1E71E32200065F0F /* FleetLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FleetLocations.m; sourceTree = "<group>"; };
+		AE6351C01E71E32200065F0F /* LatLng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatLng.h; sourceTree = "<group>"; };
+		AE6351C11E71E32200065F0F /* LatLng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatLng.m; sourceTree = "<group>"; };
+		AE6351C21E71E32200065F0F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		AE6351C31E71E32200065F0F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +146,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE6351BB1E71E12100065F0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AE6351BC1E71E32200065F0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE6351BD1E71E32200065F0F /* DataModels.h */,
+				AE6351BE1E71E32200065F0F /* FleetLocations.h */,
+				AE6351BF1E71E32200065F0F /* FleetLocations.m */,
+				AE6351C01E71E32200065F0F /* LatLng.h */,
+				AE6351C11E71E32200065F0F /* LatLng.m */,
+				AE6351C21E71E32200065F0F /* Location.h */,
+				AE6351C31E71E32200065F0F /* Location.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		AE72759E1E6CCA8C00918646 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +192,8 @@
 		AE7275A91E6CCA8C00918646 /* carkyipad */ = {
 			isa = PBXGroup;
 			children = (
+				AE6351BC1E71E32200065F0F /* Models */,
+				AE6351BB1E71E12100065F0F /* Models */,
 				AE7275E71E6CD01A00918646 /* IIAsyncViewController */,
 				AE7275DD1E6CCBFF00918646 /* RMStepsController */,
 				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
@@ -527,6 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */,
+				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
 				AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */,
 				AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */,
@@ -534,8 +571,10 @@
 				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */,
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
+				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
 			);
@@ -545,6 +584,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6351C51E71E32200065F0F /* FleetLocations.m in Sources */,
+				AE6351C91E71E32200065F0F /* Location.m in Sources */,
+				AE6351C71E71E32200065F0F /* LatLng.m in Sources */,
 				AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */,
 			);

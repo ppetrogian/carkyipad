@@ -7,14 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "CarkyApiClient.h"
+#import "DataModels.h"
 
 @interface carkyipadTests : XCTestCase
-
+@property (nonatomic,strong) CarkyApiClient *api;
 @end
 
 @implementation carkyipadTests
 
 - (void)setUp {
+    self.api = [CarkyApiClient sharedService];
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
@@ -24,10 +27,17 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
+- (void)testGetFleetLocations {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all fleet locations"];
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-
+    [self.api GetFleetLocations:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found locations");
+        FleetLocations *f0 = array[0];
+        XCTAssert([f0 isKindOfClass:[FleetLocations class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
 - (void)testPerformanceExample {
