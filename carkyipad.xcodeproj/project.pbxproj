@@ -21,6 +21,12 @@
 		AE6351D11E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
 		AE6351D41E7415E400065F0F /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351D31E7415E400065F0F /* CarExtra.m */; };
 		AE6351D51E7415E400065F0F /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351D31E7415E400065F0F /* CarExtra.m */; };
+		AE6351EC1E746BBB00065F0F /* CarType.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351EB1E746BBB00065F0F /* CarType.m */; };
+		AE6351ED1E746BBB00065F0F /* CarType.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351EB1E746BBB00065F0F /* CarType.m */; };
+		AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F71E746CB200065F0F /* CarInsurance.m */; };
+		AE6351FB1E746CB200065F0F /* CarInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F71E746CB200065F0F /* CarInsurance.m */; };
+		AE6351FC1E746CB200065F0F /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F91E746CB200065F0F /* Company.m */; };
+		AE6351FD1E746CB200065F0F /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F91E746CB200065F0F /* Company.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -78,6 +84,12 @@
 		AE6351CF1E71F52700065F0F /* CarCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCategory.m; sourceTree = "<group>"; };
 		AE6351D21E7415E400065F0F /* CarExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarExtra.h; sourceTree = "<group>"; };
 		AE6351D31E7415E400065F0F /* CarExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarExtra.m; sourceTree = "<group>"; };
+		AE6351EA1E746BBB00065F0F /* CarType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarType.h; sourceTree = "<group>"; };
+		AE6351EB1E746BBB00065F0F /* CarType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarType.m; sourceTree = "<group>"; };
+		AE6351F61E746CB200065F0F /* CarInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInsurance.h; sourceTree = "<group>"; };
+		AE6351F71E746CB200065F0F /* CarInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInsurance.m; sourceTree = "<group>"; };
+		AE6351F81E746CB200065F0F /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		AE6351F91E746CB200065F0F /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -165,6 +177,12 @@
 			isa = PBXGroup;
 			children = (
 				AE6351BD1E71E32200065F0F /* DataModels.h */,
+				AE6351F61E746CB200065F0F /* CarInsurance.h */,
+				AE6351F71E746CB200065F0F /* CarInsurance.m */,
+				AE6351F81E746CB200065F0F /* Company.h */,
+				AE6351F91E746CB200065F0F /* Company.m */,
+				AE6351EA1E746BBB00065F0F /* CarType.h */,
+				AE6351EB1E746BBB00065F0F /* CarType.m */,
 				AE6351CE1E71F52700065F0F /* CarCategory.h */,
 				AE6351CF1E71F52700065F0F /* CarCategory.m */,
 				AE6351BE1E71E32200065F0F /* FleetLocations.h */,
@@ -585,7 +603,10 @@
 				AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */,
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
+				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
+				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
+				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
@@ -599,10 +620,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE6351D51E7415E400065F0F /* CarExtra.m in Sources */,
+				AE6351FD1E746CB200065F0F /* Company.m in Sources */,
 				AE6351D11E71F52700065F0F /* CarCategory.m in Sources */,
+				AE6351ED1E746BBB00065F0F /* CarType.m in Sources */,
 				AE6351C51E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351C91E71E32200065F0F /* Location.m in Sources */,
 				AE6351C71E71E32200065F0F /* LatLng.m in Sources */,
+				AE6351FB1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */,
 			);

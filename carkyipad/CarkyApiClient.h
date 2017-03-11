@@ -36,9 +36,17 @@ typedef void(^BlockProgress)(NSProgress *progress);
 //GET /api/Helper/GetFleetLocations  fleet locations ana poli
 -(void)GetFleetLocations:(BlockArray)block;
 
-//GET /api/Helper/GetAllCarCategories   car categories
+//GET api/Helper/GetAllCarCategories   car categories
 -(void)GetAllCarCategories:(BlockArray)block;
+
+//GET api/Helper/GetAllCarTypes   car  types
+-(void)GetAllCarTypes:(BlockArray)block;
 
 //GET /api/Helper/GetExtrasPerCarType  extras per car categories
 -(void)GetExtrasPerCarType:(BlockArray)block;
+
+// api/Helper/GetAllCarInsurances
+-(void)GetAllCarInsurances:(BlockArray)block;
+
+
 @end

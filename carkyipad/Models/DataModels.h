@@ -10,3 +10,6 @@
 #import "LatLng.h"
 #import "CarCategory.h"
 #import "CarExtra.h"
+#import "Company.h"
+#import "CarInsurance.h"
+#import "CarType.h"

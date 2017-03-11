@@ -96,6 +96,19 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+-(void)GetAllCarTypes:(BlockArray)block {
+    [self GET:@"api/Helper/GetAllCarTypes" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *catArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            catArray[idx] = [CarType modelObjectWithDictionary:obj];
+        }];
+        block(catArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
 -(void)GetExtrasPerCarType:(BlockArray)block {
     [self GET:@"api/Helper/GetExtrasPerCarType" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
@@ -104,6 +117,19 @@ static CarkyApiClient *_sharedService = nil;
             carExtrasArray[idx] = [CarExtra modelObjectWithDictionary:obj];
         }];
         block(carExtrasArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetAllCarInsurances:(BlockArray)block {
+    [self GET:@"api/Helper/GetAllCarInsurances" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *carInsArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            carInsArray[idx] = [CarInsurance modelObjectWithDictionary:obj];
+        }];
+        block(carInsArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
     }];

@@ -66,6 +66,32 @@
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
+- (void)testGetAllCarInsurances {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all car insurances"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetAllCarInsurances:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found car insurances");
+        CarInsurance *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[CarInsurance class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testGetAllCarTypes {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all car types"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetAllCarTypes:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found car types");
+        CarType *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[CarType class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
