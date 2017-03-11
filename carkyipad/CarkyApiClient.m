@@ -96,4 +96,17 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+-(void)GetExtrasPerCarType:(BlockArray)block {
+    [self GET:@"api/Helper/GetExtrasPerCarType" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *carExtrasArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            carExtrasArray[idx] = [CarExtra modelObjectWithDictionary:obj];
+        }];
+        block(carExtrasArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
 @end

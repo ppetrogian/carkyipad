@@ -9,3 +9,4 @@
 #import "FleetLocations.h"
 #import "LatLng.h"
 #import "CarCategory.h"
+#import "CarExtra.h"

@@ -19,6 +19,8 @@
 		AE6351C91E71E32200065F0F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C31E71E32200065F0F /* Location.m */; };
 		AE6351D01E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
 		AE6351D11E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
+		AE6351D41E7415E400065F0F /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351D31E7415E400065F0F /* CarExtra.m */; };
+		AE6351D51E7415E400065F0F /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351D31E7415E400065F0F /* CarExtra.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -74,6 +76,8 @@
 		AE6351C31E71E32200065F0F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		AE6351CE1E71F52700065F0F /* CarCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCategory.h; sourceTree = "<group>"; };
 		AE6351CF1E71F52700065F0F /* CarCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCategory.m; sourceTree = "<group>"; };
+		AE6351D21E7415E400065F0F /* CarExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarExtra.h; sourceTree = "<group>"; };
+		AE6351D31E7415E400065F0F /* CarExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarExtra.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				AE6351C11E71E32200065F0F /* LatLng.m */,
 				AE6351C21E71E32200065F0F /* Location.h */,
 				AE6351C31E71E32200065F0F /* Location.m */,
+				AE6351D21E7415E400065F0F /* CarExtra.h */,
+				AE6351D31E7415E400065F0F /* CarExtra.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -573,6 +579,7 @@
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
 				AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */,
 				AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */,
+				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */,
@@ -591,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6351D51E7415E400065F0F /* CarExtra.m in Sources */,
 				AE6351D11E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6351C51E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351C91E71E32200065F0F /* Location.m in Sources */,

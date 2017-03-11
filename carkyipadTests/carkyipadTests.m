@@ -17,9 +17,9 @@
 @implementation carkyipadTests
 
 - (void)setUp {
-    self.api = [CarkyApiClient sharedService];
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.api = [CarkyApiClient sharedService];
 }
 
 - (void)tearDown {
@@ -48,6 +48,19 @@
         XCTAssert(array.count>0,"not found categories");
         CarCategory *c0 = array[0];
         XCTAssert([c0 isKindOfClass:[CarCategory class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testGetExtrasPerCarType {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all car extras"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetExtrasPerCarType:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found car extras");
+        CarExtra *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[CarExtra class]], @"wrong class");
         [expectation fulfill];
     }];
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
