@@ -30,6 +30,21 @@
 		AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352071E75B18700065F0F /* CircleLineButton.m */; };
 		AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63520A1E75B18700065F0F /* FlatPillButton.m */; };
 		AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63520C1E75B18700065F0F /* FlatPillButtonCell.m */; };
+		AE6352961E75C21600065F0F /* AutoResizeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352781E75C21600065F0F /* AutoResizeTextView.m */; };
+		AE6352971E75C21600065F0F /* MDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63527A1E75C21600065F0F /* MDButton.m */; };
+		AE6352981E75C21600065F0F /* MDDeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63527D1E75C21600065F0F /* MDDeviceHelper.m */; };
+		AE6352991E75C21600065F0F /* MDRippleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63527F1E75C21600065F0F /* MDRippleLayer.m */; };
+		AE63529A1E75C21600065F0F /* MDSnackbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352811E75C21600065F0F /* MDSnackbar.m */; };
+		AE63529B1E75C21600065F0F /* MDSuggestPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352831E75C21600065F0F /* MDSuggestPopupView.m */; };
+		AE63529C1E75C21600065F0F /* MDSuggestTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352851E75C21600065F0F /* MDSuggestTableView.m */; };
+		AE63529D1E75C21600065F0F /* MDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352871E75C21600065F0F /* MDTableViewCell.m */; };
+		AE63529E1E75C21600065F0F /* MDTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352891E75C21600065F0F /* MDTextField.m */; };
+		AE63529F1E75C21600065F0F /* MDToast.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63528B1E75C21600065F0F /* MDToast.m */; };
+		AE6352A01E75C21600065F0F /* MDTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63528D1E75C21600065F0F /* MDTouchGestureRecognizer.m */; };
+		AE6352A11E75C21600065F0F /* UIColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63528F1E75C21600065F0F /* UIColorHelper.m */; };
+		AE6352A21E75C21600065F0F /* UIFontHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352911E75C21600065F0F /* UIFontHelper.m */; };
+		AE6352A31E75C21600065F0F /* UIView+MDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352931E75C21600065F0F /* UIView+MDExtension.m */; };
+		AE6352A41E75C21600065F0F /* UIViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352951E75C21600065F0F /* UIViewHelper.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -102,6 +117,37 @@
 		AE63520A1E75B18700065F0F /* FlatPillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatPillButton.m; sourceTree = "<group>"; };
 		AE63520B1E75B18700065F0F /* FlatPillButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatPillButtonCell.h; sourceTree = "<group>"; };
 		AE63520C1E75B18700065F0F /* FlatPillButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatPillButtonCell.m; sourceTree = "<group>"; };
+		AE6352771E75C21600065F0F /* AutoResizeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoResizeTextView.h; sourceTree = "<group>"; };
+		AE6352781E75C21600065F0F /* AutoResizeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoResizeTextView.m; sourceTree = "<group>"; };
+		AE6352791E75C21600065F0F /* MDButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDButton.h; sourceTree = "<group>"; };
+		AE63527A1E75C21600065F0F /* MDButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDButton.m; sourceTree = "<group>"; };
+		AE63527B1E75C21600065F0F /* MDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDConstants.h; sourceTree = "<group>"; };
+		AE63527C1E75C21600065F0F /* MDDeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDeviceHelper.h; sourceTree = "<group>"; };
+		AE63527D1E75C21600065F0F /* MDDeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceHelper.m; sourceTree = "<group>"; };
+		AE63527E1E75C21600065F0F /* MDRippleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRippleLayer.h; sourceTree = "<group>"; };
+		AE63527F1E75C21600065F0F /* MDRippleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRippleLayer.m; sourceTree = "<group>"; };
+		AE6352801E75C21600065F0F /* MDSnackbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSnackbar.h; sourceTree = "<group>"; };
+		AE6352811E75C21600065F0F /* MDSnackbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSnackbar.m; sourceTree = "<group>"; };
+		AE6352821E75C21600065F0F /* MDSuggestPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSuggestPopupView.h; sourceTree = "<group>"; };
+		AE6352831E75C21600065F0F /* MDSuggestPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSuggestPopupView.m; sourceTree = "<group>"; };
+		AE6352841E75C21600065F0F /* MDSuggestTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSuggestTableView.h; sourceTree = "<group>"; };
+		AE6352851E75C21600065F0F /* MDSuggestTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSuggestTableView.m; sourceTree = "<group>"; };
+		AE6352861E75C21600065F0F /* MDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTableViewCell.h; sourceTree = "<group>"; };
+		AE6352871E75C21600065F0F /* MDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTableViewCell.m; sourceTree = "<group>"; };
+		AE6352881E75C21600065F0F /* MDTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTextField.h; sourceTree = "<group>"; };
+		AE6352891E75C21600065F0F /* MDTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTextField.m; sourceTree = "<group>"; };
+		AE63528A1E75C21600065F0F /* MDToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDToast.h; sourceTree = "<group>"; };
+		AE63528B1E75C21600065F0F /* MDToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDToast.m; sourceTree = "<group>"; };
+		AE63528C1E75C21600065F0F /* MDTouchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTouchGestureRecognizer.h; sourceTree = "<group>"; };
+		AE63528D1E75C21600065F0F /* MDTouchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTouchGestureRecognizer.m; sourceTree = "<group>"; };
+		AE63528E1E75C21600065F0F /* UIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorHelper.h; sourceTree = "<group>"; };
+		AE63528F1E75C21600065F0F /* UIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorHelper.m; sourceTree = "<group>"; };
+		AE6352901E75C21600065F0F /* UIFontHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFontHelper.h; sourceTree = "<group>"; };
+		AE6352911E75C21600065F0F /* UIFontHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFontHelper.m; sourceTree = "<group>"; };
+		AE6352921E75C21600065F0F /* UIView+MDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDExtension.h"; sourceTree = "<group>"; };
+		AE6352931E75C21600065F0F /* UIView+MDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDExtension.m"; sourceTree = "<group>"; };
+		AE6352941E75C21600065F0F /* UIViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewHelper.h; sourceTree = "<group>"; };
+		AE6352951E75C21600065F0F /* UIViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewHelper.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -224,6 +270,45 @@
 			path = Controls/FlatPillButton;
 			sourceTree = "<group>";
 		};
+		AE6352761E75C21600065F0F /* MaterialDesign */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352771E75C21600065F0F /* AutoResizeTextView.h */,
+				AE6352781E75C21600065F0F /* AutoResizeTextView.m */,
+				AE6352791E75C21600065F0F /* MDButton.h */,
+				AE63527A1E75C21600065F0F /* MDButton.m */,
+				AE63527B1E75C21600065F0F /* MDConstants.h */,
+				AE63527C1E75C21600065F0F /* MDDeviceHelper.h */,
+				AE63527D1E75C21600065F0F /* MDDeviceHelper.m */,
+				AE63527E1E75C21600065F0F /* MDRippleLayer.h */,
+				AE63527F1E75C21600065F0F /* MDRippleLayer.m */,
+				AE6352801E75C21600065F0F /* MDSnackbar.h */,
+				AE6352811E75C21600065F0F /* MDSnackbar.m */,
+				AE6352821E75C21600065F0F /* MDSuggestPopupView.h */,
+				AE6352831E75C21600065F0F /* MDSuggestPopupView.m */,
+				AE6352841E75C21600065F0F /* MDSuggestTableView.h */,
+				AE6352851E75C21600065F0F /* MDSuggestTableView.m */,
+				AE6352861E75C21600065F0F /* MDTableViewCell.h */,
+				AE6352871E75C21600065F0F /* MDTableViewCell.m */,
+				AE6352881E75C21600065F0F /* MDTextField.h */,
+				AE6352891E75C21600065F0F /* MDTextField.m */,
+				AE63528A1E75C21600065F0F /* MDToast.h */,
+				AE63528B1E75C21600065F0F /* MDToast.m */,
+				AE63528C1E75C21600065F0F /* MDTouchGestureRecognizer.h */,
+				AE63528D1E75C21600065F0F /* MDTouchGestureRecognizer.m */,
+				AE63528E1E75C21600065F0F /* UIColorHelper.h */,
+				AE63528F1E75C21600065F0F /* UIColorHelper.m */,
+				AE6352901E75C21600065F0F /* UIFontHelper.h */,
+				AE6352911E75C21600065F0F /* UIFontHelper.m */,
+				AE6352921E75C21600065F0F /* UIView+MDExtension.h */,
+				AE6352931E75C21600065F0F /* UIView+MDExtension.m */,
+				AE6352941E75C21600065F0F /* UIViewHelper.h */,
+				AE6352951E75C21600065F0F /* UIViewHelper.m */,
+			);
+			name = MaterialDesign;
+			path = Controls/MaterialDesign;
+			sourceTree = "<group>";
+		};
 		AE72759E1E6CCA8C00918646 = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +400,7 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				AE6352761E75C21600065F0F /* MaterialDesign */,
 				AE6352051E75B18700065F0F /* CircleLineButton */,
 				AE6352081E75B18700065F0F /* FlatPillButton */,
 				D14DF0A41E757F940040B97F /* RMStepsController */,
@@ -631,14 +717,25 @@
 			files = (
 				AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
+				AE6352A21E75C21600065F0F /* UIFontHelper.m in Sources */,
+				AE6352A31E75C21600065F0F /* UIView+MDExtension.m in Sources */,
+				AE63529E1E75C21600065F0F /* MDTextField.m in Sources */,
+				AE63529B1E75C21600065F0F /* MDSuggestPopupView.m in Sources */,
+				AE63529C1E75C21600065F0F /* MDSuggestTableView.m in Sources */,
+				AE6352971E75C21600065F0F /* MDButton.m in Sources */,
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
 				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
+				AE6352991E75C21600065F0F /* MDRippleLayer.m in Sources */,
 				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
+				AE6352961E75C21600065F0F /* AutoResizeTextView.m in Sources */,
+				AE63529A1E75C21600065F0F /* MDSnackbar.m in Sources */,
+				AE63529F1E75C21600065F0F /* MDToast.m in Sources */,
+				AE6352A01E75C21600065F0F /* MDTouchGestureRecognizer.m in Sources */,
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
@@ -648,10 +745,14 @@
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				AE6352A11E75C21600065F0F /* UIColorHelper.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
+				AE6352981E75C21600065F0F /* MDDeviceHelper.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
+				AE6352A41E75C21600065F0F /* UIViewHelper.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
+				AE63529D1E75C21600065F0F /* MDTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
