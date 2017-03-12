@@ -14,19 +14,34 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
   - MBCalendarKit (3.0.4)
   - SAMKeychain (1.5.2)
 
 DEPENDENCIES:
   - AFNetworking
+  - Bolts
+  - GoogleMaps
   - MBCalendarKit
   - SAMKeychain
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: dd919435e65588a7ccf7a7ee4656cbf0322538e1
+PODFILE CHECKSUM: 0e148f653ecbe5aa2bcd100e3a356c65465eb54e
 
 COCOAPODS: 1.2.0

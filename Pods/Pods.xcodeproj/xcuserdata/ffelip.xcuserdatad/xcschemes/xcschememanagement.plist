@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBCalendarKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>268F3EC368E74FDE5C8E1A7428D59211</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4403046D348BF74E6CD1B86F74A32A4B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>589F206088AAA1AB329FC9F9A0A23C4A</key>
+		<key>4E36756C7302496281C656F3AF56F97C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>94EAF961A04001BA3CA502A259068148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD71AB202C9368A1BF4BE2FB29F907A2</key>
+		<key>D79AC59595EAE9FBD410F44F17FF7A03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB06743FD599C11559E52D2D552AEE80</key>
 		<dict>
 			<key>primary</key>
 			<true/>

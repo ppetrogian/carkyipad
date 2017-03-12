@@ -4,6 +4,9 @@ target 'carkyipad' do
 pod 'SAMKeychain'
 pod 'AFNetworking'
 pod 'MBCalendarKit'
+#pod 'DSLCalendarView'
+pod 'Bolts'
+pod 'GoogleMaps'
 end
 
 target 'carkyipadTests' do
@@ -15,4 +18,8 @@ end
 target 'carkyipadUITests' do
 pod 'AFNetworking'
 pod 'MBCalendarKit'
+#pod 'DSLCalendarView'
+#pod 'FlatPillButton'
+pod 'Bolts'
+pod 'GoogleMaps'
 end

@@ -27,6 +27,9 @@
 		AE6351FB1E746CB200065F0F /* CarInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F71E746CB200065F0F /* CarInsurance.m */; };
 		AE6351FC1E746CB200065F0F /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F91E746CB200065F0F /* Company.m */; };
 		AE6351FD1E746CB200065F0F /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F91E746CB200065F0F /* Company.m */; };
+		AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352071E75B18700065F0F /* CircleLineButton.m */; };
+		AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63520A1E75B18700065F0F /* FlatPillButton.m */; };
+		AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE63520C1E75B18700065F0F /* FlatPillButtonCell.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -41,8 +44,6 @@
 		AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EF1E6CD01A00918646 /* IIAsyncView.m */; };
 		AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
-		D14DF0A21E757F190040B97F /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A11E757F190040B97F /* CircleLineButton.m */; };
-		D14DF0A31E757F190040B97F /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A11E757F190040B97F /* CircleLineButton.m */; };
 		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
@@ -95,6 +96,12 @@
 		AE6351F71E746CB200065F0F /* CarInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInsurance.m; sourceTree = "<group>"; };
 		AE6351F81E746CB200065F0F /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		AE6351F91E746CB200065F0F /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		AE6352061E75B18700065F0F /* CircleLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLineButton.h; sourceTree = "<group>"; };
+		AE6352071E75B18700065F0F /* CircleLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLineButton.m; sourceTree = "<group>"; };
+		AE6352091E75B18700065F0F /* FlatPillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatPillButton.h; sourceTree = "<group>"; };
+		AE63520A1E75B18700065F0F /* FlatPillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatPillButton.m; sourceTree = "<group>"; };
+		AE63520B1E75B18700065F0F /* FlatPillButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatPillButtonCell.h; sourceTree = "<group>"; };
+		AE63520C1E75B18700065F0F /* FlatPillButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatPillButtonCell.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,8 +132,6 @@
 		AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIAsyncViewInternals.h; path = Private/IIAsyncViewInternals.h; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
-		D14DF0A01E757F190040B97F /* CircleLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleLineButton.h; path = Controls/CircleLineButton.h; sourceTree = "<group>"; };
-		D14DF0A11E757F190040B97F /* CircleLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleLineButton.m; path = Controls/CircleLineButton.m; sourceTree = "<group>"; };
 		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
 		D14DF0A61E757F940040B97F /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
 		D14DF0A71E757F940040B97F /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
@@ -195,6 +200,28 @@
 				AE6351D31E7415E400065F0F /* CarExtra.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AE6352051E75B18700065F0F /* CircleLineButton */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352061E75B18700065F0F /* CircleLineButton.h */,
+				AE6352071E75B18700065F0F /* CircleLineButton.m */,
+			);
+			name = CircleLineButton;
+			path = Controls/CircleLineButton;
+			sourceTree = "<group>";
+		};
+		AE6352081E75B18700065F0F /* FlatPillButton */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352091E75B18700065F0F /* FlatPillButton.h */,
+				AE63520A1E75B18700065F0F /* FlatPillButton.m */,
+				AE63520B1E75B18700065F0F /* FlatPillButtonCell.h */,
+				AE63520C1E75B18700065F0F /* FlatPillButtonCell.m */,
+			);
+			name = FlatPillButton;
+			path = Controls/FlatPillButton;
 			sourceTree = "<group>";
 		};
 		AE72759E1E6CCA8C00918646 = {
@@ -288,9 +315,9 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				AE6352051E75B18700065F0F /* CircleLineButton */,
+				AE6352081E75B18700065F0F /* FlatPillButton */,
 				D14DF0A41E757F940040B97F /* RMStepsController */,
-				D14DF0A01E757F190040B97F /* CircleLineButton.h */,
-				D14DF0A11E757F190040B97F /* CircleLineButton.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -609,14 +636,16 @@
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
+				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
 				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
-				D14DF0A21E757F190040B97F /* CircleLineButton.m in Sources */,
+				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
+				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
@@ -651,7 +680,6 @@
 				AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */,
 				D14DF0AE1E757F940040B97F /* RMStepsBar.m in Sources */,
 				D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */,
-				D14DF0A31E757F190040B97F /* CircleLineButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
