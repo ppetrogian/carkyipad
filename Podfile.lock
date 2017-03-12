@@ -26,6 +26,7 @@ PODS:
   - GoogleMaps/Maps (2.2.0):
     - GoogleMaps/Base
   - MBCalendarKit (3.0.4)
+  - MBProgressHUD (1.0.0)
   - SAMKeychain (1.5.2)
 
 DEPENDENCIES:
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Bolts
   - GoogleMaps
   - MBCalendarKit
+  - MBProgressHUD
   - SAMKeychain
 
 SPEC CHECKSUMS:
@@ -40,8 +42,9 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: 0e148f653ecbe5aa2bcd100e3a356c65465eb54e
+PODFILE CHECKSUM: 419e5b57f4d909368a8ec5af4d16d7415868d486
 
 COCOAPODS: 1.2.0

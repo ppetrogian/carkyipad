@@ -127,68 +127,38 @@
             endingLineNumber = "89"
             landmarkName = "-testGetAllCarTypes"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[carkyipadTests testGetAllCarTypes]_block_invoke"
-                  moduleName = "carkyipadTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
-                  timestampString = "510946736.28302"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "561">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[carkyipadTests testGetAllCarTypes]_block_invoke"
-                  moduleName = "carkyipadTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
-                  timestampString = "510946736.288001"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "2020">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[carkyipadTests testGetAllCarTypes]_block_invoke"
-                  moduleName = "carkyipadTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
-                  timestampString = "510946736.292321"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "2132">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[carkyipadTests testGetAllCarTypes]_block_invoke"
-                  moduleName = "carkyipadTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
-                  timestampString = "510946736.296619"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "2257">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/BaseViewController.m"
+            timestampString = "511044162.685758"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-preferredStatusBarStyle"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/BaseViewController.m"
+            timestampString = "511044062.797635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
