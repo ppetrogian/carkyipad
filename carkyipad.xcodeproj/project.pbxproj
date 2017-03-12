@@ -35,15 +35,20 @@
 		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
-		AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275DF1E6CCBFF00918646 /* RMStep.m */; };
-		AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E11E6CCBFF00918646 /* RMStepsBar.m */; };
-		AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E31E6CCBFF00918646 /* RMStepsController.m */; };
 		AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E91E6CD01A00918646 /* IIAsyncData.m */; };
 		AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */; };
 		AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */; };
 		AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EF1E6CD01A00918646 /* IIAsyncView.m */; };
 		AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
+		D14DF0A21E757F190040B97F /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A11E757F190040B97F /* CircleLineButton.m */; };
+		D14DF0A31E757F190040B97F /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A11E757F190040B97F /* CircleLineButton.m */; };
+		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
+		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
+		D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
+		D14DF0AE1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
+		D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
+		D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,12 +111,6 @@
 		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE7275DE1E6CCBFF00918646 /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
-		AE7275DF1E6CCBFF00918646 /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
-		AE7275E01E6CCBFF00918646 /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
-		AE7275E11E6CCBFF00918646 /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
-		AE7275E21E6CCBFF00918646 /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
-		AE7275E31E6CCBFF00918646 /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
 		AE7275E81E6CD01A00918646 /* IIAsyncData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncData.h; sourceTree = "<group>"; };
 		AE7275E91E6CD01A00918646 /* IIAsyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncData.m; sourceTree = "<group>"; };
 		AE7275EA1E6CD01A00918646 /* IIAsyncMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncMessageView.h; sourceTree = "<group>"; };
@@ -126,6 +125,14 @@
 		AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIAsyncViewInternals.h; path = Private/IIAsyncViewInternals.h; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
+		D14DF0A01E757F190040B97F /* CircleLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleLineButton.h; path = Controls/CircleLineButton.h; sourceTree = "<group>"; };
+		D14DF0A11E757F190040B97F /* CircleLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleLineButton.m; path = Controls/CircleLineButton.m; sourceTree = "<group>"; };
+		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
+		D14DF0A61E757F940040B97F /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
+		D14DF0A71E757F940040B97F /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
+		D14DF0A81E757F940040B97F /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
+		D14DF0A91E757F940040B97F /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
+		D14DF0AA1E757F940040B97F /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,13 +171,6 @@
 				528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AE6351BB1E71E12100065F0F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		AE6351BC1E71E32200065F0F /* Models */ = {
@@ -222,10 +222,9 @@
 		AE7275A91E6CCA8C00918646 /* carkyipad */ = {
 			isa = PBXGroup;
 			children = (
+				D14DF09F1E757EDE0040B97F /* Controls */,
 				AE6351BC1E71E32200065F0F /* Models */,
-				AE6351BB1E71E12100065F0F /* Models */,
 				AE7275E71E6CD01A00918646 /* IIAsyncViewController */,
-				AE7275DD1E6CCBFF00918646 /* RMStepsController */,
 				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
 				AE7275AE1E6CCA8C00918646 /* AppDelegate.m */,
 				AE7275B01E6CCA8C00918646 /* ViewController.h */,
@@ -267,19 +266,6 @@
 			path = carkyipadUITests;
 			sourceTree = "<group>";
 		};
-		AE7275DD1E6CCBFF00918646 /* RMStepsController */ = {
-			isa = PBXGroup;
-			children = (
-				AE7275DE1E6CCBFF00918646 /* RMStep.h */,
-				AE7275DF1E6CCBFF00918646 /* RMStep.m */,
-				AE7275E01E6CCBFF00918646 /* RMStepsBar.h */,
-				AE7275E11E6CCBFF00918646 /* RMStepsBar.m */,
-				AE7275E21E6CCBFF00918646 /* RMStepsController.h */,
-				AE7275E31E6CCBFF00918646 /* RMStepsController.m */,
-			);
-			path = RMStepsController;
-			sourceTree = "<group>";
-		};
 		AE7275E71E6CD01A00918646 /* IIAsyncViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +283,30 @@
 				AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */,
 			);
 			path = IIAsyncViewController;
+			sourceTree = "<group>";
+		};
+		D14DF09F1E757EDE0040B97F /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				D14DF0A41E757F940040B97F /* RMStepsController */,
+				D14DF0A01E757F190040B97F /* CircleLineButton.h */,
+				D14DF0A11E757F190040B97F /* CircleLineButton.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		D14DF0A41E757F940040B97F /* RMStepsController */ = {
+			isa = PBXGroup;
+			children = (
+				D14DF0A51E757F940040B97F /* RMStep.h */,
+				D14DF0A61E757F940040B97F /* RMStep.m */,
+				D14DF0A71E757F940040B97F /* RMStepsBar.h */,
+				D14DF0A81E757F940040B97F /* RMStepsBar.m */,
+				D14DF0A91E757F940040B97F /* RMStepsController.h */,
+				D14DF0AA1E757F940040B97F /* RMStepsController.m */,
+			);
+			name = RMStepsController;
+			path = Controls/RMStepsController;
 			sourceTree = "<group>";
 		};
 		EA1831E84B4FFDDB910470C9 /* Pods */ = {
@@ -595,13 +605,14 @@
 				AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
-				AE7275E51E6CCBFF00918646 /* RMStepsBar.m in Sources */,
-				AE7275E61E6CCBFF00918646 /* RMStepsController.m in Sources */,
 				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
+				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
+				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
 				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
-				AE7275E41E6CCBFF00918646 /* RMStep.m in Sources */,
+				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
+				D14DF0A21E757F190040B97F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
@@ -636,7 +647,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14DF0AC1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */,
+				D14DF0AE1E757F940040B97F /* RMStepsBar.m in Sources */,
+				D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */,
+				D14DF0A31E757F190040B97F /* CircleLineButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,8 +786,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = carkyipad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -783,8 +799,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = carkyipad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gr.nessos.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
