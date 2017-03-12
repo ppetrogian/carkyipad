@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CF841FDCAB63F01DB6EA0A1AF432A6B6F149D0C6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7085D40ACA91B4428E915649145DE273681296FE" : 9223372036854775807,
+    "CF841FDCAB63F01DB6EA0A1AF432A6B6F149D0C6" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6241C90F-5F63-43C3-A5E4-B35122D709B9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7085D40ACA91B4428E915649145DE273681296FE" : "..\/..",
+    "CF841FDCAB63F01DB6EA0A1AF432A6B6F149D0C6" : "carkyipad\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "carkyipad",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "carkyipad.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/phisakel\/xamarin-projects.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7085D40ACA91B4428E915649145DE273681296FE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/carky\/carkyipad.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CF841FDCAB63F01DB6EA0A1AF432A6B6F149D0C6"
+    }
+  ]
+}
