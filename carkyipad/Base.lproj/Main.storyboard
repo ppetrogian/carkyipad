@@ -61,6 +61,8 @@
                     <connections>
                         <outlet property="buttonCarRental" destination="Qps-3a-QfM" id="lXO-oP-bgo"/>
                         <outlet property="buttonTransfer" destination="zEa-J9-PNr" id="Vp5-Pf-xj9"/>
+                        <outlet property="leftConstraint" destination="3YI-xb-WjP" id="cHe-hW-rNx"/>
+                        <outlet property="rightConstraint" destination="RdW-qS-oz9" id="fwO-aY-0uk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

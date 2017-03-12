@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.leftConstraint.constant = (self.view.bounds.size.width/2 - self.buttonCarRental.bounds.size.width)/2;
+    self.rightConstraint.constant = (self.view.bounds.size.width/2 - self.buttonTransfer.bounds.size.width)/2;
 }
 
 - (void)didReceiveMemoryWarning {

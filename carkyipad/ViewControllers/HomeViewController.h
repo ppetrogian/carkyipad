@@ -12,5 +12,7 @@
 @interface HomeViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet FlatPillButton *buttonCarRental;
 @property (weak, nonatomic) IBOutlet FlatPillButton *buttonTransfer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightConstraint;
 
 @end
