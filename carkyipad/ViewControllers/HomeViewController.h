@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class BaseViewController;
+@class FlatPillButton;
 @interface HomeViewController : BaseViewController
+@property (weak, nonatomic) IBOutlet FlatPillButton *buttonCarRental;
+@property (weak, nonatomic) IBOutlet FlatPillButton *buttonTransfer;
 
 @end

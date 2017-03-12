@@ -69,15 +69,15 @@ const CGFloat kFlatPillButtonNormalLineWidth = 2.0;
   
   CGContextRestoreGState(ctx);
   
-  if (self.highlighted) {
-    CGContextSaveGState(ctx);
-    UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, lineWidth * 2.5, lineWidth * 2.5) cornerRadius:self.bounds.size.height/2];
-    
-    CGContextAddPath(ctx, fillPath.CGPath);
-    CGContextFillPath(ctx);
-    
-    CGContextRestoreGState(ctx);
-  }
+//  if (self.highlighted) {
+//    CGContextSaveGState(ctx);
+//    UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, lineWidth * 2.5, lineWidth * 2.5) cornerRadius:self.bounds.size.height/2];
+//    
+//    CGContextAddPath(ctx, fillPath.CGPath);
+//    CGContextFillPath(ctx);
+//    
+//    CGContextRestoreGState(ctx);
+//  }
 }
 
 - (void)layoutSubviews {

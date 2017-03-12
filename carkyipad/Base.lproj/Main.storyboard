@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -24,15 +29,39 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="1Iy-ig-OI1">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-3a-QfM" customClass="FlatPillButton">
+                                <rect key="frame" x="140" y="353" width="261" height="62"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="35"/>
+                                <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
+                                <state key="normal" title="Car Rental">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-J9-PNr" customClass="FlatPillButton">
+                                <rect key="frame" x="654" y="353" width="230" height="62"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="35"/>
+                                <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
+                                <state key="normal" title="Transfer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Qps-3a-QfM" firstAttribute="leading" secondItem="1Iy-ig-OI1" secondAttribute="leading" constant="140" id="3YI-xb-WjP"/>
+                            <constraint firstItem="Qps-3a-QfM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6GF-v9-iyq"/>
                             <constraint firstItem="1Iy-ig-OI1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9hw-jY-a5c"/>
                             <constraint firstAttribute="trailing" secondItem="1Iy-ig-OI1" secondAttribute="trailing" id="C0P-hg-1nF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1Iy-ig-OI1" secondAttribute="bottom" id="MaU-cN-uxt"/>
+                            <constraint firstAttribute="trailing" secondItem="zEa-J9-PNr" secondAttribute="trailing" constant="140" id="RdW-qS-oz9"/>
+                            <constraint firstItem="zEa-J9-PNr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qEv-aR-sPC"/>
                             <constraint firstItem="1Iy-ig-OI1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rGQ-kY-gbZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonCarRental" destination="Qps-3a-QfM" id="lXO-oP-bgo"/>
+                        <outlet property="buttonTransfer" destination="zEa-J9-PNr" id="Vp5-Pf-xj9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
