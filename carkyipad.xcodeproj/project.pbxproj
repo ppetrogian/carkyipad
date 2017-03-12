@@ -45,6 +45,55 @@
 		AE6352A21E75C21600065F0F /* UIFontHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352911E75C21600065F0F /* UIFontHelper.m */; };
 		AE6352A31E75C21600065F0F /* UIView+MDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352931E75C21600065F0F /* UIView+MDExtension.m */; };
 		AE6352A41E75C21600065F0F /* UIViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352951E75C21600065F0F /* UIViewHelper.m */; };
+		AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */ = {isa = PBXBuildFile; fileRef = AE6352A71E75DBF800065F0F /* Loading_new.gif */; };
+		AE6352AB1E75DBF800065F0F /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352A91E75DBF800065F0F /* Validation.m */; };
+		AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352AE1E75DC4800065F0F /* Reachability.m */; };
+		AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352B71E75DE3000065F0F /* HomeViewController.m */; };
+		AE6352B91E75DE3000065F0F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352B71E75DE3000065F0F /* HomeViewController.m */; };
+		AE6352BC1E75DEAF00065F0F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352BB1E75DEAF00065F0F /* BaseViewController.m */; };
+		AE6352BD1E75DEAF00065F0F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352BB1E75DEAF00065F0F /* BaseViewController.m */; };
+		AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C01E75E1FA00065F0F /* CountryCell.m */; };
+		AE6352E21E75E1FA00065F0F /* CountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C01E75E1FA00065F0F /* CountryCell.m */; };
+		AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6352C11E75E1FA00065F0F /* CountryCell.xib */; };
+		AE6352E41E75E1FA00065F0F /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6352C11E75E1FA00065F0F /* CountryCell.xib */; };
+		AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C31E75E1FA00065F0F /* CountryPhoneCodeVC.m */; };
+		AE6352E61E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C31E75E1FA00065F0F /* CountryPhoneCodeVC.m */; };
+		AE6352E71E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6352C41E75E1FA00065F0F /* CountryPhoneCodeVC.xib */; };
+		AE6352E81E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6352C41E75E1FA00065F0F /* CountryPhoneCodeVC.xib */; };
+		AE6352E91E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C71E75E1FA00065F0F /* NBAsYouTypeFormatter.m */; };
+		AE6352EA1E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C71E75E1FA00065F0F /* NBAsYouTypeFormatter.m */; };
+		AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C91E75E1FA00065F0F /* NBMetadataCore.m */; };
+		AE6352EC1E75E1FA00065F0F /* NBMetadataCore.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352C91E75E1FA00065F0F /* NBMetadataCore.m */; };
+		AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352CB1E75E1FA00065F0F /* NBMetadataCoreMapper.m */; };
+		AE6352EE1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352CB1E75E1FA00065F0F /* NBMetadataCoreMapper.m */; };
+		AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352CD1E75E1FA00065F0F /* NBMetadataCoreTest.m */; };
+		AE6352F01E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352CD1E75E1FA00065F0F /* NBMetadataCoreTest.m */; };
+		AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352CF1E75E1FA00065F0F /* NBMetadataCoreTestMapper.m */; };
+		AE6352F21E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352CF1E75E1FA00065F0F /* NBMetadataCoreTestMapper.m */; };
+		AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D11E75E1FA00065F0F /* NBMetadataHelper.m */; };
+		AE6352F41E75E1FA00065F0F /* NBMetadataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D11E75E1FA00065F0F /* NBMetadataHelper.m */; };
+		AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D31E75E1FA00065F0F /* NBNumberFormat.m */; };
+		AE6352F61E75E1FA00065F0F /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D31E75E1FA00065F0F /* NBNumberFormat.m */; };
+		AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D51E75E1FA00065F0F /* NBPhoneMetaData.m */; };
+		AE6352F81E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D51E75E1FA00065F0F /* NBPhoneMetaData.m */; };
+		AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D71E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m */; };
+		AE6352FA1E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D71E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m */; };
+		AE6352FB1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D91E75E1FA00065F0F /* NBPhoneNumber.m */; };
+		AE6352FC1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352D91E75E1FA00065F0F /* NBPhoneNumber.m */; };
+		AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352DB1E75E1FA00065F0F /* NBPhoneNumberDefines.m */; };
+		AE6352FE1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352DB1E75E1FA00065F0F /* NBPhoneNumberDefines.m */; };
+		AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352DD1E75E1FA00065F0F /* NBPhoneNumberDesc.m */; };
+		AE6353001E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352DD1E75E1FA00065F0F /* NBPhoneNumberDesc.m */; };
+		AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE6352DE1E75E1FA00065F0F /* NBPhoneNumberMetadata.plist */; };
+		AE6353021E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE6352DE1E75E1FA00065F0F /* NBPhoneNumberMetadata.plist */; };
+		AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352E01E75E1FA00065F0F /* NBPhoneNumberUtil.m */; };
+		AE6353041E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6352E01E75E1FA00065F0F /* NBPhoneNumberUtil.m */; };
+		AE63530A1E75E23D00065F0F /* GiFHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6353071E75E23D00065F0F /* GiFHUD.m */; };
+		AE63530B1E75E23D00065F0F /* GiFHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6353071E75E23D00065F0F /* GiFHUD.m */; };
+		AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6353091E75E23D00065F0F /* UIImage+animatedGIF.m */; };
+		AE63530D1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6353091E75E23D00065F0F /* UIImage+animatedGIF.m */; };
+		AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6353101E75E2F900065F0F /* SharedInstance.m */; };
+		AE6353121E75E2F900065F0F /* SharedInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6353101E75E2F900065F0F /* SharedInstance.m */; };
 		AE7275AC1E6CCA8C00918646 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AB1E6CCA8C00918646 /* main.m */; };
 		AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275AE1E6CCA8C00918646 /* AppDelegate.m */; };
 		AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275B11E6CCA8C00918646 /* ViewController.m */; };
@@ -148,6 +197,55 @@
 		AE6352931E75C21600065F0F /* UIView+MDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDExtension.m"; sourceTree = "<group>"; };
 		AE6352941E75C21600065F0F /* UIViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewHelper.h; sourceTree = "<group>"; };
 		AE6352951E75C21600065F0F /* UIViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewHelper.m; sourceTree = "<group>"; };
+		AE6352A71E75DBF800065F0F /* Loading_new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Loading_new.gif; sourceTree = "<group>"; };
+		AE6352A81E75DBF800065F0F /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
+		AE6352A91E75DBF800065F0F /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
+		AE6352AD1E75DC4800065F0F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		AE6352AE1E75DC4800065F0F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		AE6352B01E75DC8000065F0F /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = Helper/Macros.h; sourceTree = "<group>"; };
+		AE6352B61E75DE3000065F0F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController.h; sourceTree = "<group>"; };
+		AE6352B71E75DE3000065F0F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController.m; sourceTree = "<group>"; };
+		AE6352BA1E75DEAF00065F0F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ViewControllers/BaseViewController.h; sourceTree = "<group>"; };
+		AE6352BB1E75DEAF00065F0F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ViewControllers/BaseViewController.m; sourceTree = "<group>"; };
+		AE6352BF1E75E1FA00065F0F /* CountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCell.h; sourceTree = "<group>"; };
+		AE6352C01E75E1FA00065F0F /* CountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCell.m; sourceTree = "<group>"; };
+		AE6352C11E75E1FA00065F0F /* CountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
+		AE6352C21E75E1FA00065F0F /* CountryPhoneCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryPhoneCodeVC.h; sourceTree = "<group>"; };
+		AE6352C31E75E1FA00065F0F /* CountryPhoneCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryPhoneCodeVC.m; sourceTree = "<group>"; };
+		AE6352C41E75E1FA00065F0F /* CountryPhoneCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryPhoneCodeVC.xib; sourceTree = "<group>"; };
+		AE6352C61E75E1FA00065F0F /* NBAsYouTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAsYouTypeFormatter.h; sourceTree = "<group>"; };
+		AE6352C71E75E1FA00065F0F /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
+		AE6352C81E75E1FA00065F0F /* NBMetadataCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMetadataCore.h; sourceTree = "<group>"; };
+		AE6352C91E75E1FA00065F0F /* NBMetadataCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMetadataCore.m; sourceTree = "<group>"; };
+		AE6352CA1E75E1FA00065F0F /* NBMetadataCoreMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMetadataCoreMapper.h; sourceTree = "<group>"; };
+		AE6352CB1E75E1FA00065F0F /* NBMetadataCoreMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMetadataCoreMapper.m; sourceTree = "<group>"; };
+		AE6352CC1E75E1FA00065F0F /* NBMetadataCoreTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMetadataCoreTest.h; sourceTree = "<group>"; };
+		AE6352CD1E75E1FA00065F0F /* NBMetadataCoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMetadataCoreTest.m; sourceTree = "<group>"; };
+		AE6352CE1E75E1FA00065F0F /* NBMetadataCoreTestMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMetadataCoreTestMapper.h; sourceTree = "<group>"; };
+		AE6352CF1E75E1FA00065F0F /* NBMetadataCoreTestMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMetadataCoreTestMapper.m; sourceTree = "<group>"; };
+		AE6352D01E75E1FA00065F0F /* NBMetadataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBMetadataHelper.h; sourceTree = "<group>"; };
+		AE6352D11E75E1FA00065F0F /* NBMetadataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBMetadataHelper.m; sourceTree = "<group>"; };
+		AE6352D21E75E1FA00065F0F /* NBNumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBNumberFormat.h; sourceTree = "<group>"; };
+		AE6352D31E75E1FA00065F0F /* NBNumberFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBNumberFormat.m; sourceTree = "<group>"; };
+		AE6352D41E75E1FA00065F0F /* NBPhoneMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaData.h; sourceTree = "<group>"; };
+		AE6352D51E75E1FA00065F0F /* NBPhoneMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaData.m; sourceTree = "<group>"; };
+		AE6352D61E75E1FA00065F0F /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
+		AE6352D71E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaDataGenerator.m; sourceTree = "<group>"; };
+		AE6352D81E75E1FA00065F0F /* NBPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumber.h; sourceTree = "<group>"; };
+		AE6352D91E75E1FA00065F0F /* NBPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumber.m; sourceTree = "<group>"; };
+		AE6352DA1E75E1FA00065F0F /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
+		AE6352DB1E75E1FA00065F0F /* NBPhoneNumberDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberDefines.m; sourceTree = "<group>"; };
+		AE6352DC1E75E1FA00065F0F /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDesc.h; sourceTree = "<group>"; };
+		AE6352DD1E75E1FA00065F0F /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberDesc.m; sourceTree = "<group>"; };
+		AE6352DE1E75E1FA00065F0F /* NBPhoneNumberMetadata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadata.plist; sourceTree = "<group>"; };
+		AE6352DF1E75E1FA00065F0F /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberUtil.h; sourceTree = "<group>"; };
+		AE6352E01E75E1FA00065F0F /* NBPhoneNumberUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberUtil.m; sourceTree = "<group>"; };
+		AE6353061E75E23D00065F0F /* GiFHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiFHUD.h; sourceTree = "<group>"; };
+		AE6353071E75E23D00065F0F /* GiFHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiFHUD.m; sourceTree = "<group>"; };
+		AE6353081E75E23D00065F0F /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		AE6353091E75E23D00065F0F /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		AE63530F1E75E2F900065F0F /* SharedInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedInstance.h; sourceTree = "<group>"; };
+		AE6353101E75E2F900065F0F /* SharedInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedInstance.m; sourceTree = "<group>"; };
 		AE7275A71E6CCA8C00918646 /* carkyipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carkyipad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275AB1E6CCA8C00918646 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE7275AD1E6CCA8C00918646 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -309,6 +407,120 @@
 			path = Controls/MaterialDesign;
 			sourceTree = "<group>";
 		};
+		AE6352A51E75DBDD00065F0F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352B01E75DC8000065F0F /* Macros.h */,
+				AE63530E1E75E2F900065F0F /* SingletonClass */,
+				AE6352AC1E75DC4800065F0F /* Reachability */,
+				AE6352A61E75DBF800065F0F /* Validation */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		AE6352A61E75DBF800065F0F /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352A71E75DBF800065F0F /* Loading_new.gif */,
+				AE6352A81E75DBF800065F0F /* Validation.h */,
+				AE6352A91E75DBF800065F0F /* Validation.m */,
+			);
+			name = Validation;
+			path = Helper/Validation;
+			sourceTree = "<group>";
+		};
+		AE6352AC1E75DC4800065F0F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352AD1E75DC4800065F0F /* Reachability.h */,
+				AE6352AE1E75DC4800065F0F /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Helper/Reachability;
+			sourceTree = "<group>";
+		};
+		AE6352B11E75DDB100065F0F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352BA1E75DEAF00065F0F /* BaseViewController.h */,
+				AE6352BB1E75DEAF00065F0F /* BaseViewController.m */,
+				AE6352B61E75DE3000065F0F /* HomeViewController.h */,
+				AE6352B71E75DE3000065F0F /* HomeViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AE6352BE1E75E1FA00065F0F /* CountryListOffline */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352BF1E75E1FA00065F0F /* CountryCell.h */,
+				AE6352C01E75E1FA00065F0F /* CountryCell.m */,
+				AE6352C11E75E1FA00065F0F /* CountryCell.xib */,
+				AE6352C21E75E1FA00065F0F /* CountryPhoneCodeVC.h */,
+				AE6352C31E75E1FA00065F0F /* CountryPhoneCodeVC.m */,
+				AE6352C41E75E1FA00065F0F /* CountryPhoneCodeVC.xib */,
+				AE6352C51E75E1FA00065F0F /* libPhoneNumber */,
+			);
+			name = CountryListOffline;
+			path = Controls/CountryListOffline;
+			sourceTree = "<group>";
+		};
+		AE6352C51E75E1FA00065F0F /* libPhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				AE6352C61E75E1FA00065F0F /* NBAsYouTypeFormatter.h */,
+				AE6352C71E75E1FA00065F0F /* NBAsYouTypeFormatter.m */,
+				AE6352C81E75E1FA00065F0F /* NBMetadataCore.h */,
+				AE6352C91E75E1FA00065F0F /* NBMetadataCore.m */,
+				AE6352CA1E75E1FA00065F0F /* NBMetadataCoreMapper.h */,
+				AE6352CB1E75E1FA00065F0F /* NBMetadataCoreMapper.m */,
+				AE6352CC1E75E1FA00065F0F /* NBMetadataCoreTest.h */,
+				AE6352CD1E75E1FA00065F0F /* NBMetadataCoreTest.m */,
+				AE6352CE1E75E1FA00065F0F /* NBMetadataCoreTestMapper.h */,
+				AE6352CF1E75E1FA00065F0F /* NBMetadataCoreTestMapper.m */,
+				AE6352D01E75E1FA00065F0F /* NBMetadataHelper.h */,
+				AE6352D11E75E1FA00065F0F /* NBMetadataHelper.m */,
+				AE6352D21E75E1FA00065F0F /* NBNumberFormat.h */,
+				AE6352D31E75E1FA00065F0F /* NBNumberFormat.m */,
+				AE6352D41E75E1FA00065F0F /* NBPhoneMetaData.h */,
+				AE6352D51E75E1FA00065F0F /* NBPhoneMetaData.m */,
+				AE6352D61E75E1FA00065F0F /* NBPhoneMetaDataGenerator.h */,
+				AE6352D71E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m */,
+				AE6352D81E75E1FA00065F0F /* NBPhoneNumber.h */,
+				AE6352D91E75E1FA00065F0F /* NBPhoneNumber.m */,
+				AE6352DA1E75E1FA00065F0F /* NBPhoneNumberDefines.h */,
+				AE6352DB1E75E1FA00065F0F /* NBPhoneNumberDefines.m */,
+				AE6352DC1E75E1FA00065F0F /* NBPhoneNumberDesc.h */,
+				AE6352DD1E75E1FA00065F0F /* NBPhoneNumberDesc.m */,
+				AE6352DE1E75E1FA00065F0F /* NBPhoneNumberMetadata.plist */,
+				AE6352DF1E75E1FA00065F0F /* NBPhoneNumberUtil.h */,
+				AE6352E01E75E1FA00065F0F /* NBPhoneNumberUtil.m */,
+			);
+			path = libPhoneNumber;
+			sourceTree = "<group>";
+		};
+		AE6353051E75E23D00065F0F /* LoaderGif */ = {
+			isa = PBXGroup;
+			children = (
+				AE6353061E75E23D00065F0F /* GiFHUD.h */,
+				AE6353071E75E23D00065F0F /* GiFHUD.m */,
+				AE6353081E75E23D00065F0F /* UIImage+animatedGIF.h */,
+				AE6353091E75E23D00065F0F /* UIImage+animatedGIF.m */,
+			);
+			name = LoaderGif;
+			path = Controls/LoaderGif;
+			sourceTree = "<group>";
+		};
+		AE63530E1E75E2F900065F0F /* SingletonClass */ = {
+			isa = PBXGroup;
+			children = (
+				AE63530F1E75E2F900065F0F /* SharedInstance.h */,
+				AE6353101E75E2F900065F0F /* SharedInstance.m */,
+			);
+			name = SingletonClass;
+			path = Helper/SingletonClass;
+			sourceTree = "<group>";
+		};
 		AE72759E1E6CCA8C00918646 = {
 			isa = PBXGroup;
 			children = (
@@ -335,8 +547,10 @@
 			isa = PBXGroup;
 			children = (
 				D14DF09F1E757EDE0040B97F /* Controls */,
+				AE6352A51E75DBDD00065F0F /* Helper */,
 				AE6351BC1E71E32200065F0F /* Models */,
 				AE7275E71E6CD01A00918646 /* IIAsyncViewController */,
+				AE6352B11E75DDB100065F0F /* ViewControllers */,
 				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
 				AE7275AE1E6CCA8C00918646 /* AppDelegate.m */,
 				AE7275B01E6CCA8C00918646 /* ViewController.h */,
@@ -400,6 +614,8 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				AE6353051E75E23D00065F0F /* LoaderGif */,
+				AE6352BE1E75E1FA00065F0F /* CountryListOffline */,
 				AE6352761E75C21600065F0F /* MaterialDesign */,
 				AE6352051E75B18700065F0F /* CircleLineButton */,
 				AE6352081E75B18700065F0F /* FlatPillButton */,
@@ -550,8 +766,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
+				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
+				AE6352E71E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */,
 				AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */,
 				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
+				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +787,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6352E41E75E1FA00065F0F /* CountryCell.xib in Resources */,
+				AE6352E81E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */,
+				AE6353021E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,42 +938,64 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
+				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
+				AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
 				AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE6352A21E75C21600065F0F /* UIFontHelper.m in Sources */,
 				AE6352A31E75C21600065F0F /* UIView+MDExtension.m in Sources */,
 				AE63529E1E75C21600065F0F /* MDTextField.m in Sources */,
+				AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
+				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE63529B1E75C21600065F0F /* MDSuggestPopupView.m in Sources */,
 				AE63529C1E75C21600065F0F /* MDSuggestTableView.m in Sources */,
 				AE6352971E75C21600065F0F /* MDButton.m in Sources */,
+				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
 				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
+				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
+				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
 				AE6352991E75C21600065F0F /* MDRippleLayer.m in Sources */,
 				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AE6352961E75C21600065F0F /* AutoResizeTextView.m in Sources */,
 				AE63529A1E75C21600065F0F /* MDSnackbar.m in Sources */,
+				AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
+				AE6352FB1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */,
+				AE6352BC1E75DEAF00065F0F /* BaseViewController.m in Sources */,
+				AE63530A1E75E23D00065F0F /* GiFHUD.m in Sources */,
 				AE63529F1E75C21600065F0F /* MDToast.m in Sources */,
+				AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352A01E75C21600065F0F /* MDTouchGestureRecognizer.m in Sources */,
+				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
 				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
+				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
+				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
+				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
+				AE6352E91E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */,
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
 				AE6352A11E75C21600065F0F /* UIColorHelper.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6352981E75C21600065F0F /* MDDeviceHelper.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
+				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
+				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,
 				AE6352A41E75C21600065F0F /* UIViewHelper.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
+				AE6352AB1E75DBF800065F0F /* Validation.m in Sources */,
 				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
 				AE63529D1E75C21600065F0F /* MDTableViewCell.m in Sources */,
 			);
@@ -778,9 +1023,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D14DF0AC1E757F940040B97F /* RMStep.m in Sources */,
+				AE6352E61E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
+				AE6352BD1E75DEAF00065F0F /* BaseViewController.m in Sources */,
+				AE6352EC1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
+				AE6353001E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
 				AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */,
+				AE63530B1E75E23D00065F0F /* GiFHUD.m in Sources */,
+				AE6353121E75E2F900065F0F /* SharedInstance.m in Sources */,
+				AE6353041E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
+				AE6352FC1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */,
+				AE6352F01E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
+				AE6352F41E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
+				AE6352F81E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
+				AE63530D1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
+				AE6352EA1E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */,
+				AE6352F61E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
 				D14DF0AE1E757F940040B97F /* RMStepsBar.m in Sources */,
+				AE6352EE1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
+				AE6352B91E75DE3000065F0F /* HomeViewController.m in Sources */,
 				D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */,
+				AE6352FA1E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
+				AE6352FE1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
+				AE6352F21E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
+				AE6352E21E75E1FA00065F0F /* CountryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
