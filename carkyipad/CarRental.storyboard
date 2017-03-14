@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Car Rental Steps View Controller-->
         <scene sceneID="UnV-pP-vRS">
             <objects>
-                <viewController storyboardIdentifier="CarRentalSteps" id="dcz-oA-X14" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarRentalSteps" id="dcz-oA-X14" customClass="CarRentalStepsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rvz-vK-sJx"/>
                         <viewControllerLayoutGuide type="bottom" id="WPz-Gz-xHa"/>
@@ -20,12 +20,84 @@
                     <view key="view" contentMode="scaleToFill" id="HM5-HI-cj6">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r57-At-l5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-838" y="-210"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GiQ-pn-Yio">
+            <objects>
+                <viewController storyboardIdentifier="Details" id="rQQ-hF-cbJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3UN-3b-HnY"/>
+                        <viewControllerLayoutGuide type="bottom" id="txg-FE-MtN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TxB-e0-PRM">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFD-Ti-eXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-213" y="-208"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="L4h-gz-m5F">
+            <objects>
+                <viewController storyboardIdentifier="Car" id="cle-sK-BW3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fJH-sP-X8b"/>
+                        <viewControllerLayoutGuide type="bottom" id="uQC-pP-QSQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SEd-iF-ZZs">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YKG-Bd-OPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="-211"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZS6-E7-K3H">
+            <objects>
+                <viewController storyboardIdentifier="Extras" id="YWc-kb-Qj4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gXH-0h-Bqf"/>
+                        <viewControllerLayoutGuide type="bottom" id="bST-Nb-IPm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Ba-qc-IxV">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3d-n6-TLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056" y="-212"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YBa-7D-ExX">
+            <objects>
+                <viewController storyboardIdentifier="Payment" id="yQV-li-fcp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J1e-h7-nO7"/>
+                        <viewControllerLayoutGuide type="bottom" id="WpP-Jd-QeZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZgC-vw-Hgd">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YaN-Hf-y1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1683" y="-212"/>
         </scene>
     </scenes>
 </document>
