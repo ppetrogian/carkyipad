@@ -3,11 +3,13 @@
 
 //
 #import <UIKit/UIKit.h>
-
+#import "IIAsyncViewController.h"
 @class AppDelegate;
-@protocol MBProgressHUDDelegate;
+
 @class Validation;
-@interface BaseViewController : UIViewController <MBProgressHUDDelegate>
+@protocol MBProgressHUDDelegate;
+
+@interface BaseViewController : IIAsyncViewController <MBProgressHUDDelegate>
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (strong, nonatomic) IBOutlet UIImageView *urlImageView;
 

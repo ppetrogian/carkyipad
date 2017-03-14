@@ -8,6 +8,7 @@ pod 'MBProgressHUD'
 #pod 'DSLCalendarView'
 pod 'Bolts'
 pod 'GoogleMaps'
+pod 'IIAsyncViewController'
 end
 
 target 'carkyipadTests' do
@@ -24,4 +25,5 @@ pod 'MBProgressHUD'
 #pod 'FlatPillButton'
 pod 'Bolts'
 pod 'GoogleMaps'
+pod 'IIAsyncViewController'
 end

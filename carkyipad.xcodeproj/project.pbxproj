@@ -102,12 +102,9 @@
 		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
-		AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275E91E6CD01A00918646 /* IIAsyncData.m */; };
-		AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */; };
-		AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */; };
-		AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275EF1E6CD01A00918646 /* IIAsyncView.m */; };
-		AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
+		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
+		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
@@ -262,20 +259,11 @@
 		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE7275E81E6CD01A00918646 /* IIAsyncData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncData.h; sourceTree = "<group>"; };
-		AE7275E91E6CD01A00918646 /* IIAsyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncData.m; sourceTree = "<group>"; };
-		AE7275EA1E6CD01A00918646 /* IIAsyncMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncMessageView.h; sourceTree = "<group>"; };
-		AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncMessageView.m; sourceTree = "<group>"; };
-		AE7275EC1E6CD01A00918646 /* IIAsyncStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncStatusView.h; sourceTree = "<group>"; };
-		AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncStatusView.m; sourceTree = "<group>"; };
-		AE7275EE1E6CD01A00918646 /* IIAsyncView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncView.h; sourceTree = "<group>"; };
-		AE7275EF1E6CD01A00918646 /* IIAsyncView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncView.m; sourceTree = "<group>"; };
-		AE7275F01E6CD01A00918646 /* IIAsyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewController.h; sourceTree = "<group>"; };
-		AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIAsyncViewController.m; sourceTree = "<group>"; };
-		AE7275F21E6CD01A00918646 /* IIAsyncViewProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIAsyncViewProtocols.h; sourceTree = "<group>"; };
-		AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IIAsyncViewInternals.h; path = Private/IIAsyncViewInternals.h; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
+		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
+		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
+		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Transfer.storyboard; path = carkyipad/Transfer.storyboard; sourceTree = "<group>"; };
 		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
 		D14DF0A61E757F940040B97F /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
 		D14DF0A71E757F940040B97F /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
@@ -524,6 +512,7 @@
 		AE72759E1E6CCA8C00918646 = {
 			isa = PBXGroup;
 			children = (
+				D1344BFB1E77766300006FAD /* Transfer.storyboard */,
 				AE7275A91E6CCA8C00918646 /* carkyipad */,
 				AE7275C31E6CCA8D00918646 /* carkyipadTests */,
 				AE7275CE1E6CCA8D00918646 /* carkyipadUITests */,
@@ -549,12 +538,12 @@
 				D14DF09F1E757EDE0040B97F /* Controls */,
 				AE6352A51E75DBDD00065F0F /* Helper */,
 				AE6351BC1E71E32200065F0F /* Models */,
-				AE7275E71E6CD01A00918646 /* IIAsyncViewController */,
 				AE6352B11E75DDB100065F0F /* ViewControllers */,
 				AE7275AD1E6CCA8C00918646 /* AppDelegate.h */,
 				AE7275AE1E6CCA8C00918646 /* AppDelegate.m */,
 				AE7275B01E6CCA8C00918646 /* ViewController.h */,
 				AE7275B11E6CCA8C00918646 /* ViewController.m */,
+				D1344BF81E7773FB00006FAD /* CarRental.storyboard */,
 				AE7275B31E6CCA8C00918646 /* Main.storyboard */,
 				AE7275B61E6CCA8C00918646 /* Assets.xcassets */,
 				AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */,
@@ -562,6 +551,7 @@
 				AE7275AA1E6CCA8C00918646 /* Supporting Files */,
 				AE6351B71E6E865600065F0F /* CarkyApiClient.h */,
 				AE6351B81E6E865600065F0F /* CarkyApiClient.m */,
+				D1344BFA1E77749E00006FAD /* Readme.rtf */,
 			);
 			path = carkyipad;
 			sourceTree = "<group>";
@@ -590,25 +580,6 @@
 				AE7275D11E6CCA8D00918646 /* Info.plist */,
 			);
 			path = carkyipadUITests;
-			sourceTree = "<group>";
-		};
-		AE7275E71E6CD01A00918646 /* IIAsyncViewController */ = {
-			isa = PBXGroup;
-			children = (
-				AE7275E81E6CD01A00918646 /* IIAsyncData.h */,
-				AE7275E91E6CD01A00918646 /* IIAsyncData.m */,
-				AE7275EA1E6CD01A00918646 /* IIAsyncMessageView.h */,
-				AE7275EB1E6CD01A00918646 /* IIAsyncMessageView.m */,
-				AE7275EC1E6CD01A00918646 /* IIAsyncStatusView.h */,
-				AE7275ED1E6CD01A00918646 /* IIAsyncStatusView.m */,
-				AE7275EE1E6CD01A00918646 /* IIAsyncView.h */,
-				AE7275EF1E6CD01A00918646 /* IIAsyncView.m */,
-				AE7275F01E6CD01A00918646 /* IIAsyncViewController.h */,
-				AE7275F11E6CD01A00918646 /* IIAsyncViewController.m */,
-				AE7275F21E6CD01A00918646 /* IIAsyncViewProtocols.h */,
-				AE7275F41E6CD01A00918646 /* IIAsyncViewInternals.h */,
-			);
-			path = IIAsyncViewController;
 			sourceTree = "<group>";
 		};
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
@@ -770,9 +741,11 @@
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
 				AE6352E71E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */,
 				AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */,
+				D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */,
 				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
 				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
+				D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,7 +914,6 @@
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
 				AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
-				AE7275F51E6CD01A00918646 /* IIAsyncData.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE6352A21E75C21600065F0F /* UIFontHelper.m in Sources */,
 				AE6352A31E75C21600065F0F /* UIView+MDExtension.m in Sources */,
@@ -961,7 +933,6 @@
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
 				AE6352991E75C21600065F0F /* MDRippleLayer.m in Sources */,
-				AE7275F91E6CD01A00918646 /* IIAsyncViewController.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AE6352961E75C21600065F0F /* AutoResizeTextView.m in Sources */,
 				AE63529A1E75C21600065F0F /* MDSnackbar.m in Sources */,
@@ -973,14 +944,12 @@
 				AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352A01E75C21600065F0F /* MDTouchGestureRecognizer.m in Sources */,
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
-				AE7275F71E6CD01A00918646 /* IIAsyncStatusView.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
-				AE7275F81E6CD01A00918646 /* IIAsyncView.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
 				AE6352E91E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */,
@@ -996,7 +965,6 @@
 				AE6352A41E75C21600065F0F /* UIViewHelper.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE6352AB1E75DBF800065F0F /* Validation.m in Sources */,
-				AE7275F61E6CD01A00918646 /* IIAsyncMessageView.m in Sources */,
 				AE63529D1E75C21600065F0F /* MDTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

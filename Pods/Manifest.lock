@@ -25,6 +25,7 @@ PODS:
   - GoogleMaps/Base (2.2.0)
   - GoogleMaps/Maps (2.2.0):
     - GoogleMaps/Base
+  - IIAsyncViewController (1.0.1)
   - MBCalendarKit (3.0.4)
   - MBProgressHUD (1.0.0)
   - SAMKeychain (1.5.2)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - AFNetworking
   - Bolts
   - GoogleMaps
+  - IIAsyncViewController
   - MBCalendarKit
   - MBProgressHUD
   - SAMKeychain
@@ -41,10 +43,11 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  IIAsyncViewController: 7ce71b1b0afb92327abad77f78ec76989f6d7fa1
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: 419e5b57f4d909368a8ec5af4d16d7415868d486
+PODFILE CHECKSUM: 3754333863b650ee91600939b8c2a548f7641d11
 
 COCOAPODS: 1.2.0

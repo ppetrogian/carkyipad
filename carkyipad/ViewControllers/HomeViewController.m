@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "HomeViewController.h"
 #import "FlatPillButton.h"
+#import "IIAsyncViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -16,10 +17,11 @@
 @implementation HomeViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    //[super viewDidLoad];
     // Do any additional setup after loading the view.
     self.leftConstraint.constant = (self.view.bounds.size.width/2 - self.buttonCarRental.bounds.size.width)/2;
     self.rightConstraint.constant = (self.view.bounds.size.width/2 - self.buttonTransfer.bounds.size.width)/2;
+    self.asyncView.data = 0; // dummy data
 }
 
 - (void)didReceiveMemoryWarning {
