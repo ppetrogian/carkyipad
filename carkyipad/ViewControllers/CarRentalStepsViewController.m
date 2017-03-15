@@ -7,6 +7,8 @@
 //
 
 #import "CarRentalStepsViewController.h"
+#import "PSStepButton.h"
+#import "StepViewController.h"
 
 @interface CarRentalStepsViewController ()
 
@@ -17,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
+    // hide back view may be remove before release
+    UIImageView *backView = (UIImageView *)[self.view viewWithTag:1];
+    if (backView)  backView.hidden = YES;
+    
+    self.stepsBar.showArrows = NO;
+    self.stepsBar.barStyle = UIBarStyleBlack;
+    self.stepsBar.backgroundColor = [UIColor blackColor];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -53,4 +62,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)gotoBack:(id)sender {
+    [self showPreviousStep];
+}
+- (IBAction)gotoNext:(id)sender {
+    [self showNextStep];
+}
 @end

@@ -51,7 +51,7 @@
 @end
 
 #pragma mark - Helper Classes
-
+/** ****************************************************************************************************************************** */
 @interface RMStepSeperatorView : UIView
 
 @property (nonatomic, strong) CAShapeLayer *leftShapeLayer;
@@ -61,7 +61,8 @@
 
 - (void)setLeftColor:(UIColor *)leftColor animated:(BOOL)animated;
 - (void)setRightColor:(UIColor *)rightColor animated:(BOOL)animated;
-
+ // philip
+ @property (nonatomic, assign) BOOL showArrows;
 @end
 
 
@@ -143,6 +144,9 @@
 
 #pragma mark - Layout
 - (void)layoutSubviews {
+    if (!self.showArrows) {
+        return;
+    }
     UIBezierPath *leftBezier = [UIBezierPath bezierPath];
     [leftBezier moveToPoint:CGPointMake(0, 0)];
     [leftBezier addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height/2)];
@@ -170,6 +174,9 @@
 
 #pragma mark - Drawing
 - (void)drawRect:(CGRect)rect {
+    if (!self.showArrows) {
+        return;
+    }
     [super drawRect:rect];
     
     UIBezierPath *bezier = [UIBezierPath bezierPath];
@@ -255,6 +262,12 @@
         
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedTap:)]];
     }
+    // philip
+    if (!self.showArrows) {
+        _topLine.hidden=YES; _bottomLine.hidden=YES; _cancelButton.hidden=YES; _cancelSeperator.hidden=YES;
+        
+    }
+    
     return self;
 }
 
@@ -391,6 +404,7 @@
         RMStep *step = (RMStep *)aStepDict[RM_STEP_KEY];
         RMStepSeperatorView *leftSeperator = (RMStepSeperatorView *)aStepDict[RM_LEFT_SEPERATOR_KEY];
         RMStepSeperatorView *rightSeperator = (RMStepSeperatorView *)aStepDict[RM_RIGHT_SEPERATOR_KEY];
+
         
         if(blockself.indexOfSelectedStep > idx) {
             void (^stepAnimations)(void) = ^(void) {
@@ -440,6 +454,12 @@
             
             [leftSeperator setRightColor:step.disabledBarColor animated:animated];
             [rightSeperator setLeftColor:step.disabledBarColor animated:animated];
+        }
+        // philip
+        if (!self.showArrows) {
+            step.circleLayer.hidden=YES;
+            step.stepView.backgroundColor = [UIColor clearColor];
+        
         }
     }];
 }

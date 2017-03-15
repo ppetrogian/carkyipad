@@ -111,6 +111,8 @@
 		D1344C041E777F4B00006FAD /* TransferStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C021E777F4B00006FAD /* TransferStepsViewController.m */; };
 		D1344C081E78AE2000006FAD /* PSStepButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C071E78AE2000006FAD /* PSStepButton.m */; };
 		D1344C091E78AE2000006FAD /* PSStepButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C071E78AE2000006FAD /* PSStepButton.m */; };
+		D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C0B1E78CF8F00006FAD /* StepViewController.m */; };
+		D1344C0D1E78CF8F00006FAD /* StepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C0B1E78CF8F00006FAD /* StepViewController.m */; };
 		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
@@ -276,6 +278,8 @@
 		D1344C021E777F4B00006FAD /* TransferStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransferStepsViewController.m; path = ViewControllers/TransferStepsViewController.m; sourceTree = "<group>"; };
 		D1344C061E78AE2000006FAD /* PSStepButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSStepButton.h; sourceTree = "<group>"; };
 		D1344C071E78AE2000006FAD /* PSStepButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSStepButton.m; sourceTree = "<group>"; };
+		D1344C0A1E78CF8F00006FAD /* StepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepViewController.h; path = ViewControllers/StepViewController.h; sourceTree = "<group>"; };
+		D1344C0B1E78CF8F00006FAD /* StepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepViewController.m; path = ViewControllers/StepViewController.m; sourceTree = "<group>"; };
 		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
 		D14DF0A61E757F940040B97F /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
 		D14DF0A71E757F940040B97F /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
@@ -450,6 +454,8 @@
 				D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
+				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
+				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -975,6 +981,7 @@
 				AE6352A01E75C21600065F0F /* MDTouchGestureRecognizer.m in Sources */,
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
+				D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
@@ -1022,6 +1029,7 @@
 			files = (
 				D14DF0AC1E757F940040B97F /* RMStep.m in Sources */,
 				AE6352E61E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
+				D1344C0D1E78CF8F00006FAD /* StepViewController.m in Sources */,
 				AE6352BD1E75DEAF00065F0F /* BaseViewController.m in Sources */,
 				D1344C001E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				AE6352EC1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,

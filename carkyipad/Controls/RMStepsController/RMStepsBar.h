@@ -77,9 +77,12 @@
  */
 - (void)stepsBar:(RMStepsBar *)bar shouldSelectStepAtIndex:(NSInteger)index;
 
+// philip
+@property (nonatomic, assign) BOOL showArrows;
+
 @end
 
-/**
+/** ******************************************************************************************************************************
  A `RMStepsBar` is a subclass of `UIToolbar`. It displays the progress of an user while going through an arbitrary number of steps.
  */
 
@@ -148,5 +151,9 @@
  Used to completely reload all data displayed ba this `RMStepsBar`. Any changes will not be animated.
  */
 - (void)reloadData;
+
+// philip
+
+@property (nonatomic, assign) BOOL showArrows;
 
 @end

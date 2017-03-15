@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rQQ-hF-cbJ">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,27 +11,9 @@
     </dependencies>
     <scenes>
         <!--Car Rental Steps View Controller-->
-        <scene sceneID="UnV-pP-vRS">
-            <objects>
-                <viewController storyboardIdentifier="CarRentalSteps" id="dcz-oA-X14" customClass="CarRentalStepsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Rvz-vK-sJx"/>
-                        <viewControllerLayoutGuide type="bottom" id="WPz-Gz-xHa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HM5-HI-cj6">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r57-At-l5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-820" y="-284"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="GiQ-pn-Yio">
             <objects>
-                <viewController storyboardIdentifier="Details" id="rQQ-hF-cbJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarRentalSteps" id="rQQ-hF-cbJ" customClass="CarRentalStepsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3UN-3b-HnY"/>
                         <viewControllerLayoutGuide type="bottom" id="txg-FE-MtN"/>
@@ -40,11 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_blank" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-d2-jvR">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_blank" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-d2-jvR">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-sc-OFA" customClass="PSStepButton">
-                                <rect key="frame" x="953" y="378.5" width="55" height="75"/>
+                                <rect key="frame" x="953" y="378" width="55" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" red="0.21760213375091553" green="0.80830127000808716" blue="0.60759645700454712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,9 +34,12 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLeft" value="NO"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gotoNext:" destination="rQQ-hF-cbJ" eventType="touchUpInside" id="gG1-mL-dNI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htD-e0-LSR" customClass="PSStepButton">
-                                <rect key="frame" x="14" y="378.5" width="55" height="75"/>
+                                <rect key="frame" x="14" y="378" width="55" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="dCa-IA-aK4"/>
                                     <constraint firstAttribute="width" constant="55" id="uzA-yi-RMO"/>
@@ -66,6 +51,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLeft" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gotoBack:" destination="rQQ-hF-cbJ" eventType="touchUpInside" id="Wfs-gS-ooe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,7 +61,7 @@
                             <constraint firstItem="htD-e0-LSR" firstAttribute="centerY" secondItem="TxB-e0-PRM" secondAttribute="centerY" constant="32" id="0Tb-5m-STT"/>
                             <constraint firstItem="NSg-sc-OFA" firstAttribute="height" secondItem="htD-e0-LSR" secondAttribute="height" id="1Ul-DB-TMR"/>
                             <constraint firstItem="txg-FE-MtN" firstAttribute="top" secondItem="EUw-d2-jvR" secondAttribute="bottom" id="5ia-V8-blX"/>
-                            <constraint firstItem="EUw-d2-jvR" firstAttribute="top" secondItem="3UN-3b-HnY" secondAttribute="bottom" id="6RH-jZ-fNb"/>
+                            <constraint firstItem="EUw-d2-jvR" firstAttribute="top" secondItem="3UN-3b-HnY" secondAttribute="bottom" constant="-20" id="6RH-jZ-fNb"/>
                             <constraint firstItem="NSg-sc-OFA" firstAttribute="width" secondItem="htD-e0-LSR" secondAttribute="width" id="7BT-8F-ewi"/>
                             <constraint firstItem="NSg-sc-OFA" firstAttribute="centerY" secondItem="TxB-e0-PRM" secondAttribute="centerY" constant="32" id="H63-3d-VkT"/>
                             <constraint firstAttribute="trailing" secondItem="EUw-d2-jvR" secondAttribute="trailing" id="RHX-E0-D6I"/>
@@ -82,15 +70,19 @@
                             <constraint firstAttribute="trailingMargin" secondItem="NSg-sc-OFA" secondAttribute="trailing" constant="-4" id="xJv-47-Xs0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonBack" destination="htD-e0-LSR" id="XIf-jy-26m"/>
+                        <outlet property="buttonNext" destination="NSg-sc-OFA" id="yJ8-Et-yCB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFD-Ti-eXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213.28125" y="-208.59375"/>
+            <point key="canvasLocation" x="-859.5703125" y="-214.0625"/>
         </scene>
-        <!--View Controller-->
+        <!--Step View Controller - Car-->
         <scene sceneID="L4h-gz-m5F">
             <objects>
-                <viewController storyboardIdentifier="Car" id="cle-sK-BW3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Car" id="cle-sK-BW3" userLabel="Step View Controller - Car" customClass="StepViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fJH-sP-X8b"/>
                         <viewControllerLayoutGuide type="bottom" id="uQC-pP-QSQ"/>
@@ -98,17 +90,28 @@
                     <view key="view" contentMode="scaleToFill" id="SEd-iF-ZZs">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_select_car_blank" translatesAutoresizingMaskIntoConstraints="NO" id="QJE-c6-ZZX">
+                                <rect key="frame" x="0.0" y="-1" width="1026" height="769"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="QJE-c6-ZZX" secondAttribute="trailing" constant="-22" id="Mzc-bJ-GLM"/>
+                            <constraint firstItem="uQC-pP-QSQ" firstAttribute="top" secondItem="QJE-c6-ZZX" secondAttribute="bottom" id="Ri2-Uc-ldm"/>
+                            <constraint firstItem="QJE-c6-ZZX" firstAttribute="top" secondItem="fJH-sP-X8b" secondAttribute="bottom" constant="-21" id="S0g-QC-egX"/>
+                            <constraint firstItem="QJE-c6-ZZX" firstAttribute="leading" secondItem="SEd-iF-ZZs" secondAttribute="leadingMargin" constant="-20" id="enW-Jb-4Le"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKG-Bd-OPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-211"/>
+            <point key="canvasLocation" x="419.53125" y="-211.71875"/>
         </scene>
-        <!--View Controller-->
+        <!--Step View Controller - Extras-->
         <scene sceneID="ZS6-E7-K3H">
             <objects>
-                <viewController storyboardIdentifier="Extras" id="YWc-kb-Qj4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Extras" id="YWc-kb-Qj4" userLabel="Step View Controller - Extras" customClass="StepViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gXH-0h-Bqf"/>
                         <viewControllerLayoutGuide type="bottom" id="bST-Nb-IPm"/>
@@ -116,17 +119,28 @@
                     <view key="view" contentMode="scaleToFill" id="9Ba-qc-IxV">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental2_blank" translatesAutoresizingMaskIntoConstraints="NO" id="y6s-Ll-u7V">
+                                <rect key="frame" x="-7" y="0.0" width="1031" height="768"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="y6s-Ll-u7V" firstAttribute="leading" secondItem="9Ba-qc-IxV" secondAttribute="leadingMargin" constant="-27" id="2Lh-GA-HLm"/>
+                            <constraint firstItem="y6s-Ll-u7V" firstAttribute="top" secondItem="gXH-0h-Bqf" secondAttribute="bottom" constant="-20" id="4XS-cr-zey"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y6s-Ll-u7V" secondAttribute="trailing" constant="-20" id="Qhg-Bv-ttA"/>
+                            <constraint firstItem="bST-Nb-IPm" firstAttribute="top" secondItem="y6s-Ll-u7V" secondAttribute="bottom" id="RZp-CK-jJM"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3d-n6-TLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="-212"/>
+            <point key="canvasLocation" x="1055.859375" y="-212.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Step View Controller - Payment-->
         <scene sceneID="YBa-7D-ExX">
             <objects>
-                <viewController storyboardIdentifier="Payment" id="yQV-li-fcp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Payment" id="yQV-li-fcp" userLabel="Step View Controller - Payment" customClass="StepViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J1e-h7-nO7"/>
                         <viewControllerLayoutGuide type="bottom" id="WpP-Jd-QeZ"/>
@@ -134,15 +148,58 @@
                     <view key="view" contentMode="scaleToFill" id="ZgC-vw-Hgd">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental3_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YT7-lJ-fGD">
+                                <rect key="frame" x="-1" y="-5" width="1026" height="773"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="YT7-lJ-fGD" secondAttribute="trailing" constant="-21" id="DV0-JT-sNx"/>
+                            <constraint firstItem="WpP-Jd-QeZ" firstAttribute="top" secondItem="YT7-lJ-fGD" secondAttribute="bottom" id="H75-zq-36j"/>
+                            <constraint firstItem="YT7-lJ-fGD" firstAttribute="top" secondItem="J1e-h7-nO7" secondAttribute="bottom" constant="-25" id="Wyt-RK-W1l"/>
+                            <constraint firstItem="YT7-lJ-fGD" firstAttribute="leading" secondItem="ZgC-vw-Hgd" secondAttribute="leadingMargin" constant="-21" id="xvY-2r-YHx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YaN-Hf-y1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1683" y="-212"/>
+            <point key="canvasLocation" x="1682.8125" y="-212.5"/>
+        </scene>
+        <!--Step View Controller - Details-->
+        <scene sceneID="zKe-sN-QRk">
+            <objects>
+                <viewController storyboardIdentifier="Details" id="ddC-FN-o3V" userLabel="Step View Controller - Details" customClass="StepViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S7m-Mb-cWl"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Lf-78-zHf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P6O-mD-Tm7">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-h5-Jgg">
+                                <rect key="frame" x="0.0" y="-1" width="1024" height="769"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YIS-h5-Jgg" firstAttribute="top" secondItem="S7m-Mb-cWl" secondAttribute="bottom" constant="-21" id="Swp-Uq-f7L"/>
+                            <constraint firstItem="YIS-h5-Jgg" firstAttribute="leading" secondItem="P6O-mD-Tm7" secondAttribute="leading" id="nNn-d0-7a8"/>
+                            <constraint firstAttribute="trailing" secondItem="YIS-h5-Jgg" secondAttribute="trailing" id="tM5-Pd-Uzw"/>
+                            <constraint firstItem="9Lf-78-zHf" firstAttribute="top" secondItem="YIS-h5-Jgg" secondAttribute="bottom" id="uXk-Cg-LTi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FTl-7j-7HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="-213"/>
         </scene>
     </scenes>
     <resources>
+        <image name="car_rental2_blank" width="1024" height="768"/>
+        <image name="car_rental3_blank" width="1024" height="768"/>
         <image name="car_rental_blank" width="1024" height="768"/>
+        <image name="car_rental_select_car_blank" width="1024" height="768"/>
     </resources>
 </document>
