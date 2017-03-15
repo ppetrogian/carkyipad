@@ -109,6 +109,8 @@
 		D1344C001E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
 		D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C021E777F4B00006FAD /* TransferStepsViewController.m */; };
 		D1344C041E777F4B00006FAD /* TransferStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C021E777F4B00006FAD /* TransferStepsViewController.m */; };
+		D1344C081E78AE2000006FAD /* PSStepButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C071E78AE2000006FAD /* PSStepButton.m */; };
+		D1344C091E78AE2000006FAD /* PSStepButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C071E78AE2000006FAD /* PSStepButton.m */; };
 		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
@@ -272,6 +274,8 @@
 		D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarRentalStepsViewController.m; path = ViewControllers/CarRentalStepsViewController.m; sourceTree = "<group>"; };
 		D1344C011E777F4B00006FAD /* TransferStepsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransferStepsViewController.h; path = ViewControllers/TransferStepsViewController.h; sourceTree = "<group>"; };
 		D1344C021E777F4B00006FAD /* TransferStepsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransferStepsViewController.m; path = ViewControllers/TransferStepsViewController.m; sourceTree = "<group>"; };
+		D1344C061E78AE2000006FAD /* PSStepButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSStepButton.h; sourceTree = "<group>"; };
+		D1344C071E78AE2000006FAD /* PSStepButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSStepButton.m; sourceTree = "<group>"; };
 		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
 		D14DF0A61E757F940040B97F /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
 		D14DF0A71E757F940040B97F /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
@@ -594,9 +598,20 @@
 			path = carkyipadUITests;
 			sourceTree = "<group>";
 		};
+		D1344C051E78AE2000006FAD /* PSStepButton */ = {
+			isa = PBXGroup;
+			children = (
+				D1344C061E78AE2000006FAD /* PSStepButton.h */,
+				D1344C071E78AE2000006FAD /* PSStepButton.m */,
+			);
+			name = PSStepButton;
+			path = Controls/PSStepButton;
+			sourceTree = "<group>";
+		};
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				D1344C051E78AE2000006FAD /* PSStepButton */,
 				AE6353051E75E23D00065F0F /* LoaderGif */,
 				AE6352BE1E75E1FA00065F0F /* CountryListOffline */,
 				AE6352761E75C21600065F0F /* MaterialDesign */,
@@ -923,6 +938,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1344C081E78AE2000006FAD /* PSStepButton.m in Sources */,
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
 				AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
@@ -1027,6 +1043,7 @@
 				AE6352B91E75DE3000065F0F /* HomeViewController.m in Sources */,
 				D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */,
 				AE6352FA1E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
+				D1344C091E78AE2000006FAD /* PSStepButton.m in Sources */,
 				AE6352FE1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F21E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352E21E75E1FA00065F0F /* CountryCell.m in Sources */,

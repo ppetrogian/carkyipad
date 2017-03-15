@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RMStepsController.h"
+#import "CarRentalStepsViewController.h"
 
-@interface TransferStepsViewController : RMStepsController
+@interface TransferStepsViewController : CarRentalStepsViewController
 @end

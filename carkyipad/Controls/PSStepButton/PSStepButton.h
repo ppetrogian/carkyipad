@@ -1,5 +1,5 @@
 //
-//  FlatPillButton.h
+//  PSStepButton.h
 //  DrawingPlayground
 //
 //  Created by Brian Michel on 11/11/12.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 IB_DESIGNABLE
-@interface FlatPillButton : UIButton
+@interface PSStepButton : UIButton
 
 //Sets a thicker outline
 @property (assign) IBInspectable BOOL bold;
 
-//For the lazy...
-+ (FlatPillButton *)button;
+@property (assign) IBInspectable BOOL isLeft;
++ (PSStepButton *)button;
 @end
