@@ -8,51 +8,44 @@
 #import "CircleLineButton.h"
 
 @interface CircleLineButton ()
-
+@property (nonatomic) CGRect originalBounds;
+@property (nonatomic) CGRect originalRect;
 @property (nonatomic, strong) CAShapeLayer *circleLayer;
-@property (nonatomic, strong) UIColor *color;
 @end
 
 @implementation CircleLineButton
 
 
+- (void)drawRect:(CGRect)rect {
+    self.layer.cornerRadius = self.cornerRadius - (self.state == UIControlStateDisabled ? 8 : 0);
+    self.clipsToBounds = YES;
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.layer.backgroundColor = self.state == UIControlStateDisabled ? self.disableColor.CGColor : self.strokeColor.CGColor;
+    if (self.originalBounds.size.width == 0) {
+        self.circleLayer = [CAShapeLayer layer];
+        self.originalBounds = self.layer.bounds;
+        self.originalRect = rect;
+        [[self layer] addSublayer:self.circleLayer];
+    }
+    self.circleLayer.fillColor = [UIColor clearColor].CGColor;
+    self.circleLayer.strokeColor = self.state == UIControlStateDisabled ? [UIColor grayColor].CGColor : [UIColor whiteColor].CGColor;
+    [self.circleLayer setLineWidth:2.0f];
+    CGRect innerRect = self.originalRect;
+    NSInteger inset = self.insetRadius + (self.state == UIControlStateDisabled ? 3 : 0);
+    innerRect = CGRectOffset(CGRectInset(self.originalRect, inset, inset), inset, inset);
+    [self.circleLayer setBounds:innerRect];
+    [self.circleLayer setPosition:CGPointMake(CGRectGetMidX(self.originalRect),CGRectGetMidY(self.originalRect))];
 
-- (void)drawCircleButton:(UIColor *)color
-{
-    self.color = color;
-    
-    [self setTitleColor:color forState:UIControlStateNormal];
-    
-    self.circleLayer = [CAShapeLayer layer];
-    
-    [self.circleLayer setBounds:CGRectMake(0.0f, 0.0f, [self bounds].size.width,
-                                           [self bounds].size.height)];
-    [self.circleLayer setPosition:CGPointMake(CGRectGetMidX([self bounds]),CGRectGetMidY([self bounds]))];
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-    
+    self.layer.bounds = self.state == UIControlStateDisabled ? CGRectInset(self.originalBounds, inset, inset) : self.originalBounds;
+    self.layer.masksToBounds = YES;
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:innerRect];
     [self.circleLayer setPath:[path CGPath]];
     
-    [self.circleLayer setStrokeColor:[color CGColor]];
-    
-    [self.circleLayer setLineWidth:2.0f];
-    [self.circleLayer setFillColor:[[UIColor clearColor] CGColor]];
-    
-    [[self layer] addSublayer:self.circleLayer];
+    self.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
-- (void)setHighlighted:(BOOL)highlighted
++ (CircleLineButton *)buttonWithType:(UIButtonType)type
 {
-    if (highlighted)
-    {
-        self.titleLabel.textColor = [UIColor whiteColor];
-        [self.circleLayer setFillColor:self.color.CGColor];
-    }
-    else
-    {
-        [self.circleLayer setFillColor:[UIColor clearColor].CGColor];
-        self.titleLabel.textColor = self.color;
-    }
+    return [super buttonWithType:UIButtonTypeRoundedRect];
 }
-
 @end

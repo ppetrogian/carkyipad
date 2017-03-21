@@ -8,13 +8,14 @@
 
 #import "CarRentalStepsViewController.h"
 #import "PSStepButton.h"
+#import "CircleLineButton.h"
 #import "StepViewController.h"
 
 @interface CarRentalStepsViewController ()
 
 @end
 
-@implementation CarRentalStepsViewController
+@implementation CarRentalStepsViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,9 +24,17 @@
     UIImageView *backView = (UIImageView *)[self.view viewWithTag:1];
     if (backView)  backView.hidden = YES;
     
-    self.stepsBar.showArrows = NO;
     self.stepsBar.barStyle = UIBarStyleBlack;
     self.stepsBar.backgroundColor = [UIColor blackColor];
+    
+    for (NSInteger i = 0; i < self.stepViewControllers.count; i++) {
+        RMStep *step = [self stepsBar:self.stepsBar stepAtIndex:i];
+        step.stepView = (CircleLineButton *)self.stepButtonsStack.arrangedSubviews[i];
+        step.titleLabel = (UILabel *)self.stepLabelsStack.arrangedSubviews[i];
+        step.titleLabel.text = step.title;
+        step.stepView.enabled = i == 0;
+    }
+
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -39,16 +48,16 @@
 }
 
 - (NSArray *)stepViewControllers {
-    UIViewController *firstStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Details"];
+    StepViewController *firstStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Details"];
     firstStep.step.title = NSLocalizedString(@"Details", nil) ;
     
-    UIViewController *secondStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Car"];
+    StepViewController *secondStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Car"];
     secondStep.step.title =  NSLocalizedString(@"Car", nil) ;
     
-    UIViewController *thirdStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Extras"];
+    StepViewController *thirdStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Extras"];
     thirdStep.step.title =  NSLocalizedString(@"Extras", nil) ;
     
-    UIViewController *fourthStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
+    StepViewController *fourthStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
     fourthStep.step.title =  NSLocalizedString(@"Payment", nil) ;
     
     return @[firstStep, secondStep, thirdStep, fourthStep];

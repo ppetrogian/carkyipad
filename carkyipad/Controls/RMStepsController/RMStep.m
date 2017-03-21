@@ -28,95 +28,11 @@
 
 @interface RMStep ()
 
-@property (nonatomic, strong, readwrite) UIView *stepView;
-@property (nonatomic, strong) UILabel *numberLabel;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) CAShapeLayer *circleLayer;
-
 @end
 
 @implementation RMStep
 
 
-- (void)updateConstrains {
-    UILabel *titleLabel = self.titleLabel;
-    UILabel *numberLabel = self.numberLabel;
-    NSDictionary *bindingsDict = NSDictionaryOfVariableBindings(titleLabel, numberLabel);
-    
-    NSArray* leftMarginConstraints;
-    if (self.hideNumberLabel) {
-        leftMarginConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(8)-[titleLabel]-(0)-|" options:0 metrics:nil views:bindingsDict];
-    } else {
-        leftMarginConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(40)-[titleLabel]-(0)-|" options:0 metrics:nil views:bindingsDict];
-        [_stepView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(11)-[numberLabel]-(9)-[titleLabel]" options:0 metrics:nil views:bindingsDict]];
-        [_stepView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[numberLabel]-(0)-|" options:0 metrics:nil views:bindingsDict]];
-    }
-    
-    [_stepView addConstraints: leftMarginConstraints];
-    [_stepView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[titleLabel]-(0)-|" options:0 metrics:nil views:bindingsDict]];
-    
-    [self.stepView setNeedsUpdateConstraints];
-}
-
-#pragma mark Properties
-- (UIView *)stepView {
-    if(!_stepView) {
-        self.stepView = [[UIView alloc] initWithFrame:CGRectZero];
-        _stepView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [_stepView.layer addSublayer:self.circleLayer];
-        
-        [_stepView addSubview:self.numberLabel];
-        [_stepView addSubview:self.titleLabel];
-        
-        [self updateConstrains];
-    }
-    
-    return _stepView;
-}
-
-- (UILabel *)numberLabel {
-    if(!_numberLabel) {
-        self.numberLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _numberLabel.text = @"0";
-        _numberLabel.textColor = self.disabledTextColor;
-        _numberLabel.textAlignment = NSTextAlignmentCenter;
-        _numberLabel.backgroundColor = [UIColor clearColor];
-        _numberLabel.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
-        _numberLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    }
-    
-    return _numberLabel;
-}
-
-- (UILabel *)titleLabel {
-    if(!_titleLabel) {
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _titleLabel.text = self.title;
-        _titleLabel.textColor = self.disabledTextColor;
-        _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
-        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    }
-    
-    return _titleLabel;
-}
-
-- (CAShapeLayer *)circleLayer {
-    if(!_circleLayer) {
-        NSInteger radius = 12;
-        
-        self.circleLayer = [CAShapeLayer layer];
-        _circleLayer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 2.0*radius, 2.0*radius) cornerRadius:radius].CGPath;
-        _circleLayer.position = CGPointMake(9, 10);
-        _circleLayer.fillColor = [UIColor clearColor].CGColor;
-        _circleLayer.strokeColor = self.disabledTextColor.CGColor;
-        _circleLayer.lineWidth = 1;
-    }
-    
-    return _circleLayer;
-}
 
 - (void)setTitle:(NSString *)newTitle {
     if(_title != newTitle) {
@@ -175,18 +91,5 @@
 }
 
 
-- (void)setHideNumberLabel:(BOOL)hideNumberLabel {
-    _hideNumberLabel = hideNumberLabel;
-    
-    for (NSLayoutConstraint* contraint in self.stepView.constraints)
-    {
-        [self.stepView removeConstraint: contraint];
-    }
-    
-    self.numberLabel.hidden = hideNumberLabel;
-    self.circleLayer.hidden = hideNumberLabel;
-    
-    [self updateConstrains];
-}
 
 @end

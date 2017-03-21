@@ -28,7 +28,7 @@
 
 #import "RMStepsBar.h"
 #import "RMStep.h"
-
+@class PSStepButton;
 /**
  `RMStepsController` is an iOS control for guiding a user through a process step-by-step. It uses an instance of `RMStepsBar` for showing the currently selected step and the total number of steps.
  
@@ -42,12 +42,10 @@
 
 @interface RMStepsController : UIViewController
 
-/// @name Properties
-
-/**
- Returns the instans of `RMStepsBar` used.
- */
-@property (nonatomic, strong, readonly) RMStepsBar *stepsBar;
+@property (weak, nonatomic) IBOutlet PSStepButton *buttonBack;
+@property (weak, nonatomic) IBOutlet PSStepButton *buttonNext;
+@property (nonatomic, weak) IBOutlet RMStepsBar *stepsBar;
+@property (nonatomic, weak) IBOutlet UIView *stepViewControllerContainer;
 
 /**
  Returns an instance `NSMutableDictionary` which can be used for storing results of one step. These results can then be accessed by another step using the dictionary returned here.
@@ -90,6 +88,8 @@
  */
 - (void)canceled;
 
+@property (nonatomic) BOOL shouldAnimate;
+
 @end
 
 /**
@@ -104,11 +104,12 @@
  If this `UIViewController` is not part of any `RMStepsController` this property will be `nil`.
  */
 @property (nonatomic, strong) RMStepsController *stepsController;
-
 /**
  Provides access to an instance of `RMStep` associated with this `UIVIewController`.
  */
 @property (nonatomic, strong) RMStep *step;
+
+
 
 /**
  This method is called when a `RMStepsController` is about to show the called instance of `UIViewController` and this instance indicates that it wants to be extended below bars. The called `UIViewController` can use the parameters to update it's content such that no content will disappear below a toolbar.

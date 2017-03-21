@@ -26,13 +26,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+@class CircleLineButton;
 /**
  A `RMStep` is used to set the title of a certain step and to customize the appearance of this step in a `RMStepsBar`
  */
 
 @interface RMStep : NSObject
-
+@property (nonatomic, strong) CircleLineButton *stepView;
+@property (nonatomic, strong) UILabel *numberLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
 /**
  Provides access to the title of this step as it is used by an instance of `RMStepsBar`.
  */

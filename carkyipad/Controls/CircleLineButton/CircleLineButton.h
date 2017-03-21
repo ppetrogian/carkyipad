@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+IB_DESIGNABLE
 @interface CircleLineButton : UIButton
 
-- (void)drawCircleButton:(UIColor *)color;
-
+@property (strong, nonatomic) IBInspectable UIColor *strokeColor;
+@property (strong, nonatomic) IBInspectable UIColor *disableColor;
+@property (assign, nonatomic) IBInspectable NSInteger cornerRadius;
+@property (assign, nonatomic) IBInspectable NSInteger insetRadius;
 @end

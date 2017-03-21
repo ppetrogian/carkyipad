@@ -1,38 +1,13 @@
 //
 //  RMViewController.m
-//  RMStepsController
-//
-//  Created by Roland Moers on 14.11.13.
-//  Copyright (c) 2013 Roland Moers
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//  THE SOFTWARE.
-//
 
 #import "RMStepsController.h"
+#import "PSStepButton.h"
 
 @interface RMStepsController () <RMStepsBarDelegate, RMStepsBarDataSource>
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary *results;
 @property (nonatomic, strong) UIViewController *currentStepViewController;
-
-@property (nonatomic, strong, readwrite) RMStepsBar *stepsBar;
-@property (nonatomic, strong) UIView *stepViewControllerContainer;
 
 @end
 
@@ -47,24 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:self.stepViewControllerContainer];
-    [self.view addSubview:self.stepsBar];
-    
-    RMStepsBar *stepsBar = self.stepsBar;
-    UIView *container = self.stepViewControllerContainer;
-    
-    NSDictionary *bindingsDict = NSDictionaryOfVariableBindings(stepsBar, container);
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[stepsBar]" options:0 metrics:nil views:bindingsDict]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[container]-(0)-|" options:0 metrics:nil views:bindingsDict]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[stepsBar]-0-|" options:0 metrics:nil views:bindingsDict]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-100-[container]-100-|" options:0 metrics:nil views:bindingsDict]];
-    
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.stepsBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBaseline multiplier:1 constant:44];
-    [self.view addConstraint:constraint];
+    self.stepsBar.dataSource = self;
+    self.stepsBar.delegate = self;
     
     [self loadStepViewControllers];
     [self showStepViewController:[self.childViewControllers objectAtIndex:0] animated:NO];
+    
 }
 
 #pragma mark - Properties
@@ -76,24 +39,6 @@
     return _results;
 }
 
-- (RMStepsBar *)stepsBar {
-    if(!_stepsBar) {
-        self.stepsBar = [[RMStepsBar alloc] initWithFrame:CGRectZero];
-        _stepsBar.delegate = self;
-        _stepsBar.dataSource = self;
-    }
-    
-    return _stepsBar;
-}
-
-- (UIView *)stepViewControllerContainer {
-    if(!_stepViewControllerContainer) {
-        self.stepViewControllerContainer = [[UIView alloc] initWithFrame:CGRectZero];
-        _stepViewControllerContainer.translatesAutoresizingMaskIntoConstraints = NO;
-    }
-    
-    return _stepViewControllerContainer;
-}
 
 #pragma mark - Helper
 - (BOOL)extendViewControllerBelowBars:(UIViewController *)aViewController {

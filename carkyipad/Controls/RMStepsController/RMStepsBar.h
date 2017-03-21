@@ -28,7 +28,7 @@
 
 @class RMStepsBar;
 @class RMStep;
-
+@class CircleLineButton;
 /**
  This protocol is used by an instance of `RMStepsBar` to get the data it should display.
  */
@@ -88,6 +88,7 @@
 
 @interface RMStepsBar : UIToolbar
 
+
 /**
  The delegate of this `RMStepsBar`. Must conform to the `RMStepsBarDelegate` protocol.
  */
@@ -113,16 +114,10 @@
  */
 @property (nonatomic, assign) BOOL allowBackward;
 
-/**
- Used to access the cancel button and to customize its appearance.
- */
-@property (nonatomic, strong, readonly) UIButton *cancelButton;
 
+// philip
+@property (nonatomic, strong) IBOutlet UIImage *logoImage;
 
-/**
- Used to set the seperator color.
- */
-@property (nonatomic, strong) UIColor *seperatorColor;
 
 /**
  Used to set the index of the selected step. When changing the selected step using this property the change will not be animated.
@@ -131,13 +126,6 @@
  */
 @property (nonatomic, assign) NSUInteger indexOfSelectedStep;
 
-/**
- *  Used to show or hide the cancel button with animation
- *
- *  @param newHideCancelButton    If YES the cancel button will be hidden. If NO the cancel button will be shown.
- *  @param animated               If YES the transition will be animated. If NO the transition will not be animated.
- */
-- (void)setHideCancelButton:(BOOL)newHideCancelButton animated:(BOOL)animated;
 
 /**
  Used to set the index of the selected step.
@@ -152,8 +140,5 @@
  */
 - (void)reloadData;
 
-// philip
-
-@property (nonatomic, assign) BOOL showArrows;
 
 @end
