@@ -272,6 +272,13 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_select_car_blank" translatesAutoresizingMaskIntoConstraints="NO" id="QJE-c6-ZZX">
                                 <rect key="frame" x="0.0" y="-1" width="1026" height="769"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Car scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zI-vT-Pc3">
+                                <rect key="frame" x="503" y="167" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -301,6 +308,13 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental2_blank" translatesAutoresizingMaskIntoConstraints="NO" id="y6s-Ll-u7V">
                                 <rect key="frame" x="-7" y="0.0" width="1031" height="768"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="extras scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIt-lZ-14s">
+                                <rect key="frame" x="498" y="158" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -330,6 +344,13 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental3_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YT7-lJ-fGD">
                                 <rect key="frame" x="-1" y="-5" width="1026" height="773"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4T-U9-IxS">
+                                <rect key="frame" x="483" y="152" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -356,13 +377,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8rT-PF-2hM" userLabel="Stack View Location Labels">
+                                <rect key="frame" x="247" y="321" width="540" height="17"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Athens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59c-SV-bgk">
+                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thessaloniki" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXm-eZ-Yuu">
+                                        <rect key="frame" x="145" y="0.0" width="80.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Santorini" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqN-pW-h7n">
+                                        <rect key="frame" x="319.5" y="0.0" width="57.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mykonos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXa-2a-zaY">
+                                        <rect key="frame" x="481.5" y="0.0" width="58.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-h5-Jgg">
                                 <rect key="frame" x="0.0" y="-1" width="1024" height="769"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Hrv-oP-XOs" userLabel="Stack View Location Icons">
+                                <rect key="frame" x="237" y="246" width="550" height="64"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc_Athens" translatesAutoresizingMaskIntoConstraints="NO" id="mCG-Tp-cqn">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="yAn-DS-uuw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc_Thessaloniki" translatesAutoresizingMaskIntoConstraints="NO" id="1QT-RB-Utd">
+                                        <rect key="frame" x="162" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="AD9-Yj-vsB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc_Santorini" translatesAutoresizingMaskIntoConstraints="NO" id="W8H-Qz-EMA">
+                                        <rect key="frame" x="324" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="2TW-Xj-8R0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loc_Mykonos" translatesAutoresizingMaskIntoConstraints="NO" id="wdy-Hv-4N1">
+                                        <rect key="frame" x="486" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="5Zs-r0-D8u"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="550" id="SWE-ZZ-c3l"/>
+                                    <constraint firstAttribute="height" constant="64" id="WyY-Td-7l8"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8rT-PF-2hM" firstAttribute="width" secondItem="Hrv-oP-XOs" secondAttribute="width" constant="-10" id="0NC-Ip-Vn5"/>
+                            <constraint firstItem="Hrv-oP-XOs" firstAttribute="centerX" secondItem="P6O-mD-Tm7" secondAttribute="centerX" id="2lI-vP-TQP"/>
+                            <constraint firstItem="8rT-PF-2hM" firstAttribute="centerX" secondItem="Hrv-oP-XOs" secondAttribute="centerX" constant="5" id="4rS-NF-68p"/>
+                            <constraint firstItem="8rT-PF-2hM" firstAttribute="top" secondItem="Hrv-oP-XOs" secondAttribute="bottom" constant="11" id="Q97-kg-WIy"/>
                             <constraint firstItem="YIS-h5-Jgg" firstAttribute="top" secondItem="S7m-Mb-cWl" secondAttribute="bottom" constant="-21" id="Swp-Uq-f7L"/>
+                            <constraint firstItem="Hrv-oP-XOs" firstAttribute="centerY" secondItem="P6O-mD-Tm7" secondAttribute="centerY" constant="-106" id="f5f-cC-ZQf"/>
                             <constraint firstItem="YIS-h5-Jgg" firstAttribute="leading" secondItem="P6O-mD-Tm7" secondAttribute="leading" id="nNn-d0-7a8"/>
                             <constraint firstAttribute="trailing" secondItem="YIS-h5-Jgg" secondAttribute="trailing" id="tM5-Pd-Uzw"/>
                             <constraint firstItem="9Lf-78-zHf" firstAttribute="top" secondItem="YIS-h5-Jgg" secondAttribute="bottom" id="uXk-Cg-LTi"/>
@@ -371,14 +459,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTl-7j-7HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-395" y="-303"/>
+            <point key="canvasLocation" x="-395.5078125" y="-303.125"/>
         </scene>
     </scenes>
     <resources>
         <image name="car_rental2_blank" width="1024" height="768"/>
         <image name="car_rental3_blank" width="1024" height="768"/>
-        <image name="car_rental_blank" width="1024" height="768"/>
+        <image name="car_rental_blank" width="512" height="384"/>
         <image name="car_rental_select_car_blank" width="1024" height="768"/>
         <image name="carky" width="116" height="27"/>
+        <image name="loc_Athens" width="32" height="32"/>
+        <image name="loc_Mykonos" width="32" height="32"/>
+        <image name="loc_Santorini" width="32" height="32"/>
+        <image name="loc_Thessaloniki" width="32" height="32"/>
     </resources>
 </document>

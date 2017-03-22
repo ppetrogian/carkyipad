@@ -64,6 +64,11 @@
 }
 
 - (void)finishedAllSteps {
+    UIAlertAction *actionYes = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {        
+    }];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Wizard finish",nil) message:NSLocalizedString(@"Payment done", nil) preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:actionYes];
+    [self presentViewController:alertVC animated:YES completion:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
