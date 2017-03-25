@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "loc_Mykonos_off.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "loc_Mykonos.png",
       "scale" : "2x"
     },
     {

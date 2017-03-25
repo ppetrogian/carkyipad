@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "loc_Thessaloniki_off.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "loc_Thessaloniki.png",
       "scale" : "2x"
     },
     {

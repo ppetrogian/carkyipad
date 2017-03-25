@@ -1,0 +1,71 @@
+
+{
+    Locations =     (
+                {
+            LatLng =             {
+                Lat = "37.856663";
+                Lng = "23.8613369";
+            };
+            Name = "Athens International Airport (ATH)";
+        },
+                {
+            LatLng =             {
+                Lat = "37.9939129";
+                Lng = "23.7295169";
+            };
+            Name = "Nessos HQ";
+        },
+                {
+            LatLng =             {
+                Lat = "37.8831287";
+                Lng = "23.7348217";
+            };
+            Name = "Carky HQ";
+        }
+    );
+    Name = Athens;
+},
+{
+    Locations =     (
+                {
+            LatLng =             {
+                Lat = "37.4356621";
+                Lng = "25.3479983";
+            };
+            Name = "Mykonos Island National Airport (JMK)";
+        },
+                {
+            LatLng =             {
+                Lat = "37.450632";
+                Lng = "25.3275733";
+            };
+            Name = Mykonos;
+        }
+    );
+    Name = Mykonos;
+},
+{
+    Locations =     (
+                {
+            LatLng =             {
+                Lat = "35.4772949";
+                Lng = "24.0527423";
+            };
+            Name = "Chania International Airport (CHQ)";
+        }
+    );
+    Name = Crete;
+},
+{
+    Locations =     (
+                {
+            LatLng =             {
+                Lat = "40.4866658";
+                Lng = "22.9751085";
+            };
+            Name = "Thessaloniki Airport Makedonia (SKG)";
+        }
+    );
+    Name = Thessaloniki;
+}
+)
