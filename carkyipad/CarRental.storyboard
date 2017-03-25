@@ -25,19 +25,10 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_blank" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-d2-jvR">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-sc-OFA" customClass="PSStepButton">
-                                <rect key="frame" x="953" y="364" width="55" height="75"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" red="0.21760213375091553" green="0.80830127000808716" blue="0.60759645700454712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLeft" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="gotoNext:" destination="rQQ-hF-cbJ" eventType="touchUpInside" id="gG1-mL-dNI"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Au-1P-nys" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="-2" width="1024" height="770"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htD-e0-LSR" customClass="PSStepButton">
                                 <rect key="frame" x="16" y="364" width="55" height="75"/>
                                 <constraints>
@@ -55,10 +46,19 @@
                                     <action selector="gotoBack:" destination="rQQ-hF-cbJ" eventType="touchUpInside" id="Wfs-gS-ooe"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Au-1P-nys" userLabel="Container View">
-                                <rect key="frame" x="171" y="170" width="682" height="598"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-sc-OFA" customClass="PSStepButton">
+                                <rect key="frame" x="953" y="364" width="55" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="0.21760213375091553" green="0.80830127000808716" blue="0.60759645700454712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLeft" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gotoNext:" destination="rQQ-hF-cbJ" eventType="touchUpInside" id="gG1-mL-dNI"/>
+                                </connections>
+                            </button>
                             <toolbar clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVI-f3-IYM" customClass="RMStepsBar">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="106"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -228,17 +228,17 @@
                             <constraint firstItem="NSg-sc-OFA" firstAttribute="width" secondItem="htD-e0-LSR" secondAttribute="width" id="7BT-8F-ewi"/>
                             <constraint firstItem="cVI-f3-IYM" firstAttribute="top" secondItem="3UN-3b-HnY" secondAttribute="bottom" constant="-20" id="Djr-Xw-IzJ"/>
                             <constraint firstItem="NSg-sc-OFA" firstAttribute="centerY" secondItem="TxB-e0-PRM" secondAttribute="centerY" constant="18" id="H63-3d-VkT"/>
-                            <constraint firstItem="NSg-sc-OFA" firstAttribute="leading" secondItem="2Au-1P-nys" secondAttribute="trailing" constant="100" id="Nnu-VT-CdN"/>
                             <constraint firstItem="rv3-IU-eJ7" firstAttribute="top" secondItem="3UN-3b-HnY" secondAttribute="bottom" constant="62" id="Poo-wu-ygy"/>
                             <constraint firstItem="z0X-NA-0dK" firstAttribute="width" secondItem="rv3-IU-eJ7" secondAttribute="width" constant="15" id="PrX-u4-L8p"/>
                             <constraint firstAttribute="trailing" secondItem="EUw-d2-jvR" secondAttribute="trailing" id="RHX-E0-D6I"/>
                             <constraint firstItem="txg-FE-MtN" firstAttribute="top" secondItem="2Au-1P-nys" secondAttribute="bottom" id="VXo-yn-oWe"/>
-                            <constraint firstItem="2Au-1P-nys" firstAttribute="leading" secondItem="htD-e0-LSR" secondAttribute="trailing" constant="100" id="eI2-Mk-6Jr"/>
                             <constraint firstItem="htD-e0-LSR" firstAttribute="leading" secondItem="TxB-e0-PRM" secondAttribute="leadingMargin" constant="-4" id="ea2-gY-ZPg"/>
+                            <constraint firstItem="2Au-1P-nys" firstAttribute="leading" secondItem="TxB-e0-PRM" secondAttribute="leading" id="hQB-pq-yFK"/>
                             <constraint firstItem="EUw-d2-jvR" firstAttribute="leading" secondItem="TxB-e0-PRM" secondAttribute="leading" id="iNp-7T-bqR"/>
                             <constraint firstItem="rv3-IU-eJ7" firstAttribute="centerX" secondItem="TxB-e0-PRM" secondAttribute="centerX" id="lHW-dD-JEi"/>
-                            <constraint firstItem="2Au-1P-nys" firstAttribute="top" secondItem="3UN-3b-HnY" secondAttribute="bottom" constant="150" id="ox4-UP-nn6"/>
+                            <constraint firstItem="2Au-1P-nys" firstAttribute="top" secondItem="3UN-3b-HnY" secondAttribute="bottom" constant="-22" id="ox4-UP-nn6"/>
                             <constraint firstAttribute="trailing" secondItem="cVI-f3-IYM" secondAttribute="trailing" id="pvm-b6-9Kz"/>
+                            <constraint firstAttribute="trailing" secondItem="2Au-1P-nys" secondAttribute="trailing" id="sL5-uC-UDk"/>
                             <constraint firstItem="z0X-NA-0dK" firstAttribute="centerX" secondItem="TxB-e0-PRM" secondAttribute="centerX" constant="4" id="wFm-GW-Urc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NSg-sc-OFA" secondAttribute="trailing" constant="-4" id="xJv-47-Xs0"/>
                             <constraint firstItem="z0X-NA-0dK" firstAttribute="top" secondItem="rv3-IU-eJ7" secondAttribute="bottom" id="zvA-DP-sCh"/>
@@ -381,25 +381,25 @@
                                 <rect key="frame" x="247" y="321" width="540" height="17"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Athens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59c-SV-bgk">
-                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thessaloniki" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXm-eZ-Yuu">
-                                        <rect key="frame" x="145" y="0.0" width="80.5" height="17"/>
+                                        <rect key="frame" x="145" y="0.0" width="81" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Santorini" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqN-pW-h7n">
-                                        <rect key="frame" x="319.5" y="0.0" width="57.5" height="17"/>
+                                        <rect key="frame" x="319" y="0.0" width="58" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mykonos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXa-2a-zaY">
-                                        <rect key="frame" x="481.5" y="0.0" width="58.5" height="17"/>
+                                        <rect key="frame" x="481" y="0.0" width="59" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
