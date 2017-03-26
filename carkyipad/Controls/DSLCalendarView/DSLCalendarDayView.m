@@ -107,16 +107,22 @@
 #pragma mark Drawing
 
 - (void)drawBackground {
+    // philip customize
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         if (self.isInCurrentMonth) {
-            [[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
+            //[[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
+            [[UIColor whiteColor] setFill];
         }
         else {
             [[UIColor colorWithWhite:225.0/255.0 alpha:1.0] setFill];
         }
         UIRectFill(self.bounds);
     }
-    else {
+    else  {
+        [self.tintColor setFill];
+          UIRectFill(self.bounds);
+    }
+    if(NO) {
         switch (self.selectionState) {
             case DSLCalendarDayViewNotSelected:
                 break;

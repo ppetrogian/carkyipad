@@ -45,7 +45,7 @@ enum {
     DSLCalendarDayViewEndOfWeek,
 } typedef DSLCalendarDayViewPositionInWeek;
 
-
+IB_DESIGNABLE
 @interface DSLCalendarDayView : UIView
 
 @property (nonatomic, copy) NSDateComponents *day;
