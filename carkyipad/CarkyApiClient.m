@@ -8,6 +8,7 @@
 
 #import "CarkyApiClient.h"
 #import "DataModels.h"
+#import "MBProgressHUD.h"
 
 #define Base_URL @"http://carky-app.azurewebsites.net"
 
@@ -34,6 +35,7 @@ static CarkyApiClient *_sharedService = nil;
         [_sharedService.reachabilityManager startMonitoring];
     });
     _sharedService.blockErrorDefault = ^(NSError *error) {
+        [_sharedService.hud hideAnimated:YES];
         NSLog(@"%@",error.localizedDescription);
     };
     _sharedService.blockProgressDefault = ^(NSProgress *progress) {
@@ -73,6 +75,7 @@ static CarkyApiClient *_sharedService = nil;
 -(void)GetFleetLocations:(BlockArray)block {
     [self GET:@"api/Helper/GetFleetLocations" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
+        [self.hud hideAnimated:YES];
         NSMutableArray *flockArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             flockArray[idx] = [FleetLocations modelObjectWithDictionary:obj];

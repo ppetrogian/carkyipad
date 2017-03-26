@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataModels.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) NSArray<FleetLocations*> *fleetLocations;
+@property (strong, nonatomic) NSArray<CarCategory*> *carCategories;
+@property (strong, nonatomic) NSArray<CarExtra*> *carExtras;
+@property (strong, nonatomic) NSArray<CarInsurance*> *carInsurances;
 
 
 @end

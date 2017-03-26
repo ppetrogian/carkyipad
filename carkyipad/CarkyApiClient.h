@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
+@class MBProgressHUD;
 
 typedef void(^BlockArray)(NSArray *array);
 typedef void(^BlockString)(NSString *string);
@@ -27,6 +28,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 @property (nonatomic, strong) BlockError blockErrorDefault;
 @property (nonatomic, strong) BlockProgress blockProgressDefault;
 @property (nonatomic,strong) NSString *lastMessage;
+@property (nonatomic,strong) MBProgressHUD *hud;
 #pragma mark - Api calls
 //POST /api/Account/RegisterPartner  (register enos partner gia ta test)
 
