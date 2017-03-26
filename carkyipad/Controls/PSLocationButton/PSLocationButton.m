@@ -8,8 +8,11 @@
 
 #import "PSLocationButton.h"
 
-@implementation PSLocationButton
+@interface PSLocationButton ()
 
+@end
+
+@implementation PSLocationButton
 
 - (void)setLabelBelowImage {
     // Drawing code

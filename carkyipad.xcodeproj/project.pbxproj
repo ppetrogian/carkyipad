@@ -99,7 +99,9 @@
 		AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AEB1E87888D00C03768 /* NSDate+DSLCalendarView.m */; };
 		AEAF1B041E87896100C03768 /* calendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1B031E87896100C03768 /* calendar.xcassets */; };
 		AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B071E87CF9B00C03768 /* PSTimePicker.m */; };
-		AEAF1B0B1E87FDA400C03768 /* PSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B0A1E87FDA400C03768 /* PSTextField.m */; };
+		AEAF1B121E882F3100C03768 /* PSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B111E882F3100C03768 /* PSTextField.m */; };
+		AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B1C1E88332300C03768 /* PSInputBox.m */; };
+		AEAF1B1F1E88333A00C03768 /* PSInputBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1B1E1E88333A00C03768 /* PSInputBox.xib */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
@@ -258,8 +260,11 @@
 		AEAF1B031E87896100C03768 /* calendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = calendar.xcassets; sourceTree = "<group>"; };
 		AEAF1B061E87CF9B00C03768 /* PSTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTimePicker.h; path = Controls/PSTimePicker/PSTimePicker.h; sourceTree = "<group>"; };
 		AEAF1B071E87CF9B00C03768 /* PSTimePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTimePicker.m; path = Controls/PSTimePicker/PSTimePicker.m; sourceTree = "<group>"; };
-		AEAF1B091E87FDA400C03768 /* PSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTextField.h; path = PSInputBox/PSTextField.h; sourceTree = "<group>"; };
-		AEAF1B0A1E87FDA400C03768 /* PSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTextField.m; path = PSInputBox/PSTextField.m; sourceTree = "<group>"; };
+		AEAF1B101E882F3100C03768 /* PSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTextField.h; path = Controls/PSInputBox/PSTextField.h; sourceTree = "<group>"; };
+		AEAF1B111E882F3100C03768 /* PSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTextField.m; path = Controls/PSInputBox/PSTextField.m; sourceTree = "<group>"; };
+		AEAF1B1B1E88332300C03768 /* PSInputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSInputBox.h; path = Controls/PSInputBox/PSInputBox.h; sourceTree = "<group>"; };
+		AEAF1B1C1E88332300C03768 /* PSInputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSInputBox.m; path = Controls/PSInputBox/PSInputBox.m; sourceTree = "<group>"; };
+		AEAF1B1E1E88333A00C03768 /* PSInputBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PSInputBox.xib; path = Controls/PSInputBox/PSInputBox.xib; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
@@ -612,8 +617,11 @@
 		AEAF1B0C1E87FDB100C03768 /* PSInputBox */ = {
 			isa = PBXGroup;
 			children = (
-				AEAF1B091E87FDA400C03768 /* PSTextField.h */,
-				AEAF1B0A1E87FDA400C03768 /* PSTextField.m */,
+				AEAF1B101E882F3100C03768 /* PSTextField.h */,
+				AEAF1B111E882F3100C03768 /* PSTextField.m */,
+				AEAF1B1B1E88332300C03768 /* PSInputBox.h */,
+				AEAF1B1C1E88332300C03768 /* PSInputBox.m */,
+				AEAF1B1E1E88333A00C03768 /* PSInputBox.xib */,
 			);
 			name = PSInputBox;
 			sourceTree = "<group>";
@@ -819,6 +827,7 @@
 				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
 				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
 				AEAF1B041E87896100C03768 /* calendar.xcassets in Resources */,
+				AEAF1B1F1E88333A00C03768 /* PSInputBox.xib in Resources */,
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
 				D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */,
 			);
@@ -1022,8 +1031,8 @@
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
-				AEAF1B0B1E87FDA400C03768 /* PSTextField.m in Sources */,
 				AEAF1AEF1E87888D00C03768 /* DSLCalendarMonthSelectorView.m in Sources */,
+				AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
 				AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
@@ -1044,6 +1053,7 @@
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
 				AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */,
 				D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */,
+				AEAF1B121E882F3100C03768 /* PSTextField.m in Sources */,
 				AE6352E91E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */,
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,

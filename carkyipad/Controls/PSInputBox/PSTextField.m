@@ -26,7 +26,7 @@
     self.borderStyle = UITextBorderStyleNone;
   
     self.border.borderColor = [UIColor lightGrayColor].CGColor; // [UIColor groupTableViewBackgroundColor].CGColor;
-    self.border.frame = CGRectMake(0, self.frame.size.height - borderWidth, self.frame.size.width, self.frame.size.height);
+    self.border.frame = CGRectMake(0, rect.size.height - borderWidth, rect.size.width, rect.size.height);
     self.border.borderWidth = borderWidth;
     [self.layer addSublayer:self.border];
     self.layer.masksToBounds = YES;
