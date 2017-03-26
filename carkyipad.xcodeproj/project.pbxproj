@@ -89,6 +89,16 @@
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
 		AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1A931E876EEF00C03768 /* PSLocationButton.m */; };
+		AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */; };
+		AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */; };
+		AEAF1AEE1E87888D00C03768 /* DSLCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AD11E87888D00C03768 /* DSLCalendarDayView.m */; };
+		AEAF1AEF1E87888D00C03768 /* DSLCalendarMonthSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AD31E87888D00C03768 /* DSLCalendarMonthSelectorView.m */; };
+		AEAF1AF01E87888D00C03768 /* DSLCalendarMonthSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1AD41E87888D00C03768 /* DSLCalendarMonthSelectorView.xib */; };
+		AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AD61E87888D00C03768 /* DSLCalendarMonthView.m */; };
+		AEAF1AF21E87888D00C03768 /* DSLCalendarRange.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AD81E87888D00C03768 /* DSLCalendarRange.m */; };
+		AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ADA1E87888D00C03768 /* DSLCalendarView.m */; };
+		AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AEB1E87888D00C03768 /* NSDate+DSLCalendarView.m */; };
+		AEAF1B041E87896100C03768 /* calendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1B031E87896100C03768 /* calendar.xcassets */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
@@ -230,6 +240,23 @@
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEAF1A921E876EEF00C03768 /* PSLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationButton.h; sourceTree = "<group>"; };
 		AEAF1A931E876EEF00C03768 /* PSLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationButton.m; sourceTree = "<group>"; };
+		AEAF1ACD1E87888D00C03768 /* DSLCalendarDayCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarDayCalloutView.h; sourceTree = "<group>"; };
+		AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarDayCalloutView.m; sourceTree = "<group>"; };
+		AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSLCalendarDayCalloutView.xib; sourceTree = "<group>"; };
+		AEAF1AD01E87888D00C03768 /* DSLCalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarDayView.h; sourceTree = "<group>"; };
+		AEAF1AD11E87888D00C03768 /* DSLCalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarDayView.m; sourceTree = "<group>"; };
+		AEAF1AD21E87888D00C03768 /* DSLCalendarMonthSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarMonthSelectorView.h; sourceTree = "<group>"; };
+		AEAF1AD31E87888D00C03768 /* DSLCalendarMonthSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarMonthSelectorView.m; sourceTree = "<group>"; };
+		AEAF1AD41E87888D00C03768 /* DSLCalendarMonthSelectorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSLCalendarMonthSelectorView.xib; sourceTree = "<group>"; };
+		AEAF1AD51E87888D00C03768 /* DSLCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarMonthView.h; sourceTree = "<group>"; };
+		AEAF1AD61E87888D00C03768 /* DSLCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarMonthView.m; sourceTree = "<group>"; };
+		AEAF1AD71E87888D00C03768 /* DSLCalendarRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarRange.h; sourceTree = "<group>"; };
+		AEAF1AD81E87888D00C03768 /* DSLCalendarRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarRange.m; sourceTree = "<group>"; };
+		AEAF1AD91E87888D00C03768 /* DSLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarView.h; sourceTree = "<group>"; };
+		AEAF1ADA1E87888D00C03768 /* DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLCalendarView.m; sourceTree = "<group>"; };
+		AEAF1AEA1E87888D00C03768 /* NSDate+DSLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DSLCalendarView.h"; sourceTree = "<group>"; };
+		AEAF1AEB1E87888D00C03768 /* NSDate+DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DSLCalendarView.m"; sourceTree = "<group>"; };
+		AEAF1B031E87896100C03768 /* calendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = calendar.xcassets; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
@@ -547,6 +574,31 @@
 			path = Controls/PSLocationButton;
 			sourceTree = "<group>";
 		};
+		AEAF1ACC1E87888D00C03768 /* DSLCalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF1ACD1E87888D00C03768 /* DSLCalendarDayCalloutView.h */,
+				AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */,
+				AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */,
+				AEAF1AD01E87888D00C03768 /* DSLCalendarDayView.h */,
+				AEAF1AD11E87888D00C03768 /* DSLCalendarDayView.m */,
+				AEAF1AD21E87888D00C03768 /* DSLCalendarMonthSelectorView.h */,
+				AEAF1AD31E87888D00C03768 /* DSLCalendarMonthSelectorView.m */,
+				AEAF1AD41E87888D00C03768 /* DSLCalendarMonthSelectorView.xib */,
+				AEAF1AD51E87888D00C03768 /* DSLCalendarMonthView.h */,
+				AEAF1AD61E87888D00C03768 /* DSLCalendarMonthView.m */,
+				AEAF1AD71E87888D00C03768 /* DSLCalendarRange.h */,
+				AEAF1AD81E87888D00C03768 /* DSLCalendarRange.m */,
+				AEAF1AD91E87888D00C03768 /* DSLCalendarView.h */,
+				AEAF1ADA1E87888D00C03768 /* DSLCalendarView.m */,
+				AEAF1AEA1E87888D00C03768 /* NSDate+DSLCalendarView.h */,
+				AEAF1AEB1E87888D00C03768 /* NSDate+DSLCalendarView.m */,
+				AEAF1B031E87896100C03768 /* calendar.xcassets */,
+			);
+			name = DSLCalendarView;
+			path = Controls/DSLCalendarView;
+			sourceTree = "<group>";
+		};
 		D1344C051E78AE2000006FAD /* PSStepButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,6 +612,7 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				AEAF1ACC1E87888D00C03768 /* DSLCalendarView */,
 				AEAF1A911E876EEF00C03768 /* PSLocationButton */,
 				D1B253D81E8706B3005365B2 /* PSFleetLocationControl */,
 				D1B253CB1E85F26A005365B2 /* MIRadioButtonGroup */,
@@ -735,13 +788,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
 				AE6352E71E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */,
 				AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */,
+				AEAF1AF01E87888D00C03768 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */,
 				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
 				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
+				AEAF1B041E87896100C03768 /* calendar.xcassets in Resources */,
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
 				D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */,
 			);
@@ -922,6 +978,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
 				D1344C081E78AE2000006FAD /* PSStepButton.m in Sources */,
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
@@ -930,9 +987,11 @@
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,
+				AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */,
 				AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
+				AEAF1AEE1E87888D00C03768 /* DSLCalendarDayView.m in Sources */,
 				AE7275B21E6CCA8C00918646 /* ViewController.m in Sources */,
 				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
@@ -942,12 +1001,14 @@
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
+				AEAF1AEF1E87888D00C03768 /* DSLCalendarMonthSelectorView.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
 				AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
 				AE6352FB1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */,
 				AE6352BC1E75DEAF00065F0F /* BaseViewController.m in Sources */,
 				AE63530A1E75E23D00065F0F /* GiFHUD.m in Sources */,
+				AEAF1AF21E87888D00C03768 /* DSLCalendarRange.m in Sources */,
 				AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
@@ -959,6 +1020,7 @@
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
+				AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */,
 				D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */,
 				AE6352E91E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */,
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
@@ -966,6 +1028,7 @@
 				AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
+				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
 				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,

@@ -20,16 +20,10 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - GoogleMaps (2.2.0):
-    - GoogleMaps/Maps (= 2.2.0)
-  - GoogleMaps/Base (2.2.0)
-  - GoogleMaps/Maps (2.2.0):
-    - GoogleMaps/Base
   - HockeySDK (4.1.4):
     - HockeySDK/DefaultLib (= 4.1.4)
   - HockeySDK/DefaultLib (4.1.4)
   - IIAsyncViewController (1.0.1)
-  - MaterialControls (1.2.2)
   - MBCalendarKit (3.0.4)
   - MBProgressHUD (1.0.0)
   - SAMKeychain (1.5.2)
@@ -37,10 +31,8 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Bolts
-  - GoogleMaps
   - HockeySDK (~> 4.1.4)
   - IIAsyncViewController
-  - MaterialControls (~> 1.2.2)
   - MBCalendarKit
   - MBProgressHUD
   - SAMKeychain
@@ -48,14 +40,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   HockeySDK: 78a3f8bb9100277b531defc56c970369a3ca267a
   IIAsyncViewController: 7ce71b1b0afb92327abad77f78ec76989f6d7fa1
-  MaterialControls: 1c6b29e78d3a13d8dd6a67ed31b6d26eb5de8f72
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: 0389ab69a79c99ba294ac6bb30f0f1bbcef1c748
+PODFILE CHECKSUM: 9aa2a13698f726a5172bed239b1293e0465c3047
 
 COCOAPODS: 1.2.0
