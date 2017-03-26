@@ -32,30 +32,23 @@
 }
 
 -(void)setSelected:(BOOL)selected {
+    [super setSelected: selected];
     [self setTitle:self.location forState:UIControlStateNormal];
     [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
-    UIImage *im = [UIImage imageNamed:[NSString stringWithFormat:@"loc_%@", self.location] inBundle:bundle compatibleWithTraitCollection:self.traitCollection];
-    if (!im) {
-        return;
-    }
-    self.backgroundColor = [UIColor clearColor];
-    [self setImage:im forState:UIControlStateSelected];
-    [self setImage:im forState:UIControlStateHighlighted];
-    UIImage *imoff = [UIImage imageNamed:[NSString stringWithFormat:@"loc_%@_off", self.location] inBundle:bundle compatibleWithTraitCollection:self.traitCollection];
-    [self setImage:imoff forState:UIControlStateNormal];
+    //NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    //UIImage *im = [UIImage imageNamed:[NSString stringWithFormat:@"loc_%@", self.location] inBundle:bundle compatibleWithTraitCollection:self.traitCollection];
+
     self.adjustsImageWhenHighlighted = NO;
     self.highlighted = NO;
     self.translatesAutoresizingMaskIntoConstraints = YES;
     //[button centerVerticallyWithPadding:-10.0];
     // Set the accessibility label
     self.accessibilityLabel = self.location;
-    [super setSelected: selected];
 }
 
 -(CGSize)intrinsicContentSize {
   CGSize titleSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: self.titleLabel.font}];
-    return CGSizeMake(100.0, self.imageView.image.size.height + 10 + titleSize.height);
+    return CGSizeMake(100.0, 64 + 10 + titleSize.height);
 }
 
 // Only override drawRect: if you perform custom drawing.

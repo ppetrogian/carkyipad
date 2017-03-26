@@ -10,4 +10,5 @@
 IB_DESIGNABLE
 @interface PSLocationButton : UIButton
 @property (nonatomic, strong) IBInspectable NSString* location;
+
 @end

@@ -38,9 +38,11 @@ BOOL _initialized = NO;
     for(NSInteger i=0; i<_locationButtons.count; i++) {
         // set the button images
         PSLocationButton *button = self.locationButtons[i];
+        //if(!button.onImage) return;
         
         // Setup the button action
         [button addTarget:self action:@selector(radioButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [button setSelected:YES];
     };
     _initialized = YES;
 }
@@ -55,7 +57,7 @@ BOOL _initialized = NO;
      
 -(NSString *)selectedName {
     __block UIButton *buttonTemp;
-    [self.locationButtons enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.locationButtons enumerateObjectsUsingBlock:^(PSLocationButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if(obj.selected) {
             *stop = YES;
             buttonTemp = obj;
