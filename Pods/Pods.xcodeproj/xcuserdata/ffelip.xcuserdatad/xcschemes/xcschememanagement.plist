@@ -54,14 +54,14 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TGRDataSource.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01E877B1F47F7C33DFD39515A00A55E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>124CA14C4E1846C22A96EF8E3B27F330</key>
 		<dict>
 			<key>primary</key>
@@ -97,7 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>EA348663D0C2BFE8C00A63A396646F57</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EB9AD825427F216B54E693242E671FA1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F00B5B9F13558B6AFEEABD603191C4D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

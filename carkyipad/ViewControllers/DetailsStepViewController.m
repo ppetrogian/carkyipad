@@ -10,13 +10,25 @@
 
 @interface DetailsStepViewController ()
 
+
 @end
 
 @implementation DetailsStepViewController
 
-- (void)viewDidLoad {
+-(UIView *)pickerViews{
+    
+    return ([self.timePicker.subviews objectAtIndex:0]);
+}
+
+-(void)viewDidLoad{
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [[self pickerViews].subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        //NSLog(@"%@ --- > %i",obj, idx);
+        if(idx == 0)
+          view.backgroundColor = [UIColor blueColor];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

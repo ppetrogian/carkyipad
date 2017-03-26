@@ -380,8 +380,8 @@
                             <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_test2_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-h5-Jgg">
                                 <rect key="frame" x="0.0" y="-1" width="1024" height="769"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalCentering" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DLO-7y-YT4" customClass="PSFleetLocationControl">
-                                <rect key="frame" x="80" y="209" width="406" height="91"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalCentering" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DLO-7y-YT4" userLabel="StackView Locations" customClass="PSFleetLocationControl">
+                                <rect key="frame" x="84" y="209" width="406" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zb-Tz-Q8X" customClass="PSLocationButton">
@@ -395,8 +395,6 @@
                                         <state key="highlighted" image="loc_Athens"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="location" value="Athens"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="loc_Athens"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="loc_Athens_off"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USc-1w-GeW" customClass="PSLocationButton">
@@ -410,8 +408,6 @@
                                         <state key="highlighted" image="loc_Thessaloniki"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="location" value="Thessaloniki"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="loc_Thessaloniki"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="loc_Thessaloniki_off"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLy-5G-VXe" customClass="PSLocationButton">
@@ -425,8 +421,6 @@
                                         <state key="highlighted" image="loc_Santorini"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="location" value="Santorini"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="loc_Santorini"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="loc_Santorini_off"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F83-xJ-UwT" customClass="PSLocationButton">
@@ -440,7 +434,6 @@
                                         <state key="highlighted" image="loc_Mykonos"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="location" value="Mykonos"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="onImage" value="loc_Mykonos"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="offImage" value="loc_Mykonos_off"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
@@ -452,15 +445,13 @@
                                     <outletCollection property="locationButtons" destination="F83-xJ-UwT" id="AoF-82-bzJ"/>
                                 </connections>
                             </stackView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="p4T-Vy-WVH">
-                                <rect key="frame" x="80" y="534" width="330" height="194"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="512196534.41463">
-                                    <!--2017-03-26 04:48:54 +0000-->
-                                </date>
-                            </datePicker>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fco-rN-zhf" customClass="DSLCalendarView">
                                 <rect key="frame" x="525" y="297" width="405" height="409"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFN-Fh-IMu" customClass="PSTimePicker">
+                                <rect key="frame" x="84" y="543" width="406" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -473,6 +464,9 @@
                             <constraint firstItem="9Lf-78-zHf" firstAttribute="top" secondItem="YIS-h5-Jgg" secondAttribute="bottom" id="uXk-Cg-LTi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calendarView" destination="fco-rN-zhf" id="rRY-7i-zA3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTl-7j-7HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -494,4 +488,5 @@
         <image name="loc_Thessaloniki" width="64" height="64"/>
         <image name="loc_Thessaloniki_off" width="64" height="64"/>
     </resources>
+    <color key="tintColor" red="0.34723332524299622" green="0.80352741479873657" blue="0.80127120018005371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

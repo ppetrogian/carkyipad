@@ -8,6 +8,10 @@
 
 #import "StepViewController.h"
 #import "PSLocationButton.h"
+#import "DSLCalendarView.h"
+#import "PSTimePicker.h"
 
-@interface DetailsStepViewController : StepViewController
+@interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate>
+@property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
+@property (weak, nonatomic) IBOutlet PSTimePicker *timePicker;
 @end

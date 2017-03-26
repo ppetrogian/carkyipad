@@ -99,6 +99,7 @@
 		AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ADA1E87888D00C03768 /* DSLCalendarView.m */; };
 		AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1AEB1E87888D00C03768 /* NSDate+DSLCalendarView.m */; };
 		AEAF1B041E87896100C03768 /* calendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1B031E87896100C03768 /* calendar.xcassets */; };
+		AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B071E87CF9B00C03768 /* PSTimePicker.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
@@ -257,6 +258,8 @@
 		AEAF1AEA1E87888D00C03768 /* NSDate+DSLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DSLCalendarView.h"; sourceTree = "<group>"; };
 		AEAF1AEB1E87888D00C03768 /* NSDate+DSLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DSLCalendarView.m"; sourceTree = "<group>"; };
 		AEAF1B031E87896100C03768 /* calendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = calendar.xcassets; sourceTree = "<group>"; };
+		AEAF1B061E87CF9B00C03768 /* PSTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTimePicker.h; path = Controls/PSTimePicker/PSTimePicker.h; sourceTree = "<group>"; };
+		AEAF1B071E87CF9B00C03768 /* PSTimePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTimePicker.m; path = Controls/PSTimePicker/PSTimePicker.m; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
@@ -599,6 +602,15 @@
 			path = Controls/DSLCalendarView;
 			sourceTree = "<group>";
 		};
+		AEAF1B051E87CF5200C03768 /* PSTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF1B061E87CF9B00C03768 /* PSTimePicker.h */,
+				AEAF1B071E87CF9B00C03768 /* PSTimePicker.m */,
+			);
+			name = PSTimePicker;
+			sourceTree = "<group>";
+		};
 		D1344C051E78AE2000006FAD /* PSStepButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +624,7 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				AEAF1B051E87CF5200C03768 /* PSTimePicker */,
 				AEAF1ACC1E87888D00C03768 /* DSLCalendarView */,
 				AEAF1A911E876EEF00C03768 /* PSLocationButton */,
 				D1B253D81E8706B3005365B2 /* PSFleetLocationControl */,
@@ -987,6 +1000,7 @@
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,
+				AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */,
 				AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */,
 				AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
