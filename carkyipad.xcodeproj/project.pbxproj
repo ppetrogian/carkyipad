@@ -102,6 +102,8 @@
 		AEAF1B121E882F3100C03768 /* PSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B111E882F3100C03768 /* PSTextField.m */; };
 		AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B1C1E88332300C03768 /* PSInputBox.m */; };
 		AEAF1B1F1E88333A00C03768 /* PSInputBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1B1E1E88333A00C03768 /* PSInputBox.xib */; };
+		AEAF1B231E885C8600C03768 /* UIDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B221E885C8600C03768 /* UIDropDownMenu.m */; };
+		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
@@ -265,6 +267,10 @@
 		AEAF1B1B1E88332300C03768 /* PSInputBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSInputBox.h; path = Controls/PSInputBox/PSInputBox.h; sourceTree = "<group>"; };
 		AEAF1B1C1E88332300C03768 /* PSInputBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSInputBox.m; path = Controls/PSInputBox/PSInputBox.m; sourceTree = "<group>"; };
 		AEAF1B1E1E88333A00C03768 /* PSInputBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PSInputBox.xib; path = Controls/PSInputBox/PSInputBox.xib; sourceTree = "<group>"; };
+		AEAF1B211E885C8600C03768 /* UIDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDropDownMenu.h; sourceTree = "<group>"; };
+		AEAF1B221E885C8600C03768 /* UIDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDropDownMenu.m; sourceTree = "<group>"; };
+		AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RZExtensions.m"; sourceTree = "<group>"; };
+		AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZExtensions.h"; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
@@ -380,6 +386,7 @@
 		AE6352A51E75DBDD00065F0F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				AEAF1B241E885EFD00C03768 /* AttributedStrings */,
 				AE6352B01E75DC8000065F0F /* Macros.h */,
 				AE63530E1E75E2F900065F0F /* SingletonClass */,
 				AE6352AC1E75DC4800065F0F /* Reachability */,
@@ -626,6 +633,24 @@
 			name = PSInputBox;
 			sourceTree = "<group>";
 		};
+		AEAF1B201E885C7900C03768 /* UIDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF1B211E885C8600C03768 /* UIDropDownMenu.h */,
+				AEAF1B221E885C8600C03768 /* UIDropDownMenu.m */,
+			);
+			name = UIDropDownMenu;
+			sourceTree = "<group>";
+		};
+		AEAF1B241E885EFD00C03768 /* AttributedStrings */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */,
+				AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */,
+			);
+			name = AttributedStrings;
+			sourceTree = "<group>";
+		};
 		D1344C051E78AE2000006FAD /* PSStepButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +664,7 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				AEAF1B201E885C7900C03768 /* UIDropDownMenu */,
 				AEAF1B0C1E87FDB100C03768 /* PSInputBox */,
 				AEAF1B051E87CF5200C03768 /* PSTimePicker */,
 				AEAF1ACC1E87888D00C03768 /* DSLCalendarView */,
@@ -1063,7 +1089,9 @@
 				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
 				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,
+				AEAF1B231E885C8600C03768 /* UIDropDownMenu.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
+				AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */,
 				AE6352AB1E75DBF800065F0F /* Validation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

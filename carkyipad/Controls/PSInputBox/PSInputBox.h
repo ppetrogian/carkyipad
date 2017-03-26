@@ -14,4 +14,6 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) IBInspectable NSString *hintText;
 @property (nonatomic, strong) IBInspectable UIImage *hintIcon;
+@property (nonatomic,assign) IBInspectable BOOL hideBorder;
+@property (nonatomic, readonly) PSTextField *textField;
 @end

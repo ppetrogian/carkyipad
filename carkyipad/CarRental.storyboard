@@ -382,7 +382,7 @@
                                 <color key="backgroundColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalCentering" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DLO-7y-YT4" userLabel="StackView Locations" customClass="PSFleetLocationControl">
-                                <rect key="frame" x="83" y="210" width="406" height="91"/>
+                                <rect key="frame" x="83" y="217" width="406" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zb-Tz-Q8X" customClass="PSLocationButton">
@@ -455,39 +455,95 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFN-Fh-IMu" customClass="PSTimePicker">
-                                <rect key="frame" x="84" y="543" width="406" height="181"/>
+                                <rect key="frame" x="84" y="563" width="406" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a4s-QY-qId" userLabel="pickup date" customClass="PSTextField">
-                                <rect key="frame" x="555" y="189" width="137" height="81"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-iI-5dQ" customClass="PSInputBox">
-                                <rect key="frame" x="51" y="141" width="268" height="48"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-iI-5dQ" userLabel="Pickup Location" customClass="PSInputBox">
+                                <rect key="frame" x="96" y="389" width="177" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="hintText" value="Enter date"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hintText" value="Pick up"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="hintIcon" value="icon_pickup"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaM-5E-Dg5" userLabel="Dropoff Location" customClass="PSInputBox">
+                                <rect key="frame" x="304" y="389" width="177" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hintText" value="Drop off"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="hintIcon" value="icon_dropoff"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rAS-Qs-Cpd" userLabel="View border Select tim">
+                                <rect key="frame" x="96" y="546" width="380" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="am2-Ik-HVm" userLabel="View border Select date range">
+                                <rect key="frame" x="550" y="272" width="380" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5m4-Nn-TrA">
+                                <rect key="frame" x="102" y="517" width="122" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_arrow_from_to" translatesAutoresizingMaskIntoConstraints="NO" id="YFN-D3-srk">
+                                <rect key="frame" x="713" y="220" width="54" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyY-VI-sR8" userLabel="pickup Date" customClass="PSInputBox">
+                                <rect key="frame" x="550" y="187" width="147" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBorder" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hintText" value="Pick up"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g1Q-gP-r37" userLabel="Dropof Date" customClass="PSInputBox">
+                                <rect key="frame" x="780" y="187" width="147" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideBorder" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="hintText" value="Drop off"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="YIS-h5-Jgg" firstAttribute="top" secondItem="S7m-Mb-cWl" secondAttribute="bottom" constant="-21" id="Swp-Uq-f7L"/>
                             <constraint firstItem="YIS-h5-Jgg" firstAttribute="leading" secondItem="P6O-mD-Tm7" secondAttribute="leading" id="nNn-d0-7a8"/>
                             <constraint firstAttribute="trailing" secondItem="YIS-h5-Jgg" secondAttribute="trailing" id="tM5-Pd-Uzw"/>
                             <constraint firstItem="9Lf-78-zHf" firstAttribute="top" secondItem="YIS-h5-Jgg" secondAttribute="bottom" id="uXk-Cg-LTi"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gDD-h7-REu" appends="YES" id="ZPQ-Hh-YKz"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="fco-rN-zhf" id="rRY-7i-zA3"/>
+                        <outlet property="dropoffDateInputBox" destination="g1Q-gP-r37" id="26t-O1-OZB"/>
+                        <outlet property="dropoffLocationInputBox" destination="IaM-5E-Dg5" id="nbg-xx-91d"/>
+                        <outlet property="fleetLocationControl" destination="DLO-7y-YT4" id="mQp-1d-BJf"/>
+                        <outlet property="pickupDateInputBox" destination="pyY-VI-sR8" id="fQK-VR-BET"/>
+                        <outlet property="pickupLocationInputBox" destination="CFd-iI-5dQ" id="vdv-47-CTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTl-7j-7HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gDD-h7-REu">
+                    <connections>
+                        <action selector="tapView:" destination="ddC-FN-o3V" id="xka-yn-dek"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-395.5078125" y="-303.125"/>
         </scene>
@@ -498,6 +554,9 @@
         <image name="car_rental_select_car_blank" width="1024" height="768"/>
         <image name="car_rental_test2_blank" width="1024" height="768"/>
         <image name="carky" width="116" height="27"/>
+        <image name="icon_arrow_from_to" width="24" height="20"/>
+        <image name="icon_dropoff" width="28" height="30"/>
+        <image name="icon_pickup" width="28" height="30"/>
         <image name="loc_Athens" width="64" height="64"/>
         <image name="loc_Athens_off" width="64" height="64"/>
         <image name="loc_Mykonos" width="64" height="64"/>

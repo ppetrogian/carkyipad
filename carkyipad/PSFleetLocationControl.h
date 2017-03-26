@@ -10,8 +10,14 @@
 #import <UIKit/UIKit.h>
 @class PSLocationButton;
 
+@protocol FleetLocationControlDelegate <NSObject>
+@optional
+- (void) fleetLocationChanged:(id)sender withValue:(NSString *)value;
+@end
+
 @interface PSFleetLocationControl : UIStackView
 
 @property (nonatomic,readonly) NSString *selectedName;
 @property (nonatomic, strong) IBOutletCollection(PSLocationButton) NSArray *locationButtons;
+@property (nonatomic,weak) id<FleetLocationControlDelegate> delegate;
 @end

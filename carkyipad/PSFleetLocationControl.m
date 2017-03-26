@@ -52,6 +52,9 @@ BOOL _initialized = NO;
     [self.locationButtons enumerateObjectsUsingBlock:^(PSLocationButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.highlighted = NO;
         obj.selected = obj.location != sender.location ? NO : YES;
+        if (obj.selected) {
+            [self.delegate fleetLocationChanged:self withValue:sender.location];
+        }
     }];
 }
      
