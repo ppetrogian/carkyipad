@@ -36,6 +36,9 @@
     [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     UIImage *im = [UIImage imageNamed:[NSString stringWithFormat:@"loc_%@", self.location] inBundle:bundle compatibleWithTraitCollection:self.traitCollection];
+    if (!im) {
+        return;
+    }
     self.backgroundColor = [UIColor clearColor];
     [self setImage:im forState:UIControlStateSelected];
     [self setImage:im forState:UIControlStateHighlighted];
