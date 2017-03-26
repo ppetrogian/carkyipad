@@ -16,15 +16,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="3">
-                    <rect key="frame" x="149.5" y="7.5" width="49" height="24"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <rect key="frame" x="153" y="14.5" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.2588235438" green="0.25882348420000001" blue="0.25882348420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="14" y="10" width="12" height="18"/>
+                    <rect key="frame" x="14" y="10" width="32" height="28"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" image="DSLCalendar-previousMonth">
+                    <state key="normal" image="arrow-back">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -33,9 +33,9 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5">
-                    <rect key="frame" x="320" y="10" width="12" height="18"/>
+                    <rect key="frame" x="300" y="10" width="32" height="28"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" image="DSLCalendar-nextMonth">
+                    <state key="normal" image="arrow-next">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -44,7 +44,7 @@
                     </state>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mq9-zD-6Gw">
-                    <rect key="frame" x="2" y="99" width="346" height="22"/>
+                    <rect key="frame" x="2" y="103" width="346" height="22"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9">
                             <rect key="frame" x="0.0" y="0.0" width="51.5" height="22"/>
@@ -98,7 +98,7 @@
             <constraints>
                 <constraint firstItem="mq9-zD-6Gw" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="2" id="7bU-ck-4mf"/>
                 <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="10" id="AEf-Cx-upu"/>
-                <constraint firstAttribute="bottom" secondItem="mq9-zD-6Gw" secondAttribute="bottom" constant="-57" id="Jxb-tP-H22"/>
+                <constraint firstAttribute="bottom" secondItem="mq9-zD-6Gw" secondAttribute="bottom" constant="-61" id="Jxb-tP-H22"/>
                 <constraint firstItem="3" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="aLN-eu-Ejd"/>
                 <constraint firstItem="3" firstAttribute="centerY" secondItem="4" secondAttribute="centerY" id="f8s-7u-h1S"/>
                 <constraint firstAttribute="trailing" secondItem="5" secondAttribute="trailing" constant="16" id="gBT-dA-3Qc"/>
@@ -124,8 +124,8 @@
         </view>
     </objects>
     <resources>
-        <image name="DSLCalendar-nextMonth" width="12" height="16"/>
-        <image name="DSLCalendar-previousMonth" width="12" height="16"/>
+        <image name="arrow-back" width="32" height="28"/>
+        <image name="arrow-next" width="32" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

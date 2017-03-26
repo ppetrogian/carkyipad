@@ -99,7 +99,7 @@
     // phiilip customize month select view
     //self.monthSelectorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.monthSelectorView.widthAnchor constraintEqualToConstant:self.frame.size.width];
-    [self.monthSelectorView.heightAnchor constraintEqualToConstant:30];
+    [self.monthSelectorView.heightAnchor constraintEqualToConstant:50];
     [self addSubview:self.monthSelectorView];
     
     [self.monthSelectorView.backButton addTarget:self action:@selector(didTapMonthBack:) forControlEvents:UIControlEventTouchUpInside];

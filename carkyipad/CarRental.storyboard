@@ -377,7 +377,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_test2_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-h5-Jgg">
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_rental_test2_blank" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-h5-Jgg">
                                 <rect key="frame" x="0.0" y="-1" width="1024" height="769"/>
                                 <color key="backgroundColor" red="0.99990516901016235" green="1" blue="0.99987047910690308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -455,7 +455,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFN-Fh-IMu" customClass="PSTimePicker">
-                                <rect key="frame" x="84" y="543" width="406" height="171"/>
+                                <rect key="frame" x="84" y="543" width="406" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
