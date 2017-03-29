@@ -48,7 +48,7 @@ UIInterfaceOrientation orientation;
         self.dropdownTable.hidden = true;
         self.dropdownTable.delegate = self;
         self.dropdownTable.dataSource = self;
-        self.dropdownTable.layer.cornerRadius = 3;
+        self.dropdownTable.layer.cornerRadius = 1;
         self.dropdownTable.layer.borderWidth = 1;   
         self.dropdownTable.layer.borderColor = [borderColor CGColor];
         self.dropdownTable.backgroundColor = backgroundColor;    
@@ -108,6 +108,7 @@ UIInterfaceOrientation orientation;
         singleTapGestureRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
         singleTapGestureRecogniser.numberOfTapsRequired = 1;
         singleTapGestureRecogniser.delegate = self;
+   
         [self.parentView addGestureRecognizer:singleTapGestureRecogniser];
      
         // set the size and position of the menu

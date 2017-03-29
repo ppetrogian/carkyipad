@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) NSArray<FleetLocations*> *fleetLocations;
+@property (strong, nonatomic) NSArray<CarType*> *carTypes;
 @property (strong, nonatomic) NSArray<CarCategory*> *carCategories;
 @property (strong, nonatomic) NSArray<CarExtra*> *carExtras;
 @property (strong, nonatomic) NSArray<CarInsurance*> *carInsurances;

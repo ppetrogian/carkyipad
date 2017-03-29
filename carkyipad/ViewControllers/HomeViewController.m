@@ -33,10 +33,21 @@
     self.api = [CarkyApiClient sharedService];
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.api.hud = [MBProgressHUD HUDForView:self.view];
-    self.api.hud.label.text = NSLocalizedString(@"Fetching locations", nil);
+    self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
     [self.api.hud showAnimated:YES];
-    [self.api GetFleetLocations:^(NSArray *array) {
-        app.fleetLocations = array;
+    // pyramid of doom, todo: make parallel
+    [self.api GetFleetLocations:^(NSArray *array1) {
+        app.fleetLocations = array1;
+        [self.api GetAllCarTypes:^(NSArray *array2) {
+            app.carTypes = array2;
+            [self.api GetExtrasPerCarType:^(NSArray *array3) {
+                app.carExtras = array3;
+                [self.api GetAllCarInsurances:^(NSArray *array4) {
+                    app.carInsurances = array4;
+                    
+                }];
+            }];
+        }];
     }];
 }
 
@@ -54,5 +65,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

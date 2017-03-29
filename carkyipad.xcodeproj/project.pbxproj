@@ -105,6 +105,10 @@
 		AEAF1B231E885C8600C03768 /* UIDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B221E885C8600C03768 /* UIDropDownMenu.m */; };
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
+		D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */; };
+		D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */; };
+		D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F41E8B121500AABBBE /* CarStepViewController.m */; };
+		D12218F81E8B1C6600AABBBE /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F71E8B1C6600AABBBE /* CarViewCell.m */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
@@ -273,6 +277,14 @@
 		AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZExtensions.h"; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
+		D12218EC1E8B0A0200AABBBE /* MBSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBSegmentedControl.h; path = Controls/MBSegmentedControl/MBSegmentedControl.h; sourceTree = "<group>"; };
+		D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBSegmentedControl.m; path = Controls/MBSegmentedControl/MBSegmentedControl.m; sourceTree = "<group>"; };
+		D12218F01E8B0F9C00AABBBE /* ShadowViewWithText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadowViewWithText.h; path = Controls/ShadowViewWithText/ShadowViewWithText.h; sourceTree = "<group>"; };
+		D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowViewWithText.m; path = Controls/ShadowViewWithText/ShadowViewWithText.m; sourceTree = "<group>"; };
+		D12218F31E8B121500AABBBE /* CarStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarStepViewController.h; sourceTree = "<group>"; };
+		D12218F41E8B121500AABBBE /* CarStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarStepViewController.m; sourceTree = "<group>"; };
+		D12218F61E8B1C6600AABBBE /* CarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarViewCell.h; sourceTree = "<group>"; };
+		D12218F71E8B1C6600AABBBE /* CarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarViewCell.m; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
 		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
@@ -423,14 +435,18 @@
 				AE6352BB1E75DEAF00065F0F /* BaseViewController.m */,
 				AE6352B61E75DE3000065F0F /* HomeViewController.h */,
 				AE6352B71E75DE3000065F0F /* HomeViewController.m */,
+				AE270A8B1E875580000A8C7B /* DetailsStepViewController.h */,
+				AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */,
+				D12218F31E8B121500AABBBE /* CarStepViewController.h */,
+				D12218F41E8B121500AABBBE /* CarStepViewController.m */,
 				D1344BFD1E777C9600006FAD /* CarRentalStepsViewController.h */,
 				D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
-				AE270A8B1E875580000A8C7B /* DetailsStepViewController.h */,
-				AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */,
+				D12218F61E8B1C6600AABBBE /* CarViewCell.h */,
+				D12218F71E8B1C6600AABBBE /* CarViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -651,6 +667,24 @@
 			name = AttributedStrings;
 			sourceTree = "<group>";
 		};
+		D12218E81E8B098000AABBBE /* MBSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				D12218EC1E8B0A0200AABBBE /* MBSegmentedControl.h */,
+				D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */,
+			);
+			name = MBSegmentedControl;
+			sourceTree = "<group>";
+		};
+		D12218EF1E8B0F1300AABBBE /* ShadowViewWithText */ = {
+			isa = PBXGroup;
+			children = (
+				D12218F01E8B0F9C00AABBBE /* ShadowViewWithText.h */,
+				D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */,
+			);
+			name = ShadowViewWithText;
+			sourceTree = "<group>";
+		};
 		D1344C051E78AE2000006FAD /* PSStepButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +698,8 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				D12218EF1E8B0F1300AABBBE /* ShadowViewWithText */,
+				D12218E81E8B098000AABBBE /* MBSegmentedControl */,
 				AEAF1B201E885C7900C03768 /* UIDropDownMenu */,
 				AEAF1B0C1E87FDB100C03768 /* PSInputBox */,
 				AEAF1B051E87CF5200C03768 /* PSTimePicker */,
@@ -1045,6 +1081,7 @@
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,
 				AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */,
 				AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */,
+				D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */,
 				AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
@@ -1053,6 +1090,7 @@
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
+				D12218F81E8B1C6600AABBBE /* CarViewCell.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
@@ -1072,11 +1110,13 @@
 				D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
+				D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
+				D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */,
 				AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */,
 				D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */,
 				AEAF1B121E882F3100C03768 /* PSTextField.m in Sources */,
