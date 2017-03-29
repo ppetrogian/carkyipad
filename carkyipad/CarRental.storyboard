@@ -557,7 +557,7 @@
                                 </connections>
                             </stackView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fco-rN-zhf" customClass="DSLCalendarView">
-                                <rect key="frame" x="535" y="291" width="329" height="433"/>
+                                <rect key="frame" x="535" y="291" width="350" height="433"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -635,9 +635,6 @@
                             <constraint firstAttribute="trailing" secondItem="YIS-h5-Jgg" secondAttribute="trailing" id="tM5-Pd-Uzw"/>
                             <constraint firstItem="9Lf-78-zHf" firstAttribute="top" secondItem="YIS-h5-Jgg" secondAttribute="bottom" id="uXk-Cg-LTi"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="gDD-h7-REu" appends="YES" id="ZPQ-Hh-YKz"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="fco-rN-zhf" id="rRY-7i-zA3"/>
@@ -649,11 +646,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTl-7j-7HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="gDD-h7-REu">
-                    <connections>
-                        <action selector="tapView:" destination="ddC-FN-o3V" id="xka-yn-dek"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-395.5078125" y="-303.125"/>
         </scene>

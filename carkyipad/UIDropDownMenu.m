@@ -15,6 +15,8 @@
 //
 
 #import "UIDropDownMenu.h"
+#import "PSInputBox.h"
+#import "PSTextField.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation UIDropDownMenu
@@ -64,6 +66,13 @@ UIInterfaceOrientation orientation;
         
         
         self.targetObject = targetObj;
+        
+        if ([targetObject isKindOfClass:[PSInputBox class]]){
+            PSInputBox *inputbox = (PSInputBox *)targetObject;
+            self.selectedTextField = inputbox.textField;
+            self.selectedTextField.delegate = self;
+            [self.selectedTextField addTarget:self action:@selector(selectedObjectClicked:) forControlEvents:UIControlEventTouchDown];
+        }
     
         // create a UITextField instance and assign it to the source text field
         if ([targetObject isKindOfClass:[UITextField class]]){
@@ -287,6 +296,10 @@ UIInterfaceOrientation orientation;
     cell.textLabel.font = [UIFont systemFontOfSize:14.0];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = textColor;
+    // philip set tint background tint
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = tableView.tintColor;
+    [cell setSelectedBackgroundView:bgColorView];
     return cell;
 }
 

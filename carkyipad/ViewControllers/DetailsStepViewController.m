@@ -44,6 +44,7 @@
 - (IBAction)tapView:(id)sender {
    //  [[self view] endEditing:YES];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -139,7 +140,9 @@
 #pragma mark - menu selection changed
 - (void) DropDownMenuDidChange:(NSString *)identifier :(NSString *)ReturnValue{
     if([identifier isEqualToString:@"pickupMenu"]) {
-        
+        self.pickupLocationInputBox.textField.text = ReturnValue;
+    } else {
+        self.dropoffLocationInputBox.textField.text = ReturnValue;
     }
 }
 /*

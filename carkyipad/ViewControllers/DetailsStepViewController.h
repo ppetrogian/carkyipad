@@ -11,11 +11,11 @@
 #import "DSLCalendarView.h"
 #import "PSTimePicker.h"
 #import "PSFleetLocationControl.h"
+#import "UIDropDownMenu.h"
 @class UIDropDownMenu;
-@protocol UIDropDownMenuDelegate;
-
 
 @interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate,FleetLocationControlDelegate, UIDropDownMenuDelegate>
+
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
 @property (weak, nonatomic) IBOutlet PSTimePicker *timePicker;
 @property (strong, nonatomic) UIDropDownMenu *pickupMenu;
