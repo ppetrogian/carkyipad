@@ -43,7 +43,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     self.pickupMenu.delegate = self;
     self.dropoffMenu.ScaleToFitParent = NO;
     self.dropoffMenu.delegate = self;
-    [self setLocationDropMenus:[NSMutableArray array]];
+    [self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
 }
 
 - (IBAction)tapView:(id)sender {
@@ -118,11 +118,11 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 }
 
 #pragma mark - Fleet location changed
-- (void)setLocationDropMenus:(NSMutableArray *)titleArray {
+- (void)setLocationDropMenus:(NSMutableArray *)valueArray withTexts:(NSMutableArray *)titleArray {
     self.pickupMenu.titleArray = titleArray;
-    self.pickupMenu.valueArray = titleArray;
+    self.pickupMenu.valueArray = valueArray;
     self.dropoffMenu.titleArray = titleArray;
-    self.dropoffMenu.valueArray = titleArray;
+    self.dropoffMenu.valueArray = valueArray;
     [self.pickupMenu makeMenu:self.pickupLocationInputBox.textField targetView:self.view];
     [self.dropoffMenu makeMenu:self.dropoffLocationInputBox.textField targetView:self.view];
 }
@@ -145,7 +145,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
             [titleArray addObject:obj.name];
         }];
     }
-    [self setLocationDropMenus:titleArray];
+    [self setLocationDropMenus:valueArray withTexts:titleArray];
 }
 
 #pragma mark - menu selection changed
