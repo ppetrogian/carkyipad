@@ -131,5 +131,225 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipadTests/carkyipadTests.m"
+            timestampString = "512764965.680933"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-testLoginWithUsername"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipadTests/carkyipadTests.m"
+            timestampString = "512766452.180351"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-testGetFleetLocationsFull"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[carkyipadTests testGetFleetLocationsFull]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.892738"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "561">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[carkyipadTests testGetFleetLocationsFull]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.896607"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "2020">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[carkyipadTests testGetFleetLocationsFull]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.900798"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "2132">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[carkyipadTests testGetFleetLocationsFull]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.905092"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "2257">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/CarkyApiClient.m"
+            timestampString = "512767241.667513"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-loginWithUsername:andPassword:withTokenBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__63-[CarkyApiClient loginWithUsername:andPassword:withTokenBlock:]_block_invoke"
+                  moduleName = "carkyipad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/CarkyApiClient.m"
+                  timestampString = "512769460.110573"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__63-[CarkyApiClient loginWithUsername:andPassword:withTokenBlock:]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/CarkyApiClient.m"
+                  timestampString = "512769460.911275"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipadTests/carkyipadTests.m"
+            timestampString = "512769458.975788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-testGetAvailableCars"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[carkyipadTests testGetAvailableCars]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.917424"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "561">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[carkyipadTests testGetAvailableCars]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.922664"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "2020">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[carkyipadTests testGetAvailableCars]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.933033"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "2132">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[carkyipadTests testGetAvailableCars]_block_invoke"
+                  moduleName = "carkyipadTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipadTests/carkyipadTests.m"
+                  timestampString = "512769460.93992"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "2257">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

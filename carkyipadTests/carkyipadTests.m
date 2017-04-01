@@ -27,11 +27,22 @@
     [super tearDown];
 }
 
-- (void)testGetFleetLocations {
+- (void)testLoginWithUsername {
     // given
     XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all fleet locations"];
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    [self.api GetFleetLocations:^(NSArray *array) {
+    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
+        XCTAssert(result == YES,"cannot login");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testGetFleetLocationsFull {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all fleet locations"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetFleetLocationsFull:^(NSArray *array) {
         XCTAssert(array.count>0,"not found locations");
         FleetLocations *f0 = array[0];
         XCTAssert([f0 isKindOfClass:[FleetLocations class]], @"wrong class");
@@ -40,14 +51,15 @@
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
-- (void)testGetAllCarCategories {
+
+- (void)testGetAvailableCars {
     // given
     XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all car categories"];
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    [self.api GetAllCarCategories:^(NSArray *array) {
-        XCTAssert(array.count>0,"not found categories");
-        CarCategory *c0 = array[0];
-        XCTAssert([c0 isKindOfClass:[CarCategory class]], @"wrong class");
+    [self.api GetAvailableCars:1 withBlock:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found available cars");
+        AvailableCars *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[AvailableCars class]], @"wrong class");
         [expectation fulfill];
     }];
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];

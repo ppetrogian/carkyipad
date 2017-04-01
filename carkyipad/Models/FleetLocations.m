@@ -8,10 +8,10 @@
 #import "FleetLocations.h"
 #import "Location.h"
 
-
-NSString *const kName = @"Name";
-NSString *const kLocations = @"Locations";
-
+NSString *const kFleetLocationsIdentifier = @"Id";
+NSString *const kFleetLocationsName = @"Name";
+NSString *const kFleetLocationsLocations = @"WellKnownLocations";
+NSString *const kFleetLocationsIcon = @"Icon";
 
 @interface FleetLocations ()
 
@@ -35,8 +35,10 @@ NSString *const kLocations = @"Locations";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.name = [self objectOrNilForKey:kName fromDictionary:dict];
-    NSObject *receivedLocations = [dict objectForKey:kLocations];
+        self.identifier = [self objectOrNilForKey:kFleetLocationsIdentifier fromDictionary:dict];
+        self.name = [self objectOrNilForKey:kFleetLocationsName fromDictionary:dict];
+        self.icon = [self objectOrNilForKey:kFleetLocationsIcon fromDictionary:dict];
+    NSObject *receivedLocations = [dict objectForKey:kFleetLocationsLocations];
     NSMutableArray *parsedLocations = [NSMutableArray array];
     
     if ([receivedLocations isKindOfClass:[NSArray class]]) {
@@ -59,7 +61,9 @@ NSString *const kLocations = @"Locations";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.name forKey:kName];
+    [mutableDict setValue:self.identifier forKey:kFleetLocationsIdentifier];
+    [mutableDict setValue:self.name forKey:kFleetLocationsName];
+    [mutableDict setValue:self.icon forKey:kFleetLocationsIcon];
     NSMutableArray *tempArrayForLocations = [NSMutableArray array];
     
     for (NSObject *subArrayObject in self.locations) {
@@ -71,7 +75,7 @@ NSString *const kLocations = @"Locations";
             [tempArrayForLocations addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForLocations] forKey:kLocations];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForLocations] forKey:kFleetLocationsLocations];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -92,16 +96,16 @@ NSString *const kLocations = @"Locations";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.name = [aDecoder decodeObjectForKey:kName];
-    self.locations = [aDecoder decodeObjectForKey:kLocations];
+    self.name = [aDecoder decodeObjectForKey:kFleetLocationsName];
+    self.locations = [aDecoder decodeObjectForKey:kFleetLocationsLocations];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_name forKey:kName];
-    [aCoder encodeObject:_locations forKey:kLocations];
+    [aCoder encodeObject:_name forKey:kFleetLocationsName];
+    [aCoder encodeObject:_locations forKey:kFleetLocationsLocations];
 }
 
 - (id)copyWithZone:(NSZone *)zone {

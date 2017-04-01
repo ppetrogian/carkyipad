@@ -8,9 +8,9 @@
 #import "Location.h"
 #import "LatLng.h"
 
-
+NSString *const kLocationsIdentifier = @"Id";
 NSString *const kLocationsName = @"Name";
-NSString *const kLocationsLatLng = @"LatLng";
+NSString *const kLocationsLatLng = @"Position";
 
 
 @interface Location ()
@@ -35,8 +35,9 @@ NSString *const kLocationsLatLng = @"LatLng";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.name = [self objectOrNilForKey:kLocationsName fromDictionary:dict];
-            self.latLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kLocationsLatLng]];
+        self.identifier = [self objectOrNilForKey:kLocationsIdentifier fromDictionary:dict];
+        self.name = [self objectOrNilForKey:kLocationsName fromDictionary:dict];
+        self.latLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kLocationsLatLng]];
 
     }
     
@@ -46,6 +47,7 @@ NSString *const kLocationsLatLng = @"LatLng";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
+    [mutableDict setValue:self.identifier forKey:kLocationsIdentifier];
     [mutableDict setValue:self.name forKey:kLocationsName];
     [mutableDict setValue:[self.latLng dictionaryRepresentation] forKey:kLocationsLatLng];
 

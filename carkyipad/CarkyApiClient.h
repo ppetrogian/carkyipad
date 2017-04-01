@@ -35,8 +35,11 @@ typedef void(^BlockProgress)(NSProgress *progress);
 //POST /token  (auth)  gia to login otan anoigi h efarmogh
 -(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password withTokenBlock:(BlockBoolean)block;
 
-//GET /api/Helper/GetFleetLocations  fleet locations ana poli
--(void)GetFleetLocations:(BlockArray)block;
+//GET /api/Web/GetFleetLocationsFull  fleet locations ana poli
+-(void)GetFleetLocationsFull:(BlockArray)block;
+
+//GET api/Web/GetAvailableCars   car categories
+-(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
 //GET api/Helper/GetAllCarCategories   car categories
 -(void)GetAllCarCategories:(BlockArray)block;

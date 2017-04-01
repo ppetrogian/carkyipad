@@ -36,7 +36,7 @@
     self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
     [self.api.hud showAnimated:YES];
     // pyramid of doom, todo: make parallel
-    [self.api GetFleetLocations:^(NSArray *array1) {
+    [self.api GetFleetLocationsFull:^(NSArray *array1) {
         app.fleetLocations = array1;
         [self.api GetAllCarTypes:^(NSArray *array2) {
             app.carTypes = array2;

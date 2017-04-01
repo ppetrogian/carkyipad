@@ -1,19 +1,18 @@
 //
-//  Locations.h
+//  AvailableCars.h
 //
-//  Created by   on 9/3/17
+//  Created by   on 1/4/17
 //  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class LatLng;
 
-@interface Location : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) NSNumber *identifier;
+@interface AvailableCars : NSObject <NSCoding, NSCopying>
+
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) LatLng *latLng;
+@property (nonatomic, strong) NSArray *cars;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

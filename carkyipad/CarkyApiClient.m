@@ -69,11 +69,13 @@ static CarkyApiClient *_sharedService = nil;
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
+        block(NO);
     }];
 }
 
--(void)GetFleetLocations:(BlockArray)block {
-    [self GET:@"api/Helper/GetFleetLocations" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+
+-(void)GetFleetLocationsFull:(BlockArray)block {
+    [self GET:@"api/Web/GetFleetLocationsFull" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         [self.hud hideAnimated:YES];
         NSMutableArray *flockArray = [NSMutableArray arrayWithCapacity:array.count];
@@ -81,6 +83,20 @@ static CarkyApiClient *_sharedService = nil;
             flockArray[idx] = [FleetLocations modelObjectWithDictionary:obj];
         }];
         block(flockArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
+    [self GET:@"api/Web/GetAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        [self.hud hideAnimated:YES];
+        NSMutableArray *availableCarsArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            availableCarsArray[idx] = [AvailableCars modelObjectWithDictionary:obj];
+        }];
+        block(availableCarsArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
     }];
