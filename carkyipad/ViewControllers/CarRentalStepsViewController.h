@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RMStepsController.h"
 @class PSStepButton;
-
+@class ShadowViewWithText;
 
 @interface CarRentalStepsViewController : RMStepsController <RMStepsBarDelegate, RMStepsBarDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *stepButtonsStack;
 @property (weak, nonatomic) IBOutlet UIStackView *stepLabelsStack;
+@property (weak, nonatomic) IBOutlet ShadowViewWithText *totalView;
 - (IBAction)gotoBack:(id)sender;
 - (IBAction)gotoNext:(id)sender;
 @end

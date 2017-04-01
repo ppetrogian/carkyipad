@@ -18,6 +18,7 @@ BOOL _initialized = NO;
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self == [super initWithCoder:aDecoder]){
+        _initialized = NO;
         [self setupView];
     }
     return self;
@@ -26,6 +27,7 @@ BOOL _initialized = NO;
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    _initialized = NO;
     if (self) [self setupView];
     return self;
 }

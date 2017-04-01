@@ -11,5 +11,4 @@
 
 @interface StepViewController : UIViewController
 
--(void)updateCarRentalModel:(CarRentalModel *)model;
 @end

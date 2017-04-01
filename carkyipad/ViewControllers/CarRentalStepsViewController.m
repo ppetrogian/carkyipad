@@ -11,6 +11,9 @@
 #import "CircleLineButton.h"
 #import "StepViewController.h"
 #import "AppDelegate.h"
+#import "DetailsStepViewController.h"
+#import "CarStepViewController.h"
+#import "ShadowViewWithText.h"
 
 @interface CarRentalStepsViewController ()
 
@@ -77,12 +80,26 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)showPreviousStep {
+    if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
+        self.totalView.hidden = YES;
+    }
+    [super showPreviousStep];
+}
+
+-(void)showNextStep {
+    if ([self.currentStepViewController isKindOfClass:DetailsStepViewController.class]) {
+        self.totalView.hidden = YES;
+        CarStepViewController *carVc = self.childViewControllers[1];
+        [carVc prepareCarStep];
+    }
+    [super showNextStep];
+}
+
 - (IBAction)gotoBack:(id)sender {
     [self showPreviousStep];
 }
 - (IBAction)gotoNext:(id)sender {
-    StepViewController *stepVc = (StepViewController *)self.currentStepViewController;
-    [stepVc updateCarRentalModel:[AppDelegate instance].carRentalModel];
     [self showNextStep];
 }
 @end

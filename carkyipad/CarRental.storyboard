@@ -215,6 +215,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UK9-fv-dNJ" customClass="ShadowViewWithText">
+                                <rect key="frame" x="842" y="81" width="129" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.27114218470000001" green="0.76179426910000003" blue="0.77632325889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Total: --"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -251,6 +259,7 @@
                         <outlet property="stepLabelsStack" destination="z0X-NA-0dK" id="4ET-v2-Zcb"/>
                         <outlet property="stepViewControllerContainer" destination="2Au-1P-nys" id="hKJ-Zc-JGx"/>
                         <outlet property="stepsBar" destination="cVI-f3-IYM" id="Kun-3P-hPC"/>
+                        <outlet property="totalView" destination="UK9-fv-dNJ" id="LXK-KU-CZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFD-Ti-eXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,14 +295,6 @@
                                     <segment title="SUV"/>
                                 </segments>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDj-5h-eIn" customClass="ShadowViewWithText">
-                                <rect key="frame" x="872" y="84" width="129" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.27114218470000001" green="0.76179426910000003" blue="0.77632325889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Total: --"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dhO-El-WT8">
                                 <rect key="frame" x="112" y="391" width="800" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -397,7 +398,6 @@
                     <connections>
                         <outlet property="carTypesSegmented" destination="uhU-Gl-5Ac" id="1iv-aY-hWM"/>
                         <outlet property="carsCollectionView" destination="dhO-El-WT8" id="6RU-zV-D9l"/>
-                        <outlet property="totalView" destination="fDj-5h-eIn" id="k1f-Od-Tj3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKG-Bd-OPG" userLabel="First Responder" sceneMemberID="firstResponder"/>

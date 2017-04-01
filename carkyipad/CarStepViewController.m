@@ -13,6 +13,9 @@
 #import "DataModels.h"
 #import "TGRArrayDataSource.h"
 #import "CarViewCell.h"
+#import "RMStepsController.h"
+#import "StepViewController.h"
+#import "CarRentalStepsViewController.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 @property (nonatomic,strong) TGRArrayDataSource *carsDataSource;
@@ -22,9 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+-(void)prepareCarStep {
     // Do any additional setup after loading the view.
     self.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
-    [[UIApplication sharedApplication].keyWindow addSubview:self.totalView];
+
+    
     AppDelegate* app = (AppDelegate* )[UIApplication sharedApplication].delegate;
     self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carTypes cellReuseIdentifier:@"CarCell" configureCellBlock:^(CarViewCell *cell, CarType *item) {
         cell.priceLabel.text = [NSString stringWithFormat:@"30€/day"];
@@ -32,12 +39,19 @@
         // todo: image
     }];
     self.carsCollectionView.dataSource = self.carsDataSource;
+    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    parentVc.totalView.hidden = NO;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

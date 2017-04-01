@@ -12,7 +12,9 @@
 #import "UIDropDownMenu.h"
 #import "NSAttributedString+RZExtensions.h"
 #import "RMStepsController.h"
+#import "CarRentalStepsViewController.h"
 #import "AppDelegate.h"
+#import "ShadowViewWithText.h"
 NSString *const kResultsDayRange = @"DayRange";
 NSString *const kResultsPickupFleetLocationId = @"PickupFleetLocationId";
 NSString *const kResultsDropoffFleetLocationId = @"DropoffFleetLocationId";
@@ -44,6 +46,8 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     self.dropoffMenu.ScaleToFitParent = NO;
     self.dropoffMenu.delegate = self;
     [self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
+    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    parentVc.totalView.hidden = YES;
 }
 
 - (IBAction)tapView:(id)sender {
@@ -170,9 +174,5 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     // Pass the selected object to the new view controller.
 }
 */
--(void)updateCarRentalModel:(CarRentalModel *)model {
-    NSMutableDictionary *results = self.stepsController.results;
-    model.dayRange = (DSLCalendarRange *)results[kResultsDayRange];
-}
 
 @end
