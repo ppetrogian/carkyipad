@@ -35,7 +35,7 @@ NSString *const kFleetLocationsIcon = @"Icon";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-        self.identifier = [self objectOrNilForKey:kFleetLocationsIdentifier fromDictionary:dict];
+        self.identifier = [[self objectOrNilForKey:kFleetLocationsIdentifier fromDictionary:dict] integerValue];
         self.name = [self objectOrNilForKey:kFleetLocationsName fromDictionary:dict];
         self.icon = [self objectOrNilForKey:kFleetLocationsIcon fromDictionary:dict];
     NSObject *receivedLocations = [dict objectForKey:kFleetLocationsLocations];
@@ -61,7 +61,7 @@ NSString *const kFleetLocationsIcon = @"Icon";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.identifier forKey:kFleetLocationsIdentifier];
+    [mutableDict setValue:@(self.identifier) forKey:kFleetLocationsIdentifier];
     [mutableDict setValue:self.name forKey:kFleetLocationsName];
     [mutableDict setValue:self.icon forKey:kFleetLocationsIcon];
     NSMutableArray *tempArrayForLocations = [NSMutableArray array];
@@ -96,6 +96,7 @@ NSString *const kFleetLocationsIcon = @"Icon";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
+    self.identifier = [aDecoder decodeIntegerForKey:kFleetLocationsName];
     self.name = [aDecoder decodeObjectForKey:kFleetLocationsName];
     self.locations = [aDecoder decodeObjectForKey:kFleetLocationsLocations];
     return self;
@@ -103,7 +104,7 @@ NSString *const kFleetLocationsIcon = @"Icon";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-
+    [aCoder encodeInteger:_identifier forKey:kFleetLocationsIdentifier];
     [aCoder encodeObject:_name forKey:kFleetLocationsName];
     [aCoder encodeObject:_locations forKey:kFleetLocationsLocations];
 }

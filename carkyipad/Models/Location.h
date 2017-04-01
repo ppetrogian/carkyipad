@@ -11,7 +11,7 @@
 
 @interface Location : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) NSNumber *identifier;
+@property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) LatLng *latLng;
 

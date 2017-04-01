@@ -38,15 +38,20 @@
     // pyramid of doom, todo: make parallel
     [self.api GetFleetLocationsFull:^(NSArray *array1) {
         app.fleetLocations = array1;
-        [self.api GetAllCarTypes:^(NSArray *array2) {
-            app.carTypes = array2;
-            [self.api GetExtrasPerCarType:^(NSArray *array3) {
-                app.carExtras = array3;
-                [self.api GetAllCarInsurances:^(NSArray *array4) {
-                    app.carInsurances = array4;
-                    
-                }];
+        app.availableCars = [NSMutableDictionary dictionaryWithCapacity:array1.count];
+        [array1 enumerateObjectsUsingBlock:^(FleetLocations *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.api GetAvailableCars:obj.identifier withBlock:^(NSArray *arrayCars) {
+                [app.availableCars setObject:arrayCars forKey:@(obj.identifier)];
             }];
+        }];
+    }];
+    [self.api GetAllCarTypes:^(NSArray *array2) {
+        app.carTypes = array2;
+    }];
+    [self.api GetExtrasPerCarType:^(NSArray *array3) {
+        app.carExtras = array3;
+        [self.api GetAllCarInsurances:^(NSArray *array4) {
+            app.carInsurances = array4;
         }];
     }];
 }

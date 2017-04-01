@@ -46,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet PSStepButton *buttonNext;
 @property (nonatomic, weak) IBOutlet RMStepsBar *stepsBar;
 @property (nonatomic, weak) IBOutlet UIView *stepViewControllerContainer;
+@property (nonatomic, strong) UIViewController *currentStepViewController;
 
 /**
  Returns an instance `NSMutableDictionary` which can be used for storing results of one step. These results can then be accessed by another step using the dictionary returned here.

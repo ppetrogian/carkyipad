@@ -309,7 +309,7 @@ UIInterfaceOrientation orientation;
 {
     NSUInteger row = [indexPath row];
     selectedValue = [valueArray objectAtIndex:row];
-    [self.delegate DropDownMenuDidChange:identifiername :[valueArray objectAtIndex:row]];
+    [self.delegate DropDownMenuDidChange:identifiername withValue:valueArray[row] andText:titleArray[row]];
     
     // fade out menu
     self.dropdownTable.alpha = 1.0;

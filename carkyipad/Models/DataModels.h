@@ -15,3 +15,4 @@
 #import "CarType.h"
 #import "AvailableCars.h"
 #import "Cars.h"
+#import "CarRentalModel.h"

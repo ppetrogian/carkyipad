@@ -7,7 +7,6 @@
 @interface RMStepsController () <RMStepsBarDelegate, RMStepsBarDataSource>
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary *results;
-@property (nonatomic, strong) UIViewController *currentStepViewController;
 
 @end
 

@@ -10,6 +10,7 @@
 #import "PSStepButton.h"
 #import "CircleLineButton.h"
 #import "StepViewController.h"
+#import "AppDelegate.h"
 
 @interface CarRentalStepsViewController ()
 
@@ -80,6 +81,8 @@
     [self showPreviousStep];
 }
 - (IBAction)gotoNext:(id)sender {
+    StepViewController *stepVc = (StepViewController *)self.currentStepViewController;
+    [stepVc updateCarRentalModel:[AppDelegate instance].carRentalModel];
     [self showNextStep];
 }
 @end

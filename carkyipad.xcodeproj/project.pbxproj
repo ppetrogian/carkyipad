@@ -127,6 +127,7 @@
 		D14DF0AE1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
 		D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
 		D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
+		D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9801E904C1400F735A0 /* CarRentalModel.m */; };
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
@@ -308,6 +309,8 @@
 		D14DF0A81E757F940040B97F /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
 		D14DF0A91E757F940040B97F /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
 		D14DF0AA1E757F940040B97F /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
+		D19FF97F1E904C1400F735A0 /* CarRentalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalModel.h; sourceTree = "<group>"; };
+		D19FF9801E904C1400F735A0 /* CarRentalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalModel.m; sourceTree = "<group>"; };
 		D1B253CC1E85F26A005365B2 /* MIRadioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIRadioButtonGroup.h; sourceTree = "<group>"; };
 		D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIRadioButtonGroup.m; sourceTree = "<group>"; };
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 				AE6351C31E71E32200065F0F /* Location.m */,
 				AE6351D21E7415E400065F0F /* CarExtra.h */,
 				AE6351D31E7415E400065F0F /* CarExtra.m */,
+				D19FF97F1E904C1400F735A0 /* CarRentalModel.h */,
+				D19FF9801E904C1400F735A0 /* CarRentalModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1137,6 +1142,7 @@
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
 				AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
+				D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
 				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,

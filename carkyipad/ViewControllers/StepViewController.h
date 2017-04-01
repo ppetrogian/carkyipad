@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CarRentalModel;
 
 @interface StepViewController : UIViewController
 
+-(void)updateCarRentalModel:(CarRentalModel *)model;
 @end

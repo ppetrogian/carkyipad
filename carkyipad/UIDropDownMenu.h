@@ -18,7 +18,7 @@
 
 @protocol UIDropDownMenuDelegate <NSObject>
 @optional
-- (void) DropDownMenuDidChange:(NSString *)identifier :(NSString *)ReturnValue;
+- (void) DropDownMenuDidChange:(NSString *)identifier withValue:(NSNumber *)value andText:(NSString *)text;
 @end
 
 @interface UIDropDownMenu : NSObject <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>

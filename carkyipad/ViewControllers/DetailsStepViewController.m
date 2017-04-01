@@ -11,8 +11,13 @@
 #import "PSInputBox.h"
 #import "UIDropDownMenu.h"
 #import "NSAttributedString+RZExtensions.h"
+#import "RMStepsController.h"
 #import "AppDelegate.h"
-
+NSString *const kResultsDayRange = @"DayRange";
+NSString *const kResultsPickupFleetLocationId = @"PickupFleetLocationId";
+NSString *const kResultsDropoffFleetLocationId = @"DropoffFleetLocationId";
+NSString *const kResultsPickupLocationId = @"PickupLocationId";
+NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 
 @interface DetailsStepViewController ()
 @property (weak, nonatomic) IBOutlet PSInputBox *pickupLocationInputBox;
@@ -20,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet PSInputBox *pickupDateInputBox;
 @property (weak, nonatomic) IBOutlet PSInputBox *dropoffDateInputBox;
 @property (weak, nonatomic) IBOutlet PSFleetLocationControl *fleetLocationControl;
-
+@property (nonatomic,assign) NSInteger selectedFleetLocationId;
 
 @end
 
@@ -66,6 +71,7 @@
         NSString *nameOfMonth2 = [formatter.standaloneMonthSymbols objectAtIndex:range.endDay.month-1];
         NSString *nameofDay2 = [formatter.shortWeekdaySymbols objectAtIndex:range.endDay.weekday-1];
         self.dropoffDateInputBox.textField.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.endDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay2, nameOfMonth2],smAttrs, nil];
+        [self.stepsController.results setObject:range forKey:kResultsDayRange];
     }
     else {
         NSLog( @"No selection" );
@@ -126,11 +132,16 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", value];
     NSArray *filteredArray = [app.fleetLocations filteredArrayUsingPredicate:predicate];
     FleetLocations *fl = filteredArray.firstObject;
-    NSMutableArray *titleArray = [NSMutableArray array];
+    _selectedFleetLocationId = fl.identifier;
+    // set values and titles for menu
+    NSMutableArray *valueArray = [NSMutableArray arrayWithCapacity:fl.locations.count];
+    NSMutableArray *titleArray = [NSMutableArray arrayWithCapacity:fl.locations.count];
     if (filteredArray.count == 0) {
+        [valueArray addObject:@(-1)];
         [titleArray addObject:NSLocalizedString(@"No location found", nil)];
     } else {
-        [fl.locations enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [fl.locations enumerateObjectsUsingBlock:^(Location *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [valueArray addObject:@(obj.identifier)];
             [titleArray addObject:obj.name];
         }];
     }
@@ -138,11 +149,16 @@
 }
 
 #pragma mark - menu selection changed
-- (void) DropDownMenuDidChange:(NSString *)identifier :(NSString *)ReturnValue{
+- (void) DropDownMenuDidChange:(NSString *)identifier withValue:(NSNumber *)value andText:(NSString *)text {
+    NSMutableDictionary *results = self.stepsController.results;
     if([identifier isEqualToString:@"pickupMenu"]) {
-        self.pickupLocationInputBox.textField.text = ReturnValue;
+        self.pickupLocationInputBox.textField.text = text;
+        results[kResultsPickupLocationId] = value;
+        results[kResultsPickupFleetLocationId] = @(_selectedFleetLocationId);
     } else {
-        self.dropoffLocationInputBox.textField.text = ReturnValue;
+        self.dropoffLocationInputBox.textField.text = text;
+        results[kResultsDropoffLocationId] = value;
+        results[kResultsDropoffFleetLocationId] = @(_selectedFleetLocationId);
     }
 }
 /*
@@ -154,5 +170,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)updateCarRentalModel:(CarRentalModel *)model {
+    NSMutableDictionary *results = self.stepsController.results;
+    model.dayRange = (DSLCalendarRange *)results[kResultsDayRange];
+}
 
 @end

@@ -35,7 +35,7 @@ NSString *const kLocationsLatLng = @"Position";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-        self.identifier = [self objectOrNilForKey:kLocationsIdentifier fromDictionary:dict];
+        self.identifier = [[self objectOrNilForKey:kLocationsIdentifier fromDictionary:dict] integerValue];
         self.name = [self objectOrNilForKey:kLocationsName fromDictionary:dict];
         self.latLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kLocationsLatLng]];
 
@@ -47,7 +47,7 @@ NSString *const kLocationsLatLng = @"Position";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.identifier forKey:kLocationsIdentifier];
+    [mutableDict setValue:@(self.identifier) forKey:kLocationsIdentifier];
     [mutableDict setValue:self.name forKey:kLocationsName];
     [mutableDict setValue:[self.latLng dictionaryRepresentation] forKey:kLocationsLatLng];
 
