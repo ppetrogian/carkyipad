@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CarExtraBaseTableViewCell : UITableViewCell
-
+@property  (nonatomic,assign) BOOL isLast;
 @end

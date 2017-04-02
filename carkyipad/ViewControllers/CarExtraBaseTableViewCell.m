@@ -9,7 +9,6 @@
 #import "CarExtraBaseTableViewCell.h"
 
 @interface CarExtraBaseTableViewCell()
-@property (nonatomic,strong) CALayer* borderTop;
 @property (nonatomic,strong) CALayer* borderBottom;
 @end
 
@@ -27,15 +26,12 @@
     self.backgroundView.layer.borderWidth = 2.0;
     self.backgroundView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
  
-    self.borderTop = [CALayer layer]; self.borderBottom = [CALayer layer];
-    self.borderTop.borderColor = self.tintColor.CGColor; self.borderBottom.borderColor = self.tintColor.CGColor;
-    self.borderTop.frame = CGRectMake(0, 0, self.frame.size.width, 2);
-    self.borderTop.frame = CGRectMake(0, self.bounds.size.height, self.frame.size.width, 2);
-    self.borderTop.borderWidth = 2.0; self.borderBottom.borderWidth = 2.0;
-    [self.contentView.layer addSublayer:self.borderTop];
+    self.borderBottom = [CALayer layer];
+    self.borderBottom.borderColor = self.tintColor.CGColor;
+    self.borderBottom.frame = CGRectMake(0, self.bounds.size.height, self.bounds.size.width, 2);
+    self.borderBottom.borderWidth = 2.0;
     [self.contentView.layer addSublayer:self.borderBottom];
-    self.borderTop.hidden = YES; self.borderBottom.hidden = YES;
-    self.clipsToBounds = NO;
+    self.clipsToBounds = self.isLast ? NO : YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -45,12 +41,12 @@
     // set selection color
     UIView *myBackView = [[UIView alloc] initWithFrame:self.frame];
     self.selectedBackgroundView = myBackView;
-    self.borderTop.hidden = selected ? NO : YES;
-    self.borderBottom.hidden = selected ? NO : YES;
-    self.clipsToBounds = selected ? NO : YES;
+    self.clipsToBounds = selected || self.isLast ? NO : YES;
 
     myBackView.backgroundColor = [UIColor clearColor];
     myBackView.layer.borderColor = selected ?  self.tintColor.CGColor : [UIColor groupTableViewBackgroundColor].CGColor;
+    self.borderBottom.hidden = selected ? NO : YES;
+    self.borderBottom.borderColor = self.tintColor.CGColor;
     myBackView.layer.borderWidth = 2.0;
 }
 

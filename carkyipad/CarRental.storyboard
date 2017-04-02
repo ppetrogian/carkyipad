@@ -631,7 +631,7 @@
                                 </connections>
                             </stackView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fco-rN-zhf" customClass="DSLCalendarView">
-                                <rect key="frame" x="535" y="291" width="350" height="433"/>
+                                <rect key="frame" x="559" y="291" width="364" height="433"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>

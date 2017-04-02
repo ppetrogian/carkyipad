@@ -52,7 +52,9 @@
 -(void)showExtras {
     AppDelegate *app = [AppDelegate instance];
     static NSString *reuseIdentifier = @"ExtrasCell";
+    NSInteger lastId = app.carExtras[app.carExtras.count-1].Id;
     self.carExtrasDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carExtras cellReuseIdentifier:reuseIdentifier configureCellBlock:^(ExtrasTableViewCell *cell, CarExtra *item) {
+        cell.isLast = item.Id == lastId;
         cell.pricePerDayLabel.text = [NSString stringWithFormat:@"%ld€/day",item.price];
         cell.extraTitleLabel.text = item.Name;
         NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
