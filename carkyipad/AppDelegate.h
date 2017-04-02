@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSArray<CarCategory*> *carCategories;
 @property (strong, nonatomic) NSArray<CarExtra*> *carExtras;
 @property (strong, nonatomic) NSArray<CarInsurance*> *carInsurances;
-@property (strong, nonatomic) NSMutableDictionary *availableCars;
+@property (strong, nonatomic) NSMutableDictionary *availableCarsDict;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
 +(AppDelegate *)instance;
 @end

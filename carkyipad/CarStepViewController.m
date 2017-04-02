@@ -16,9 +16,13 @@
 #import "RMStepsController.h"
 #import "StepViewController.h"
 #import "CarRentalStepsViewController.h"
+#import "AFNetworking.h"
+#import "AFImageDownloader.h"
+#import "DSLCalendarView.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 @property (nonatomic,strong) TGRArrayDataSource *carsDataSource;
+@property (nonatomic,assign) BOOL mustPrepare;
 @end
 
 @implementation CarStepViewController
@@ -27,24 +31,56 @@
     [super viewDidLoad];
 }
 
--(void)prepareCarStep {
-    // Do any additional setup after loading the view.
-    self.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
+- (NSArray<AvailableCars*> *)getAvailableCars {
+   AppDelegate* app = [AppDelegate instance];
+    NSMutableDictionary* results = self.stepsController.results;
+    NSNumber *fleetLocationId = results[kResultsPickupFleetLocationId];
+    NSArray<AvailableCars*> *availCars = app.availableCarsDict[fleetLocationId];
+    return availCars;
+}
 
+- (void)selectCarType:(NSInteger)selIndex {
+    NSArray<AvailableCars*> *availCarsArray = [self getAvailableCars];
     
-    AppDelegate* app = (AppDelegate* )[UIApplication sharedApplication].delegate;
-    self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carTypes cellReuseIdentifier:@"CarCell" configureCellBlock:^(CarViewCell *cell, CarType *item) {
-        cell.priceLabel.text = [NSString stringWithFormat:@"30€/day"];
-        cell.carDescriptionLabel.text = item.category.Description;
-        // todo: image
+    self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:availCarsArray[selIndex].cars cellReuseIdentifier:@"CarCell" configureCellBlock:^(CarViewCell *cell, Cars *item) {
+        cell.priceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
+        cell.carDescriptionLabel.text = item.carsDescription;
+        cell.orSimilarLabel.text = item.subDescription;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image]];
+        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+            cell.carImage.image = responseObject;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
     }];
     self.carsCollectionView.dataSource = self.carsDataSource;
+    self.carsCollectionView.delegate = self;
+    [self.carsCollectionView reloadData];
+}
+
+- (IBAction)carTypeChanged:(MBSegmentedControl *)sender {
+    [self selectCarType:sender.selectedSegmentIndex];
+}
+
+-(void)prepareCarStep {
     CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    parentVc.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
+    [parentVc.totalView setNeedsDisplay];
+    // fill segmented control and collection view with available cars
+    NSArray<AvailableCars*> *availCars = [self getAvailableCars];
+    [self.carTypesSegmented removeAllSegments];
+    [availCars enumerateObjectsUsingBlock:^(AvailableCars * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [_carTypesSegmented insertSegmentWithTitle:obj.name atIndex:idx animated:NO];
+    }];
+    self.carTypesSegmented.selectedSegmentIndex = 0;
+    self.mustPrepare = YES; // see view-will-appear
     parentVc.totalView.hidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
+    [super viewWillAppear:animated];
+    if (_mustPrepare) {
+        [self selectCarType:0];
+        _mustPrepare = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +88,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray<AvailableCars*> *availCarsArray = [self getAvailableCars];
+    NSArray<Cars*> *cars = availCarsArray[self.carTypesSegmented.selectedSegmentIndex].cars;
+    NSMutableDictionary* results = self.stepsController.results;
+    DSLCalendarRange *selectedRange = results[kResultsDayRange];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
+    NSInteger totalprice = cars[indexPath.row].pricePerDay * [components day];
+    
+    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    parentVc.totalView.text = [NSString stringWithFormat:@"%@: %ld€", NSLocalizedString(@"Total", nil), totalprice];
+    [parentVc.totalView setNeedsDisplay];
+}
 
 /*
 #pragma mark - Navigation

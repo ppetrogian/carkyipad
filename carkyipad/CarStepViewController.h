@@ -11,8 +11,9 @@
 @class MBSegmentedControl;
 
 @interface CarStepViewController : StepViewController
-@property (weak, nonatomic) IBOutlet ShadowViewWithText *totalView;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *carsCollectionView;
 @property (weak, nonatomic) IBOutlet MBSegmentedControl *carTypesSegmented;
+- (IBAction)carTypeChanged:(MBSegmentedControl *)sender;
 -(void)prepareCarStep;
 @end
