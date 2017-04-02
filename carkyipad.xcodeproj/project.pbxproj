@@ -131,6 +131,7 @@
 		D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98B1E910BAA00F735A0 /* CarViewCell.m */; };
 		D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */; };
 		D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9911E91187100F735A0 /* CarExtrasViewController.m */; };
+		D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */; };
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
@@ -320,6 +321,8 @@
 		D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtrasTableViewCell.m; path = ViewControllers/ExtrasTableViewCell.m; sourceTree = "<group>"; };
 		D19FF9901E91187100F735A0 /* CarExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarExtrasViewController.h; path = ViewControllers/CarExtrasViewController.h; sourceTree = "<group>"; };
 		D19FF9911E91187100F735A0 /* CarExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarExtrasViewController.m; path = ViewControllers/CarExtrasViewController.m; sourceTree = "<group>"; };
+		D19FF9931E91774400F735A0 /* InsuranceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsuranceTableViewCell.h; path = ViewControllers/InsuranceTableViewCell.h; sourceTree = "<group>"; };
+		D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsuranceTableViewCell.m; path = ViewControllers/InsuranceTableViewCell.m; sourceTree = "<group>"; };
 		D1B253CC1E85F26A005365B2 /* MIRadioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIRadioButtonGroup.h; sourceTree = "<group>"; };
 		D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIRadioButtonGroup.m; sourceTree = "<group>"; };
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				D19FF9911E91187100F735A0 /* CarExtrasViewController.m */,
 				D19FF98D1E9112FE00F735A0 /* ExtrasTableViewCell.h */,
 				D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */,
+				D19FF9931E91774400F735A0 /* InsuranceTableViewCell.h */,
+				D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */,
 				D19FF9871E910B6A00F735A0 /* CarExtraBaseTableViewCell.h */,
 				D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */,
 				D1344BFD1E777C9600006FAD /* CarRentalStepsViewController.h */,
@@ -1110,6 +1115,7 @@
 				D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
+				D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */,
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,
 				AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */,
 				AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */,

@@ -9,6 +9,7 @@
 #import "Company.h"
 
 
+NSString *const kCarInsuranceId = @"Id";
 NSString *const kBaseClassAvailability = @"Availability";
 NSString *const kBaseClassTitle = @"Title";
 NSString *const kBaseClassPricePerDay = @"PricePerDay";
@@ -40,8 +41,9 @@ NSString *const kBaseClassCompany = @"Company";
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
             self.availability = [[self objectOrNilForKey:kBaseClassAvailability fromDictionary:dict] boolValue];
+            self.Id = [[self objectOrNilForKey:kCarInsuranceId fromDictionary:dict] integerValue];
             self.title = [self objectOrNilForKey:kBaseClassTitle fromDictionary:dict];
-            self.pricePerDay = [[self objectOrNilForKey:kBaseClassPricePerDay fromDictionary:dict] doubleValue];
+            self.pricePerDay = [[self objectOrNilForKey:kBaseClassPricePerDay fromDictionary:dict] integerValue];
             self.company = [Company modelObjectWithDictionary:[dict objectForKey:kBaseClassCompany]];
 
     }
@@ -53,8 +55,9 @@ NSString *const kBaseClassCompany = @"Company";
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithBool:self.availability] forKey:kBaseClassAvailability];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kCarInsuranceId];
     [mutableDict setValue:self.title forKey:kBaseClassTitle];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.pricePerDay] forKey:kBaseClassPricePerDay];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kBaseClassPricePerDay];
     [mutableDict setValue:[self.company dictionaryRepresentation] forKey:kBaseClassCompany];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];

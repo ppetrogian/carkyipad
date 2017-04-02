@@ -470,7 +470,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs6-TH-hMy">
-                                                    <rect key="frame" x="271" y="48" width="32" height="13.5"/>
+                                                    <rect key="frame" x="274" y="48" width="32" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -478,7 +478,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aQR-lc-c6h" firstAttribute="centerY" secondItem="euq-ah-NQ0" secondAttribute="centerY" id="0zr-Fc-Ogr"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="fs6-TH-hMy" secondAttribute="trailing" constant="48" id="5GA-S3-5Mf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fs6-TH-hMy" secondAttribute="trailing" constant="45" id="5GA-S3-5Mf"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="A8F-g7-5hf" secondAttribute="trailing" constant="6" id="8QT-mz-mKZ"/>
                                                 <constraint firstItem="A8F-g7-5hf" firstAttribute="centerY" secondItem="euq-ah-NQ0" secondAttribute="centerY" constant="22.5" id="8g3-Op-fsL"/>
                                                 <constraint firstItem="aQR-lc-c6h" firstAttribute="leading" secondItem="dFH-jM-NYK" secondAttribute="trailing" constant="20" id="D48-dZ-MU2"/>
@@ -497,6 +497,56 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="108" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MlD-AI-jmQ" userLabel="Car InsurancesTable View">
+                                <rect key="frame" x="524" y="244" width="359" height="453"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="InsuranceCell" id="Mes-dv-WYf" customClass="InsuranceTableViewCell">
+                                        <rect key="frame" x="0.0" y="1" width="359" height="108"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mes-dv-WYf" id="mCK-bU-1as">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="108"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PricePerDay" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYG-hK-ctZ">
+                                                    <rect key="frame" x="270.5" y="69" width="74.5" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1u-Da-jkc">
+                                                    <rect key="frame" x="274" y="48" width="32" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-tL-gnP" userLabel="Insurance Title Label">
+                                                    <rect key="frame" x="14" y="44" width="71" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Y1u-Da-jkc" secondAttribute="trailing" constant="45" id="Anx-DN-Fy3"/>
+                                                <constraint firstItem="Rgs-tL-gnP" firstAttribute="leading" secondItem="mCK-bU-1as" secondAttribute="leadingMargin" constant="6" id="H7o-59-o9D"/>
+                                                <constraint firstItem="Rgs-tL-gnP" firstAttribute="centerY" secondItem="mCK-bU-1as" secondAttribute="centerY" id="OiT-R7-Ben"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bYG-hK-ctZ" secondAttribute="trailing" constant="6" id="Rfu-Dk-eiD"/>
+                                                <constraint firstItem="Y1u-Da-jkc" firstAttribute="centerY" secondItem="mCK-bU-1as" secondAttribute="centerY" id="pLN-g0-5Xe"/>
+                                                <constraint firstItem="bYG-hK-ctZ" firstAttribute="centerY" secondItem="mCK-bU-1as" secondAttribute="centerY" constant="22.5" id="tyJ-UG-586"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" red="0.21760213380000001" green="0.80830126999999996" blue="0.60759645699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="insurancePriceLabel" destination="bYG-hK-ctZ" id="gts-OO-cBN"/>
+                                            <outlet property="insuranceSelectLabel" destination="Y1u-Da-jkc" id="cZ1-Ec-rGC"/>
+                                            <outlet property="insuranceTitleLabel" destination="Rgs-tL-gnP" id="hSg-DA-LXF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -508,6 +558,7 @@
                     </view>
                     <connections>
                         <outlet property="carExtrasTableView" destination="m75-Sq-UnZ" id="QOE-ef-YFG"/>
+                        <outlet property="carInsurancesTableView" destination="MlD-AI-jmQ" id="AbM-23-PVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3d-n6-TLq" userLabel="First Responder" sceneMemberID="firstResponder"/>

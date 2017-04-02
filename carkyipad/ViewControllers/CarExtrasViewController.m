@@ -11,6 +11,7 @@
 #import "DataModels.h"
 #import "TGRArrayDataSource.h"
 #import "ExtrasTableViewCell.h"
+#import "InsuranceTableViewCell.h"
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import "StepViewController.h"
@@ -19,6 +20,7 @@
 
 @interface CarExtrasViewController () <UITableViewDelegate>
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
+@property (nonatomic,strong) TGRArrayDataSource* carInsurancesDataSource;
 @property (nonatomic,assign) BOOL mustPrepare;
 @property (nonatomic,assign) NSInteger priceExtras;
 @property (nonatomic,assign) NSInteger priceInsurances;
@@ -29,13 +31,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // setup table properties
     self.carExtrasTableView.editing = YES;
     self.carExtrasTableView.allowsMultipleSelectionDuringEditing = YES;
     self.carExtrasTableView.allowsSelectionDuringEditing = YES;
     self.carExtrasTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    CGRect frame = self.carExtrasTableView.frame;
-    frame.size = CGSizeMake(frame.size.width, self.carExtrasTableView.rowHeight * 4 + 2);
-    self.carExtrasTableView.frame = frame;
+    self.carInsurancesTableView.editing = YES;
+    self.carInsurancesTableView.allowsMultipleSelectionDuringEditing = YES;
+    self.carInsurancesTableView.allowsSelectionDuringEditing = YES;
+    self.carInsurancesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // adjust frames for 4 items
+    CGRect frame1 = self.carExtrasTableView.frame;
+    frame1.size = CGSizeMake(frame1.size.width, self.carExtrasTableView.rowHeight * 4 + 2);
+    self.carExtrasTableView.frame = frame1;
+    CGRect frame2 = self.carInsurancesTableView.frame;
+    frame2.size = CGSizeMake(frame2.size.width, self.carInsurancesTableView.rowHeight * 4 + 2);
+    self.carInsurancesTableView.frame = frame2;
     _priceExtras = 0;
     _priceInsurances = 0;
 }
@@ -51,8 +62,8 @@
         _priceExtras += app.carExtras[indexPath.row].pricePerDay * numDays;
         [super showPrice:_priceExtras forKey:kResultsTotalPriceExtras];
     } else {
-        _priceInsurances += app.carExtras[indexPath.row].pricePerDay * numDays;
-        [super showPrice:_priceExtras forKey:kResultsTotalPriceInsurance];
+        _priceInsurances += app.carInsurances[indexPath.row].pricePerDay * numDays;
+        [super showPrice:_priceInsurances forKey:kResultsTotalPriceInsurance];
     }
 }
 
@@ -63,8 +74,8 @@
         _priceExtras -= app.carExtras[indexPath.row].pricePerDay * numDays;
         [super showPrice:_priceExtras forKey:kResultsTotalPriceExtras];
     } else {
-        _priceInsurances -= app.carExtras[indexPath.row].pricePerDay * numDays;
-        [super showPrice:_priceExtras forKey:kResultsTotalPriceInsurance];
+        _priceInsurances -= app.carInsurances[indexPath.row].pricePerDay * numDays;
+        [super showPrice:_priceInsurances forKey:kResultsTotalPriceInsurance];
     }
 }
 
@@ -100,10 +111,25 @@
     [self.carExtrasTableView reloadData];
 }
 
+-(void)showInsurances {
+    AppDelegate *app = [AppDelegate instance];
+    static NSString *reuseIdentifier = @"InsuranceCell";
+    NSInteger lastId = app.carInsurances[app.carInsurances.count-1].Id;
+    self.carInsurancesDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carInsurances cellReuseIdentifier:reuseIdentifier configureCellBlock:^(InsuranceTableViewCell *cell, CarInsurance *item) {
+        cell.isLast = item.Id == lastId;
+        cell.insurancePriceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
+        cell.insuranceTitleLabel.text = item.title;
+    }];
+    self.carInsurancesTableView.dataSource = self.carInsurancesDataSource;
+    self.carInsurancesTableView.delegate = self;
+    [self.carInsurancesTableView reloadData];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (_mustPrepare) {
         [self showExtras];
+        [self showInsurances];
         _mustPrepare = NO;
     }
 }

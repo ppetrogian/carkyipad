@@ -11,9 +11,10 @@
 
 @interface CarInsurance : NSObject <NSCoding, NSCopying>
 
+@property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, assign) BOOL availability;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, assign) double pricePerDay;
+@property (nonatomic, assign) NSInteger pricePerDay;
 @property (nonatomic, strong) Company *company;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

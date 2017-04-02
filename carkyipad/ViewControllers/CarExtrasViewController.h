@@ -9,6 +9,9 @@
 #import "StepViewController.h"
 
 @interface CarExtrasViewController : StepViewController
+
 -(void)prepareCarStep;
+
+@property (weak, nonatomic) IBOutlet UITableView *carInsurancesTableView;
 @property (weak, nonatomic) IBOutlet UITableView *carExtrasTableView;
 @end
