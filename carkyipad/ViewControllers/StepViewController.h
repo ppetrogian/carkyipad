@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 @class CarRentalModel;
 
+extern NSString *const kResultsDays;
+extern NSString *const kResultsTotalPriceCar;
+extern NSString *const kResultsTotalPriceExtras;
+extern NSString *const kResultsTotalPriceInsurance;
+extern NSString *const kResultsDayRange;
+extern NSString *const kResultsPickupFleetLocationId;
+extern NSString *const kResultsDropoffFleetLocationId;
+extern NSString *const kResultsPickupLocationId;
+extern NSString *const kResultsDropoffLocationId;
+
 @interface StepViewController : UIViewController
-- (void)showTotalPrice:(NSInteger)totalprice;
+- (void)showPrice:(NSInteger)price forKey:(NSString *)key;
 @end

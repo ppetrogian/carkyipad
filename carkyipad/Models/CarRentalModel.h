@@ -9,11 +9,6 @@
 #import <Foundation/Foundation.h>
 @class DSLCalendarRange;
 
-extern NSString *const kResultsDayRange;
-extern NSString *const kResultsPickupFleetLocationId;
-extern NSString *const kResultsDropoffFleetLocationId;
-extern NSString *const kResultsPickupLocationId;
-extern NSString *const kResultsDropoffLocationId;
 
 @interface CarRentalModel : NSObject
 @property (nonatomic,assign) DSLCalendarRange *dayRange;

@@ -96,7 +96,9 @@
     DSLCalendarRange *selectedRange = results[kResultsDayRange];
     NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
     NSInteger totalprice = cars[indexPath.row].pricePerDay * (components.day+1);
-    [super showTotalPrice:totalprice];
+    self.stepsController.results[kResultsDays] = @(components.day+1);
+    
+    [super showPrice:totalprice forKey:kResultsTotalPriceCar];
 }
 
 /*

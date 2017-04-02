@@ -64,6 +64,7 @@
     frameBack.size.height += 2;
     self.backgroundView.frame = frameBack;
     self.selectedBackgroundView.frame = frameBack;
+    [self.borderBottom setNeedsDisplay];
 }
 
 @end

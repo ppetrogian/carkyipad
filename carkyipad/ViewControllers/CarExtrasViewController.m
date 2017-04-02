@@ -20,6 +20,8 @@
 @interface CarExtrasViewController () <UITableViewDelegate>
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
 @property (nonatomic,assign) BOOL mustPrepare;
+@property (nonatomic,assign) NSInteger priceExtras;
+@property (nonatomic,assign) NSInteger priceInsurances;
 @end
 
 @implementation CarExtrasViewController
@@ -34,10 +36,36 @@
     CGRect frame = self.carExtrasTableView.frame;
     frame.size = CGSizeMake(frame.size.width, self.carExtrasTableView.rowHeight * 4 + 2);
     self.carExtrasTableView.frame = frame;
+    _priceExtras = 0;
+    _priceInsurances = 0;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    AppDelegate *app = [AppDelegate instance];
+    NSInteger numDays = ((NSNumber *)self.stepsController.results[kResultsDays]).integerValue;
+    if (tableView == self.carExtrasTableView) {
+        _priceExtras += app.carExtras[indexPath.row].pricePerDay * numDays;
+        [super showPrice:_priceExtras forKey:kResultsTotalPriceExtras];
+    } else {
+        _priceInsurances += app.carExtras[indexPath.row].pricePerDay * numDays;
+        [super showPrice:_priceExtras forKey:kResultsTotalPriceInsurance];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    AppDelegate *app = [AppDelegate instance];
+    NSInteger numDays = ((NSNumber *)self.stepsController.results[kResultsDays]).integerValue;
+    if (tableView == self.carExtrasTableView) {
+        _priceExtras -= app.carExtras[indexPath.row].pricePerDay * numDays;
+        [super showPrice:_priceExtras forKey:kResultsTotalPriceExtras];
+    } else {
+        _priceInsurances -= app.carExtras[indexPath.row].pricePerDay * numDays;
+        [super showPrice:_priceExtras forKey:kResultsTotalPriceInsurance];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +83,7 @@
     NSInteger lastId = app.carExtras[app.carExtras.count-1].Id;
     self.carExtrasDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carExtras cellReuseIdentifier:reuseIdentifier configureCellBlock:^(ExtrasTableViewCell *cell, CarExtra *item) {
         cell.isLast = item.Id == lastId;
-        cell.pricePerDayLabel.text = [NSString stringWithFormat:@"%ld€/day",item.price];
+        cell.pricePerDayLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
         cell.extraTitleLabel.text = item.Name;
         NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
         if (iconsDict[item.Name]) {

@@ -9,7 +9,7 @@
 #import "CarExtra.h"
 
 
-NSString *const kCarExtraPrice = @"Price";
+NSString *const kCarExtraPrice = @"PricePerDay";
 NSString *const kCarExtraId = @"Id";
 NSString *const kCarExtraName = @"Name";
 NSString *const kCarExtraIcon = @"Icon";
@@ -24,7 +24,7 @@ NSString *const kCarExtraDescription = @"Description";
 
 @implementation CarExtra
 
-@synthesize price = _price;
+@synthesize pricePerDay = _pricePerDay;
 @synthesize Id = _Id;
 @synthesize Name = _Name;
 @synthesize Description = _Description;
@@ -40,7 +40,7 @@ NSString *const kCarExtraDescription = @"Description";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-        self.price = [[self objectOrNilForKey:kCarExtraPrice fromDictionary:dict] integerValue];
+        self.pricePerDay = [[self objectOrNilForKey:kCarExtraPrice fromDictionary:dict] integerValue];
         self.Id = [[self objectOrNilForKey:kCarExtraId fromDictionary:dict] integerValue];
         self.Name = [self objectOrNilForKey:kCarExtraName fromDictionary:dict];
         self.icon = [self objectOrNilForKey:kCarExtraIcon fromDictionary:dict];
@@ -54,7 +54,7 @@ NSString *const kCarExtraDescription = @"Description";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarExtraPrice];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kCarExtraPrice];
     [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kCarExtraId];
     [mutableDict setValue:self.Name forKey:kCarExtraName];
     [mutableDict setValue:self.icon forKey:kCarExtraIcon];
@@ -79,7 +79,7 @@ NSString *const kCarExtraDescription = @"Description";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
-    self.price = [aDecoder decodeIntegerForKey:kCarExtraPrice];
+    self.pricePerDay = [aDecoder decodeIntegerForKey:kCarExtraPrice];
     self.Id = [aDecoder decodeIntegerForKey:kCarExtraId];
     self.Name = [aDecoder decodeObjectForKey:kCarExtraName];
     self.Description = [aDecoder decodeObjectForKey:kCarExtraDescription];
@@ -89,7 +89,7 @@ NSString *const kCarExtraDescription = @"Description";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     
-    [aCoder encodeInteger:_price forKey:kCarExtraPrice];
+    [aCoder encodeInteger:_pricePerDay forKey:kCarExtraPrice];
     [aCoder encodeInteger:_Id forKey:kCarExtraId];
     [aCoder encodeObject:_Name forKey:kCarExtraName];
     [aCoder encodeObject:_Description forKey:kCarExtraDescription];
@@ -102,7 +102,7 @@ NSString *const kCarExtraDescription = @"Description";
     
     if (copy) {
         
-        copy.price = self.price;
+        copy.pricePerDay = self.pricePerDay;
         copy.Id = self.Id;
         copy.Name = [self.Name copyWithZone:zone];
         copy.Description = [self.Description copyWithZone:zone];

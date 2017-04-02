@@ -15,6 +15,7 @@
 #import "CarRentalStepsViewController.h"
 #import "AppDelegate.h"
 #import "ShadowViewWithText.h"
+NSString *const kResultsDays = @"Days";
 NSString *const kResultsDayRange = @"DayRange";
 NSString *const kResultsPickupFleetLocationId = @"PickupFleetLocationId";
 NSString *const kResultsDropoffFleetLocationId = @"DropoffFleetLocationId";
