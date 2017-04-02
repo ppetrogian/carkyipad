@@ -132,6 +132,9 @@
 		D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */; };
 		D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9911E91187100F735A0 /* CarExtrasViewController.m */; };
 		D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */; };
+		D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19FF9961E918F1600F735A0 /* PSTextBox.xib */; };
+		D19FF99B1E91908700F735A0 /* PSTextBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF99A1E91908700F735A0 /* PSTextBox.m */; };
+		D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */; };
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
@@ -323,6 +326,11 @@
 		D19FF9911E91187100F735A0 /* CarExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarExtrasViewController.m; path = ViewControllers/CarExtrasViewController.m; sourceTree = "<group>"; };
 		D19FF9931E91774400F735A0 /* InsuranceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsuranceTableViewCell.h; path = ViewControllers/InsuranceTableViewCell.h; sourceTree = "<group>"; };
 		D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsuranceTableViewCell.m; path = ViewControllers/InsuranceTableViewCell.m; sourceTree = "<group>"; };
+		D19FF9961E918F1600F735A0 /* PSTextBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PSTextBox.xib; path = Controls/PSTextBox/PSTextBox.xib; sourceTree = "<group>"; };
+		D19FF9991E91908700F735A0 /* PSTextBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSTextBox.h; path = Controls/PSTextBox/PSTextBox.h; sourceTree = "<group>"; };
+		D19FF99A1E91908700F735A0 /* PSTextBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTextBox.m; path = Controls/PSTextBox/PSTextBox.m; sourceTree = "<group>"; };
+		D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		D1B253CC1E85F26A005365B2 /* MIRadioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIRadioButtonGroup.h; sourceTree = "<group>"; };
 		D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIRadioButtonGroup.m; sourceTree = "<group>"; };
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -482,6 +490,8 @@
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
+				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
+				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -733,16 +743,17 @@
 		D14DF09F1E757EDE0040B97F /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				D12218EF1E8B0F1300AABBBE /* ShadowViewWithText */,
 				D12218E81E8B098000AABBBE /* MBSegmentedControl */,
 				AEAF1B201E885C7900C03768 /* UIDropDownMenu */,
 				AEAF1B0C1E87FDB100C03768 /* PSInputBox */,
+				D19FF9981E918F2500F735A0 /* PSTextBox */,
 				AEAF1B051E87CF5200C03768 /* PSTimePicker */,
 				AEAF1ACC1E87888D00C03768 /* DSLCalendarView */,
 				AEAF1A911E876EEF00C03768 /* PSLocationButton */,
 				D1B253D81E8706B3005365B2 /* PSFleetLocationControl */,
 				D1B253CB1E85F26A005365B2 /* MIRadioButtonGroup */,
 				D1344C051E78AE2000006FAD /* PSStepButton */,
+				D12218EF1E8B0F1300AABBBE /* ShadowViewWithText */,
 				AE6353051E75E23D00065F0F /* LoaderGif */,
 				AE6352BE1E75E1FA00065F0F /* CountryListOffline */,
 				AE6352051E75B18700065F0F /* CircleLineButton */,
@@ -764,6 +775,16 @@
 			);
 			name = RMStepsController;
 			path = Controls/RMStepsController;
+			sourceTree = "<group>";
+		};
+		D19FF9981E918F2500F735A0 /* PSTextBox */ = {
+			isa = PBXGroup;
+			children = (
+				D19FF9991E91908700F735A0 /* PSTextBox.h */,
+				D19FF99A1E91908700F735A0 /* PSTextBox.m */,
+				D19FF9961E918F1600F735A0 /* PSTextBox.xib */,
+			);
+			name = PSTextBox;
 			sourceTree = "<group>";
 		};
 		D1B253CB1E85F26A005365B2 /* MIRadioButtonGroup */ = {
@@ -915,6 +936,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */,
+				D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
 				AE6352E71E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */,
@@ -1144,6 +1166,7 @@
 				AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
+				D19FF99B1E91908700F735A0 /* PSTextBox.m in Sources */,
 				D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
@@ -1167,6 +1190,7 @@
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
+				D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */,
 				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
 				D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,

@@ -10,6 +10,7 @@
 @class CarRentalModel;
 
 extern NSString *const kResultsDays;
+extern NSString *const kResultsTotalPrice;
 extern NSString *const kResultsTotalPriceCar;
 extern NSString *const kResultsTotalPriceExtras;
 extern NSString *const kResultsTotalPriceInsurance;

@@ -74,7 +74,6 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Wizard finish",nil) message:NSLocalizedString(@"Payment done", nil) preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:actionYes];
     [self presentViewController:alertVC animated:YES completion:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)canceled {

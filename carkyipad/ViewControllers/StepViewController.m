@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "CarRentalStepsViewController.h"
 #import "ShadowViewWithText.h"
+NSString *const kResultsTotalPrice = @"TotalPrice";
 NSString *const kResultsTotalPriceCar = @"TotalPriceCar";
 NSString *const kResultsTotalPriceExtras = @"TotalPriceExtras";
 NSString *const kResultsTotalPriceInsurance = @"TotalPriceInsurance";
@@ -42,6 +43,7 @@ NSString *const kResultsTotalPriceInsurance = @"TotalPriceInsurance";
     [res setObject:@(price) forKey:key];
     NSInteger totalprice = ((NSNumber *)res[kResultsTotalPriceCar]).integerValue + ((NSNumber *)res[kResultsTotalPriceExtras]).integerValue + ((NSNumber *)res[kResultsTotalPriceInsurance]).integerValue;
     CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    res[kResultsTotalPrice] = @(totalprice);
     parentVc.totalView.text = [NSString stringWithFormat:@"%@: %ld€", NSLocalizedString(@"Total", nil), totalprice];
     [parentVc.totalView setNeedsDisplay];
 }

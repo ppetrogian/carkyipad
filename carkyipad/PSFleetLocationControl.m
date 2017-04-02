@@ -10,11 +10,11 @@
 #import "PSLocationButton.h"
 
 @interface PSFleetLocationControl ()
+@property (nonatomic,assign) BOOL initialized;
 @end
 
 @implementation PSFleetLocationControl
 
-BOOL _initialized = NO;
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self == [super initWithCoder:aDecoder]){
@@ -44,7 +44,6 @@ BOOL _initialized = NO;
         
         // Setup the button action
         [button addTarget:self action:@selector(radioButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [button setSelected:YES];
     };
     _initialized = YES;
 }
@@ -52,7 +51,6 @@ BOOL _initialized = NO;
 
 -(IBAction) radioButtonClicked:(PSLocationButton *) sender {
     [self.locationButtons enumerateObjectsUsingBlock:^(PSLocationButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.highlighted = NO;
         obj.selected = obj.location != sender.location ? NO : YES;
         if (obj.selected) {
             [self.delegate fleetLocationChanged:self withValue:sender.location];
