@@ -11,9 +11,10 @@
 
 @interface CarExtra : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) double price;
+@property (nonatomic, assign) NSInteger price;
 @property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, strong) NSString *Name;
+@property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *Description;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

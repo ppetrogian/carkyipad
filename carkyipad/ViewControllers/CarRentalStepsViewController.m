@@ -14,6 +14,7 @@
 #import "DetailsStepViewController.h"
 #import "CarStepViewController.h"
 #import "ShadowViewWithText.h"
+#import "CarExtrasViewController.h"
 
 @interface CarRentalStepsViewController ()
 
@@ -92,6 +93,9 @@
         self.totalView.hidden = YES;
         CarStepViewController *carVc = self.childViewControllers[1];
         [carVc prepareCarStep];
+    } else if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
+        CarExtrasViewController *carExtrasVc = self.childViewControllers[2];
+        [carExtrasVc prepareCarStep];
     }
     [super showNextStep];
 }

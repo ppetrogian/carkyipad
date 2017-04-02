@@ -47,8 +47,8 @@ typedef void(^BlockProgress)(NSProgress *progress);
 //GET api/Helper/GetAllCarTypes   car  types
 -(void)GetAllCarTypes:(BlockArray)block;
 
-//GET /api/Helper/GetExtrasPerCarType  extras per car categories
--(void)GetExtrasPerCarType:(BlockArray)block;
+//GET /api/Helper/GetCarExtras  extras per car categories
+-(void)GetCarExtras:(BlockArray)block;
 
 // api/Helper/GetAllCarInsurances
 -(void)GetAllCarInsurances:(BlockArray)block;

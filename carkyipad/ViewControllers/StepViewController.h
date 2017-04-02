@@ -10,5 +10,5 @@
 @class CarRentalModel;
 
 @interface StepViewController : UIViewController
-
+- (void)showTotalPrice:(NSInteger)totalprice;
 @end

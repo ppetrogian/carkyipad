@@ -8,6 +8,8 @@
 
 #import "StepViewController.h"
 #import "AppDelegate.h"
+#import "CarRentalStepsViewController.h"
+#import "ShadowViewWithText.h"
 
 @interface StepViewController ()
 
@@ -29,6 +31,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showTotalPrice:(NSInteger)totalprice {
+    // refresh total view
+    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    parentVc.totalView.text = [NSString stringWithFormat:@"%@: %ld€", NSLocalizedString(@"Total", nil), totalprice];
+    [parentVc.totalView setNeedsDisplay];
 }
 
 /*

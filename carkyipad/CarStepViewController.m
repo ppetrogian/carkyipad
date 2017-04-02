@@ -41,7 +41,7 @@
 
 - (void)selectCarType:(NSInteger)selIndex {
     NSArray<AvailableCars*> *availCarsArray = [self getAvailableCars];
-    
+    // bind cars to collection view
     self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:availCarsArray[selIndex].cars cellReuseIdentifier:@"CarCell" configureCellBlock:^(CarViewCell *cell, Cars *item) {
         cell.priceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
         cell.carDescriptionLabel.text = item.carsDescription;
@@ -88,17 +88,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray<AvailableCars*> *availCarsArray = [self getAvailableCars];
     NSArray<Cars*> *cars = availCarsArray[self.carTypesSegmented.selectedSegmentIndex].cars;
     NSMutableDictionary* results = self.stepsController.results;
     DSLCalendarRange *selectedRange = results[kResultsDayRange];
     NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
-    NSInteger totalprice = cars[indexPath.row].pricePerDay * [components day];
-    
-    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
-    parentVc.totalView.text = [NSString stringWithFormat:@"%@: %ld€", NSLocalizedString(@"Total", nil), totalprice];
-    [parentVc.totalView setNeedsDisplay];
+    NSInteger totalprice = cars[indexPath.row].pricePerDay * (components.day+1);
+    [super showTotalPrice:totalprice];
 }
 
 /*

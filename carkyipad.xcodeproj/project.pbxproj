@@ -110,7 +110,6 @@
 		D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */; };
 		D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */; };
 		D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F41E8B121500AABBBE /* CarStepViewController.m */; };
-		D12218F81E8B1C6600AABBBE /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F71E8B1C6600AABBBE /* CarViewCell.m */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
@@ -128,6 +127,10 @@
 		D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
 		D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
 		D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9801E904C1400F735A0 /* CarRentalModel.m */; };
+		D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */; };
+		D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98B1E910BAA00F735A0 /* CarViewCell.m */; };
+		D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */; };
+		D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9911E91187100F735A0 /* CarExtrasViewController.m */; };
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
@@ -290,8 +293,6 @@
 		D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowViewWithText.m; path = Controls/ShadowViewWithText/ShadowViewWithText.m; sourceTree = "<group>"; };
 		D12218F31E8B121500AABBBE /* CarStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarStepViewController.h; sourceTree = "<group>"; };
 		D12218F41E8B121500AABBBE /* CarStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarStepViewController.m; sourceTree = "<group>"; };
-		D12218F61E8B1C6600AABBBE /* CarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarViewCell.h; sourceTree = "<group>"; };
-		D12218F71E8B1C6600AABBBE /* CarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarViewCell.m; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
 		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
@@ -311,6 +312,14 @@
 		D14DF0AA1E757F940040B97F /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
 		D19FF97F1E904C1400F735A0 /* CarRentalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalModel.h; sourceTree = "<group>"; };
 		D19FF9801E904C1400F735A0 /* CarRentalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalModel.m; sourceTree = "<group>"; };
+		D19FF9871E910B6A00F735A0 /* CarExtraBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarExtraBaseTableViewCell.h; path = ViewControllers/CarExtraBaseTableViewCell.h; sourceTree = "<group>"; };
+		D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarExtraBaseTableViewCell.m; path = ViewControllers/CarExtraBaseTableViewCell.m; sourceTree = "<group>"; };
+		D19FF98A1E910BAA00F735A0 /* CarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarViewCell.h; path = ViewControllers/CarViewCell.h; sourceTree = "<group>"; };
+		D19FF98B1E910BAA00F735A0 /* CarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarViewCell.m; path = ViewControllers/CarViewCell.m; sourceTree = "<group>"; };
+		D19FF98D1E9112FE00F735A0 /* ExtrasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtrasTableViewCell.h; path = ViewControllers/ExtrasTableViewCell.h; sourceTree = "<group>"; };
+		D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtrasTableViewCell.m; path = ViewControllers/ExtrasTableViewCell.m; sourceTree = "<group>"; };
+		D19FF9901E91187100F735A0 /* CarExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarExtrasViewController.h; path = ViewControllers/CarExtrasViewController.h; sourceTree = "<group>"; };
+		D19FF9911E91187100F735A0 /* CarExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarExtrasViewController.m; path = ViewControllers/CarExtrasViewController.m; sourceTree = "<group>"; };
 		D1B253CC1E85F26A005365B2 /* MIRadioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIRadioButtonGroup.h; sourceTree = "<group>"; };
 		D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIRadioButtonGroup.m; sourceTree = "<group>"; };
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -454,14 +463,20 @@
 				AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */,
 				D12218F31E8B121500AABBBE /* CarStepViewController.h */,
 				D12218F41E8B121500AABBBE /* CarStepViewController.m */,
+				D19FF98A1E910BAA00F735A0 /* CarViewCell.h */,
+				D19FF98B1E910BAA00F735A0 /* CarViewCell.m */,
+				D19FF9901E91187100F735A0 /* CarExtrasViewController.h */,
+				D19FF9911E91187100F735A0 /* CarExtrasViewController.m */,
+				D19FF98D1E9112FE00F735A0 /* ExtrasTableViewCell.h */,
+				D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */,
+				D19FF9871E910B6A00F735A0 /* CarExtraBaseTableViewCell.h */,
+				D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */,
 				D1344BFD1E777C9600006FAD /* CarRentalStepsViewController.h */,
 				D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
-				D12218F61E8B1C6600AABBBE /* CarViewCell.h */,
-				D12218F71E8B1C6600AABBBE /* CarViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1087,6 +1102,7 @@
 			files = (
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
 				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
+				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,
 				D1344C081E78AE2000006FAD /* PSStepButton.m in Sources */,
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
@@ -1106,7 +1122,6 @@
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
-				D12218F81E8B1C6600AABBBE /* CarViewCell.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
@@ -1127,6 +1142,7 @@
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
 				D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */,
+				D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
@@ -1139,12 +1155,14 @@
 				AE6352E91E75E1FA00065F0F /* NBAsYouTypeFormatter.m in Sources */,
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				AE34F1591E903772000D3997 /* AvailableCars.m in Sources */,
+				D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
 				AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
 				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
+				D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
 				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,
 				AEAF1B231E885C8600C03768 /* UIDropDownMenu.m in Sources */,
