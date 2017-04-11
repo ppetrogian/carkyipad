@@ -11,6 +11,7 @@
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 @class MBProgressHUD;
+@class CarkyDriverPositionsRequest;
 
 typedef void(^BlockArray)(NSArray *array);
 typedef void(^BlockString)(NSString *string);
@@ -29,7 +30,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 @property (nonatomic, strong) BlockProgress blockProgressDefault;
 @property (nonatomic,strong) NSString *lastMessage;
 @property (nonatomic,strong) MBProgressHUD *hud;
-#pragma mark - Api calls
+#pragma mark - Rent Api calls
 //POST /api/Account/RegisterPartner  (register enos partner gia ta test)
 
 //POST /token  (auth)  gia to login otan anoigi h efarmogh
@@ -53,5 +54,13 @@ typedef void(^BlockProgress)(NSProgress *progress);
 // api/Helper/GetAllCarInsurances
 -(void)GetAllCarInsurances:(BlockArray)block;
 
+#pragma mark - Taxi Api calls
+-(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
+
+-(void)GetTransferServiceAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
+
+-(void)GetStripePublishableApiKey:(BlockString)block;
+
+-(void)FindNearestCarkyDriverPositions:(CarkyDriverPositionsRequest *)request withBlock:(BlockArray)block;
 
 @end

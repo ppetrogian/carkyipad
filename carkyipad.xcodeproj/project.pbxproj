@@ -110,6 +110,7 @@
 		D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */; };
 		D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */; };
 		D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F41E8B121500AABBBE /* CarStepViewController.m */; };
+		D12802C71E9D691500DA05E7 /* CarkyDriverPositionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
@@ -297,6 +298,8 @@
 		D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowViewWithText.m; path = Controls/ShadowViewWithText/ShadowViewWithText.m; sourceTree = "<group>"; };
 		D12218F31E8B121500AABBBE /* CarStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarStepViewController.h; sourceTree = "<group>"; };
 		D12218F41E8B121500AABBBE /* CarStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarStepViewController.m; sourceTree = "<group>"; };
+		D12802C31E9D691500DA05E7 /* CarkyDriverPositionsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyDriverPositionsRequest.h; sourceTree = "<group>"; };
+		D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyDriverPositionsRequest.m; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
 		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				AE6351D31E7415E400065F0F /* CarExtra.m */,
 				D19FF97F1E904C1400F735A0 /* CarRentalModel.h */,
 				D19FF9801E904C1400F735A0 /* CarRentalModel.m */,
+				D12802C31E9D691500DA05E7 /* CarkyDriverPositionsRequest.h */,
+				D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -896,7 +901,8 @@
 				TargetAttributes = {
 					AE7275A61E6CCA8C00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = P6RXM76U6X;
+						ProvisioningStyle = Manual;
 					};
 					AE7275BF1E6CCA8D00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1186,6 +1192,7 @@
 				AE34F1591E903772000D3997 /* AvailableCars.m in Sources */,
 				D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
+				D12802C71E9D691500DA05E7 /* CarkyDriverPositionsRequest.m in Sources */,
 				AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
 				D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */,
@@ -1384,6 +1391,8 @@
 			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = P6RXM76U6X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -1391,8 +1400,10 @@
 				INFOPLIST_FILE = carkyipad/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = gr.insomnia.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db179484-24af-4e9c-98da-19a5f5b3928e";
+				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
 			};
 			name = Debug;
 		};
@@ -1401,6 +1412,8 @@
 			baseConfigurationReference = 934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = P6RXM76U6X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -1408,8 +1421,10 @@
 				INFOPLIST_FILE = carkyipad/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = gr.insomnia.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db179484-24af-4e9c-98da-19a5f5b3928e";
+				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
 			};
 			name = Release;
 		};

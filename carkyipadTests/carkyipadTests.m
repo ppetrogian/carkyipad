@@ -104,6 +104,46 @@
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
+- (void)testGetWellKnownLocations {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch well known locations for Mykonos"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetWellKnownLocations:2 withBlock:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found available locations");
+        Location *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[Location class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testGetTransferServiceAvailableCars {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch available cars for Mykonos"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetTransferServiceAvailableCars:2 withBlock:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found available cars");
+        Cars *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[Cars class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testGetPublishableApiKey {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch api key for stripe"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        [self.api GetStripePublishableApiKey:^(NSString *str) {
+            XCTAssert(str.length>0,"not found available locations");
+            [expectation fulfill];
+        }];
+     }];
+     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

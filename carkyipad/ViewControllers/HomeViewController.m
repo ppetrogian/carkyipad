@@ -37,6 +37,19 @@
     self.api.hud = [MBProgressHUD HUDForView:self.view];
     self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
     [self.api.hud showAnimated:YES];
+    //todo: set login username
+    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
+
+    }];
+    [self.api GetAllCarTypes:^(NSArray *array2) {
+        app.carTypes = array2;
+    }];
+    [self.api GetCarExtras:^(NSArray *array3) {
+        app.carExtras = array3;
+    }];
+    [self.api GetAllCarInsurances:^(NSArray *array4) {
+        app.carInsurances = array4;
+    }];    
     // pyramid of doom, todo: make parallel
     [self.api GetFleetLocationsFull:^(NSArray *array1) {
         app.fleetLocations = array1;
@@ -51,15 +64,7 @@
             }];
         }];
     }];
-    [self.api GetAllCarTypes:^(NSArray *array2) {
-        app.carTypes = array2;
-    }];
-    [self.api GetCarExtras:^(NSArray *array3) {
-        app.carExtras = array3;
-    }];
-    [self.api GetAllCarInsurances:^(NSArray *array4) {
-        app.carInsurances = array4;
-    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

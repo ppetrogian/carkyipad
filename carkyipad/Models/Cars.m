@@ -11,6 +11,7 @@
 NSString *const kCarsTransmissionType = @"TransmissionType";
 NSString *const kCarsMaxPassengers = @"MaxPassengers";
 NSString *const kCarsId = @"Id";
+NSString *const kCarsPrice = @"Price";
 NSString *const kCarsPricePerDay = @"PricePerDay";
 NSString *const kCarsSubDescription = @"SubDescription";
 NSString *const kCarsFuelType = @"FuelType";
@@ -48,15 +49,17 @@ NSString *const kCarsImage = @"Image";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.transmissionType = [self objectOrNilForKey:kCarsTransmissionType fromDictionary:dict];
-            self.maxPassengers = [[self objectOrNilForKey:kCarsMaxPassengers fromDictionary:dict] integerValue];
-            self.carsIdentifier = [[self objectOrNilForKey:kCarsId fromDictionary:dict] integerValue];
-            self.pricePerDay = [[self objectOrNilForKey:kCarsPricePerDay fromDictionary:dict] integerValue];
-            self.subDescription = [self objectOrNilForKey:kCarsSubDescription fromDictionary:dict];
-            self.fuelType = [self objectOrNilForKey:kCarsFuelType fromDictionary:dict];
-            self.maxLaggages = [[self objectOrNilForKey:kCarsMaxLaggages fromDictionary:dict] integerValue];
-            self.carsDescription = [self objectOrNilForKey:kCarsDescription fromDictionary:dict];
-            self.image = [self objectOrNilForKey:kCarsImage fromDictionary:dict];
+        self.transmissionType = [self objectOrNilForKey:kCarsTransmissionType fromDictionary:dict];
+        self.maxPassengers = [[self objectOrNilForKey:kCarsMaxPassengers fromDictionary:dict] integerValue];
+        self.maxPassengers = [[self objectOrNilForKey:kCarsMaxPassengers fromDictionary:dict] integerValue];
+        self.carsIdentifier = [[self objectOrNilForKey:kCarsId fromDictionary:dict] integerValue];
+        self.price = [[self objectOrNilForKey:kCarsPrice fromDictionary:dict] integerValue];
+        self.pricePerDay = [[self objectOrNilForKey:kCarsPricePerDay fromDictionary:dict] integerValue];
+        self.subDescription = [self objectOrNilForKey:kCarsSubDescription fromDictionary:dict];
+        self.fuelType = [self objectOrNilForKey:kCarsFuelType fromDictionary:dict];
+        self.maxLaggages = [[self objectOrNilForKey:kCarsMaxLaggages fromDictionary:dict] integerValue];
+        self.carsDescription = [self objectOrNilForKey:kCarsDescription fromDictionary:dict];
+        self.image = [self objectOrNilForKey:kCarsImage fromDictionary:dict];
 
     }
     
@@ -69,6 +72,7 @@ NSString *const kCarsImage = @"Image";
     [mutableDict setValue:self.transmissionType forKey:kCarsTransmissionType];
     [mutableDict setValue:[NSNumber numberWithInteger:self.maxPassengers] forKey:kCarsMaxPassengers];
     [mutableDict setValue:[NSNumber numberWithInteger:self.carsIdentifier] forKey:kCarsId];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarsPrice];
     [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kCarsPricePerDay];
     [mutableDict setValue:self.subDescription forKey:kCarsSubDescription];
     [mutableDict setValue:self.fuelType forKey:kCarsFuelType];

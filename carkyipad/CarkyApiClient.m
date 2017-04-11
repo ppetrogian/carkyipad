@@ -154,4 +154,55 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+#pragma Web api Taxi Api calls
+
+-(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
+    [self GET:@"api/Web/GetWellKnownLocations" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        [self.hud hideAnimated:YES];
+        NSMutableArray *locationsArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            locationsArray[idx] = [Location modelObjectWithDictionary:obj];
+        }];
+        block(locationsArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetTransferServiceAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
+    [self GET:@"api/Web/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        [self.hud hideAnimated:YES];
+        NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            carsArray[idx] = [Cars modelObjectWithDictionary:obj];
+        }];
+        block(carsArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetStripePublishableApiKey:(BlockString)block {
+    [self setAuthorizationHeader];
+    [self GET:@"api/StripePayment/GetPublishableApiKey" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *str = (NSString *)responseObject;
+        block(str);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)FindNearestCarkyDriverPositions:(CarkyDriverPositionsRequest *)request withBlock:(BlockArray)block {
+    [self setAuthorizationHeader];
+
+    [self GET:@"api/Client/FindNearestCarkyDriverPositions" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+    
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
 @end

@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *placeId;
 @property (nonatomic, strong) LatLng *latLng;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
