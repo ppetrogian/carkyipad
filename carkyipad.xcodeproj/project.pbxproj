@@ -111,6 +111,8 @@
 		D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */; };
 		D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F41E8B121500AABBBE /* CarStepViewController.m */; };
 		D12802C71E9D691500DA05E7 /* CarkyDriverPositionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */; };
+		D12802CB1E9D6EE900DA05E7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D12802CA1E9D6EE900DA05E7 /* Roboto-Regular.ttf */; };
+		D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
@@ -300,6 +302,8 @@
 		D12218F41E8B121500AABBBE /* CarStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarStepViewController.m; sourceTree = "<group>"; };
 		D12802C31E9D691500DA05E7 /* CarkyDriverPositionsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyDriverPositionsRequest.h; sourceTree = "<group>"; };
 		D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyDriverPositionsRequest.m; sourceTree = "<group>"; };
+		D12802CA1E9D6EE900DA05E7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
 		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
@@ -597,6 +601,7 @@
 		AE7275A91E6CCA8C00918646 /* carkyipad */ = {
 			isa = PBXGroup;
 			children = (
+				D12802C91E9D6ECC00DA05E7 /* Resources */,
 				D14DF09F1E757EDE0040B97F /* Controls */,
 				AE6352A51E75DBDD00065F0F /* Helper */,
 				AE6351BC1E71E32200065F0F /* Models */,
@@ -733,6 +738,15 @@
 				D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */,
 			);
 			name = ShadowViewWithText;
+			sourceTree = "<group>";
+		};
+		D12802C91E9D6ECC00DA05E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D12802CA1E9D6EE900DA05E7 /* Roboto-Regular.ttf */,
+				D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		D1344C051E78AE2000006FAD /* PSStepButton */ = {
@@ -953,7 +967,9 @@
 				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
 				AEAF1B041E87896100C03768 /* calendar.xcassets in Resources */,
 				AEAF1B1F1E88333A00C03768 /* PSInputBox.xib in Resources */,
+				D12802CB1E9D6EE900DA05E7 /* Roboto-Regular.ttf in Resources */,
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
+				D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */,
 				D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

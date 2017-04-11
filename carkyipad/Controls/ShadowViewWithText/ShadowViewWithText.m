@@ -7,6 +7,7 @@
 //
 
 #import "ShadowViewWithText.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ShadowViewWithText
 
@@ -22,6 +23,10 @@
 //    CGContextSetShadow(currentContext, CGSizeMake(-15, 20), 5);
 //    CGContextRestoreGState(currentContext);
     //[super drawRect: rect];
+    self.layer.masksToBounds = NO;
+    self.layer.shadowOffset = CGSizeMake(-15, 20);
+    self.layer.shadowRadius = 5;
+    self.layer.shadowOpacity = 0.5;
 }
 
 - (void) drawString: (NSString*) s

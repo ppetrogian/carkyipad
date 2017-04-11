@@ -30,6 +30,7 @@
     self.asyncView.data = 0; // dummy data
     self.buttonTransfer.hidden = YES;
     self.buttonCarRental.hidden = YES;
+    //self.buttonTransfer.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:35];
     
     //fetch initial data
     self.api = [CarkyApiClient sharedService];
