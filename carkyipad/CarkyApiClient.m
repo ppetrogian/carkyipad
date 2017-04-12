@@ -52,8 +52,9 @@ static CarkyApiClient *_sharedService = nil;
 }
 
 -(void)setAuthorizationHeader {
-    NSString *finalyToken = [[NSString alloc]initWithFormat:@"Bearer %@", self.apiKey];
-    [self.requestSerializer setValue:finalyToken forHTTPHeaderField:@"Authorization"];
+    self.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *bearerToken = [[NSString alloc]initWithFormat:@"Bearer %@", self.apiKey];
+    [self.requestSerializer setValue:bearerToken forHTTPHeaderField:@"Authorization"];
 }
 
 #pragma mark API CALLS
@@ -157,6 +158,7 @@ static CarkyApiClient *_sharedService = nil;
 #pragma Web api Taxi Api calls
 
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
+    self.requestSerializer = [AFHTTPRequestSerializer serializer];
     [self GET:@"api/Web/GetWellKnownLocations" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         [self.hud hideAnimated:YES];
@@ -185,6 +187,7 @@ static CarkyApiClient *_sharedService = nil;
 }
 
 -(void)GetStripePublishableApiKey:(BlockString)block {
+    // todo: allow json fragments or accept plain http
     [self setAuthorizationHeader];
     [self GET:@"api/StripePayment/GetPublishableApiKey" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = (NSString *)responseObject;
@@ -194,14 +197,22 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+// Find nearest carky driver positions
+//CarkyCategoryId 1=Executive  2=Luxury  3=Suv
 -(void)FindNearestCarkyDriverPositions:(CarkyDriverPositionsRequest *)request withBlock:(BlockArray)block {
-    [self setAuthorizationHeader];
-
-    [self GET:@"api/Client/FindNearestCarkyDriverPositions" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *array = (NSArray *)responseObject;
     
+    [self setAuthorizationHeader];
+    [self POST:@"api/Client/FindNearestCarkyDriverPositions" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *driversArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            driversArray[idx] = [CarkyDriverPositionsResponse modelObjectWithDictionary:obj];
+        }];
+        block(driversArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
+        block([NSArray array]);
     }];
 }
 

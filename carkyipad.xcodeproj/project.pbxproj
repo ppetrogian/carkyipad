@@ -113,6 +113,7 @@
 		D12802C71E9D691500DA05E7 /* CarkyDriverPositionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */; };
 		D12802CB1E9D6EE900DA05E7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D12802CA1E9D6EE900DA05E7 /* Roboto-Regular.ttf */; };
 		D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */; };
+		D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
@@ -304,6 +305,8 @@
 		D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyDriverPositionsRequest.m; sourceTree = "<group>"; };
 		D12802CA1E9D6EE900DA05E7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		D12802CE1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyDriverPositionsResponse.h; sourceTree = "<group>"; };
+		D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyDriverPositionsResponse.m; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
 		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 				D19FF9801E904C1400F735A0 /* CarRentalModel.m */,
 				D12802C31E9D691500DA05E7 /* CarkyDriverPositionsRequest.h */,
 				D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */,
+				D12802CE1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.h */,
+				D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1149,6 +1154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */,
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
 				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
 				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,

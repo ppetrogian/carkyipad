@@ -35,6 +35,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>StripeApiKey</key>
+	<string>pk_test_X3yytjyFt29Th6HKvinEgnW1</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Regular.ttf</string>

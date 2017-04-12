@@ -137,11 +137,36 @@
     [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         [self.api GetStripePublishableApiKey:^(NSString *str) {
-            XCTAssert(str.length>0,"not found available locations");
+            XCTAssert(str.length>0,"not found available stripe api key");
             [expectation fulfill];
         }];
      }];
      [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testFindNearestCarkyDriverPositions {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch nearest carky drivers"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        CarkyDriverPositionsRequest *request = [CarkyDriverPositionsRequest new];
+        //CarkyCategoryId 1=Executive  2=Luxury  3=Suv
+        request.carkyCategoryId = 1;
+        request.position = [LatLng new]; request.position.lat = 37.445852; request.position.lng = 25.326315;
+        [self.api FindNearestCarkyDriverPositions:request withBlock:^(NSArray *array) {
+            XCTAssert(array.count>0,"not found available drivers");
+            CarkyDriverPositionsResponse *c0 = array[0];
+            XCTAssert([c0 isKindOfClass:[Cars class]], @"wrong class");
+            [expectation fulfill];
+        }];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+-(void)testGetStripeApiKeyFromInfoPList {
+   NSString *apiKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"StripeApiKey"];
+   XCTAssert(apiKey.length>0,"not found available api key");
 }
 
 - (void)testPerformanceExample {
