@@ -46,10 +46,20 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
     CarkyDriverPositionsRequest *req = [self getDriversRequest];
     
-    [api FindNearestCarkyDriverPositions:req withBlock:^(NSArray *array) {
+    [api FindNearestCarkyDriverPositions:req withBlock:^(NSArray<CarkyDriverPositionsResponse*> *array) {
         CarkyDriverPositionsResponse *airportRes = array[0];
         LatLng *posDest = airportRes.latLng;
         [self getDirectionsFrom:self.userPos to:posDest];
+        [array enumerateObjectsUsingBlock:^(CarkyDriverPositionsResponse * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
+            marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:1]] ;
+            //marker.icon=[UIImage imageNamed:@"5.png"];
+            //NSArray *locationArray=[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"];
+            //marker.title=[NSString stringWithFormat:@"%@",[locationArray objectAtIndex:0]];
+            marker.map = _mapView;
+            _mapView.selectedMarker=marker;
+        }];
     }];
 }
 
