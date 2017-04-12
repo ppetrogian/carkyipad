@@ -65,14 +65,17 @@
 -(void)fetchInitialData:(BlockBoolean)block {
     //fetch initial data
     self.api = [CarkyApiClient sharedService];
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //self.api.hud = [MBProgressHUD HUDForView:self.view];
     self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
     [self.api.hud showAnimated:YES];
     //todo: set login username
     [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
-        
+        block(YES);
     }];
+}
+
+-(void)fetchCarsData:(BlockBoolean)block {
+    AppDelegate *app = [AppDelegate instance];
     [self.api GetAllCarTypes:^(NSArray *array2) {
         app.carTypes = array2;
     }];
@@ -82,6 +85,11 @@
     [self.api GetAllCarInsurances:^(NSArray *array4) {
         app.carInsurances = array4;
     }];
+    block(YES);
+}
+
+-(void)fetchFleetLocationsData:(BlockBoolean)block {
+    AppDelegate *app = [AppDelegate instance];
     // pyramid of doom, todo: make parallel
     [self.api GetFleetLocationsFull:^(NSArray *array1) {
         app.fleetLocations = array1;

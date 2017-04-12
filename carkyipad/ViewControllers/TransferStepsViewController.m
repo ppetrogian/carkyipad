@@ -7,13 +7,15 @@
 //
 
 #import "TransferStepsViewController.h"
+#import "CarkyApiClient.h"
 #import "AppDelegate.h"
 #import "DataModels.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
-#define URLDirectionsFmt = @"http://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false"
+NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
+
 @interface TransferStepsViewController ()
 @property (nonatomic, strong) LatLng* userPos;
 @end
@@ -23,18 +25,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
+    _mapView.mapType = kGMSTypeNormal;
+    _mapView.settings.myLocationButton = YES;
     // todo: remove from here
     MBProgressHUD *hud = [AppDelegate showProgressNotification:self.view];
     [[AppDelegate instance] fetchInitialData:^(BOOL b) {
         [AppDelegate hideProgressNotification:hud];
         //self.buttonTransfer.hidden = NO;
         //self.buttonCarRental.hidden = NO;
+        [self showDirectionsFromUserLocation];
     }];
+
+}
+
+-(void)showDirectionsFromUserLocation {
+    CarkyApiClient *api = [[AppDelegate instance] api];
     NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"];
     _userPos = [LatLng modelObjectWithDictionary:posDict];
     CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
     self.mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
+    CarkyDriverPositionsRequest *req = [self getDriversRequest];
+    
+    [api FindNearestCarkyDriverPositions:req withBlock:^(NSArray *array) {
+        CarkyDriverPositionsResponse *airportRes = array[0];
+        LatLng *posDest = airportRes.latLng;
+        [self getDirectionsFrom:self.userPos to:posDest];
+    }];
 }
+
+-(CarkyDriverPositionsRequest *)getDriversRequest {
+    CarkyDriverPositionsRequest *request = [CarkyDriverPositionsRequest new];
+    request.carkyCategoryId = 1;
+    request.position = self.userPos;
+    return request;
+}
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -68,9 +93,8 @@
 }
 
 -(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination {
-    NSString *baseUrl = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false",origin.lat,origin.lng, destination.lat, destination.lng];
-    NSURL *url = [NSURL URLWithString:[baseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    //NSURLRequest *directionsURL = [NSURLRequest requestWithURL:url];
+    NSString *baseUrl = [NSString stringWithFormat:URLDirectionsFmt,origin.lat,origin.lng, destination.lat, destination.lng];
+    NSURL *url = [NSURL URLWithString:baseUrl];
     dispatch_async(dispatch_get_main_queue(), ^() {
         NSData *directionsData = [NSData dataWithContentsOfURL: url];
         NSError *error;
