@@ -23,6 +23,7 @@ target 'carkyipadUITests' do
 pod 'AFNetworking'
 pod 'TGRDataSource'
 pod 'MBProgressHUD'
+pod 'Stripe'
 #pod 'DSLCalendarView'
 #pod 'FlatPillButton'
 pod 'Bolts'

@@ -27,6 +27,7 @@ PODS:
   - MBCalendarKit (3.0.4)
   - MBProgressHUD (1.0.0)
   - SAMKeychain (1.5.2)
+  - Stripe (10.0.1)
   - TGRDataSource (0.2)
 
 DEPENDENCIES:
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - MBCalendarKit
   - MBProgressHUD
   - SAMKeychain
+  - Stripe
   - TGRDataSource
 
 SPEC CHECKSUMS:
@@ -47,8 +49,9 @@ SPEC CHECKSUMS:
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
+  Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: 9ad9f8e9748e5b366e5c839f2c8cf54d031e9257
+PODFILE CHECKSUM: f8f8e14a436725f764b5e43a316fff14c32fae13
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1.beta.1
