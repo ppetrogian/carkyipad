@@ -126,5 +126,81 @@
     [hud hideAnimated:YES];
 }
 
++(void)configurePSTextField:(UITextField *)tf withColor:(UIColor *)color {
+    CALayer *border = [CALayer layer];
+    CGFloat borderWidth = 1;
+    tf.borderStyle = UITextBorderStyleNone;
+    CGRect rect = tf.frame;
+    border.borderColor = color.CGColor; // [UIColor groupTableViewBackgroundColor].CGColor;
+    border.frame = CGRectMake(0, rect.size.height - borderWidth, rect.size.width, rect.size.height);
+    border.borderWidth = borderWidth;
+    [tf.layer addSublayer:border];
+    tf.layer.masksToBounds = YES;
+}
+
++(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker  {
+    NSArray *routes = [results objectForKey:@"routes"];
+    if(routes.count == 0) {
+        return nil;
+    }
+    GMSMutablePath *path = [GMSMutablePath path];
+    NSDictionary *firstRoute = [routes objectAtIndex:0];
+    NSDictionary *leg =  [[firstRoute objectForKey:@"legs"] objectAtIndex:0];
+    
+    NSMutableArray * legRouteArray=[routes valueForKey:@"legs"];
+    NSMutableString *startLocationLat=[[[legRouteArray valueForKeyPath:@"start_location.lat"] objectAtIndex:0] objectAtIndex:0];
+    NSMutableString *startLocationLong=[[[legRouteArray valueForKeyPath:@"start_location.lng"]objectAtIndex:0] objectAtIndex:0];
+    NSMutableString *endLocationLat=[[[legRouteArray valueForKeyPath:@"end_location.lat"] objectAtIndex:0] objectAtIndex:0];
+    NSMutableString *endLocationLong=[[[legRouteArray valueForKeyPath:@"end_location.lng"]objectAtIndex:0] objectAtIndex:0];
+    
+    NSLog(@"duration %@",[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"]);
+    NSArray *steps = [leg objectForKey:@"steps"];
+    NSLog(@"end address: %@", [leg objectForKey:@"end_address"]);
+    int stepIndex = 0;
+    CLLocationCoordinate2D stepCoordinates[1  + [steps count] + 1];
+    
+    for (NSDictionary *step in steps) {
+        
+        NSDictionary *start_location = [step objectForKey:@"start_location"];
+        stepCoordinates[++stepIndex] = [AppDelegate coordinateWithLocation:start_location];
+        [path addCoordinate:[AppDelegate coordinateWithLocation:start_location]];
+        
+        NSString *polyLinePoints = [[step objectForKey:@"polyline"] objectForKey:@"points"];
+        GMSPath *polyLinePath = [GMSPath pathFromEncodedPath:polyLinePoints];
+        for (int p=0; p<polyLinePath.count; p++) {
+            [path addCoordinate:[polyLinePath coordinateAtIndex:p]];
+        }
+        
+        if ([steps count] == stepIndex){
+            NSDictionary *end_location = [step objectForKey:@"end_location"];
+            stepCoordinates[++stepIndex] = [AppDelegate coordinateWithLocation:end_location];
+            [path addCoordinate:[AppDelegate coordinateWithLocation:end_location]];
+        }
+    }
+    
+    GMSPolyline *polyline = nil;
+    polyline = [GMSPolyline polylineWithPath:path];
+    polyline.strokeColor = [UIColor blackColor];
+    polyline.strokeWidth = 3.f;
+    polyline.map = mapView;
+    //show image for starting point and destination point
+    for (int i = 0; i<2; i++) {
+        if (i==0) {
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.icon = [UIImage imageNamed:@"SourceIcon"];
+            marker.position = CLLocationCoordinate2DMake([startLocationLat floatValue], [startLocationLong floatValue]);
+            marker.map = mapView;
+        }
+        if(targetMarker != nil)
+        {
+            NSArray *locationArray=[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"];
+            targetMarker.title = [NSString stringWithFormat:@"%@",[locationArray objectAtIndex:0]];
+            targetMarker.map = mapView;
+            mapView.selectedMarker = targetMarker;
+        }
+    }
+    return  polyline;
+}
+
 
 @end

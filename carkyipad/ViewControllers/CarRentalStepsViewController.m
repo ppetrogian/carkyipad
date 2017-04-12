@@ -27,7 +27,10 @@
     [self setNeedsStatusBarAppearanceUpdate];
     // hide back view may be remove before release
     UIImageView *backView = (UIImageView *)[self.view viewWithTag:1];
-    if (backView)  backView.hidden = YES;
+    if (backView) {
+        backView.hidden = YES;
+        [backView removeFromSuperview];
+    }
     
     self.stepsBar.barStyle = UIBarStyleBlack;
     self.stepsBar.backgroundColor = [UIColor blackColor];

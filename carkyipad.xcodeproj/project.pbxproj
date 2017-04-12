@@ -114,6 +114,7 @@
 		D12802CB1E9D6EE900DA05E7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D12802CA1E9D6EE900DA05E7 /* Roboto-Regular.ttf */; };
 		D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */; };
 		D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */; };
+		D12802D31E9EBE3F00DA05E7 /* WellKnownLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12802D21E9EBE3F00DA05E7 /* WellKnownLocationsViewController.m */; };
 		D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BF81E7773FB00006FAD /* CarRental.storyboard */; };
 		D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1344BFB1E77766300006FAD /* Transfer.storyboard */; };
 		D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */; };
@@ -307,6 +308,8 @@
 		D12802CC1E9D6EF700DA05E7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D12802CE1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyDriverPositionsResponse.h; sourceTree = "<group>"; };
 		D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyDriverPositionsResponse.m; sourceTree = "<group>"; };
+		D12802D11E9EBE3F00DA05E7 /* WellKnownLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WellKnownLocationsViewController.h; path = ViewControllers/WellKnownLocationsViewController.h; sourceTree = "<group>"; };
+		D12802D21E9EBE3F00DA05E7 /* WellKnownLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WellKnownLocationsViewController.m; path = ViewControllers/WellKnownLocationsViewController.m; sourceTree = "<group>"; };
 		D1344BF81E7773FB00006FAD /* CarRental.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CarRental.storyboard; sourceTree = "<group>"; };
 		D1344BFA1E77749E00006FAD /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		D1344BFB1E77766300006FAD /* Transfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 				D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
+				D12802D11E9EBE3F00DA05E7 /* WellKnownLocationsViewController.h */,
+				D12802D21E9EBE3F00DA05E7 /* WellKnownLocationsViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
 				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
@@ -1026,7 +1031,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1056,7 +1061,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1099,7 +1104,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1188,6 +1193,7 @@
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
 				AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
 				AE6352FB1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */,
+				D12802D31E9EBE3F00DA05E7 /* WellKnownLocationsViewController.m in Sources */,
 				AE6352BC1E75DEAF00065F0F /* BaseViewController.m in Sources */,
 				AE63530A1E75E23D00065F0F /* GiFHUD.m in Sources */,
 				AEAF1AF21E87888D00C03768 /* DSLCalendarRange.m in Sources */,

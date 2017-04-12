@@ -73,9 +73,13 @@
 	<key>UserDefaultLocation</key>
 	<dict>
 		<key>Lat</key>
-		<real>37.450631999999999</real>
+		<real>37.443286999999998</real>
 		<key>Lng</key>
-		<real>25.327573300000001</real>
+		<real>25.330217999999999</real>
+		<key>Name</key>
+		<string>Belverede Boutique Hotel</string>
 	</dict>
+	<key>UserFleetLocationId</key>
+	<integer>2</integer>
 </dict>
 </plist>

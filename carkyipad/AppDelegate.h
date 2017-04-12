@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSArray<CarCategory*> *carCategories;
 @property (strong, nonatomic) NSArray<CarExtra*> *carExtras;
 @property (strong, nonatomic) NSArray<CarInsurance*> *carInsurances;
+@property (strong, nonatomic) NSArray<Location*> *wellKnownLocations;
 @property (strong, nonatomic) NSMutableDictionary *availableCarsDict;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
 +(AppDelegate *)instance;
@@ -31,5 +32,7 @@
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location;
 +(MBProgressHUD *)showProgressNotification:(UIView *)view;
 +(void)hideProgressNotification:(MBProgressHUD *)hud;
++(void)configurePSTextField:(UITextField *)tf withColor:(UIColor *)color;
++(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;
 @end
 

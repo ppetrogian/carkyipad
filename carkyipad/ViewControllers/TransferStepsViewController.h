@@ -12,11 +12,16 @@
 #import <GoogleMaps/GoogleMaps.h>
 @class LatLng;
 
-@interface TransferStepsViewController : CarRentalStepsViewController<CLLocationManagerDelegate,GMSMapViewDelegate>
+@interface TransferStepsViewController : CarRentalStepsViewController
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+@property (weak, nonatomic) IBOutlet UITextField *fromLocationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *toLocationTextField;
+@property (weak, nonatomic) IBOutlet UIView *locationsContainerView;
+@property (weak, nonatomic) IBOutlet UIView *driversContainerView;
+
+
 
 // methods
--(void)showRouteInMap:(NSDictionary *)results;
 -(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination;
 
 @end
