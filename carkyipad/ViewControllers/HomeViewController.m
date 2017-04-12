@@ -31,41 +31,11 @@
     self.buttonTransfer.hidden = YES;
     self.buttonCarRental.hidden = YES;
     //self.buttonTransfer.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:35];
-    
-    //fetch initial data
-    self.api = [CarkyApiClient sharedService];
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    self.api.hud = [MBProgressHUD HUDForView:self.view];
-    self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
-    [self.api.hud showAnimated:YES];
-    //todo: set login username
-    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
-
+    // todo: remove from here
+    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
+        self.buttonTransfer.hidden = NO;
+        self.buttonCarRental.hidden = NO;
     }];
-    [self.api GetAllCarTypes:^(NSArray *array2) {
-        app.carTypes = array2;
-    }];
-    [self.api GetCarExtras:^(NSArray *array3) {
-        app.carExtras = array3;
-    }];
-    [self.api GetAllCarInsurances:^(NSArray *array4) {
-        app.carInsurances = array4;
-    }];    
-    // pyramid of doom, todo: make parallel
-    [self.api GetFleetLocationsFull:^(NSArray *array1) {
-        app.fleetLocations = array1;
-        app.availableCarsDict = [NSMutableDictionary dictionaryWithCapacity:array1.count];
-        [array1 enumerateObjectsUsingBlock:^(FleetLocations *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self.api GetAvailableCars:obj.identifier withBlock:^(NSArray *arrayCars) {
-                [app.availableCarsDict setObject:arrayCars forKey:@(obj.identifier)];
-                if (idx == array1.count-1) {
-                    self.buttonTransfer.hidden = NO;
-                    self.buttonCarRental.hidden = NO;
-                }
-            }];
-        }];
-    }];
-
 }
 
 - (void)didReceiveMemoryWarning {

@@ -20,6 +20,14 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - FSCalendar (2.7.4)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.2.0):
+    - GoogleMaps/Base (= 2.2.0)
   - HockeySDK (4.1.4):
     - HockeySDK/DefaultLib (= 4.1.4)
   - HockeySDK/DefaultLib (4.1.4)
@@ -33,6 +41,9 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Bolts
+  - FSCalendar
+  - GoogleMaps
+  - GooglePlaces
   - HockeySDK (~> 4.1.4)
   - IIAsyncViewController
   - MBCalendarKit
@@ -44,6 +55,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   HockeySDK: 78a3f8bb9100277b531defc56c970369a3ca267a
   IIAsyncViewController: 7ce71b1b0afb92327abad77f78ec76989f6d7fa1
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
@@ -52,6 +66,6 @@ SPEC CHECKSUMS:
   Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: f8f8e14a436725f764b5e43a316fff14c32fae13
+PODFILE CHECKSUM: 4d5f70ac0539b7574c24271b34db85a321f2a983
 
-COCOAPODS: 1.2.1.beta.1
+COCOAPODS: 1.2.0

@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
+@class LatLng;
 
-@interface TransferStepsViewController : CarRentalStepsViewController
+@interface TransferStepsViewController : CarRentalStepsViewController<CLLocationManagerDelegate,GMSMapViewDelegate>
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+
+// methods
+-(void)showRouteInMap:(NSDictionary *)results;
+-(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination;
+
 @end

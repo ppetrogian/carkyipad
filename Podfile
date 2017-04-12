@@ -4,13 +4,14 @@ target 'carkyipad' do
 
 pod 'SAMKeychain'
 pod 'AFNetworking'
-#pod 'MBCalendarKit'
 pod 'TGRDataSource'
 pod 'MBProgressHUD'
-#pod 'DSLCalendarView'
+pod 'FSCalendar'
 pod 'Bolts'
-#pod 'GoogleMaps'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
 pod 'IIAsyncViewController'
+pod 'Stripe'
 end
 
 target 'carkyipadTests' do
@@ -27,7 +28,7 @@ pod 'Stripe'
 #pod 'DSLCalendarView'
 #pod 'FlatPillButton'
 pod 'Bolts'
-#pod 'GoogleMaps'
+pod 'GoogleMaps'
 pod 'IIAsyncViewController'
 pod 'HockeySDK', '~> 4.1.4'
 #pod 'Material', '~> 2.0'

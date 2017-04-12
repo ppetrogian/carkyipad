@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HockeySDK-HockeySDKResources.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,6 +59,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Stripe-Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TGRDataSource.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,12 +77,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>124CA14C4E1846C22A96EF8E3B27F330</key>
+		<key>08D864CC00FCDF18DED343419BCEF198</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E7F224CD9E35273C4E6A477F41859E3</key>
+		<key>362988F90B924804D36AA7BC24090180</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,12 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5FF7C1FC69E9FC1AECB2DD96DEE91B37</key>
+		<key>773FCE322C8B4B8C0CACCE2E27DF74E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>884CB3CF8E1E0C4FFF3D84D4A649303F</key>
+		<key>7E6D09DA8B1E7DD2FB43AAF4EED94144</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,22 +122,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBE79DE63B3A6929B934B35F43F3020D</key>
+		<key>BCDE7AAC94DFA2E570A3D439C8B1B48B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA348663D0C2BFE8C00A63A396646F57</key>
+		<key>C65A348E9D323F3EE1E6F46994BDC794</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DAAAF5F555AE1A5EF756EA2D9EF78EB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>EB9AD825427F216B54E693242E671FA1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F00B5B9F13558B6AFEEABD603191C4D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

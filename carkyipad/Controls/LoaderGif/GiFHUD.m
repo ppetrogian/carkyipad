@@ -219,7 +219,7 @@ static GiFHUD *instance;
     [self dismiss:^{
         [APPDELEGATE.window bringSubviewToFront:[self instance]];
         [[self instance] setShown:YES];
-        [[self instance] fadeIn];
+        //[[self instance] fadeIn];
     }];
 }
 

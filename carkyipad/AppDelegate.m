@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "HockeySDK/HockeySDK.h"
+#import "CarkyApiClient.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface AppDelegate ()
 
@@ -21,9 +23,11 @@
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"17b2f6849c3d402d85f37c7761481c97"];
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator
-     authenticateInstallation];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
+    [GMSServices provideAPIKey:@"AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 
@@ -55,6 +59,63 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+// app methods
+-(void)fetchInitialData:(BlockBoolean)block {
+    //fetch initial data
+    self.api = [CarkyApiClient sharedService];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //self.api.hud = [MBProgressHUD HUDForView:self.view];
+    self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
+    [self.api.hud showAnimated:YES];
+    //todo: set login username
+    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
+        
+    }];
+    [self.api GetAllCarTypes:^(NSArray *array2) {
+        app.carTypes = array2;
+    }];
+    [self.api GetCarExtras:^(NSArray *array3) {
+        app.carExtras = array3;
+    }];
+    [self.api GetAllCarInsurances:^(NSArray *array4) {
+        app.carInsurances = array4;
+    }];
+    // pyramid of doom, todo: make parallel
+    [self.api GetFleetLocationsFull:^(NSArray *array1) {
+        app.fleetLocations = array1;
+        app.availableCarsDict = [NSMutableDictionary dictionaryWithCapacity:array1.count];
+        [array1 enumerateObjectsUsingBlock:^(FleetLocations *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.api GetAvailableCars:obj.identifier withBlock:^(NSArray *arrayCars) {
+                [app.availableCarsDict setObject:arrayCars forKey:@(obj.identifier)];
+                if (idx == array1.count-1) {
+                    block(YES);
+                }
+            }];
+        }];
+    }];    
+}
+
+// helper methods
+
++(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location {
+    double latitude = [[location objectForKey:@"lat"] doubleValue];
+    double longitude = [[location objectForKey:@"lng"] doubleValue];
+    
+    return CLLocationCoordinate2DMake(latitude, longitude);
+}
+
++(MBProgressHUD *)showProgressNotification:(UIView *)view {
+    MBProgressHUD *loadingNotification = [MBProgressHUD HUDForView:view];
+    loadingNotification.mode = MBProgressHUDModeIndeterminate;
+    loadingNotification.label.text = @"Please wait...";
+    [loadingNotification showAnimated:YES];
+    return loadingNotification;
+}
+
++(void)hideProgressNotification:(MBProgressHUD *)hud {
+    [hud hideAnimated:YES];
 }
 
 

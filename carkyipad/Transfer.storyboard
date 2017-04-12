@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dIR-Hd-371">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,8 +21,23 @@
                     <view key="view" contentMode="scaleToFill" id="sPH-4W-JlQ">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0b-0A-xlS" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="754" height="748"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s0b-0A-xlS" firstAttribute="leading" secondItem="sPH-4W-JlQ" secondAttribute="leading" id="Nt1-ST-pMK"/>
+                            <constraint firstItem="s0b-0A-xlS" firstAttribute="top" secondItem="7kF-UD-wuc" secondAttribute="bottom" id="Teo-5H-H0q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s0b-0A-xlS" secondAttribute="trailing" constant="250" id="aCV-j5-EgI"/>
+                            <constraint firstItem="VbD-Q6-wZX" firstAttribute="top" secondItem="s0b-0A-xlS" secondAttribute="bottom" id="h6N-Ug-Vhi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="s0b-0A-xlS" id="2Ho-di-Qr9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2L9-TK-ngC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
