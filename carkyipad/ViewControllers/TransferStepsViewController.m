@@ -52,7 +52,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [AppDelegate configurePSTextField:self.toLocationTextField withColor:[UIColor whiteColor]];
     self.driversContainerView.frame = self.locationsContainerView.frame;
     self.driversContainerView.backgroundColor = self.locationsContainerView.backgroundColor;
-    self.driversContainerView.alpha = 0;
     self.toLocationTextField.delegate = self;
     [self.view addSubview:self.locationsContainerView];
 }
@@ -96,7 +95,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 #pragma mark - delegates
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     textField.text = @"";
+    [self.wellKnownLocationsVc loadLocations:nil];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.driversContainerView.alpha = 0;
+        self.locationsContainerView.alpha = 1;
+    } completion:^(BOOL finished) {
+        [self.view addSubview:self.locationsContainerView];
+    }];
 }
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     TGRArrayDataSource *dataSource = (TGRArrayDataSource *)self.wellKnownLocationsVc.locationsTableView.dataSource;
     NSArray<Location*> *locations = dataSource.items;
@@ -128,6 +135,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
     [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng];
     [self.toLocationTextField resignFirstResponder];
+
+    [UIView animateWithDuration:0.25 animations:^{
+        self.locationsContainerView.alpha = 0;
+        self.driversContainerView.alpha = 1;
+    } completion:^(BOOL finished) {
+        [self.view addSubview:self.driversContainerView];
+    }];
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
