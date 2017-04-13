@@ -10,12 +10,12 @@
 
 NSString *const kCarsTransmissionType = @"TransmissionType";
 NSString *const kCarsMaxPassengers = @"MaxPassengers";
+NSString *const kCarsMaxLaggages = @"MaxLaggages";
 NSString *const kCarsId = @"Id";
 NSString *const kCarsPrice = @"Price";
 NSString *const kCarsPricePerDay = @"PricePerDay";
 NSString *const kCarsSubDescription = @"SubDescription";
 NSString *const kCarsFuelType = @"FuelType";
-NSString *const kCarsMaxLaggages = @"MaxLaggages";
 NSString *const kCarsDescription = @"Description";
 NSString *const kCarsImage = @"Image";
 
@@ -51,13 +51,12 @@ NSString *const kCarsImage = @"Image";
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
         self.transmissionType = [self objectOrNilForKey:kCarsTransmissionType fromDictionary:dict];
         self.maxPassengers = [[self objectOrNilForKey:kCarsMaxPassengers fromDictionary:dict] integerValue];
-        self.maxPassengers = [[self objectOrNilForKey:kCarsMaxPassengers fromDictionary:dict] integerValue];
+        self.maxLaggages = [[self objectOrNilForKey:kCarsMaxLaggages fromDictionary:dict] integerValue];
         self.carsIdentifier = [[self objectOrNilForKey:kCarsId fromDictionary:dict] integerValue];
         self.price = [[self objectOrNilForKey:kCarsPrice fromDictionary:dict] integerValue];
         self.pricePerDay = [[self objectOrNilForKey:kCarsPricePerDay fromDictionary:dict] integerValue];
         self.subDescription = [self objectOrNilForKey:kCarsSubDescription fromDictionary:dict];
         self.fuelType = [self objectOrNilForKey:kCarsFuelType fromDictionary:dict];
-        self.maxLaggages = [[self objectOrNilForKey:kCarsMaxLaggages fromDictionary:dict] integerValue];
         self.carsDescription = [self objectOrNilForKey:kCarsDescription fromDictionary:dict];
         self.image = [self objectOrNilForKey:kCarsImage fromDictionary:dict];
 
@@ -71,12 +70,12 @@ NSString *const kCarsImage = @"Image";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.transmissionType forKey:kCarsTransmissionType];
     [mutableDict setValue:[NSNumber numberWithInteger:self.maxPassengers] forKey:kCarsMaxPassengers];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.maxLaggages] forKey:kCarsMaxLaggages];
     [mutableDict setValue:[NSNumber numberWithInteger:self.carsIdentifier] forKey:kCarsId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarsPrice];
     [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kCarsPricePerDay];
     [mutableDict setValue:self.subDescription forKey:kCarsSubDescription];
     [mutableDict setValue:self.fuelType forKey:kCarsFuelType];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.maxLaggages] forKey:kCarsMaxLaggages];
     [mutableDict setValue:self.carsDescription forKey:kCarsDescription];
     [mutableDict setValue:self.image forKey:kCarsImage];
 

@@ -13,12 +13,12 @@
 
 @property (nonatomic, strong) NSString *transmissionType;
 @property (nonatomic, assign) NSInteger maxPassengers;
+@property (nonatomic, assign) NSInteger maxLaggages;
 @property (nonatomic, assign) NSInteger carsIdentifier;
 @property (nonatomic, assign) NSInteger price;
 @property (nonatomic, assign) NSInteger pricePerDay;
 @property (nonatomic, strong) NSString *subDescription;
 @property (nonatomic, strong) NSString *fuelType;
-@property (nonatomic, assign) NSInteger maxLaggages;
 @property (nonatomic, strong) NSString *carsDescription;
 @property (nonatomic, strong) NSString *image;
 

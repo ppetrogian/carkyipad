@@ -8,9 +8,12 @@
 #import "CarCategory.h"
 
 
-NSString *const kPrice = @"Price";
-NSString *const kId = @"Id";
-NSString *const kDescription = @"Description";
+NSString *const kCarCategoryPrice = @"Price";
+NSString *const kCarCategoryId = @"Id";
+NSString *const kCarCategoryImage = @"Image";
+NSString *const kCarCategoryDescription = @"Description";
+NSString *const kCarCategoryMaxPassengers = @"MaxPassengers";
+NSString *const kCarCategoryMaxLaggages = @"MaxLaggages";
 
 
 @interface CarCategory ()
@@ -36,21 +39,24 @@ NSString *const kDescription = @"Description";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.price = [[self objectOrNilForKey:kPrice fromDictionary:dict] doubleValue];
-            self.Id = [[self objectOrNilForKey:kId fromDictionary:dict] integerValue];
-            self.Description = [self objectOrNilForKey:kDescription fromDictionary:dict];
-
+        self.price = [[self objectOrNilForKey:kCarCategoryPrice fromDictionary:dict] integerValue];
+        self.Id = [[self objectOrNilForKey:kCarCategoryId fromDictionary:dict] integerValue];
+        self.Description = [self objectOrNilForKey:kCarCategoryDescription fromDictionary:dict];
+        self.image = [self objectOrNilForKey:kCarCategoryImage fromDictionary:dict];
+        self.maxPassengers = [[self objectOrNilForKey:kCarCategoryMaxPassengers fromDictionary:dict] integerValue];
+        self.maxLaggages = [[self objectOrNilForKey:kCarCategoryMaxLaggages fromDictionary:dict] integerValue];
     }
-    
     return self;
-    
 }
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.price] forKey:kPrice];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kId];
-    [mutableDict setValue:self.Description forKey:kDescription];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarCategoryPrice];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kCarCategoryId];
+    [mutableDict setValue:self.Description forKey:kCarCategoryDescription];
+    [mutableDict setValue:self.image forKey:kCarCategoryImage];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.maxPassengers] forKey:kCarCategoryMaxPassengers];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.maxLaggages] forKey:kCarCategoryMaxLaggages];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -71,18 +77,18 @@ NSString *const kDescription = @"Description";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.price = [aDecoder decodeDoubleForKey:kPrice];
-    self.Id = [aDecoder decodeIntegerForKey:kId];
-    self.Description = [aDecoder decodeObjectForKey:kDescription];
+    self.price = [aDecoder decodeDoubleForKey:kCarCategoryPrice];
+    self.Id = [aDecoder decodeIntegerForKey:kCarCategoryId];
+    self.Description = [aDecoder decodeObjectForKey:kCarCategoryDescription];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_price forKey:kPrice];
-    [aCoder encodeInteger:_Id forKey:kId];
-    [aCoder encodeObject:_Description forKey:kDescription];
+    [aCoder encodeDouble:_price forKey:kCarCategoryPrice];
+    [aCoder encodeInteger:_Id forKey:kCarCategoryId];
+    [aCoder encodeObject:_Description forKey:kCarCategoryDescription];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
