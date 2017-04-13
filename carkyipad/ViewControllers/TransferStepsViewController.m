@@ -171,9 +171,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 //    }];
 //}
 
-- (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)text {
+- (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t {
     self.selectedLocation = (Location *)value;
-    self.toLocationTextField.text = text;
+    self.toLocationTextField.text = self.selectedLocation.name;
     [self.locationMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.userData == self.selectedLocation) {
             _mapView.selectedMarker = obj;
@@ -206,17 +206,21 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    Location *loc = marker.userData;
-    _mapView.selectedMarker = marker;
-    [self didSelectLocation:loc.identifier withValue:loc andText:loc.name];
+    id loc = marker.userData;
+    if ([loc isKindOfClass:[Location class]]) {
+        _mapView.selectedMarker = marker;
+        [self didSelectLocation:0 withValue:loc andText:nil];
+    }
     return YES;
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     // your code
-    Location *loc = marker.userData;
-    _mapView.selectedMarker = marker;
-    [self didSelectLocation:loc.identifier withValue:loc andText:loc.name];
+    id loc = marker.userData;
+    if ([loc isKindOfClass:[Location class]]) {
+        _mapView.selectedMarker = marker;
+        [self didSelectLocation:0 withValue:loc andText:nil];
+    }
 }
 
 -(CarkyDriverPositionsRequest *)getDriversRequest:(NSInteger)carCategory {

@@ -150,8 +150,8 @@
     NSMutableArray * legRouteArray=[routes valueForKey:@"legs"];
     NSMutableString *startLocationLat=[[[legRouteArray valueForKeyPath:@"start_location.lat"] objectAtIndex:0] objectAtIndex:0];
     NSMutableString *startLocationLong=[[[legRouteArray valueForKeyPath:@"start_location.lng"]objectAtIndex:0] objectAtIndex:0];
-    NSMutableString *endLocationLat=[[[legRouteArray valueForKeyPath:@"end_location.lat"] objectAtIndex:0] objectAtIndex:0];
-    NSMutableString *endLocationLong=[[[legRouteArray valueForKeyPath:@"end_location.lng"]objectAtIndex:0] objectAtIndex:0];
+    //NSMutableString *endLocationLat=[[[legRouteArray valueForKeyPath:@"end_location.lat"] objectAtIndex:0] objectAtIndex:0];
+    //NSMutableString *endLocationLong=[[[legRouteArray valueForKeyPath:@"end_location.lng"]objectAtIndex:0] objectAtIndex:0];
     
     NSLog(@"duration %@",[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"]);
     NSArray *steps = [leg objectForKey:@"steps"];
@@ -180,7 +180,7 @@
     
     GMSPolyline *polyline = nil;
     polyline = [GMSPolyline polylineWithPath:path];
-    polyline.strokeColor = [UIColor blackColor];
+    polyline.strokeColor = [UIColor colorWithRed:0.2 green:0.2 blue:1 alpha:1];
     polyline.strokeWidth = 3.f;
     polyline.map = mapView;
     //show image for starting point and destination point
