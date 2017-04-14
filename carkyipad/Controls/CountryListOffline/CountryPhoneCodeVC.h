@@ -8,8 +8,14 @@
 
 #import "BaseViewController.h"
 
+@protocol SelectDelegate <NSObject>
+
+- (void)didSelect:(BOOL)hasSelected;
+
+@end
+
 @interface CountryPhoneCodeVC : BaseViewController
 @property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
+@property (nonatomic, weak) id<SelectDelegate> delegate;
 @end

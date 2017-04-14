@@ -19,8 +19,29 @@
 @property (weak, nonatomic) IBOutlet UITextField *fromLocationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *toLocationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
-@property (strong, nonatomic) Location *currentLocation;
 @property (weak, nonatomic) IBOutlet UITableView *carCategoriesTableView;
+@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *flagButton;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *confirmEmailTextField;
+@property (weak, nonatomic) IBOutlet UILabel *countryPrefixLabel;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+@property (weak, nonatomic) IBOutlet UIButton *cashButton;
+@property (weak, nonatomic) IBOutlet UIButton *creditCardButton;
+@property (weak, nonatomic) IBOutlet UIButton *payNowButton;
+@property (weak, nonatomic) IBOutlet UITextField *cvvTextField;
+@property (weak, nonatomic) IBOutlet UITextField *creditCardNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *expiryDateTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *paymentsScrollView;
+@property (weak, nonatomic) IBOutlet UIView *paymentDoneView;
+@property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+
+
+@property (strong, nonatomic) Location *currentLocation;
+
 -(void)loadCarCategories;
 -(void)loadLocations:(NSString *)filter;
 // methods

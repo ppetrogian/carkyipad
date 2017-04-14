@@ -108,6 +108,19 @@
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
 		D11363761E9F772C00EB6279 /* CarCategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D11363751E9F772C00EB6279 /* CarCategoryViewCell.m */; };
+		D113637B1EA0731800EB6279 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363771EA0731800EB6279 /* libCardIO.a */; };
+		D113637C1EA0731800EB6279 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363781EA0731800EB6279 /* libopencv_core.a */; };
+		D113637D1EA0731800EB6279 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363791EA0731800EB6279 /* libopencv_imgproc.a */; };
+		D113637F1EA0738600EB6279 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D113637E1EA0738600EB6279 /* Accelerate.framework */; };
+		D11363811EA0739200EB6279 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363801EA0739200EB6279 /* AudioToolbox.framework */; };
+		D11363831EA0739C00EB6279 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363821EA0739C00EB6279 /* AVFoundation.framework */; };
+		D11363851EA073A600EB6279 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363841EA073A600EB6279 /* CoreGraphics.framework */; };
+		D11363871EA073AF00EB6279 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363861EA073AF00EB6279 /* CoreMedia.framework */; };
+		D11363891EA073B600EB6279 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363881EA073B600EB6279 /* CoreVideo.framework */; };
+		D113638B1EA073C000EB6279 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D113638A1EA073C000EB6279 /* MobileCoreServices.framework */; };
+		D113638D1EA073C600EB6279 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D113638C1EA073C600EB6279 /* OpenGLES.framework */; };
+		D113638F1EA073CD00EB6279 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D113638E1EA073CD00EB6279 /* QuartzCore.framework */; };
+		D11363911EA073D600EB6279 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363901EA073D600EB6279 /* Security.framework */; };
 		D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */; };
 		D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F11E8B0F9C00AABBBE /* ShadowViewWithText.m */; };
 		D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D12218F41E8B121500AABBBE /* CarStepViewController.m */; };
@@ -298,6 +311,19 @@
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
 		D11363741E9F772C00EB6279 /* CarCategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCategoryViewCell.h; sourceTree = "<group>"; };
 		D11363751E9F772C00EB6279 /* CarCategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCategoryViewCell.m; sourceTree = "<group>"; };
+		D11363771EA0731800EB6279 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = CardIO/libCardIO.a; sourceTree = "<group>"; };
+		D11363781EA0731800EB6279 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = CardIO/libopencv_core.a; sourceTree = "<group>"; };
+		D11363791EA0731800EB6279 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = CardIO/libopencv_imgproc.a; sourceTree = "<group>"; };
+		D113637E1EA0738600EB6279 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		D11363801EA0739200EB6279 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D11363821EA0739C00EB6279 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D11363841EA073A600EB6279 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D11363861EA073AF00EB6279 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D11363881EA073B600EB6279 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D113638A1EA073C000EB6279 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D113638C1EA073C600EB6279 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		D113638E1EA073CD00EB6279 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D11363901EA073D600EB6279 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D12218EC1E8B0A0200AABBBE /* MBSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBSegmentedControl.h; path = Controls/MBSegmentedControl/MBSegmentedControl.h; sourceTree = "<group>"; };
 		D12218ED1E8B0A0200AABBBE /* MBSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBSegmentedControl.m; path = Controls/MBSegmentedControl/MBSegmentedControl.m; sourceTree = "<group>"; };
 		D12218F01E8B0F9C00AABBBE /* ShadowViewWithText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadowViewWithText.h; path = Controls/ShadowViewWithText/ShadowViewWithText.h; sourceTree = "<group>"; };
@@ -356,8 +382,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11363911EA073D600EB6279 /* Security.framework in Frameworks */,
+				D113638F1EA073CD00EB6279 /* QuartzCore.framework in Frameworks */,
+				D113638D1EA073C600EB6279 /* OpenGLES.framework in Frameworks */,
+				D113638B1EA073C000EB6279 /* MobileCoreServices.framework in Frameworks */,
+				D11363891EA073B600EB6279 /* CoreVideo.framework in Frameworks */,
+				D11363871EA073AF00EB6279 /* CoreMedia.framework in Frameworks */,
+				D11363851EA073A600EB6279 /* CoreGraphics.framework in Frameworks */,
+				D11363831EA0739C00EB6279 /* AVFoundation.framework in Frameworks */,
+				D11363811EA0739200EB6279 /* AudioToolbox.framework in Frameworks */,
+				D113637F1EA0738600EB6279 /* Accelerate.framework in Frameworks */,
 				D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */,
+				D113637C1EA0731800EB6279 /* libopencv_core.a in Frameworks */,
+				D113637B1EA0731800EB6279 /* libCardIO.a in Frameworks */,
 				C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */,
+				D113637D1EA0731800EB6279 /* libopencv_imgproc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,10 +422,21 @@
 		604D34F28EA76BDADD70C80C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D11363901EA073D600EB6279 /* Security.framework */,
+				D113638E1EA073CD00EB6279 /* QuartzCore.framework */,
+				D113638C1EA073C600EB6279 /* OpenGLES.framework */,
+				D113638A1EA073C000EB6279 /* MobileCoreServices.framework */,
+				D11363881EA073B600EB6279 /* CoreVideo.framework */,
+				D11363861EA073AF00EB6279 /* CoreMedia.framework */,
+				D11363841EA073A600EB6279 /* CoreGraphics.framework */,
+				D11363821EA0739C00EB6279 /* AVFoundation.framework */,
+				D11363801EA0739200EB6279 /* AudioToolbox.framework */,
+				D113637E1EA0738600EB6279 /* Accelerate.framework */,
 				D1B253D01E868EBE005365B2 /* HockeySDK.framework */,
 				7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */,
 				71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */,
 				528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */,
+				D113637A1EA0731800EB6279 /* Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -732,6 +782,17 @@
 			name = AttributedStrings;
 			sourceTree = "<group>";
 		};
+		D113637A1EA0731800EB6279 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D11363771EA0731800EB6279 /* libCardIO.a */,
+				D11363781EA0731800EB6279 /* libopencv_core.a */,
+				D11363791EA0731800EB6279 /* libopencv_imgproc.a */,
+			);
+			name = Frameworks;
+			path = Pods/CardIO;
+			sourceTree = "<group>";
+		};
 		D12218E81E8B098000AABBBE /* MBSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -926,7 +987,7 @@
 					AE7275A61E6CCA8C00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = P6RXM76U6X;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					AE7275BF1E6CCA8D00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1419,8 +1480,8 @@
 			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = P6RXM76U6X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -1428,10 +1489,14 @@
 				INFOPLIST_FILE = carkyipad/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = gr.insomnia.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6ec13fa1-61c9-4984-89e6-961b1caa2dee";
+				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
 			};
 			name = Debug;
 		};
@@ -1440,8 +1505,8 @@
 			baseConfigurationReference = 934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = P6RXM76U6X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -1449,10 +1514,14 @@
 				INFOPLIST_FILE = carkyipad/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = gr.insomnia.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6ec13fa1-61c9-4984-89e6-961b1caa2dee";
+				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
 			};
 			name = Release;
 		};

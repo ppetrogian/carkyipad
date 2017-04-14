@@ -31,6 +31,7 @@ pod 'Bolts'
 pod 'GoogleMaps'
 pod 'IIAsyncViewController'
 pod 'HockeySDK', '~> 4.1.4'
+pod 'CardIO'
 #pod 'Material', '~> 2.0'
 #pod 'MaterialControls', '~> 1.2.2'
 end

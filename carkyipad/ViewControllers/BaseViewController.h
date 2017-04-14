@@ -9,7 +9,9 @@
 @class Validation;
 @protocol MBProgressHUDDelegate;
 
-@interface BaseViewController : IIAsyncViewController <MBProgressHUDDelegate>
+
+
+@interface BaseViewController : UIViewController <MBProgressHUDDelegate>
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (strong, nonatomic) IBOutlet UIImageView *urlImageView;
 

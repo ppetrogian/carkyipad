@@ -13,11 +13,14 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TGRArrayDataSource.h"
+#import "CountryPhoneCodeVC.h"
+#import "SharedInstance.h"
+#import "CardIO.h"
 
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
-@interface TransferStepsViewController () <CLLocationManagerDelegate,GMSMapViewDelegate, UITextFieldDelegate, UITableViewDelegate>
+@interface TransferStepsViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, CardIOPaymentViewControllerDelegate, SelectDelegate, UITextFieldDelegate, UITableViewDelegate>
 @property (nonatomic, strong) LatLng* userPos;
 @property (nonatomic, strong) Location* selectedLocation;
 @property (nonatomic, assign) NSInteger userFleetLocationId;
@@ -26,6 +29,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 @property (nonatomic, strong) NSMutableArray *locationMarkers;
 @property (nonatomic, strong) NSMutableArray *driverMarkers;
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
+@property (nonatomic, assign) NSInteger totalPrice;
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (nonatomic,strong) UITextField *activeField;
 @end
 
 @implementation TransferStepsViewController
@@ -52,7 +58,27 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [AppDelegate configurePSTextField:self.fromLocationTextField withColor:[UIColor whiteColor]];
     [AppDelegate configurePSTextField:self.toLocationTextField withColor:[UIColor whiteColor]];
     self.toLocationTextField.delegate = self;
+    // set wizard frames
+    self.viewFindDrivers.frame = self.locationsTableView.frame;
+    self.paymentsScrollView.frame = self.locationsTableView.frame;
+    self.paymentDoneView.frame = self.locationsTableView.frame;
     [self.view bringSubviewToFront:self.locationsTableView];
+   
+    // configure payment controls
+    [AppDelegate configurePSTextField:self.firstNameTextField withColor:[UIColor lightGrayColor]];
+    [AppDelegate configurePSTextField:self.lastNameTextField withColor:[UIColor lightGrayColor]];
+    [AppDelegate configurePSTextField:self.emailTextField withColor:[UIColor lightGrayColor]];
+    [AppDelegate configurePSTextField:self.confirmEmailTextField withColor:[UIColor lightGrayColor]];
+
+    self.creditCardNumberTextField.borderStyle = UITextBorderStyleNone;
+    self.expiryDateTextField.borderStyle = UITextBorderStyleNone;
+    self.cvvTextField.borderStyle = UITextBorderStyleNone;
+    self.phoneNumberTextField.borderStyle = UITextBorderStyleNone;
+    self.creditCardButton.layer.borderColor = self.creditCardButton.tintColor.CGColor;
+    self.cashButton.layer.borderColor = self.cashButton.tintColor.CGColor;
+    #if TARGET_CPU_ARM
+    [CardIOUtilities preload];
+     #endif
 }
 
 -(void)getWellKnownLocations {
@@ -125,9 +151,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 #pragma mark - delegates
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    textField.text = @"";
-    [self loadLocations:nil];
-    [self.view bringSubviewToFront:self.locationsTableView];
+    if (textField == self.toLocationTextField) {
+        textField.text = @"";
+        [self loadLocations:nil];
+        [self.view bringSubviewToFront:self.locationsTableView];
+    } else {
+        self.activeField = textField;
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -150,26 +180,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@",textField.text];
     return [locations filteredArrayUsingPredicate:predicate].count > 0 ? YES : NO;
 }
-
-//- (void)animateContainerViews:(UIView *)targetView {
-//    NSArray *containers = @[self.locationsContainerView,self.driversContainerView];
-//    [self.view bringSubviewToFront:targetView];
-//    [containers enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        obj.hidden = (obj == targetView ? YES : NO);
-//        if (obj == targetView) {
-//            //[self.view br
-//        }
-//    }];
-//  [UIView animateWithDuration:0.25 animations:^{
-//        self.locationsContainerView.hidden = YES;
-//        self.driversContainerView.hidden = NO;
-//    } completion:^(BOOL finished) {
-//        //[self.view addSubview:self.driversContainerView];
-//        [self.driverFindVc loadCarCategories];
-//        self.driversContainerView.userInteractionEnabled = YES;
-//        self.locationsContainerView.userInteractionEnabled = NO;
-//    }];
-//}
 
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t {
     self.selectedLocation = (Location *)value;
@@ -239,7 +249,63 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
  // Pass the selected object to the new view controller.
  
  }
- 
+#pragma mark - Hide Keyboard
+-(void)addGestureToView{
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    self.tap.enabled = NO;
+    [self.view addGestureRecognizer:self.tap];
+}
+-(void)hideKeyboard{
+    [self.view endEditing:YES];
+    _tap.enabled = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // keyboard
+    [self registerForKeyboardNotifications];
+}
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    _paymentsScrollView.contentInset = contentInsets;
+    _paymentsScrollView.scrollIndicatorInsets = contentInsets;
+    
+    //[_paymentsScrollView setContentOffset:CGPointMake(0.0,kbSize.height) animated:YES];
+
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    CGRect frame = [self.activeField.superview convertRect:self.activeField.frame toView:self.view];
+    if (!CGRectContainsPoint(aRect, CGPointMake(frame.origin.x, frame.origin.y + CGRectGetHeight(frame)))) {
+        CGPoint scrollPoint = CGPointMake(0.0, frame.origin.y-kbSize.height+80);
+        [_paymentsScrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    _paymentsScrollView.contentInset = contentInsets;
+    _paymentsScrollView.scrollIndicatorInsets = contentInsets;
+}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -254,10 +320,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (NSArray *)stepViewControllers {
     UIViewController *s0 = [self.storyboard instantiateViewControllerWithIdentifier:@"payment"];
     s0.step.title = NSLocalizedString(@"payment", nil) ;
-//    UIViewController *s1 = [self.storyboard instantiateViewControllerWithIdentifier:@"Car"];
-//    s1.step.title =  NSLocalizedString(@"Car", nil) ;
-//    UIViewController *s2 = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
-//    s2.step.title =  NSLocalizedString(@"Payment", nil) ;
     
     return @[s0];
 }
@@ -283,7 +345,16 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 // handlers
 - (IBAction)gotoBack:(UIButton *)sender {
-    [super showPreviousStep];
+    UIView *subView = self.view.subviews.lastObject;
+    if (subView == self.locationsTableView) {
+        [super showPreviousStep];
+    } if (subView == self.paymentDoneView) {
+        [super showPreviousStep];
+    } else {
+        UIView *prevView = [self.view viewWithTag:subView.tag-1];
+        [self.view bringSubviewToFront:prevView];
+    }
+    
 }
 
 -(void)loadCarCategories {
@@ -300,15 +371,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         UILabel *nameLabel = [cell.contentView viewWithTag:1];
         nameLabel.text = item.Description;
         UILabel *passLabel = [cell.contentView viewWithTag:2];
-        passLabel.text = [NSString stringWithFormat:@"%ld",item.maxPassengers];
+        passLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxPassengers];
         UILabel *laggLabel = [cell.contentView viewWithTag:3];
-        laggLabel.text = [NSString stringWithFormat:@"%ld",item.maxLaggages];
+        laggLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxLaggages];
         UILabel *numLabel = [cell.contentView viewWithTag:6];
-        numLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)0];
+        numLabel.text = [NSString stringWithFormat:@"%ld",(long)0];
         UIImageView *ccImageView = [cell.contentView viewWithTag:4];
         ccImageView.image = [UIImage imageNamed:item.image];
         UILabel *priceLabel = [cell.contentView viewWithTag:8];
-        priceLabel.text = [NSString stringWithFormat:@"€%ld",item.price];
+        priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
         UIButton *buttonMinus = [cell.contentView viewWithTag:5];
         [buttonMinus setTitleEdgeInsets:UIEdgeInsetsMake(-5.0f, 0.0f, 0.0f, 0.0f)];
         [buttonMinus addTarget:self action:@selector(addOrSubtractCar:) forControlEvents:UIControlEventTouchUpInside];
@@ -326,14 +397,81 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     UIView *parentView = sender.superview;
     UILabel *numLabel = [parentView viewWithTag:6];
     NSInteger numberValue = numLabel.text.integerValue;
-    numberValue = sender.tag == 7 ? numberValue + 1 : numberValue - 1;
+    NSInteger diff = sender.tag == 7 ? 1 : - 1;
+    numberValue = numberValue + diff;
     if (numberValue >= 0) {
-        numLabel.text = [NSString stringWithFormat:@"%ld",numberValue];
+        numLabel.text = [NSString stringWithFormat:@"%ld",(long)numberValue];
+        UILabel *priceLabel = [parentView viewWithTag:8];
+        NSInteger price = [priceLabel.text substringFromIndex:1].integerValue;
+        self.totalPrice += (price * diff);
+        self.confirmButton.backgroundColor = self.totalPrice > 0 ? [UIColor colorWithRed:0.24 green:0.57 blue:1.0 alpha:1.0] : [UIColor colorWithWhite:0.79 alpha:1.0];
+        self.payNowButton.backgroundColor = self.confirmButton.backgroundColor;
+        [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW    Total:€%ld", self.totalPrice] forState:UIControlStateNormal];
     }
 }
 
+- (IBAction)confirmClick:(UIButton *)sender {
+    if (self.totalPrice > 0) {
+        [self.view bringSubviewToFront:self.paymentsScrollView];
+    }
+}
+- (IBAction)flagButton_Click:(UIButton *)sender {
+    [self hideKeyboard];
+    CountryPhoneCodeVC *vcObj =[[CountryPhoneCodeVC alloc] initWithNibName:@"CountryPhoneCodeVC" bundle:nil];
+    vcObj.delegate = self;
+    vcObj.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popPresenter = [vcObj popoverPresentationController];
+    popPresenter.sourceView = self.flagButton;
+    [self presentViewController:vcObj animated:YES completion:nil];
+}
+// handler for flag did-select
+- (void)didSelect:(BOOL)hasSelected {
+    NSString *imName = [[SharedInstance sharedInstance].selCountryCode lowercaseString];
+    [self.flagButton setImage:[UIImage imageNamed:imName] forState:UIControlStateNormal];
+    self.countryPrefixLabel.text = [SharedInstance sharedInstance].selCountryId;
+}
 
+- (IBAction)cashButton_Click:(UIButton *)sender {
+    _cashButton.selected = YES;
+    _creditCardButton.selected = NO;
+    _cashButton.layer.borderWidth = 1;
+    _creditCardButton.layer.borderWidth = 0;
+}
 
+- (IBAction)creditCardButton_Click:(UIButton *)sender {
+    _cashButton.selected = NO;
+    _creditCardButton.selected = YES;
+    _cashButton.layer.borderWidth = 0;
+    _creditCardButton.layer.borderWidth = 1;
+}
+- (IBAction)payNow_click:(UIButton *)sender {
+    [self.view bringSubviewToFront:self.paymentDoneView];
+}
+
+- (IBAction)takePhoto_click:(UIButton *)sender {
+    #if TARGET_CPU_ARM
+    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
+    scanViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:scanViewController animated:YES completion:nil];
+    #endif
+}
+#pragma mark - CardIOPaymentViewControllerDelegate
+
+#if TARGET_CPU_ARM
+- (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
+    NSLog(@"Scan succeeded with info: %@", info);
+    // Do whatever needs to be done to deliver the purchased items.
+    [self dismissViewControllerAnimated:YES completion:nil];
+    self.creditCardNumberTextField.text = info.redactedCardNumber;
+    self.expiryDateTextField.text = [NSString stringWithFormat:@"%02lu/%lu", (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear];
+    self.cvvTextField.text = info.cvv;
+}
+
+- (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
+    NSLog(@"User cancelled scan");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+ #endif
 
 // methods
 

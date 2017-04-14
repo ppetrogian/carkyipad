@@ -121,7 +121,9 @@
         [SharedInstance sharedInstance].selCountryCode = [dict objectForKey:@"countryCode"];
         [SharedInstance sharedInstance].selCountryName = [dict objectForKey:@"countryName"];
         [SharedInstance sharedInstance].selCountryId = [dict objectForKey:@"phoneCode"];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.presentingViewController  dismissViewControllerAnimated:YES completion:^(void) {
+            [self.delegate didSelect:YES];
+        }];
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
