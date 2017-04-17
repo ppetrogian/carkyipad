@@ -10,6 +10,7 @@
 #import "HockeySDK/HockeySDK.h"
 #import "CarkyApiClient.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <Stripe/Stripe.h>
 
 @interface AppDelegate ()
 
@@ -24,7 +25,7 @@
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [[NSBundle mainBundle] objectForInfoDictionaryKey:@"StripeApiKey"]];
     [GMSServices provideAPIKey:@"AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU"];
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Transfer Steps View Controller-->
+        <!--Delegate-->
         <scene sceneID="U7P-50-jvQ">
             <objects>
                 <viewController storyboardIdentifier="TransferSteps" id="dIR-Hd-371" customClass="TransferStepsViewController" sceneMemberID="viewController">
@@ -130,7 +130,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCQ-Z6-oMI" userLabel="View Find Drivers">
-                                <rect key="frame" x="614" y="147" width="411" height="621"/>
+                                <rect key="frame" x="614" y="147" width="424" height="621"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RHx-78-7cT" userLabel="View Blue Top">
@@ -351,7 +351,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" fixedFrame="YES" image="paymentControls" translatesAutoresizingMaskIntoConstraints="NO" id="MY9-dC-ivl">
-                                                <rect key="frame" x="0.0" y="71" width="411" height="548"/>
+                                                <rect key="frame" x="0.0" y="563" width="411" height="56"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80c-ry-f2P" userLabel="View Blue Top">
@@ -380,7 +380,7 @@
                                                 <color key="backgroundColor" red="0.85753411049999995" green="0.89757525920000003" blue="0.93506324289999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="First Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-IA-PVX">
-                                                <rect key="frame" x="37" y="79" width="150" height="39"/>
+                                                <rect key="frame" x="37" y="89" width="150" height="39"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -390,7 +390,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9We-UI-ulo">
-                                                <rect key="frame" x="39" y="195" width="323" height="46"/>
+                                                <rect key="frame" x="39" y="205" width="323" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -400,7 +400,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Confirm Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSP-hz-Hcc">
-                                                <rect key="frame" x="39" y="254" width="322" height="46"/>
+                                                <rect key="frame" x="39" y="264" width="322" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -410,7 +410,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Last Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQI-k8-wIx">
-                                                <rect key="frame" x="199" y="79" width="164" height="39"/>
+                                                <rect key="frame" x="199" y="89" width="164" height="39"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -420,7 +420,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Phone number*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8PU-YT-eP1">
-                                                <rect key="frame" x="183" y="138" width="179" height="39"/>
+                                                <rect key="frame" x="183" y="148" width="179" height="39"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -430,17 +430,17 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sVL-hk-g5n" userLabel="ViewSeparVertical">
-                                                <rect key="frame" x="131" y="144" width="1" height="35"/>
+                                                <rect key="frame" x="131" y="154" width="1" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NwT-QT-QII" userLabel="ViewHorizSepar">
-                                                <rect key="frame" x="39" y="178" width="323" height="1"/>
+                                                <rect key="frame" x="39" y="188" width="323" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mx-5k-hC5">
-                                                <rect key="frame" x="55" y="146" width="34" height="25"/>
+                                                <rect key="frame" x="55" y="156" width="34" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                 <state key="normal" image="gr">
@@ -451,7 +451,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJU-wX-hry" userLabel="ArrowSelectButton">
-                                                <rect key="frame" x="102" y="147" width="7" height="22"/>
+                                                <rect key="frame" x="102" y="157" width="7" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="arrowSelect"/>
                                                 <connections>
@@ -459,14 +459,14 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYp-uu-9TN">
-                                                <rect key="frame" x="138" y="147" width="46" height="21"/>
+                                                <rect key="frame" x="138" y="157" width="46" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPF-69-w1J">
-                                                <rect key="frame" x="1" y="316" width="410" height="33"/>
+                                                <rect key="frame" x="1" y="326" width="410" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUo-G9-BGQ">
@@ -480,7 +480,7 @@
                                                 <color key="backgroundColor" red="0.92455381155014038" green="0.95258885622024536" blue="0.98168915510177612" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9X-Nh-eok" userLabel="ViewHorizSepar">
-                                                <rect key="frame" x="47" y="494" width="317" height="1"/>
+                                                <rect key="frame" x="36" y="502" width="328" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
@@ -489,7 +489,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXe-g1-4Qh">
-                                                <rect key="frame" x="46" y="359" width="314" height="40"/>
+                                                <rect key="frame" x="46" y="369" width="314" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -525,7 +525,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-ta-Ams">
-                                                <rect key="frame" x="46" y="404" width="318" height="39"/>
+                                                <rect key="frame" x="46" y="414" width="318" height="39"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -545,19 +545,14 @@
                                                     <action selector="creditCardButton_Click:" destination="dIR-Hd-371" eventType="touchUpInside" id="eDb-9D-MI1"/>
                                                 </connections>
                                             </button>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="cvv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="2fq-wh-LZV">
+                                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="cvv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="2fq-wh-LZV">
                                                 <rect key="frame" x="271" y="522" width="14" height="20"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Expiry_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Mah-TT-iPb">
+                                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Expiry_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Mah-TT-iPb">
                                                 <rect key="frame" x="62" y="522" width="17" height="18"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNE-PT-dfh" userLabel="ViewHorizSepar">
-                                                <rect key="frame" x="47" y="553" width="317" height="1"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6g-nO-WXF">
                                                 <rect key="frame" x="0.0" y="576" width="412" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -590,18 +585,16 @@
                                                     <outlet property="delegate" destination="dIR-Hd-371" id="qoc-9u-HZm"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzi-eV-kGg">
-                                                <rect key="frame" x="94" y="460" width="232" height="30"/>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUX-85-rVz" customClass="STPPaymentCardTextField">
+                                                <rect key="frame" x="39" y="469" width="299" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
-                                                    <outlet property="delegate" destination="dIR-Hd-371" id="8QO-mz-VKM"/>
+                                                    <outlet property="delegate" destination="dIR-Hd-371" id="rGM-7g-Dhm"/>
                                                 </connections>
-                                            </textField>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgg-YU-kI5">
-                                                <rect key="frame" x="331" y="466" width="19" height="22"/>
+                                                <rect key="frame" x="344" y="474" width="19" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="TakePic"/>
                                                 <connections>
@@ -630,7 +623,6 @@
                         <outlet property="confirmEmailTextField" destination="bSP-hz-Hcc" id="wN2-68-prk"/>
                         <outlet property="countryPrefixLabel" destination="wYp-uu-9TN" id="wf9-ky-U3j"/>
                         <outlet property="creditCardButton" destination="EXM-ta-Ams" id="b1p-au-YTm"/>
-                        <outlet property="creditCardNumberTextField" destination="rzi-eV-kGg" id="IAG-Of-ivY"/>
                         <outlet property="cvvTextField" destination="0km-T3-EEh" id="GWI-F6-29f"/>
                         <outlet property="emailTextField" destination="9We-UI-ulo" id="ngj-xP-vPe"/>
                         <outlet property="expiryDateTextField" destination="H4c-n8-Sjk" id="jCY-6L-P2a"/>
@@ -644,6 +636,7 @@
                         <outlet property="paymentDoneView" destination="nRb-d8-sFQ" id="1aO-Ch-m3s"/>
                         <outlet property="paymentsScrollView" destination="H1O-1y-9jr" id="mQy-nM-YU3"/>
                         <outlet property="phoneNumberTextField" destination="8PU-YT-eP1" id="SHy-Dz-1Wc"/>
+                        <outlet property="stpCardTextField" destination="CUX-85-rVz" id="284-LA-7LV"/>
                         <outlet property="takePhotoButton" destination="Pgg-YU-kI5" id="yYu-SU-WHE"/>
                         <outlet property="toLocationTextField" destination="KuU-sh-s36" id="O04-EO-9Nq"/>
                         <outlet property="viewFindDrivers" destination="ZCQ-Z6-oMI" id="5Hf-gg-wT6"/>

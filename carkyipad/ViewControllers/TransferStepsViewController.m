@@ -16,11 +16,12 @@
 #import "CountryPhoneCodeVC.h"
 #import "SharedInstance.h"
 #import "CardIO.h"
+#import <Stripe/Stripe.h>
 
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
-@interface TransferStepsViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, CardIOPaymentViewControllerDelegate, SelectDelegate, UITextFieldDelegate, UITableViewDelegate>
+@interface TransferStepsViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, SelectDelegate, UITextFieldDelegate, UITableViewDelegate>
 @property (nonatomic, strong) LatLng* userPos;
 @property (nonatomic, strong) Location* selectedLocation;
 @property (nonatomic, assign) NSInteger userFleetLocationId;
@@ -31,7 +32,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
 @property (nonatomic, assign) NSInteger totalPrice;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
-@property (nonatomic,strong) UITextField *activeField;
+@property (nonatomic,strong) UIControl *activeField;
 @end
 
 @implementation TransferStepsViewController
@@ -76,9 +77,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.phoneNumberTextField.borderStyle = UITextBorderStyleNone;
     self.creditCardButton.layer.borderColor = self.creditCardButton.tintColor.CGColor;
     self.cashButton.layer.borderColor = self.cashButton.tintColor.CGColor;
-    #if TARGET_CPU_ARM
+    self.stpCardTextField.borderColor = nil;
+  
     [CardIOUtilities preload];
-     #endif
 }
 
 -(void)getWellKnownLocations {
@@ -444,20 +445,28 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     _cashButton.layer.borderWidth = 0;
     _creditCardButton.layer.borderWidth = 1;
 }
+
+- (void)paymentCardTextFieldDidBeginEditingNumber:(nonnull STPPaymentCardTextField *)textField {
+    self.activeField = textField;
+}
+
+- (void)paymentCardTextFieldDidChange:(STPPaymentCardTextField *)textField {
+    NSLog(@"Card number: %@ Exp Month: %@ Exp Year: %@ CVC: %@", textField.cardParams.number, @(textField.cardParams.expMonth), @(textField.cardParams.expYear), textField.cardParams.cvc);
+    self.payNowButton.enabled = textField.isValid;
+}
+
 - (IBAction)payNow_click:(UIButton *)sender {
     [self.view bringSubviewToFront:self.paymentDoneView];
 }
 
 - (IBAction)takePhoto_click:(UIButton *)sender {
-    #if TARGET_CPU_ARM
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
     scanViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:scanViewController animated:YES completion:nil];
-    #endif
 }
 #pragma mark - CardIOPaymentViewControllerDelegate
 
-#if TARGET_CPU_ARM
+
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
     NSLog(@"Scan succeeded with info: %@", info);
     // Do whatever needs to be done to deliver the purchased items.
@@ -471,7 +480,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     NSLog(@"User cancelled scan");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
- #endif
+
 
 // methods
 

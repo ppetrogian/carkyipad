@@ -10,8 +10,7 @@
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-@class LatLng;
-@class Location;
+@class LatLng, Location, STPPaymentCardTextField;
 
 @interface TransferStepsViewController : CarRentalStepsViewController
 @property (weak, nonatomic) IBOutlet UIView *viewFindDrivers;
@@ -38,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *paymentsScrollView;
 @property (weak, nonatomic) IBOutlet UIView *paymentDoneView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+@property (weak, nonatomic) IBOutlet STPPaymentCardTextField *stpCardTextField;
 
 
 @property (strong, nonatomic) Location *currentLocation;
