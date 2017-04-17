@@ -138,6 +138,8 @@
 		D1344C091E78AE2000006FAD /* PSStepButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C071E78AE2000006FAD /* PSStepButton.m */; };
 		D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C0B1E78CF8F00006FAD /* StepViewController.m */; };
 		D1344C0D1E78CF8F00006FAD /* StepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C0B1E78CF8F00006FAD /* StepViewController.m */; };
+		D143DD1E1EA533C300F12C36 /* AccountBindingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D143DD1D1EA533C300F12C36 /* AccountBindingModel.m */; };
+		D143DD241EA5347200F12C36 /* TransferBookingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D143DD231EA5347200F12C36 /* TransferBookingRequest.m */; };
 		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
@@ -347,6 +349,10 @@
 		D1344C071E78AE2000006FAD /* PSStepButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSStepButton.m; sourceTree = "<group>"; };
 		D1344C0A1E78CF8F00006FAD /* StepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepViewController.h; path = ViewControllers/StepViewController.h; sourceTree = "<group>"; };
 		D1344C0B1E78CF8F00006FAD /* StepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepViewController.m; path = ViewControllers/StepViewController.m; sourceTree = "<group>"; };
+		D143DD1C1EA533C300F12C36 /* AccountBindingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBindingModel.h; sourceTree = "<group>"; };
+		D143DD1D1EA533C300F12C36 /* AccountBindingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBindingModel.m; sourceTree = "<group>"; };
+		D143DD221EA5347200F12C36 /* TransferBookingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferBookingRequest.h; sourceTree = "<group>"; };
+		D143DD231EA5347200F12C36 /* TransferBookingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferBookingRequest.m; sourceTree = "<group>"; };
 		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
 		D14DF0A61E757F940040B97F /* RMStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStep.m; sourceTree = "<group>"; };
 		D14DF0A71E757F940040B97F /* RMStepsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsBar.h; sourceTree = "<group>"; };
@@ -444,6 +450,10 @@
 		AE6351BC1E71E32200065F0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D143DD1C1EA533C300F12C36 /* AccountBindingModel.h */,
+				D143DD1D1EA533C300F12C36 /* AccountBindingModel.m */,
+				D143DD221EA5347200F12C36 /* TransferBookingRequest.h */,
+				D143DD231EA5347200F12C36 /* TransferBookingRequest.m */,
 				AE34F1551E903772000D3997 /* AvailableCars.h */,
 				AE34F1561E903772000D3997 /* AvailableCars.m */,
 				AE34F1571E903772000D3997 /* Cars.h */,
@@ -1262,6 +1272,7 @@
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
 				D19FF99B1E91908700F735A0 /* PSTextBox.m in Sources */,
+				D143DD241EA5347200F12C36 /* TransferBookingRequest.m in Sources */,
 				D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,
 				AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */,
@@ -1269,6 +1280,7 @@
 				D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
+				D143DD1E1EA533C300F12C36 /* AccountBindingModel.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,

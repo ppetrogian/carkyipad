@@ -12,6 +12,7 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 @class MBProgressHUD;
 @class CarkyDriverPositionsRequest;
+@class TransferBookingRequest;
 
 typedef void(^BlockArray)(NSArray *array);
 typedef void(^BlockString)(NSString *string);
@@ -62,5 +63,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)GetStripePublishableApiKey:(BlockString)block;
 
 -(void)FindNearestCarkyDriverPositions:(CarkyDriverPositionsRequest *)request withBlock:(BlockArray)block;
+
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block;
 
 @end

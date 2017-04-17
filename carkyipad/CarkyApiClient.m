@@ -66,6 +66,7 @@ static CarkyApiClient *_sharedService = nil;
             block(NO);
         } else {
             self.apiKey = responseObject[@"access_token"];
+            NSLog(@"Access token: %@", self.apiKey);
             block(YES);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -213,6 +214,18 @@ static CarkyApiClient *_sharedService = nil;
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
         block([NSArray array]);
+    }];
+}
+
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block {
+    [self setAuthorizationHeader];
+    [self POST:@"api/Partner/CreateTransferBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *str = (NSString *)responseObject;
+        block(str);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        block(nil);
     }];
 }
 
