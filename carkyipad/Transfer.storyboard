@@ -164,7 +164,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="driverFindCell" id="jxI-B9-jjV" customClass="CarCategoryViewCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="driverFindCell" id="jxI-B9-jjV">
                                                 <rect key="frame" x="0.0" y="28" width="424" height="166"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jxI-B9-jjV" id="ZFp-he-ldz">
@@ -220,9 +220,6 @@
                                                                     <integer key="value" value="4"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="minusClick:" destination="jxI-B9-jjV" eventType="touchUpInside" id="0gr-rt-IM7"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ct-YY-1xv">
                                                             <rect key="frame" x="151" y="138" width="25" height="23"/>
@@ -240,9 +237,6 @@
                                                                     <integer key="value" value="4"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="plusClick:" destination="jxI-B9-jjV" eventType="touchUpInside" id="Xam-iL-rdJ"/>
-                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Lc-cP-oY0">
                                                             <rect key="frame" x="332" y="72" width="54" height="24"/>
@@ -484,7 +478,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="CreditCardLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-aY-MmD">
+                                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="CreditCardLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-aY-MmD">
                                                 <rect key="frame" x="59" y="468" width="26" height="17"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
@@ -623,6 +617,7 @@
                         <outlet property="confirmEmailTextField" destination="bSP-hz-Hcc" id="wN2-68-prk"/>
                         <outlet property="countryPrefixLabel" destination="wYp-uu-9TN" id="wf9-ky-U3j"/>
                         <outlet property="creditCardButton" destination="EXM-ta-Ams" id="b1p-au-YTm"/>
+                        <outlet property="creditCardLine" destination="R9X-Nh-eok" id="zed-OB-xaV"/>
                         <outlet property="cvvTextField" destination="0km-T3-EEh" id="GWI-F6-29f"/>
                         <outlet property="emailTextField" destination="9We-UI-ulo" id="ngj-xP-vPe"/>
                         <outlet property="expiryDateTextField" destination="H4c-n8-Sjk" id="jCY-6L-P2a"/>

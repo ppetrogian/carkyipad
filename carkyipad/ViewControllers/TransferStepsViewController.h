@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIView *paymentDoneView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (weak, nonatomic) IBOutlet STPPaymentCardTextField *stpCardTextField;
+@property (weak, nonatomic) IBOutlet UIView *creditCardLine;
 
 
 @property (strong, nonatomic) Location *currentLocation;

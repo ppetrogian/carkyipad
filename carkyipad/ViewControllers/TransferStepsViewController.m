@@ -29,6 +29,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 @property (nonatomic,strong) TGRArrayDataSource* wellKnownLocationsDataSource;
 @property (nonatomic, strong) NSMutableArray *locationMarkers;
 @property (nonatomic, strong) NSMutableArray *driverMarkers;
+@property (nonatomic, strong) NSMutableArray<NSNumber *> *selectedCarTypes;
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
 @property (nonatomic, assign) NSInteger totalPrice;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
@@ -78,6 +79,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.creditCardButton.layer.borderColor = self.creditCardButton.tintColor.CGColor;
     self.cashButton.layer.borderColor = self.cashButton.tintColor.CGColor;
     self.stpCardTextField.borderColor = nil;
+    self.selectedCarTypes = [NSMutableArray arrayWithArray:@[@(0),@(0),@(0)]];
   
     [CardIOUtilities preload];
 }
@@ -400,14 +402,17 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     NSInteger numberValue = numLabel.text.integerValue;
     NSInteger diff = sender.tag == 7 ? 1 : - 1;
     numberValue = numberValue + diff;
+    UITableViewCell* cell = [AppDelegate parentTableViewCell:parentView];
+    UITableView* table = [AppDelegate parentTableView:cell];
+    NSIndexPath* pathOfTheCell = [table indexPathForCell:cell];
     if (numberValue >= 0) {
         numLabel.text = [NSString stringWithFormat:@"%ld",(long)numberValue];
         UILabel *priceLabel = [parentView viewWithTag:8];
         NSInteger price = [priceLabel.text substringFromIndex:1].integerValue;
         self.totalPrice += (price * diff);
-        self.confirmButton.backgroundColor = self.totalPrice > 0 ? [UIColor colorWithRed:0.24 green:0.57 blue:1.0 alpha:1.0] : [UIColor colorWithWhite:0.79 alpha:1.0];
-        self.payNowButton.backgroundColor = self.confirmButton.backgroundColor;
-        [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW    Total:€%ld", self.totalPrice] forState:UIControlStateNormal];
+        NSInteger value = self.selectedCarTypes[pathOfTheCell.row].integerValue;
+        self.selectedCarTypes[pathOfTheCell.row] = @(value + diff);
+        [self uiBindWithCard:YES];
     }
 }
 
@@ -432,18 +437,27 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.countryPrefixLabel.text = [SharedInstance sharedInstance].selCountryId;
 }
 
+- (void)uiBindWithCard:(BOOL)payWithCard {
+    _creditCardButton.selected = payWithCard;
+    _cashButton.selected = !payWithCard;
+    _cashButton.layer.borderWidth = payWithCard ? 0 : 1;
+    _creditCardButton.layer.borderWidth = !payWithCard ? 0 : 1;
+    _stpCardTextField.hidden = !payWithCard;
+    _creditCardLine.hidden = !payWithCard;
+    _takePhotoButton.hidden = !payWithCard;
+    //confirm & finish buttons
+    self.confirmButton.backgroundColor = self.totalPrice > 0 ? [UIColor colorWithRed:0.24 green:0.57 blue:1.0 alpha:1.0] : [UIColor colorWithWhite:0.79 alpha:1.0];
+    self.payNowButton.backgroundColor = self.confirmButton.backgroundColor;
+    [self.payNowButton setTitle:payWithCard ? [NSString stringWithFormat:@"PAY NOW    Total:€%ld", self.totalPrice] : @"FINISH" forState:UIControlStateNormal];
+
+}
+
 - (IBAction)cashButton_Click:(UIButton *)sender {
-    _cashButton.selected = YES;
-    _creditCardButton.selected = NO;
-    _cashButton.layer.borderWidth = 1;
-    _creditCardButton.layer.borderWidth = 0;
+    [self uiBindWithCard:NO];
 }
 
 - (IBAction)creditCardButton_Click:(UIButton *)sender {
-    _cashButton.selected = NO;
-    _creditCardButton.selected = YES;
-    _cashButton.layer.borderWidth = 0;
-    _creditCardButton.layer.borderWidth = 1;
+    [self uiBindWithCard:YES];
 }
 
 - (void)paymentCardTextFieldDidBeginEditingNumber:(nonnull STPPaymentCardTextField *)textField {
@@ -451,12 +465,57 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (void)paymentCardTextFieldDidChange:(STPPaymentCardTextField *)textField {
-    NSLog(@"Card number: %@ Exp Month: %@ Exp Year: %@ CVC: %@", textField.cardParams.number, @(textField.cardParams.expMonth), @(textField.cardParams.expYear), textField.cardParams.cvc);
+    //NSLog(@"Card number: %@ Exp Month: %@ Exp Year: %@ CVC: %@", textField.cardParams.number, @(textField.cardParams.expMonth), @(textField.cardParams.expYear), textField.cardParams.cvc);
     self.payNowButton.enabled = textField.isValid;
 }
 
 - (IBAction)payNow_click:(UIButton *)sender {
-    [self.view bringSubviewToFront:self.paymentDoneView];
+    NSDateFormatter *df = [NSDateFormatter new];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    df.timeZone = timeZone;
+    df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    // send payment to back end
+    STPCardParams *cardParams = self.stpCardTextField.cardParams;
+    STPAPIClient *stpClient = [STPAPIClient sharedClient];
+    [self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.integerValue == 0) {
+            return;
+        }
+        CarCategory *cCat = self.carCategoriesDataSource.items[idx];
+        TransferBookingRequest *request = [TransferBookingRequest new];
+        request.dropoffAddress = self.toLocationTextField.text;
+        request.pickupAddress = self.fromLocationTextField.text;
+        request.passengersNumber = obj.integerValue * cCat.maxPassengers;
+        request.dropoffLatLng = self.selectedLocation.latLng;
+        request.pickupLatLng = self.userPos;
+        request.agreedToTermsAndConditions = YES;
+        request.dateTime = [df stringFromDate:[NSDate date]];
+        request.extras = @[];
+        request.carTypeId = cCat.Id;
+        request.luggagePiecesNumber = obj.integerValue * cCat.maxLaggages;
+        AccountBindingModel *acc = [AccountBindingModel new];
+        acc.phoneNumber = self.phoneNumberTextField.text;
+        acc.email = self.emailTextField.text;
+        acc.confirmEmail = self.confirmEmailTextField.text;
+        acc.firstName = self.firstNameTextField.text;
+        acc.lastName = self.lastNameTextField.text;
+        acc.phoneNumberCountryCode = self.countryPrefixLabel.text;
+        request.accountBindingModel = acc;
+        
+        CarkyApiClient *api = [CarkyApiClient sharedService];
+        [stpClient createTokenWithCard:cardParams completion:^(STPToken *token, NSError *error) {
+            if (error) {
+                NSLog(@"Error occured in create token: %@", error.localizedDescription);
+                return;
+            }
+            request.stripeCardToken = token.tokenId;
+            [api CreateTransferBookingRequest:request withBlock:^(NSString *string) {
+                NSLog(@"Response: %@", string);
+                [self.view bringSubviewToFront:self.paymentDoneView];
+            }]; // create transfer request
+        }]; // create token
+    }];
+
 }
 
 - (IBAction)takePhoto_click:(UIButton *)sender {

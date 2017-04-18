@@ -107,7 +107,6 @@
 		AEAF1B231E885C8600C03768 /* UIDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B221E885C8600C03768 /* UIDropDownMenu.m */; };
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		C7F5E06BB189A5D2575E07A8 /* libPods-carkyipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAE8BB8A8987C3ED7D5FA65 /* libPods-carkyipad.a */; };
-		D11363761E9F772C00EB6279 /* CarCategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D11363751E9F772C00EB6279 /* CarCategoryViewCell.m */; };
 		D113637B1EA0731800EB6279 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363771EA0731800EB6279 /* libCardIO.a */; };
 		D113637C1EA0731800EB6279 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363781EA0731800EB6279 /* libopencv_core.a */; };
 		D113637D1EA0731800EB6279 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363791EA0731800EB6279 /* libopencv_imgproc.a */; };
@@ -311,8 +310,6 @@
 		AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZExtensions.h"; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
-		D11363741E9F772C00EB6279 /* CarCategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCategoryViewCell.h; sourceTree = "<group>"; };
-		D11363751E9F772C00EB6279 /* CarCategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCategoryViewCell.m; sourceTree = "<group>"; };
 		D11363771EA0731800EB6279 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = CardIO/libCardIO.a; sourceTree = "<group>"; };
 		D11363781EA0731800EB6279 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = CardIO/libopencv_core.a; sourceTree = "<group>"; };
 		D11363791EA0731800EB6279 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = CardIO/libopencv_imgproc.a; sourceTree = "<group>"; };
@@ -565,8 +562,6 @@
 				D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
-				D11363741E9F772C00EB6279 /* CarCategoryViewCell.h */,
-				D11363751E9F772C00EB6279 /* CarCategoryViewCell.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
 				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
@@ -1246,7 +1241,6 @@
 				AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */,
 				AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */,
 				D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */,
-				D11363761E9F772C00EB6279 /* CarCategoryViewCell.m in Sources */,
 				AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,

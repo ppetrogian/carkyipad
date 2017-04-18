@@ -203,5 +203,29 @@
     return  polyline;
 }
 
++(UITableView *) parentTableView:(UIView *)view {
+    // iterate up the view hierarchy to find the table containing this cell/view
+    UIView *aView = view.superview;
+    while(aView != nil) {
+        if([aView isKindOfClass:[UITableView class]]) {
+            return (UITableView *)aView;
+        }
+        aView = aView.superview;
+    }
+    return nil; // this view is not within a tableView
+}
+
++(UITableViewCell *) parentTableViewCell:(UIView *)view {
+    // iterate up the view hierarchy to find the table containing this cell/view
+    UIView *aView = view.superview;
+    while(aView != nil) {
+        if([aView isKindOfClass:[UITableViewCell class]]) {
+            return (UITableViewCell *)aView;
+        }
+        aView = aView.superview;
+    }
+    return nil; // this view is not within a tableView
+}
+
 
 @end

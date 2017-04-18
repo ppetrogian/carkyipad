@@ -28,6 +28,8 @@
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
 +(AppDelegate *)instance;
 // helper methods
++(UITableView *) parentTableView:(UIView *)view;
++(UITableViewCell *) parentTableViewCell:(UIView *)view;
 -(void)fetchInitialData:(BlockBoolean)block;
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location;
 +(MBProgressHUD *)showProgressNotification:(UIView *)view;
