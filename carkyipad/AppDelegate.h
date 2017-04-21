@@ -30,11 +30,14 @@
 // helper methods
 +(UITableView *) parentTableView:(UIView *)view;
 +(UITableViewCell *) parentTableViewCell:(UIView *)view;
++(UICollectionView *)parentCollectionView:(UIView *)view;
++(UICollectionViewCell *)parentCollectionViewCell:(UIView *)view;
 -(void)fetchInitialData:(BlockBoolean)block;
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location;
 +(MBProgressHUD *)showProgressNotification:(UIView *)view;
 +(void)hideProgressNotification:(MBProgressHUD *)hud;
 +(void)configurePSTextField:(UITextField *)tf withColor:(UIColor *)color;
 +(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;
++(UIImage *)imageToGreyImage:(UIImage *)image;
 @end
 

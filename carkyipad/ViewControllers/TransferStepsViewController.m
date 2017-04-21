@@ -50,7 +50,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         [AppDelegate hideProgressNotification:hud];
         
         [self getWellKnownLocations];
-        [self loadCarCategories];
     }];
     NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"];
     self.fromLocationTextField.text = posDict[@"Name"];
@@ -321,8 +320,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (NSArray *)stepViewControllers {
-    UIViewController *s0 = [self.storyboard instantiateViewControllerWithIdentifier:@"payment"];
-    s0.step.title = NSLocalizedString(@"payment", nil) ;
+    UIViewController *s0 = [self.storyboard instantiateViewControllerWithIdentifier:@"requestRide"];
+    //s0.step.title = NSLocalizedString(@"payment", nil) ;
     
     return @[s0];
 }
@@ -360,41 +359,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     
 }
 
--(void)loadCarCategories {
-    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:3];
-    CarCategory *cc;
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(1), kCarCategoryDescription:@"STANDARD", kCarCategoryPrice:@(50), kCarCategoryImage:@"STANDARD", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(3)}];
-    [temp addObject:cc];
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(2), kCarCategoryDescription:@"LUXURY SUV", kCarCategoryPrice:@(30), kCarCategoryImage:@"SUV", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(4)}];
-    [temp addObject:cc];
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(3), kCarCategoryDescription:@"VAN", kCarCategoryPrice:@(80), kCarCategoryImage:@"VAN", kCarCategoryMaxPassengers:@(8),kCarCategoryMaxLaggages:@(8)}];
-    [temp addObject:cc];
-    self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:[temp copy] cellReuseIdentifier:@"driverFindCell" configureCellBlock:^(UITableViewCell *cell, CarCategory *item) {
-        cell.contentView.backgroundColor = [UIColor whiteColor];
-        UILabel *nameLabel = [cell.contentView viewWithTag:1];
-        nameLabel.text = item.Description;
-        UILabel *passLabel = [cell.contentView viewWithTag:2];
-        passLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxPassengers];
-        UILabel *laggLabel = [cell.contentView viewWithTag:3];
-        laggLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxLaggages];
-        UILabel *numLabel = [cell.contentView viewWithTag:6];
-        numLabel.text = [NSString stringWithFormat:@"%ld",(long)0];
-        UIImageView *ccImageView = [cell.contentView viewWithTag:4];
-        ccImageView.image = [UIImage imageNamed:item.image];
-        UILabel *priceLabel = [cell.contentView viewWithTag:8];
-        priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
-        UIButton *buttonMinus = [cell.contentView viewWithTag:5];
-        [buttonMinus setTitleEdgeInsets:UIEdgeInsetsMake(-5.0f, 0.0f, 0.0f, 0.0f)];
-        [buttonMinus addTarget:self action:@selector(addOrSubtractCar:) forControlEvents:UIControlEventTouchUpInside];
-        UIButton *buttonPlus = [cell.contentView viewWithTag:7];
-        [buttonPlus setTitleEdgeInsets:UIEdgeInsetsMake(-5.0f, 0.0f, 0.0f, 0.0f)];
-        [buttonPlus addTarget:self action:@selector(addOrSubtractCar:) forControlEvents:UIControlEventTouchUpInside];
-    }];
-    self.carCategoriesTableView.allowsSelection = YES;
-    self.carCategoriesTableView.dataSource = self.carCategoriesDataSource;
-    self.carCategoriesTableView.delegate = self;
-    [self.carCategoriesTableView reloadData];
-}
+
 
 -(void)addOrSubtractCar:(UIButton *)sender {
     UIView *parentView = sender.superview;

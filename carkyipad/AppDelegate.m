@@ -203,7 +203,7 @@
     return  polyline;
 }
 
-+(UITableView *) parentTableView:(UIView *)view {
++(UITableView *)parentTableView:(UIView *)view {
     // iterate up the view hierarchy to find the table containing this cell/view
     UIView *aView = view.superview;
     while(aView != nil) {
@@ -215,7 +215,7 @@
     return nil; // this view is not within a tableView
 }
 
-+(UITableViewCell *) parentTableViewCell:(UIView *)view {
++(UITableViewCell *)parentTableViewCell:(UIView *)view {
     // iterate up the view hierarchy to find the table containing this cell/view
     UIView *aView = view.superview;
     while(aView != nil) {
@@ -225,6 +225,58 @@
         aView = aView.superview;
     }
     return nil; // this view is not within a tableView
+}
+
++(UICollectionView *)parentCollectionView:(UIView *)view {
+    // iterate up the view hierarchy to find the table containing this cell/view
+    UIView *aView = view.superview;
+    while(aView != nil) {
+        if([aView isKindOfClass:[UICollectionView class]]) {
+            return (UICollectionView *)aView;
+        }
+        aView = aView.superview;
+    }
+    return nil; // this view is not within a collection view
+}
+
++(UICollectionViewCell *)parentCollectionViewCell:(UIView *)view {
+    // iterate up the view hierarchy to find the table containing this cell/view
+    UIView *aView = view.superview;
+    while(aView != nil) {
+        if([aView isKindOfClass:[UICollectionViewCell class]]) {
+            return (UICollectionViewCell *)aView;
+        }
+        aView = aView.superview;
+    }
+    return nil; // this view is not within a collection view
+}
+
++(UIImage *)imageToGreyImage:(UIImage *)image {
+    // Create image rectangle with current image width/height
+    CGFloat actualWidth = image.size.width;
+    CGFloat actualHeight = image.size.height;
+    
+    CGRect imageRect = CGRectMake(0, 0, actualWidth, actualHeight);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    
+    CGContextRef context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, colorSpace, kCGImageAlphaNone);
+    CGContextDrawImage(context, imageRect, [image CGImage]);
+    
+    CGImageRef grayImage = CGBitmapContextCreateImage(context);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, nil, kCGImageAlphaOnly);
+    CGContextDrawImage(context, imageRect, [image CGImage]);
+    CGImageRef mask = CGBitmapContextCreateImage(context);
+    CGContextRelease(context);
+    
+    UIImage *grayScaleImage = [UIImage imageWithCGImage:CGImageCreateWithMask(grayImage, mask) scale:image.scale orientation:image.imageOrientation];
+    CGImageRelease(grayImage);
+    CGImageRelease(mask);
+    
+    // Return the new grayscale image
+    return grayScaleImage;
 }
 
 

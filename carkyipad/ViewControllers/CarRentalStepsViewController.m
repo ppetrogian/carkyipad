@@ -55,6 +55,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSUInteger)numberOfStepsInStepsBar:(RMStepsBar *)bar {
+    return 4;
+}
+
 - (NSArray *)stepViewControllers {
     StepViewController *firstStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Details"];
     firstStep.step.title = NSLocalizedString(@"Details", nil) ;
