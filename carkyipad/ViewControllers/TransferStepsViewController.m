@@ -320,10 +320,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (NSArray *)stepViewControllers {
-    UIViewController *s0 = [self.storyboard instantiateViewControllerWithIdentifier:@"requestRide"];
+    UITabBarController *tb = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBar"]; //requestRide
     //s0.step.title = NSLocalizedString(@"payment", nil) ;
     
-    return @[s0];
+    return tb.viewControllers;
 }
 
 - (void)finishedAllSteps {

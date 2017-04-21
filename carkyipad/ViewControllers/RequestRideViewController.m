@@ -43,11 +43,11 @@
 -(void)loadCarCategories {
     NSMutableArray *temp = [NSMutableArray arrayWithCapacity:3];
     CarCategory *cc;
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(1), kCarCategoryDescription:@"STANDARD", kCarCategoryPrice:@(50), kCarCategoryImage:@"STANDARD", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(3)}];
+    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(1), kCarCategoryDescription:@"STANDARD", kCarCategoryPrice:@(50), kCarCategoryImage:@"audi", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(3)}];
     [temp addObject:cc];
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(2), kCarCategoryDescription:@"LUXURY SUV", kCarCategoryPrice:@(30), kCarCategoryImage:@"SUV", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(4)}];
+    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(2), kCarCategoryDescription:@"LUXURY SUV", kCarCategoryPrice:@(30), kCarCategoryImage:@"range rover", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(4)}];
     [temp addObject:cc];
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(3), kCarCategoryDescription:@"VAN", kCarCategoryPrice:@(80), kCarCategoryImage:@"VAN", kCarCategoryMaxPassengers:@(8),kCarCategoryMaxLaggages:@(8)}];
+    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(3), kCarCategoryDescription:@"VAN", kCarCategoryPrice:@(80), kCarCategoryImage:@"vito", kCarCategoryMaxPassengers:@(8),kCarCategoryMaxLaggages:@(8)}];
     [temp addObject:cc];
     self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:[temp copy] cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
         cell.contentView.backgroundColor = [UIColor whiteColor];
@@ -82,7 +82,8 @@
     NSInteger numberValue = numLabel.text.integerValue;
     NSInteger diff = sender.tag == 7 ? 1 : - 1;
     numberValue = numberValue + diff;
-    //UICollectionViewCell* cell = [AppDelegate parentCollectionViewCell:parentView];
+    UICollectionViewCell* cell = [AppDelegate parentCollectionViewCell:parentView];
+    cell.selected = YES;
     //UICollectionView* cl = [AppDelegate parentCollectionView:cell];
     //NSIndexPath* pathOfTheCell = [table indexPathForCell:cell];
     if (numberValue >= 0) {
