@@ -11,10 +11,11 @@
 #import "CarkyApiClient.h"
 #import "AppDelegate.h"
 #import "DataModels.h"
+#import "TransferStepsViewController.h"
 
 @interface RequestRideViewController () <UITableViewDelegate, UICollectionViewDelegate>
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
-
+@property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
 @end
 
 @implementation RequestRideViewController
@@ -23,11 +24,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadCarCategories];
+     NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(TransferStepsViewController *)parentController {
+    return (TransferStepsViewController *)self.stepsController;
 }
 
 /*
@@ -102,6 +109,31 @@
         self.selectedCarType = indexPath.row;
         self.totalPrice = 0;
     }
-    
 }
+
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (tableView == self.locationsTableView) {
+//        Location *loc = self.wellKnownLocationsDataSource.items[indexPath.row];
+//        [self didSelectLocation:loc.identifier withValue:loc andText:loc.name];
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    } else {
+//        CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
+//        [self didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.Description];
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    }
+//}
+//
+//
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    TGRArrayDataSource *dataSource = (TGRArrayDataSource *)self.locationsTableView.dataSource;
+//    NSArray<Location*> *locations = dataSource.items;
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@",textField.text];
+//    if ([locations filteredArrayUsingPredicate:predicate].count > 0) {
+//        Location *selectedLocation = [[locations filteredArrayUsingPredicate:predicate] objectAtIndex:0];
+//        [self didSelectLocation:selectedLocation.identifier withValue:selectedLocation andText:selectedLocation.name];
+//    }
+//}
+
+ 
 @end

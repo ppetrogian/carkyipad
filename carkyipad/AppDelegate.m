@@ -20,6 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
     // Override point for customization after application launch.
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"17b2f6849c3d402d85f37c7761481c97"];
     // Do some additional configuration if needed here
@@ -70,8 +71,21 @@
     self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
     [self.api.hud showAnimated:YES];
     //todo: set login username
-    [self.api loginWithUsername:@"phisakel@gmail.com" andPassword:@"12345678" withTokenBlock:^(BOOL result) {
-        block(YES);
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
+    BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
+    if (!enabled) {
+        return;
+    }
+    [self.api loginWithUsername:userName andPassword:password withTokenBlock:^(BOOL result) {
+        [self.api GetClientConfiguration:^(NSArray *array) {
+            if (array.count > 0) {
+                AppDelegate *app = [AppDelegate instance];
+                app.clientConfiguration = array.firstObject;
+                block(YES);
+            }
+        }];
     }];
 }
 

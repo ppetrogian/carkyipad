@@ -9,6 +9,7 @@
 #import "LatLng.h"
 
 NSString *const kLocationsIdentifier = @"Id";
+NSString *const kLocationsZoneId = @"ZoneId";
 NSString *const kLocationsName = @"Name";
 NSString *const kLocationsPlaceId = @"PlaceId";
 NSString *const kLocationsLatLng = @"Position";
@@ -37,6 +38,7 @@ NSString *const kLocationsLatLng = @"Position";
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
         self.identifier = [[self objectOrNilForKey:kLocationsIdentifier fromDictionary:dict] integerValue];
+        self.zoneId = [[self objectOrNilForKey:kLocationsZoneId fromDictionary:dict] integerValue];
         self.name = [self objectOrNilForKey:kLocationsName fromDictionary:dict];
         self.placeId = [self objectOrNilForKey:kLocationsPlaceId fromDictionary:dict];
         self.latLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kLocationsLatLng]];
@@ -50,6 +52,7 @@ NSString *const kLocationsLatLng = @"Position";
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:@(self.identifier) forKey:kLocationsIdentifier];
+    [mutableDict setValue:@(self.zoneId) forKey:kLocationsZoneId];
     [mutableDict setValue:self.name forKey:kLocationsName];
     [mutableDict setValue:self.placeId forKey:kLocationsPlaceId];
     [mutableDict setValue:[self.latLng dictionaryRepresentation] forKey:kLocationsLatLng];

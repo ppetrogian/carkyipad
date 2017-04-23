@@ -242,4 +242,41 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+-(void)GetClientConfiguration: (BlockArray)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self setAuthorizationHeader];
+    [self GET:@"api/Partner/GetClientConfiguration" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        ClientConfigurationResponse* temp = [ClientConfigurationResponse modelObjectWithDictionary:responseObject];
+        block([NSArray arrayWithObject:temp]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        block([NSArray array]);
+    }];
+}
+
+-(void)GetPrices:(NSInteger)dropoffZoneId withBlock:(BlockArray)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self GET:@"api/Partner/GetPrices" parameters:@{@"dropoffZoneId": @(dropoffZoneId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        CarPriceResponse* temp = [CarPriceResponse modelObjectWithDictionary:responseObject];
+        block(temp.carPrice);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        block([NSArray array]);
+    }];
+}
+
+-(void)ConfirmPhoneNumber:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self setAuthorizationHeader];
+    [self POST:@"api/Account/ConfirmPhoneNumber" parameters:@{@"code": @(code),@"userId": @(userId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        block(NO);
+    }];
+}
+
 @end

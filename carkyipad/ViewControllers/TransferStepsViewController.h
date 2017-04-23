@@ -14,7 +14,7 @@
 
 @interface TransferStepsViewController : CarRentalStepsViewController
 @property (weak, nonatomic) IBOutlet UIView *viewFindDrivers;
-@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+
 @property (weak, nonatomic) IBOutlet UITextField *fromLocationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *toLocationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
@@ -42,10 +42,9 @@
 
 
 @property (strong, nonatomic) Location *currentLocation;
-
--(void)loadCarCategories;
+-(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 -(void)loadLocations:(NSString *)filter;
 // methods
--(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination;
+
 
 @end

@@ -42,6 +42,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 //GET api/Web/GetAvailableCars   car categories
 -(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
+-(void)GetTransferServiceAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
 //GET api/Helper/GetAllCarCategories   car categories
 -(void)GetAllCarCategories:(BlockArray)block;
@@ -58,12 +59,17 @@ typedef void(^BlockProgress)(NSProgress *progress);
 #pragma mark - Taxi Api calls
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
--(void)GetTransferServiceAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block;
 
 -(void)GetStripePublishableApiKey:(BlockString)block;
 
 -(void)FindNearestCarkyDriverPositions:(CarkyDriverPositionsRequest *)request withBlock:(BlockArray)block;
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block;
+-(void)GetClientConfiguration:(BlockArray)block;
+
+-(void)GetPrices:(NSInteger)dropoffZoneId withBlock:(BlockArray)block;
+
+-(void)ConfirmPhoneNumber:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block;
+
 
 @end

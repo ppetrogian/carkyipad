@@ -60,7 +60,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>Transfer</string>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -75,9 +75,9 @@
 	<key>UserDefaultLocation</key>
 	<dict>
 		<key>Lat</key>
-		<real>37.443286999999998</real>
+		<real>37.448867800000002</real>
 		<key>Lng</key>
-		<real>25.330217999999999</real>
+		<real>25.3290808</real>
 		<key>Name</key>
 		<string>Belverede Boutique Hotel</string>
 	</dict>

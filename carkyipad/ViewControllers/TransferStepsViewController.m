@@ -17,6 +17,7 @@
 #import "SharedInstance.h"
 #import "CardIO.h"
 #import <Stripe/Stripe.h>
+#import <Bolts/Bolts.h>
 
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
@@ -41,21 +42,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
-    _mapView.mapType = kGMSTypeNormal;
-    _mapView.settings.myLocationButton = YES;
-    _mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
-    // todo: remove from here
-    MBProgressHUD *hud = [AppDelegate showProgressNotification:self.view];
-    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
-        [AppDelegate hideProgressNotification:hud];
-        
-        [self getWellKnownLocations];
-    }];
-    NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"];
-    self.fromLocationTextField.text = posDict[@"Name"];
-    _userPos = [LatLng modelObjectWithDictionary:posDict];
-    Location *cl = [Location new]; cl.identifier = -1; cl.name = @"Current location"; cl.latLng = self.userPos;
-    self.currentLocation = cl;
+
     [AppDelegate configurePSTextField:self.fromLocationTextField withColor:[UIColor whiteColor]];
     [AppDelegate configurePSTextField:self.toLocationTextField withColor:[UIColor whiteColor]];
     self.toLocationTextField.delegate = self;
@@ -83,10 +70,19 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [CardIOUtilities preload];
 }
 
--(void)getWellKnownLocations {
-    CarkyApiClient *api = [[AppDelegate instance] api];
-    self.userFleetLocationId = ((NSNumber *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserFleetLocationId"]).integerValue;
-    [api GetWellKnownLocations:self.userFleetLocationId withBlock:^(NSArray<Location *> *array) {
+-(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {
+    NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"];
+    self.fromLocationTextField.text = posDict[@"Name"];
+    _userPos = [LatLng modelObjectWithDictionary:posDict];
+    Location *cl = [Location new]; cl.identifier = -1; cl.name = @"Current location"; cl.latLng = self.userPos;
+    self.currentLocation = cl;
+    mapView.mapType = kGMSTypeNormal;
+    mapView.settings.myLocationButton = YES;
+    mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
+    // todo: remove from here
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+     // ((NSNumber *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserFleetLocationId"]).integerValue;
+    [api GetWellKnownLocations:locationId withBlock:^(NSArray<Location *> *array) {
         [AppDelegate instance].wellKnownLocations = array;
         [self loadLocations:nil];
         
@@ -98,14 +94,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             marker.userData = obj;
             marker.title = @""; // obj.name;
             marker.tappable = YES;
-            marker.map = _mapView;
+            marker.map = mapView;
             [self.locationMarkers addObject:marker];
         }];
     }];
     CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
-    self.mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
-    self.mapView.delegate = self;
-
+    mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
+    mapView.delegate = self;
 }
 
 -(void)loadLocations:(NSString *)filter {
@@ -138,19 +133,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     
     [self.locationsTableView reloadData];
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.locationsTableView) {
-        Location *loc = self.wellKnownLocationsDataSource.items[indexPath.row];
-        [self didSelectLocation:loc.identifier withValue:loc andText:loc.name];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    } else {
-        CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
-        [self didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.Description];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
-}
-
 #pragma mark - delegates
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.toLocationTextField) {
@@ -162,15 +144,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    TGRArrayDataSource *dataSource = (TGRArrayDataSource *)self.locationsTableView.dataSource;
-    NSArray<Location*> *locations = dataSource.items;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@",textField.text];
-    if ([locations filteredArrayUsingPredicate:predicate].count > 0) {
-        Location *selectedLocation = [[locations filteredArrayUsingPredicate:predicate] objectAtIndex:0];
-        [self didSelectLocation:selectedLocation.identifier withValue:selectedLocation andText:selectedLocation.name];
-    }
-}
 
 - (IBAction)toLocationTextChanged:(UITextField *)textField {
     [self loadLocations:textField.text];
@@ -183,21 +156,21 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     return [locations filteredArrayUsingPredicate:predicate].count > 0 ? YES : NO;
 }
 
-- (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t {
+- (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView {
     self.selectedLocation = (Location *)value;
     self.toLocationTextField.text = self.selectedLocation.name;
     [self.locationMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.userData == self.selectedLocation) {
-            _mapView.selectedMarker = obj;
+            mapView.selectedMarker = obj;
         }
     }];
-    [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng];
+    [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng forMap:mapView];
     [self.toLocationTextField resignFirstResponder];
 
-    [self.view bringSubviewToFront:self.viewFindDrivers];
+    //[self.view bringSubviewToFront:self.viewFindDrivers];
 }
 
-- (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text {
+- (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
     CarkyDriverPositionsRequest *req = [self getDriversRequest:identifier];
     CarkyApiClient *api = [CarkyApiClient sharedService];
     [self.driverMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -210,7 +183,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             marker.position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
             marker.icon = [UIImage imageNamed:@"car copy 3"];
             marker.userData = obj;
-             marker.map = _mapView;
+             marker.map = mapView;
             //marker.title = obj.d
              [self.driverMarkers addObject:marker];
         }];
@@ -220,8 +193,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
     id loc = marker.userData;
     if ([loc isKindOfClass:[Location class]]) {
-        _mapView.selectedMarker = marker;
-        [self didSelectLocation:0 withValue:loc andText:nil];
+        mapView.selectedMarker = marker;
+        [self didSelectLocation:0 withValue:loc andText:nil forMap:mapView];
     }
     return YES;
 }
@@ -230,8 +203,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     // your code
     id loc = marker.userData;
     if ([loc isKindOfClass:[Location class]]) {
-        _mapView.selectedMarker = marker;
-        [self didSelectLocation:0 withValue:loc andText:nil];
+        mapView.selectedMarker = marker;
+        [self didSelectLocation:0 withValue:loc andText:nil forMap:mapView];
     }
 }
 
@@ -334,7 +307,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination {
+-(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination forMap:(GMSMapView *)mapView {
     NSString *baseUrl = [NSString stringWithFormat:URLDirectionsFmt,origin.lat,origin.lng, destination.lat, destination.lng];
     NSURL *url = [NSURL URLWithString:baseUrl];
     dispatch_async(dispatch_get_main_queue(), ^() {
@@ -342,9 +315,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         NSError *error;
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:directionsData options:NSJSONReadingMutableContainers error:&error];
         self.polyline.map = nil;
-        self.polyline = [AppDelegate showRouteInMap:_mapView withResults:dict forMarker:_mapView.selectedMarker];
+        self.polyline = [AppDelegate showRouteInMap:mapView withResults:dict forMarker:mapView.selectedMarker];
     });
 }
+
 // handlers
 - (IBAction)gotoBack:(UIButton *)sender {
     UIView *subView = self.view.subviews.lastObject;

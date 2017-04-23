@@ -20,6 +20,10 @@
 #import "CarkyDriverPositionsResponse.h"
 #import "AccountBindingModel.h"
 #import "TransferBookingRequest.h"
+#import "CarServices.h"
+#import "ClientConfigurationResponse.h"
+#import "CarPrice.h"
+#import "CarPriceResponse.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;

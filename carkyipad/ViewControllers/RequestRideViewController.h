@@ -7,9 +7,11 @@
 //
 
 #import "StepViewController.h"
+@class GMSMapView;
 
 @interface RequestRideViewController : StepViewController
 @property (nonatomic, assign) NSInteger totalPrice;
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (nonatomic,assign) NSInteger selectedCarType;
 @property (weak, nonatomic) IBOutlet UICollectionView *carCategoriesCollectionView;
 @end

@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSArray<Location*> *wellKnownLocations;
 @property (strong, nonatomic) NSMutableDictionary *availableCarsDict;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
+@property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
 +(AppDelegate *)instance;
 // helper methods
 +(UITableView *) parentTableView:(UIView *)view;
