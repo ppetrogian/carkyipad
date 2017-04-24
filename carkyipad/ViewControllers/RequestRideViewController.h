@@ -10,8 +10,11 @@
 @class GMSMapView;
 
 @interface RequestRideViewController : StepViewController
-@property (nonatomic, assign) NSInteger totalPrice;
+@property (weak, nonatomic) IBOutlet UITextField *dropOffLocationTextField;
+
+@property (weak, nonatomic) IBOutlet UIButton *requestRideButton;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
-@property (nonatomic,assign) NSInteger selectedCarType;
 @property (weak, nonatomic) IBOutlet UICollectionView *carCategoriesCollectionView;
+
+- (void)didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t;
 @end

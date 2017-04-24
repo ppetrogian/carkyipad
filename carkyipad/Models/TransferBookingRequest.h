@@ -2,12 +2,12 @@
 //  TransferBookingRequest.h
 //
 //  Created by   on 17/04/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class AccountBindingModel, LatLng;
+@class LatLng;
 
 @interface TransferBookingRequest : NSObject <NSCoding, NSCopying>
 
@@ -17,7 +17,7 @@
 @property (nonatomic, assign) NSInteger passengersNumber;
 @property (nonatomic, strong) LatLng *dropoffLatLng;
 @property (nonatomic, assign) BOOL agreedToTermsAndConditions;
-@property (nonatomic, strong) AccountBindingModel *accountBindingModel;
+
 @property (nonatomic, strong) NSString *dateTime;
 @property (nonatomic, assign) NSInteger paymentMethod;
 @property (nonatomic, strong) LatLng *pickupLatLng;

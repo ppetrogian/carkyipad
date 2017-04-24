@@ -1,15 +1,15 @@
 //
-//  AccountBindingModel.h
+//  RegisterClientRequest.h
 //
 //  Created by   on 17/04/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 
 
-@interface AccountBindingModel : NSObject <NSCoding, NSCopying>
+@interface RegisterClientRequest : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSString *email;

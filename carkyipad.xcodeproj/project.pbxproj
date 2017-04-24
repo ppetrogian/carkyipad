@@ -138,7 +138,7 @@
 		D1344C091E78AE2000006FAD /* PSStepButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C071E78AE2000006FAD /* PSStepButton.m */; };
 		D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C0B1E78CF8F00006FAD /* StepViewController.m */; };
 		D1344C0D1E78CF8F00006FAD /* StepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1344C0B1E78CF8F00006FAD /* StepViewController.m */; };
-		D143DD1E1EA533C300F12C36 /* AccountBindingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D143DD1D1EA533C300F12C36 /* AccountBindingModel.m */; };
+		D143DD1E1EA533C300F12C36 /* RegisterClientRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D143DD1D1EA533C300F12C36 /* RegisterClientRequest.m */; };
 		D143DD241EA5347200F12C36 /* TransferBookingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D143DD231EA5347200F12C36 /* TransferBookingRequest.m */; };
 		D14DF0AB1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
 		D14DF0AC1E757F940040B97F /* RMStep.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A61E757F940040B97F /* RMStep.m */; };
@@ -151,6 +151,8 @@
 		D15951461EACA1CA00540076 /* CarPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951431EACA1CA00540076 /* CarPrice.m */; };
 		D15951471EACA1CA00540076 /* CarPriceResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951451EACA1CA00540076 /* CarPriceResponse.m */; };
 		D15951491EACB08B00540076 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D15951481EACB08B00540076 /* Settings.bundle */; };
+		D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */; };
+		D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951511EAD732900540076 /* ClientDetailsViewController.m */; };
 		D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9801E904C1400F735A0 /* CarRentalModel.m */; };
 		D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */; };
 		D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98B1E910BAA00F735A0 /* CarViewCell.m */; };
@@ -354,8 +356,8 @@
 		D1344C071E78AE2000006FAD /* PSStepButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSStepButton.m; sourceTree = "<group>"; };
 		D1344C0A1E78CF8F00006FAD /* StepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepViewController.h; path = ViewControllers/StepViewController.h; sourceTree = "<group>"; };
 		D1344C0B1E78CF8F00006FAD /* StepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepViewController.m; path = ViewControllers/StepViewController.m; sourceTree = "<group>"; };
-		D143DD1C1EA533C300F12C36 /* AccountBindingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBindingModel.h; sourceTree = "<group>"; };
-		D143DD1D1EA533C300F12C36 /* AccountBindingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBindingModel.m; sourceTree = "<group>"; };
+		D143DD1C1EA533C300F12C36 /* RegisterClientRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClientRequest.h; sourceTree = "<group>"; };
+		D143DD1D1EA533C300F12C36 /* RegisterClientRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClientRequest.m; sourceTree = "<group>"; };
 		D143DD221EA5347200F12C36 /* TransferBookingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferBookingRequest.h; sourceTree = "<group>"; };
 		D143DD231EA5347200F12C36 /* TransferBookingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferBookingRequest.m; sourceTree = "<group>"; };
 		D14DF0A51E757F940040B97F /* RMStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStep.h; sourceTree = "<group>"; };
@@ -373,6 +375,10 @@
 		D15951441EACA1CA00540076 /* CarPriceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarPriceResponse.h; sourceTree = "<group>"; };
 		D15951451EACA1CA00540076 /* CarPriceResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarPriceResponse.m; sourceTree = "<group>"; };
 		D15951481EACB08B00540076 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D159514D1EAD498300540076 /* SelectDropoffLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectDropoffLocationViewController.h; path = ViewControllers/SelectDropoffLocationViewController.h; sourceTree = "<group>"; };
+		D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectDropoffLocationViewController.m; path = ViewControllers/SelectDropoffLocationViewController.m; sourceTree = "<group>"; };
+		D15951501EAD732900540076 /* ClientDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientDetailsViewController.h; path = ViewControllers/ClientDetailsViewController.h; sourceTree = "<group>"; };
+		D15951511EAD732900540076 /* ClientDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientDetailsViewController.m; path = ViewControllers/ClientDetailsViewController.m; sourceTree = "<group>"; };
 		D19FF97F1E904C1400F735A0 /* CarRentalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalModel.h; sourceTree = "<group>"; };
 		D19FF9801E904C1400F735A0 /* CarRentalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalModel.m; sourceTree = "<group>"; };
 		D19FF9871E910B6A00F735A0 /* CarExtraBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarExtraBaseTableViewCell.h; path = ViewControllers/CarExtraBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -465,8 +471,6 @@
 			isa = PBXGroup;
 			children = (
 				D159513B1EAC9AB500540076 /* Taxi */,
-				D143DD1C1EA533C300F12C36 /* AccountBindingModel.h */,
-				D143DD1D1EA533C300F12C36 /* AccountBindingModel.m */,
 				AE34F1551E903772000D3997 /* AvailableCars.h */,
 				AE34F1561E903772000D3997 /* AvailableCars.m */,
 				AE34F1571E903772000D3997 /* Cars.h */,
@@ -791,6 +795,10 @@
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				AEEA24D41EAA349900043423 /* RequestRideViewController.h */,
 				AEEA24D51EAA349900043423 /* RequestRideViewController.m */,
+				D159514D1EAD498300540076 /* SelectDropoffLocationViewController.h */,
+				D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */,
+				D15951501EAD732900540076 /* ClientDetailsViewController.h */,
+				D15951511EAD732900540076 /* ClientDetailsViewController.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -926,6 +934,8 @@
 				D12802C41E9D691500DA05E7 /* CarkyDriverPositionsRequest.m */,
 				D12802CE1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.h */,
 				D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */,
+				D143DD1C1EA533C300F12C36 /* RegisterClientRequest.h */,
+				D143DD1D1EA533C300F12C36 /* RegisterClientRequest.m */,
 				D143DD221EA5347200F12C36 /* TransferBookingRequest.h */,
 				D143DD231EA5347200F12C36 /* TransferBookingRequest.m */,
 			);
@@ -1158,7 +1168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1188,7 +1198,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1231,7 +1241,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1310,6 +1320,7 @@
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
+				D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */,
 				D15951401EAC9AC400540076 /* CarServices.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
 				AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */,
@@ -1320,6 +1331,7 @@
 				AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
+				D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */,
 				AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
 				AE6352FB1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */,
 				AE6352BC1E75DEAF00065F0F /* BaseViewController.m in Sources */,
@@ -1339,7 +1351,7 @@
 				D15951471EACA1CA00540076 /* CarPriceResponse.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
-				D143DD1E1EA533C300F12C36 /* AccountBindingModel.m in Sources */,
+				D143DD1E1EA533C300F12C36 /* RegisterClientRequest.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,

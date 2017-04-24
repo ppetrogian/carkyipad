@@ -18,7 +18,7 @@
 #import "CarRentalModel.h"
 #import "CarkyDriverPositionsRequest.h"
 #import "CarkyDriverPositionsResponse.h"
-#import "AccountBindingModel.h"
+#import "RegisterClientRequest.h"
 #import "TransferBookingRequest.h"
 #import "CarServices.h"
 #import "ClientConfigurationResponse.h"

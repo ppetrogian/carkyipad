@@ -10,9 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
-@class MBProgressHUD;
-@class CarkyDriverPositionsRequest;
-@class TransferBookingRequest;
+@class MBProgressHUD,CarkyDriverPositionsRequest,TransferBookingRequest,RegisterClientRequest;
 
 typedef void(^BlockArray)(NSArray *array);
 typedef void(^BlockString)(NSString *string);
@@ -42,9 +40,10 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 //GET api/Web/GetAvailableCars   car categories
 -(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
+
 -(void)GetTransferServiceAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
-//GET api/Helper/GetAllCarCategories   car categories
+//GET api/Helper/GetAllCarCategories car categories
 -(void)GetAllCarCategories:(BlockArray)block;
 
 //GET api/Helper/GetAllCarTypes   car  types
@@ -59,7 +58,9 @@ typedef void(^BlockProgress)(NSProgress *progress);
 #pragma mark - Taxi Api calls
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block;
+-(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockBoolean)block;
+
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockBoolean)block;
 
 -(void)GetStripePublishableApiKey:(BlockString)block;
 
@@ -67,9 +68,11 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetClientConfiguration:(BlockArray)block;
 
--(void)GetPrices:(NSInteger)dropoffZoneId withBlock:(BlockArray)block;
+-(void)GetPricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block;
 
--(void)ConfirmPhoneNumber:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block;
+-(void)ConfirmPhoneNumberWithCode:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block;
+
+-(void)SendPhoneNumberConfirmationForUser:(NSInteger)userId withBlock:(BlockBoolean)block;
 
 
 @end

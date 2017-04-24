@@ -22,9 +22,9 @@
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
-@interface TransferStepsViewController () <CLLocationManagerDelegate, GMSMapViewDelegate, CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, SelectDelegate, UITextFieldDelegate, UITableViewDelegate>
+@interface TransferStepsViewController () <CLLocationManagerDelegate, CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, SelectDelegate, UITextFieldDelegate, UITableViewDelegate>
 @property (nonatomic, strong) LatLng* userPos;
-@property (nonatomic, strong) Location* selectedLocation;
+
 @property (nonatomic, assign) NSInteger userFleetLocationId;
 @property (nonatomic, strong) GMSPolyline *polyline;
 @property (nonatomic,strong) TGRArrayDataSource* wellKnownLocationsDataSource;
@@ -100,7 +100,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
     CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
     mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
-    mapView.delegate = self;
 }
 
 -(void)loadLocations:(NSString *)filter {
@@ -173,6 +172,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
     CarkyDriverPositionsRequest *req = [self getDriversRequest:identifier];
     CarkyApiClient *api = [CarkyApiClient sharedService];
+    CarCategory *carCategory = value;
+    self.totalPrice = carCategory.price;
+
     [self.driverMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.map = nil;
     }];
@@ -190,23 +192,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
 }
 
-- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    id loc = marker.userData;
-    if ([loc isKindOfClass:[Location class]]) {
-        mapView.selectedMarker = marker;
-        [self didSelectLocation:0 withValue:loc andText:nil forMap:mapView];
-    }
-    return YES;
-}
-
-- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
-    // your code
-    id loc = marker.userData;
-    if ([loc isKindOfClass:[Location class]]) {
-        mapView.selectedMarker = marker;
-        [self didSelectLocation:0 withValue:loc andText:nil forMap:mapView];
-    }
-}
 
 -(CarkyDriverPositionsRequest *)getDriversRequest:(NSInteger)carCategory {
     CarkyDriverPositionsRequest *request = [CarkyDriverPositionsRequest new];
@@ -333,6 +318,17 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     
 }
 
+-(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr {
+    UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
+    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController]];
+    [self presentViewController:myAlertController animated:YES completion:nil];
+}
+
+-(UIAlertAction *)dismissAlertView_OKTapped:(UIAlertController *)myAlertController {
+    return [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
+        [myAlertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
 
 
 -(void)addOrSubtractCar:(UIButton *)sender {
@@ -432,14 +428,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         request.extras = @[];
         request.carTypeId = cCat.Id;
         request.luggagePiecesNumber = obj.integerValue * cCat.maxLaggages;
-        AccountBindingModel *acc = [AccountBindingModel new];
+        
+        RegisterClientRequest *acc = [RegisterClientRequest new];
         acc.phoneNumber = self.phoneNumberTextField.text;
         acc.email = self.emailTextField.text;
         acc.confirmEmail = self.confirmEmailTextField.text;
         acc.firstName = self.firstNameTextField.text;
         acc.lastName = self.lastNameTextField.text;
         acc.phoneNumberCountryCode = self.countryPrefixLabel.text;
-        request.accountBindingModel = acc;
+
         
         CarkyApiClient *api = [CarkyApiClient sharedService];
         [stpClient createTokenWithCard:cardParams completion:^(STPToken *token, NSError *error) {
@@ -448,8 +445,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
                 return;
             }
             request.stripeCardToken = token.tokenId;
-            [api CreateTransferBookingRequest:request withBlock:^(NSString *string) {
-                NSLog(@"Response: %@", string);
+            [api CreateTransferBookingRequest:request withBlock:^(BOOL b) {
+                //NSLog(@"Response: %@", b);
                 [self.view bringSubviewToFront:self.paymentDoneView];
             }]; // create transfer request
         }]; // create token

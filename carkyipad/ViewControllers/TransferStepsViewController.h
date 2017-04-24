@@ -40,11 +40,12 @@
 @property (weak, nonatomic) IBOutlet STPPaymentCardTextField *stpCardTextField;
 @property (weak, nonatomic) IBOutlet UIView *creditCardLine;
 
-
+@property (nonatomic, strong) Location *selectedLocation;
 @property (strong, nonatomic) Location *currentLocation;
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
--(void)loadLocations:(NSString *)filter;
+- (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
+- (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;
 // methods
-
+-(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
 
 @end

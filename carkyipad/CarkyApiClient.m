@@ -227,18 +227,31 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block {
+-(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockBoolean)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [self POST:@"api/Partner/CreateTransferBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSString *str = (NSString *)responseObject;
+    [self POST:@"api/Partner/RegisterClient" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(str);
+        block(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(nil);
+        block(NO);
+    }];
+}
+
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockBoolean)block {
+    [self setAuthorizationHeader];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self POST:@"api/Partner/CreateTransferBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        block(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        block(NO);
     }];
 }
 
@@ -255,11 +268,16 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetPrices:(NSInteger)dropoffZoneId withBlock:(BlockArray)block {
+-(void)GetPricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self setAuthorizationHeader];
     [self GET:@"api/Partner/GetPrices" parameters:@{@"dropoffZoneId": @(dropoffZoneId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        CarPriceResponse* temp = [CarPriceResponse modelObjectWithDictionary:responseObject];
-        block(temp.carPrice);
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *carPricesArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            carPricesArray[idx] = [CarPrice modelObjectWithDictionary:obj];
+        }];
+        block(carPricesArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
@@ -267,10 +285,22 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)ConfirmPhoneNumber:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block {
+-(void)ConfirmPhoneNumberWithCode:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self setAuthorizationHeader];
     [self POST:@"api/Account/ConfirmPhoneNumber" parameters:@{@"code": @(code),@"userId": @(userId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        block(NO);
+    }];
+}
+
+-(void)SendPhoneNumberConfirmationForUser:(NSInteger)userId withBlock:(BlockBoolean)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self setAuthorizationHeader];
+    [self POST:@"api/Account/SendPhoneNumberConfirmation" parameters:@{@"userId": @(userId)}  progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
         block(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);

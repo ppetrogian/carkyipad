@@ -2,12 +2,11 @@
 //  TransferBookingRequest.m
 //
 //  Created by   on 17/04/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import "TransferBookingRequest.h"
 #import "LatLng.h"
-#import "AccountBindingModel.h"
 
 
 NSString *const kTransferBookingRequestDropoffAddress = @"DropoffAddress";
@@ -39,7 +38,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
 @synthesize passengersNumber = _passengersNumber;
 @synthesize dropoffLatLng = _dropoffLatLng;
 @synthesize agreedToTermsAndConditions = _agreedToTermsAndConditions;
-@synthesize accountBindingModel = _accountBindingModel;
+
 @synthesize dateTime = _dateTime;
 @synthesize paymentMethod = _paymentMethod;
 @synthesize pickupLatLng = _pickupLatLng;
@@ -64,7 +63,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
             self.passengersNumber = [[self objectOrNilForKey:kTransferBookingRequestPassengersNumber fromDictionary:dict] integerValue];
             self.dropoffLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestDropoffLatLng]];
             self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
-            self.accountBindingModel = [AccountBindingModel modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestAccountBindingModel]];
+            //self.accountBindingModel = [AccountBindingModel modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestAccountBindingModel]];
             self.dateTime = [self objectOrNilForKey:kTransferBookingRequestDateTime fromDictionary:dict];
             self.paymentMethod = [[self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict] integerValue];
             self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupLatLng]];
@@ -86,7 +85,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [mutableDict setValue:[NSNumber numberWithInteger:self.passengersNumber] forKey:kTransferBookingRequestPassengersNumber];
     [mutableDict setValue:[self.dropoffLatLng dictionaryRepresentation] forKey:kTransferBookingRequestDropoffLatLng];
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kTransferBookingRequestAgreedToTermsAndConditions];
-    [mutableDict setValue:[self.accountBindingModel dictionaryRepresentation] forKey:kTransferBookingRequestAccountBindingModel];
+    //[mutableDict setValue:[self.accountBindingModel dictionaryRepresentation] forKey:kTransferBookingRequestAccountBindingModel];
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];
     [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kTransferBookingRequestPaymentMethod];
     [mutableDict setValue:[self.pickupLatLng dictionaryRepresentation] forKey:kTransferBookingRequestPickupLatLng];
@@ -130,7 +129,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     self.passengersNumber = [aDecoder decodeIntegerForKey:kTransferBookingRequestPassengersNumber];
     self.dropoffLatLng = [aDecoder decodeObjectForKey:kTransferBookingRequestDropoffLatLng];
     self.agreedToTermsAndConditions = [aDecoder decodeBoolForKey:kTransferBookingRequestAgreedToTermsAndConditions];
-    self.accountBindingModel = [aDecoder decodeObjectForKey:kTransferBookingRequestAccountBindingModel];
+    //self.accountBindingModel = [aDecoder decodeObjectForKey:kTransferBookingRequestAccountBindingModel];
     self.dateTime = [aDecoder decodeObjectForKey:kTransferBookingRequestDateTime];
     self.paymentMethod = [aDecoder decodeIntegerForKey:kTransferBookingRequestPaymentMethod];
     self.pickupLatLng = [aDecoder decodeObjectForKey:kTransferBookingRequestPickupLatLng];
@@ -149,7 +148,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [aCoder encodeInteger:_passengersNumber forKey:kTransferBookingRequestPassengersNumber];
     [aCoder encodeObject:_dropoffLatLng forKey:kTransferBookingRequestDropoffLatLng];
     [aCoder encodeBool:_agreedToTermsAndConditions forKey:kTransferBookingRequestAgreedToTermsAndConditions];
-    [aCoder encodeObject:_accountBindingModel forKey:kTransferBookingRequestAccountBindingModel];
+    //[aCoder encodeObject:_accountBindingModel forKey:kTransferBookingRequestAccountBindingModel];
     [aCoder encodeObject:_dateTime forKey:kTransferBookingRequestDateTime];
     [aCoder encodeInteger:_paymentMethod forKey:kTransferBookingRequestPaymentMethod];
     [aCoder encodeObject:_pickupLatLng forKey:kTransferBookingRequestPickupLatLng];
@@ -171,7 +170,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         copy.passengersNumber = self.passengersNumber;
         copy.dropoffLatLng = [self.dropoffLatLng copyWithZone:zone];
         copy.agreedToTermsAndConditions = self.agreedToTermsAndConditions;
-        copy.accountBindingModel = [self.accountBindingModel copyWithZone:zone];
+        //copy.accountBindingModel = [self.accountBindingModel copyWithZone:zone];
         copy.dateTime = [self.dateTime copyWithZone:zone];
         copy.paymentMethod = self.paymentMethod;
         copy.pickupLatLng = [self.pickupLatLng copyWithZone:zone];

@@ -6,12 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class CarPrice;
 
 
 @interface CarPriceResponse : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSArray *carPrice;
+@property (nonatomic, strong) NSArray<CarPrice *> *carPrice;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
