@@ -23,7 +23,7 @@ NSString *const kTransferBookingRequestAccountBindingModel = @"AccountBindingMod
 NSString *const kTransferBookingRequestDateTime = @"DateTime";
 NSString *const kTransferBookingRequestPaymentMethod = @"PaymentMethod";
 NSString *const kTransferBookingRequestPickupLatLng = @"PickupLatLng";
-NSString *const kTransferBookingRequestPickupDateTime = @"PickupLatLng";
+NSString *const kTransferBookingRequestPickupDateTime = @"PickupDateTime";
 NSString *const kTransferBookingRequestExtras = @"Extras";
 NSString *const kTransferBookingRequestCarkyCategoryId = @"CarkyCategoryId";
 NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumber";
@@ -98,7 +98,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //[mutableDict setValue:[self.accountBindingModel dictionaryRepresentation] forKey:kTransferBookingRequestAccountBindingModel];
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];
-    [mutableDict setValue:self.pickupDateTime forKey:kTransferBookingRequestPickupDateTime];
+    [mutableDict setValue:[self.pickupDateTime dictionaryRepresentation] forKey:kTransferBookingRequestPickupDateTime];
     [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kTransferBookingRequestPaymentMethod];
     [mutableDict setValue:[self.pickupLatLng dictionaryRepresentation] forKey:kTransferBookingRequestPickupLatLng];
     NSMutableArray *tempArrayForExtras = [NSMutableArray array];

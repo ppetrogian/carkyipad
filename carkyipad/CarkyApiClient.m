@@ -248,8 +248,6 @@ static CarkyApiClient *_sharedService = nil;
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self POST:@"api/Partner/RegisterClient" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         RegisterClientResponse *response = [RegisterClientResponse modelObjectWithDictionary:responseObject];
-        //NSString* userId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        //userId = [userId substringWithRange:NSMakeRange(1, userId.length-2)];
         block([NSArray arrayWithObject:response]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);

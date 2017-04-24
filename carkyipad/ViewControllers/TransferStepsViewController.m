@@ -420,19 +420,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     TransferBookingRequest *request = [TransferBookingRequest new];
     request.userId = self.userId;
     request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
-    //request.dropoffLocation = self.selectedLocation;
     request.dropoffAddress = self.selectedLocation.name;
-    //request.pickupAddress = self.currentLocation.name;
     request.passengersNumber = cCat.maxPassengers;
-    //request.dropoffLatLng = self.selectedLocation.latLng;
-    //request.pickupLatLng = self.currentLocation.latLng; // todo
     request.agreedToTermsAndConditions = YES;
     request.paymentMethod = 1;
     NSDate *currDate = NSDate.date;
     request.dateTime = [df stringFromDate:currDate];
     PickupDateTime *pdt = [PickupDateTime new];
     df.dateFormat = @"yyyy-MM-dd"; pdt.date = [df stringFromDate:currDate];
-    df.dateFormat = @"HH:mm:ss"; pdt.date = [df stringFromDate:currDate];
+    df.dateFormat = @"HH:mm"; pdt.time = [df stringFromDate:currDate];
     request.pickupDateTime = pdt;
     request.extras = @[];
     request.carkyCategoryId = cCat.Id;
