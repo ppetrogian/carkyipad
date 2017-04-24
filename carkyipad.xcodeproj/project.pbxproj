@@ -155,6 +155,7 @@
 		D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951511EAD732900540076 /* ClientDetailsViewController.m */; };
 		D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */; };
 		D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */; };
+		D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D159515A1EADED4D00540076 /* WaitForDriverViewController.m */; };
 		D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9801E904C1400F735A0 /* CarRentalModel.m */; };
 		D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */; };
 		D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98B1E910BAA00F735A0 /* CarViewCell.m */; };
@@ -385,6 +386,8 @@
 		D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneNumberConfirmationViewController.m; path = ViewControllers/PhoneNumberConfirmationViewController.m; sourceTree = "<group>"; };
 		D15951561EADCA5500540076 /* PaymentForTaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentForTaxiViewController.h; path = ViewControllers/PaymentForTaxiViewController.h; sourceTree = "<group>"; };
 		D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentForTaxiViewController.m; path = ViewControllers/PaymentForTaxiViewController.m; sourceTree = "<group>"; };
+		D15951591EADED4D00540076 /* WaitForDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitForDriverViewController.h; path = ViewControllers/WaitForDriverViewController.h; sourceTree = "<group>"; };
+		D159515A1EADED4D00540076 /* WaitForDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitForDriverViewController.m; path = ViewControllers/WaitForDriverViewController.m; sourceTree = "<group>"; };
 		D19FF97F1E904C1400F735A0 /* CarRentalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalModel.h; sourceTree = "<group>"; };
 		D19FF9801E904C1400F735A0 /* CarRentalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalModel.m; sourceTree = "<group>"; };
 		D19FF9871E910B6A00F735A0 /* CarExtraBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarExtraBaseTableViewCell.h; path = ViewControllers/CarExtraBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -809,6 +812,8 @@
 				D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */,
 				D15951561EADCA5500540076 /* PaymentForTaxiViewController.h */,
 				D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */,
+				D15951591EADED4D00540076 /* WaitForDriverViewController.h */,
+				D159515A1EADED4D00540076 /* WaitForDriverViewController.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -1317,6 +1322,7 @@
 				AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
 				D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
+				D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
 				D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */,
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,

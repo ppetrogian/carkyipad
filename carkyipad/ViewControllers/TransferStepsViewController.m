@@ -441,6 +441,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         [api CreateTransferBookingRequest:request withBlock:^(BOOL b) {
             //[self.view bringSubviewToFront:self.paymentDoneView];
             [self showAlertViewWithMessage:@"Payment done" andTitle:@"Success"];
+            [self showNextStep];
         }]; // create transfer request
     }]; // create token
 }
