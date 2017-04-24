@@ -213,14 +213,39 @@ static CarkyApiClient *_sharedService = nil;
 }
 
 -(void)GetStripePublishableApiKey:(BlockString)block {
-    self.responseSerializer = [AFHTTPResponseSerializer serializer];
     // todo: allow json fragments or accept plain http
     [self setAuthorizationHeader];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
     [self GET:@"api/StripePayment/GetPublishableApiKey" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = (NSString *)responseObject;
         block(str);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetCarkyBookingId:(NSString *)transferBookingId withBlock:(BlockString)block {
+    // todo: allow json fragments or accept plain http
+    [self setAuthorizationHeader];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self GET:@"api/Partner/GetCarkyBookingId" parameters:@{@"transferBookingId":transferBookingId} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString* bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        block(bookingId);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+        block(nil);
+    }];
+}
+
+-(void)GetCarkyBookingStatusForUser:(NSString *)userId andBooking:(NSString *)bookingId withBlock:(BlockArray)block {
+    [self setAuthorizationHeader];
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self GET:@"api/Client/GetCarkyBookingStatus" parameters:@{@"bookingId":bookingId, @"userId": userId} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        Content *respObj = [Content modelObjectWithDictionary:responseObject];
+        block([NSArray arrayWithObject:respObj]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+        block([NSArray array]);
     }];
 }
 

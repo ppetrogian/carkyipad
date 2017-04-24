@@ -92,6 +92,8 @@
 		AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */; };
 		AEA9E92E1EAE30A400CC84D5 /* PickupDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */; };
 		AEA9E9311EAE58C900CC84D5 /* TransferBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */; };
+		AEA9E9341EAE68A900CC84D5 /* CarkyBookingStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */; };
+		AEA9E9371EAE68CC00CC84D5 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9361EAE68CC00CC84D5 /* Content.m */; };
 		AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1A931E876EEF00C03768 /* PSLocationButton.m */; };
 		AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */; };
 		AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */; };
@@ -298,6 +300,10 @@
 		AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickupDateTime.m; sourceTree = "<group>"; };
 		AEA9E92F1EAE58C900CC84D5 /* TransferBookingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferBookingResponse.h; sourceTree = "<group>"; };
 		AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferBookingResponse.m; sourceTree = "<group>"; };
+		AEA9E9321EAE68A900CC84D5 /* CarkyBookingStatusResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyBookingStatusResponse.h; sourceTree = "<group>"; };
+		AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyBookingStatusResponse.m; sourceTree = "<group>"; };
+		AEA9E9351EAE68CC00CC84D5 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
+		AEA9E9361EAE68CC00CC84D5 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
 		AEAF1A921E876EEF00C03768 /* PSLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationButton.h; sourceTree = "<group>"; };
 		AEAF1A931E876EEF00C03768 /* PSLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationButton.m; sourceTree = "<group>"; };
 		AEAF1ACD1E87888D00C03768 /* DSLCalendarDayCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarDayCalloutView.h; sourceTree = "<group>"; };
@@ -968,6 +974,10 @@
 				D143DD231EA5347200F12C36 /* TransferBookingRequest.m */,
 				AEA9E92F1EAE58C900CC84D5 /* TransferBookingResponse.h */,
 				AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */,
+				AEA9E9351EAE68CC00CC84D5 /* Content.h */,
+				AEA9E9361EAE68CC00CC84D5 /* Content.m */,
+				AEA9E9321EAE68A900CC84D5 /* CarkyBookingStatusResponse.h */,
+				AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -1411,9 +1421,11 @@
 				D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
 				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,
+				AEA9E9341EAE68A900CC84D5 /* CarkyBookingStatusResponse.m in Sources */,
 				AEAF1B231E885C8600C03768 /* UIDropDownMenu.m in Sources */,
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */,
+				AEA9E9371EAE68CC00CC84D5 /* Content.m in Sources */,
 				AE6352AB1E75DBF800065F0F /* Validation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

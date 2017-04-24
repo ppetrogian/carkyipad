@@ -76,5 +76,8 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)SendPhoneNumberConfirmationForUser:(NSString *)userId withBlock:(BlockString)block;
 
+-(void)GetCarkyBookingId:(NSString *)transferBookingId withBlock:(BlockString)block;
+
+-(void)GetCarkyBookingStatusForUser:(NSString *)userId andBooking:(NSString *)bookingId withBlock:(BlockArray)block;
 
 @end

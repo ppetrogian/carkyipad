@@ -48,6 +48,8 @@
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
+@property (strong, nonatomic) NSString *transferBookingId;
+
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;

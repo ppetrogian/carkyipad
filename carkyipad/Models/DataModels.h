@@ -27,6 +27,8 @@
 #import "CarPrice.h"
 #import "CarPriceResponse.h"
 #import "PickupDateTime.h"
+#import "CarkyBookingStatusResponse.h"
+#import "Content.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;

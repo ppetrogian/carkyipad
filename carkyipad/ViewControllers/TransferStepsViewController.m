@@ -443,7 +443,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             TransferBookingResponse *responseObj = array.firstObject;
             //[self.view bringSubviewToFront:self.paymentDoneView];
             if (responseObj.bookingId.length > 0) {
-                [self showAlertViewWithMessage:@"Payment done" andTitle:@"Success"];
+                self.transferBookingId = responseObj.bookingId;
                 [self showNextStep];
             } else {
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
