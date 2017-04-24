@@ -172,8 +172,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
     CarkyDriverPositionsRequest *req = [self getDriversRequest:identifier];
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    CarCategory *carCategory = value;
-    self.totalPrice = carCategory.price;
+    self.selectedCarCategory = value;
+    self.totalPrice = self.selectedCarCategory.price;
 
     [self.driverMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.map = nil;
@@ -330,7 +330,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
 }
 
-
 -(void)addOrSubtractCar:(UIButton *)sender {
     UIView *parentView = sender.superview;
     UILabel *numLabel = [parentView viewWithTag:6];
@@ -405,6 +404,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (IBAction)payNow_click:(UIButton *)sender {
+    [self payWithCreditCard];
+}
+
+-(void)payWithCreditCard {
     NSDateFormatter *df = [NSDateFormatter new];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     df.timeZone = timeZone;
@@ -412,46 +415,34 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     // send payment to back end
     STPCardParams *cardParams = self.stpCardTextField.cardParams;
     STPAPIClient *stpClient = [STPAPIClient sharedClient];
-    [self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.integerValue == 0) {
+    //[self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    //    if (obj.integerValue == 0) { return; } }];
+    CarCategory *cCat = self.selectedCarCategory;
+    TransferBookingRequest *request = [TransferBookingRequest new];
+    request.dropoffAddress = self.selectedLocation.name;
+    request.pickupAddress = self.currentLocation.name;
+    request.passengersNumber = cCat.maxPassengers;
+    request.dropoffLatLng = self.selectedLocation.latLng;
+    request.pickupLatLng = self.currentLocation.latLng; // todo
+    request.agreedToTermsAndConditions = YES;
+    request.dateTime = [df stringFromDate:[NSDate date]];
+    request.extras = @[];
+    request.carTypeId = cCat.Id;
+    request.luggagePiecesNumber = cCat.maxLaggages;
+    
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    [stpClient createTokenWithCard:cardParams completion:^(STPToken *token, NSError *error) {
+        if (error) {
+            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
+            [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
             return;
         }
-        CarCategory *cCat = self.carCategoriesDataSource.items[idx];
-        TransferBookingRequest *request = [TransferBookingRequest new];
-        request.dropoffAddress = self.toLocationTextField.text;
-        request.pickupAddress = self.fromLocationTextField.text;
-        request.passengersNumber = obj.integerValue * cCat.maxPassengers;
-        request.dropoffLatLng = self.selectedLocation.latLng;
-        request.pickupLatLng = self.userPos;
-        request.agreedToTermsAndConditions = YES;
-        request.dateTime = [df stringFromDate:[NSDate date]];
-        request.extras = @[];
-        request.carTypeId = cCat.Id;
-        request.luggagePiecesNumber = obj.integerValue * cCat.maxLaggages;
-        
-        RegisterClientRequest *acc = [RegisterClientRequest new];
-        acc.phoneNumber = self.phoneNumberTextField.text;
-        acc.email = self.emailTextField.text;
-        acc.confirmEmail = self.confirmEmailTextField.text;
-        acc.firstName = self.firstNameTextField.text;
-        acc.lastName = self.lastNameTextField.text;
-        acc.phoneNumberCountryCode = self.countryPrefixLabel.text;
-
-        
-        CarkyApiClient *api = [CarkyApiClient sharedService];
-        [stpClient createTokenWithCard:cardParams completion:^(STPToken *token, NSError *error) {
-            if (error) {
-                NSLog(@"Error occured in create token: %@", error.localizedDescription);
-                return;
-            }
-            request.stripeCardToken = token.tokenId;
-            [api CreateTransferBookingRequest:request withBlock:^(BOOL b) {
-                //NSLog(@"Response: %@", b);
-                [self.view bringSubviewToFront:self.paymentDoneView];
-            }]; // create transfer request
-        }]; // create token
-    }];
-
+        request.stripeCardToken = token.tokenId;
+        [api CreateTransferBookingRequest:request withBlock:^(BOOL b) {
+            //[self.view bringSubviewToFront:self.paymentDoneView];
+            [self showAlertViewWithMessage:@"Payment done" andTitle:@"Success"];
+        }]; // create transfer request
+    }]; // create token
 }
 
 - (IBAction)takePhoto_click:(UIButton *)sender {

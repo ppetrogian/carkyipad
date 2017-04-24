@@ -58,7 +58,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 #pragma mark - Taxi Api calls
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
--(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockBoolean)block;
+-(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockString)block;
 
 -(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockBoolean)block;
 
@@ -70,9 +70,9 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetPricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block;
 
--(void)ConfirmPhoneNumberWithCode:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block;
+-(void)ConfirmPhoneNumberWithCode:(NSString *)code forUser:(NSString *)userId withBlock:(BlockBoolean)block;
 
--(void)SendPhoneNumberConfirmationForUser:(NSInteger)userId withBlock:(BlockBoolean)block;
+-(void)SendPhoneNumberConfirmationForUser:(NSString *)userId withBlock:(BlockString)block;
 
 
 @end

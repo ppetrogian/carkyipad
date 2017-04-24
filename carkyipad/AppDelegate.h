@@ -40,5 +40,6 @@
 +(void)configurePSTextField:(UITextField *)tf withColor:(UIColor *)color;
 +(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;
 +(UIImage *)imageToGreyImage:(UIImage *)image;
++(NSString *)urlencode:(NSString *)str;
 @end
 

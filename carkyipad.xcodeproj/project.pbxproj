@@ -153,6 +153,8 @@
 		D15951491EACB08B00540076 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D15951481EACB08B00540076 /* Settings.bundle */; };
 		D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */; };
 		D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951511EAD732900540076 /* ClientDetailsViewController.m */; };
+		D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */; };
+		D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */; };
 		D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9801E904C1400F735A0 /* CarRentalModel.m */; };
 		D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9881E910B6A00F735A0 /* CarExtraBaseTableViewCell.m */; };
 		D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98B1E910BAA00F735A0 /* CarViewCell.m */; };
@@ -379,6 +381,10 @@
 		D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectDropoffLocationViewController.m; path = ViewControllers/SelectDropoffLocationViewController.m; sourceTree = "<group>"; };
 		D15951501EAD732900540076 /* ClientDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientDetailsViewController.h; path = ViewControllers/ClientDetailsViewController.h; sourceTree = "<group>"; };
 		D15951511EAD732900540076 /* ClientDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientDetailsViewController.m; path = ViewControllers/ClientDetailsViewController.m; sourceTree = "<group>"; };
+		D15951531EADC60F00540076 /* PhoneNumberConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneNumberConfirmationViewController.h; path = ViewControllers/PhoneNumberConfirmationViewController.h; sourceTree = "<group>"; };
+		D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneNumberConfirmationViewController.m; path = ViewControllers/PhoneNumberConfirmationViewController.m; sourceTree = "<group>"; };
+		D15951561EADCA5500540076 /* PaymentForTaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentForTaxiViewController.h; path = ViewControllers/PaymentForTaxiViewController.h; sourceTree = "<group>"; };
+		D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentForTaxiViewController.m; path = ViewControllers/PaymentForTaxiViewController.m; sourceTree = "<group>"; };
 		D19FF97F1E904C1400F735A0 /* CarRentalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalModel.h; sourceTree = "<group>"; };
 		D19FF9801E904C1400F735A0 /* CarRentalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalModel.m; sourceTree = "<group>"; };
 		D19FF9871E910B6A00F735A0 /* CarExtraBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarExtraBaseTableViewCell.h; path = ViewControllers/CarExtraBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -799,6 +805,10 @@
 				D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */,
 				D15951501EAD732900540076 /* ClientDetailsViewController.h */,
 				D15951511EAD732900540076 /* ClientDetailsViewController.m */,
+				D15951531EADC60F00540076 /* PhoneNumberConfirmationViewController.h */,
+				D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */,
+				D15951561EADCA5500540076 /* PaymentForTaxiViewController.h */,
+				D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -1300,6 +1310,7 @@
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
 				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
 				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,
+				D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */,
 				D1344C081E78AE2000006FAD /* PSStepButton.m in Sources */,
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
@@ -1353,6 +1364,7 @@
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				D143DD1E1EA533C300F12C36 /* RegisterClientRequest.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
+				D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
 				D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */,

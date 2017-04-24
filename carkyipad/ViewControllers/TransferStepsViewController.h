@@ -10,7 +10,7 @@
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-@class LatLng, Location, STPPaymentCardTextField;
+@class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory;
 
 @interface TransferStepsViewController : CarRentalStepsViewController
 @property (weak, nonatomic) IBOutlet UIView *viewFindDrivers;
@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmEmailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *countryPrefixLabel;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *cashButton;
 @property (weak, nonatomic) IBOutlet UIButton *creditCardButton;
 @property (weak, nonatomic) IBOutlet UIButton *payNowButton;
@@ -40,12 +41,15 @@
 @property (weak, nonatomic) IBOutlet STPPaymentCardTextField *stpCardTextField;
 @property (weak, nonatomic) IBOutlet UIView *creditCardLine;
 
+// date properties
 @property (nonatomic, strong) Location *selectedLocation;
 @property (strong, nonatomic) Location *currentLocation;
+@property (strong, nonatomic) CarCategory *selectedCarCategory;
+@property (nonatomic, strong) RegisterClientRequest *clientData;
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;
 // methods
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
-
+-(void)payWithCreditCard;
 @end

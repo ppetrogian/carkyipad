@@ -9,6 +9,7 @@
 #import "CarkyApiClient.h"
 #import "DataModels.h"
 #import "MBProgressHUD.h"
+#import "AppDelegate.h"
 
 #define Base_URL @"http://carky-app.azurewebsites.net"
 
@@ -227,17 +228,19 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockBoolean)block {
+-(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockString)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
     [self POST:@"api/Partner/RegisterClient" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(YES);
+        NSString* userId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        userId = [userId substringWithRange:NSMakeRange(1, userId.length-2)];
+        block(userId);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(NO);
+        block(nil);
     }];
 }
 
@@ -285,10 +288,14 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)ConfirmPhoneNumberWithCode:(NSInteger)code forUser:(NSInteger)userId withBlock:(BlockBoolean)block {
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+-(void)ConfirmPhoneNumberWithCode:(NSString *)code forUser:(NSString *)userId withBlock:(BlockBoolean)block {
     [self setAuthorizationHeader];
-    [self POST:@"api/Account/ConfirmPhoneNumber" parameters:@{@"code": @(code),@"userId": @(userId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    NSString *url = [NSString stringWithFormat:@"api/Account/ConfirmPhoneNumber?code=%@&userId=%@", code, [AppDelegate urlencode:userId]];
+
+    [self POST:url parameters:nil  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
         block(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
@@ -297,15 +304,17 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)SendPhoneNumberConfirmationForUser:(NSInteger)userId withBlock:(BlockBoolean)block {
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+-(void)SendPhoneNumberConfirmationForUser:(NSString *)userId withBlock:(BlockString)block {
     [self setAuthorizationHeader];
-    [self POST:@"api/Account/SendPhoneNumberConfirmation" parameters:@{@"userId": @(userId)}  progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
-        block(YES);
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self POST:@"api/Account/SendPhoneNumberConfirmation" parameters:@{@"userId": userId}  progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString* code = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        code = [code substringWithRange:NSMakeRange(1, code.length-2)];
+        block(code);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
-        block(NO);
+        block(nil);
     }];
 }
 
