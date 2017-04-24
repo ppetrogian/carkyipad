@@ -257,19 +257,22 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block {
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
+    TransferBookingResponse *responseObj = [TransferBookingResponse new];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
     [self POST:@"api/Partner/CreateTransferBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(@"");
+        responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        block([NSArray arrayWithObject:responseObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
         NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(errorStr);
+        responseObj.errorDescription = errorStr;
+        block([NSArray arrayWithObject:responseObj]);
     }];
 }
 

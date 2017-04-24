@@ -408,14 +408,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 -(void)payWithCreditCard {
     NSDateFormatter *df = [NSDateFormatter new];
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-    df.timeZone = timeZone;
+    // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
     // send payment to back end
-     //self.stpCardTextField.cardParams;
     STPAPIClient *stpClient = [STPAPIClient sharedClient];
-    //[self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-    //    if (obj.integerValue == 0) { return; } }];
+    //[self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {  if (obj.integerValue == 0) { return; } }];
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
     request.userId = self.userId;
@@ -442,13 +439,14 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             return;
         }
         request.stripeCardToken = token.tokenId;
-        [api CreateTransferBookingRequest:request withBlock:^(NSString *errorStr) {
+        [api CreateTransferBookingRequest:request withBlock:^(NSArray *array) {
+            TransferBookingResponse *responseObj = array.firstObject;
             //[self.view bringSubviewToFront:self.paymentDoneView];
-            if (errorStr.length == 0) {
+            if (responseObj.bookingId.length > 0) {
                 [self showAlertViewWithMessage:@"Payment done" andTitle:@"Success"];
                 [self showNextStep];
             } else {
-                [self showAlertViewWithMessage:errorStr andTitle:@"Error"];
+                [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
             }
         }]; // create transfer request
     }]; // create token

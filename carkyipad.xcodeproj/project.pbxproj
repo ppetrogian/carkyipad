@@ -91,6 +91,7 @@
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
 		AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */; };
 		AEA9E92E1EAE30A400CC84D5 /* PickupDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */; };
+		AEA9E9311EAE58C900CC84D5 /* TransferBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */; };
 		AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1A931E876EEF00C03768 /* PSLocationButton.m */; };
 		AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */; };
 		AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */; };
@@ -295,6 +296,8 @@
 		AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClientResponse.m; sourceTree = "<group>"; };
 		AEA9E92C1EAE30A400CC84D5 /* PickupDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickupDateTime.h; sourceTree = "<group>"; };
 		AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickupDateTime.m; sourceTree = "<group>"; };
+		AEA9E92F1EAE58C900CC84D5 /* TransferBookingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferBookingResponse.h; sourceTree = "<group>"; };
+		AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferBookingResponse.m; sourceTree = "<group>"; };
 		AEAF1A921E876EEF00C03768 /* PSLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationButton.h; sourceTree = "<group>"; };
 		AEAF1A931E876EEF00C03768 /* PSLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationButton.m; sourceTree = "<group>"; };
 		AEAF1ACD1E87888D00C03768 /* DSLCalendarDayCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarDayCalloutView.h; sourceTree = "<group>"; };
@@ -963,6 +966,8 @@
 				AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */,
 				D143DD221EA5347200F12C36 /* TransferBookingRequest.h */,
 				D143DD231EA5347200F12C36 /* TransferBookingRequest.m */,
+				AEA9E92F1EAE58C900CC84D5 /* TransferBookingResponse.h */,
+				AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -1371,6 +1376,7 @@
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
 				D19FF99B1E91908700F735A0 /* PSTextBox.m in Sources */,
 				D143DD241EA5347200F12C36 /* TransferBookingRequest.m in Sources */,
+				AEA9E9311EAE58C900CC84D5 /* TransferBookingResponse.m in Sources */,
 				D1344C0C1E78CF8F00006FAD /* StepViewController.m in Sources */,
 				D15951411EAC9AC400540076 /* ClientConfigurationResponse.m in Sources */,
 				AE63520D1E75B18700065F0F /* CircleLineButton.m in Sources */,

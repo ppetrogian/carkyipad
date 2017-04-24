@@ -21,6 +21,7 @@
 #import "RegisterClientRequest.h"
 #import "RegisterClientResponse.h"
 #import "TransferBookingRequest.h"
+#import "TransferBookingResponse.h"
 #import "CarServices.h"
 #import "ClientConfigurationResponse.h"
 #import "CarPrice.h"
