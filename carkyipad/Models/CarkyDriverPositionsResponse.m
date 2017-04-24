@@ -2,7 +2,7 @@
 //  CarkyDriverPositionsResponse.m
 //
 //  Created by   on 12/04/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import "CarkyDriverPositionsResponse.h"

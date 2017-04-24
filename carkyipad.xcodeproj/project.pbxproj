@@ -89,6 +89,8 @@
 		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
+		AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */; };
+		AEA9E92E1EAE30A400CC84D5 /* PickupDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */; };
 		AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1A931E876EEF00C03768 /* PSLocationButton.m */; };
 		AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */; };
 		AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */; };
@@ -289,6 +291,10 @@
 		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEA9E9291EAE25FF00CC84D5 /* RegisterClientResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClientResponse.h; sourceTree = "<group>"; };
+		AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClientResponse.m; sourceTree = "<group>"; };
+		AEA9E92C1EAE30A400CC84D5 /* PickupDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickupDateTime.h; sourceTree = "<group>"; };
+		AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickupDateTime.m; sourceTree = "<group>"; };
 		AEAF1A921E876EEF00C03768 /* PSLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationButton.h; sourceTree = "<group>"; };
 		AEAF1A931E876EEF00C03768 /* PSLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationButton.m; sourceTree = "<group>"; };
 		AEAF1ACD1E87888D00C03768 /* DSLCalendarDayCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarDayCalloutView.h; sourceTree = "<group>"; };
@@ -497,6 +503,8 @@
 				AE6351BF1E71E32200065F0F /* FleetLocations.m */,
 				AE6351C01E71E32200065F0F /* LatLng.h */,
 				AE6351C11E71E32200065F0F /* LatLng.m */,
+				AEA9E92C1EAE30A400CC84D5 /* PickupDateTime.h */,
+				AEA9E92D1EAE30A400CC84D5 /* PickupDateTime.m */,
 				AE6351C21E71E32200065F0F /* Location.h */,
 				AE6351C31E71E32200065F0F /* Location.m */,
 				AE6351D21E7415E400065F0F /* CarExtra.h */,
@@ -951,6 +959,8 @@
 				D12802CF1E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m */,
 				D143DD1C1EA533C300F12C36 /* RegisterClientRequest.h */,
 				D143DD1D1EA533C300F12C36 /* RegisterClientRequest.m */,
+				AEA9E9291EAE25FF00CC84D5 /* RegisterClientResponse.h */,
+				AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */,
 				D143DD221EA5347200F12C36 /* TransferBookingRequest.h */,
 				D143DD231EA5347200F12C36 /* TransferBookingRequest.m */,
 			);
@@ -1183,7 +1193,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1213,7 +1223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1256,7 +1266,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1313,6 +1323,7 @@
 			files = (
 				D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */,
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
+				AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */,
 				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
 				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,
 				D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */,
@@ -1338,6 +1349,7 @@
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
 				D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */,
+				AEA9E92E1EAE30A400CC84D5 /* PickupDateTime.m in Sources */,
 				D15951401EAC9AC400540076 /* CarServices.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
 				AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */,

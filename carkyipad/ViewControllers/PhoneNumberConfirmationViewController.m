@@ -5,7 +5,7 @@
 //  Created by Filippos Sakellaropoulos on 24/04/2017.
 //  Copyright © 2017 Nessos. All rights reserved.
 //
-
+#import "TransferStepsViewController.h"
 #import "PhoneNumberConfirmationViewController.h"
 #import "ClientDetailsViewController.h"
 #import "CarkyApiClient.h"
@@ -50,9 +50,12 @@
     CarkyApiClient *api = [CarkyApiClient sharedService];
     [api ConfirmPhoneNumberWithCode:self.confirmCodeTextField.text forUser:self.userId withBlock:^(BOOL isOk) {
         // todo check why bad request
-        if (1==1) {
+        if (isOk) {
             self.delegate.isPhoneConfirmed = YES;
             [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            TransferStepsViewController *transferVc = (TransferStepsViewController *)self.delegate.parentViewController;
+            [transferVc showAlertViewWithMessage:@"You entered wrong code" andTitle:@"Error"];
         }
     }];
 }

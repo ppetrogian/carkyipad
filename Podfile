@@ -12,12 +12,15 @@ pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'IIAsyncViewController'
 pod 'Stripe'
+pod 'BKCardExpiryField'
 end
 
 target 'carkyipadTests' do
 pod 'SAMKeychain'    
 pod 'AFNetworking'
 pod 'MBCalendarKit'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
 end
 
 target 'carkyipadUITests' do
@@ -29,6 +32,7 @@ pod 'Stripe'
 #pod 'FlatPillButton'
 pod 'Bolts'
 pod 'GoogleMaps'
+pod 'GooglePlaces'
 pod 'IIAsyncViewController'
 pod 'HockeySDK', '~> 4.1.4'
 pod 'CardIO'

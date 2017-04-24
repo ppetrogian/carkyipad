@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "DataModels.h"
 #import "CardIO.h"
+#import "BKCardExpiryField.h"
 
 @interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate>
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
@@ -64,6 +65,11 @@
 }
 
 - (IBAction)payNowButton_click:(UIButton *)sender {
+    STPCardParams *cardParams = self.stpCardTextField.cardParams;
+    cardParams.cvc = self.cvvTextField.text;
+    cardParams.expMonth = self.expiryDateTextField.dateComponents.month;
+    cardParams.expYear = self.expiryDateTextField.dateComponents.year;
+    self.parentController.cardParams = cardParams;
     [self.parentController payWithCreditCard];
 }
 

@@ -278,9 +278,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (NSArray *)stepViewControllers {
-    UITabBarController *tb = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBar"]; //requestRide
-    //s0.step.title = NSLocalizedString(@"payment", nil) ;
-    
+    // we keep them in an array via an unused tab-bar
+    UITabBarController *tb = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBar"];
     return tb.viewControllers;
 }
 
@@ -413,25 +412,32 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     df.timeZone = timeZone;
     df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
     // send payment to back end
-    STPCardParams *cardParams = self.stpCardTextField.cardParams;
+     //self.stpCardTextField.cardParams;
     STPAPIClient *stpClient = [STPAPIClient sharedClient];
     //[self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
     //    if (obj.integerValue == 0) { return; } }];
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
+    //request.userId = self step
     request.dropoffAddress = self.selectedLocation.name;
     request.pickupAddress = self.currentLocation.name;
     request.passengersNumber = cCat.maxPassengers;
     request.dropoffLatLng = self.selectedLocation.latLng;
     request.pickupLatLng = self.currentLocation.latLng; // todo
     request.agreedToTermsAndConditions = YES;
-    request.dateTime = [df stringFromDate:[NSDate date]];
+    request.paymentMethod = 1;
+    NSDate *currDate = NSDate.date;
+    request.dateTime = [df stringFromDate:currDate];
+    PickupDateTime *pdt = [PickupDateTime new];
+    df.dateFormat = @"yyyy-MM-dd"; pdt.date = [df stringFromDate:currDate];
+    df.dateFormat = @"HH:mm:ss"; pdt.date = [df stringFromDate:currDate];
+    request.pickupDateTime = pdt;
     request.extras = @[];
     request.carTypeId = cCat.Id;
     request.luggagePiecesNumber = cCat.maxLaggages;
     
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    [stpClient createTokenWithCard:cardParams completion:^(STPToken *token, NSError *error) {
+    [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
         if (error) {
             NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
             [self showAlertViewWithMessage:strDescr andTitle:@"Error"];

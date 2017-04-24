@@ -2,7 +2,7 @@
 //  FindDriverRequest.h
 //
 //  Created by   on 11/04/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

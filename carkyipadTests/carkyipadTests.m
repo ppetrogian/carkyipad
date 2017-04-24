@@ -117,14 +117,27 @@
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
-- (void)testGetTransferServiceAvailableCars {
+- (void)testGetTransferServiceWebAvailableCars {
     // given
     XCTestExpectation *expectation = [self expectationWithDescription:@" fetch available cars for Mykonos"];
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    [self.api GetTransferServiceAvailableCars:2 withBlock:^(NSArray *array) {
+    [self.api GetTransferServiceWebAvailableCars:2 withBlock:^(NSArray *array) {
         XCTAssert(array.count>0,"not found available cars");
         Cars *c0 = array[0];
         XCTAssert([c0 isKindOfClass:[Cars class]], @"wrong class");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
+}
+
+- (void)testGetTransferServicePartnerAvailableCars {
+    // given
+    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch available cars for Mykonos"];
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    [self.api GetTransferServicePartnerAvailableCars:2 withBlock:^(NSArray *array) {
+        XCTAssert(array.count>0,"not found available cars");
+        CarCategory *c0 = array[0];
+        XCTAssert([c0 isKindOfClass:[CarCategory class]], @"wrong class");
         [expectation fulfill];
     }];
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];

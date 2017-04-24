@@ -19,15 +19,17 @@
 #import "CarkyDriverPositionsRequest.h"
 #import "CarkyDriverPositionsResponse.h"
 #import "RegisterClientRequest.h"
+#import "RegisterClientResponse.h"
 #import "TransferBookingRequest.h"
 #import "CarServices.h"
 #import "ClientConfigurationResponse.h"
 #import "CarPrice.h"
 #import "CarPriceResponse.h"
+#import "PickupDateTime.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;
 extern NSString* kCarCategoryImage;
-extern NSString* kCarCategoryDescription;
+extern NSString* kCarCategoryName;
 extern NSString* kCarCategoryMaxPassengers;
 extern NSString* kCarCategoryMaxLaggages;

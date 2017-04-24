@@ -7,8 +7,9 @@
 
 #import "TransferBookingRequest.h"
 #import "LatLng.h"
+#import "PickupDateTime.h"
 
-
+NSString *const kTransferBookingRequestUserId = @"UserId";
 NSString *const kTransferBookingRequestDropoffAddress = @"DropoffAddress";
 NSString *const kTransferBookingRequestPickupAddress = @"PickupAddress";
 NSString *const kTransferBookingRequestStripeCardToken = @"StripeCardToken";
@@ -19,6 +20,7 @@ NSString *const kTransferBookingRequestAccountBindingModel = @"AccountBindingMod
 NSString *const kTransferBookingRequestDateTime = @"DateTime";
 NSString *const kTransferBookingRequestPaymentMethod = @"PaymentMethod";
 NSString *const kTransferBookingRequestPickupLatLng = @"PickupLatLng";
+NSString *const kTransferBookingRequestPickupDateTime = @"PickupLatLng";
 NSString *const kTransferBookingRequestExtras = @"Extras";
 NSString *const kTransferBookingRequestCarTypeId = @"CarTypeId";
 NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumber";
@@ -57,6 +59,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
+            self.userId = [self objectOrNilForKey:kTransferBookingRequestUserId fromDictionary:dict];
             self.dropoffAddress = [self objectOrNilForKey:kTransferBookingRequestDropoffAddress fromDictionary:dict];
             self.pickupAddress = [self objectOrNilForKey:kTransferBookingRequestPickupAddress fromDictionary:dict];
             self.stripeCardToken = [self objectOrNilForKey:kTransferBookingRequestStripeCardToken fromDictionary:dict];
@@ -65,6 +68,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
             self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
             //self.accountBindingModel = [AccountBindingModel modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestAccountBindingModel]];
             self.dateTime = [self objectOrNilForKey:kTransferBookingRequestDateTime fromDictionary:dict];
+            self.pickupDateTime = [PickupDateTime modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupDateTime]];
             self.paymentMethod = [[self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict] integerValue];
             self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupLatLng]];
             self.extras = [self objectOrNilForKey:kTransferBookingRequestExtras fromDictionary:dict];
@@ -79,6 +83,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
+    [mutableDict setValue:self.userId forKey:kTransferBookingRequestUserId];
     [mutableDict setValue:self.dropoffAddress forKey:kTransferBookingRequestDropoffAddress];
     [mutableDict setValue:self.pickupAddress forKey:kTransferBookingRequestPickupAddress];
     [mutableDict setValue:self.stripeCardToken forKey:kTransferBookingRequestStripeCardToken];
@@ -87,6 +92,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //[mutableDict setValue:[self.accountBindingModel dictionaryRepresentation] forKey:kTransferBookingRequestAccountBindingModel];
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];
+    [mutableDict setValue:self.pickupDateTime forKey:kTransferBookingRequestPickupDateTime];
     [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kTransferBookingRequestPaymentMethod];
     [mutableDict setValue:[self.pickupLatLng dictionaryRepresentation] forKey:kTransferBookingRequestPickupLatLng];
     NSMutableArray *tempArrayForExtras = [NSMutableArray array];

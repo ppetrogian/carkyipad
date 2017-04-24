@@ -1,18 +1,18 @@
 //
-//  CarkyDriverPositionsResponse.h
+//  RegisterClientResponse.h
 //
-//  Created by   on 12/04/2017
+//  Created by   on 24/4/17
 //  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class LatLng;
 
-@interface CarkyDriverPositionsResponse : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) double driverId;
-@property (nonatomic, strong) LatLng *latLng;
+@interface RegisterClientResponse : NSObject <NSCoding, NSCopying>
+
+@property (nonatomic, assign) BOOL phoneConfirmed;
+@property (nonatomic, strong) NSString *userId;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

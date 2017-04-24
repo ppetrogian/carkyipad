@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BKCardExpiryField (0.0.3)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -41,6 +42,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - BKCardExpiryField
   - Bolts
   - CardIO
   - FSCalendar
@@ -56,6 +58,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BKCardExpiryField: f2e92c0bbb2363b9e9af80ee8348e43ddeff30db
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
   FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
@@ -69,6 +72,6 @@ SPEC CHECKSUMS:
   Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: 441ab606dfc8ff5bf6cfd4b2a3fb3cb22e1aea9b
+PODFILE CHECKSUM: b815689796e8193441df5bc2e9616b6c587470c0
 
-COCOAPODS: 1.2.1.beta.1
+COCOAPODS: 1.2.0

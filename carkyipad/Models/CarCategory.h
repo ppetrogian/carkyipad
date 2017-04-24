@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) NSInteger price;
 @property (nonatomic, assign) NSInteger Id;
-@property (nonatomic, strong) NSString *Description;
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, assign) NSInteger maxPassengers;
 @property (nonatomic, assign) NSInteger maxLaggages;

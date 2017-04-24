@@ -2,7 +2,7 @@
 //  CarServices.m
 //
 //  Created by   on 23/04/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import "CarServices.h"

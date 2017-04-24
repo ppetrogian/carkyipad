@@ -10,7 +10,7 @@
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-@class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory;
+@class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory,STPCardParams;
 
 @interface TransferStepsViewController : CarRentalStepsViewController
 @property (weak, nonatomic) IBOutlet UIView *viewFindDrivers;
@@ -45,6 +45,8 @@
 @property (nonatomic, strong) Location *selectedLocation;
 @property (strong, nonatomic) Location *currentLocation;
 @property (strong, nonatomic) CarCategory *selectedCarCategory;
+@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;

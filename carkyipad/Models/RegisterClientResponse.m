@@ -1,27 +1,27 @@
 //
-//  CarPrice.m
+//  RegisterClientResponse.m
 //
-//  Created by   on 23/04/2017
+//  Created by   on 24/4/17
 //  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
-#import "CarPrice.h"
+#import "RegisterClientResponse.h"
 
 
-NSString *const kCarPricePrice = @"Price";
-NSString *const kCarPriceCarServiceId = @"CarServiceId";
+NSString *const kRegisterClientResponsePhoneConfirmed = @"PhoneConfirmed";
+NSString *const kRegisterClientResponseUserId = @"UserId";
 
 
-@interface CarPrice ()
+@interface RegisterClientResponse ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation CarPrice
+@implementation RegisterClientResponse
 
-@synthesize price = _price;
-@synthesize carServiceId = _carServiceId;
+@synthesize phoneConfirmed = _phoneConfirmed;
+@synthesize userId = _userId;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
@@ -34,8 +34,8 @@ NSString *const kCarPriceCarServiceId = @"CarServiceId";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.price = [[self objectOrNilForKey:kCarPricePrice fromDictionary:dict] integerValue];
-            self.carServiceId = [[self objectOrNilForKey:kCarPriceCarServiceId fromDictionary:dict] integerValue];
+            self.phoneConfirmed = [[self objectOrNilForKey:kRegisterClientResponsePhoneConfirmed fromDictionary:dict] boolValue];
+            self.userId = [self objectOrNilForKey:kRegisterClientResponseUserId fromDictionary:dict];
 
     }
     
@@ -45,8 +45,8 @@ NSString *const kCarPriceCarServiceId = @"CarServiceId";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarPricePrice];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.carServiceId] forKey:kCarPriceCarServiceId];
+    [mutableDict setValue:[NSNumber numberWithBool:self.phoneConfirmed] forKey:kRegisterClientResponsePhoneConfirmed];
+    [mutableDict setValue:self.userId forKey:kRegisterClientResponseUserId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -67,27 +67,27 @@ NSString *const kCarPriceCarServiceId = @"CarServiceId";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.price = [aDecoder decodeDoubleForKey:kCarPricePrice];
-    self.carServiceId = [aDecoder decodeDoubleForKey:kCarPriceCarServiceId];
+    self.phoneConfirmed = [aDecoder decodeBoolForKey:kRegisterClientResponsePhoneConfirmed];
+    self.userId = [aDecoder decodeObjectForKey:kRegisterClientResponseUserId];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_price forKey:kCarPricePrice];
-    [aCoder encodeDouble:_carServiceId forKey:kCarPriceCarServiceId];
+    [aCoder encodeBool:_phoneConfirmed forKey:kRegisterClientResponsePhoneConfirmed];
+    [aCoder encodeObject:_userId forKey:kRegisterClientResponseUserId];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    CarPrice *copy = [[CarPrice alloc] init];
+    RegisterClientResponse *copy = [[RegisterClientResponse alloc] init];
     
     
     
     if (copy) {
 
-        copy.price = self.price;
-        copy.carServiceId = self.carServiceId;
+        copy.phoneConfirmed = self.phoneConfirmed;
+        copy.userId = [self.userId copyWithZone:zone];
     }
     
     return copy;

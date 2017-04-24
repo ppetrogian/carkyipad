@@ -182,7 +182,7 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetTransferServiceAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
+-(void)GetTransferServiceWebAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self GET:@"api/Web/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
@@ -190,6 +190,21 @@ static CarkyApiClient *_sharedService = nil;
         NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             carsArray[idx] = [Cars modelObjectWithDictionary:obj];
+        }];
+        block(carsArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self GET:@"api/Partner/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        [self.hud hideAnimated:YES];
+        NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            carsArray[idx] = [CarCategory modelObjectWithDictionary:obj];
         }];
         block(carsArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -228,14 +243,14 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockString)block {
+-(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
-    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self POST:@"api/Partner/RegisterClient" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
-        NSString* userId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        userId = [userId substringWithRange:NSMakeRange(1, userId.length-2)];
-        block(userId);
+        RegisterClientResponse *response = [RegisterClientResponse modelObjectWithDictionary:responseObject];
+        //NSString* userId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        //userId = [userId substringWithRange:NSMakeRange(1, userId.length-2)];
+        block([NSArray arrayWithObject:response]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
@@ -271,10 +286,10 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetPricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block {
+-(void)GetTransferServicePricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self setAuthorizationHeader];
-    [self GET:@"api/Partner/GetPrices" parameters:@{@"dropoffZoneId": @(dropoffZoneId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"api/Partner/GetTransferServicePrices" parameters:@{@"dropoffZoneId": @(dropoffZoneId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carPricesArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -291,7 +306,6 @@ static CarkyApiClient *_sharedService = nil;
 -(void)ConfirmPhoneNumberWithCode:(NSString *)code forUser:(NSString *)userId withBlock:(BlockBoolean)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [self.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     NSString *url = [NSString stringWithFormat:@"api/Account/ConfirmPhoneNumber?code=%@&userId=%@", code, [AppDelegate urlencode:userId]];
 
     [self POST:url parameters:nil  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -307,7 +321,8 @@ static CarkyApiClient *_sharedService = nil;
 -(void)SendPhoneNumberConfirmationForUser:(NSString *)userId withBlock:(BlockString)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [self POST:@"api/Account/SendPhoneNumberConfirmation" parameters:@{@"userId": userId}  progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString *url = [NSString stringWithFormat:@"api/Account/SendPhoneNumberConfirmation?userId=%@", [AppDelegate urlencode:userId]];
+    [self POST:url parameters:nil  progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString* code = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         code = [code substringWithRange:NSMakeRange(1, code.length-2)];
         block(code);

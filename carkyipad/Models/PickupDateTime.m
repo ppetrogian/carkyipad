@@ -1,27 +1,27 @@
 //
-//  CarPrice.m
+//  PickupDateTime.m
 //
-//  Created by   on 23/04/2017
-//  Copyright (c) 2017 Nessos. All rights reserved.
+//  Created by   on 24/4/17
+//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
-#import "CarPrice.h"
+#import "PickupDateTime.h"
 
 
-NSString *const kCarPricePrice = @"Price";
-NSString *const kCarPriceCarServiceId = @"CarServiceId";
+NSString *const kPickupDateTimeDate = @"Date";
+NSString *const kPickupDateTimeTime = @"Time";
 
 
-@interface CarPrice ()
+@interface PickupDateTime ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation CarPrice
+@implementation PickupDateTime
 
-@synthesize price = _price;
-@synthesize carServiceId = _carServiceId;
+@synthesize date = _date;
+@synthesize time = _time;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
@@ -34,8 +34,8 @@ NSString *const kCarPriceCarServiceId = @"CarServiceId";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.price = [[self objectOrNilForKey:kCarPricePrice fromDictionary:dict] integerValue];
-            self.carServiceId = [[self objectOrNilForKey:kCarPriceCarServiceId fromDictionary:dict] integerValue];
+            self.date = [self objectOrNilForKey:kPickupDateTimeDate fromDictionary:dict];
+            self.time = [self objectOrNilForKey:kPickupDateTimeTime fromDictionary:dict];
 
     }
     
@@ -45,8 +45,8 @@ NSString *const kCarPriceCarServiceId = @"CarServiceId";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarPricePrice];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.carServiceId] forKey:kCarPriceCarServiceId];
+    [mutableDict setValue:self.date forKey:kPickupDateTimeDate];
+    [mutableDict setValue:self.time forKey:kPickupDateTimeTime];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -67,27 +67,27 @@ NSString *const kCarPriceCarServiceId = @"CarServiceId";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.price = [aDecoder decodeDoubleForKey:kCarPricePrice];
-    self.carServiceId = [aDecoder decodeDoubleForKey:kCarPriceCarServiceId];
+    self.date = [aDecoder decodeObjectForKey:kPickupDateTimeDate];
+    self.time = [aDecoder decodeObjectForKey:kPickupDateTimeTime];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_price forKey:kCarPricePrice];
-    [aCoder encodeDouble:_carServiceId forKey:kCarPriceCarServiceId];
+    [aCoder encodeObject:_date forKey:kPickupDateTimeDate];
+    [aCoder encodeObject:_time forKey:kPickupDateTimeTime];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    CarPrice *copy = [[CarPrice alloc] init];
+    PickupDateTime *copy = [[PickupDateTime alloc] init];
     
     
     
     if (copy) {
 
-        copy.price = self.price;
-        copy.carServiceId = self.carServiceId;
+        copy.date = [self.date copyWithZone:zone];
+        copy.time = [self.time copyWithZone:zone];
     }
     
     return copy;

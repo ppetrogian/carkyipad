@@ -294,6 +294,9 @@
 }
 
 +(NSString *)urlencode:(NSString *)str {
+    if (!str) {
+        return nil;
+    }
     NSMutableString *output = [NSMutableString string];
     const unsigned char *source = (const unsigned char *)[str UTF8String];
     NSUInteger sourceLen = strlen((const char *)source);

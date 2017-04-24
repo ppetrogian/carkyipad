@@ -17,7 +17,7 @@
 
 @interface ClientDetailsViewController () <SelectDelegate, UITextViewDelegate>
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
-@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) RegisterClientResponse *registerClientResponse;
 @end
 
 @implementation ClientDetailsViewController
@@ -47,7 +47,7 @@
         PhoneNumberConfirmationViewController *destVc = segue.destinationViewController;
         destVc.delegate = self;
         destVc.phoneNumber = [NSString stringWithFormat:@"%@%@", self.countryPrefixLabel.text, self.phoneNumberTextField.text];
-        destVc.userId = self.userId;
+        destVc.userId = self.registerClientResponse.userId;
     }
 }
 
@@ -97,9 +97,19 @@
     if (self.isPhoneConfirmed) {
         [self.parentController showNextStep];
     } else {
-        [api RegisterClient:acc withBlock:^(NSString *str) {
-            self.userId = str;
-            [self performSegueWithIdentifier:@"phoneConfirmSegue" sender:nil];
+        [api RegisterClient:acc withBlock:^(NSArray *arr) {
+            if (arr && arr.count > 0) {
+                self.registerClientResponse = arr.firstObject;
+                self.parentController.userId = self.registerClientResponse.userId;
+                self.isPhoneConfirmed = self.registerClientResponse.phoneConfirmed;
+                if (!self.isPhoneConfirmed) {
+                    [self performSegueWithIdentifier:@"phoneConfirmSegue" sender:nil];
+                } else {
+                    [self.parentController showNextStep];
+                }
+            } else {
+                [self.parentController showAlertViewWithMessage:@"Cannot register client" andTitle:@"Error"];
+            }
         }];
     }
 }

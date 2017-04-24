@@ -7,14 +7,14 @@
 //
 
 #import "StepViewController.h"
-@class STPPaymentCardTextField,ClientDetailsViewController;
+@class STPPaymentCardTextField,ClientDetailsViewController,BKCardExpiryField;
 
 @interface PaymentForTaxiViewController : StepViewController
 @property (weak, nonatomic) IBOutlet UIButton *payNowButton;
 @property (weak, nonatomic) IBOutlet UIButton *payWithPaypalButton;
 @property (weak, nonatomic) IBOutlet UITextField *cvvTextField;
 @property (weak, nonatomic) IBOutlet UITextField *creditCardNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *expiryDateTextField;
+@property (weak, nonatomic) IBOutlet BKCardExpiryField *expiryDateTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *paymentsScrollView;
 
 

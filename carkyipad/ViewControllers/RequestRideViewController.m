@@ -27,8 +27,11 @@
     self.selectedCarType = -1;
     [self.dropOffLocationTextField addTarget:self action:@selector(dropOffLocationTextField_Clicked:) forControlEvents:UIControlEventTouchDown];
     // Do any additional setup after loading the view.
-    [self loadCarCategories];
-     NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
+        [self loadCarCategories:array];
+    }];
     [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
     self.mapView.delegate = self;
 }
@@ -67,19 +70,18 @@
     return NO;
 }
 
--(void)loadCarCategories {
-    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:3];
-    CarCategory *cc;
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(1), kCarCategoryDescription:@"STANDARD", kCarCategoryPrice:@(0), kCarCategoryImage:@"audi", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(3)}];
-    [temp addObject:cc];
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(2), kCarCategoryDescription:@"LUXURY SUV", kCarCategoryPrice:@(0), kCarCategoryImage:@"range rover", kCarCategoryMaxPassengers:@(4),kCarCategoryMaxLaggages:@(4)}];
-    [temp addObject:cc];
-    cc = [CarCategory modelObjectWithDictionary:@{kCarCategoryId:@(3), kCarCategoryDescription:@"VAN", kCarCategoryPrice:@(0), kCarCategoryImage:@"vito", kCarCategoryMaxPassengers:@(8),kCarCategoryMaxLaggages:@(8)}];
-    [temp addObject:cc];
-    self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:[temp copy] cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
+-(void)loadCarCategories:(NSArray<CarCategory*> *)arrayCategories {
+    if (arrayCategories.count > 0 ) {
+        NSArray<NSString*> *tempImages = @[@"audi",@"range rover",@"vito"];
+        [arrayCategories enumerateObjectsUsingBlock:^(CarCategory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            arrayCategories[idx].image = tempImages[idx];
+        }];
+    }
+
+    self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:arrayCategories cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
         cell.contentView.backgroundColor = [UIColor whiteColor];
         UILabel *nameLabel = [cell.contentView viewWithTag:1];
-        nameLabel.text = item.Description;
+        nameLabel.text = item.name;
         UILabel *passLabel = [cell.contentView viewWithTag:2];
         passLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxPassengers];
         UILabel *laggLabel = [cell.contentView viewWithTag:3];
@@ -128,7 +130,7 @@
         self.requestRideButton.enabled = YES;
         self.requestRideButton.backgroundColor = [UIColor blackColor];
         CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
-        [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.Description forMap:self.mapView];
+        [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
     }
 }
 
@@ -144,7 +146,7 @@
     Location *loc = value;
     CarkyApiClient *api = [CarkyApiClient sharedService];
     self.dropOffLocationTextField.text = loc.name;
-    [api GetPricesForZone: loc.zoneId withBlock:^(NSArray<CarPrice *> *arrayPrices) {
+    [api GetTransferServicePricesForZone: loc.zoneId withBlock:^(NSArray<CarPrice *> *arrayPrices) {
         [arrayPrices enumerateObjectsUsingBlock:^(CarPrice * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CarCategory *iCategory = self.carCategoriesDataSource.items[idx];
             iCategory.price = obj.price;
