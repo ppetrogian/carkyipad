@@ -259,17 +259,19 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockBoolean)block {
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
     [self POST:@"api/Partner/CreateTransferBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(YES);
+        block(@"");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
+        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(NO);
+        block(errorStr);
     }];
 }
 

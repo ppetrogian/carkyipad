@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, assign) NSInteger zoneId;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *placeId;
 @property (nonatomic, strong) LatLng *latLng;
 

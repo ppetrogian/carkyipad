@@ -11,6 +11,7 @@
 NSString *const kLocationsIdentifier = @"Id";
 NSString *const kLocationsZoneId = @"ZoneId";
 NSString *const kLocationsName = @"Name";
+NSString *const kLocationsAdress = @"Address";
 NSString *const kLocationsPlaceId = @"PlaceId";
 NSString *const kLocationsLatLng = @"Position";
 
@@ -40,6 +41,7 @@ NSString *const kLocationsLatLng = @"Position";
         self.identifier = [[self objectOrNilForKey:kLocationsIdentifier fromDictionary:dict] integerValue];
         self.zoneId = [[self objectOrNilForKey:kLocationsZoneId fromDictionary:dict] integerValue];
         self.name = [self objectOrNilForKey:kLocationsName fromDictionary:dict];
+        self.address = [self objectOrNilForKey:kLocationsAdress fromDictionary:dict];
         self.placeId = [self objectOrNilForKey:kLocationsPlaceId fromDictionary:dict];
         self.latLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kLocationsLatLng]];
 
@@ -54,6 +56,7 @@ NSString *const kLocationsLatLng = @"Position";
     [mutableDict setValue:@(self.identifier) forKey:kLocationsIdentifier];
     [mutableDict setValue:@(self.zoneId) forKey:kLocationsZoneId];
     [mutableDict setValue:self.name forKey:kLocationsName];
+    [mutableDict setValue:self.address forKey:kLocationsAdress];
     [mutableDict setValue:self.placeId forKey:kLocationsPlaceId];
     [mutableDict setValue:[self.latLng dictionaryRepresentation] forKey:kLocationsLatLng];
 

@@ -418,12 +418,14 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     //    if (obj.integerValue == 0) { return; } }];
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
-    //request.userId = self step
+    request.userId = self.userId;
+    request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
+    //request.dropoffLocation = self.selectedLocation;
     request.dropoffAddress = self.selectedLocation.name;
-    request.pickupAddress = self.currentLocation.name;
+    //request.pickupAddress = self.currentLocation.name;
     request.passengersNumber = cCat.maxPassengers;
-    request.dropoffLatLng = self.selectedLocation.latLng;
-    request.pickupLatLng = self.currentLocation.latLng; // todo
+    //request.dropoffLatLng = self.selectedLocation.latLng;
+    //request.pickupLatLng = self.currentLocation.latLng; // todo
     request.agreedToTermsAndConditions = YES;
     request.paymentMethod = 1;
     NSDate *currDate = NSDate.date;
@@ -433,7 +435,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     df.dateFormat = @"HH:mm:ss"; pdt.date = [df stringFromDate:currDate];
     request.pickupDateTime = pdt;
     request.extras = @[];
-    request.carTypeId = cCat.Id;
+    request.carkyCategoryId = cCat.Id;
     request.luggagePiecesNumber = cCat.maxLaggages;
     
     CarkyApiClient *api = [CarkyApiClient sharedService];
@@ -444,10 +446,14 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             return;
         }
         request.stripeCardToken = token.tokenId;
-        [api CreateTransferBookingRequest:request withBlock:^(BOOL b) {
+        [api CreateTransferBookingRequest:request withBlock:^(NSString *errorStr) {
             //[self.view bringSubviewToFront:self.paymentDoneView];
-            [self showAlertViewWithMessage:@"Payment done" andTitle:@"Success"];
-            [self showNextStep];
+            if (errorStr.length == 0) {
+                [self showAlertViewWithMessage:@"Payment done" andTitle:@"Success"];
+                [self showNextStep];
+            } else {
+                [self showAlertViewWithMessage:errorStr andTitle:@"Error"];
+            }
         }]; // create transfer request
     }]; // create token
 }

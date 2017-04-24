@@ -62,7 +62,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockArray)block;
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockBoolean)block;
+-(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockString)block;
 
 -(void)GetStripePublishableApiKey:(BlockString)block;
 

@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class LatLng,PickupDateTime;
+@class LatLng,PickupDateTime,Location;
 
 @interface TransferBookingRequest : NSObject <NSCoding, NSCopying>
 @property (nonatomic, strong) NSString *userId;
@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *pickupAddress;
 @property (nonatomic, strong) NSString *stripeCardToken;
 @property (nonatomic, assign) NSInteger passengersNumber;
+@property (nonatomic, strong) Location *dropoffLocation;
+@property (nonatomic, assign) NSInteger dropoffWellKnownLocationId;
 @property (nonatomic, strong) LatLng *dropoffLatLng;
 @property (nonatomic, assign) BOOL agreedToTermsAndConditions;
 
@@ -23,7 +25,7 @@
 @property (nonatomic, assign) NSInteger paymentMethod;
 @property (nonatomic, strong) LatLng *pickupLatLng;
 @property (nonatomic, strong) NSArray<NSNumber*> *extras;
-@property (nonatomic, assign) NSInteger carTypeId;
+@property (nonatomic, assign) NSInteger carkyCategoryId;
 @property (nonatomic, assign) NSInteger luggagePiecesNumber;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
