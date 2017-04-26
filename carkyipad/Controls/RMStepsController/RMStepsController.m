@@ -138,6 +138,16 @@
     [self updateContentInsetsForViewController:self.currentStepViewController];
 }
 
+-(NSInteger)currentStepIndex {
+    NSInteger index = [self.childViewControllers indexOfObject:self.currentStepViewController];
+    return index;
+}
+
+-(NSInteger)stepCount {
+    NSInteger count = [self.childViewControllers count];
+    return count;
+}
+
 #pragma mark - Actions
 - (void)showNextStep {
     NSInteger index = [self.childViewControllers indexOfObject:self.currentStepViewController];

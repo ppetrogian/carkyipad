@@ -48,7 +48,7 @@ DEPENDENCIES:
   - FSCalendar
   - GoogleMaps
   - GooglePlaces
-  - HockeySDK (~> 4.1.4)
+  - HockeySDK
   - IIAsyncViewController
   - MBCalendarKit
   - MBProgressHUD
@@ -72,6 +72,6 @@ SPEC CHECKSUMS:
   Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: b815689796e8193441df5bc2e9616b6c587470c0
+PODFILE CHECKSUM: ee835b339a6636d30203cc5ecd3885993bbbc493
 
 COCOAPODS: 1.2.0

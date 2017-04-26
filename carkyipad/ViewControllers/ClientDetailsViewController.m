@@ -29,6 +29,8 @@
     
     self.confirmButton.enabled = YES;
     self.confirmButton.backgroundColor = [UIColor blackColor];
+    
+    [self.firstNameTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

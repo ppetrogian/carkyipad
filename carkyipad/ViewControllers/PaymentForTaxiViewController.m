@@ -14,16 +14,31 @@
 #import "DataModels.h"
 #import "CardIO.h"
 #import "BKCardExpiryField.h"
+#import "PaymentCardEditorField.h"
 
-@interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate>
+@interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, UITextFieldDelegate>
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
 @end
 
 @implementation PaymentForTaxiViewController
 
+- (void)disablePayButton {
+     self.payNowButton.backgroundColor = [UIColor lightGrayColor];
+     self.payNowButton.enabled = NO;
+}
+
+-(void)enablePayButton {
+    self.payNowButton.backgroundColor = [UIColor blackColor];
+    self.payNowButton.enabled = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.stpCardTextField becomeFirstResponder];
+
+    //[self disablePayButton];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +59,21 @@
     return (TransferStepsViewController *)self.stepsController;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.expiryDateTextField) {
+        NSString *expDate = [self.expiryDateTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"" options:0 range:NSMakeRange(0, self.expiryDateTextField.text.length)];
+        expDate = [expDate stringByReplacingOccurrencesOfString:@"/" withString:@"" options:0 range:NSMakeRange(0, expDate.length)];
+        [self.stpCardTextField replaceField:@"expirationField" withValue:expDate];
+    }
+    else if (textField == self.cvvTextField) {
+        [self.stpCardTextField replaceField:@"cvcField" withValue:self.cvvTextField.text];
+    }
+    if (self.stpCardTextField.isValid) {
+        [self enablePayButton];
+    }
+    return YES;
+}
+
 - (IBAction)takePhoto_click:(UIButton *)sender {
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
     scanViewController.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -54,8 +84,10 @@
     NSLog(@"Scan succeeded with info: %@", info);
     // Do whatever needs to be done to deliver the purchased items.
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.creditCardNumberTextField.text = info.redactedCardNumber;
-    self.expiryDateTextField.text = [NSString stringWithFormat:@"%02lu/%lu", (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear];
+    [self.stpCardTextField replaceField: @"numberField" withValue:info.cardNumber];
+    self.expiryDateTextField.dateComponents.month = info.expiryMonth;
+    self.expiryDateTextField.dateComponents.year = info.expiryYear;
+    self.expiryDateTextField.text = [NSString stringWithFormat:@"%02lu/%lu", (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear % 2000];
     self.cvvTextField.text = info.cvv;
 }
 
@@ -70,7 +102,10 @@
     cardParams.expMonth = self.expiryDateTextField.dateComponents.month;
     cardParams.expYear = self.expiryDateTextField.dateComponents.year;
     self.parentController.cardParams = cardParams;
-    [self.parentController payWithCreditCard];
+    [self disablePayButton];
+    [self.parentController payWithCreditCard:^(BOOL b) {
+        [self enablePayButton];
+    }];
 }
 
 - (IBAction)payWithPaypalButton_click:(UIButton *)sender {

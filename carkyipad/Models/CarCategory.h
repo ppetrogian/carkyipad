@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, assign) NSInteger maxPassengers;
-@property (nonatomic, assign) NSInteger maxLaggages;
+@property (nonatomic, assign) NSInteger maxLuggages;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -28,11 +28,15 @@
     [self.dropOffLocationTextField addTarget:self action:@selector(dropOffLocationTextField_Clicked:) forControlEvents:UIControlEventTouchDown];
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
-    [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
-        [self loadCarCategories:array];
+    // todo: remove from here
+    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
+        NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+        [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
+            [self loadCarCategories:array];
+        }];
+        [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
     }];
-    [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
+
     self.mapView.delegate = self;
 }
 
@@ -85,7 +89,7 @@
         UILabel *passLabel = [cell.contentView viewWithTag:2];
         passLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxPassengers];
         UILabel *laggLabel = [cell.contentView viewWithTag:3];
-        laggLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxLaggages];
+        laggLabel.text = [NSString stringWithFormat:@"%ld",(long)item.maxLuggages];
         UILabel *numLabel = [cell.contentView viewWithTag:6];
         numLabel.text = [NSString stringWithFormat:@"%ld",(long)0];
         UIButton *ccImageButton = [cell.contentView viewWithTag:4];
@@ -177,6 +181,7 @@
     }
 }
 - (IBAction)requestRideButton_Click:(UIButton *)sender {
+    self.parentController.backButton.hidden = NO;
     [self.stepsController showNextStep];
 }
 

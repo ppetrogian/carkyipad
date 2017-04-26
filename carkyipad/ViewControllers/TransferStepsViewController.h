@@ -10,6 +10,7 @@
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "CarkyApiClient.h"
 @class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory,STPCardParams;
 
 @interface TransferStepsViewController : CarRentalStepsViewController
@@ -49,11 +50,12 @@
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 @property (strong, nonatomic) NSString *transferBookingId;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;
 // methods
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
--(void)payWithCreditCard;
+-(void)payWithCreditCard:(BlockBoolean)block;
 @end

@@ -31,11 +31,7 @@
     self.buttonTransfer.hidden = YES;
     self.buttonCarRental.hidden = YES;
     //self.buttonTransfer.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:35];
-    // todo: remove from here
-    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
-        self.buttonTransfer.hidden = NO;
-        self.buttonCarRental.hidden = NO;
-    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

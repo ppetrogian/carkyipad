@@ -46,6 +46,8 @@
 @property (weak, nonatomic) IBOutlet PSStepButton *buttonNext;
 @property (nonatomic, weak) IBOutlet RMStepsBar *stepsBar;
 @property (nonatomic, weak) IBOutlet UIView *stepViewControllerContainer;
+@property (nonatomic, readonly) NSInteger currentStepIndex;
+@property (nonatomic, readonly) NSInteger stepCount;
 @property (nonatomic, strong) UIViewController *currentStepViewController;
 
 /**
@@ -54,7 +56,7 @@
 @property (nonatomic, strong, readonly) NSMutableDictionary *results;
 
 /// @name Instance Methods
-
+- (void)loadStepViewControllers;
 /**
  A subclass of `RMStepsController` is supposed to return an array of view controllers here. Every view controller will be one step in the process. The first element in the array will be the first step and the last element will be the last step.
  
@@ -88,6 +90,8 @@
  This method is called after `-[RMStepsController showPreviousStep]` has been called in the first step. A subclass of `RMStepsController` is supposed to do whatever needs to be done here after the process has been canceled by the user.
  */
 - (void)canceled;
+
+
 
 @property (nonatomic) BOOL shouldAnimate;
 

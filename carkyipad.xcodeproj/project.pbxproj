@@ -10,6 +10,8 @@
 		7C871C8776B99A099382CA76 /* libPods-carkyipadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */; };
 		A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */; };
 		AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */; };
+		AE28575E1EB016E90047A649 /* 2848220705019691240.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AE28575D1EB009220047A649 /* 2848220705019691240.mp4 */; };
+		AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2857611EB01B130047A649 /* PaymentCardEditorField.m */; };
 		AE34F1591E903772000D3997 /* AvailableCars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1561E903772000D3997 /* AvailableCars.m */; };
 		AE34F15A1E903772000D3997 /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1581E903772000D3997 /* Cars.m */; };
 		AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
@@ -202,6 +204,9 @@
 		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
 		AE270A8B1E875580000A8C7B /* DetailsStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailsStepViewController.h; path = ViewControllers/DetailsStepViewController.h; sourceTree = "<group>"; };
 		AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailsStepViewController.m; path = ViewControllers/DetailsStepViewController.m; sourceTree = "<group>"; };
+		AE28575D1EB009220047A649 /* 2848220705019691240.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2848220705019691240.mp4; sourceTree = "<group>"; };
+		AE2857601EB01B130047A649 /* PaymentCardEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentCardEditorField.h; path = Controls/PaymentCardEditorField.h; sourceTree = "<group>"; };
+		AE2857611EB01B130047A649 /* PaymentCardEditorField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentCardEditorField.m; path = Controls/PaymentCardEditorField.m; sourceTree = "<group>"; };
 		AE34F1551E903772000D3997 /* AvailableCars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableCars.h; sourceTree = "<group>"; };
 		AE34F1561E903772000D3997 /* AvailableCars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableCars.m; sourceTree = "<group>"; };
 		AE34F1571E903772000D3997 /* Cars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cars.h; sourceTree = "<group>"; };
@@ -489,6 +494,15 @@
 				D113637A1EA0731800EB6279 /* Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE28575F1EB01AEF0047A649 /* PaymentCardEditorField */ = {
+			isa = PBXGroup;
+			children = (
+				AE2857601EB01B130047A649 /* PaymentCardEditorField.h */,
+				AE2857611EB01B130047A649 /* PaymentCardEditorField.m */,
+			);
+			name = PaymentCardEditorField;
 			sourceTree = "<group>";
 		};
 		AE6351BC1E71E32200065F0F /* Models */ = {
@@ -817,6 +831,7 @@
 		AEEA24D11EAA2B7900043423 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
+				AE28575D1EB009220047A649 /* 2848220705019691240.mp4 */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				AEEA24D41EAA349900043423 /* RequestRideViewController.h */,
@@ -931,6 +946,7 @@
 				AE6353051E75E23D00065F0F /* LoaderGif */,
 				AE6352BE1E75E1FA00065F0F /* CountryListOffline */,
 				AE6352051E75B18700065F0F /* CircleLineButton */,
+				AE28575F1EB01AEF0047A649 /* PaymentCardEditorField */,
 				AE6352081E75B18700065F0F /* FlatPillButton */,
 				D14DF0A41E757F940040B97F /* RMStepsController */,
 			);
@@ -1141,6 +1157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE28575E1EB016E90047A649 /* 2848220705019691240.mp4 in Resources */,
 				D15951491EACB08B00540076 /* Settings.bundle in Resources */,
 				AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */,
 				D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */,
@@ -1418,6 +1435,7 @@
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
 				D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */,
 				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
+				AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */,
 				D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
 				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,
@@ -1652,7 +1670,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8bd85e1-c52c-4bec-8141-2ab9fcbba8cb";
+				PROVISIONING_PROFILE = "7a40e7f6-61fb-43bc-a768-3c763b413a8d";
 				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
 			};
 			name = Release;

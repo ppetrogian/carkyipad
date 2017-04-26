@@ -11,6 +11,7 @@
 #import "CarkyApiClient.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Stripe/Stripe.h>
+@import  HockeySDK;
 
 @interface AppDelegate ()
 
@@ -19,17 +20,31 @@
 @implementation AppDelegate
 
 
+- (void)loadInitialController {
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Transfer" bundle:nil];
+    
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"transferSteps"];
+    
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
     // Override point for customization after application launch.
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"17b2f6849c3d402d85f37c7761481c97"];
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [[NSBundle mainBundle] objectForInfoDictionaryKey:@"StripeApiKey"]];
+    [GMSServices provideAPIKey:@"AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU"];
+    
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"bafb4bfd3a514cdbb91b676e8a384daa"];
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [[NSBundle mainBundle] objectForInfoDictionaryKey:@"StripeApiKey"]];
-    [GMSServices provideAPIKey:@"AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU"];
+
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self loadInitialController];
     return YES;
 }
 
@@ -163,8 +178,8 @@
     NSDictionary *leg =  [[firstRoute objectForKey:@"legs"] objectAtIndex:0];
     
     NSMutableArray * legRouteArray=[routes valueForKey:@"legs"];
-    NSMutableString *startLocationLat=[[[legRouteArray valueForKeyPath:@"start_location.lat"] objectAtIndex:0] objectAtIndex:0];
-    NSMutableString *startLocationLong=[[[legRouteArray valueForKeyPath:@"start_location.lng"]objectAtIndex:0] objectAtIndex:0];
+//    NSMutableString *startLocationLat=[[[legRouteArray valueForKeyPath:@"start_location.lat"] objectAtIndex:0] objectAtIndex:0];
+//    NSMutableString *startLocationLong=[[[legRouteArray valueForKeyPath:@"start_location.lng"]objectAtIndex:0] objectAtIndex:0];
     //NSMutableString *endLocationLat=[[[legRouteArray valueForKeyPath:@"end_location.lat"] objectAtIndex:0] objectAtIndex:0];
     //NSMutableString *endLocationLong=[[[legRouteArray valueForKeyPath:@"end_location.lng"]objectAtIndex:0] objectAtIndex:0];
     
@@ -199,20 +214,12 @@
     polyline.strokeWidth = 3.f;
     polyline.map = mapView;
     //show image for starting point and destination point
-    for (int i = 0; i<2; i++) {
-        if (i==0) {
-            GMSMarker *marker = [[GMSMarker alloc] init];
-            marker.icon = [UIImage imageNamed:@"SourceIcon"];
-            marker.position = CLLocationCoordinate2DMake([startLocationLat floatValue], [startLocationLong floatValue]);
-            marker.map = mapView;
-        }
-        if(targetMarker != nil)
-        {
-            NSArray *locationArray=[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"];
-            targetMarker.title = [NSString stringWithFormat:@"%@",[locationArray objectAtIndex:0]];
-            targetMarker.map = mapView;
-            mapView.selectedMarker = targetMarker;
-        }
+    if(targetMarker != nil)
+    {
+        NSArray *locationArray=[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"];
+        targetMarker.title = [NSString stringWithFormat:@"%@",[locationArray objectAtIndex:0]];
+        targetMarker.map = mapView;
+        mapView.selectedMarker = targetMarker;
     }
     return  polyline;
 }

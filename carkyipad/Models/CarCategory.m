@@ -13,7 +13,7 @@ NSString *const kCarCategoryId = @"Id";
 NSString *const kCarCategoryImage = @"Image";
 NSString *const kCarCategoryName = @"Name";
 NSString *const kCarCategoryMaxPassengers = @"MaxPassengers";
-NSString *const kCarCategoryMaxLaggages = @"MaxLaggages";
+NSString *const kCarCategoryMaxLuggages = @"MaxLuggages";
 
 
 @interface CarCategory ()
@@ -23,9 +23,6 @@ NSString *const kCarCategoryMaxLaggages = @"MaxLaggages";
 @end
 
 @implementation CarCategory
-
-@synthesize price = _price;
-@synthesize Id = _Id;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
@@ -43,7 +40,7 @@ NSString *const kCarCategoryMaxLaggages = @"MaxLaggages";
         self.name = [self objectOrNilForKey:kCarCategoryName fromDictionary:dict];
         self.image = [self objectOrNilForKey:kCarCategoryImage fromDictionary:dict];
         self.maxPassengers = [[self objectOrNilForKey:kCarCategoryMaxPassengers fromDictionary:dict] integerValue];
-        self.maxLaggages = [[self objectOrNilForKey:kCarCategoryMaxLaggages fromDictionary:dict] integerValue];
+        self.maxLuggages = [[self objectOrNilForKey:kCarCategoryMaxLuggages fromDictionary:dict] integerValue];
     }
     return self;
 }
@@ -55,7 +52,7 @@ NSString *const kCarCategoryMaxLaggages = @"MaxLaggages";
     [mutableDict setValue:self.name forKey:kCarCategoryName];
     [mutableDict setValue:self.image forKey:kCarCategoryImage];
     [mutableDict setValue:[NSNumber numberWithInteger:self.maxPassengers] forKey:kCarCategoryMaxPassengers];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.maxLaggages] forKey:kCarCategoryMaxLaggages];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.maxLuggages] forKey:kCarCategoryMaxLuggages];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

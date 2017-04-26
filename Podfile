@@ -13,6 +13,7 @@ pod 'GooglePlaces'
 pod 'IIAsyncViewController'
 pod 'Stripe'
 pod 'BKCardExpiryField'
+pod 'HockeySDK'
 end
 
 target 'carkyipadTests' do
@@ -34,7 +35,7 @@ pod 'Bolts'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'IIAsyncViewController'
-pod 'HockeySDK', '~> 4.1.4'
+pod 'HockeySDK'
 pod 'CardIO'
 #pod 'Material', '~> 2.0'
 #pod 'MaterialControls', '~> 1.2.2'

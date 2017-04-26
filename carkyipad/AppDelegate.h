@@ -27,6 +27,8 @@
 @property (strong, nonatomic) NSMutableDictionary *availableCarsDict;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
+
+-(void)loadInitialController;
 +(AppDelegate *)instance;
 // helper methods
 +(UITableView *) parentTableView:(UIView *)view;

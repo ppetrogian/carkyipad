@@ -46,11 +46,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [AppDelegate configurePSTextField:self.fromLocationTextField withColor:[UIColor whiteColor]];
     [AppDelegate configurePSTextField:self.toLocationTextField withColor:[UIColor whiteColor]];
     self.toLocationTextField.delegate = self;
-    // set wizard frames
-    self.viewFindDrivers.frame = self.locationsTableView.frame;
-    self.paymentsScrollView.frame = self.locationsTableView.frame;
-    self.paymentDoneView.frame = self.locationsTableView.frame;
-    [self.view bringSubviewToFront:self.locationsTableView];
    
     // configure payment controls
     [AppDelegate configurePSTextField:self.firstNameTextField withColor:[UIColor lightGrayColor]];
@@ -68,6 +63,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.selectedCarTypes = [NSMutableArray arrayWithArray:@[@(0),@(0),@(0)]];
   
     [CardIOUtilities preload];
+    self.backButton.hidden = YES;
 }
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {
@@ -98,6 +94,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             [self.locationMarkers addObject:marker];
         }];
     }];
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [UIImage imageNamed:@"SourceIcon"];
+    marker.position = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
+    marker.map = mapView;
     CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
     mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
 }
@@ -199,7 +199,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.position = self.userPos;
     return request;
 }
-
 
  #pragma mark - Navigation
  
@@ -305,16 +304,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 // handlers
 - (IBAction)gotoBack:(UIButton *)sender {
-    UIView *subView = self.view.subviews.lastObject;
-    if (subView == self.locationsTableView) {
-        [super showPreviousStep];
-    } if (subView == self.paymentDoneView) {
-        [super showPreviousStep];
-    } else {
-        UIView *prevView = [self.view viewWithTag:subView.tag-1];
-        [self.view bringSubviewToFront:prevView];
-    }
-    
+    if (self.currentStepIndex < self.stepCount - 1)
+        [self showPreviousStep];
 }
 
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr {
@@ -327,26 +318,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     return [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
         [myAlertController dismissViewControllerAnimated:YES completion:nil];
     }];
-}
-
--(void)addOrSubtractCar:(UIButton *)sender {
-    UIView *parentView = sender.superview;
-    UILabel *numLabel = [parentView viewWithTag:6];
-    NSInteger numberValue = numLabel.text.integerValue;
-    NSInteger diff = sender.tag == 7 ? 1 : - 1;
-    numberValue = numberValue + diff;
-    UITableViewCell* cell = [AppDelegate parentTableViewCell:parentView];
-    UITableView* table = [AppDelegate parentTableView:cell];
-    NSIndexPath* pathOfTheCell = [table indexPathForCell:cell];
-    if (numberValue >= 0) {
-        numLabel.text = [NSString stringWithFormat:@"%ld",(long)numberValue];
-        UILabel *priceLabel = [parentView viewWithTag:8];
-        NSInteger price = [priceLabel.text substringFromIndex:1].integerValue;
-        self.totalPrice += (price * diff);
-        NSInteger value = self.selectedCarTypes[pathOfTheCell.row].integerValue;
-        self.selectedCarTypes[pathOfTheCell.row] = @(value + diff);
-        [self uiBindWithCard:YES];
-    }
 }
 
 - (IBAction)confirmClick:(UIButton *)sender {
@@ -402,11 +373,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.payNowButton.enabled = textField.isValid;
 }
 
-- (IBAction)payNow_click:(UIButton *)sender {
-    [self payWithCreditCard];
-}
 
--(void)payWithCreditCard {
+-(void)payWithCreditCard:(BlockBoolean)block; {
     NSDateFormatter *df = [NSDateFormatter new];
     // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
@@ -429,23 +397,25 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.pickupDateTime = pdt;
     request.extras = @[];
     request.carkyCategoryId = cCat.Id;
-    request.luggagePiecesNumber = cCat.maxLaggages;
+    request.luggagePiecesNumber = cCat.maxLuggages;
     
     CarkyApiClient *api = [CarkyApiClient sharedService];
     [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
         if (error) {
             NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
             [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
+            block(NO);
             return;
         }
         request.stripeCardToken = token.tokenId;
         [api CreateTransferBookingRequest:request withBlock:^(NSArray *array) {
             TransferBookingResponse *responseObj = array.firstObject;
-            //[self.view bringSubviewToFront:self.paymentDoneView];
             if (responseObj.bookingId.length > 0) {
+                block(YES);
                 self.transferBookingId = responseObj.bookingId;
                 [self showNextStep];
             } else {
+                block(NO);
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
             }
         }]; // create transfer request

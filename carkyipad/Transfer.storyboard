@@ -13,7 +13,7 @@
         <!--Transfer Steps-->
         <scene sceneID="U7P-50-jvQ">
             <objects>
-                <viewController storyboardIdentifier="TransferSteps" id="dIR-Hd-371" userLabel="Transfer Steps" customClass="TransferStepsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="transferSteps" id="dIR-Hd-371" userLabel="Transfer Steps" customClass="TransferStepsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7kF-UD-wuc"/>
                         <viewControllerLayoutGuide type="bottom" id="VbD-Q6-wZX"/>
@@ -28,7 +28,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ves-F2-PL7" userLabel="ArrowBackButton">
                                 <rect key="frame" x="17" y="36" width="24" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="arrowBack"/>
+                                <state key="normal" image="back_black"/>
                                 <connections>
                                     <action selector="gotoBack:" destination="dIR-Hd-371" eventType="touchUpInside" id="U3L-1x-lWd"/>
                                 </connections>
@@ -148,7 +148,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="424" height="166"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jxI-B9-jjV" id="ZFp-he-ldz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="424" height="166"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="424" height="165.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" image="SUV" translatesAutoresizingMaskIntoConstraints="NO" id="4JA-a5-kQS">
@@ -591,6 +591,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="ves-F2-PL7" id="RO7-eo-2bQ"/>
                         <outlet property="carCategoriesTableView" destination="7LE-W4-kN6" id="n9k-aG-45G"/>
                         <outlet property="cashButton" destination="gXe-g1-4Qh" id="Gzb-7e-xdg"/>
                         <outlet property="confirmButton" destination="Trf-JL-uVG" id="FHF-wO-49j"/>
@@ -720,18 +721,18 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="   Select dropoff location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9x-Hr-5GW">
-                                <rect key="frame" x="53" y="15" width="687" height="34"/>
+                                <rect key="frame" x="53" y="10" width="687" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="point-2" translatesAutoresizingMaskIntoConstraints="NO" id="frd-kL-3sj">
-                                <rect key="frame" x="653" y="506" width="61" height="52"/>
+                                <rect key="frame" x="665" y="531" width="61" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="hand" translatesAutoresizingMaskIntoConstraints="NO" id="CLW-JF-Mze">
-                                <rect key="frame" x="680" y="530" width="44" height="60"/>
+                                <rect key="frame" x="686" y="553" width="44" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                         </subviews>
@@ -1068,27 +1069,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9k-uu-6Ws" customClass="STPPaymentCardTextField">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p9k-uu-6Ws" customClass="PaymentCardEditorField">
                                 <rect key="frame" x="47" y="127" width="402" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXu-HB-Y0v" id="Ktn-8U-3DN"/>
                                 </connections>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Expiry_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KDp-Cx-9he">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Expiry_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KDp-Cx-9he">
                                 <rect key="frame" x="70" y="180" width="17" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="0uh-g0-M8F">
-                                <rect key="frame" x="292" y="68" width="103" height="16"/>
+                                <rect key="frame" x="292" y="68" width="103" height="19"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="MasterCard_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bwq-dq-KAw">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="19"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Visa_logo" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-2e-yKn">
-                                        <rect key="frame" x="35" y="0.0" width="35" height="16"/>
+                                        <rect key="frame" x="35" y="0.0" width="35" height="19"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="AmericanExpress_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZiZ-Ev-d3Q">
-                                        <rect key="frame" x="78" y="0.0" width="25" height="16"/>
+                                        <rect key="frame" x="78" y="0.0" width="25" height="19"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -1096,14 +1099,15 @@
                                     <constraint firstItem="ZiZ-Ev-d3Q" firstAttribute="leading" secondItem="JBK-2e-yKn" secondAttribute="trailing" constant="8" symbolic="YES" id="waR-3E-U37"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53X-ze-Zuw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53X-ze-Zuw">
                                 <rect key="frame" x="299" y="173" width="72" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="BjW-Ex-bGB"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXu-HB-Y0v" id="veO-qR-qAb"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-c2-6RV">
                                 <rect key="frame" x="468" y="133" width="19" height="22"/>
@@ -1112,23 +1116,25 @@
                                     <action selector="takePhoto_click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="KqQ-7Q-UYa"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGO-1K-n1m" customClass="BKCardExpiryField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGO-1K-n1m" customClass="BKCardExpiryField">
                                 <rect key="frame" x="101" y="172" width="111" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="111" id="dlv-mS-8dw"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXu-HB-Y0v" id="DOn-e4-OnY"/>
+                                </connections>
                             </textField>
                             <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="CreditCardLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-s5-ZzB">
                                 <rect key="frame" x="12" y="125" width="26" height="31"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="cvv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="X4V-YO-dsY">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="cvv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="X4V-YO-dsY">
                                 <rect key="frame" x="279" y="180" width="14" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFI-WY-Fdy">
-                                <rect key="frame" x="51" y="23" width="165" height="33"/>
+                                <rect key="frame" x="51" y="23" width="165" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="165" id="MYk-X2-eGp"/>
                                 </constraints>
@@ -1137,7 +1143,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay with credit card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJV-rA-Kqk">
-                                <rect key="frame" x="50" y="63" width="220" height="25"/>
+                                <rect key="frame" x="50" y="65" width="220" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="fiP-MY-E1Z"/>
                                 </constraints>
@@ -1192,12 +1198,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p9k-uu-6Ws" firstAttribute="top" secondItem="FJV-rA-Kqk" secondAttribute="bottom" constant="39" id="0YV-V2-Be1"/>
-                            <constraint firstItem="53X-ze-Zuw" firstAttribute="top" secondItem="p9k-uu-6Ws" secondAttribute="bottom" constant="15" id="1gp-UR-qHQ"/>
                             <constraint firstItem="FJV-rA-Kqk" firstAttribute="centerY" secondItem="0uh-g0-M8F" secondAttribute="centerY" id="238-fi-azA"/>
-                            <constraint firstItem="X4V-YO-dsY" firstAttribute="leading" secondItem="WGO-1K-n1m" secondAttribute="trailing" constant="67" id="65l-fa-GHK"/>
                             <constraint firstItem="LFI-WY-Fdy" firstAttribute="top" secondItem="u8v-Zs-AiR" secondAttribute="bottom" constant="3" id="67X-4v-8rY"/>
-                            <constraint firstItem="53X-ze-Zuw" firstAttribute="leading" secondItem="X4V-YO-dsY" secondAttribute="trailing" constant="6" id="6dV-PH-rt7"/>
                             <constraint firstAttribute="trailing" secondItem="6oV-c2-6RV" secondAttribute="trailing" constant="281" id="7L2-17-jUI"/>
                             <constraint firstItem="FJV-rA-Kqk" firstAttribute="top" secondItem="LFI-WY-Fdy" secondAttribute="bottom" constant="7" id="7zl-jA-SPY"/>
                             <constraint firstItem="27i-Nm-UJd" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leadingMargin" constant="39" id="FjR-Km-3Ca"/>
@@ -1206,25 +1208,16 @@
                             <constraint firstItem="FJV-rA-Kqk" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leadingMargin" constant="30" id="IXw-YG-A0m"/>
                             <constraint firstItem="0uh-g0-M8F" firstAttribute="top" secondItem="u8v-Zs-AiR" secondAttribute="bottom" constant="48" id="N39-VZ-qyU"/>
                             <constraint firstItem="5VA-Py-xTx" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leading" constant="157" id="OIi-nz-doS"/>
-                            <constraint firstItem="6oV-c2-6RV" firstAttribute="leading" secondItem="p9k-uu-6Ws" secondAttribute="trailing" constant="19" id="Obr-ft-90J"/>
                             <constraint firstItem="uQf-ud-yJI" firstAttribute="top" secondItem="Utg-XA-aye" secondAttribute="bottom" constant="22" id="Pxx-Ul-1iM"/>
                             <constraint firstItem="6oV-c2-6RV" firstAttribute="top" secondItem="u8v-Zs-AiR" secondAttribute="bottom" constant="113" id="QtV-MY-KZ4"/>
-                            <constraint firstItem="KDp-Cx-9he" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leadingMargin" constant="50" id="RtF-IW-NR3"/>
-                            <constraint firstItem="p9k-uu-6Ws" firstAttribute="leading" secondItem="Rgc-s5-ZzB" secondAttribute="trailing" constant="9" id="Wp9-YB-Mol"/>
-                            <constraint firstItem="WGO-1K-n1m" firstAttribute="top" secondItem="p9k-uu-6Ws" secondAttribute="bottom" constant="14" id="X3e-7E-Hw1"/>
                             <constraint firstItem="Rgc-s5-ZzB" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leadingMargin" constant="-8" id="Xh2-bE-hhZ"/>
                             <constraint firstItem="Rgc-s5-ZzB" firstAttribute="top" secondItem="u8v-Zs-AiR" secondAttribute="bottom" constant="105" id="amX-cw-oia"/>
-                            <constraint firstItem="KDp-Cx-9he" firstAttribute="top" secondItem="X4V-YO-dsY" secondAttribute="top" id="cOD-hh-blV"/>
                             <constraint firstItem="uQf-ud-yJI" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leading" constant="132" id="hjl-Y2-yqq"/>
-                            <constraint firstItem="5VA-Py-xTx" firstAttribute="top" secondItem="53X-ze-Zuw" secondAttribute="bottom" constant="64" id="jCp-JL-At6"/>
                             <constraint firstItem="LFI-WY-Fdy" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leadingMargin" constant="31" id="kzf-p0-8jy"/>
                             <constraint firstItem="Utg-XA-aye" firstAttribute="leading" secondItem="4Bl-UG-dQV" secondAttribute="leading" constant="133" id="luL-UP-8Dy"/>
                             <constraint firstItem="raN-hd-Ucq" firstAttribute="top" secondItem="uQf-ud-yJI" secondAttribute="bottom" constant="497" id="oxA-YS-DZY"/>
-                            <constraint firstItem="WGO-1K-n1m" firstAttribute="leading" secondItem="KDp-Cx-9he" secondAttribute="trailing" constant="14" id="q2z-vE-1FK"/>
                             <constraint firstItem="Utg-XA-aye" firstAttribute="top" secondItem="5VA-Py-xTx" secondAttribute="bottom" constant="39" id="qCt-me-BGN"/>
                             <constraint firstItem="raN-hd-Ucq" firstAttribute="top" secondItem="Rgc-s5-ZzB" secondAttribute="bottom" constant="819" id="vFb-mT-CaA"/>
-                            <constraint firstItem="p9k-uu-6Ws" firstAttribute="top" secondItem="0uh-g0-M8F" secondAttribute="bottom" constant="43" id="viS-HP-j9a"/>
-                            <constraint firstItem="KDp-Cx-9he" firstAttribute="top" secondItem="p9k-uu-6Ws" secondAttribute="bottom" constant="22" id="wTG-tF-vz2"/>
                             <constraint firstItem="0uh-g0-M8F" firstAttribute="leading" secondItem="FJV-rA-Kqk" secondAttribute="trailing" constant="22" id="yeS-HW-4sc"/>
                         </constraints>
                     </view>
@@ -1255,53 +1248,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="driverCar" translatesAutoresizingMaskIntoConstraints="NO" id="drm-T9-czf">
-                                <rect key="frame" x="515" y="414" width="81" height="81"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="driverCar" translatesAutoresizingMaskIntoConstraints="NO" id="drm-T9-czf">
+                                <rect key="frame" x="531" y="818" width="81" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="CheckMark" translatesAutoresizingMaskIntoConstraints="NO" id="DX2-to-zBc">
-                                <rect key="frame" x="354" y="237" width="54" height="40"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver on the way!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sv3-Dg-4Ws">
-                                <rect key="frame" x="311" y="302" width="170" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neX-wO-CJT">
-                                <rect key="frame" x="339" y="447" width="103" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fp-Wu-XBv">
-                                <rect key="frame" x="505" y="527" width="132" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*Please check your text messages for more details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byb-Fl-bao">
-                                <rect key="frame" x="227" y="672" width="317" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*Please check your text messages for more details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byb-Fl-bao">
+                                <rect key="frame" x="312" y="862" width="192" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="driverPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-YM-uWe">
-                                <rect key="frame" x="197" y="414" width="81" height="81"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="driverPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-YM-uWe">
+                                <rect key="frame" x="179" y="818" width="81" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0hB-jH-i0R">
-                                <rect key="frame" x="122" y="525" width="257" height="49"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0hB-jH-i0R">
+                                <rect key="frame" x="91" y="747" width="257" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Registration No." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neX-wO-CJT">
+                                <rect key="frame" x="494" y="761" width="154" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30d-Mo-q48">
+                                <rect key="frame" x="20" y="20" width="728" height="659"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33l-Wg-QEd">
+                                <rect key="frame" x="314" y="919" width="153" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="New Booking">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newBookingButton_Click:" destination="gJi-Rh-MvU" eventType="touchUpInside" id="ZV0-TM-RD1"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YO-9l-ZMh">
+                                <rect key="frame" x="264" y="285" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="nnD-w3-S6I" kind="embed" identifier="avPlayer" id="VJn-dX-9uZ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1310,13 +1308,23 @@
                         <outlet property="driverCarPhotoImageView" destination="drm-T9-czf" id="TUb-62-3jo"/>
                         <outlet property="driverNoLabel" destination="0hB-jH-i0R" id="vU7-XQ-A0V"/>
                         <outlet property="driverPhotoImageView" destination="uqa-YM-uWe" id="BAK-No-ssW"/>
-                        <outlet property="messageLabel" destination="sv3-Dg-4Ws" id="a2c-it-imT"/>
+                        <outlet property="makeBookingButton" destination="33l-Wg-QEd" id="Nhl-DI-aKC"/>
+                        <outlet property="pickupImageView" destination="30d-Mo-q48" id="O0F-zZ-J8P"/>
                         <outlet property="registrationNoLabel" destination="neX-wO-CJT" id="Z9O-TU-YH5"/>
+                        <outlet property="videoContainerView" destination="9YO-9l-ZMh" id="Mte-Sm-SMM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8W-rf-pEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4700" y="138.8671875"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="zxa-fY-GDj">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspectFill" id="nnD-w3-S6I" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e2M-SM-Del" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5367" y="83"/>
         </scene>
         <!--tabBar-->
         <scene sceneID="Urc-ku-9mn">
@@ -1339,6 +1347,19 @@
             </objects>
             <point key="canvasLocation" x="616.40625" y="53.90625"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="zG6-2Y-Ozx">
+            <objects>
+                <viewController id="hnH-Lv-GcG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eq6-eP-VWT">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Uj-D8-axx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="AmericanExpress_logo" width="25" height="16"/>
@@ -1351,9 +1372,9 @@
         <image name="Star" width="16" height="15"/>
         <image name="TakePic" width="19" height="16"/>
         <image name="Visa_logo" width="35" height="11"/>
-        <image name="arrowBack" width="24" height="18"/>
         <image name="arrowSelect" width="7" height="11"/>
         <image name="audi" width="87" height="87"/>
+        <image name="back_black" width="20" height="15"/>
         <image name="check_off" width="36" height="36"/>
         <image name="check_on" width="36" height="36"/>
         <image name="clock" width="20" height="20"/>

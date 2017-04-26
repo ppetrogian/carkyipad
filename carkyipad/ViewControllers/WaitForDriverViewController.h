@@ -16,5 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *driverPhotoImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *driverCarPhotoImageView;
+@property (weak, nonatomic) IBOutlet UIButton *makeBookingButton;
+@property (weak, nonatomic) IBOutlet UIImageView *pickupImageView;
+@property (weak, nonatomic) IBOutlet UIView *videoContainerView;
 
 @end
