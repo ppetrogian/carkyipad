@@ -25,7 +25,7 @@
     [self loadLocations:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
     [AppDelegate addDropShadow:self.shadowView forUp:NO];
-    [self.view viewWithTag:90].hidden = YES;
+
 }
 
 - (void)didReceiveMemoryWarning {

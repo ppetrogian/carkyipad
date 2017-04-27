@@ -20,12 +20,12 @@
 
 // placeholder position
 - (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectInset(bounds, self.insetLeft, 0);
+    return CGRectMake(bounds.origin.x + self.insetLeft, bounds.origin.y, bounds.size.width-self.insetLeft, bounds.size.height);
 }
 
 // text position
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    return CGRectInset(bounds, self.insetLeft, 0);
+    return CGRectMake(bounds.origin.x + self.insetLeft, bounds.origin.y, bounds.size.width-self.insetLeft, bounds.size.height);
 }
 
 @end
