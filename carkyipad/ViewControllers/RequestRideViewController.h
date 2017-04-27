@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *requestRideButton;
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UICollectionView *carCategoriesCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *dotView;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
 
 - (void)didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t;
 @end

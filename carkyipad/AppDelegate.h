@@ -43,5 +43,6 @@
 +(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;
 +(UIImage *)imageToGreyImage:(UIImage *)image;
 +(NSString *)urlencode:(NSString *)str;
++(void)addDropShadow:(UIView *)view;
 @end
 

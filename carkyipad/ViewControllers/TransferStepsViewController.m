@@ -22,7 +22,7 @@
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
-@interface TransferStepsViewController () <CLLocationManagerDelegate, CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, SelectDelegate, UITextFieldDelegate, UITableViewDelegate>
+@interface TransferStepsViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) LatLng* userPos;
 
 @property (nonatomic, assign) NSInteger userFleetLocationId;
@@ -42,24 +42,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
-
-    [AppDelegate configurePSTextField:self.fromLocationTextField withColor:[UIColor whiteColor]];
-    [AppDelegate configurePSTextField:self.toLocationTextField withColor:[UIColor whiteColor]];
-    self.toLocationTextField.delegate = self;
    
-    // configure payment controls
-    [AppDelegate configurePSTextField:self.firstNameTextField withColor:[UIColor lightGrayColor]];
-    [AppDelegate configurePSTextField:self.lastNameTextField withColor:[UIColor lightGrayColor]];
-    [AppDelegate configurePSTextField:self.emailTextField withColor:[UIColor lightGrayColor]];
-    [AppDelegate configurePSTextField:self.confirmEmailTextField withColor:[UIColor lightGrayColor]];
-
-    self.creditCardNumberTextField.borderStyle = UITextBorderStyleNone;
-    self.expiryDateTextField.borderStyle = UITextBorderStyleNone;
-    self.cvvTextField.borderStyle = UITextBorderStyleNone;
-    self.phoneNumberTextField.borderStyle = UITextBorderStyleNone;
-    self.creditCardButton.layer.borderColor = self.creditCardButton.tintColor.CGColor;
-    self.cashButton.layer.borderColor = self.cashButton.tintColor.CGColor;
-    self.stpCardTextField.borderColor = nil;
     self.selectedCarTypes = [NSMutableArray arrayWithArray:@[@(0),@(0),@(0)]];
   
     [CardIOUtilities preload];
@@ -68,12 +51,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {
     NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"];
-    self.fromLocationTextField.text = posDict[@"Name"];
     _userPos = [LatLng modelObjectWithDictionary:posDict];
     Location *cl = [Location new]; cl.identifier = -1; cl.name = @"Current location"; cl.latLng = self.userPos;
     self.currentLocation = cl;
     mapView.mapType = kGMSTypeNormal;
-    mapView.settings.myLocationButton = YES;
+    mapView.settings.myLocationButton = NO;
     mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
     // todo: remove from here
     CarkyApiClient *api = [CarkyApiClient sharedService];
@@ -85,7 +67,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         self.locationMarkers = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             GMSMarker *marker = [[GMSMarker alloc] init];
-            marker.position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
+            CLLocationCoordinate2D position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
+            marker.position = position;
             marker.icon = [UIImage imageNamed:@"point-1"];
             marker.userData = obj;
             marker.title = @""; // obj.name;
@@ -94,12 +77,26 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             [self.locationMarkers addObject:marker];
         }];
     }];
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.icon = [UIImage imageNamed:@"SourceIcon"];
-    marker.position = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
-    marker.map = mapView;
-    CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
-    mapView.camera = [GMSCameraPosition cameraWithTarget:userCoord zoom: 13.0];
+    CLLocationCoordinate2D positionCenter = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
+    if (/* DISABLES CODE */ (1) == 1) {
+        UIColor *bluC = [UIColor colorWithRed:0.26 green:0.62 blue:0.77 alpha:1]; //0.26 0.62 0.77
+        GMSCircle *circ1 = [GMSCircle circleWithPosition:positionCenter radius:20];
+        circ1.fillColor = [UIColor clearColor];
+        circ1.strokeColor = bluC;
+        circ1.strokeWidth = 4;
+        circ1.map = mapView;
+        GMSCircle *circ2 = [GMSCircle circleWithPosition:positionCenter radius:400];
+        circ2.fillColor = [UIColor clearColor];
+        circ2.strokeColor = bluC;
+        circ2.strokeWidth = 2;
+        circ2.map = mapView;
+    } else {
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.icon = [UIImage imageNamed:@"SourceIcon"];
+        marker.position = positionCenter;
+        marker.map = mapView;
+    }
+    mapView.camera = [GMSCameraPosition cameraWithTarget:positionCenter zoom: 13.0];
 }
 
 -(void)loadLocations:(NSString *)filter {
@@ -113,7 +110,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", filter];
         [wklList addObjectsFromArray:[app.wellKnownLocations filteredArrayUsingPredicate:predicate]];
     }
-    self.locationsTableView.backgroundColor = self.view.backgroundColor;
     
     self.wellKnownLocationsDataSource = [[TGRArrayDataSource alloc] initWithItems:[wklList copy] cellReuseIdentifier:@"locationCell" configureCellBlock:^(UITableViewCell *cell, Location *item) {
         cell.contentView.backgroundColor = self.view.backgroundColor;
@@ -127,46 +123,27 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         UILabel *label = [cell.contentView viewWithTag:2];
         label.text = item.name;
     }];
-    self.locationsTableView.dataSource = self.wellKnownLocationsDataSource;
-    self.locationsTableView.delegate = self;
-    
-    [self.locationsTableView reloadData];
 }
-#pragma mark - delegates
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.toLocationTextField) {
-        textField.text = @"";
-        [self loadLocations:nil];
-        [self.view bringSubviewToFront:self.locationsTableView];
-    } else {
-        self.activeField = textField;
-    }
-}
+
 
 
 - (IBAction)toLocationTextChanged:(UITextField *)textField {
     [self loadLocations:textField.text];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    TGRArrayDataSource *dataSource = (TGRArrayDataSource *)self.locationsTableView.dataSource;
-    NSArray<Location*> *locations = dataSource.items;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@",textField.text];
-    return [locations filteredArrayUsingPredicate:predicate].count > 0 ? YES : NO;
-}
 
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView {
     self.selectedLocation = (Location *)value;
-    self.toLocationTextField.text = self.selectedLocation.name;
+    
     [self.locationMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.userData == self.selectedLocation) {
             mapView.selectedMarker = obj;
         }
     }];
+    if (mapView.selectedMarker) {
+        mapView.selectedMarker.icon = [UIImage imageNamed:@"point-2"];
+    }
     [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng forMap:mapView];
-    [self.toLocationTextField resignFirstResponder];
-
-    //[self.view bringSubviewToFront:self.viewFindDrivers];
 }
 
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
@@ -244,8 +221,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    _paymentsScrollView.contentInset = contentInsets;
-    _paymentsScrollView.scrollIndicatorInsets = contentInsets;
+    //_paymentsScrollView.contentInset = contentInsets;
+    //_paymentsScrollView.scrollIndicatorInsets = contentInsets;
     
     //[_paymentsScrollView setContentOffset:CGPointMake(0.0,kbSize.height) animated:YES];
 
@@ -254,7 +231,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     CGRect frame = [self.activeField.superview convertRect:self.activeField.frame toView:self.view];
     if (!CGRectContainsPoint(aRect, CGPointMake(frame.origin.x, frame.origin.y + CGRectGetHeight(frame)))) {
         CGPoint scrollPoint = CGPointMake(0.0, frame.origin.y-kbSize.height+80);
-        [_paymentsScrollView setContentOffset:scrollPoint animated:YES];
+        //[_paymentsScrollView setContentOffset:scrollPoint animated:YES];
     }
 }
 
@@ -262,8 +239,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    _paymentsScrollView.contentInset = contentInsets;
-    _paymentsScrollView.scrollIndicatorInsets = contentInsets;
+    //_paymentsScrollView.contentInset = contentInsets;
+    //_paymentsScrollView.scrollIndicatorInsets = contentInsets;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -320,58 +297,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
 }
 
-- (IBAction)confirmClick:(UIButton *)sender {
-    if (self.totalPrice > 0) {
-        [self.view bringSubviewToFront:self.paymentsScrollView];
-    }
-}
-- (IBAction)flagButton_Click:(UIButton *)sender {
-    [self hideKeyboard];
-    CountryPhoneCodeVC *vcObj =[[CountryPhoneCodeVC alloc] initWithNibName:@"CountryPhoneCodeVC" bundle:nil];
-    vcObj.delegate = self;
-    vcObj.modalPresentationStyle = UIModalPresentationPopover;
-    UIPopoverPresentationController *popPresenter = [vcObj popoverPresentationController];
-    popPresenter.sourceView = self.flagButton;
-    [self presentViewController:vcObj animated:YES completion:nil];
-}
-// handler for flag did-select
-- (void)didSelect:(BOOL)hasSelected {
-    NSString *imName = [[SharedInstance sharedInstance].selCountryCode lowercaseString];
-    [self.flagButton setImage:[UIImage imageNamed:imName] forState:UIControlStateNormal];
-    self.countryPrefixLabel.text = [SharedInstance sharedInstance].selCountryId;
-}
-
-- (void)uiBindWithCard:(BOOL)payWithCard {
-    _creditCardButton.selected = payWithCard;
-    _cashButton.selected = !payWithCard;
-    _cashButton.layer.borderWidth = payWithCard ? 0 : 1;
-    _creditCardButton.layer.borderWidth = !payWithCard ? 0 : 1;
-    _stpCardTextField.hidden = !payWithCard;
-    _creditCardLine.hidden = !payWithCard;
-    _takePhotoButton.hidden = !payWithCard;
-    //confirm & finish buttons
-    self.confirmButton.backgroundColor = self.totalPrice > 0 ? [UIColor colorWithRed:0.24 green:0.57 blue:1.0 alpha:1.0] : [UIColor colorWithWhite:0.79 alpha:1.0];
-    self.payNowButton.backgroundColor = self.confirmButton.backgroundColor;
-    [self.payNowButton setTitle:payWithCard ? [NSString stringWithFormat:@"PAY NOW    Total:€%ld", self.totalPrice] : @"FINISH" forState:UIControlStateNormal];
-
-}
-
-- (IBAction)cashButton_Click:(UIButton *)sender {
-    [self uiBindWithCard:NO];
-}
-
-- (IBAction)creditCardButton_Click:(UIButton *)sender {
-    [self uiBindWithCard:YES];
-}
-
 - (void)paymentCardTextFieldDidBeginEditingNumber:(nonnull STPPaymentCardTextField *)textField {
     self.activeField = textField;
 }
 
-- (void)paymentCardTextFieldDidChange:(STPPaymentCardTextField *)textField {
-    //NSLog(@"Card number: %@ Exp Month: %@ Exp Year: %@ CVC: %@", textField.cardParams.number, @(textField.cardParams.expMonth), @(textField.cardParams.expYear), textField.cardParams.cvc);
-    self.payNowButton.enabled = textField.isValid;
-}
 
 
 -(void)payWithCreditCard:(BlockBoolean)block; {
@@ -429,15 +358,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 #pragma mark - CardIOPaymentViewControllerDelegate
 
-
-- (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
-    NSLog(@"Scan succeeded with info: %@", info);
-    // Do whatever needs to be done to deliver the purchased items.
-    [self dismissViewControllerAnimated:YES completion:nil];
-    self.creditCardNumberTextField.text = info.redactedCardNumber;
-    self.expiryDateTextField.text = [NSString stringWithFormat:@"%02lu/%lu", (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear];
-    self.cvvTextField.text = info.cvv;
-}
 
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
     NSLog(@"User cancelled scan");

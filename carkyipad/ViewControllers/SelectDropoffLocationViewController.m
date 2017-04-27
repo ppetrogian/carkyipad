@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
     [self loadLocations:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
+
 }
 
 - (void)didReceiveMemoryWarning {

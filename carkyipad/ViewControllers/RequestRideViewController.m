@@ -36,8 +36,10 @@
         }];
         [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
     }];
-
+    //[AppDelegate addDropShadow:self.mapView];
+    [AppDelegate addDropShadow:self.shadowView];
     self.mapView.delegate = self;
+    [self.view viewWithTag:90].hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +67,7 @@
         destController.delegate = self;
         destController.currentLocation = (Location *)sender;
         destController.fromLocationTextField.text = destController.currentLocation.name;
-        destController.toLocationTextField.text = self.dropOffLocationTextField.text;
+        destController.toLocationTextField.text = [NSString stringWithFormat:@"  %@", self.dropOffLocationTextField.text];
     }
 }
 
@@ -94,7 +96,6 @@
         numLabel.text = [NSString stringWithFormat:@"%ld",(long)0];
         UIButton *ccImageButton = [cell.contentView viewWithTag:4];
         UIImage *image = [UIImage imageNamed:item.image];
-        ccImageButton.imageView.alpha = 0.6;
         [ccImageButton setImage:image forState:UIControlStateSelected];
         [ccImageButton setImage:[AppDelegate imageToGreyImage:image] forState:UIControlStateNormal];
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -130,7 +131,6 @@
         cell.selected = YES;
         UIButton *ccImageButton = [cell.contentView viewWithTag:4];
         ccImageButton.selected = YES;
-        ccImageButton.imageView.alpha = 1.0;
         self.requestRideButton.enabled = YES;
         self.requestRideButton.backgroundColor = [UIColor blackColor];
         CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
@@ -141,15 +141,18 @@
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIButton *ccImageButton = [cell.contentView viewWithTag:4];
-    ccImageButton.imageView.alpha = 0.6;
     ccImageButton.selected = NO;
 }
 
 //selected from popup screen
 - (void)didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t {
+    if (self.mapView.selectedMarker) {
+        self.mapView.selectedMarker.icon = [UIImage imageNamed:@"point-1"];
+    }
     Location *loc = value;
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    self.dropOffLocationTextField.text = loc.name;
+    self.dropOffLocationTextField.text = [NSString stringWithFormat:@"        %@", loc.name];
+    
     [api GetTransferServicePricesForZone: loc.zoneId withBlock:^(NSArray<CarPrice *> *arrayPrices) {
         [arrayPrices enumerateObjectsUsingBlock:^(CarPrice * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CarCategory *iCategory = self.carCategoriesDataSource.items[idx];
@@ -164,10 +167,15 @@
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
+    if (mapView.selectedMarker) {
+        mapView.selectedMarker.icon = [UIImage imageNamed:@"point-1"];
+    }
     id loc = marker.userData;
     if ([loc isKindOfClass:[Location class]]) {
-        mapView.selectedMarker = marker;
-        [self didSelectLocation:0 withValue:loc andText:nil];
+        if (marker != mapView.selectedMarker) {
+            mapView.selectedMarker = marker;
+            [self didSelectLocation:0 withValue:loc andText:nil];
+        }
     }
     return YES;
 }
@@ -176,8 +184,10 @@
     // your code
     id loc = marker.userData;
     if ([loc isKindOfClass:[Location class]]) {
-        mapView.selectedMarker = marker;
-        [self didSelectLocation:0 withValue:loc andText:nil];
+        if (marker != mapView.selectedMarker) {
+            mapView.selectedMarker = marker;
+            [self didSelectLocation:0 withValue:loc andText:nil];
+        }
     }
 }
 - (IBAction)requestRideButton_Click:(UIButton *)sender {

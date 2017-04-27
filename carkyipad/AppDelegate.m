@@ -210,7 +210,7 @@
     
     GMSPolyline *polyline = nil;
     polyline = [GMSPolyline polylineWithPath:path];
-    polyline.strokeColor = [UIColor colorWithRed:0.2 green:0.2 blue:1 alpha:1];
+    polyline.strokeColor = [UIColor blackColor]; //     [UIColor colorWithRed:0.2 green:0.2 blue:1 alpha:1];
     polyline.strokeWidth = 3.f;
     polyline.map = mapView;
     //show image for starting point and destination point
@@ -270,6 +270,14 @@
         aView = aView.superview;
     }
     return nil; // this view is not within a collection view
+}
+
++(void)addDropShadow:(UIView *)view {
+    view.layer.shadowColor = [UIColor blackColor].CGColor;
+    view.layer.shadowOffset = CGSizeMake(0, -4);
+    view.layer.shadowRadius = 4;
+    view.layer.shadowOpacity = 1.0;
+    view.layer.masksToBounds = NO;
 }
 
 +(UIImage *)imageToGreyImage:(UIImage *)image {

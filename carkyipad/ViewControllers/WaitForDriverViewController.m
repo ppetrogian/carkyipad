@@ -40,14 +40,10 @@
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
     self.player = [AVPlayer playerWithURL:videoURL];
     //self.layer = [AVPlayerLayer layer];
-    self.videoContainerView.frame = self.pickupImageView.frame;
+    self.videoContainerView.frame = self.view.frame;
     self.layerVc.showsPlaybackControls = NO;
     self.layerVc.view.userInteractionEnabled = NO;
     self.layerVc.player = self.player;
-    //[_layer setPlayer:_player];
-    //[_layer setFrame:self.pickupImageView.frame];
-    //[_layer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    //[self.view.layer addSublayer:_layer];
     [self.player play];
     self.pickupImageView.alpha = 0;
     self.parentController.backButton.hidden = YES;
