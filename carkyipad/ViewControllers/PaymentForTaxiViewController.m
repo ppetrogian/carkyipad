@@ -15,6 +15,7 @@
 #import "CardIO.h"
 #import "BKCardExpiryField.h"
 #import "PaymentCardEditorField.h"
+#import "ButtonUtils.h"
 
 @interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, UITextFieldDelegate>
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
@@ -22,23 +23,15 @@
 
 @implementation PaymentForTaxiViewController
 
-- (void)disablePayButton {
-     self.payNowButton.backgroundColor = [UIColor lightGrayColor];
-     self.payNowButton.enabled = NO;
-}
-
--(void)enablePayButton {
-    self.payNowButton.backgroundColor = [UIColor blackColor];
-    self.payNowButton.enabled = YES;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.stpCardTextField becomeFirstResponder];
 
     //[self disablePayButton];
-
+    [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
+    self.stpCardTextField.borderColor = UIColor.blackColor;
+    self.stpCardTextField.borderWidth = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +62,7 @@
         [self.stpCardTextField replaceField:@"cvcField" withValue:self.cvvTextField.text];
     }
     if (self.stpCardTextField.isValid) {
-        [self enablePayButton];
+        [self.payNowButton enableButton];
     }
     return YES;
 }
@@ -102,9 +95,9 @@
     cardParams.expMonth = self.expiryDateTextField.dateComponents.month;
     cardParams.expYear = self.expiryDateTextField.dateComponents.year;
     self.parentController.cardParams = cardParams;
-    [self disablePayButton];
+    [self.payNowButton disableButton];
     [self.parentController payWithCreditCard:^(BOOL b) {
-        [self enablePayButton];
+        [self.payNowButton enableButton];
     }];
 }
 

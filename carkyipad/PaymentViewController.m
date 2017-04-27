@@ -26,6 +26,7 @@
     self.totalPriceButton.text = [NSString stringWithFormat:@"%@     %@: %ld€", NSLocalizedString(@"PAY NOW", nil), NSLocalizedString(@"Total", nil), totalprice];
     CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
     parentVc.totalView.hidden = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {

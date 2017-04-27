@@ -10,6 +10,7 @@
 #import "ClientDetailsViewController.h"
 #import "CarkyApiClient.h"
 #import "AppDelegate.h"
+#import "ButtonUtils.h"
 
 @interface PhoneNumberConfirmationViewController ()
 @property (nonatomic, strong) NSString *sendCodeText;
@@ -30,6 +31,7 @@
             [tf becomeFirstResponder];
         }
     }
+    [self.submitVerificationCodeButton disableButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +57,8 @@
     NSInteger tagNo = sender.tag;
     if (tagNo < 6) {
         [[self.view viewWithTag:tagNo+1] becomeFirstResponder];
+    } else {
+          [self.submitVerificationCodeButton enableButton];
     }
 }
 
