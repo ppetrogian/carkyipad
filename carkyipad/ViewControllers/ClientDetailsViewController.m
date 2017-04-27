@@ -31,8 +31,7 @@
     self.confirmButton.backgroundColor = [UIColor blackColor];
     
     [self.firstNameTextField becomeFirstResponder];
-    
-        [self.view viewWithTag:90].hidden = YES;
+
 }
 
 - (void)didReceiveMemoryWarning {

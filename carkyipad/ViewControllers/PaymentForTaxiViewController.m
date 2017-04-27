@@ -39,6 +39,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    NSInteger price = self.parentController.selectedCarCategory.price;
+    [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW       %ld€", price] forState: UIControlStateNormal];
+}
+
 /*
 #pragma mark - Navigation
 

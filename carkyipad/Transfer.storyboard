@@ -179,10 +179,6 @@
                                 <rect key="frame" x="695" y="566" width="57" height="123"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.75" tag="90" contentMode="scaleToFill" fixedFrame="YES" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="T6L-z7-W0t">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="976"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -441,10 +437,6 @@
                                     <action selector="confirmButton_Click:" destination="TFL-dj-Zdw" eventType="touchUpInside" id="9yj-Qq-afr"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.34999999999999998" tag="90" contentMode="center" image="6" translatesAutoresizingMaskIntoConstraints="NO" id="apg-43-yaH">
-                                <rect key="frame" x="2" y="1" width="768" height="974"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="akis@carky.uk" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iE7-vC-Jow" customClass="PSInsetTextField">
                                 <rect key="frame" x="158" y="470" width="454" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -509,11 +501,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="apg-43-yaH"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Client" badgeValue="2" id="peQ-S5-2Kp"/>
                     <connections>
@@ -798,10 +785,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.29999999999999999" contentMode="scaleToFill" image="11" translatesAutoresizingMaskIntoConstraints="NO" id="D5p-7a-2Hn">
-                                <rect key="frame" x="0.0" y="18" width="769" height="958"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Credit card number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zU-5b-vhr">
                                 <rect key="frame" x="158" y="209" width="211" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -856,7 +839,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-c2-6RV">
-                                <rect key="frame" x="573" y="252" width="26" height="19"/>
+                                <rect key="frame" x="573" y="250" width="26" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="TakePic"/>
                                 <connections>
@@ -865,11 +848,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="D5p-7a-2Hn"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Payment" badgeValue="3" id="Wxu-t1-rhj"/>
                     <connections>
@@ -1016,9 +994,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="11" width="768" height="1024"/>
-        <image name="3" width="768" height="1024"/>
-        <image name="6" width="768" height="1024"/>
         <image name="AmericanExpress_logo" width="25" height="16"/>
         <image name="Expiry_logo" width="17" height="18"/>
         <image name="Fill 123" width="17" height="14"/>
