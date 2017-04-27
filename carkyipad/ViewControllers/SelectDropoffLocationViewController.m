@@ -24,7 +24,8 @@
     // Do any additional setup after loading the view.
     [self loadLocations:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
-
+    [AppDelegate addDropShadow:self.shadowView forUp:NO];
+    [self.view viewWithTag:90].hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +59,7 @@
     AppDelegate *app = [AppDelegate instance];
     NSMutableArray *wklList = [NSMutableArray arrayWithCapacity:app.wellKnownLocations.count+2];
     
-    [wklList addObject:self.currentLocation];
+    //[wklList addObject:self.currentLocation];
     if (filter == nil || filter.length == 0) {
         [wklList addObjectsFromArray:app.wellKnownLocations];
     } else {
@@ -70,9 +71,9 @@
     self.wellKnownLocationsDataSource = [[TGRArrayDataSource alloc] initWithItems:[wklList copy] cellReuseIdentifier:@"locationCell" configureCellBlock:^(UITableViewCell *cell, Location *item) {
         cell.contentView.backgroundColor = self.view.backgroundColor;
         UIImageView *imageView = [cell.contentView viewWithTag:1];
-        imageView.image = [UIImage imageNamed:@"locationPin"];
+        imageView.image = [UIImage imageNamed:@"pin-black"];
         if ([item.name rangeOfString:@"Airport"].location != NSNotFound) {
-            imageView.image = [UIImage imageNamed:@"airlplane"];
+            imageView.image = [UIImage imageNamed:@"pin-black"];
         } else if(item.identifier == -1) {
             imageView.image = [UIImage imageNamed:@"CurrLocation"];
         }
@@ -102,6 +103,9 @@
         Location *selectedLocation = [[locations filteredArrayUsingPredicate:predicate] objectAtIndex:0];
         [self.delegate didSelectLocation:selectedLocation.identifier withValue:selectedLocation andText:selectedLocation.name];
     }
+}
+- (IBAction)backButton_Click:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

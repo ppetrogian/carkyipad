@@ -153,6 +153,7 @@
 		D14DF0AE1E757F940040B97F /* RMStepsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0A81E757F940040B97F /* RMStepsBar.m */; };
 		D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
 		D14DF0B01E757F940040B97F /* RMStepsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D14DF0AA1E757F940040B97F /* RMStepsController.m */; };
+		D155121C1EB280F500D924C0 /* PSInsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D155121B1EB280F500D924C0 /* PSInsetTextField.m */; };
 		D15951401EAC9AC400540076 /* CarServices.m in Sources */ = {isa = PBXBuildFile; fileRef = D159513D1EAC9AC400540076 /* CarServices.m */; };
 		D15951411EAC9AC400540076 /* ClientConfigurationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D159513F1EAC9AC400540076 /* ClientConfigurationResponse.m */; };
 		D15951461EACA1CA00540076 /* CarPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951431EACA1CA00540076 /* CarPrice.m */; };
@@ -389,6 +390,8 @@
 		D14DF0A81E757F940040B97F /* RMStepsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsBar.m; sourceTree = "<group>"; };
 		D14DF0A91E757F940040B97F /* RMStepsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStepsController.h; sourceTree = "<group>"; };
 		D14DF0AA1E757F940040B97F /* RMStepsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStepsController.m; sourceTree = "<group>"; };
+		D155121A1EB280F500D924C0 /* PSInsetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSInsetTextField.h; path = Controls/PSInsetTextField.h; sourceTree = "<group>"; };
+		D155121B1EB280F500D924C0 /* PSInsetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSInsetTextField.m; path = Controls/PSInsetTextField.m; sourceTree = "<group>"; };
 		D159513C1EAC9AC400540076 /* CarServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarServices.h; sourceTree = "<group>"; };
 		D159513D1EAC9AC400540076 /* CarServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarServices.m; sourceTree = "<group>"; };
 		D159513E1EAC9AC400540076 /* ClientConfigurationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConfigurationResponse.h; sourceTree = "<group>"; };
@@ -949,6 +952,8 @@
 				AE28575F1EB01AEF0047A649 /* PaymentCardEditorField */,
 				AE6352081E75B18700065F0F /* FlatPillButton */,
 				D14DF0A41E757F940040B97F /* RMStepsController */,
+				D155121A1EB280F500D924C0 /* PSInsetTextField.h */,
+				D155121B1EB280F500D924C0 /* PSInsetTextField.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1118,7 +1123,7 @@
 					AE7275A61E6CCA8C00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = P6RXM76U6X;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					AE7275BF1E6CCA8D00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1372,6 +1377,7 @@
 				AEAF1B081E87CF9B00C03768 /* PSTimePicker.m in Sources */,
 				AEAF1B021E87888D00C03768 /* NSDate+DSLCalendarView.m in Sources */,
 				D12218EE1E8B0A0200AABBBE /* MBSegmentedControl.m in Sources */,
+				D155121C1EB280F500D924C0 /* PSInsetTextField.m in Sources */,
 				AE63530C1E75E23D00065F0F /* UIImage+animatedGIF.m in Sources */,
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
@@ -1630,7 +1636,7 @@
 			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = P6RXM76U6X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1645,8 +1651,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8f25f156-493c-4068-aaaa-d685607eea05";
-				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1655,7 +1661,7 @@
 			baseConfigurationReference = 934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = P6RXM76U6X;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1670,8 +1676,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a06e39f-61e4-4837-bcac-51dfb2e615c2";
-				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

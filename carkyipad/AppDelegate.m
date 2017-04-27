@@ -272,9 +272,9 @@
     return nil; // this view is not within a collection view
 }
 
-+(void)addDropShadow:(UIView *)view {
++(void)addDropShadow:(UIView *)view forUp:(BOOL)up {
     view.layer.shadowColor = [UIColor blackColor].CGColor;
-    view.layer.shadowOffset = CGSizeMake(0, -4);
+    view.layer.shadowOffset = CGSizeMake(0, up ? -4 : 4);
     view.layer.shadowRadius = 4;
     view.layer.shadowOpacity = 1.0;
     view.layer.masksToBounds = NO;

@@ -36,10 +36,14 @@
         }];
         [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
     }];
-    //[AppDelegate addDropShadow:self.mapView];
-    [AppDelegate addDropShadow:self.shadowView];
+
+    [AppDelegate addDropShadow:self.shadowView forUp:YES];
     self.mapView.delegate = self;
     [self.view viewWithTag:90].hidden = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
