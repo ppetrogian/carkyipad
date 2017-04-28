@@ -47,6 +47,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
   
     [CardIOUtilities preload];
     self.backButton.hidden = YES;
+
 }
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {

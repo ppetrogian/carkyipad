@@ -77,7 +77,7 @@
                 [self.pollTimer invalidate];
                  [self loadPickupImage];
                 Content *responseObj = array.firstObject;
-                self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %lf.2", responseObj.name, responseObj.rating];
+                self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
                 self.registrationNoLabel.text = responseObj.registrationNo;
                 if (responseObj.photo) {
                     UIImage *driverImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: responseObj.photo]]];
