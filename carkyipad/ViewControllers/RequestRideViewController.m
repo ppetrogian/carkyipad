@@ -101,7 +101,8 @@
         UIButton *ccImageButton = [cell.contentView viewWithTag:4];
         UIImage *image = [UIImage imageNamed:item.image];
         [ccImageButton setImage:image forState:UIControlStateSelected];
-        [ccImageButton setImage:[AppDelegate imageToGreyImage:image] forState:UIControlStateNormal];
+        UIImage *image_blank = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blank", item.image]];
+        [ccImageButton setImage:image_blank forState:UIControlStateNormal];
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
         // price dependent on zone
         UILabel *priceLabel = [cell.contentView viewWithTag:8];

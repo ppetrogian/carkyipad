@@ -269,14 +269,16 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 -(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination forMap:(GMSMapView *)mapView {
-    NSString *baseUrl = [NSString stringWithFormat:URLDirectionsFmt,origin.lat,origin.lng, destination.lat, destination.lng];
-    NSURL *url = [NSURL URLWithString:baseUrl];
-    dispatch_async(dispatch_get_main_queue(), ^() {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *baseUrl = [NSString stringWithFormat:URLDirectionsFmt,origin.lat,origin.lng, destination.lat, destination.lng];
+        NSURL *url = [NSURL URLWithString:baseUrl];
         NSData *directionsData = [NSData dataWithContentsOfURL: url];
         NSError *error;
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:directionsData options:NSJSONReadingMutableContainers error:&error];
-        self.polyline.map = nil;
-        self.polyline = [AppDelegate showRouteInMap:mapView withResults:dict forMarker:mapView.selectedMarker];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.polyline.map = nil;
+            self.polyline = [AppDelegate showRouteInMap:mapView withResults:dict forMarker:mapView.selectedMarker];
+        });
     });
 }
 
