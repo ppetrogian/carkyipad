@@ -69,6 +69,7 @@
     if ([segue.identifier isEqualToString:@"selectLocationSegue"]) {
         SelectDropoffLocationViewController *destController = segue.destinationViewController;
         destController.delegate = self;
+        destController.locationBounds = self.parentController.locationBounds;
         destController.currentLocation = (Location *)sender;
         destController.fromLocationTextField.text = destController.currentLocation.name;
         destController.toLocationTextField.text = [NSString stringWithFormat:@"  %@", self.dropOffLocationTextField.text];
@@ -195,11 +196,6 @@
         }
     }
 }
-- (IBAction)requestRideButton_Click:(UIButton *)sender {
-    self.parentController.backButton.hidden = NO;
-    [self.stepsController showNextStep];
-}
-
 
  
 @end

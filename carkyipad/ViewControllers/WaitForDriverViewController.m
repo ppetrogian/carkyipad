@@ -46,7 +46,6 @@
     self.layerVc.player = self.player;
     [self.player play];
     self.pickupImageView.alpha = 0;
-    self.parentController.backButton.hidden = YES;
 }
 
 - (void)loadPickupImage {

@@ -11,11 +11,12 @@
 #import "AppDelegate.h"
 #import "DataModels.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <GooglePlaces/GooglePlaces.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TGRArrayDataSource.h"
 #import "CountryPhoneCodeVC.h"
 #import "SharedInstance.h"
-#import "CardIO.h"
+#import <CardIO/CardIO.h>
 #import <Stripe/Stripe.h>
 #import <Bolts/Bolts.h>
 
@@ -46,8 +47,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.selectedCarTypes = [NSMutableArray arrayWithArray:@[@(0),@(0),@(0)]];
   
     [CardIOUtilities preload];
-    self.backButton.hidden = YES;
-
 }
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {
@@ -63,6 +62,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
      // ((NSNumber *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserFleetLocationId"]).integerValue;
     [api GetWellKnownLocations:locationId withBlock:^(NSArray<Location *> *array) {
         [AppDelegate instance].wellKnownLocations = array;
+        self.locationBounds = [self findCoordBounds:array];
         [self loadLocations:nil];
         
         self.locationMarkers = [NSMutableArray arrayWithCapacity:array.count];
@@ -98,6 +98,24 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         marker.map = mapView;
     }
     mapView.camera = [GMSCameraPosition cameraWithTarget:positionCenter zoom: 13.0];
+}
+
+-(GMSCoordinateBounds *)findCoordBounds:(NSArray<Location *> *) array {
+    GMSCoordinateBounds *bounds;
+    CLLocationCoordinate2D neBoundsCorner,swBoundsCorner;
+    Location *l0 = array[0];
+    //Longitude is a geographic coordinate that specifies the east-west
+    __block CLLocationDegrees north=l0.latLng.lat, east=l0.latLng.lng, south=l0.latLng.lat, west=l0.latLng.lng;
+    [array enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.latLng.lng > west)  west = obj.latLng.lng;
+        if (obj.latLng.lng < east)  east = obj.latLng.lng;
+        if (obj.latLng.lat > north)  north = obj.latLng.lat;
+        if (obj.latLng.lat < south)  south = obj.latLng.lat;
+    }];
+    neBoundsCorner = CLLocationCoordinate2DMake(north, east);
+    swBoundsCorner = CLLocationCoordinate2DMake(south, west);
+    bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:neBoundsCorner coordinate:swBoundsCorner];
+    return bounds;
 }
 
 -(void)loadLocations:(NSString *)filter {
@@ -199,49 +217,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // keyboard
-    [self registerForKeyboardNotifications];
-}
-
-// Call this method somewhere in your view controller setup code.
-- (void)registerForKeyboardNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification {
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    //_paymentsScrollView.contentInset = contentInsets;
-    //_paymentsScrollView.scrollIndicatorInsets = contentInsets;
-    
-    //[_paymentsScrollView setContentOffset:CGPointMake(0.0,kbSize.height) animated:YES];
-
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= kbSize.height;
-    CGRect frame = [self.activeField.superview convertRect:self.activeField.frame toView:self.view];
-    if (!CGRectContainsPoint(aRect, CGPointMake(frame.origin.x, frame.origin.y + CGRectGetHeight(frame)))) {
-        CGPoint scrollPoint = CGPointMake(0.0, frame.origin.y-kbSize.height+80);
-        //[_paymentsScrollView setContentOffset:scrollPoint animated:YES];
-    }
-}
-
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    //_paymentsScrollView.contentInset = contentInsets;
-    //_paymentsScrollView.scrollIndicatorInsets = contentInsets;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -304,8 +279,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.activeField = textField;
 }
 
-
-
 -(void)payWithCreditCard:(BlockBoolean)block; {
     NSDateFormatter *df = [NSDateFormatter new];
     // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
@@ -352,19 +325,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             }
         }]; // create transfer request
     }]; // create token
-}
-
-- (IBAction)takePhoto_click:(UIButton *)sender {
-    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
-    scanViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:scanViewController animated:YES completion:nil];
-}
-#pragma mark - CardIOPaymentViewControllerDelegate
-
-
-- (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
-    NSLog(@"User cancelled scan");
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

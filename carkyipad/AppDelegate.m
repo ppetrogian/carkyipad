@@ -11,6 +11,8 @@
 #import "CarkyApiClient.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Stripe/Stripe.h>
+#import <GooglePlaces/GooglePlaces.h>
+
 @import  HockeySDK;
 
 @interface AppDelegate ()
@@ -33,8 +35,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
     // Override point for customization after application launch.
-    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [[NSBundle mainBundle] objectForInfoDictionaryKey:@"StripeApiKey"]];
-    [GMSServices provideAPIKey:@"AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU"];
+    NSBundle *main = [NSBundle mainBundle];
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [main objectForInfoDictionaryKey:@"StripeApiKey"]];
+    NSString *googleApiKey = [main objectForInfoDictionaryKey:@"GoogleApiKey"];
+    [GMSServices provideAPIKey:googleApiKey];
+    [GMSPlacesClient provideAPIKey:googleApiKey];
     
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"bafb4bfd3a514cdbb91b676e8a384daa"];
     // Do some additional configuration if needed here
@@ -222,6 +227,45 @@
         mapView.selectedMarker = targetMarker;
     }
     return  polyline;
+}
+
++(void)highlightAttrTextCore:(NSMutableAttributedString *)attrTxt term:(NSString *)term withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font  {
+    if (term.length == 0) {
+        return;
+    }
+    NSString *text = attrTxt.string;
+    NSUInteger textLen = attrTxt.length;
+    NSUInteger termLen = term.length;
+    int idx = 0;
+    
+    while (textLen >= termLen && idx < (textLen - termLen)) {
+        NSRange srcRange = NSMakeRange(idx, termLen);
+        NSComparisonResult result = [[text substringWithRange:srcRange] compare:term options:NSRegularExpressionSearch | NSCaseInsensitiveSearch];
+        if (result == NSOrderedSame) {
+            if(backColor)
+                [attrTxt addAttribute:NSBackgroundColorAttributeName value:backColor range:srcRange];
+            if (bBlack)
+                [attrTxt addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:srcRange];
+            if(font)
+                [attrTxt addAttribute:NSFontAttributeName value:font range:srcRange];
+            idx += termLen;
+        } else {
+            idx++;
+        }
+    }
+}
+
++(void)highlightGoogleText:(NSMutableAttributedString *)attrText  withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font {
+   [attrText enumerateAttribute:kGMSAutocompleteMatchAttribute inRange:NSMakeRange(0, attrText.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+       if (value) {
+           if(backColor)
+           [attrText addAttribute:NSBackgroundColorAttributeName value:backColor range:range];
+           if (bBlack)
+           [attrText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
+           if(font)
+           [attrText addAttribute:NSFontAttributeName value:font range:range];
+       }
+   }];
 }
 
 +(UITableView *)parentTableView:(UIView *)view {

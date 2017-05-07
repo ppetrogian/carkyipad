@@ -11,7 +11,7 @@
 #import "CarRentalStepsViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "CarkyApiClient.h"
-@class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory,STPCardParams;
+@class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory,STPCardParams,GMSCoordinateBounds;
 
 @interface TransferStepsViewController : CarRentalStepsViewController
 
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 @property (strong, nonatomic) NSString *transferBookingId;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;

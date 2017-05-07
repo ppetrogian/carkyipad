@@ -32,14 +32,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tj1-N4-Ioj">
                                 <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ves-F2-PL7" userLabel="ArrowBackButton">
-                                <rect key="frame" x="20" y="40" width="38" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="back_button"/>
-                                <connections>
-                                    <action selector="gotoBack:" destination="dIR-Hd-371" eventType="touchUpInside" id="U3L-1x-lWd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.63713812828063965" green="0.80047494173049927" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -50,7 +42,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="ves-F2-PL7" id="RO7-eo-2bQ"/>
                         <outlet property="stepViewControllerContainer" destination="Tj1-N4-Ioj" id="5dK-4W-A81"/>
                     </connections>
                 </viewController>
@@ -247,7 +238,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="insetLeft">
                                                 <integer key="value" value="30"/>
@@ -314,6 +305,10 @@
                                     <action selector="backButton_Click:" destination="tY0-YJ-Ovq" eventType="touchUpInside" id="gFJ-Bm-Ksy"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="powered_by_google_on_white" translatesAutoresizingMaskIntoConstraints="NO" id="fdA-vi-MlP">
+                                <rect key="frame" x="578" y="150" width="144" height="18"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1016,5 +1011,6 @@
         <image name="lock-icon_31851 copy" width="19" height="19"/>
         <image name="passenger" width="5" height="10"/>
         <image name="point-2" width="57" height="52"/>
+        <image name="powered_by_google_on_white" width="144" height="18"/>
     </resources>
 </document>

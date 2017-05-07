@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "9.png",
+      "filename" : "powered_by_google_on_white.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "powered_by_google_on_white@2x.png",
       "scale" : "2x"
     },
     {

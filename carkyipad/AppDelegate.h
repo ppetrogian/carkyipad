@@ -44,5 +44,7 @@
 +(UIImage *)imageToGreyImage:(UIImage *)image;
 +(NSString *)urlencode:(NSString *)str;
 +(void)addDropShadow:(UIView *)view forUp:(BOOL)up;
++(void)highlightAttrTextCore:(NSMutableAttributedString *)attrTxt term:(NSString *)term withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font;
++(void)highlightGoogleText:(NSMutableAttributedString *)attrText  withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font;
 @end
 
