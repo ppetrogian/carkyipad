@@ -102,13 +102,17 @@
     } else {
         [api RegisterClient:acc withBlock:^(NSArray *arr) {
             if (arr && arr.count > 0) {
-                self.registerClientResponse = arr.firstObject;
-                self.parentController.userId = self.registerClientResponse.userId;
-                self.isPhoneConfirmed = self.registerClientResponse.phoneConfirmed;
-                if (!self.isPhoneConfirmed) {
-                    [self performSegueWithIdentifier:@"phoneConfirmSegue" sender:nil];
+                if ([arr.firstObject isKindOfClass:RegisterClientResponse.class]) {
+                    self.registerClientResponse = arr.firstObject;
+                    self.parentController.userId = self.registerClientResponse.userId;
+                    self.isPhoneConfirmed = self.registerClientResponse.phoneConfirmed;
+                    if (!self.isPhoneConfirmed) {
+                        [self performSegueWithIdentifier:@"phoneConfirmSegue" sender:nil];
+                    } else {
+                        [self.parentController showNextStep];
+                    }
                 } else {
-                    [self.parentController showNextStep];
+                    [self.parentController showAlertViewWithMessage:arr.firstObject andTitle:@"Error"];
                 }
             } else {
                 [self.parentController showAlertViewWithMessage:@"Cannot register client" andTitle:@"Error"];

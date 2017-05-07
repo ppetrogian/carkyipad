@@ -276,9 +276,13 @@ static CarkyApiClient *_sharedService = nil;
         block([NSArray arrayWithObject:response]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
+        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
+        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
+        NSLog(@"Error Detail: %@", errorMsg);
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block(nil);
+        block([NSArray arrayWithObject:errorMsg]);
     }];
 }
 

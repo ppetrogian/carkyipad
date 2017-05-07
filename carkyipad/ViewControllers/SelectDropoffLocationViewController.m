@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.toLocationTextField becomeFirstResponder];
     // Do any additional setup after loading the view.
     [self loadLocations:nil andPredictions:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
