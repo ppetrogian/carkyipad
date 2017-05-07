@@ -46,7 +46,7 @@ static CarkyApiClient *_sharedService = nil;
 
 -(instancetype)initWithDefaultConfiguration {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json, text/plain, text/html", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip"}];
+    [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json, text/plain, text/html", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip", @"Content-Type":@"application/json"}];
     self = [[CarkyApiClient alloc] initWithBaseURL:[NSURL URLWithString:Base_URL] sessionConfiguration:config];
     self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     return self;
@@ -314,10 +314,11 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetTransferServicePricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block {
+-(void)GetTransferServicePricesForZone:(NSInteger)dropoffZoneId orLatLng:(LatLng *)ll withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self setAuthorizationHeader];
-    [self GET:@"api/Partner/GetTransferServicePrices" parameters:@{@"dropoffZoneId": @(dropoffZoneId)}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary *params = ll ? @{@"model.dropoffLocation.lat": @(ll.lat), @"model.dropoffLocation.lng": @(ll.lng)} : @{@"model.dropoffZoneId": @(dropoffZoneId)};
+    [self GET:@"api/Partner/GetTransferServicePrices" parameters:params  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carPricesArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {

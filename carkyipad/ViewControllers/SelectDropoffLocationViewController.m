@@ -127,9 +127,6 @@
 
 #pragma mark - GMSAutocompleteFetcherDelegate
 - (void)didAutocompleteWithPredictions:(NSArray *)predictions {
-    for (GMSAutocompletePrediction *prediction in predictions) {
-        NSLog(@"%@\n", [prediction.attributedFullText string]);
-    }
     [self loadLocations:_toLocationTextField.text andPredictions:predictions];
 }
 
@@ -139,7 +136,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.locationsTableView) {
-        Location *loc = self.wellKnownLocationsDataSource.items[indexPath.row];
+        NSObject *item = self.wellKnownLocationsDataSource.items[indexPath.row];
+        Location *loc;
+        if ([item isKindOfClass:Location.class]) {
+            loc = (Location *)item;
+        } else {
+            GMSAutocompletePrediction *prediction = (GMSAutocompletePrediction *)item;
+            loc = [[Location alloc] initWithDictionary:@{kLocationsIdentifier:@(-indexPath.row), kLocationsName:prediction.attributedFullText.string, kLocationsZoneId:@(0), kLocationsPlaceId: prediction.placeID }];
+        }
         [self.delegate didSelectLocation:loc.identifier withValue:loc andText:loc.name];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -147,13 +151,13 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    TGRArrayDataSource *dataSource = (TGRArrayDataSource *)self.locationsTableView.dataSource;
-    NSArray<Location*> *locations = dataSource.items;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@",textField.text];
-    if ([locations filteredArrayUsingPredicate:predicate].count > 0) {
-        Location *selectedLocation = [[locations filteredArrayUsingPredicate:predicate] objectAtIndex:0];
-        [self.delegate didSelectLocation:selectedLocation.identifier withValue:selectedLocation andText:selectedLocation.name];
-    }
+//    TGRArrayDataSource *dataSource = (TGRArrayDataSource *)self.locationsTableView.dataSource;
+//    NSArray<Location*> *locations = dataSource.items;
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@",textField.text];
+//    if ([locations filteredArrayUsingPredicate:predicate].count > 0) {
+//        Location *selectedLocation = [[locations filteredArrayUsingPredicate:predicate] objectAtIndex:0];
+//        [self.delegate didSelectLocation:selectedLocation.identifier withValue:selectedLocation andText:selectedLocation.name];
+//    }
 }
 - (IBAction)backButton_Click:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

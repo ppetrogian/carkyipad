@@ -10,6 +10,7 @@
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <GooglePlaces/GooglePlaces.h>
 #import "CarkyApiClient.h"
 @class LatLng, Location, STPPaymentCardTextField, RegisterClientRequest,CarCategory,STPCardParams,GMSCoordinateBounds;
 

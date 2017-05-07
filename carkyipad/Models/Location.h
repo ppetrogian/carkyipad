@@ -8,6 +8,12 @@
 #import <Foundation/Foundation.h>
 
 @class LatLng;
+extern NSString *const kLocationsIdentifier;
+extern NSString *const kLocationsZoneId;
+extern NSString *const kLocationsName;
+extern NSString *const kLocationsAdress;
+extern NSString *const kLocationsPlaceId;
+extern NSString *const kLocationsLatLng;
 
 @interface Location : NSObject <NSCoding, NSCopying>
 

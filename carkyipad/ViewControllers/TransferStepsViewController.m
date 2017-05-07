@@ -28,6 +28,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 @property (nonatomic, assign) NSInteger userFleetLocationId;
 @property (nonatomic, strong) GMSPolyline *polyline;
+@property (nonatomic, strong) GMSMarker *targetMarker;
 @property (nonatomic,strong) TGRArrayDataSource* wellKnownLocationsDataSource;
 @property (nonatomic, strong) NSMutableArray *locationMarkers;
 @property (nonatomic, strong) NSMutableArray *driverMarkers;
@@ -45,7 +46,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [self setNeedsStatusBarAppearanceUpdate];
    
     self.selectedCarTypes = [NSMutableArray arrayWithArray:@[@(0),@(0),@(0)]];
-  
+    self.targetMarker = [[GMSMarker alloc] init];
     [CardIOUtilities preload];
 }
 
@@ -153,7 +154,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView {
     self.selectedLocation = (Location *)value;
-    
+    mapView.selectedMarker = nil;
     [self.locationMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.userData == self.selectedLocation) {
             mapView.selectedMarker = obj;
@@ -161,8 +162,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
     if (mapView.selectedMarker) {
         mapView.selectedMarker.icon = [UIImage imageNamed:@"point-2"];
+        self.targetMarker.map = nil;
+    } else {
+        self.targetMarker.map = mapView;
+        self.targetMarker.icon = [UIImage imageNamed:@"point-2"];
+        self.targetMarker.position = CLLocationCoordinate2DMake(self.selectedLocation.latLng.lat, self.selectedLocation.latLng.lng);
     }
-    [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng forMap:mapView];
+    [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng forMap:mapView andMarker:mapView.selectedMarker ? mapView.selectedMarker : self.targetMarker];
 }
 
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
@@ -243,7 +249,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination forMap:(GMSMapView *)mapView {
+-(void)getDirectionsFrom:(LatLng *)origin to:(LatLng *)destination forMap:(GMSMapView *)mapView andMarker:(GMSMarker *)targetMarker {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *baseUrl = [NSString stringWithFormat:URLDirectionsFmt,origin.lat,origin.lng, destination.lat, destination.lng];
         NSURL *url = [NSURL URLWithString:baseUrl];
@@ -252,7 +258,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:directionsData options:NSJSONReadingMutableContainers error:&error];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.polyline.map = nil;
-            self.polyline = [AppDelegate showRouteInMap:mapView withResults:dict forMarker:mapView.selectedMarker];
+            self.polyline = [AppDelegate showRouteInMap:mapView withResults:dict forMarker:targetMarker];
         });
     });
 }

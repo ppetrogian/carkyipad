@@ -13,6 +13,7 @@
 #import "DataModels.h"
 #import "TransferStepsViewController.h"
 #import "SelectDropoffLocationViewController.h"
+#import <GooglePlaces/GooglePlaces.h>
 
 @interface RequestRideViewController () <GMSMapViewDelegate, UITableViewDelegate, UICollectionViewDelegate, UITextFieldDelegate>
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
@@ -156,10 +157,27 @@
         self.mapView.selectedMarker.icon = [UIImage imageNamed:@"point-1"];
     }
     Location *loc = value;
-    CarkyApiClient *api = [CarkyApiClient sharedService];
     self.dropOffLocationTextField.text = [NSString stringWithFormat:@"        %@", loc.name];
-    
-    [api GetTransferServicePricesForZone: loc.zoneId withBlock:^(NSArray<CarPrice *> *arrayPrices) {
+    if (loc.identifier < 0) {
+        GMSPlacesClient *placesClient = [GMSPlacesClient sharedClient];
+        [placesClient lookUpPlaceID:loc.placeId callback:^(GMSPlace *place, NSError *error) {
+            loc.latLng = [[LatLng alloc] initWithDictionary:@{@"Lat":@(place.coordinate.latitude), @"Lng":@(place.coordinate.longitude) }];
+            if ([self.parentController.locationBounds containsCoordinate:CLLocationCoordinate2DMake(loc.latLng.lat, loc.latLng.lng)]) {
+                [self showLocationAndRouteInMap:loc];
+            } else {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:NSLocalizedString(@"Transfer to the selected place is not available", nil) preferredStyle:UIAlertControllerStyleAlert];
+                [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+        }];
+    } else {
+        [self showLocationAndRouteInMap:loc];
+    }
+}
+     
+-(void)showLocationAndRouteInMap:(Location *)loc {
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    [api GetTransferServicePricesForZone: loc.zoneId orLatLng:loc.latLng withBlock:^(NSArray<CarPrice *> *arrayPrices) {
         [arrayPrices enumerateObjectsUsingBlock:^(CarPrice * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CarCategory *iCategory = self.carCategoriesDataSource.items[idx];
             iCategory.price = obj.price;
@@ -169,7 +187,7 @@
             priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)obj.price];
         }];
     }];
-    [self.parentController didSelectLocation:identifier withValue:value andText:t forMap:self.mapView];
+    [self.parentController didSelectLocation:loc.identifier withValue:loc andText:loc.name forMap:self.mapView];
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {

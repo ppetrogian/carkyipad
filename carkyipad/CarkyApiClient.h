@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
-@class MBProgressHUD,CarkyDriverPositionsRequest,TransferBookingRequest,RegisterClientRequest;
+@class MBProgressHUD,CarkyDriverPositionsRequest,TransferBookingRequest,RegisterClientRequest,LatLng;
 
 typedef void(^BlockArray)(NSArray *array);
 typedef void(^BlockString)(NSString *string);
@@ -70,7 +70,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetClientConfiguration:(BlockArray)block;
 
--(void)GetTransferServicePricesForZone:(NSInteger)dropoffZoneId withBlock:(BlockArray)block;
+-(void)GetTransferServicePricesForZone:(NSInteger)dropoffZoneId orLatLng:(LatLng *)ll withBlock:(BlockArray)block;
 
 -(void)ConfirmPhoneNumberWithCode:(NSString *)code forUser:(NSString *)userId withBlock:(BlockBoolean)block;
 
