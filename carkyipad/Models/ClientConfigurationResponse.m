@@ -7,9 +7,11 @@
 
 #import "ClientConfigurationResponse.h"
 #import "CarServices.h"
-
+#import "Location.h"
+#import "LatLng.h"
 
 NSString *const kClientConfigurationResponseCarServices = @"CarServices";
+NSString *const kClientConfigurationResponseLocation = @"Location";
 NSString *const kClientConfigurationResponseAreaOfServiceId = @"AreaOfServiceId";
 NSString *const kClientConfigurationResponseZoneId = @"ZoneId";
 NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupInstructionsImage";
@@ -52,10 +54,13 @@ NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupIn
        [parsedCarServices addObject:[CarServices modelObjectWithDictionary:(NSDictionary *)receivedCarServices]];
     }
 
-    self.carServices = [NSArray arrayWithArray:parsedCarServices];
-            self.areaOfServiceId = [[self objectOrNilForKey:kClientConfigurationResponseAreaOfServiceId fromDictionary:dict] integerValue];
-            self.zoneId = [[self objectOrNilForKey:kClientConfigurationResponseZoneId fromDictionary:dict] integerValue];
-            self.pickupInstructionsImage = [self objectOrNilForKey:kClientConfigurationResponsePickupInstructionsImage fromDictionary:dict];
+        self.carServices = [NSArray arrayWithArray:parsedCarServices];
+        NSDictionary *locDictionary = [dict objectForKey:kClientConfigurationResponseLocation];
+        self.location = [Location modelObjectWithDictionary:locDictionary];
+        self.location.latLng = [LatLng modelObjectWithDictionary:[locDictionary objectForKey:@"Geography"]];
+        self.areaOfServiceId = [[self objectOrNilForKey:kClientConfigurationResponseAreaOfServiceId fromDictionary:dict] integerValue];
+        self.zoneId = [[self objectOrNilForKey:kClientConfigurationResponseZoneId fromDictionary:dict] integerValue];
+        self.pickupInstructionsImage = [self objectOrNilForKey:kClientConfigurationResponsePickupInstructionsImage fromDictionary:dict];
 
     }
     
@@ -77,6 +82,7 @@ NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupIn
         }
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForCarServices] forKey:kClientConfigurationResponseCarServices];
+    [mutableDict setValue:[self.location dictionaryRepresentation] forKey:kClientConfigurationResponseLocation];
     [mutableDict setValue:[NSNumber numberWithInteger:self.areaOfServiceId] forKey:kClientConfigurationResponseAreaOfServiceId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.zoneId] forKey:kClientConfigurationResponseZoneId];
     [mutableDict setValue:self.pickupInstructionsImage forKey:kClientConfigurationResponsePickupInstructionsImage];

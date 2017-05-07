@@ -117,6 +117,10 @@
     [self.carCategoriesCollectionView reloadData];
 }
 
+-(IBAction)requestRideButton_Click:(UIButton *)sender {
+    [self.parentController showNextStep];
+}
+
 -(void)carButton_Clicked:(UIButton *)sender {
     UICollectionViewCell *cell = [AppDelegate parentCollectionViewCell:sender];
     UICollectionView* collView = [AppDelegate parentCollectionView:cell];

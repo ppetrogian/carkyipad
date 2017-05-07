@@ -6,14 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+@class Location;
 
 @interface ClientConfigurationResponse : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSArray *carServices;
 @property (nonatomic, assign) NSInteger areaOfServiceId;
 @property (nonatomic, assign) NSInteger zoneId;
+@property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *pickupInstructionsImage;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

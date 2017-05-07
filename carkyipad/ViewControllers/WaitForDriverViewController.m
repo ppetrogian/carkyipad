@@ -49,7 +49,8 @@
 }
 
 - (void)loadPickupImage {
-  UIImage *waitImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: @"https://carky.blob.core.windows.net/temp/Mykonos_pickup_point.png"]]];
+  AppDelegate *app = [AppDelegate instance];
+  UIImage *waitImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: app.clientConfiguration.pickupInstructionsImage]]];
         self.pickupImageView.image = waitImg;
     [UIView animateWithDuration:0.4 animations:^{
         self.pickupImageView.alpha = 1;

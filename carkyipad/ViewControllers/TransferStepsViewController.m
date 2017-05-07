@@ -51,10 +51,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {
-    NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"];
-    _userPos = [LatLng modelObjectWithDictionary:posDict];
-    Location *cl = [Location new]; cl.identifier = -1; cl.name = @"Current location"; cl.latLng = self.userPos;
-    self.currentLocation = cl;
+    AppDelegate *app = [AppDelegate instance];
+    //NSDictionary *posDict = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserDefaultLocation"]; [LatLng modelObjectWithDictionary:posDict];
+    _userPos = app.clientConfiguration.location.latLng;
+    self.currentLocation = app.clientConfiguration.location;
+    self.currentLocation.name = self.currentLocation.address;
     mapView.mapType = kGMSTypeNormal;
     mapView.settings.myLocationButton = NO;
     mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);

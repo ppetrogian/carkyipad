@@ -178,6 +178,7 @@
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
+		D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -439,6 +440,8 @@
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		D1B253DC1E8707A3005365B2 /* PSFleetLocationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFleetLocationControl.h; sourceTree = "<group>"; };
 		D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFleetLocationControl.m; sourceTree = "<group>"; };
+		D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsAndConditionsViewController.h; path = ViewControllers/TermsAndConditionsViewController.h; sourceTree = "<group>"; };
+		D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsAndConditionsViewController.m; path = ViewControllers/TermsAndConditionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -857,6 +860,8 @@
 				D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */,
 				D15951591EADED4D00540076 /* WaitForDriverViewController.h */,
 				D159515A1EADED4D00540076 /* WaitForDriverViewController.m */,
+				D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */,
+				D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";
@@ -1412,6 +1417,7 @@
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
+				D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */,
 				AEAF1AEF1E87888D00C03768 /* DSLCalendarMonthSelectorView.m in Sources */,
 				AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,

@@ -46,7 +46,7 @@ static CarkyApiClient *_sharedService = nil;
 
 -(instancetype)initWithDefaultConfiguration {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json, text/plain, text/html", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip", @"Content-Type":@"application/json"}];
+    [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json, text/plain, text/html", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip"}];
     self = [[CarkyApiClient alloc] initWithBaseURL:[NSURL URLWithString:Base_URL] sessionConfiguration:config];
     self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     return self;
@@ -359,6 +359,17 @@ static CarkyApiClient *_sharedService = nil;
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
         block(nil);
+    }];
+}
+
+-(void)FetchTerms:(NSString *)culture withBlock:(BlockString)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self POST:@"api/Account/FetchTerms" parameters:@{@"Culture": culture} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dict = (NSDictionary *)responseObject;
+        [self.hud hideAnimated:YES];
+        block(dict[@"Text"]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
     }];
 }
 

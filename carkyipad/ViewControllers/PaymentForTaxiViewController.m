@@ -15,6 +15,7 @@
 #import "CardIO.h"
 #import "BKCardExpiryField.h"
 #import "PaymentCardEditorField.h"
+#import "TermsAndConditionsViewController.h"
 #import "ButtonUtils.h"
 
 @interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, UITextFieldDelegate>
@@ -44,15 +45,19 @@
     [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW       %ld€", price] forState: UIControlStateNormal];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"termsSegue"]) {
+        TermsAndConditionsViewController *termsVc = (TermsAndConditionsViewController *)segue.destinationViewController;
+        termsVc.terms = (NSString *)sender;
+    }
 }
-*/
+
 -(TransferStepsViewController *)parentController {
     return (TransferStepsViewController *)self.stepsController;
 }
@@ -103,6 +108,12 @@
     [self.payNowButton disableButton];
     [self.parentController payWithCreditCard:^(BOOL b) {
         [self.payNowButton enableButton];
+    }];
+}
+- (IBAction)agreeWithTermsButton_Click:(id)sender {
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    [api FetchTerms:@"en-US" withBlock:^(NSString *string) {
+        [self performSegueWithIdentifier:@"termsSegue" sender:string];
     }];
 }
 

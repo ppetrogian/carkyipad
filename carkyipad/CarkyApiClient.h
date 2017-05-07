@@ -80,4 +80,6 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetCarkyBookingStatusForUser:(NSString *)userId andBooking:(NSString *)bookingId withBlock:(BlockArray)block;
 
+-(void)FetchTerms:(NSString *)culture withBlock:(BlockString)block;
+
 @end
