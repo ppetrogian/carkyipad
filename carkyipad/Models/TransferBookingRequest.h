@@ -17,7 +17,6 @@
 @property (nonatomic, assign) NSInteger passengersNumber;
 @property (nonatomic, strong) Location *dropoffLocation;
 @property (nonatomic, assign) NSInteger dropoffWellKnownLocationId;
-@property (nonatomic, strong) LatLng *dropoffLatLng;
 @property (nonatomic, assign) BOOL agreedToTermsAndConditions;
 
 @property (nonatomic, strong) NSString *dateTime;

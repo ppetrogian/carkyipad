@@ -12,12 +12,11 @@
 
 NSString *const kTransferBookingRequestUserId = @"UserId";
 NSString *const kTransferBookingRequestDropoffAddress = @"DropoffAddress";
-NSString *const kTransferBookingRequestDropoffLocation = @"DropoffLocation";
 NSString *const kTransferBookingRequestDropoffWellKnownLocationId = @"DropoffWellKnownLocationId";
 NSString *const kTransferBookingRequestPickupAddress = @"PickupAddress";
 NSString *const kTransferBookingRequestStripeCardToken = @"StripeCardToken";
 NSString *const kTransferBookingRequestPassengersNumber = @"PassengersNumber";
-NSString *const kTransferBookingRequestDropoffLatLng = @"DropoffLatLng";
+NSString *const kTransferBookingRequestDropoffLocation = @"DropoffLocation";
 NSString *const kTransferBookingRequestAgreedToTermsAndConditions = @"AgreedToTermsAndConditions";
 NSString *const kTransferBookingRequestAccountBindingModel = @"AccountBindingModel";
 NSString *const kTransferBookingRequestDateTime = @"DateTime";
@@ -37,19 +36,6 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
 
 @implementation TransferBookingRequest
 
-@synthesize dropoffAddress = _dropoffAddress;
-@synthesize pickupAddress = _pickupAddress;
-@synthesize stripeCardToken = _stripeCardToken;
-@synthesize passengersNumber = _passengersNumber;
-@synthesize dropoffLatLng = _dropoffLatLng;
-@synthesize agreedToTermsAndConditions = _agreedToTermsAndConditions;
-
-@synthesize dateTime = _dateTime;
-@synthesize paymentMethod = _paymentMethod;
-@synthesize pickupLatLng = _pickupLatLng;
-@synthesize extras = _extras;
-@synthesize luggagePiecesNumber = _luggagePiecesNumber;
-
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
     return [[self alloc] initWithDictionary:dict];
@@ -62,22 +48,20 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
         self.userId = [self objectOrNilForKey:kTransferBookingRequestUserId fromDictionary:dict];
-        self.dropoffLocation = [Location modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestDropoffLocation]];
-        self.dropoffAddress = [self objectOrNilForKey:kTransferBookingRequestDropoffAddress fromDictionary:dict];
         self.dropoffWellKnownLocationId = [[self objectOrNilForKey:kTransferBookingRequestDropoffWellKnownLocationId fromDictionary:dict] integerValue];
-            self.pickupAddress = [self objectOrNilForKey:kTransferBookingRequestPickupAddress fromDictionary:dict];
-            self.stripeCardToken = [self objectOrNilForKey:kTransferBookingRequestStripeCardToken fromDictionary:dict];
-            self.passengersNumber = [[self objectOrNilForKey:kTransferBookingRequestPassengersNumber fromDictionary:dict] integerValue];
-            self.dropoffLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestDropoffLatLng]];
-            self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
-            //self.accountBindingModel = [AccountBindingModel modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestAccountBindingModel]];
-            self.dateTime = [self objectOrNilForKey:kTransferBookingRequestDateTime fromDictionary:dict];
-            self.pickupDateTime = [PickupDateTime modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupDateTime]];
-            self.paymentMethod = [[self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict] integerValue];
-            self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupLatLng]];
-            self.extras = [self objectOrNilForKey:kTransferBookingRequestExtras fromDictionary:dict];
-            self.carkyCategoryId = [[self objectOrNilForKey:kTransferBookingRequestCarkyCategoryId fromDictionary:dict] integerValue];
-            self.luggagePiecesNumber = [[self objectOrNilForKey:kTransferBookingRequestLuggagePiecesNumber fromDictionary:dict] integerValue];
+        self.dropoffLocation = [Location modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestDropoffLocation]];
+        self.pickupAddress = [self objectOrNilForKey:kTransferBookingRequestPickupAddress fromDictionary:dict];
+        self.stripeCardToken = [self objectOrNilForKey:kTransferBookingRequestStripeCardToken fromDictionary:dict];
+        self.passengersNumber = [[self objectOrNilForKey:kTransferBookingRequestPassengersNumber fromDictionary:dict] integerValue];
+        self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
+        //self.accountBindingModel = [AccountBindingModel modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestAccountBindingModel]];
+        self.dateTime = [self objectOrNilForKey:kTransferBookingRequestDateTime fromDictionary:dict];
+        self.pickupDateTime = [PickupDateTime modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupDateTime]];
+        self.paymentMethod = [[self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict] integerValue];
+        self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupLatLng]];
+        self.extras = [self objectOrNilForKey:kTransferBookingRequestExtras fromDictionary:dict];
+        self.carkyCategoryId = [[self objectOrNilForKey:kTransferBookingRequestCarkyCategoryId fromDictionary:dict] integerValue];
+        self.luggagePiecesNumber = [[self objectOrNilForKey:kTransferBookingRequestLuggagePiecesNumber fromDictionary:dict] integerValue];
 
     }
     
@@ -88,13 +72,13 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.userId forKey:kTransferBookingRequestUserId];
-    [mutableDict setValue:[self.dropoffLocation dictionaryRepresentation] forKey:kTransferBookingRequestDropoffLocation];
+    if(self.dropoffWellKnownLocationId > 0)
         [mutableDict setValue:[NSNumber numberWithInteger:self.dropoffWellKnownLocationId] forKey:kTransferBookingRequestDropoffWellKnownLocationId];
-    [mutableDict setValue:self.dropoffAddress forKey:kTransferBookingRequestDropoffAddress];
-    [mutableDict setValue:self.pickupAddress forKey:kTransferBookingRequestPickupAddress];
+    else
+        [mutableDict setValue:[self.dropoffLocation dictionaryRepresentation] forKey:kTransferBookingRequestDropoffLocation];
+
     [mutableDict setValue:self.stripeCardToken forKey:kTransferBookingRequestStripeCardToken];
     [mutableDict setValue:[NSNumber numberWithInteger:self.passengersNumber] forKey:kTransferBookingRequestPassengersNumber];
-    [mutableDict setValue:[self.dropoffLatLng dictionaryRepresentation] forKey:kTransferBookingRequestDropoffLatLng];
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //[mutableDict setValue:[self.accountBindingModel dictionaryRepresentation] forKey:kTransferBookingRequestAccountBindingModel];
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];
@@ -139,7 +123,6 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     self.pickupAddress = [aDecoder decodeObjectForKey:kTransferBookingRequestPickupAddress];
     self.stripeCardToken = [aDecoder decodeObjectForKey:kTransferBookingRequestStripeCardToken];
     self.passengersNumber = [aDecoder decodeIntegerForKey:kTransferBookingRequestPassengersNumber];
-    self.dropoffLatLng = [aDecoder decodeObjectForKey:kTransferBookingRequestDropoffLatLng];
     self.agreedToTermsAndConditions = [aDecoder decodeBoolForKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //self.accountBindingModel = [aDecoder decodeObjectForKey:kTransferBookingRequestAccountBindingModel];
     self.dateTime = [aDecoder decodeObjectForKey:kTransferBookingRequestDateTime];
@@ -158,7 +141,6 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [aCoder encodeObject:_pickupAddress forKey:kTransferBookingRequestPickupAddress];
     [aCoder encodeObject:_stripeCardToken forKey:kTransferBookingRequestStripeCardToken];
     [aCoder encodeInteger:_passengersNumber forKey:kTransferBookingRequestPassengersNumber];
-    [aCoder encodeObject:_dropoffLatLng forKey:kTransferBookingRequestDropoffLatLng];
     [aCoder encodeBool:_agreedToTermsAndConditions forKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //[aCoder encodeObject:_accountBindingModel forKey:kTransferBookingRequestAccountBindingModel];
     [aCoder encodeObject:_dateTime forKey:kTransferBookingRequestDateTime];
@@ -180,7 +162,6 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         copy.pickupAddress = [self.pickupAddress copyWithZone:zone];
         copy.stripeCardToken = [self.stripeCardToken copyWithZone:zone];
         copy.passengersNumber = self.passengersNumber;
-        copy.dropoffLatLng = [self.dropoffLatLng copyWithZone:zone];
         copy.agreedToTermsAndConditions = self.agreedToTermsAndConditions;
         //copy.accountBindingModel = [self.accountBindingModel copyWithZone:zone];
         copy.dateTime = [self.dateTime copyWithZone:zone];

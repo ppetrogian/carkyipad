@@ -117,6 +117,10 @@
     }];
 }
 
+- (IBAction)backButton_Click:(id)sender {
+    [self.parentController showPreviousStep];
+}
+
 - (IBAction)payWithPaypalButton_click:(UIButton *)sender {
     // todo
 }

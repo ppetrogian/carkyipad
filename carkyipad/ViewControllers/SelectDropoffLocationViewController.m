@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view.
     [self loadLocations:nil andPredictions:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
-    [AppDelegate addDropShadow:self.shadowView forUp:NO];
+    [AppDelegate addDropShadow:self.shadowView forUp:YES];
     // Set up the autocomplete filter.
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
     filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter; // kGMSPlacesAutocompleteTypeFilterEstablishment;

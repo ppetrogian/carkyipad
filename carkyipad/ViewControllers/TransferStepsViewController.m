@@ -296,8 +296,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
     request.userId = self.userId;
-    request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
-    request.dropoffAddress = self.selectedLocation.name;
+    if(self.selectedLocation.identifier > 0)
+        request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
+    else
+        request.dropoffLocation = self.self.selectedLocation;
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
     request.paymentMethod = 1;

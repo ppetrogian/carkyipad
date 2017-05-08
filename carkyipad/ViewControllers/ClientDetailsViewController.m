@@ -86,6 +86,10 @@
     return (TransferStepsViewController *)self.stepsController;
 }
 
+- (IBAction)backButton_Click:(id)sender {
+    [self.parentController showPreviousStep];
+}
+
 - (IBAction)confirmButton_Click:(UIButton *)sender {
     RegisterClientRequest *acc = [RegisterClientRequest new];
     acc.phoneNumber = self.phoneNumberTextField.text;

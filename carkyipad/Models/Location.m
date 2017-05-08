@@ -59,7 +59,7 @@ NSString *const kLocationsLatLng = @"Position";
     [mutableDict setValue:self.address forKey:kLocationsAdress];
     [mutableDict setValue:self.placeId forKey:kLocationsPlaceId];
     [mutableDict setValue:[self.latLng dictionaryRepresentation] forKey:kLocationsLatLng];
-
+    [mutableDict setValue:[self.latLng dictionaryRepresentation] forKey:@"Geography"];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
