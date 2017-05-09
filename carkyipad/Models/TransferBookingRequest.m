@@ -15,6 +15,8 @@ NSString *const kTransferBookingRequestDropoffAddress = @"DropoffAddress";
 NSString *const kTransferBookingRequestDropoffWellKnownLocationId = @"DropoffWellKnownLocationId";
 NSString *const kTransferBookingRequestPickupAddress = @"PickupAddress";
 NSString *const kTransferBookingRequestStripeCardToken = @"StripeCardToken";
+NSString *const kTransferBookingRequestPayPalPaymentId = @"PayPalPaymentId";
+NSString *const kTransferBookingRequestPayPalPayerId = @"PayPalPayerId";
 NSString *const kTransferBookingRequestPassengersNumber = @"PassengersNumber";
 NSString *const kTransferBookingRequestDropoffLocation = @"DropoffLocation";
 NSString *const kTransferBookingRequestAgreedToTermsAndConditions = @"AgreedToTermsAndConditions";
@@ -52,6 +54,8 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         self.dropoffLocation = [Location modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestDropoffLocation]];
         self.pickupAddress = [self objectOrNilForKey:kTransferBookingRequestPickupAddress fromDictionary:dict];
         self.stripeCardToken = [self objectOrNilForKey:kTransferBookingRequestStripeCardToken fromDictionary:dict];
+        self.payPalPaymentId = [self objectOrNilForKey:kTransferBookingRequestPayPalPaymentId fromDictionary:dict];
+        self.payPalPayerId = [self objectOrNilForKey:kTransferBookingRequestPayPalPayerId fromDictionary:dict];
         self.passengersNumber = [[self objectOrNilForKey:kTransferBookingRequestPassengersNumber fromDictionary:dict] integerValue];
         self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
         //self.accountBindingModel = [AccountBindingModel modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestAccountBindingModel]];
@@ -78,9 +82,10 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         [mutableDict setValue:[self.dropoffLocation dictionaryRepresentation] forKey:kTransferBookingRequestDropoffLocation];
 
     [mutableDict setValue:self.stripeCardToken forKey:kTransferBookingRequestStripeCardToken];
+    [mutableDict setValue:self.payPalPaymentId forKey:kTransferBookingRequestPayPalPaymentId];
+    [mutableDict setValue:self.payPalPayerId forKey:kTransferBookingRequestPayPalPayerId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.passengersNumber] forKey:kTransferBookingRequestPassengersNumber];
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kTransferBookingRequestAgreedToTermsAndConditions];
-    //[mutableDict setValue:[self.accountBindingModel dictionaryRepresentation] forKey:kTransferBookingRequestAccountBindingModel];
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];
     [mutableDict setValue:[self.pickupDateTime dictionaryRepresentation] forKey:kTransferBookingRequestPickupDateTime];
     [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kTransferBookingRequestPaymentMethod];

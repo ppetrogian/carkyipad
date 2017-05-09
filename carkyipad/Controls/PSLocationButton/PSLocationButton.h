@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface PSLocationButton : UIButton
-@property (nonatomic, strong) IBInspectable NSString* location;
+@property (nonatomic, strong) NSString* location;
 
 @end
