@@ -12,8 +12,8 @@
 //IB_DESIGNABLE
 @interface PSInputBox : UIView
 
-@property (nonatomic, strong) NSString *hintText;
-@property (nonatomic, strong) UIImage *hintIcon;
-@property (nonatomic,assign) BOOL hideBorder;
+@property (nonatomic, strong)  NSString *hintText;
+@property (nonatomic, strong)  UIImage *hintIcon;
+@property (nonatomic,assign)  BOOL hideBorder;
 @property (nonatomic, readonly) PSTextField *textField;
 @end

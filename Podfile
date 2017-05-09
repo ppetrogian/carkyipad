@@ -14,7 +14,6 @@ pod 'IIAsyncViewController'
 pod 'Stripe'
 pod 'BKCardExpiryField'
 pod 'HockeySDK'
-pod 'PayPal-iOS-SDK'
 end
 
 target 'carkyipadTests' do

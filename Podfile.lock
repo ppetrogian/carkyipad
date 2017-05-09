@@ -36,12 +36,6 @@ PODS:
   - IIAsyncViewController (1.0.1)
   - MBCalendarKit (3.0.4)
   - MBProgressHUD (1.0.0)
-  - PayPal-iOS-SDK (2.17.0):
-    - PayPal-iOS-SDK/CardIO (= 2.17.0)
-    - PayPal-iOS-SDK/Core (= 2.17.0)
-  - PayPal-iOS-SDK/CardIO (2.17.0):
-    - CardIO (~> 5.4.1)
-  - PayPal-iOS-SDK/Core (2.17.0)
   - SAMKeychain (1.5.2)
   - Stripe (10.1.0)
   - TGRDataSource (0.2)
@@ -58,7 +52,6 @@ DEPENDENCIES:
   - IIAsyncViewController
   - MBCalendarKit
   - MBProgressHUD
-  - PayPal-iOS-SDK
   - SAMKeychain
   - Stripe
   - TGRDataSource
@@ -75,11 +68,10 @@ SPEC CHECKSUMS:
   IIAsyncViewController: 7ce71b1b0afb92327abad77f78ec76989f6d7fa1
   MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   Stripe: 1c7aa951a075cced500a919d92b687b35d410705
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: f291945c9a58ed0386b8664b6a29399937db2a1b
+PODFILE CHECKSUM: ee835b339a6636d30203cc5ecd3885993bbbc493
 
 COCOAPODS: 1.2.1.beta.1
