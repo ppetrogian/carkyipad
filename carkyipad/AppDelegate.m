@@ -24,7 +24,7 @@
 
 - (void)loadInitialController {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Transfer" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CarRental" bundle:nil];
     
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"transferSteps"];
     
