@@ -75,7 +75,7 @@
 	<key>UserDefaultLocation</key>
 	<dict>
 		<key>Lat</key>
-		<real>37.448867800000002</real>
+		<real>37.4488678</real>
 		<key>Lng</key>
 		<real>25.3290808</real>
 		<key>Name</key>
@@ -83,5 +83,13 @@
 	</dict>
 	<key>UserFleetLocationId</key>
 	<integer>2</integer>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>com.paypal.ppclient.touch.v1</string>
+		<string>com.paypal.ppclient.touch.v2</string>
+		<string>org-appextension-feature-password-management</string>
+	</array>
 </dict>
 </plist>

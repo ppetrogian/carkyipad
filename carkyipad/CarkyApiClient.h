@@ -61,6 +61,8 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
 -(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockArray)block;
+    
+-(void)CreateTransferBookingRequestPayPalPayment:(TransferBookingRequest *)request withBlock:(BlockArray)block;
 
 -(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockArray)block;
 

@@ -304,6 +304,26 @@ static CarkyApiClient *_sharedService = nil;
         block([NSArray arrayWithObject:responseObj]);
     }];
 }
+    
+    
+-(void)CreateTransferBookingRequestPayPalPayment:(TransferBookingRequest *)request withBlock:(BlockArray)block {
+    [self setAuthorizationHeader];
+    TransferBookingResponse *responseObj = [TransferBookingResponse new];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self POST:@"api/Partner/CreateTransferBookingRequestPayPalPayment" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        block([NSArray arrayWithObject:responseObj]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
+        self.blockErrorDefault(error);
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        responseObj.errorDescription = errorStr;
+        block([NSArray arrayWithObject:responseObj]);
+    }];
+}
 
 -(void)GetClientConfiguration: (BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
