@@ -8,6 +8,8 @@
 	<string>Carky for iPad</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -19,11 +21,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>15</string>
+	<string>16</string>
 	<key>GoogleApiKey</key>
 	<string>AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>com.paypal.ppclient.touch.v1</string>
+		<string>com.paypal.ppclient.touch.v2</string>
+		<string>org-appextension-feature-password-management</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -75,7 +83,7 @@
 	<key>UserDefaultLocation</key>
 	<dict>
 		<key>Lat</key>
-		<real>37.4488678</real>
+		<real>37.448867800000002</real>
 		<key>Lng</key>
 		<real>25.3290808</real>
 		<key>Name</key>
@@ -83,13 +91,5 @@
 	</dict>
 	<key>UserFleetLocationId</key>
 	<integer>2</integer>
-	<key>CFBundleGetInfoString</key>
-	<string></string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>com.paypal.ppclient.touch.v1</string>
-		<string>com.paypal.ppclient.touch.v2</string>
-		<string>org-appextension-feature-password-management</string>
-	</array>
 </dict>
 </plist>
