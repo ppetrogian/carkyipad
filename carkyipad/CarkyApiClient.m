@@ -295,13 +295,13 @@ static CarkyApiClient *_sharedService = nil;
         responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         block([NSArray arrayWithObject:responseObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Error: %@", error.localizedDescription);
         NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
         NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
+        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         responseObj.errorDescription = errorStr;
-        block([NSArray arrayWithObject:responseObj]);
+        block([NSArray arrayWithObject:errorMsg]);
     }];
 }
     

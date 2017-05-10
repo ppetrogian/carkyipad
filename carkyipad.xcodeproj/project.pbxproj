@@ -1702,8 +1702,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a06e39f-61e4-4837-bcac-51dfb2e615c2";
-				PROVISIONING_PROFILE_SPECIFIER = "xc all2";
+				PROVISIONING_PROFILE = "a9dac5eb-d1d6-45a6-bc35-cef75ebcb110";
+				PROVISIONING_PROFILE_SPECIFIER = xc3;
 			};
 			name = Release;
 		};

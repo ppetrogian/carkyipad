@@ -32,6 +32,6 @@
 // methods
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
 -(void)payWithCreditCard:(BlockBoolean)block;
--(void)payWithPaypal:(NSDictionary *)confirmation;
+-(void)payWithPaypal:(NSString *)confirmation;
 -(TransferBookingRequest *)getPaymentRequest:(BOOL)forCC;
 @end

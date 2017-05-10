@@ -154,10 +154,10 @@
     return CLLocationCoordinate2DMake(latitude, longitude);
 }
 
-+(MBProgressHUD *)showProgressNotification:(UIView *)view {
++(MBProgressHUD *)showProgressNotification:(UIView *)view withText:(NSString *)text {
     MBProgressHUD *loadingNotification = [MBProgressHUD HUDForView:view];
     loadingNotification.mode = MBProgressHUDModeIndeterminate;
-    loadingNotification.label.text = @"Please wait...";
+    loadingNotification.label.text = text != nil ? text : @"Please wait...";
     [loadingNotification showAnimated:YES];
     return loadingNotification;
 }

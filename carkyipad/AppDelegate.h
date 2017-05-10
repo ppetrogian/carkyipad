@@ -37,7 +37,7 @@
 +(UICollectionViewCell *)parentCollectionViewCell:(UIView *)view;
 -(void)fetchInitialData:(BlockBoolean)block;
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location;
-+(MBProgressHUD *)showProgressNotification:(UIView *)view;
++(MBProgressHUD *)showProgressNotification:(UIView *)view withText:(NSString *)text;
 +(void)hideProgressNotification:(MBProgressHUD *)hud;
 +(void)configurePSTextField:(UITextField *)tf withColor:(UIColor *)color;
 +(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;

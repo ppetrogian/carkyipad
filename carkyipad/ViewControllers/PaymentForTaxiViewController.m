@@ -165,7 +165,7 @@
     // To place an Order, and defer both Authorization and Capture to
     // your server, use PayPalPaymentIntentOrder.
     // (PayPalPaymentIntentOrder is valid only for PayPal payments, not credit card payments.)
-    payment.intent = PayPalPaymentIntentAuthorize;
+    payment.intent = PayPalPaymentIntentSale;
     
     // If your app collects Shipping Address information from the customer,
     // or already stores that information on your server, you may provide it here.
@@ -179,6 +179,7 @@
         // If, for example, the amount was negative or the shortDescription was empty, then
         // this payment would not be processable. You would want to handle that here.
         NSLog(@"Error payment not processable");
+        [self.parentController showAlertViewWithMessage:@"Error" andTitle:@"PayPal Payment is not processable"];
     } else {
         // Create a PayPalPaymentViewController.
         PayPalPaymentViewController *paymentViewController;
@@ -208,14 +209,15 @@
     
 - (void)verifyCompletedPayment:(PayPalPayment *)completedPayment {
         // Send the entire confirmation dictionary
-    //NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation  options:0 error:nil];
-        
+    NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation  options:0 error:nil];
+    NSString* newStr = [[NSString alloc] initWithData:confirmation encoding:NSUTF8StringEncoding];
+    
         // Send confirmation to your server; your server should verify the proof of payment
         // and give the user their goods or services. If the server is not reachable, save
         // the confirmation and try again later.
     NSLog(@"%@", completedPayment.confirmation);
     
-    [self.parentController payWithPaypal:completedPayment.confirmation];
+    [self.parentController payWithPaypal:newStr];
 }
     
 @end

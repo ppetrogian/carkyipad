@@ -20,6 +20,7 @@
 #import <Stripe/Stripe.h>
 #import <Bolts/Bolts.h>
 
+#define kLastPayment @"LastPayment"
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
@@ -83,15 +84,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     CLLocationCoordinate2D positionCenter = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
     if (/* DISABLES CODE */ (1) == 1) {
         UIColor *bluC = [UIColor colorWithRed:0.26 green:0.62 blue:0.77 alpha:1]; //0.26 0.62 0.77
-        GMSCircle *circ1 = [GMSCircle circleWithPosition:positionCenter radius:20];
+        GMSCircle *circ1 = [GMSCircle circleWithPosition:positionCenter radius:25];
         circ1.fillColor = [UIColor clearColor];
         circ1.strokeColor = bluC;
-        circ1.strokeWidth = 4;
+        circ1.strokeWidth = 6;
         circ1.map = mapView;
         GMSCircle *circ2 = [GMSCircle circleWithPosition:positionCenter radius:400];
         circ2.fillColor = [UIColor clearColor];
         circ2.strokeColor = bluC;
-        circ2.strokeWidth = 2;
+        circ2.strokeWidth = 4;
         circ2.map = mapView;
     } else {
         GMSMarker *marker = [[GMSMarker alloc] init];
@@ -286,7 +287,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.activeField = textField;
 }
     
--(TransferBookingRequest *)getPaymentRequest:(BOOL)forCC {
+-(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC {
     NSDateFormatter *df = [NSDateFormatter new];
     // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
@@ -315,8 +316,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (void)MakeTransferRequest:(BlockBoolean)block request:(TransferBookingRequest *)request {
-     CarkyApiClient *api = [CarkyApiClient sharedService];
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
     [api CreateTransferBookingRequest:request withBlock:^(NSArray *array) {
+        [AppDelegate hideProgressNotification:hud];
+        if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
             TransferBookingResponse *responseObj = array.firstObject;
             if (responseObj.bookingId.length > 0) {
                 block(YES);
@@ -326,14 +330,17 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
                 block(NO);
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
             }
-        }];
+        } else {
+            block(NO);
+            [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+        }
+    }];
 }
 
 -(void)payWithCreditCard:(BlockBoolean)block; {
     // send payment to back end
     STPAPIClient *stpClient = [STPAPIClient sharedClient];
     
-    CarkyApiClient *api = [CarkyApiClient sharedService];
     [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
         if (error) {
             NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
@@ -341,20 +348,20 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             block(NO);
             return;
         }
-        TransferBookingRequest *request = [self getPaymentRequest:YES];
+        TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
         request.stripeCardToken = token.tokenId;
         [self MakeTransferRequest:block request:request]; // create transfer request
     }]; // create token
 }
     
     
--(void)payWithPaypal:(NSDictionary *)confirmation {
-  CarkyApiClient *api = [CarkyApiClient sharedService];
-    TransferBookingRequest *request = [self getPaymentRequest:NO];
-    request.payPalPaymentId = confirmation[@"response"][@"id"];
-    [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
-        [self MakeTransferRequest:^(BOOL b) {} request:request]; // create transfer request
-    }];
+-(void)payWithPaypal:(NSString *)confirmation {
+    TransferBookingRequest *request = [self getPaymentRequestWithCC:NO];
+    request.payPalPaymentId = confirmation; //[@"response"][@"id"];
+    NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    request.payPalPayerId = identifier;
+    [self MakeTransferRequest:^(BOOL b) {} request:request]; // create transfer request
+    
 }
 
 
