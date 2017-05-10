@@ -14,8 +14,19 @@
 #import "UIDropDownMenu.h"
 @class UIDropDownMenu;
 
-@interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate,FleetLocationControlDelegate, UIDropDownMenuDelegate>
+#define KDateTxtFldBackgroundColor [UIColor colorWithRed:(CGFloat)237/255 green:(CGFloat)237/255 blue:(CGFloat)237/255 alpha:1.0]
+#define KPlaceTxtFldBackgroundColor [UIColor colorWithRed:(CGFloat)249/255 green:(CGFloat)249/255 blue:(CGFloat)249/255 alpha:1.0]
+#define KSelectedFieldBorderColor [UIColor colorWithRed:(CGFloat)89/255 green:(CGFloat)205/255 blue:(CGFloat)205/255 alpha:1.0]
 
+@interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate,FleetLocationControlDelegate, UIDropDownMenuDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@property (nonatomic, weak) IBOutlet UITextField *pickupTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *dropoffTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *pickupDateTxtFld;
+@property (nonatomic, weak) IBOutlet UITextField *dropOffDateTxtFld;
+@property (nonatomic, weak) IBOutlet UITableView *addressListTableView;
+@property (nonatomic, weak) IBOutlet UIButton *nextButton;
+@property (nonatomic, strong) NSArray *addressListArray;
+//----
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
 @property (weak, nonatomic) IBOutlet PSTimePicker *timePicker;
 @property (strong, nonatomic) UIDropDownMenu *pickupMenu;
