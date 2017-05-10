@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htD-e0-LSR" customClass="PSStepButton">
-                                <rect key="frame" x="16" y="364" width="55" height="75"/>
+                                <rect key="frame" x="16" y="364.5" width="55" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="dCa-IA-aK4"/>
                                     <constraint firstAttribute="width" constant="55" id="uzA-yi-RMO"/>
@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-sc-OFA" customClass="PSStepButton">
-                                <rect key="frame" x="953" y="364" width="55" height="75"/>
+                                <rect key="frame" x="953" y="364.5" width="55" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" red="0.21760213375091553" green="0.80830127000808716" blue="0.60759645700454712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,7 +184,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="lastBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="z0X-NA-0dK">
-                                <rect key="frame" x="234" y="128" width="565" height="20.5"/>
+                                <rect key="frame" x="233.5" y="128" width="565" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXU-xP-8cL">
                                         <rect key="frame" x="0.0" y="0.0" width="52.5" height="20.5"/>
@@ -651,11 +651,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Pr-Ve-oz4" customClass="PSFleetLocationControl">
-                                <rect key="frame" x="567" y="258" width="193" height="36"/>
+					<rect key="frame" x="567" y="258" width="200" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vU-hX-HLR" customClass="PSLocationButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="93"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Credit Card" image="check_off">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -671,7 +671,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4O-tU-oQx" customClass="PSLocationButton">
-                                        <rect key="frame" x="120" y="0.0" width="73" height="36"/>
+					
+					<rect key="frame" x="100" y="0.0" width="100" height="93"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Cash" image="check_off">
                                             <color key="titleColor" red="0.80000430349999996" green="0.79603976009999999" blue="0.8000183702" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -721,11 +722,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalCentering" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DLO-7y-YT4" userLabel="StackView Locations" customClass="PSFleetLocationControl">
-                                <rect key="frame" x="82" y="211" width="523" height="64"/>
+					<rect key="frame" x="82" y="211" width="406" height="90.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zb-Tz-Q8X" customClass="PSLocationButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="90.5"/>
+
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Athens" image="loc_Athens_off">
@@ -738,7 +740,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USc-1w-GeW" customClass="PSLocationButton">
-                                        <rect key="frame" x="118" y="0.0" width="145" height="64"/>
+
+					<rect key="frame" x="102" y="0.0" width="100" height="90.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Thessaloniki" image="loc_Thessaloniki_off">
@@ -751,7 +754,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLy-5G-VXe" customClass="PSLocationButton">
-                                        <rect key="frame" x="265" y="0.0" width="122" height="64"/>
+
+					<rect key="frame" x="204" y="0.0" width="100" height="90.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Santorini" image="loc_Santorini_off">
@@ -764,7 +768,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F83-xJ-UwT" customClass="PSLocationButton">
-                                        <rect key="frame" x="400" y="0.0" width="123" height="64"/>
+					<rect key="frame" x="306" y="0.0" width="100" height="90.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Mykonos" image="loc_Mykonos_off">

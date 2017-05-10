@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface PSTextBox : UIView
 
-@property (nonatomic, strong) IBInspectable NSString *hintText;
-@property (nonatomic, strong) IBInspectable NSString *text;
+@property (nonatomic, strong) NSString *hintText;
+@property (nonatomic, strong) NSString *text;
 @property (nonatomic, readwrite) IBOutlet UITextField *textField;
 @end
 

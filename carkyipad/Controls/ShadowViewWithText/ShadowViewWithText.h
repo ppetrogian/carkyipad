@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface ShadowViewWithText : UIView
-@property (nonatomic, strong) IBInspectable NSString  *text;
+@property (nonatomic, strong) NSString  *text;
 @end

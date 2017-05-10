@@ -3,12 +3,12 @@
 //  DrawingPlayground
 
 #import <UIKit/UIKit.h>
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface PSStepButton : UIButton
 
 //Sets a thicker outline
-@property (assign) IBInspectable BOOL bold;
+@property (assign) BOOL bold;
 
-@property (assign) IBInspectable BOOL isLeft;
+@property (assign) BOOL isLeft;
 + (PSStepButton *)button;
 @end

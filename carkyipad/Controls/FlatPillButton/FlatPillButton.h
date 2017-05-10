@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface FlatPillButton : UIButton
 
 //Sets a thicker outline
-@property (assign) IBInspectable BOOL bold;
+@property (assign) BOOL bold;
 
 //For the lazy...
 + (FlatPillButton *)button;

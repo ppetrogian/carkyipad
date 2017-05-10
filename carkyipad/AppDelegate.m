@@ -12,6 +12,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Stripe/Stripe.h>
 #import <GooglePlaces/GooglePlaces.h>
+#import "PayPalMobile.h"
 
 @import  HockeySDK;
 
@@ -26,8 +27,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CarRental" bundle:nil];
     
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"transferSteps"];
-    
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"CarRentalSteps"];
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
 }
@@ -48,6 +48,10 @@
 
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{
+                                                           PayPalEnvironmentSandbox : @"AXQpJ2wZii3nT3iJhO2OCFUEv_7zRk9SkO6PgGeR3lUegEOetVeBkanC1bqEWi9EggNe2NQwtEg1pVOs"}];
     
     [self loadInitialController];
     return YES;

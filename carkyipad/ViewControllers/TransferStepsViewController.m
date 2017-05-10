@@ -285,24 +285,21 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void)paymentCardTextFieldDidBeginEditingNumber:(nonnull STPPaymentCardTextField *)textField {
     self.activeField = textField;
 }
-
--(void)payWithCreditCard:(BlockBoolean)block; {
+    
+-(TransferBookingRequest *)getPaymentRequest:(BOOL)forCC {
     NSDateFormatter *df = [NSDateFormatter new];
     // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
-    // send payment to back end
-    STPAPIClient *stpClient = [STPAPIClient sharedClient];
-    //[self.selectedCarTypes enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {  if (obj.integerValue == 0) { return; } }];
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
     request.userId = self.userId;
     if(self.selectedLocation.identifier > 0)
-        request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
+    request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
     else
-        request.dropoffLocation = self.self.selectedLocation;
+    request.dropoffLocation = self.selectedLocation;
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
-    request.paymentMethod = 1;
+    request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
     NSDate *currDate = NSDate.date;
     request.dateTime = [df stringFromDate:currDate];
     PickupDateTime *pdt = [PickupDateTime new];
@@ -312,17 +309,14 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.extras = @[];
     request.carkyCategoryId = cCat.Id;
     request.luggagePiecesNumber = cCat.maxLuggages;
-    
-    CarkyApiClient *api = [CarkyApiClient sharedService];
-    [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
-        if (error) {
-            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
-            [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
-            block(NO);
-            return;
-        }
-        request.stripeCardToken = token.tokenId;
-        [api CreateTransferBookingRequest:request withBlock:^(NSArray *array) {
+    request.payPalPaymentId = @"";
+    request.payPalPayerId = @"";
+    return request;
+}
+
+- (void)MakeTransferRequest:(BlockBoolean)block request:(TransferBookingRequest *)request {
+     CarkyApiClient *api = [CarkyApiClient sharedService];
+    [api CreateTransferBookingRequest:request withBlock:^(NSArray *array) {
             TransferBookingResponse *responseObj = array.firstObject;
             if (responseObj.bookingId.length > 0) {
                 block(YES);
@@ -332,9 +326,37 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
                 block(NO);
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
             }
-        }]; // create transfer request
+        }];
+}
+
+-(void)payWithCreditCard:(BlockBoolean)block; {
+    // send payment to back end
+    STPAPIClient *stpClient = [STPAPIClient sharedClient];
+    
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
+        if (error) {
+            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
+            [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
+            block(NO);
+            return;
+        }
+        TransferBookingRequest *request = [self getPaymentRequest:YES];
+        request.stripeCardToken = token.tokenId;
+        [self MakeTransferRequest:block request:request]; // create transfer request
     }]; // create token
 }
+    
+    
+-(void)payWithPaypal:(NSDictionary *)confirmation {
+  CarkyApiClient *api = [CarkyApiClient sharedService];
+    TransferBookingRequest *request = [self getPaymentRequest:NO];
+    request.payPalPaymentId = confirmation[@"response"][@"id"];
+    [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
+        [self MakeTransferRequest:^(BOOL b) {} request:request]; // create transfer request
+    }];
+}
+
 
 
 // methods

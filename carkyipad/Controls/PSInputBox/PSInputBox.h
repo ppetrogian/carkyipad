@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 @class  PSTextField;
 
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface PSInputBox : UIView
 
-@property (nonatomic, strong) IBInspectable NSString *hintText;
-@property (nonatomic, strong) IBInspectable UIImage *hintIcon;
-@property (nonatomic,assign) IBInspectable BOOL hideBorder;
+@property (nonatomic, strong)  NSString *hintText;
+@property (nonatomic, strong)  UIImage *hintIcon;
+@property (nonatomic,assign)  BOOL hideBorder;
 @property (nonatomic, readonly) PSTextField *textField;
 @end
