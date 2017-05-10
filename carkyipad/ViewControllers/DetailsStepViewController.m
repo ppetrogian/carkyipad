@@ -54,6 +54,8 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
     CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
     parentVc.totalView.hidden = YES;
+    //----
+    [self setupInit];
 }
 
 - (IBAction)tapView:(id)sender {
@@ -70,6 +72,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 
 -(void) setupInit{
     UIController *controller = [UIController sharedInstance];
+    [controller addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
     [controller addLeftPaddingtoTextField:self.pickupTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_pickup"];
     [controller addLeftPaddingtoTextField:self.dropoffTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_drop"];
     [controller addLeftPaddingtoTextField:self.pickupDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];

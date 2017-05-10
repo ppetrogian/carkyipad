@@ -17,8 +17,14 @@
 #import "StepViewController.h"
 #import "AFNetworking.h"
 #import "AFImageDownloader.h"
+#import "ExtrasCollectionViewCell.h"
+#import "ExtrasHeaderCollectionReusableView.h"
+#import "UIController.h"
 
-@interface CarExtrasViewController () <UITableViewDelegate>
+@interface CarExtrasViewController () 
+{
+    NSMutableArray *selectedListArray;
+}
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
 @property (nonatomic,strong) TGRArrayDataSource* carInsurancesDataSource;
 @property (nonatomic,assign) BOOL mustPrepare;
@@ -32,52 +38,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // setup table properties
-    self.carExtrasTableView.editing = YES;
-    self.carExtrasTableView.allowsMultipleSelectionDuringEditing = YES;
-    self.carExtrasTableView.allowsSelectionDuringEditing = YES;
-    self.carExtrasTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.carInsurancesTableView.editing = YES;
-    self.carInsurancesTableView.allowsMultipleSelectionDuringEditing = YES;
-    self.carInsurancesTableView.allowsSelectionDuringEditing = YES;
-    self.carInsurancesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    // adjust frames for 4 items
-    CGRect frame1 = self.carExtrasTableView.frame;
-    frame1.size = CGSizeMake(frame1.size.width, self.carExtrasTableView.rowHeight * 4 + 2);
-    self.carExtrasTableView.frame = frame1;
-    CGRect frame2 = self.carInsurancesTableView.frame;
-    frame2.size = CGSizeMake(frame2.size.width, self.carInsurancesTableView.rowHeight * 4 + 2);
-    self.carInsurancesTableView.frame = frame2;
     _priceExtras = 0;
     _priceInsurances = 0;
+    [self setupInit];
+}
+-(void) setupInit{
+    [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
+    [self.extrasCollectionView registerClass:[ExtrasHeaderCollectionReusableView class]
+                  forSupplementaryViewOfKind: UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
+    [self setPlaeceDetails];
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AppDelegate *app = [AppDelegate instance];
-    NSInteger numDays = ((NSNumber *)self.stepsController.results[kResultsDays]).integerValue;
-    if (tableView == self.carExtrasTableView) {
-        _priceExtras += app.carExtras[indexPath.row].pricePerDay * numDays;
-        [super showPrice:_priceExtras forKey:kResultsTotalPriceExtras];
-    } else {
-        _priceInsurances += app.carInsurances[indexPath.row].pricePerDay * numDays;
-        [super showPrice:_priceInsurances forKey:kResultsTotalPriceInsurance];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    AppDelegate *app = [AppDelegate instance];
-    NSInteger numDays = ((NSNumber *)self.stepsController.results[kResultsDays]).integerValue;
-    if (tableView == self.carExtrasTableView) {
-        _priceExtras -= app.carExtras[indexPath.row].pricePerDay * numDays;
-        [super showPrice:_priceExtras forKey:kResultsTotalPriceExtras];
-    } else {
-        _priceInsurances -= app.carInsurances[indexPath.row].pricePerDay * numDays;
-        [super showPrice:_priceInsurances forKey:kResultsTotalPriceInsurance];
-    }
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,7 +59,25 @@
 -(void)prepareCarStep {
     self.mustPrepare = YES; // see view-will-appear
 }
-
+#pragma mark -
+-(void) setPlaeceDetails{
+    //set pick up details
+    self.pickupPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
+    self.pickupPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
+    self.pickupPlaceDetailsView.center = CGPointMake(self.pickupBackView.frame.size.width/2, self.pickupBackView.frame.size.height/2);
+    [self.pickupPlaceDetailsView setPlaceLableText:@"Pick up:" andImage:@"arrow_pickup"];
+    [self.pickupPlaceDetailsView setAllDetails:@{KPlaceName:@"Mykonos national Airport", KDateValue:@"Tue 9 Jan",KTimeValue:@"12:00 AM"}];
+    [self.pickupBackView addSubview:self.pickupPlaceDetailsView];
+    //set drop off details
+    self.dropOffPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
+    self.dropOffPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
+    self.dropOffPlaceDetailsView.center = CGPointMake(self.dropoffBackView.frame.size.width/2, self.dropoffBackView.frame.size.height/2);
+    [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
+    [self.dropOffPlaceDetailsView setAllDetails:@{KPlaceName:@"Same as pick up", KDateValue:@"Tue 18 Jan",KTimeValue:@"12:30 AM"}];
+    [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
+}
+#pragma mark -
+/*
 -(void)showExtras {
     AppDelegate *app = [AppDelegate instance];
     static NSString *reuseIdentifier = @"ExtrasCell";
@@ -124,12 +114,12 @@
     self.carInsurancesTableView.delegate = self;
     [self.carInsurancesTableView reloadData];
 }
-
+*/
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (_mustPrepare) {
-        [self showExtras];
-        [self showInsurances];
+//        [self showExtras];
+//        [self showInsurances];
         _mustPrepare = NO;
     }
 }
@@ -144,5 +134,75 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+-(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 4;
+}
+-(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 2;
+}
+-(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"CellIdentifier";
+    ExtrasCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    [self collectionCell:cell setDetails:nil];
+    /*
+     //update cell appearence
+     if (selectedIndexPath.row == indexPath.row && selectedIndexPath.section == indexPath.section) {
+     cell.containerView.layer.borderWidth = 1;
+     cell.priceBackView.backgroundColor = [UIColor blackColor];
+     cell.priceLabel.textColor = [UIColor whiteColor];
+     }
+     else{
+     cell.containerView.layer.borderWidth = 0;
+     cell.priceBackView.backgroundColor = [UIColor lightGrayColor];
+     cell.priceLabel.textColor = [UIColor blackColor];
+     }*/
+    if ([selectedListArray containsObject:indexPath]) {
+        cell.selectionImageView.image = [UIImage imageNamed:@"check_on"];
+        cell.containerView.layer.borderWidth = 1.0;
+    }
+    else{
+        cell.selectionImageView.image = [UIImage imageNamed:@"check_off"];
+        cell.containerView.layer.borderWidth = 0.0;
+    }
+    return cell;
+}
+-(void) collectionCell:(ExtrasCollectionViewCell *)cell setDetails:(NSDictionary *)dict{
+    //set car name
+    cell.extraNameLabel.text = @"iPhone";
+    cell.priceLabel.text = @"Total £50";
+}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        ExtrasHeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        if (indexPath.section == 0) {
+            headerView.titleLabel.text = @"CHOOSE EXTRAS";
+        }
+        else{
+            headerView.titleLabel.text = @"CHOOSE INSURANCE";
+        }
+        reusableview = headerView;
+    }
+    return reusableview;
+}
+/*
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    CGSize headerSize = CGSizeMake(320, 44);
+    return headerSize;
+}*/
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    if (selectedListArray==nil) {
+        selectedListArray = [[NSMutableArray alloc] init];
+    }
+    if ([selectedListArray containsObject:indexPath]) {
+        [selectedListArray removeObject:indexPath];
+    }
+    else{
+        [selectedListArray addObject:indexPath];
+    }
+    [collectionView reloadData];
+}
 @end

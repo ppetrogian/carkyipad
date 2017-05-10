@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ExtrasCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="195" height="155"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="195" height="155"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q13-Jl-nLz">
+                        <rect key="frame" x="3" y="3" width="189" height="149"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-fg-tnB">
+                                <rect key="frame" x="20" y="8" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CYb-nf-8ed"/>
+                                    <constraint firstAttribute="width" constant="50" id="pzP-aA-jB2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wsa-f3-L00">
+                                <rect key="frame" x="124" y="84" width="45" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="MuX-Ap-v7e"/>
+                                    <constraint firstAttribute="width" constant="45" id="oda-Ub-z6D"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-Og-40K">
+                                <rect key="frame" x="80" y="22.5" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Xab-1m-fs7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total £50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiI-of-8h3">
+                                <rect key="frame" x="20" y="96" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="jOK-2y-5Kd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gcy-fg-tnB" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="8" id="Cbd-HH-UeD"/>
+                            <constraint firstItem="gcy-fg-tnB" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="20" id="DrS-th-vPX"/>
+                            <constraint firstItem="QiI-of-8h3" firstAttribute="centerY" secondItem="Wsa-f3-L00" secondAttribute="centerY" id="HM0-3r-Azi"/>
+                            <constraint firstItem="kMy-Og-40K" firstAttribute="centerY" secondItem="gcy-fg-tnB" secondAttribute="centerY" id="NsS-BA-Tll"/>
+                            <constraint firstItem="Wsa-f3-L00" firstAttribute="leading" secondItem="QiI-of-8h3" secondAttribute="trailing" constant="8" id="bQT-e5-8Hv"/>
+                            <constraint firstAttribute="trailing" secondItem="Wsa-f3-L00" secondAttribute="trailing" constant="20" id="mDa-Gd-Hmx"/>
+                            <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" constant="29" id="ngD-iR-hZZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Wsa-f3-L00" secondAttribute="bottom" constant="20" id="r1R-nD-EyU"/>
+                            <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="gcy-fg-tnB" secondAttribute="trailing" constant="10" id="svc-3Y-avw"/>
+                            <constraint firstItem="QiI-of-8h3" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="20" id="zMm-zh-uXL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Q13-Jl-nLz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="7y4-Eh-g5u"/>
+                <constraint firstItem="Q13-Jl-nLz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="APi-Q6-x8C"/>
+                <constraint firstAttribute="bottom" secondItem="Q13-Jl-nLz" secondAttribute="bottom" constant="3" id="M0E-s5-sh2"/>
+                <constraint firstAttribute="trailing" secondItem="Q13-Jl-nLz" secondAttribute="trailing" constant="3" id="ZnE-gE-Soo"/>
+            </constraints>
+            <size key="customSize" width="153" height="138"/>
+            <connections>
+                <outlet property="containerView" destination="Q13-Jl-nLz" id="HKJ-8j-R1i"/>
+                <outlet property="extraImageView" destination="gcy-fg-tnB" id="TmM-rc-zrm"/>
+                <outlet property="extraNameLabel" destination="kMy-Og-40K" id="nAd-qB-WPV"/>
+                <outlet property="priceLabel" destination="QiI-of-8h3" id="MhF-uo-Bqq"/>
+                <outlet property="selectionImageView" destination="Wsa-f3-L00" id="pBf-ol-S1m"/>
+            </connections>
+            <point key="canvasLocation" x="-114.5" y="93.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

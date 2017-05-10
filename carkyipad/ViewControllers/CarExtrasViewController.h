@@ -7,11 +7,16 @@
 //
 
 #import "StepViewController.h"
+#import "PlaceDetailsView.h"
 
-@interface CarExtrasViewController : StepViewController
-
+@interface CarExtrasViewController : StepViewController<UICollectionViewDelegate, UICollectionViewDataSource>
+@property (nonatomic, weak) IBOutlet UICollectionView *extrasCollectionView;
+@property (nonatomic, strong) NSArray *carListArray;
+@property (nonatomic, weak) IBOutlet UIView *headerBackView;
 -(void)prepareCarStep;
-
-@property (weak, nonatomic) IBOutlet UITableView *carInsurancesTableView;
-@property (weak, nonatomic) IBOutlet UITableView *carExtrasTableView;
+//--------------
+@property (nonatomic, weak) IBOutlet UIView *pickupBackView;
+@property (nonatomic, weak) IBOutlet UIView * dropoffBackView;
+@property (nonatomic, strong) PlaceDetailsView *pickupPlaceDetailsView;
+@property (nonatomic, strong) PlaceDetailsView *dropOffPlaceDetailsView;
 @end

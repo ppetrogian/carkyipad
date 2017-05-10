@@ -19,6 +19,7 @@
 #define KSelectedFieldBorderColor [UIColor colorWithRed:(CGFloat)89/255 green:(CGFloat)205/255 blue:(CGFloat)205/255 alpha:1.0]
 
 @interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate,FleetLocationControlDelegate, UIDropDownMenuDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@property (nonatomic, weak) IBOutlet UIView *headerBackView;
 @property (nonatomic, weak) IBOutlet UITextField *pickupTxtFld;
 @property (nonatomic, weak) IBOutlet UITextField *dropoffTxtFld;
 @property (nonatomic, weak) IBOutlet UITextField *pickupDateTxtFld;
