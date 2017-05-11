@@ -189,6 +189,8 @@
 		E1C2EE661EC367110021BEC2 /* PlaceDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */; };
 		E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */; };
 		E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */; };
+		E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE751EC446450021BEC2 /* PasscodeView.m */; };
+		E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE761EC446450021BEC2 /* PasscodeView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -469,6 +471,9 @@
 		E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceDetailsView.xib; path = CustomView/PlaceDetailsView.xib; sourceTree = "<group>"; };
 		E1C2EE6B1EC3AB720021BEC2 /* StepSegmentControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepSegmentControllerView.h; path = CustomView/StepSegmentControllerView.h; sourceTree = "<group>"; };
 		E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepSegmentControllerView.m; path = CustomView/StepSegmentControllerView.m; sourceTree = "<group>"; };
+		E1C2EE741EC446450021BEC2 /* PasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasscodeView.h; path = CustomView/PasscodeView.h; sourceTree = "<group>"; };
+		E1C2EE751EC446450021BEC2 /* PasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PasscodeView.m; path = CustomView/PasscodeView.m; sourceTree = "<group>"; };
+		E1C2EE761EC446450021BEC2 /* PasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PasscodeView.xib; path = CustomView/PasscodeView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1103,6 +1108,9 @@
 				E1C2EE631EC367110021BEC2 /* PlaceDetailsView.h */,
 				E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */,
 				E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */,
+				E1C2EE741EC446450021BEC2 /* PasscodeView.h */,
+				E1C2EE751EC446450021BEC2 /* PasscodeView.m */,
+				E1C2EE761EC446450021BEC2 /* PasscodeView.xib */,
 				E1C2EE551EC339800021BEC2 /* Cell */,
 			);
 			name = CustomView;
@@ -1257,6 +1265,7 @@
 				D15951491EACB08B00540076 /* Settings.bundle in Resources */,
 				AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */,
 				E1C2EE5F1EC339910021BEC2 /* ExtrasCollectionViewCell.xib in Resources */,
+				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */,
 				E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
@@ -1490,6 +1499,7 @@
 				E1C2EE621EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m in Sources */,
 				AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */,
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
+				E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
 				E1C2EE5C1EC339910021BEC2 /* CarCollectionViewCell.m in Sources */,

@@ -12,9 +12,10 @@
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
 #import "UIController.h"
+#import "PasscodeView.h"
+#import "AppDelegate.h"
 
-
-@interface PaymentViewController ()
+@interface PaymentViewController ()<PasscodeViewDelegate>
 
 @end
 
@@ -76,7 +77,7 @@
 #pragma mark -
 -(IBAction) confirmButtonAction:(UIButton *)sender{
     NSLog(@"Confirm button Action");
-    [self displayPaymentView];
+    [self displayPassCodeView];
 }
 -(void) checkStatusForConfirmButton{
     if (self.firstNameTxtFld.text.length>1 && self.lastNameTxtFld.text.length>1 && self.phoneTxtFld.text.length>1 && self.emailNameTxtFld.text.length>1) {
@@ -160,5 +161,26 @@
     else if(value.integerValue == 1){
         self.expireTxtFld.text = [NSString stringWithFormat:@"0%@/",self.expireTxtFld.text];
     }
+}
+#pragma mark - Passcode View
+-(void) displayPassCodeView{
+    PasscodeView *passcodeView = [[[NSBundle mainBundle] loadNibNamed:@"PasscodeView" owner:self options:nil] firstObject];
+    passcodeView.frame = [UIScreen mainScreen].bounds;
+    passcodeView.alpha = 0;
+    passcodeView.delegate = self;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.window addSubview:passcodeView];
+    [UIView animateWithDuration:0.2 animations:^{
+        passcodeView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [passcodeView displayKeyboard];
+    }];
+}
+-(void) didSelectedResendCode{
+    NSLog(@"Resend code");
+}
+-(void) didSelectedSubmitCode:(NSString *)code{
+    NSLog(@"Entered code is = %@",code);
+    [self displayPaymentView];
 }
 @end
