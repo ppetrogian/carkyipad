@@ -18,7 +18,7 @@
 #define KPlaceTxtFldBackgroundColor [UIColor colorWithRed:(CGFloat)249/255 green:(CGFloat)249/255 blue:(CGFloat)249/255 alpha:1.0]
 #define KSelectedFieldBorderColor [UIColor colorWithRed:(CGFloat)89/255 green:(CGFloat)205/255 blue:(CGFloat)205/255 alpha:1.0]
 
-@interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate,FleetLocationControlDelegate, UIDropDownMenuDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface DetailsStepViewController : StepViewController<DSLCalendarViewDelegate,FleetLocationControlDelegate, UIDropDownMenuDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic, weak) IBOutlet UIView *headerBackView;
 @property (nonatomic, weak) IBOutlet UITextField *pickupTxtFld;
 @property (nonatomic, weak) IBOutlet UITextField *dropoffTxtFld;
@@ -29,7 +29,14 @@
 @property (nonatomic, strong) NSArray *addressListArray;
 //----
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendarView;
+@property (nonatomic, weak) IBOutlet UIView *dateTimeBackView;
+@property (nonatomic, weak) IBOutlet UIPickerView *hoursPickerView;
+@property (nonatomic, weak) IBOutlet UIPickerView *mintuePickerView;
+@property (nonatomic, weak) IBOutlet UIPickerView *formatPickerView;
+
 @property (weak, nonatomic) IBOutlet PSTimePicker *timePicker;
 @property (strong, nonatomic) UIDropDownMenu *pickupMenu;
 @property (strong, nonatomic) UIDropDownMenu *dropoffMenu;
+
+-(IBAction)cancelButtonAction:(UIButton *)sender;
 @end

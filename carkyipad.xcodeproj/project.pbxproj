@@ -191,6 +191,7 @@
 		E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */; };
 		E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE751EC446450021BEC2 /* PasscodeView.m */; };
 		E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE761EC446450021BEC2 /* PasscodeView.xib */; };
+		E1C2EE7B1EC44BB80021BEC2 /* CheckMarkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -474,6 +475,8 @@
 		E1C2EE741EC446450021BEC2 /* PasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasscodeView.h; path = CustomView/PasscodeView.h; sourceTree = "<group>"; };
 		E1C2EE751EC446450021BEC2 /* PasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PasscodeView.m; path = CustomView/PasscodeView.m; sourceTree = "<group>"; };
 		E1C2EE761EC446450021BEC2 /* PasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PasscodeView.xib; path = CustomView/PasscodeView.xib; sourceTree = "<group>"; };
+		E1C2EE791EC44BB80021BEC2 /* CheckMarkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckMarkButton.h; path = CustomView/CheckMarkButton.h; sourceTree = "<group>"; };
+		E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckMarkButton.m; path = CustomView/CheckMarkButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1111,6 +1114,8 @@
 				E1C2EE741EC446450021BEC2 /* PasscodeView.h */,
 				E1C2EE751EC446450021BEC2 /* PasscodeView.m */,
 				E1C2EE761EC446450021BEC2 /* PasscodeView.xib */,
+				E1C2EE791EC44BB80021BEC2 /* CheckMarkButton.h */,
+				E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */,
 				E1C2EE551EC339800021BEC2 /* Cell */,
 			);
 			name = CustomView;
@@ -1506,6 +1511,7 @@
 				D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */,
 				AEAF1AEF1E87888D00C03768 /* DSLCalendarMonthSelectorView.m in Sources */,
 				AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */,
+				E1C2EE7B1EC44BB80021BEC2 /* CheckMarkButton.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
 				D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */,

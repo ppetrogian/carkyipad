@@ -28,6 +28,8 @@
 @property (nonatomic, weak) IBOutlet UITextField *cvvTxtFld;
 @property (nonatomic, weak) IBOutlet UIButton *payButton;
 @property (nonatomic, weak) IBOutlet UIButton *paypalButton;
+@property (nonatomic, weak) IBOutlet UILabel *temsLabel;
+-(IBAction)displayTemsAndConditions:(id)sender;
 -(IBAction) payButtonAction:(UIButton *)sender;
 -(IBAction) paypalButtonAction:(UIButton *)sender;
 @end

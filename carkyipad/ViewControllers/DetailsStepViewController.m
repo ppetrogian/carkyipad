@@ -133,8 +133,38 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 -(void) displayDateAndTimePicker{
     NSLog(@"Display Date Picker");
 }
+#pragma mark -  UIPicker Delegate and Datasource
+-(CGFloat) pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+    return 60;
+}
+-(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    if (pickerView.tag == 0) {
+        return 12;
+    }
+    else if (pickerView.tag == 1){
+        return 60;
+    }
+    return 2;
+}
+-(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    if (pickerView.tag == 0) {
+        return [NSString stringWithFormat:@"%zd",row+1];
+    }
+    else if (pickerView.tag == 1){
+         return [NSString stringWithFormat:@"%zd",row];
+    }
+    else if (pickerView.tag == 2 && row == 0) {
+        return @"AM";
+    }
+    else if (pickerView.tag == 2 && row == 1) {
+        return @"PM";
+    }
+    return @"";
+}
 #pragma mark - DSLCalendarViewDelegate methods
-
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
     if (range != nil) {
         NSDictionary *bigAttrs = @{NSFontAttributeName : [UIFont systemFontOfSize:20]};
@@ -247,5 +277,9 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     // Pass the selected object to the new view controller.
 }
 */
-
+#pragma mark - Cancel Action
+-(IBAction)cancelButtonAction:(UIButton *)sender{
+    self.addressListTableView.hidden = YES;
+    self.dateTimeBackView.hidden = YES;
+}
 @end

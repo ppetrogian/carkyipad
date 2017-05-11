@@ -60,8 +60,9 @@
     [controller addBorderWithWidth:1.0 withColor:[UIColor lightGrayColor] withCornerRadious:2 toView:self.expireTxtFld];
     [controller addBorderWithWidth:1.0 withColor:[UIColor lightGrayColor] withCornerRadious:2 toView:self.cvvTxtFld];
     [controller addLeftPaddingtoTextField:self.cardNumberTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:nil];
-    [controller addLeftPaddingtoTextField:self.expireTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:nil];
-    [controller addLeftPaddingtoTextField:self.cvvTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:nil];
+    [controller addRightPaddingtoTextField:self.cardNumberTxtFld withFrame:CGRectMake(0, 0, 50, 40) withBackgroundColor:[UIColor clearColor] withImage:@"TakePic"];
+    [controller addLeftPaddingtoTextField:self.expireTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:@"Expiry_logo"];
+    [controller addLeftPaddingtoTextField:self.cvvTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:@"cvv_logo"];
     [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.payButton];
     [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.paypalButton];
 }
@@ -89,7 +90,7 @@
         self.confirmButton.backgroundColor = [UIColor lightGrayColor];
     }
 }
-#pragma mark -
+#pragma mark - Payment
 -(IBAction) payButtonAction:(UIButton *)sender{
     
 }
@@ -106,6 +107,10 @@
         self.clientDetailBackView.hidden = YES;
     }];
 }
+-(IBAction)displayTemsAndConditions:(id)sender{
+    NSLog(@"Display terms and conditions");
+}
+#pragma mark -
 -(void) displayClientDetailView{
     self.paymnetBackView.hidden = YES;
     self.clientDetailBackView.hidden = NO;

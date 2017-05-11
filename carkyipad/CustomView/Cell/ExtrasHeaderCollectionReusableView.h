@@ -10,6 +10,6 @@
 
 @interface ExtrasHeaderCollectionReusableView : UICollectionReusableView
 
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 
 @end

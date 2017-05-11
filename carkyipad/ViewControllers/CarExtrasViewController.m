@@ -44,8 +44,6 @@
 }
 -(void) setupInit{
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
-    [self.extrasCollectionView registerClass:[ExtrasHeaderCollectionReusableView class]
-                  forSupplementaryViewOfKind: UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
      [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
     [self setPlaeceDetails];
 }
