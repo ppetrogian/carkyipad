@@ -64,6 +64,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.addressListTableView.hidden = YES;
+    [self deHighLightTextField];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -77,6 +78,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [controller addLeftPaddingtoTextField:self.dropoffTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_drop"];
     [controller addLeftPaddingtoTextField:self.pickupDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
     [controller addLeftPaddingtoTextField:self.dropOffDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
+    [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.nextButton];
 }
 #pragma mark - UITableView Delegate and Datasource
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -109,6 +111,8 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [self highLightTextField:textField];
     if (textField.tag == 102) {
         [self.view endEditing:YES];
+        [self highLightTextField:textField];
+        [self displayDateAndTimePicker];
         return NO;
     }
     return YES;
@@ -124,6 +128,10 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
         selectedTextField.backgroundColor = selectedTextField.tag==102?KDateTxtFldBackgroundColor:KPlaceTxtFldBackgroundColor;
         [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:[UIColor clearColor] withCornerRadious:0 toView:selectedTextField];
     }
+}
+#pragma mark - Display Date
+-(void) displayDateAndTimePicker{
+    NSLog(@"Display Date Picker");
 }
 #pragma mark - DSLCalendarViewDelegate methods
 

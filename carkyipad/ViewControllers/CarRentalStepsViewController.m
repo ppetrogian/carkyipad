@@ -37,8 +37,14 @@
         step.stepView.enabled = i == 0;
     }
 
+    [self configureSegmentController];
 }
-
+-(void) configureSegmentController{
+    self.segmentController.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
+    [self.segmentController setAllSegmentList:@[@"1. Details", @"2. Car", @"3. Extras", @"4. Payment"]];
+    [self.segmentController setSelectedSegmentIndex:0];
+}
+#pragma mark -
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -85,6 +91,7 @@
     if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
         self.totalView.hidden = YES;
     }
+    [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex-1];
     [super showPreviousStep];
 }
 
@@ -97,7 +104,9 @@
         CarExtrasViewController *carExtrasVc = self.childViewControllers[2];
         [carExtrasVc prepareCarStep];
     }
+    [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex+1];
     [super showNextStep];
+    
 }
 
 - (IBAction)gotoBack:(id)sender {

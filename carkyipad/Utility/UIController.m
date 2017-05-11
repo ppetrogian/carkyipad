@@ -76,6 +76,9 @@ static UIController *sharedInstance;
     
     if (imageName == nil) {
         NSLog(@"Add uiview");
+        UIView *paddingView = [[UIView alloc] initWithFrame:frame];
+        paddingView.backgroundColor = color;
+        textField.leftView = paddingView;
     }
     else{
         //NSLog(@"Add UIImage View");

@@ -188,6 +188,7 @@
 		E1C2EE621EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE611EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m */; };
 		E1C2EE661EC367110021BEC2 /* PlaceDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */; };
 		E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */; };
+		E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -466,6 +467,8 @@
 		E1C2EE631EC367110021BEC2 /* PlaceDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDetailsView.h; path = CustomView/PlaceDetailsView.h; sourceTree = "<group>"; };
 		E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDetailsView.m; path = CustomView/PlaceDetailsView.m; sourceTree = "<group>"; };
 		E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceDetailsView.xib; path = CustomView/PlaceDetailsView.xib; sourceTree = "<group>"; };
+		E1C2EE6B1EC3AB720021BEC2 /* StepSegmentControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepSegmentControllerView.h; path = CustomView/StepSegmentControllerView.h; sourceTree = "<group>"; };
+		E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepSegmentControllerView.m; path = CustomView/StepSegmentControllerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -642,8 +645,6 @@
 				AE6352B71E75DE3000065F0F /* HomeViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
-				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
-				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -904,6 +905,8 @@
 				AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */,
 				D12218F31E8B121500AABBBE /* CarStepViewController.h */,
 				D12218F41E8B121500AABBBE /* CarStepViewController.m */,
+				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
+				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
 			);
 			name = CarRentals;
 			sourceTree = "<group>";
@@ -1095,6 +1098,8 @@
 			children = (
 				E1C2EE521EC339540021BEC2 /* CarTypeSegmentView.h */,
 				E1C2EE531EC339540021BEC2 /* CarTypeSegmentView.m */,
+				E1C2EE6B1EC3AB720021BEC2 /* StepSegmentControllerView.h */,
+				E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */,
 				E1C2EE631EC367110021BEC2 /* PlaceDetailsView.h */,
 				E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */,
 				E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */,
@@ -1449,6 +1454,7 @@
 			files = (
 				D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */,
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
+				E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */,
 				AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */,
 				E1C2EE501EC3363A0021BEC2 /* UIController.m in Sources */,
 				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
