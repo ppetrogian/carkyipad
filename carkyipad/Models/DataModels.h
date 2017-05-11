@@ -29,6 +29,7 @@
 #import "PickupDateTime.h"
 #import "CarkyBookingStatusResponse.h"
 #import "Content.h"
+#import "CreateTransferBookingRequestPayPalPaymentResponse.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;

@@ -33,5 +33,5 @@
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
 -(void)payWithCreditCard:(BlockBoolean)block;
 -(void)payWithPaypal:(NSString *)confirmation;
--(TransferBookingRequest *)getPaymentRequest:(BOOL)forCC;
+-(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC;
 @end

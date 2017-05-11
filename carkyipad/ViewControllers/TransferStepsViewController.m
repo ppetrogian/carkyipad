@@ -310,7 +310,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.extras = @[];
     request.carkyCategoryId = cCat.Id;
     request.luggagePiecesNumber = cCat.maxLuggages;
-    request.payPalPaymentId = @"";
+    request.payPalPaymentResponse = @"";
     request.payPalPayerId = @"";
     return request;
 }
@@ -357,7 +357,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     
 -(void)payWithPaypal:(NSString *)confirmation {
     TransferBookingRequest *request = [self getPaymentRequestWithCC:NO];
-    request.payPalPaymentId = confirmation; //[@"response"][@"id"];
+    request.payPalPaymentResponse = confirmation; //[@"response"][@"id"];
     NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     request.payPalPayerId = identifier;
     [self MakeTransferRequest:^(BOOL b) {} request:request]; // create transfer request

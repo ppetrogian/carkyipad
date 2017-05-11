@@ -15,7 +15,7 @@ NSString *const kTransferBookingRequestDropoffAddress = @"DropoffAddress";
 NSString *const kTransferBookingRequestDropoffWellKnownLocationId = @"DropoffWellKnownLocationId";
 NSString *const kTransferBookingRequestPickupAddress = @"PickupAddress";
 NSString *const kTransferBookingRequestStripeCardToken = @"StripeCardToken";
-NSString *const kTransferBookingRequestPayPalPaymentId = @"PayPalPaymentId";
+NSString *const kTransferBookingRequestPayPalPaymentResponse = @"PayPalPaymentResponse";
 NSString *const kTransferBookingRequestPayPalPayerId = @"PayPalPayerId";
 NSString *const kTransferBookingRequestPassengersNumber = @"PassengersNumber";
 NSString *const kTransferBookingRequestDropoffLocation = @"DropoffLocation";
@@ -54,7 +54,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         self.dropoffLocation = [Location modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestDropoffLocation]];
         self.pickupAddress = [self objectOrNilForKey:kTransferBookingRequestPickupAddress fromDictionary:dict];
         self.stripeCardToken = [self objectOrNilForKey:kTransferBookingRequestStripeCardToken fromDictionary:dict];
-        self.payPalPaymentId = [self objectOrNilForKey:kTransferBookingRequestPayPalPaymentId fromDictionary:dict];
+        self.payPalPaymentResponse = [self objectOrNilForKey:kTransferBookingRequestPayPalPaymentResponse fromDictionary:dict];
         self.payPalPayerId = [self objectOrNilForKey:kTransferBookingRequestPayPalPayerId fromDictionary:dict];
 
         self.passengersNumber = [[self objectOrNilForKey:kTransferBookingRequestPassengersNumber fromDictionary:dict] integerValue];
@@ -85,7 +85,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [mutableDict setValue:self.stripeCardToken forKey:kTransferBookingRequestStripeCardToken];
     [mutableDict setValue:[NSNumber numberWithInteger:self.passengersNumber] forKey:kTransferBookingRequestPassengersNumber];
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kTransferBookingRequestAgreedToTermsAndConditions];
-    [mutableDict setValue:self.payPalPaymentId forKey:kTransferBookingRequestPayPalPaymentId];
+    [mutableDict setValue:self.payPalPaymentResponse forKey:kTransferBookingRequestPayPalPaymentResponse];
     [mutableDict setValue:self.payPalPayerId forKey:kTransferBookingRequestPayPalPayerId];
 
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];

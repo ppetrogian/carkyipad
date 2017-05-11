@@ -72,7 +72,6 @@
     [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW       %ld€", price] forState: UIControlStateNormal];
 }
 
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -148,16 +147,7 @@
     [self.parentController showPreviousStep];
 }
 
-- (IBAction)payWithPaypalButton_click:(UIButton *)sender {
-    // Create a PayPalPayment
-    PayPalPayment *payment = [[PayPalPayment alloc] init];
-    
-    // Amount, currency, and description
-    NSInteger price = self.parentController.selectedCarCategory.price;
-    payment.amount = [[NSDecimalNumber alloc] initWithInt:(int)price];
-    payment.currencyCode = @"EUR";
-    payment.shortDescription = [NSString stringWithFormat:@"Transfer to %@", self.parentController.selectedLocation.name];
-    
+- (void)showPaypalUIforPayment:(PayPalPayment *)payment {
     // Use the intent property to indicate that this is a "sale" payment,
     // meaning combined Authorization + Capture.
     // To perform Authorization only, and defer Capture to your server,
@@ -166,7 +156,6 @@
     // your server, use PayPalPaymentIntentOrder.
     // (PayPalPaymentIntentOrder is valid only for PayPal payments, not credit card payments.)
     payment.intent = PayPalPaymentIntentSale;
-    
     // If your app collects Shipping Address information from the customer,
     // or already stores that information on your server, you may provide it here.
     //payment.shippingAddress = address; // a previously-created PayPalShippingAddress object
@@ -188,7 +177,21 @@
         // Present the PayPalPaymentViewController.
         [self presentViewController:paymentViewController animated:YES completion:nil];
     }
-    
+}
+
+- (IBAction)payWithPaypalButton_click:(UIButton *)sender {
+    TransferBookingRequest *request = [self.parentController getPaymentRequestWithCC:NO];
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
+        CreateTransferBookingRequestPayPalPaymentResponse *responseObj = array.firstObject;
+        // Create a PayPalPayment
+        PayPalPayment *payment = [[PayPalPayment alloc] init];
+        // Amount, currency, and description
+        payment.amount = [[NSDecimalNumber alloc] initWithString:responseObj.amount];
+        payment.currencyCode = responseObj.currency;
+        payment.shortDescription = responseObj.internalBaseClassDescription;
+        [self showPaypalUIforPayment:payment];
+    }];
 }
     
 #pragma mark - PayPalPaymentDelegate methods

@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *dropoffAddress;
 @property (nonatomic, strong) NSString *pickupAddress;
 @property (nonatomic, strong) NSString *stripeCardToken;
-@property (nonatomic, strong) NSString *payPalPaymentId;
+@property (nonatomic, strong) NSString *payPalPaymentResponse;
 @property (nonatomic, strong) NSString *payPalPayerId;
 
 @property (nonatomic, assign) NSInteger passengersNumber;

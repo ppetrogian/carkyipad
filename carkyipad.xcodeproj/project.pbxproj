@@ -178,6 +178,7 @@
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
+		D1BD784A1EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */; };
 		D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -440,6 +441,8 @@
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		D1B253DC1E8707A3005365B2 /* PSFleetLocationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFleetLocationControl.h; sourceTree = "<group>"; };
 		D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFleetLocationControl.m; sourceTree = "<group>"; };
+		D1BD78481EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTransferBookingRequestPayPalPaymentResponse.h; sourceTree = "<group>"; };
+		D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTransferBookingRequestPayPalPaymentResponse.m; sourceTree = "<group>"; };
 		D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsAndConditionsViewController.h; path = ViewControllers/TermsAndConditionsViewController.h; sourceTree = "<group>"; };
 		D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsAndConditionsViewController.m; path = ViewControllers/TermsAndConditionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1018,6 +1021,8 @@
 				D143DD231EA5347200F12C36 /* TransferBookingRequest.m */,
 				AEA9E92F1EAE58C900CC84D5 /* TransferBookingResponse.h */,
 				AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */,
+				D1BD78481EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.h */,
+				D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */,
 				AEA9E9351EAE68CC00CC84D5 /* Content.h */,
 				AEA9E9361EAE68CC00CC84D5 /* Content.m */,
 				AEA9E9321EAE68A900CC84D5 /* CarkyBookingStatusResponse.h */,
@@ -1475,6 +1480,7 @@
 				AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */,
 				D155121F1EB2A2C200D924C0 /* ButtonUtils.m in Sources */,
+				D1BD784A1EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m in Sources */,
 				AEA9E9371EAE68CC00CC84D5 /* Content.m in Sources */,
 				AE6352AB1E75DBF800065F0F /* Validation.m in Sources */,
 			);
