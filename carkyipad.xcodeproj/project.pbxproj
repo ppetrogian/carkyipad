@@ -192,6 +192,8 @@
 		E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE751EC446450021BEC2 /* PasscodeView.m */; };
 		E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE761EC446450021BEC2 /* PasscodeView.xib */; };
 		E1C2EE7B1EC44BB80021BEC2 /* CheckMarkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */; };
+		E1C2EE7E1EC4DF8A0021BEC2 /* RentalConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */; };
+		E1C2EE801EC4DFB10021BEC2 /* RentalConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -477,6 +479,9 @@
 		E1C2EE761EC446450021BEC2 /* PasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PasscodeView.xib; path = CustomView/PasscodeView.xib; sourceTree = "<group>"; };
 		E1C2EE791EC44BB80021BEC2 /* CheckMarkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckMarkButton.h; path = CustomView/CheckMarkButton.h; sourceTree = "<group>"; };
 		E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckMarkButton.m; path = CustomView/CheckMarkButton.m; sourceTree = "<group>"; };
+		E1C2EE7C1EC4DF8A0021BEC2 /* RentalConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RentalConfirmationView.h; path = CustomView/ConfirmationView/RentalConfirmationView.h; sourceTree = "<group>"; };
+		E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RentalConfirmationView.m; path = CustomView/ConfirmationView/RentalConfirmationView.m; sourceTree = "<group>"; };
+		E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RentalConfirmationView.xib; path = CustomView/ConfirmationView/RentalConfirmationView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -915,6 +920,9 @@
 				D12218F41E8B121500AABBBE /* CarStepViewController.m */,
 				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
 				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
+				E1C2EE7C1EC4DF8A0021BEC2 /* RentalConfirmationView.h */,
+				E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */,
+				E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */,
 			);
 			name = CarRentals;
 			sourceTree = "<group>";
@@ -1288,6 +1296,7 @@
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
 				D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */,
 				D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */,
+				E1C2EE801EC4DFB10021BEC2 /* RentalConfirmationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,6 +1502,7 @@
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
 				AEAF1AEE1E87888D00C03768 /* DSLCalendarDayView.m in Sources */,
+				E1C2EE7E1EC4DF8A0021BEC2 /* RentalConfirmationView.m in Sources */,
 				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,

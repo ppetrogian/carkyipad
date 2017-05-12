@@ -8,6 +8,7 @@
 
 #import "StepViewController.h"
 @class ShadowViewWithText;
+#import "CheckMarkButton.h"
 
 @interface PaymentViewController : StepViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet ShadowViewWithText *totalPriceButton;
@@ -32,4 +33,7 @@
 -(IBAction)displayTemsAndConditions:(id)sender;
 -(IBAction) payButtonAction:(UIButton *)sender;
 -(IBAction) paypalButtonAction:(UIButton *)sender;
+//---------
+@property (nonatomic, weak) IBOutlet CheckMarkButton *checkMarkButton;
+-(IBAction)checkmarkButtonAction:(CheckMarkButton *)sender;
 @end

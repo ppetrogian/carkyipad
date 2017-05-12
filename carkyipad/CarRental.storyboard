@@ -841,13 +841,16 @@
                                             <constraint firstAttribute="height" constant="2" id="Jot-CC-P2X"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwH-y6-ANI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwH-y6-ANI" customClass="CheckMarkButton">
                                         <rect key="frame" x="20" y="407" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="9Hc-ZC-7Qk"/>
                                             <constraint firstAttribute="height" constant="25" id="ieV-T6-oqW"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="CheckMark"/>
+                                        <state key="normal" backgroundImage="agree_check"/>
+                                        <connections>
+                                            <action selector="checkmarkButtonAction:" destination="yQV-li-fcp" eventType="touchUpInside" id="2ql-0T-nN8"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXW-o0-1rh">
                                         <rect key="frame" x="55" y="409" width="247" height="21"/>
@@ -859,7 +862,7 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cp3-zo-5FG">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ssl_encrypted_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Cp3-zo-5FG">
                                         <rect key="frame" x="20" y="437" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="CzH-oV-DPK"/>
@@ -938,6 +941,7 @@
                     </view>
                     <connections>
                         <outlet property="cardNumberTxtFld" destination="QTS-Y7-hHL" id="GHO-1c-uJr"/>
+                        <outlet property="checkMarkButton" destination="jwH-y6-ANI" id="S6D-4p-FSK"/>
                         <outlet property="clientCenterConstraint" destination="gFv-YO-ve0" id="CBQ-dJ-hRP"/>
                         <outlet property="clientDetailBackView" destination="c1q-Ik-b2s" id="a2w-gt-ekl"/>
                         <outlet property="confirmButton" destination="Bpg-Gw-Xiv" id="aZ2-9p-9dZ"/>
@@ -1151,93 +1155,141 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xg1-tb-uHX" userLabel="CalendarTimebackView">
-                                <rect key="frame" x="250" y="320" width="524" height="500"/>
+                                <rect key="frame" x="250" y="320" width="524" height="600"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pG-Bt-eoW" customClass="DSLCalendarView">
+                                        <rect key="frame" x="80" y="100" width="364" height="460"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="364" id="8rH-5U-j4b"/>
+                                            <constraint firstAttribute="height" constant="460" id="i7s-cf-sLG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showDayCalloutView" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4j-rB-BFP" userLabel="MintueBackView">
-                                        <rect key="frame" x="234" y="420" width="56" height="70"/>
+                                        <rect key="frame" x="234" y="520" width="56" height="70"/>
                                         <subviews>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqW-Ue-Twz" userLabel="Mintue Picker View">
-                                                <rect key="frame" x="0.0" y="5" width="56" height="60"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="xip-4y-n7o"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="70"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="zac-YQ-vbd" id="9i2-gr-cw6"/>
                                                     <outlet property="delegate" destination="zac-YQ-vbd" id="Y1m-up-hyV"/>
                                                 </connections>
                                             </pickerView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="RYS-3j-KSn">
+                                                <rect key="frame" x="18" y="55" width="20" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="Con-18-AQR"/>
+                                                    <constraint firstAttribute="width" constant="20" id="pYa-Pj-nhl"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="bta-CY-Rc8">
+                                                <rect key="frame" x="18" y="5" width="20" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="QMO-iU-SAl"/>
+                                                    <constraint firstAttribute="height" constant="10" id="b83-0g-xI8"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.9393136160714286" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="fqW-Ue-Twz" firstAttribute="leading" secondItem="M4j-rB-BFP" secondAttribute="leading" id="1MR-rX-vEV"/>
+                                            <constraint firstItem="bta-CY-Rc8" firstAttribute="top" secondItem="M4j-rB-BFP" secondAttribute="top" constant="5" id="1xt-9b-CPR"/>
                                             <constraint firstItem="fqW-Ue-Twz" firstAttribute="centerY" secondItem="M4j-rB-BFP" secondAttribute="centerY" id="4eG-JP-RcQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="RYS-3j-KSn" secondAttribute="bottom" constant="5" id="6ky-sr-Tg9"/>
                                             <constraint firstAttribute="width" constant="56" id="Il0-eQ-e5B"/>
-                                            <constraint firstAttribute="trailing" secondItem="fqW-Ue-Twz" secondAttribute="trailing" id="zVv-lg-sYY"/>
+                                            <constraint firstItem="fqW-Ue-Twz" firstAttribute="height" secondItem="M4j-rB-BFP" secondAttribute="height" id="SSA-9Y-rQL"/>
+                                            <constraint firstItem="bta-CY-Rc8" firstAttribute="centerX" secondItem="M4j-rB-BFP" secondAttribute="centerX" id="XgC-Bs-c9e"/>
+                                            <constraint firstItem="RYS-3j-KSn" firstAttribute="centerX" secondItem="M4j-rB-BFP" secondAttribute="centerX" id="kUd-Ws-6gv"/>
+                                            <constraint firstAttribute="trailing" secondItem="fqW-Ue-Twz" secondAttribute="trailing" constant="10" id="zVv-lg-sYY"/>
                                             <constraint firstAttribute="height" constant="70" id="zp1-9L-e4M"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRn-F9-DAE" userLabel="FormatBackView">
-                                        <rect key="frame" x="305" y="420" width="56" height="70"/>
+                                        <rect key="frame" x="305" y="520" width="56" height="70"/>
                                         <subviews>
                                             <pickerView tag="2" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y5R-Wg-zQt" userLabel="Format Picker View">
-                                                <rect key="frame" x="0.0" y="5" width="56" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="UoR-aK-5EM"/>
-                                                </constraints>
                                                 <connections>
                                                     <outlet property="dataSource" destination="zac-YQ-vbd" id="LvF-52-yJY"/>
                                                     <outlet property="delegate" destination="zac-YQ-vbd" id="muu-uj-DTd"/>
                                                 </connections>
                                             </pickerView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="Lak-L4-tRB">
+                                                <rect key="frame" x="18" y="55" width="20" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="SD5-Us-irz"/>
+                                                    <constraint firstAttribute="height" constant="10" id="Xbg-dg-ysX"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="0wH-qE-4pC">
+                                                <rect key="frame" x="18" y="5" width="20" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="QKR-j9-rWm"/>
+                                                    <constraint firstAttribute="width" constant="20" id="n7p-PD-ZQP"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93931361609999997" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="Y5R-Wg-zQt" firstAttribute="height" secondItem="bRn-F9-DAE" secondAttribute="height" id="AQd-EO-u6u"/>
+                                            <constraint firstItem="Lak-L4-tRB" firstAttribute="centerX" secondItem="bRn-F9-DAE" secondAttribute="centerX" id="BNC-T9-b1J"/>
+                                            <constraint firstItem="0wH-qE-4pC" firstAttribute="centerX" secondItem="bRn-F9-DAE" secondAttribute="centerX" id="I8r-Nv-RWt"/>
+                                            <constraint firstItem="0wH-qE-4pC" firstAttribute="top" secondItem="bRn-F9-DAE" secondAttribute="top" constant="5" id="IEg-zU-Nco"/>
                                             <constraint firstItem="Y5R-Wg-zQt" firstAttribute="leading" secondItem="bRn-F9-DAE" secondAttribute="leading" id="ZWs-Ik-VJA"/>
                                             <constraint firstItem="Y5R-Wg-zQt" firstAttribute="centerY" secondItem="bRn-F9-DAE" secondAttribute="centerY" id="eMm-aY-bdw"/>
-                                            <constraint firstAttribute="trailing" secondItem="Y5R-Wg-zQt" secondAttribute="trailing" id="rSo-WU-i35"/>
+                                            <constraint firstAttribute="trailing" secondItem="Y5R-Wg-zQt" secondAttribute="trailing" constant="10" id="rSo-WU-i35"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lak-L4-tRB" secondAttribute="bottom" constant="5" id="vmo-kd-LgT"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klY-hR-Bdq" userLabel="HoursBackView">
-                                        <rect key="frame" x="163" y="420" width="56" height="70"/>
+                                        <rect key="frame" x="163" y="520" width="56" height="70"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYX-UO-uUo" userLabel="Hours Picker View">
-                                                <rect key="frame" x="0.0" y="5" width="56" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="5eU-au-L6Z"/>
-                                                </constraints>
                                                 <connections>
                                                     <outlet property="dataSource" destination="zac-YQ-vbd" id="gjX-81-KAG"/>
                                                     <outlet property="delegate" destination="zac-YQ-vbd" id="WPM-bs-zak"/>
                                                 </connections>
                                             </pickerView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="3Jx-vU-gd8">
+                                                <rect key="frame" x="18" y="5" width="20" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="0kd-RD-yFs"/>
+                                                    <constraint firstAttribute="height" constant="10" id="fuD-tc-5g5"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="Hcj-vB-rHe">
+                                                <rect key="frame" x="18" y="55" width="20" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="AbE-k2-W1s"/>
+                                                    <constraint firstAttribute="height" constant="10" id="jst-Io-8fa"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93931361609999997" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="PYX-UO-uUo" firstAttribute="centerY" secondItem="klY-hR-Bdq" secondAttribute="centerY" id="5Ug-sa-Vgj"/>
-                                            <constraint firstAttribute="trailing" secondItem="PYX-UO-uUo" secondAttribute="trailing" id="DZb-pk-7gh"/>
+                                            <constraint firstItem="PYX-UO-uUo" firstAttribute="height" secondItem="klY-hR-Bdq" secondAttribute="height" id="7zI-Mq-yzl"/>
+                                            <constraint firstAttribute="trailing" secondItem="PYX-UO-uUo" secondAttribute="trailing" constant="10" id="DZb-pk-7gh"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hcj-vB-rHe" secondAttribute="bottom" constant="5" id="FdB-b0-OI0"/>
                                             <constraint firstItem="PYX-UO-uUo" firstAttribute="leading" secondItem="klY-hR-Bdq" secondAttribute="leading" id="Ni1-35-Nte"/>
+                                            <constraint firstItem="3Jx-vU-gd8" firstAttribute="top" secondItem="klY-hR-Bdq" secondAttribute="top" constant="5" id="QwL-P0-Ely"/>
+                                            <constraint firstItem="3Jx-vU-gd8" firstAttribute="centerX" secondItem="klY-hR-Bdq" secondAttribute="centerX" id="TSA-og-KkU"/>
+                                            <constraint firstItem="Hcj-vB-rHe" firstAttribute="centerX" secondItem="klY-hR-Bdq" secondAttribute="centerX" id="wYC-Ev-XfR"/>
                                         </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pG-Bt-eoW" customClass="DSLCalendarView">
-                                        <rect key="frame" x="80" y="100" width="364" height="433"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="364" id="8rH-5U-j4b"/>
-                                            <constraint firstAttribute="height" constant="433" id="i7s-cf-sLG"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showDayCalloutView" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="bRn-F9-DAE" firstAttribute="height" secondItem="M4j-rB-BFP" secondAttribute="height" id="2cw-lt-Ltg"/>
                                     <constraint firstItem="klY-hR-Bdq" firstAttribute="top" secondItem="M4j-rB-BFP" secondAttribute="top" id="4Gb-Cc-WGE"/>
-                                    <constraint firstAttribute="height" constant="500" id="4bX-km-CgG"/>
+                                    <constraint firstAttribute="height" constant="600" id="4bX-km-CgG"/>
                                     <constraint firstAttribute="width" constant="524" id="8Mm-0i-qnA"/>
                                     <constraint firstItem="6pG-Bt-eoW" firstAttribute="top" secondItem="Xg1-tb-uHX" secondAttribute="top" constant="100" id="Lhp-tY-n8X"/>
                                     <constraint firstItem="6pG-Bt-eoW" firstAttribute="centerX" secondItem="Xg1-tb-uHX" secondAttribute="centerX" id="N1j-hn-c6h"/>
@@ -1395,7 +1447,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CheckMark" width="54" height="40"/>
+        <image name="agree_check" width="29" height="29"/>
+        <image name="arrow_down" width="16" height="9"/>
+        <image name="arrow_up" width="16" height="9"/>
         <image name="carky" width="116" height="27"/>
         <image name="icon_arrow_from_to" width="24" height="20"/>
         <image name="icon_dropoff" width="28" height="30"/>
@@ -1408,6 +1462,7 @@
         <image name="loc_Santorini_off" width="64" height="64"/>
         <image name="loc_Thessaloniki" width="64" height="64"/>
         <image name="loc_Thessaloniki_off" width="64" height="64"/>
+        <image name="ssl_encrypted_icon" width="19" height="19"/>
     </resources>
     <color key="tintColor" red="0.34723332524299622" green="0.80352741479873657" blue="0.80127120018005371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

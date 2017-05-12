@@ -135,13 +135,13 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 }
 #pragma mark -  UIPicker Delegate and Datasource
 -(CGFloat) pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
-    return 60;
+    return 70;
 }
 -(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if (pickerView.tag == 0) {
         return 12;
     }
-    else if (pickerView.tag == 1){
+     if (pickerView.tag == 1){
         return 60;
     }
     return 2;

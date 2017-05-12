@@ -24,7 +24,7 @@
     [self defaultSetup];
 }
 -(void) defaultSetup{
-    [self setDefaultImage:@"uicheckbox_unchecked.png" SelectedImage:@"uicheckbox_checked.png"];
+    [self setDefaultImage:@"agree_check.png" SelectedImage:@"agree_uncheck.png"];
 }
 -(void) setDefaultImage:(NSString *)defaultImage SelectedImage:(NSString *)imageName{
     UIImage *image = [UIImage imageNamed:defaultImage];

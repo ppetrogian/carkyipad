@@ -14,6 +14,7 @@
 #import "UIController.h"
 #import "PasscodeView.h"
 #import "AppDelegate.h"
+#import "RentalConfirmationView.h"
 
 @interface PaymentViewController ()<PasscodeViewDelegate>
 
@@ -60,11 +61,13 @@
     [controller addBorderWithWidth:1.0 withColor:[UIColor lightGrayColor] withCornerRadious:2 toView:self.expireTxtFld];
     [controller addBorderWithWidth:1.0 withColor:[UIColor lightGrayColor] withCornerRadious:2 toView:self.cvvTxtFld];
     [controller addLeftPaddingtoTextField:self.cardNumberTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:nil];
-    [controller addRightPaddingtoTextField:self.cardNumberTxtFld withFrame:CGRectMake(0, 0, 50, 40) withBackgroundColor:[UIColor clearColor] withImage:@"TakePic"];
-    [controller addLeftPaddingtoTextField:self.expireTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:@"Expiry_logo"];
-    [controller addLeftPaddingtoTextField:self.cvvTxtFld withFrame:CGRectMake(0, 0, 20, 20) withBackgroundColor:[UIColor clearColor] withImage:@"cvv_logo"];
+    [controller addRightPaddingtoTextField:self.cardNumberTxtFld withFrame:CGRectMake(0, 0, 50, 20) withBackgroundColor:[UIColor clearColor] withImage:@"TakePic"];
+    [controller addLeftPaddingtoTextField:self.expireTxtFld withFrame:CGRectMake(0, 0, 50, 20) withBackgroundColor:[UIColor clearColor] withImage:@"Expiry_logo"];
+    [controller addLeftPaddingtoTextField:self.cvvTxtFld withFrame:CGRectMake(0, 0, 50, 20) withBackgroundColor:[UIColor clearColor] withImage:@"cvv_logo"];
     [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.payButton];
     [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.paypalButton];
+    //----
+    self.checkMarkButton.isChecked = NO;
 }
 /*
 #pragma mark - Navigation
@@ -91,8 +94,11 @@
     }
 }
 #pragma mark - Payment
+-(IBAction)checkmarkButtonAction:(CheckMarkButton *)sender{
+    sender.isChecked = !sender.isChecked;
+}
 -(IBAction) payButtonAction:(UIButton *)sender{
-    
+    [self displayRentalConfirmationView];
 }
 -(IBAction) paypalButtonAction:(UIButton *)sender{
     
@@ -188,4 +194,19 @@
     NSLog(@"Entered code is = %@",code);
     [self displayPaymentView];
 }
+#pragma mark - Confirmation View
+-(void) displayRentalConfirmationView{
+    RentalConfirmationView *confiramtionView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
+    confiramtionView.frame = [UIScreen mainScreen].bounds;
+    confiramtionView.alpha = 0;
+    //confiramtionView.delegate = self;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.window addSubview:confiramtionView];
+    [UIView animateWithDuration:0.3 animations:^{
+        confiramtionView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 @end

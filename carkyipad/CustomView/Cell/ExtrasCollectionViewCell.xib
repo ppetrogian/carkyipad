@@ -21,11 +21,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q13-Jl-nLz">
                         <rect key="frame" x="3" y="3" width="189" height="149"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-fg-tnB">
-                                <rect key="frame" x="20" y="8" width="50" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-fg-tnB">
+                                <rect key="frame" x="20" y="15" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="CYb-nf-8ed"/>
-                                    <constraint firstAttribute="width" constant="50" id="pzP-aA-jB2"/>
+                                    <constraint firstAttribute="height" constant="35" id="CYb-nf-8ed"/>
+                                    <constraint firstAttribute="width" constant="35" id="pzP-aA-jB2"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wsa-f3-L00">
@@ -36,10 +36,10 @@
                                     <constraint firstAttribute="width" constant="45" id="oda-Ub-z6D"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-Og-40K">
-                                <rect key="frame" x="80" y="22.5" width="80" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-Og-40K">
+                                <rect key="frame" x="65" y="12.5" width="95" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Xab-1m-fs7"/>
+                                    <constraint firstAttribute="height" constant="40" id="Xab-1m-fs7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -57,7 +57,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gcy-fg-tnB" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="8" id="Cbd-HH-UeD"/>
+                            <constraint firstItem="gcy-fg-tnB" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="15" id="Cbd-HH-UeD"/>
                             <constraint firstItem="gcy-fg-tnB" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="20" id="DrS-th-vPX"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerY" secondItem="Wsa-f3-L00" secondAttribute="centerY" id="HM0-3r-Azi"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="centerY" secondItem="gcy-fg-tnB" secondAttribute="centerY" id="NsS-BA-Tll"/>
@@ -84,8 +84,12 @@
                 <outlet property="extraNameLabel" destination="kMy-Og-40K" id="nAd-qB-WPV"/>
                 <outlet property="priceLabel" destination="QiI-of-8h3" id="MhF-uo-Bqq"/>
                 <outlet property="selectionImageView" destination="Wsa-f3-L00" id="pBf-ol-S1m"/>
+                <outlet property="widthConstraint" destination="pzP-aA-jB2" id="xgG-6y-4S9"/>
             </connections>
             <point key="canvasLocation" x="-114.5" y="93.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="iphone5" width="16" height="34"/>
+    </resources>
 </document>
