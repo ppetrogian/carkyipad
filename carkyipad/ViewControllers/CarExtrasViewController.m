@@ -203,4 +203,15 @@
     }
     [collectionView reloadData];
 }
+#pragma mark - 
+-(IBAction) nextButtonAction:(UIButton *)sender{
+    if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
+        [self.stepDelegate didSelectedNext:sender];
+    }
+}
+-(IBAction)backButtonAction:(UIButton *)sender{
+    if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedBack:)]) {
+        [self.stepDelegate didSelectedBack:sender];
+    }
+}
 @end

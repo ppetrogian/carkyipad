@@ -39,4 +39,6 @@
 @property (strong, nonatomic) UIDropDownMenu *dropoffMenu;
 
 -(IBAction)cancelButtonAction:(UIButton *)sender;
+-(IBAction) nextButtonAction:(UIButton *)sender;
+-(IBAction)backButtonAction:(UIButton *)sender;
 @end

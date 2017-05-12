@@ -208,5 +208,10 @@
         
     }];
 }
-
+#pragma maark - 
+-(IBAction) backButtonAction:(UIButton *)sender{
+    if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedBack:)]) {
+        [self.stepDelegate didSelectedBack:sender];
+    }
+}
 @end

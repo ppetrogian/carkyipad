@@ -15,8 +15,9 @@
 #import "CarStepViewController.h"
 #import "ShadowViewWithText.h"
 #import "CarExtrasViewController.h"
+#import "StepViewController.h"
 
-@interface CarRentalStepsViewController ()
+@interface CarRentalStepsViewController ()<StepDelegate>
 
 @end
 
@@ -62,15 +63,18 @@
 - (NSArray *)stepViewControllers {
     StepViewController *firstStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Details"];
     firstStep.step.title = NSLocalizedString(@"Details", nil) ;
-    
+    firstStep.stepDelegate = self;
     StepViewController *secondStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Car"];
     secondStep.step.title =  NSLocalizedString(@"Car", nil) ;
+    secondStep.stepDelegate = self;
     
     StepViewController *thirdStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Extras"];
     thirdStep.step.title =  NSLocalizedString(@"Extras", nil) ;
+    thirdStep.stepDelegate = self;
     
     StepViewController *fourthStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
     fourthStep.step.title =  NSLocalizedString(@"Payment", nil) ;
+    fourthStep.stepDelegate = self;
     
     return @[firstStep, secondStep, thirdStep, fourthStep];
 }
@@ -114,5 +118,12 @@
 }
 - (IBAction)gotoNext:(id)sender {
     [self showNextStep];
+}
+#pragma mark - Step Delegate
+-(void) didSelectedNext:(UIButton *)sender{
+    [self showNextStep];
+}
+-(void) didSelectedBack:(UIButton *)sender{
+    [self showPreviousStep];
 }
 @end

@@ -75,7 +75,6 @@ static UIController *sharedInstance;
 -(void) addLeftPaddingtoTextField:(UITextField *)textField withFrame:(CGRect)frame withBackgroundColor:(UIColor *)color withImage:(NSString *)imageName{
     
     if (imageName == nil) {
-        NSLog(@"Add uiview");
         UIView *paddingView = [[UIView alloc] initWithFrame:frame];
         paddingView.backgroundColor = color;
         textField.leftView = paddingView;

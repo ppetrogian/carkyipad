@@ -19,4 +19,6 @@
 @property (nonatomic, weak) IBOutlet UIView * dropoffBackView;
 @property (nonatomic, strong) PlaceDetailsView *pickupPlaceDetailsView;
 @property (nonatomic, strong) PlaceDetailsView *dropOffPlaceDetailsView;
+-(IBAction) nextButtonAction:(UIButton *)sender;
+-(IBAction)backButtonAction:(UIButton *)sender;
 @end

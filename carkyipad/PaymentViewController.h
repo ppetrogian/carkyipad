@@ -36,4 +36,5 @@
 //---------
 @property (nonatomic, weak) IBOutlet CheckMarkButton *checkMarkButton;
 -(IBAction)checkmarkButtonAction:(CheckMarkButton *)sender;
+-(IBAction) backButtonAction:(UIButton *)sender;
 @end
