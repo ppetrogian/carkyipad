@@ -32,7 +32,7 @@
     filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter; // kGMSPlacesAutocompleteTypeFilterEstablishment;
     filter.country = @"GR";
     // Create the fetcher.
-    _fetcherPlaces = [[GMSAutocompleteFetcher alloc] initWithBounds:self.locationBounds filter:filter];
+    _fetcherPlaces = [[GMSAutocompleteFetcher alloc] initWithBounds:[AppDelegate instance].locationBounds filter:filter];
     _fetcherPlaces.delegate = self;
 }
 
@@ -56,15 +56,21 @@
     if (textField == self.fromLocationTextField) {
         return NO;
     }
+    self.activeFld = textField;
     return YES;
 }
 
-- (IBAction)toLocationTextField_TextChanged:(UITextField *)textField {
-    if (textField.text.length < 1) {
-        [self loadLocations:textField.text andPredictions:nil];
+- (void)fetchPlacesForActiveField {
+    if (self.activeFld.text.length < 1) {
+        [self loadLocations:self.activeFld.text andPredictions:nil];
         return;
     }
-    [_fetcherPlaces sourceTextHasChanged:textField.text];
+    [_fetcherPlaces sourceTextHasChanged:self.activeFld.text];
+}
+
+- (IBAction)toLocationTextField_TextChanged:(UITextField *)textField {
+    self.activeFld = textField;
+    [self fetchPlacesForActiveField];
 }
 
 -(void)loadLocations:(NSString *)filter andPredictions:(NSArray<GMSAutocompletePrediction*> *)predictions {
@@ -122,13 +128,12 @@
     }];
     self.locationsTableView.dataSource = self.wellKnownLocationsDataSource;
     self.locationsTableView.delegate = self;
-    
     [self.locationsTableView reloadData];
 }
 
 #pragma mark - GMSAutocompleteFetcherDelegate
 - (void)didAutocompleteWithPredictions:(NSArray *)predictions {
-    [self loadLocations:_toLocationTextField.text andPredictions:predictions];
+    [self loadLocations:self.activeFld.text andPredictions:predictions];
 }
 
 - (void)didFailAutocompleteWithError:(NSError *)error {
@@ -145,9 +150,12 @@
             GMSAutocompletePrediction *prediction = (GMSAutocompletePrediction *)item;
             loc = [[Location alloc] initWithDictionary:@{kLocationsIdentifier:@(-indexPath.row), kLocationsName:prediction.attributedFullText.string, kLocationsZoneId:@(0), kLocationsPlaceId: prediction.placeID }];
         }
-        [self.delegate didSelectLocation:loc.identifier withValue:loc andText:loc.name];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        self.activeFld.text = loc.name;
+        if (self.delegateRequestRide) {
+            [self.delegateRequestRide didSelectLocation:loc.identifier withValue:loc andText:loc.name];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 

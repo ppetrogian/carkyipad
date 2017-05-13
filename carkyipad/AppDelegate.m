@@ -118,9 +118,21 @@
             if (array.count > 0) {
                 AppDelegate *app = [AppDelegate instance];
                 app.clientConfiguration = array.firstObject;
-                [self loadInitialControllerForMode:app.clientConfiguration.tabletMode];
-                if(block)
-                { block(YES); }
+                CarkyApiClient *api = [CarkyApiClient sharedService];
+                NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+                [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
+                    self.carCategories = array;
+                }];
+                [api GetWellKnownLocations:userFleetLocationId withBlock:^(NSArray<Location *> *array) {
+                    self.wellKnownLocations = array;
+                    self.locationBounds = [AppDelegate findCoordBounds:self.wellKnownLocations];
+                    [api GetStripePublishableApiKey:^(NSString *str) {
+                        [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [str substringWithRange:NSMakeRange(1, str.length-2)]];
+                        [self loadInitialControllerForMode:app.clientConfiguration.tabletMode];
+                        if(block)
+                        { block(YES); }
+                    }];
+                }];
             }
         }];
     }];
@@ -142,6 +154,25 @@
 
 
 // ------------ utility functions here ---------------------------
+
+
++(GMSCoordinateBounds *)findCoordBounds:(NSArray<Location *> *) array {
+    GMSCoordinateBounds *bounds;
+    CLLocationCoordinate2D neBoundsCorner,swBoundsCorner;
+    Location *l0 = array[0];
+    //Longitude is a geographic coordinate that specifies the east-west
+    __block CLLocationDegrees north=l0.latLng.lat, east=l0.latLng.lng, south=l0.latLng.lat, west=l0.latLng.lng;
+    [array enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.latLng.lng > west)  west = obj.latLng.lng;
+        if (obj.latLng.lng < east)  east = obj.latLng.lng;
+        if (obj.latLng.lat > north)  north = obj.latLng.lat;
+        if (obj.latLng.lat < south)  south = obj.latLng.lat;
+    }];
+    neBoundsCorner = CLLocationCoordinate2DMake(north, east);
+    swBoundsCorner = CLLocationCoordinate2DMake(south, west);
+    bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:neBoundsCorner coordinate:swBoundsCorner];
+    return bounds;
+}
 
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location {
     double latitude = [[location objectForKey:@"lat"] doubleValue];

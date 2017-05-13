@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <GooglePlaces/GooglePlaces.h>
+#import "StepViewController.h"
 @class Location,RequestRideViewController;
 
-@interface SelectDropoffLocationViewController : UIViewController
+@interface SelectDropoffLocationViewController : StepViewController
 @property (weak, nonatomic) IBOutlet UITextField *toLocationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *fromLocationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
-@property (weak,nonatomic) RequestRideViewController *delegate;
+@property (weak,nonatomic) RequestRideViewController *delegateRequestRide;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
-@property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 @property (strong,nonatomic) Location *currentLocation;
+@property (weak, nonatomic) UITextField *activeFld;
+
+- (void)fetchPlacesForActiveField;
 @end

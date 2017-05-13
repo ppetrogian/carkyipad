@@ -25,11 +25,7 @@ NSString *const kResultsDropoffFleetLocationId = @"DropoffFleetLocationId";
 NSString *const kResultsPickupLocationId = @"PickupLocationId";
 NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 
-@interface DetailsStepViewController ()
-{
-    UITextField *selectedTextField;
-}
-
+@interface DetailsStepViewController ()<DSLCalendarViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;
 @property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
 @end
@@ -41,35 +37,10 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [super viewDidLoad];
     // set calendar delegate
     self.calendarView.delegate = self;
-    self.pickupMenu = [[UIDropDownMenu alloc] initWithIdentifier:@"pickupMenu"];
-    self.dropoffMenu = [[UIDropDownMenu alloc] initWithIdentifier:@"dropoffMenu"];
-    self.pickupMenu.ScaleToFitParent = NO;
-    self.pickupMenu.delegate = self;
-    self.dropoffMenu.ScaleToFitParent = NO;
-    self.dropoffMenu.delegate = self;
-    [self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
+    //[self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
     _parentController = (CarRentalStepsViewController *)self.stepsController;
     
-    //----
     [self setupInit];
-    
-    //[[AppDelegate instance] fetchInitialData:^(BOOL b) {
-        CarkyApiClient *api = [CarkyApiClient sharedService];
-        NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
-        [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
-            if ([array.firstObject isKindOfClass:CarCategory.class]) {
-                [AppDelegate instance].carCategories = array;
-            } else {
-                [self.parentController showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-            }
-        }];
-        [api GetWellKnownLocations:userFleetLocationId withBlock:^(NSArray<Location *> *array) {
-            [AppDelegate instance].wellKnownLocations = array;
-        }];
-        [api GetStripePublishableApiKey:^(NSString *stripeApiKey) {
-            [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: stripeApiKey];
-        }];
-    //}];
 }
 
 - (IBAction)tapView:(id)sender {
@@ -77,7 +48,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 }
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.addressListTableView.hidden = YES;
+    self.locationsTableView.hidden = YES;
     [self deHighLightTextField];
 }
 - (void)didReceiveMemoryWarning {
@@ -85,7 +56,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     // Dispose of any resources that can be recreated.
 }
 
--(void) setupInit{
+-(void) setupInit {
     UIController *controller = [UIController sharedInstance];
     [controller addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
     [controller addLeftPaddingtoTextField:self.pickupTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_pickup"];
@@ -94,22 +65,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [controller addLeftPaddingtoTextField:self.dropOffDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
     [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.nextButton];
 }
-#pragma mark - UITableView Delegate and Datasource
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
-}
--(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"Cell %zd", indexPath.row+1];
-    return cell;
-}
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+
 #pragma mark - UITextField Delegate
 -(void) textFieldDidBeginEditing:(UITextField *)textField{
     [self highLightTextField:textField];
@@ -123,10 +79,15 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 }
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
     [self highLightTextField:textField];
+    if (textField.tag == 101) {
+        [self fetchPlacesForActiveField];
+        [self displayLocationsPicker:YES];
+    }
     if (textField.tag == 102) {
+        // date field
         [self.view endEditing:YES];
         [self highLightTextField:textField];
-        [self displayDateAndTimePicker];
+        [self displayLocationsPicker:NO];
         return NO;
     }
     return YES;
@@ -135,18 +96,22 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [self deHighLightTextField];
     textField.backgroundColor = [UIColor whiteColor];
     [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:KSelectedFieldBorderColor withCornerRadious:0 toView:textField];
-    selectedTextField = textField;
+    self.activeFld = textField;
 }
 -(void) deHighLightTextField{
-    if (selectedTextField != nil) {
-        selectedTextField.backgroundColor = selectedTextField.tag==102?KDateTxtFldBackgroundColor:KPlaceTxtFldBackgroundColor;
-        [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:[UIColor clearColor] withCornerRadious:0 toView:selectedTextField];
+    if (self.activeFld != nil) {
+        self.activeFld.backgroundColor = self.activeFld.tag == 102 ? KDateTxtFldBackgroundColor:KPlaceTxtFldBackgroundColor;
+        [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:[UIColor clearColor] withCornerRadious:0 toView:self.activeFld];
     }
 }
 #pragma mark - Display Date
--(void) displayDateAndTimePicker{
-    NSLog(@"Display Date Picker");
+
+-(void)displayLocationsPicker:(BOOL)bLoc {
+    self.dateTimeBackView.hidden = bLoc;
+    self.locationsTableView.hidden = !bLoc;
 }
+
+
 #pragma mark -  UIPicker Delegate and Datasource
 -(CGFloat) pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
     return 70;
@@ -238,14 +203,9 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     return ([day1.date compare:day2.date] == NSOrderedAscending);
 }
 
-#pragma mark - Fleet location changed
-- (void)setLocationDropMenus:(NSMutableArray *)valueArray withTexts:(NSMutableArray *)titleArray {
-    self.pickupMenu.titleArray = titleArray;
-    self.pickupMenu.valueArray = valueArray;
-    self.dropoffMenu.titleArray = titleArray;
-    self.dropoffMenu.valueArray = valueArray;
-    [self.pickupMenu makeMenu:self.pickupTxtFld targetView:self.view];
-    [self.dropoffMenu makeMenu:self.dropoffTxtFld targetView:self.view];
+- (IBAction)locationField_ValueChanged:(UITextField *)sender {
+    self.activeFld = sender;
+    [self fetchPlacesForActiveField];
 }
 
 - (void) fleetLocationChanged:(id)sender withValue:(NSString *)value {
@@ -266,7 +226,6 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
             [titleArray addObject:obj.name];
         }];
     }
-    [self setLocationDropMenus:valueArray withTexts:titleArray];
 }
 
 #pragma mark - menu selection changed
@@ -293,7 +252,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 */
 #pragma mark - Cancel Action
 -(IBAction)cancelButtonAction:(UIButton *)sender{
-    self.addressListTableView.hidden = YES;
+    self.locationsTableView.hidden = YES;
     self.dateTimeBackView.hidden = YES;
 }
 -(IBAction) nextButtonAction:(UIButton *)sender{

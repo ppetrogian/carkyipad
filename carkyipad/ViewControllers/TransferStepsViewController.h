@@ -24,7 +24,6 @@
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 @property (strong, nonatomic) NSString *transferBookingId;
-@property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;

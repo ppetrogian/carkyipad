@@ -877,12 +877,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rGM-iU-HlN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rGM-iU-HlN">
                                 <rect key="frame" x="122" y="270" width="524" height="639"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="524" id="gm6-Bc-CcM"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" id="dz3-SZ-2La">
+                                        <rect key="frame" x="0.0" y="28" width="524" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dz3-SZ-2La" id="6rU-ec-WxN">
+                                            <rect key="frame" x="0.0" y="0.0" width="524" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUA-aQ-45D">
+                                                    <rect key="frame" x="45" y="12" width="675" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubD-CL-sgX">
+                                                    <rect key="frame" x="-1" y="8" width="36" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gyz-Xb-4cZ">
+                                                    <rect key="frame" x="11" y="44" width="668" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="zac-YQ-vbd" id="OBL-uz-DM0"/>
                                     <outlet property="delegate" destination="zac-YQ-vbd" id="ZU1-F2-Ecg"/>
@@ -1055,6 +1085,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
+                                                    <action selector="locationField_ValueChanged:" destination="zac-YQ-vbd" eventType="editingChanged" id="nDX-17-9NA"/>
                                                     <outlet property="delegate" destination="zac-YQ-vbd" id="9Ax-8c-6JY"/>
                                                 </connections>
                                             </textField>
@@ -1069,6 +1100,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
+                                                    <action selector="locationField_ValueChanged:" destination="zac-YQ-vbd" eventType="editingChanged" id="zuD-S6-v3A"/>
                                                     <outlet property="delegate" destination="zac-YQ-vbd" id="8Oe-zz-tTi"/>
                                                 </connections>
                                             </textField>
@@ -1178,13 +1210,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addressListTableView" destination="rGM-iU-HlN" id="UyN-To-LSM"/>
                         <outlet property="dateTimeBackView" destination="Xg1-tb-uHX" id="Egt-uY-VBC"/>
                         <outlet property="dropOffDateTxtFld" destination="To0-Tb-Hzy" id="psf-4c-kwu"/>
                         <outlet property="dropoffTxtFld" destination="1pg-5x-f9g" id="1xh-l8-q0U"/>
                         <outlet property="formatPickerView" destination="Y5R-Wg-zQt" id="aNN-Ix-s5d"/>
                         <outlet property="headerBackView" destination="tJr-Un-XIG" id="6Xa-mZ-9Dt"/>
                         <outlet property="hoursPickerView" destination="PYX-UO-uUo" id="cCJ-Va-NBA"/>
+                        <outlet property="locationsTableView" destination="rGM-iU-HlN" id="eFI-My-L0J"/>
                         <outlet property="mintuePickerView" destination="fqW-Ue-Twz" id="PhY-wW-YIq"/>
                         <outlet property="nextButton" destination="vR8-f9-NSn" id="WGQ-Cw-svF"/>
                         <outlet property="pickupDateTxtFld" destination="VPn-Cd-6oM" id="x7l-hQ-ftb"/>

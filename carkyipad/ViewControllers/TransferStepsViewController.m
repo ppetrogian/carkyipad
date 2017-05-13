@@ -60,27 +60,21 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     mapView.mapType = kGMSTypeNormal;
     mapView.settings.myLocationButton = NO;
     mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
-    // todo: remove from here
-    CarkyApiClient *api = [CarkyApiClient sharedService];
-     
-    [api GetWellKnownLocations:locationId withBlock:^(NSArray<Location *> *array) {
-        [AppDelegate instance].wellKnownLocations = array;
-        self.locationBounds = [self findCoordBounds:array];
-        [self loadLocations:nil];
-        
-        self.locationMarkers = [NSMutableArray arrayWithCapacity:array.count];
-        [array enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            GMSMarker *marker = [[GMSMarker alloc] init];
-            CLLocationCoordinate2D position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
-            marker.position = position;
-            marker.icon = [UIImage imageNamed:@"point-1"];
-            marker.userData = obj;
-            marker.title = @""; // obj.name;
-            marker.tappable = YES;
-            marker.map = mapView;
-            [self.locationMarkers addObject:marker];
-        }];
+    [self loadLocations:nil];
+    
+    self.locationMarkers = [NSMutableArray arrayWithCapacity:app.wellKnownLocations.count];
+    [app.wellKnownLocations enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
+        marker.position = position;
+        marker.icon = [UIImage imageNamed:@"point-1"];
+        marker.userData = obj;
+        marker.title = @""; // obj.name;
+        marker.tappable = YES;
+        marker.map = mapView;
+        [self.locationMarkers addObject:marker];
     }];
+    
     CLLocationCoordinate2D positionCenter = CLLocationCoordinate2DMake(_userPos.lat, _userPos.lng);
     if (/* DISABLES CODE */ (1) == 1) {
         UIColor *bluC = [UIColor colorWithRed:0.26 green:0.62 blue:0.77 alpha:1]; //0.26 0.62 0.77
@@ -103,23 +97,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     mapView.camera = [GMSCameraPosition cameraWithTarget:positionCenter zoom: 13.0];
 }
 
--(GMSCoordinateBounds *)findCoordBounds:(NSArray<Location *> *) array {
-    GMSCoordinateBounds *bounds;
-    CLLocationCoordinate2D neBoundsCorner,swBoundsCorner;
-    Location *l0 = array[0];
-    //Longitude is a geographic coordinate that specifies the east-west
-    __block CLLocationDegrees north=l0.latLng.lat, east=l0.latLng.lng, south=l0.latLng.lat, west=l0.latLng.lng;
-    [array enumerateObjectsUsingBlock:^(Location * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.latLng.lng > west)  west = obj.latLng.lng;
-        if (obj.latLng.lng < east)  east = obj.latLng.lng;
-        if (obj.latLng.lat > north)  north = obj.latLng.lat;
-        if (obj.latLng.lat < south)  south = obj.latLng.lat;
-    }];
-    neBoundsCorner = CLLocationCoordinate2DMake(north, east);
-    swBoundsCorner = CLLocationCoordinate2DMake(south, west);
-    bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:neBoundsCorner coordinate:swBoundsCorner];
-    return bounds;
-}
 
 -(void)loadLocations:(NSString *)filter {
     AppDelegate *app = [AppDelegate instance];

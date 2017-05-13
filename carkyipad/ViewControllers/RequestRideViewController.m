@@ -69,8 +69,7 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"selectLocationSegue"]) {
         SelectDropoffLocationViewController *destController = segue.destinationViewController;
-        destController.delegate = self;
-        destController.locationBounds = self.parentController.locationBounds;
+        destController.delegateRequestRide = self;
         destController.currentLocation = (Location *)sender;
         destController.fromLocationTextField.text = destController.currentLocation.name;
         destController.toLocationTextField.text = [NSString stringWithFormat:@"  %@", self.dropOffLocationTextField.text];
@@ -166,7 +165,7 @@
         GMSPlacesClient *placesClient = [GMSPlacesClient sharedClient];
         [placesClient lookUpPlaceID:loc.placeId callback:^(GMSPlace *place, NSError *error) {
             loc.latLng = [[LatLng alloc] initWithDictionary:@{@"Lat":@(place.coordinate.latitude), @"Lng":@(place.coordinate.longitude) }];
-            if ([self.parentController.locationBounds containsCoordinate:CLLocationCoordinate2DMake(loc.latLng.lat, loc.latLng.lng)]) {
+            if ([[AppDelegate instance].locationBounds containsCoordinate:CLLocationCoordinate2DMake(loc.latLng.lat, loc.latLng.lng)]) {
                 [self showLocationAndRouteInMap:loc];
             } else {
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:NSLocalizedString(@"Transfer to the selected place is not available", nil) preferredStyle:UIAlertControllerStyleAlert];
