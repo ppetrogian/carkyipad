@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "ShadowViewWithText.h"
 #import "UIController.h"
+#import <Stripe/Stripe.h>
 
 NSString *const kResultsDays = @"Days";
 NSString *const kResultsDayRange = @"DayRange";
@@ -34,7 +35,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 @property (weak, nonatomic) IBOutlet PSInputBox *dropoffDateInputBox;
 @property (weak, nonatomic) IBOutlet PSFleetLocationControl *fleetLocationControl;
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;
-
+@property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
 @end
 
 @implementation DetailsStepViewController
@@ -52,10 +53,28 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     self.dropoffMenu.ScaleToFitParent = NO;
     self.dropoffMenu.delegate = self;
     [self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
-    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
-    parentVc.totalView.hidden = YES;
+    _parentController = (CarRentalStepsViewController *)self.stepsController;
+    
     //----
     [self setupInit];
+    
+    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
+        CarkyApiClient *api = [CarkyApiClient sharedService];
+        NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+        [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
+            if ([array.firstObject isKindOfClass:CarCategory.class]) {
+                [AppDelegate instance].carCategories = array;
+            } else {
+                [self.parentController showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+            }
+        }];
+        [api GetWellKnownLocations:userFleetLocationId withBlock:^(NSArray<Location *> *array) {
+            [AppDelegate instance].wellKnownLocations = array;
+        }];
+        [api GetStripePublishableApiKey:^(NSString *stripeApiKey) {
+            [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: stripeApiKey];
+        }];
+    }];
 }
 
 - (IBAction)tapView:(id)sender {

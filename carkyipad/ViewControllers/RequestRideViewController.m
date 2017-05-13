@@ -29,7 +29,7 @@
     [self.dropOffLocationTextField addTarget:self action:@selector(dropOffLocationTextField_Clicked:) forControlEvents:UIControlEventTouchDown];
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    // todo: remove from here
+    
     [[AppDelegate instance] fetchInitialData:^(BOOL b) {
         NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
         [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {

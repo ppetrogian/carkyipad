@@ -19,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet ShadowViewWithText *totalView;
 - (IBAction)gotoBack:(id)sender;
 - (IBAction)gotoNext:(id)sender;
-
+-(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
 @property (nonatomic, weak) IBOutlet StepSegmentControllerView *segmentController;
 @end

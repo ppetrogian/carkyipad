@@ -45,6 +45,19 @@
     [self.segmentController setAllSegmentList:@[@"1. Details", @"2. Car", @"3. Extras", @"4. Payment"]];
     [self.segmentController setSelectedSegmentIndex:0];
 }
+
+
+-(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr {
+    UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
+    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController]];
+    [self presentViewController:myAlertController animated:YES completion:nil];
+}
+
+-(UIAlertAction *)dismissAlertView_OKTapped:(UIAlertController *)myAlertController {
+    return [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
+        [myAlertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
 #pragma mark -
 - (UIStatusBarStyle)preferredStatusBarStyle
 {

@@ -12,9 +12,9 @@
 
 +(UIController *)sharedInstance;
 -(void) navigationItem:(UIBarButtonItem *)buttonItem addBarButtonItemWithStyle:(UIBarButtonSystemItem)style  withTarget:(UIViewController *)target withaction:(SEL)action;
--(UILabel *) initializeLableWithFrame:(CGRect)frame withAlignment:(NSTextAlignment)alignment;
+-(UILabel *) initializeLabelWithFrame:(CGRect)frame withAlignment:(NSTextAlignment)alignment;
 -(UITextField *) initializeTextFieldWithFrame:(CGRect)frame withPlaceholderText:(NSString *)placeHolder withAlignment:(NSTextAlignment)alignment;
--(UIButton *) initialzeButtonWithFrmae:(CGRect)frame withTitle:(NSString *)title withBackgroundColor:(UIColor *)color withbackgroundImageName:(NSString *)imageName;
+-(UIButton *) initializeButtonWithFrame:(CGRect)frame withTitle:(NSString *)title withBackgroundColor:(UIColor *)color withbackgroundImageName:(NSString *)imageName;
 -(void) addBorderWithWidth:(CGFloat)width withColor:(UIColor *)color withCornerRadious:(CGFloat)radious toView:(UIView *)view;
 -(void) addLeftPaddingtoTextField:(UITextField *)textField withFrame:(CGRect)frame withBackgroundColor:(UIColor *)color withImage:(NSString *)imageName;
 -(void) addRightPaddingtoTextField:(UITextField *)textField withFrame:(CGRect)frame withBackgroundColor:(UIColor *)color withImage:(NSString *)imageName;

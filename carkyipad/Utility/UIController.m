@@ -28,7 +28,7 @@ static UIController *sharedInstance;
 -(void) navigationItem:(UIBarButtonItem *)buttonItem addBarButtonItemWithStyle:(UIBarButtonSystemItem)style  withTarget:(UIViewController *)target withaction:(nullable SEL)action{
     buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:style target:target action:action];
 }
--(UILabel *) initializeLableWithFrame:(CGRect)frame withAlignment:(NSTextAlignment)alignment{
+-(UILabel *) initializeLabelWithFrame:(CGRect)frame withAlignment:(NSTextAlignment)alignment{
     UILabel *lable = [[UILabel alloc] initWithFrame:frame];
     lable.textAlignment = alignment;
     lable.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
@@ -42,7 +42,7 @@ static UIController *sharedInstance;
     return textField;
 }
 
--(UIButton *) initialzeButtonWithFrmae:(CGRect)frame withTitle:(NSString *)title withBackgroundColor:(UIColor *)color withbackgroundImageName:(NSString *)imageName{
+-(UIButton *) initializeButtonWithFrame:(CGRect)frame withTitle:(NSString *)title withBackgroundColor:(UIColor *)color withbackgroundImageName:(NSString *)imageName{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = frame;
     button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;

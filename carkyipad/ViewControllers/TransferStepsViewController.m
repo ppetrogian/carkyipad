@@ -62,7 +62,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
     // todo: remove from here
     CarkyApiClient *api = [CarkyApiClient sharedService];
-     // ((NSNumber *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UserFleetLocationId"]).integerValue;
+     
     [api GetWellKnownLocations:locationId withBlock:^(NSArray<Location *> *array) {
         [AppDelegate instance].wellKnownLocations = array;
         self.locationBounds = [self findCoordBounds:array];
@@ -271,17 +271,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         [self showPreviousStep];
 }
 
--(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr {
-    UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
-    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController]];
-    [self presentViewController:myAlertController animated:YES completion:nil];
-}
-
--(UIAlertAction *)dismissAlertView_OKTapped:(UIAlertController *)myAlertController {
-    return [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
-        [myAlertController dismissViewControllerAnimated:YES completion:nil];
-    }];
-}
 
 - (void)paymentCardTextFieldDidBeginEditingNumber:(nonnull STPPaymentCardTextField *)textField {
     self.activeField = textField;

@@ -15,7 +15,7 @@ NSString *const kClientConfigurationResponseLocation = @"Location";
 NSString *const kClientConfigurationResponseAreaOfServiceId = @"AreaOfServiceId";
 NSString *const kClientConfigurationResponseZoneId = @"ZoneId";
 NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupInstructionsImage";
-
+NSString *const kClientConfigurationResponseTabletMode = @"TabletMode";
 
 @interface ClientConfigurationResponse ()
 
@@ -61,7 +61,7 @@ NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupIn
         self.areaOfServiceId = [[self objectOrNilForKey:kClientConfigurationResponseAreaOfServiceId fromDictionary:dict] integerValue];
         self.zoneId = [[self objectOrNilForKey:kClientConfigurationResponseZoneId fromDictionary:dict] integerValue];
         self.pickupInstructionsImage = [self objectOrNilForKey:kClientConfigurationResponsePickupInstructionsImage fromDictionary:dict];
-
+        self.tabletMode = [[self objectOrNilForKey:kClientConfigurationResponseTabletMode fromDictionary:dict] integerValue];
     }
     
     return self;
@@ -86,7 +86,7 @@ NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupIn
     [mutableDict setValue:[NSNumber numberWithInteger:self.areaOfServiceId] forKey:kClientConfigurationResponseAreaOfServiceId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.zoneId] forKey:kClientConfigurationResponseZoneId];
     [mutableDict setValue:self.pickupInstructionsImage forKey:kClientConfigurationResponsePickupInstructionsImage];
-
+    [mutableDict setValue:[NSNumber numberWithInteger:self.tabletMode] forKey:kClientConfigurationResponseTabletMode];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

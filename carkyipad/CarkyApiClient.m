@@ -46,7 +46,7 @@ static CarkyApiClient *_sharedService = nil;
 
 -(instancetype)initWithDefaultConfiguration {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json, text/plain, text/html", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip"}];
+    [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip"}];
     self = [[CarkyApiClient alloc] initWithBaseURL:[NSURL URLWithString:Base_URL] sessionConfiguration:config];
     self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     return self;
@@ -61,16 +61,7 @@ static CarkyApiClient *_sharedService = nil;
 #pragma mark API CALLS
 -(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password withTokenBlock:(BlockBoolean)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
-    /*
-     [09/05/17, 12:47:57 PM] Pantelis Petrogiannakis: phisakel@gmail.com
-     [09/05/17, 12:48:03 PM] Pantelis Petrogiannakis: pass 12345678
-     */
-    if (username == nil) {
-        username = @"phisakel@gmail.com";
-    }
-    if (password == nil) {
-        password = @"12345678";
-    }
+
    [self POST:@"token" parameters:@{@"grant_type":@"password",@"username":username, @"password":password} progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject objectForKey:@"error"]) {
@@ -87,21 +78,6 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
-
--(void)GetFleetLocationsFull:(BlockArray)block {
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self GET:@"api/Web/GetFleetLocationsFull" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *array = (NSArray *)responseObject;
-        [self.hud hideAnimated:YES];
-        NSMutableArray *flockArray = [NSMutableArray arrayWithCapacity:array.count];
-        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            flockArray[idx] = [FleetLocations modelObjectWithDictionary:obj];
-        }];
-        block(flockArray);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        self.blockErrorDefault(error);
-    }];
-}
 
 -(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -177,9 +153,11 @@ static CarkyApiClient *_sharedService = nil;
 #pragma Web api Taxi Api calls
 
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
-    self.requestSerializer = [AFHTTPRequestSerializer serializer];
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self GET:@"api/Web/GetWellKnownLocations" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject isKindOfClass:NSData.class]) {
+            responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        }
         NSArray *array = (NSArray *)responseObject;
         [self.hud hideAnimated:YES];
         NSMutableArray *locationsArray = [NSMutableArray arrayWithCapacity:array.count];
@@ -208,15 +186,20 @@ static CarkyApiClient *_sharedService = nil;
 }
 
 -(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [self GET:@"api/Partner/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *array = (NSArray *)responseObject;
-        [self.hud hideAnimated:YES];
-        NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
-        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            carsArray[idx] = [CarCategory modelObjectWithDictionary:obj];
-        }];
-        block(carsArray);
+        if ([responseObject isKindOfClass:NSData.class]) {
+            responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        }
+        if ([responseObject isKindOfClass:NSArray.class]) {
+            NSArray *array = (NSArray *)responseObject;
+            //[self.hud hideAnimated:YES];
+            NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
+            [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                carsArray[idx] = [CarCategory modelObjectWithDictionary:obj];
+            }];
+            block(carsArray);
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
     }];
@@ -227,7 +210,7 @@ static CarkyApiClient *_sharedService = nil;
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
     [self GET:@"api/StripePayment/GetPublishableApiKey" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSString *str = (NSString *)responseObject;
+        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]; ;
         block(str);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);

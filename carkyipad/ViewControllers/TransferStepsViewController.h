@@ -30,7 +30,7 @@
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;
 // methods
--(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
+
 -(void)payWithCreditCard:(BlockBoolean)block;
 -(void)payWithPaypal:(NSString *)confirmation;
 -(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC;

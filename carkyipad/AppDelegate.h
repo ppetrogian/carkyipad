@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSMutableDictionary *availableCarsDict;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
+@property (assign, nonatomic) BOOL isDemo;
 
 -(void)loadInitialController;
 +(AppDelegate *)instance;

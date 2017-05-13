@@ -33,10 +33,15 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel@gmail.com"}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"demo_preference": @(YES)}];
     // Override point for customization after application launch.
     NSBundle *main = [NSBundle mainBundle];
-    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [main objectForInfoDictionaryKey:@"StripeApiKey"]];
+    //NSString *stripeApiKey = [main objectForInfoDictionaryKey:@"StripeApiKey"];
+    //[[STPPaymentConfiguration sharedConfiguration] setPublishableKey: stripeApiKey];
+    
     NSString *googleApiKey = [main objectForInfoDictionaryKey:@"GoogleApiKey"];
     [GMSServices provideAPIKey:googleApiKey];
     [GMSPlacesClient provideAPIKey:googleApiKey];
@@ -50,8 +55,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{
-                                                           PayPalEnvironmentSandbox : @"AXQpJ2wZii3nT3iJhO2OCFUEv_7zRk9SkO6PgGeR3lUegEOetVeBkanC1bqEWi9EggNe2NQwtEg1pVOs"}];
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : @"AXQpJ2wZii3nT3iJhO2OCFUEv_7zRk9SkO6PgGeR3lUegEOetVeBkanC1bqEWi9EggNe2NQwtEg1pVOs"}];
     
     [self loadInitialController];
     return YES;
@@ -87,7 +91,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-// app methods
+// app methods to load data
 -(void)fetchInitialData:(BlockBoolean)block {
     //fetch initial data
     self.api = [CarkyApiClient sharedService];
@@ -99,6 +103,7 @@
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
+    [AppDelegate instance].isDemo = [[NSUserDefaults standardUserDefaults] boolForKey:@"demo_preference"];
     if (!enabled) {
         return;
     }
@@ -127,24 +132,8 @@
     block(YES);
 }
 
--(void)fetchFleetLocationsData:(BlockBoolean)block {
-    AppDelegate *app = [AppDelegate instance];
-    // pyramid of doom, todo: make parallel
-    [self.api GetFleetLocationsFull:^(NSArray *array1) {
-        app.fleetLocations = array1;
-        app.availableCarsDict = [NSMutableDictionary dictionaryWithCapacity:array1.count];
-        [array1 enumerateObjectsUsingBlock:^(FleetLocations *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self.api GetAvailableCars:obj.identifier withBlock:^(NSArray *arrayCars) {
-                [app.availableCarsDict setObject:arrayCars forKey:@(obj.identifier)];
-                if (idx == array1.count-1) {
-                    block(YES);
-                }
-            }];
-        }];
-    }];    
-}
 
-// helper methods
+// ------------ utility functions here ---------------------------
 
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location {
     double latitude = [[location objectForKey:@"lat"] doubleValue];

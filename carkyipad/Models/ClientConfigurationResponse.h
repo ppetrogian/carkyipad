@@ -15,6 +15,7 @@
 @property (nonatomic, assign) NSInteger zoneId;
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *pickupInstructionsImage;
+@property (nonatomic, assign) NSInteger tabletMode;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
