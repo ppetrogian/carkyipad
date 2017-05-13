@@ -180,6 +180,21 @@
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
 		D1BD784A1EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */; };
 		D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */; };
+		E1C2EE501EC3363A0021BEC2 /* UIController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE4F1EC3363A0021BEC2 /* UIController.m */; };
+		E1C2EE541EC339540021BEC2 /* CarTypeSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE531EC339540021BEC2 /* CarTypeSegmentView.m */; };
+		E1C2EE5C1EC339910021BEC2 /* CarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE571EC339910021BEC2 /* CarCollectionViewCell.m */; };
+		E1C2EE5D1EC339910021BEC2 /* CarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE581EC339910021BEC2 /* CarCollectionViewCell.xib */; };
+		E1C2EE5E1EC339910021BEC2 /* ExtrasCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE5A1EC339910021BEC2 /* ExtrasCollectionViewCell.m */; };
+		E1C2EE5F1EC339910021BEC2 /* ExtrasCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE5B1EC339910021BEC2 /* ExtrasCollectionViewCell.xib */; };
+		E1C2EE621EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE611EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m */; };
+		E1C2EE661EC367110021BEC2 /* PlaceDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */; };
+		E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */; };
+		E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */; };
+		E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE751EC446450021BEC2 /* PasscodeView.m */; };
+		E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE761EC446450021BEC2 /* PasscodeView.xib */; };
+		E1C2EE7B1EC44BB80021BEC2 /* CheckMarkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */; };
+		E1C2EE7E1EC4DF8A0021BEC2 /* RentalConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */; };
+		E1C2EE801EC4DFB10021BEC2 /* RentalConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -456,6 +471,31 @@
 		D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTransferBookingRequestPayPalPaymentResponse.m; sourceTree = "<group>"; };
 		D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsAndConditionsViewController.h; path = ViewControllers/TermsAndConditionsViewController.h; sourceTree = "<group>"; };
 		D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsAndConditionsViewController.m; path = ViewControllers/TermsAndConditionsViewController.m; sourceTree = "<group>"; };
+		E1C2EE4E1EC3363A0021BEC2 /* UIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIController.h; path = Utility/UIController.h; sourceTree = "<group>"; };
+		E1C2EE4F1EC3363A0021BEC2 /* UIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIController.m; path = Utility/UIController.m; sourceTree = "<group>"; };
+		E1C2EE521EC339540021BEC2 /* CarTypeSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarTypeSegmentView.h; path = CustomView/CarTypeSegmentView.h; sourceTree = "<group>"; };
+		E1C2EE531EC339540021BEC2 /* CarTypeSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarTypeSegmentView.m; path = CustomView/CarTypeSegmentView.m; sourceTree = "<group>"; };
+		E1C2EE561EC339910021BEC2 /* CarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarCollectionViewCell.h; path = CustomView/Cell/CarCollectionViewCell.h; sourceTree = "<group>"; };
+		E1C2EE571EC339910021BEC2 /* CarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarCollectionViewCell.m; path = CustomView/Cell/CarCollectionViewCell.m; sourceTree = "<group>"; };
+		E1C2EE581EC339910021BEC2 /* CarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CarCollectionViewCell.xib; path = CustomView/Cell/CarCollectionViewCell.xib; sourceTree = "<group>"; };
+		E1C2EE591EC339910021BEC2 /* ExtrasCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtrasCollectionViewCell.h; path = CustomView/Cell/ExtrasCollectionViewCell.h; sourceTree = "<group>"; };
+		E1C2EE5A1EC339910021BEC2 /* ExtrasCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtrasCollectionViewCell.m; path = CustomView/Cell/ExtrasCollectionViewCell.m; sourceTree = "<group>"; };
+		E1C2EE5B1EC339910021BEC2 /* ExtrasCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExtrasCollectionViewCell.xib; path = CustomView/Cell/ExtrasCollectionViewCell.xib; sourceTree = "<group>"; };
+		E1C2EE601EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtrasHeaderCollectionReusableView.h; path = CustomView/Cell/ExtrasHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		E1C2EE611EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtrasHeaderCollectionReusableView.m; path = CustomView/Cell/ExtrasHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		E1C2EE631EC367110021BEC2 /* PlaceDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDetailsView.h; path = CustomView/PlaceDetailsView.h; sourceTree = "<group>"; };
+		E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDetailsView.m; path = CustomView/PlaceDetailsView.m; sourceTree = "<group>"; };
+		E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceDetailsView.xib; path = CustomView/PlaceDetailsView.xib; sourceTree = "<group>"; };
+		E1C2EE6B1EC3AB720021BEC2 /* StepSegmentControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StepSegmentControllerView.h; path = CustomView/StepSegmentControllerView.h; sourceTree = "<group>"; };
+		E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StepSegmentControllerView.m; path = CustomView/StepSegmentControllerView.m; sourceTree = "<group>"; };
+		E1C2EE741EC446450021BEC2 /* PasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasscodeView.h; path = CustomView/PasscodeView.h; sourceTree = "<group>"; };
+		E1C2EE751EC446450021BEC2 /* PasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PasscodeView.m; path = CustomView/PasscodeView.m; sourceTree = "<group>"; };
+		E1C2EE761EC446450021BEC2 /* PasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PasscodeView.xib; path = CustomView/PasscodeView.xib; sourceTree = "<group>"; };
+		E1C2EE791EC44BB80021BEC2 /* CheckMarkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckMarkButton.h; path = CustomView/CheckMarkButton.h; sourceTree = "<group>"; };
+		E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckMarkButton.m; path = CustomView/CheckMarkButton.m; sourceTree = "<group>"; };
+		E1C2EE7C1EC4DF8A0021BEC2 /* RentalConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RentalConfirmationView.h; path = CustomView/ConfirmationView/RentalConfirmationView.h; sourceTree = "<group>"; };
+		E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RentalConfirmationView.m; path = CustomView/ConfirmationView/RentalConfirmationView.m; sourceTree = "<group>"; };
+		E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RentalConfirmationView.xib; path = CustomView/ConfirmationView/RentalConfirmationView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -632,8 +672,6 @@
 				AE6352B71E75DE3000065F0F /* HomeViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
-				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
-				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -883,6 +921,8 @@
 		AEEA24D21EAA2D1800043423 /* CarRentals */ = {
 			isa = PBXGroup;
 			children = (
+				E1C2EE511EC3391E0021BEC2 /* CustomView */,
+				E1C2EE4D1EC335300021BEC2 /* Utility */,
 				AEEA24D31EAA2E1F00043423 /* CustomCells */,
 				D1344BFD1E777C9600006FAD /* CarRentalStepsViewController.h */,
 				D1344BFE1E777C9600006FAD /* CarRentalStepsViewController.m */,
@@ -892,6 +932,11 @@
 				AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */,
 				D12218F31E8B121500AABBBE /* CarStepViewController.h */,
 				D12218F41E8B121500AABBBE /* CarStepViewController.m */,
+				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
+				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
+				E1C2EE7C1EC4DF8A0021BEC2 /* RentalConfirmationView.h */,
+				E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */,
+				E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */,
 			);
 			name = CarRentals;
 			sourceTree = "<group>";
@@ -1071,6 +1116,50 @@
 			name = PSFleetLocationControl;
 			sourceTree = "<group>";
 		};
+		E1C2EE4D1EC335300021BEC2 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E1C2EE4E1EC3363A0021BEC2 /* UIController.h */,
+				E1C2EE4F1EC3363A0021BEC2 /* UIController.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		E1C2EE511EC3391E0021BEC2 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				E1C2EE521EC339540021BEC2 /* CarTypeSegmentView.h */,
+				E1C2EE531EC339540021BEC2 /* CarTypeSegmentView.m */,
+				E1C2EE6B1EC3AB720021BEC2 /* StepSegmentControllerView.h */,
+				E1C2EE6C1EC3AB720021BEC2 /* StepSegmentControllerView.m */,
+				E1C2EE631EC367110021BEC2 /* PlaceDetailsView.h */,
+				E1C2EE641EC367110021BEC2 /* PlaceDetailsView.m */,
+				E1C2EE651EC367110021BEC2 /* PlaceDetailsView.xib */,
+				E1C2EE741EC446450021BEC2 /* PasscodeView.h */,
+				E1C2EE751EC446450021BEC2 /* PasscodeView.m */,
+				E1C2EE761EC446450021BEC2 /* PasscodeView.xib */,
+				E1C2EE791EC44BB80021BEC2 /* CheckMarkButton.h */,
+				E1C2EE7A1EC44BB80021BEC2 /* CheckMarkButton.m */,
+				E1C2EE551EC339800021BEC2 /* Cell */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
+		E1C2EE551EC339800021BEC2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E1C2EE561EC339910021BEC2 /* CarCollectionViewCell.h */,
+				E1C2EE571EC339910021BEC2 /* CarCollectionViewCell.m */,
+				E1C2EE581EC339910021BEC2 /* CarCollectionViewCell.xib */,
+				E1C2EE591EC339910021BEC2 /* ExtrasCollectionViewCell.h */,
+				E1C2EE5A1EC339910021BEC2 /* ExtrasCollectionViewCell.m */,
+				E1C2EE5B1EC339910021BEC2 /* ExtrasCollectionViewCell.xib */,
+				E1C2EE601EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.h */,
+				E1C2EE611EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		EA1831E84B4FFDDB910470C9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1205,12 +1294,16 @@
 				AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */,
 				D15951491EACB08B00540076 /* Settings.bundle in Resources */,
 				AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */,
+				E1C2EE5F1EC339910021BEC2 /* ExtrasCollectionViewCell.xib in Resources */,
+				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */,
+				E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
 				AE6352E71E75E1FA00065F0F /* CountryPhoneCodeVC.xib in Resources */,
 				AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */,
 				AEAF1AF01E87888D00C03768 /* DSLCalendarMonthSelectorView.xib in Resources */,
+				E1C2EE5D1EC339910021BEC2 /* CarCollectionViewCell.xib in Resources */,
 				D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */,
 				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
 				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
@@ -1220,6 +1313,7 @@
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
 				D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */,
 				D1344BF91E7773FB00006FAD /* CarRental.storyboard in Resources */,
+				E1C2EE801EC4DFB10021BEC2 /* RentalConfirmationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1400,7 +1494,9 @@
 			files = (
 				D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */,
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
+				E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */,
 				AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */,
+				E1C2EE501EC3363A0021BEC2 /* UIController.m in Sources */,
 				AEAF1AF31E87888D00C03768 /* DSLCalendarView.m in Sources */,
 				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,
 				D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */,
@@ -1410,6 +1506,7 @@
 				AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
 				D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */,
 				AE6351C81E71E32200065F0F /* Location.m in Sources */,
+				E1C2EE661EC367110021BEC2 /* PlaceDetailsView.m in Sources */,
 				D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
 				D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */,
@@ -1422,6 +1519,7 @@
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
 				AEAF1AEE1E87888D00C03768 /* DSLCalendarDayView.m in Sources */,
+				E1C2EE7E1EC4DF8A0021BEC2 /* RentalConfirmationView.m in Sources */,
 				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
@@ -1430,13 +1528,17 @@
 				AEA9E92E1EAE30A400CC84D5 /* PickupDateTime.m in Sources */,
 				D15951401EAC9AC400540076 /* CarServices.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
+				E1C2EE621EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m in Sources */,
 				AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */,
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
+				E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
+				E1C2EE5C1EC339910021BEC2 /* CarCollectionViewCell.m in Sources */,
 				D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */,
 				AEAF1AEF1E87888D00C03768 /* DSLCalendarMonthSelectorView.m in Sources */,
 				AEAF1B1D1E88332300C03768 /* PSInputBox.m in Sources */,
+				E1C2EE7B1EC44BB80021BEC2 /* CheckMarkButton.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
 				D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */,
@@ -1479,11 +1581,13 @@
 				D12802C71E9D691500DA05E7 /* CarkyDriverPositionsRequest.m in Sources */,
 				AE6352E51E75E1FA00065F0F /* CountryPhoneCodeVC.m in Sources */,
 				AE6351D01E71F52700065F0F /* CarCategory.m in Sources */,
+				E1C2EE5E1EC339910021BEC2 /* ExtrasCollectionViewCell.m in Sources */,
 				D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
 				D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */,
 				AEAF1AF11E87888D00C03768 /* DSLCalendarMonthView.m in Sources */,
 				AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */,
+				E1C2EE541EC339540021BEC2 /* CarTypeSegmentView.m in Sources */,
 				D19FF9891E910B6A00F735A0 /* CarExtraBaseTableViewCell.m in Sources */,
 				AE6352EF1E75E1FA00065F0F /* NBMetadataCoreTest.m in Sources */,
 				AE6352AF1E75DC4800065F0F /* Reachability.m in Sources */,

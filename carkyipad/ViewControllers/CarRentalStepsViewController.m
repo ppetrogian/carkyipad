@@ -15,8 +15,9 @@
 #import "CarStepViewController.h"
 #import "ShadowViewWithText.h"
 #import "CarExtrasViewController.h"
+#import "StepViewController.h"
 
-@interface CarRentalStepsViewController ()
+@interface CarRentalStepsViewController ()<StepDelegate>
 
 @end
 
@@ -37,8 +38,14 @@
         step.stepView.enabled = i == 0;
     }
 
+    [self configureSegmentController];
 }
-
+-(void) configureSegmentController{
+    self.segmentController.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
+    [self.segmentController setAllSegmentList:@[@"1. Details", @"2. Car", @"3. Extras", @"4. Payment"]];
+    [self.segmentController setSelectedSegmentIndex:0];
+}
+#pragma mark -
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -56,15 +63,18 @@
 - (NSArray *)stepViewControllers {
     StepViewController *firstStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Details"];
     firstStep.step.title = NSLocalizedString(@"Details", nil) ;
-    
+    firstStep.stepDelegate = self;
     StepViewController *secondStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Car"];
     secondStep.step.title =  NSLocalizedString(@"Car", nil) ;
+    secondStep.stepDelegate = self;
     
     StepViewController *thirdStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Extras"];
     thirdStep.step.title =  NSLocalizedString(@"Extras", nil) ;
+    thirdStep.stepDelegate = self;
     
     StepViewController *fourthStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
     fourthStep.step.title =  NSLocalizedString(@"Payment", nil) ;
+    fourthStep.stepDelegate = self;
     
     return @[firstStep, secondStep, thirdStep, fourthStep];
 }
@@ -85,6 +95,7 @@
     if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
         self.totalView.hidden = YES;
     }
+    [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex-1];
     [super showPreviousStep];
 }
 
@@ -97,7 +108,9 @@
         CarExtrasViewController *carExtrasVc = self.childViewControllers[2];
         [carExtrasVc prepareCarStep];
     }
+    [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex+1];
     [super showNextStep];
+    
 }
 
 - (IBAction)gotoBack:(id)sender {
@@ -105,5 +118,12 @@
 }
 - (IBAction)gotoNext:(id)sender {
     [self showNextStep];
+}
+#pragma mark - Step Delegate
+-(void) didSelectedNext:(UIButton *)sender{
+    [self showNextStep];
+}
+-(void) didSelectedBack:(UIButton *)sender{
+    [self showPreviousStep];
 }
 @end

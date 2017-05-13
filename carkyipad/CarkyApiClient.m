@@ -61,6 +61,16 @@ static CarkyApiClient *_sharedService = nil;
 #pragma mark API CALLS
 -(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password withTokenBlock:(BlockBoolean)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
+    /*
+     [09/05/17, 12:47:57 PM] Pantelis Petrogiannakis: phisakel@gmail.com
+     [09/05/17, 12:48:03 PM] Pantelis Petrogiannakis: pass 12345678
+     */
+    if (username == nil) {
+        username = @"phisakel@gmail.com";
+    }
+    if (password == nil) {
+        password = @"12345678";
+    }
    [self POST:@"token" parameters:@{@"grant_type":@"password",@"username":username, @"password":password} progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject objectForKey:@"error"]) {

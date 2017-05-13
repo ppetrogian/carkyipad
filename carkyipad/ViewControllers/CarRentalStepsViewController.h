@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RMStepsController.h"
+#import "StepSegmentControllerView.h"
+
 @class PSStepButton;
 @class ShadowViewWithText;
 
@@ -17,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet ShadowViewWithText *totalView;
 - (IBAction)gotoBack:(id)sender;
 - (IBAction)gotoNext:(id)sender;
+
+@property (nonatomic, weak) IBOutlet StepSegmentControllerView *segmentController;
 @end

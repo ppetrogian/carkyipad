@@ -26,7 +26,6 @@
     
     [self loadStepViewControllers];
     [self showStepViewController:[self.childViewControllers objectAtIndex:0] animated:NO];
-    
 }
 
 #pragma mark - Properties

@@ -20,6 +20,14 @@ extern NSString *const kResultsDropoffFleetLocationId;
 extern NSString *const kResultsPickupLocationId;
 extern NSString *const kResultsDropoffLocationId;
 
+@protocol StepDelegate <NSObject>
+
+-(void) didSelectedNext:(UIButton *)sender;
+-(void) didSelectedBack:(UIButton *)sender;
+
+@end
+
 @interface StepViewController : UIViewController
 - (void)showPrice:(NSInteger)price forKey:(NSString *)key;
+@property (nonatomic, weak) id <StepDelegate> stepDelegate;
 @end
