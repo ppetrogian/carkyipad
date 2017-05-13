@@ -99,7 +99,7 @@
 - (IBAction)newBookingButton_Click:(UIButton *)sender {
     //[self.parentController loadStepViewControllers];
     //[self.parentController showStepForIndex:0];
-    [[AppDelegate instance] loadInitialController];
+    [[AppDelegate instance] loadInitialControllerForMode:1];
 }
 
 

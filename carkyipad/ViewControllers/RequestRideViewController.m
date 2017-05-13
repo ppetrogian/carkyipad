@@ -30,13 +30,13 @@
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
     
-    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
+    //[[AppDelegate instance] fetchInitialData:^(BOOL b) {
         NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
         [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
             [self loadCarCategories:array];
         }];
         [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
-    }];
+    //}];
 
     [AppDelegate addDropShadow:self.shadowView forUp:YES];
     self.mapView.delegate = self;

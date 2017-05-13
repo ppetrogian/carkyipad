@@ -29,11 +29,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 {
     UITextField *selectedTextField;
 }
-@property (weak, nonatomic) IBOutlet PSInputBox *pickupLocationInputBox;
-@property (weak, nonatomic) IBOutlet PSInputBox *dropoffLocationInputBox;
-@property (weak, nonatomic) IBOutlet PSInputBox *pickupDateInputBox;
-@property (weak, nonatomic) IBOutlet PSInputBox *dropoffDateInputBox;
-@property (weak, nonatomic) IBOutlet PSFleetLocationControl *fleetLocationControl;
+
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;
 @property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
 @end
@@ -45,7 +41,6 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [super viewDidLoad];
     // set calendar delegate
     self.calendarView.delegate = self;
-    self.fleetLocationControl.delegate = self;
     self.pickupMenu = [[UIDropDownMenu alloc] initWithIdentifier:@"pickupMenu"];
     self.dropoffMenu = [[UIDropDownMenu alloc] initWithIdentifier:@"dropoffMenu"];
     self.pickupMenu.ScaleToFitParent = NO;
@@ -58,7 +53,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     //----
     [self setupInit];
     
-    [[AppDelegate instance] fetchInitialData:^(BOOL b) {
+    //[[AppDelegate instance] fetchInitialData:^(BOOL b) {
         CarkyApiClient *api = [CarkyApiClient sharedService];
         NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
         [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
@@ -74,7 +69,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
         [api GetStripePublishableApiKey:^(NSString *stripeApiKey) {
             [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: stripeApiKey];
         }];
-    }];
+    //}];
 }
 
 - (IBAction)tapView:(id)sender {
@@ -192,11 +187,11 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
         [formatter setDateFormat:@"MMMM"];
         NSString *nameOfMonth1 = [formatter.standaloneMonthSymbols objectAtIndex:range.startDay.month-1];
         NSString *nameofDay1 = [formatter.shortWeekdaySymbols objectAtIndex:range.startDay.weekday-1];
-        self.pickupDateInputBox.textField.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.startDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay1, nameOfMonth1],smAttrs, nil];
+        self.pickupDateTxtFld.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.startDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay1, nameOfMonth1],smAttrs, nil];
         // format end day
         NSString *nameOfMonth2 = [formatter.standaloneMonthSymbols objectAtIndex:range.endDay.month-1];
         NSString *nameofDay2 = [formatter.shortWeekdaySymbols objectAtIndex:range.endDay.weekday-1];
-        self.dropoffDateInputBox.textField.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.endDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay2, nameOfMonth2],smAttrs, nil];
+        self.dropOffDateTxtFld.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.endDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay2, nameOfMonth2],smAttrs, nil];
         [self.stepsController.results setObject:range forKey:kResultsDayRange];
     }
     else {
@@ -249,8 +244,8 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     self.pickupMenu.valueArray = valueArray;
     self.dropoffMenu.titleArray = titleArray;
     self.dropoffMenu.valueArray = valueArray;
-    [self.pickupMenu makeMenu:self.pickupLocationInputBox.textField targetView:self.view];
-    [self.dropoffMenu makeMenu:self.dropoffLocationInputBox.textField targetView:self.view];
+    [self.pickupMenu makeMenu:self.pickupTxtFld targetView:self.view];
+    [self.dropoffMenu makeMenu:self.dropoffTxtFld targetView:self.view];
 }
 
 - (void) fleetLocationChanged:(id)sender withValue:(NSString *)value {
@@ -278,11 +273,11 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 - (void) DropDownMenuDidChange:(NSString *)identifier withValue:(NSNumber *)value andText:(NSString *)text {
     NSMutableDictionary *results = self.stepsController.results;
     if([identifier isEqualToString:@"pickupMenu"]) {
-        self.pickupLocationInputBox.textField.text = text;
+        self.pickupTxtFld.text = text;
         results[kResultsPickupLocationId] = value;
         results[kResultsPickupFleetLocationId] = @(_selectedFleetLocationId);
     } else {
-        self.dropoffLocationInputBox.textField.text = text;
+        self.dropoffTxtFld.text = text;
         results[kResultsDropoffLocationId] = value;
         results[kResultsDropoffFleetLocationId] = @(_selectedFleetLocationId);
     }

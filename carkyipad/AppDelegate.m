@@ -17,22 +17,27 @@
 @import  HockeySDK;
 
 @interface AppDelegate ()
-
+@property (nonatomic,strong) NSArray *screensData;
 @end
 
 @implementation AppDelegate
 
+- (void)loadInitialControllerForMode:(NSInteger)mode {
+    NSArray *scrData = self.screensData[mode];
+    [self loadInitialController:scrData[1] FromStoryboard:scrData[0]];
+}
 
-- (void)loadInitialController {
+- (void)loadInitialController:(NSString *)controllerIdentifier FromStoryboard:(NSString *)storyboardName {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"CarRental" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"CarRentalSteps"];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:controllerIdentifier];
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"Landing"],@[@"CarRental",@"CarRentalSteps"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
@@ -56,8 +61,8 @@
     
     //PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : @"AXQpJ2wZii3nT3iJhO2OCFUEv_7zRk9SkO6PgGeR3lUegEOetVeBkanC1bqEWi9EggNe2NQwtEg1pVOs"}];
+    [self fetchInitialData:nil];
     
-    [self loadInitialController];
     return YES;
 }
 
@@ -107,12 +112,15 @@
     if (!enabled) {
         return;
     }
+    
     [self.api loginWithUsername:userName andPassword:password withTokenBlock:^(BOOL result) {
         [self.api GetClientConfiguration:^(NSArray *array) {
             if (array.count > 0) {
                 AppDelegate *app = [AppDelegate instance];
                 app.clientConfiguration = array.firstObject;
-                block(YES);
+                [self loadInitialControllerForMode:app.clientConfiguration.tabletMode];
+                if(block)
+                { block(YES); }
             }
         }];
     }];

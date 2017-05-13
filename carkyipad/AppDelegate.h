@@ -29,7 +29,7 @@
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
 @property (assign, nonatomic) BOOL isDemo;
 
--(void)loadInitialController;
+- (void)loadInitialControllerForMode:(NSInteger)mode;
 +(AppDelegate *)instance;
 // helper methods
 +(UITableView *) parentTableView:(UIView *)view;
