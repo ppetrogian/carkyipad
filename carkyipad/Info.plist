@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>18</string>
+	<string>19</string>
 	<key>GoogleApiKey</key>
 	<string>AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU</string>
 	<key>LSApplicationCategoryType</key>
@@ -58,6 +58,8 @@
 	<string>To scan your credit card.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Show your location on the map</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library.</string>
 	<key>StripeApiKey</key>
 	<string>pk_test_X3yytjyFt29Th6HKvinEgnW1</string>
 	<key>UIAppFonts</key>
@@ -73,6 +75,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

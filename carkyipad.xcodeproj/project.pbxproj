@@ -10,7 +10,6 @@
 		7C871C8776B99A099382CA76 /* libPods-carkyipadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */; };
 		A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */; };
 		AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */; };
-		AE28575E1EB016E90047A649 /* 2848220705019691240.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AE28575D1EB009220047A649 /* 2848220705019691240.mp4 */; };
 		AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2857611EB01B130047A649 /* PaymentCardEditorField.m */; };
 		AE34F1591E903772000D3997 /* AvailableCars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1561E903772000D3997 /* AvailableCars.m */; };
 		AE34F15A1E903772000D3997 /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1581E903772000D3997 /* Cars.m */; };
@@ -96,6 +95,7 @@
 		AEA9E9311EAE58C900CC84D5 /* TransferBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */; };
 		AEA9E9341EAE68A900CC84D5 /* CarkyBookingStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */; };
 		AEA9E9371EAE68CC00CC84D5 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9361EAE68CC00CC84D5 /* Content.m */; };
+		AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */; };
 		AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1A931E876EEF00C03768 /* PSLocationButton.m */; };
 		AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1ACE1E87888D00C03768 /* DSLCalendarDayCalloutView.m */; };
 		AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEAF1ACF1E87888D00C03768 /* DSLCalendarDayCalloutView.xib */; };
@@ -182,6 +182,17 @@
 		D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		AE7B5EFF1EC58F6A003AB713 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		AE7275C11E6CCA8D00918646 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -209,7 +220,6 @@
 		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
 		AE270A8B1E875580000A8C7B /* DetailsStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailsStepViewController.h; path = ViewControllers/DetailsStepViewController.h; sourceTree = "<group>"; };
 		AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailsStepViewController.m; path = ViewControllers/DetailsStepViewController.m; sourceTree = "<group>"; };
-		AE28575D1EB009220047A649 /* 2848220705019691240.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2848220705019691240.mp4; sourceTree = "<group>"; };
 		AE2857601EB01B130047A649 /* PaymentCardEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentCardEditorField.h; path = Controls/PaymentCardEditorField.h; sourceTree = "<group>"; };
 		AE2857611EB01B130047A649 /* PaymentCardEditorField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentCardEditorField.m; path = Controls/PaymentCardEditorField.m; sourceTree = "<group>"; };
 		AE34F1551E903772000D3997 /* AvailableCars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableCars.h; sourceTree = "<group>"; };
@@ -314,6 +324,7 @@
 		AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyBookingStatusResponse.m; sourceTree = "<group>"; };
 		AEA9E9351EAE68CC00CC84D5 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
 		AEA9E9361EAE68CC00CC84D5 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
+		AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2848220705019691240.mp4; sourceTree = "<group>"; };
 		AEAF1A921E876EEF00C03768 /* PSLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationButton.h; sourceTree = "<group>"; };
 		AEAF1A931E876EEF00C03768 /* PSLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationButton.m; sourceTree = "<group>"; };
 		AEAF1ACD1E87888D00C03768 /* DSLCalendarDayCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLCalendarDayCalloutView.h; sourceTree = "<group>"; };
@@ -848,7 +859,7 @@
 		AEEA24D11EAA2B7900043423 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
-				AE28575D1EB009220047A649 /* 2848220705019691240.mp4 */,
+				AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				AEEA24D41EAA349900043423 /* RequestRideViewController.h */,
@@ -1089,6 +1100,7 @@
 				D1B253CF1E868B92005365B2 /* ShellScript */,
 			);
 			buildRules = (
+				AE7B5EFF1EC58F6A003AB713 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -1150,7 +1162,7 @@
 				TargetAttributes = {
 					AE7275A61E6CCA8C00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = P6RXM76U6X;
+						DevelopmentTeam = TTAAXU5Z2A;
 						ProvisioningStyle = Manual;
 					};
 					AE7275BF1E6CCA8D00918646 = {
@@ -1190,7 +1202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE28575E1EB016E90047A649 /* 2848220705019691240.mp4 in Resources */,
+				AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */,
 				D15951491EACB08B00540076 /* Settings.bundle in Resources */,
 				AEAF1AED1E87888D00C03768 /* DSLCalendarDayCalloutView.xib in Resources */,
 				D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */,
@@ -1258,7 +1270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1288,7 +1300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1331,7 +1343,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1668,8 +1680,8 @@
 			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = P6RXM76U6X;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = TTAAXU5Z2A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -1681,10 +1693,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "60071a93-03de-4fa4-a767-5a1843119db9";
-				PROVISIONING_PROFILE_SPECIFIER = XC_alldev;
+				PROVISIONING_PROFILE = "c73b2f6f-63e9-4227-814f-ccb257837fe0";
+				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
 			};
 			name = Debug;
 		};
@@ -1694,7 +1706,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = P6RXM76U6X;
+				DEVELOPMENT_TEAM = TTAAXU5Z2A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -1706,10 +1718,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9dac5eb-d1d6-45a6-bc35-cef75ebcb110";
-				PROVISIONING_PROFILE_SPECIFIER = xc3;
+				PROVISIONING_PROFILE = "c73b2f6f-63e9-4227-814f-ccb257837fe0";
+				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
 			};
 			name = Release;
 		};
