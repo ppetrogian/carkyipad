@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define KPlaceName @"PlaceName"
-#define KDateValue @"Date"
-#define KTimeValue @"Time"
-
 @interface PlaceDetailsView : UIView
 @property (strong, nonatomic) IBOutlet UIView *xibView;
 @property (nonatomic, weak) IBOutlet UIImageView *placeImageView;
@@ -22,5 +18,5 @@
 @property (nonatomic, weak) IBOutlet UILabel *dateValueLabel;
 @property (nonatomic, weak) IBOutlet UILabel *timeValueLabel;
 -(void) setPlaceLableText:(NSString *)text andImage:(NSString *)imageName;
--(void) setAllDetails:(NSDictionary *)dict;
+-(void) setAllDetails:(NSDictionary *)dict isForPickup:(BOOL)pickup;
 @end

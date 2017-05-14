@@ -19,7 +19,6 @@
 @property (nonatomic, weak) IBOutlet UIView *headerBackView;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *carsCollectionView;
-@property (weak, nonatomic) IBOutlet MBSegmentedControl *carTypesSegmented;
 //- (IBAction)carTypeChanged:(MBSegmentedControl *)sender;
 -(void)prepareCarStep;
 //--------------

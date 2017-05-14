@@ -20,6 +20,7 @@
 #import "ExtrasCollectionViewCell.h"
 #import "ExtrasHeaderCollectionReusableView.h"
 #import "UIController.h"
+#import "CarRentalStepsViewController.h"
 
 @interface CarExtrasViewController () 
 {
@@ -45,9 +46,27 @@
 -(void) setupInit{
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
      [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
-    [self setPlaeceDetails];
+    [self setPlaceDetails];
 }
 
+-(void) setPlaceDetails {
+    NSDictionary *results = self.stepsController.results;
+    //set pick up details
+    self.pickupPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
+    self.pickupPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
+    self.pickupPlaceDetailsView.center = CGPointMake(self.pickupBackView.frame.size.width/2, self.pickupBackView.frame.size.height/2);
+    [self.pickupPlaceDetailsView setPlaceLableText:@"Pick up:" andImage:@"arrow_pickup"];
+    
+    [self.pickupPlaceDetailsView setAllDetails:results isForPickup:YES];
+    [self.pickupBackView addSubview:self.pickupPlaceDetailsView];
+    //set drop off details
+    self.dropOffPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
+    self.dropOffPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
+    self.dropOffPlaceDetailsView.center = CGPointMake(self.dropoffBackView.frame.size.width/2, self.dropoffBackView.frame.size.height/2);
+    [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
+    [self.dropOffPlaceDetailsView setAllDetails:results isForPickup:NO];
+    [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -57,23 +76,7 @@
 -(void)prepareCarStep {
     self.mustPrepare = YES; // see view-will-appear
 }
-#pragma mark -
--(void) setPlaeceDetails{
-    //set pick up details
-    self.pickupPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
-    self.pickupPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
-    self.pickupPlaceDetailsView.center = CGPointMake(self.pickupBackView.frame.size.width/2, self.pickupBackView.frame.size.height/2);
-    [self.pickupPlaceDetailsView setPlaceLableText:@"Pick up:" andImage:@"arrow_pickup"];
-    [self.pickupPlaceDetailsView setAllDetails:@{KPlaceName:@"Mykonos national Airport", KDateValue:@"Tue 9 Jan",KTimeValue:@"12:00 AM"}];
-    [self.pickupBackView addSubview:self.pickupPlaceDetailsView];
-    //set drop off details
-    self.dropOffPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
-    self.dropOffPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
-    self.dropOffPlaceDetailsView.center = CGPointMake(self.dropoffBackView.frame.size.width/2, self.dropoffBackView.frame.size.height/2);
-    [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
-    [self.dropOffPlaceDetailsView setAllDetails:@{KPlaceName:@"Same as pick up", KDateValue:@"Tue 18 Jan",KTimeValue:@"12:30 AM"}];
-    [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
-}
+
 #pragma mark -
 /*
 -(void)showExtras {

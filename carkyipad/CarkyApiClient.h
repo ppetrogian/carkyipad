@@ -43,6 +43,8 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
+-(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
+
 //GET api/Helper/GetAllCarCategories car categories
 -(void)GetAllCarCategories:(BlockArray)block;
 

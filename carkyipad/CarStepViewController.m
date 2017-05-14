@@ -21,102 +21,58 @@
 #import "DSLCalendarView.h"
 #import "CarCollectionViewCell.h"
 #import "UIController.h"
+#import "DetailsStepViewController.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 {
     NSIndexPath *selectedIndexPath;
+    CarRentalStepsViewController *parentController;
 }
 @property (nonatomic,strong) TGRArrayDataSource *carsDataSource;
-@property (nonatomic,assign) BOOL mustPrepare;
 @end
 
 @implementation CarStepViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    parentController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
 }
 -(void) setupInit{
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
-    [self setCarSegment];
-    [self setPlaeceDetails];
+
+    [self setPlaceDetails];
     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
 }
 
-//- (NSArray<AvailableCars*> *)getAvailableCars {
-//   AppDelegate* app = [AppDelegate instance];
-//    NSMutableDictionary* results = self.stepsController.results;
-//    NSNumber *fleetLocationId = results[kResultsPickupFleetLocationId];
-//    NSArray<AvailableCars*> *availCars = app.availableCarsDict[fleetLocationId];
-//    return availCars;
-//}
-
--(void)prepareCarStep{
-    self.mustPrepare = YES;
-}
-
-/*
-- (void)selectCarType:(NSInteger)selIndex {
-    NSArray<AvailableCars*> *availCarsArray = [self getAvailableCars];
-    // bind cars to collection view
-    self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:availCarsArray[selIndex].cars cellReuseIdentifier:@"CarCell" configureCellBlock:^(CarViewCell *cell, Cars *item) {
-        cell.priceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
-        cell.carDescriptionLabel.text = item.carsDescription;
-        cell.orSimilarLabel.text = item.subDescription;
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image]];
-        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
-            cell.carImage.image = responseObject;
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
-    }];
-    self.carsCollectionView.dataSource = self.carsDataSource;
-    self.carsCollectionView.delegate = self;
-    [self.carsCollectionView reloadData];
-}
-
-- (IBAction)carTypeChanged:(MBSegmentedControl *)sender {
-    [self selectCarType:sender.selectedSegmentIndex];
-}
-
 -(void)prepareCarStep {
-    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
-    parentVc.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
-    [parentVc.totalView setNeedsDisplay];
-    // fill segmented control and collection view with available cars
-    NSArray<AvailableCars*> *availCars = [self getAvailableCars];
-    [self.carTypesSegmented removeAllSegments];
-    [availCars enumerateObjectsUsingBlock:^(AvailableCars * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [_carTypesSegmented insertSegmentWithTitle:obj.name atIndex:idx animated:NO];
+    // set number of days
+    DSLCalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
+    self.stepsController.results[kResultsDays] = @(components.day+1);
+    // load avaailable cars
+    AppDelegate *app = [AppDelegate instance];
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    DSLCalendarRange *range = self.stepsController.results[kResultsDayRange];
+    NSDate *pickupDate = range.endDay.date;
+    [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andDate:pickupDate withBlock:^(NSArray *array) {
+        app.availableCars = array;
+        [self setCarSegments:array];
+        [self selectCarType:0];
     }];
-    self.carTypesSegmented.selectedSegmentIndex = 0;
-    self.mustPrepare = YES; // see view-will-appear
+    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    //parentVc.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
+    //[parentVc.totalView setNeedsDisplay];
+    // fill segmented control and collection view with available cars
     parentVc.totalView.hidden = NO;
-}*/
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (_mustPrepare) {
-        //[self selectCarType:0];
-        _mustPrepare = NO;
-    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray<AvailableCars*> *availCarsArray = [self getAvailableCars];
-    NSArray<Cars*> *cars = availCarsArray[self.carTypesSegmented.selectedSegmentIndex].cars;
-    NSMutableDictionary* results = self.stepsController.results;
-    DSLCalendarRange *selectedRange = results[kResultsDayRange];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
-    NSInteger totalprice = cars[indexPath.row].pricePerDay * (components.day+1);
-    self.stepsController.results[kResultsDays] = @(components.day+1);
-    
-    [super showPrice:totalprice forKey:kResultsTotalPriceCar];
-}*/
 
 /*
 #pragma mark - Navigation
@@ -128,32 +84,73 @@
 }
 */
 #pragma mark -
--(void) setPlaeceDetails{
+-(void) setPlaceDetails {
+    NSDictionary *results = self.stepsController.results;
     //set pick up details
     self.pickupPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
     self.pickupPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
     self.pickupPlaceDetailsView.center = CGPointMake(self.pickupBackView.frame.size.width/2, self.pickupBackView.frame.size.height/2);
     [self.pickupPlaceDetailsView setPlaceLableText:@"Pick up:" andImage:@"arrow_pickup"];
-    [self.pickupPlaceDetailsView setAllDetails:@{KPlaceName:@"Mykonos national Airport", KDateValue:@"Tue 9 Jan",KTimeValue:@"12:00 AM"}];
+
+    [self.pickupPlaceDetailsView setAllDetails:results isForPickup:YES];
     [self.pickupBackView addSubview:self.pickupPlaceDetailsView];
     //set drop off details
     self.dropOffPlaceDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"PlaceDetailsView" owner:self options:nil] objectAtIndex:0];
     self.dropOffPlaceDetailsView.frame = CGRectMake(0, 0, 280, 100);
     self.dropOffPlaceDetailsView.center = CGPointMake(self.dropoffBackView.frame.size.width/2, self.dropoffBackView.frame.size.height/2);
     [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
-    [self.dropOffPlaceDetailsView setAllDetails:@{KPlaceName:@"Same as pick up", KDateValue:@"Tue 18 Jan",KTimeValue:@"12:30 AM"}];
+    [self.dropOffPlaceDetailsView setAllDetails:results isForPickup:NO];
     [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
 }
--(void) setCarSegment{
+
+-(void) setCarSegments:(NSArray *)availableCars {
     CGRect f = self.carSegmentView.frame;
     f.size.width = [UIScreen mainScreen].bounds.size.width - f.origin.x*2;
     [self.carSegmentView updateSegmentFrame:f];
-    [self.carSegmentView setAllSegmentList:@[@"CITY",@"HATCHBAG",@"SEDAN",@"EXECUTIVE",@"SUV"]];
+    NSArray *labels = [AppDelegate mapObjectsFromArray:availableCars withBlock:^id(AvailableCars *obj, NSUInteger idx) {
+        return obj.name;
+    }];
+    [self.carSegmentView setAllSegmentList:labels];
     self.carSegmentView.delegate = self;
     [self.carSegmentView setSelectedSegmentIndex:0];
 }
+
 -(void) didSelectedSegmentIndex:(NSInteger)index{
     NSLog(@"Selected index = %zd", index);
+    [self selectCarType:index];
+}
+
+- (void)selectCarType:(NSInteger)selIndex {
+    NSArray<AvailableCars*> *availCarsArray = [AppDelegate instance].availableCars;
+    NSArray<Cars*> *cars = availCarsArray[selIndex].cars;
+
+    // bind cars to collection view
+    self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:cars cellReuseIdentifier:@"CellIdentifier" configureCellBlock:^(CarCollectionViewCell *cell, Cars *item) {
+        //cell.priceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
+        //cell.carDescriptionLabel.text = item.carsDescription;
+        //cell.orSimilarLabel.text = item.subDescription;
+        [self collectionCell:cell setDetails:item];
+        //update cell appearence
+        NSIndexPath *indexPath = [self.carsCollectionView indexPathForCell:cell];
+        if (selectedIndexPath.row == indexPath.row && selectedIndexPath.section == indexPath.section) {
+            cell.containerView.layer.borderWidth = 1;
+            cell.priceBackView.backgroundColor = [UIColor blackColor];
+            cell.priceLabel.textColor = [UIColor whiteColor];
+        }
+        else{
+            cell.containerView.layer.borderWidth = 0;
+            cell.priceBackView.backgroundColor = [UIColor lightGrayColor];
+            cell.priceLabel.textColor = [UIColor blackColor];
+        }
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image]];
+        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+            cell.carImageView.image = responseObject;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    }];
+    self.carsCollectionView.dataSource = self.carsDataSource;
+    self.carsCollectionView.delegate = self;
+    [self.carsCollectionView reloadData];
 }
 /*
  #pragma mark - Navigation
@@ -170,33 +167,22 @@
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"CellIdentifier";
     CarCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    [self collectionCell:cell setDetails:nil];
-    //update cell appearence
-    if (selectedIndexPath.row == indexPath.row && selectedIndexPath.section == indexPath.section) {
-        cell.containerView.layer.borderWidth = 1;
-        cell.priceBackView.backgroundColor = [UIColor blackColor];
-        cell.priceLabel.textColor = [UIColor whiteColor];
-    }
-    else{
-        cell.containerView.layer.borderWidth = 0;
-        cell.priceBackView.backgroundColor = [UIColor lightGrayColor];
-        cell.priceLabel.textColor = [UIColor blackColor];
-    }
     return cell;
 }
--(void) collectionCell:(CarCollectionViewCell *)cell setDetails:(NSDictionary *)dict{
+-(void) collectionCell:(CarCollectionViewCell *)cell setDetails:(Cars *)car {
     //set car name
-    NSString *name = @"Peugeot 108 or similar";
-    NSMutableAttributedString *attributtedString = [[NSMutableAttributedString alloc] initWithString:name];
-    [attributtedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[name rangeOfString:@"or similar"]];;
-    cell.nameLabel.text = @"";
-    cell.nameLabel.attributedText = attributtedString;
+    NSString *name = [NSString stringWithFormat:@"%@ %@", car.carsDescription, car.subDescription];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:name];
+    [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[name rangeOfString:car.subDescription]];;
+    cell.nameLabel.attributedText = attributedString;
+    NSInteger nDays = ((NSNumber*)self.stepsController.results[kResultsDays]).integerValue;
     //set price
-    NSString *price = @"Total £585 \n (£65/days)";
-    NSMutableAttributedString * priceAttributaedString = [[NSMutableAttributedString alloc] initWithString:price];
-    [priceAttributaedString addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[price rangeOfString:@"(£65/days)"]];
+    NSInteger totalprice = car.price * nDays;
+    NSString *priceStr = [NSString stringWithFormat: @"Total €%zd \r\n (€%zd/day)", totalprice, car.price];
+    NSMutableAttributedString * priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
+    [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",car.pricePerDay]]];
     cell.priceLabel.text = @"";
-    cell.priceLabel.attributedText = priceAttributaedString;
+    cell.priceLabel.attributedText = priceAttributedString;
 }
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];

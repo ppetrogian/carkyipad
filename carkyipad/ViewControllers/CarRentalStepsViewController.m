@@ -115,10 +115,10 @@
 -(void)showNextStep {
     if ([self.currentStepViewController isKindOfClass:DetailsStepViewController.class]) {
         self.totalView.hidden = YES;
-        CarStepViewController *carVc = self.childViewControllers[1];
+        CarStepViewController *carVc = self.childViewControllers[self.currentStepIndex + 1];
         [carVc prepareCarStep];
     } else if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
-        CarExtrasViewController *carExtrasVc = self.childViewControllers[2];
+        CarExtrasViewController *carExtrasVc = self.childViewControllers[self.currentStepIndex + 1];
         [carExtrasVc prepareCarStep];
     }
     [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex+1];

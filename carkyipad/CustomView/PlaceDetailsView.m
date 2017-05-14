@@ -7,6 +7,7 @@
 //
 
 #import "PlaceDetailsView.h"
+#import "StepViewController.h"
 
 @implementation PlaceDetailsView
 
@@ -38,9 +39,9 @@
     self.placeLabel.text = text;
     self.placeImageView.image = [UIImage imageNamed:imageName];
 }
--(void) setAllDetails:(NSDictionary *)dict{
-    self.placeValueLabel.text = dict[KPlaceName];
-    self.dateValueLabel.text = dict[KDateValue];
-    self.timeValueLabel.text = dict[KTimeValue];
+-(void) setAllDetails:(NSDictionary *)dict isForPickup:(BOOL)pickup {
+    self.placeValueLabel.text = dict[pickup ? kResultsPickupLocationName : kResultsDropoffLocationName];
+    self.dateValueLabel.text = dict[pickup ? kResultsPickupDate : kResultsDropoffDate];
+    self.timeValueLabel.text = dict[pickup ? kResultsPickupTime : kResultsDropoffTime];
 }
 @end

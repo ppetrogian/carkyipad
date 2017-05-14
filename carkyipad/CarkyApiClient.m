@@ -205,6 +205,28 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+-(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
+    NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
+    [self GET:@"api/Web/GetRentServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId), @"pickupDate":[dfDate stringFromDate:pickupDate], @"pickupTime":[dfTime stringFromDate:pickupDate]} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject isKindOfClass:NSData.class]) {
+            responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        }
+        if ([responseObject isKindOfClass:NSArray.class]) {
+            NSArray *array = (NSArray *)responseObject;
+            //[self.hud hideAnimated:YES];
+            NSMutableArray *availableCarsArray = [NSMutableArray arrayWithCapacity:array.count];
+            [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                availableCarsArray[idx] = [AvailableCars modelObjectWithDictionary:obj];
+            }];
+            block(availableCarsArray);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
 -(void)GetStripePublishableApiKey:(BlockString)block {
     // todo: allow json fragments or accept plain http
     [self setAuthorizationHeader];

@@ -139,21 +139,27 @@
 }
 
 -(void)fetchCarsData:(BlockBoolean)block {
-    AppDelegate *app = [AppDelegate instance];
-    [self.api GetAllCarTypes:^(NSArray *array2) {
-        app.carTypes = array2;
-    }];
+    //[self.api GetAllCarTypes:^(NSArray *array2) {
+        //app.carTypes = array2;
+    //}];
     [self.api GetCarExtras:^(NSArray *array3) {
-        app.carExtras = array3;
+        self.carExtras = array3;
     }];
     [self.api GetAllCarInsurances:^(NSArray *array4) {
-        app.carInsurances = array4;
+        self.carInsurances = array4;
     }];
     block(YES);
 }
 
 
 // ------------ utility functions here ---------------------------
++(NSDate *)dateOnlyPart:(NSDate *)dt {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *theDate = [dateFormat stringFromDate:dt];
+    NSDate *result = [dateFormat dateFromString:theDate];
+    return result;
+}
 
 + (BOOL)day:(NSDateComponents*)day1 isBeforeDay:(NSDateComponents*)day2 {
     return ([day1.date compare:day2.date] == NSOrderedAscending);
@@ -353,6 +359,14 @@
         aView = aView.superview;
     }
     return nil; // this view is not within a collection view
+}
+
++(NSArray *)mapObjectsFromArray:(NSArray *)array withBlock:(id (^)(id obj, NSUInteger idx))block {
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[array count]];
+    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [result addObject:block(obj, idx)];
+    }];
+    return result;
 }
 
 +(void)addDropShadow:(UIView *)view forUp:(BOOL)up {
