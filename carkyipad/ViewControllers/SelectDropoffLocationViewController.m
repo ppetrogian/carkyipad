@@ -13,7 +13,7 @@
 #import "DataModels.h"
 #import "RequestRideViewController.h"
 
-@interface SelectDropoffLocationViewController () <UITableViewDelegate, UITextFieldDelegate, GMSAutocompleteFetcherDelegate>
+@interface SelectDropoffLocationViewController () <UITextFieldDelegate, GMSAutocompleteFetcherDelegate>
 @property (nonatomic,strong) TGRArrayDataSource* wellKnownLocationsDataSource;
 @property (nonatomic,strong) GMSAutocompleteFetcher* fetcherPlaces;
 @end
@@ -77,7 +77,6 @@
     AppDelegate *app = [AppDelegate instance];
     NSMutableArray *wklList = [NSMutableArray arrayWithCapacity:app.wellKnownLocations.count+2 + predictions.count];
     
-    //[wklList addObject:self.currentLocation];
     if (filter == nil || filter.length == 0) {
         [wklList addObjectsFromArray:app.wellKnownLocations];
     } else {
@@ -150,6 +149,7 @@
             GMSAutocompletePrediction *prediction = (GMSAutocompletePrediction *)item;
             loc = [[Location alloc] initWithDictionary:@{kLocationsIdentifier:@(-indexPath.row), kLocationsName:prediction.attributedFullText.string, kLocationsZoneId:@(0), kLocationsPlaceId: prediction.placeID }];
         }
+        self.currentLocation = loc;
         self.activeFld.text = loc.name;
         if (self.delegateRequestRide) {
             [self.delegateRequestRide didSelectLocation:loc.identifier withValue:loc andText:loc.name];

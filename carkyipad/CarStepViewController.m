@@ -42,13 +42,15 @@
     [self setPlaeceDetails];
     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
 }
-- (NSArray<AvailableCars*> *)getAvailableCars {
-   AppDelegate* app = [AppDelegate instance];
-    NSMutableDictionary* results = self.stepsController.results;
-    NSNumber *fleetLocationId = results[kResultsPickupFleetLocationId];
-    NSArray<AvailableCars*> *availCars = app.availableCarsDict[fleetLocationId];
-    return availCars;
-}
+
+//- (NSArray<AvailableCars*> *)getAvailableCars {
+//   AppDelegate* app = [AppDelegate instance];
+//    NSMutableDictionary* results = self.stepsController.results;
+//    NSNumber *fleetLocationId = results[kResultsPickupFleetLocationId];
+//    NSArray<AvailableCars*> *availCars = app.availableCarsDict[fleetLocationId];
+//    return availCars;
+//}
+
 -(void)prepareCarStep{
     self.mustPrepare = YES;
 }

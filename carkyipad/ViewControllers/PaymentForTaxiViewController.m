@@ -52,6 +52,7 @@
         // associated with the user's PayPal account, then add:
         _payPalConfiguration.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
     }
+    self.cvvTextField.delegate = self;
     return self;
 }
 
@@ -99,6 +100,18 @@
     }
     if (self.stpCardTextField.isValid) {
         [self.payNowButton enableButton];
+    }
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (self.cvvTextField == textField) {
+        // Prevent crashing undo bug – see note below.
+        if(range.length + range.location > textField.text.length) {
+            return NO;
+        }
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        return newLength <= 3;
     }
     return YES;
 }

@@ -21,3 +21,5 @@
 -(void) addGrandientlayerToView:(UIView *)gradientView;
 -(void) addShadowToView:(UIView *)view withOffset:(CGSize)offSet hadowRadius:(CGFloat)radius shadowOpacity:(CGFloat)opacity;
 @end
+
+

@@ -30,17 +30,18 @@
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
     
-    //[[AppDelegate instance] fetchInitialData:^(BOOL b) {
-        NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
-        [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
-            [self loadCarCategories:array];
-        }];
-        [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
-    //}];
+    NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
+        [self loadCarCategories:array];
+    }];
+    [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
 
     [AppDelegate addDropShadow:self.shadowView forUp:YES];
     self.mapView.delegate = self;
-    [self.view viewWithTag:90].hidden = YES;
+    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
+    if (tm == TabletModeTransfer) {
+        self.backButton.hidden = YES;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -216,6 +217,9 @@
             [self didSelectLocation:0 withValue:loc andText:nil];
         }
     }
+}
+- (IBAction)backButton_TouchUp:(UIButton *)sender {
+    [self.stepsController showPreviousStep];
 }
 
  

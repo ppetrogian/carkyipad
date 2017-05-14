@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "ButtonUtils.h"
 
-@interface PhoneNumberConfirmationViewController ()
+@interface PhoneNumberConfirmationViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) NSString *sendCodeText;
 @end
 
@@ -23,9 +23,10 @@
     // Do any additional setup after loading the view.
     self.sendCodeText = self.enterTheCodePhoneNumberLabel.text;
     self.enterTheCodePhoneNumberLabel.text = [NSString stringWithFormat:@"%@%@", self.sendCodeText, self.phoneNumber];
-    //[self.confirmCodeTextField becomeFirstResponder];
+    
     for (NSInteger i=1; i<=6; i++) {
         UITextField *tf = [self.view viewWithTag:i];
+        tf.delegate = self;
         [AppDelegate configurePSTextField:tf withColor:[UIColor blackColor]];
         if (i==1) {
             [tf becomeFirstResponder];
@@ -37,6 +38,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Prevent crashing undo bug
+    if(range.length + range.location > textField.text.length)  {
+        return NO;
+    }
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 1;
 }
 
 /*

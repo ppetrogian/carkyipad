@@ -171,6 +171,14 @@
                                 <rect key="frame" x="695" y="566" width="57" height="123"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vR9-yo-yyR" userLabel="BackButton">
+                                <rect key="frame" x="25" y="34" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="back_button"/>
+                                <connections>
+                                    <action selector="backButton_TouchUp:" destination="379-va-vZ1" eventType="touchUpInside" id="wb1-Nr-01b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -178,6 +186,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="backButton" destination="vR9-yo-yyR" id="DfW-Kw-mNO"/>
                         <outlet property="carCategoriesCollectionView" destination="QPm-6k-Ceh" id="FpW-8S-y0g"/>
                         <outlet property="dotView" destination="VLR-ta-AMl" id="Bi7-BS-XTN"/>
                         <outlet property="dropOffLocationTextField" destination="o9x-Hr-5GW" id="KFF-4i-Lzb"/>

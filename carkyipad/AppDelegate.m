@@ -155,6 +155,13 @@
 
 // ------------ utility functions here ---------------------------
 
++ (BOOL)day:(NSDateComponents*)day1 isBeforeDay:(NSDateComponents*)day2 {
+    return ([day1.date compare:day2.date] == NSOrderedAscending);
+}
+
++ (BOOL)day:(NSDateComponents*)day1 isEqual:(NSDateComponents*)day2 {
+    return ([day1.date compare:day2.date] == NSOrderedSame);
+}
 
 +(GMSCoordinateBounds *)findCoordBounds:(NSArray<Location *> *) array {
     GMSCoordinateBounds *bounds;

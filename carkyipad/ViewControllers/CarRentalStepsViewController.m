@@ -42,7 +42,7 @@
 }
 -(void) configureSegmentController{
     self.segmentController.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
-    [self.segmentController setAllSegmentList:@[@"1. Details", @"2. Car", @"3. Extras", @"4. Payment"]];
+    [self.segmentController setAllSegmentList:@[NSLocalizedString(@"1. Details", nil), NSLocalizedString(@"2. Car", nil), NSLocalizedString(@"3. Extras", nil), NSLocalizedString(@"4. Payment", nil)]];
     [self.segmentController setSelectedSegmentIndex:0];
 }
 
@@ -78,11 +78,11 @@
     firstStep.step.title = NSLocalizedString(@"Details", nil) ;
     firstStep.stepDelegate = self;
     StepViewController *secondStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Car"];
-    secondStep.step.title =  NSLocalizedString(@"Car", nil) ;
+    secondStep.step.title =  NSLocalizedString(@"Car", nil);
     secondStep.stepDelegate = self;
     
     StepViewController *thirdStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Extras"];
-    thirdStep.step.title =  NSLocalizedString(@"Extras", nil) ;
+    thirdStep.step.title =  NSLocalizedString(@"Extras", nil);
     thirdStep.stepDelegate = self;
     
     StepViewController *fourthStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];

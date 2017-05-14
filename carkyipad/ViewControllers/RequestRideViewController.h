@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *carCategoriesCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *dotView;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 - (void)didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t;
 @end

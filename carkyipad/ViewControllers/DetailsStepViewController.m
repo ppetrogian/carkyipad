@@ -20,14 +20,14 @@
 
 NSString *const kResultsDays = @"Days";
 NSString *const kResultsDayRange = @"DayRange";
-NSString *const kResultsPickupFleetLocationId = @"PickupFleetLocationId";
 NSString *const kResultsDropoffFleetLocationId = @"DropoffFleetLocationId";
 NSString *const kResultsPickupLocationId = @"PickupLocationId";
 NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 
-@interface DetailsStepViewController ()<DSLCalendarViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface DetailsStepViewController ()<DSLCalendarViewDelegate, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;
 @property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
+@property (nonatomic, strong) UITextField *highlightedFld;
 @end
 
 @implementation DetailsStepViewController
@@ -41,6 +41,13 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     _parentController = (CarRentalStepsViewController *)self.stepsController;
     
     [self setupInit];
+    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
+    if (tm == TabletModeTransfer) {
+        self.backButton.hidden = YES;
+    }
+    for (UIPickerView *p in self.pickerViews) {
+        p.delegate = self;
+    }
 }
 
 - (IBAction)tapView:(id)sender {
@@ -64,26 +71,46 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     [controller addLeftPaddingtoTextField:self.pickupDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
     [controller addLeftPaddingtoTextField:self.dropOffDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
     [controller addBorderWithWidth:0.0 withColor:[UIColor clearColor] withCornerRadious:2 toView:self.nextButton];
+    [self initPickupLocation];
+    [self initControlValues];
+}
+
+-(void)initPickupLocation {
+    self.dropoffTxtFld.text = NSLocalizedString(@"Same as pick up location", nil);
+    NSMutableDictionary *results = self.stepsController.results;
+    results[kResultsDropoffLocationId] = @(0);
+}
+
+-(void)initControlValues {
+    self.dropoffTxtFld.text = @"";
+    [self initPickupLocation];
+    self.dropOffDateTxtFld.text = @"";
+    self.pickupDateTxtFld.text = @"";
 }
 
 #pragma mark - UITextField Delegate
 -(void) textFieldDidBeginEditing:(UITextField *)textField{
     [self highLightTextField:textField];
 }
+
 -(void) textFieldDidEndEditing:(UITextField *)textField{
     [self deHighLightTextField];
+    if (textField == self.dropoffTxtFld && textField.text.length == 0) {
+        [self initPickupLocation];
+    }
 }
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
 -(BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
-    [self highLightTextField:textField];
     if (textField.tag == 101) {
+        [self highLightTextField:textField];
+        textField.text = @"";
         [self fetchPlacesForActiveField];
         [self displayLocationsPicker:YES];
     }
-    if (textField.tag == 102) {
+    else if (textField.tag == 102) {
         // date field
         [self.view endEditing:YES];
         [self highLightTextField:textField];
@@ -92,16 +119,27 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     }
     return YES;
 }
+
 -(void) highLightTextField:(UITextField *)textField{
     [self deHighLightTextField];
     textField.backgroundColor = [UIColor whiteColor];
     [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:KSelectedFieldBorderColor withCornerRadious:0 toView:textField];
-    self.activeFld = textField;
+    if (textField.tag == 101) {
+        self.activeFld = textField;
+    }
+    else if (textField.tag == 102) {
+        self.activeDateFld = textField;
+    }
 }
+
 -(void) deHighLightTextField{
     if (self.activeFld != nil) {
         self.activeFld.backgroundColor = self.activeFld.tag == 102 ? KDateTxtFldBackgroundColor:KPlaceTxtFldBackgroundColor;
         [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:[UIColor clearColor] withCornerRadious:0 toView:self.activeFld];
+    }
+    if (self.activeDateFld != nil) {
+        self.activeDateFld.backgroundColor = self.activeDateFld.tag == 102 ? KDateTxtFldBackgroundColor:KPlaceTxtFldBackgroundColor;
+        [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:[UIColor clearColor] withCornerRadious:0 toView:self.activeDateFld];
     }
 }
 #pragma mark - Display Date
@@ -143,49 +181,99 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     }
     return @"";
 }
+
+- (IBAction)upArrow_TouchUp:(UIButton *)sender {
+    UIPickerView *pickerView = self.pickerViews[sender.tag];
+    NSInteger index = [pickerView selectedRowInComponent:0];
+    if (index > 0) {
+        [pickerView selectRow:index-1 inComponent:0 animated:YES];
+        [self pickerView:pickerView didSelectRow:index-1 inComponent:0];
+    }
+}
+- (IBAction)downArrow_TouchUp:(UIButton *)sender {
+    UIPickerView *pickerView = self.pickerViews[sender.tag];
+    NSInteger index = [pickerView selectedRowInComponent:0];
+    if (index < [pickerView numberOfRowsInComponent:0] - 1) {
+        [pickerView selectRow:index+1 inComponent:0 animated:YES];
+        [self pickerView:pickerView didSelectRow:index+1 inComponent:0];
+    }
+}
+
+#pragma mark - UIPickerViewDelegate methods
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (self.stepsController.results[kResultsDayRange]) {
+        DSLCalendarRange *range = self.stepsController.results[kResultsDayRange];
+        NSDateComponents *d = self.activeDateFld == self.pickupDateTxtFld ? range.startDay : range.endDay;
+        if (pickerView.tag == 0) {
+            d.hour = row + 1;
+        }
+        else if(pickerView.tag == 1) {
+            d.minute = row;
+        }
+        else {
+            d.hour += row * 12;
+        }
+        self.stepsController.results[kResultsDayRange] = range;
+        [self showSelectedDateRange:range];
+    }
+}
+
 #pragma mark - DSLCalendarViewDelegate methods
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
+    
     if (range != nil) {
-        NSDictionary *bigAttrs = @{NSFontAttributeName : [UIFont systemFontOfSize:20]};
-        NSDictionary *smAttrs = @{NSFontAttributeName : [UIFont systemFontOfSize:13]};
-        NSDateFormatter *formatter = [NSDateFormatter new];
-        [formatter setDateFormat:@"MMMM"];
-        NSString *nameOfMonth1 = [formatter.standaloneMonthSymbols objectAtIndex:range.startDay.month-1];
-        NSString *nameofDay1 = [formatter.shortWeekdaySymbols objectAtIndex:range.startDay.weekday-1];
-        self.pickupDateTxtFld.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.startDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay1, nameOfMonth1],smAttrs, nil];
-        // format end day
-        NSString *nameOfMonth2 = [formatter.standaloneMonthSymbols objectAtIndex:range.endDay.month-1];
-        NSString *nameofDay2 = [formatter.shortWeekdaySymbols objectAtIndex:range.endDay.weekday-1];
-        self.dropOffDateTxtFld.attributedText = [NSAttributedString  rz_attributedStringWithStringsAndAttributes: [NSString stringWithFormat: @"%ld ",(long)range.endDay.day],bigAttrs, [NSString stringWithFormat: @"%@ %@",nameofDay2, nameOfMonth2],smAttrs, nil];
+        // change the range if dropoff was selected
+        if ([range.endDay.date compare:[NSDate date]] == NSOrderedDescending) {
+            DSLCalendarRange *prevRange = self.stepsController.results[kResultsDayRange];
+            if(prevRange == nil) prevRange = range;
+            // if we selected a single day for drop-off make it range
+            if (self.activeDateFld == self.dropOffDateTxtFld && [range.startDay.date compare:range.endDay.date] == NSOrderedSame
+                   && [prevRange.startDay.date compare:range.endDay.date] == NSOrderedAscending ) {
+                range = [[DSLCalendarRange alloc] initWithStartDay:prevRange.startDay endDay:range.endDay];
+                calendarView.selectedRange = range;
+            } else if([range.endDay.date compare:[NSDate date]] == NSOrderedAscending) {
+                [self.parentController showAlertViewWithMessage:NSLocalizedString(@"A past date cannot be selected", nil) andTitle:@"Error"];
+                return;
+            }
+        }
         [self.stepsController.results setObject:range forKey:kResultsDayRange];
+        [self showSelectedDateRange:range];
     }
     else {
         NSLog( @"No selection" );
     }
 }
 
+-(void)showSelectedDateRange:(DSLCalendarRange *)range {
+    // if we need attributed use rz_attributedStringWithStringsAndAttributes
+    [self showSelectedDate:range.startDay inField:self.pickupDateTxtFld];
+    [self showSelectedDate:range.endDay inField:self.dropOffDateTxtFld];
+}
+
+-(void)showSelectedDate:(NSDateComponents *)day inField:(UITextField *)textField {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE dd MMMM, h:mm a"];
+    NSString *stringFromDate = [dateFormatter stringFromDate:day.date];
+    textField.text = stringFromDate;
+}
+
 - (DSLCalendarRange*)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range {
-    if (NO) { // Only select a single day
-        return [[DSLCalendarRange alloc] initWithStartDay:day endDay:day];
+    // Don't allow selections before today
+    NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+    NSDateComponents *startDate = range.startDay;
+    NSDateComponents *endDate = range.endDay;
+    
+    if ([AppDelegate day:startDate isBeforeDay:today] || [AppDelegate day:endDate isBeforeDay:today]) {
+        return nil;
     }
-    else if (/* DISABLES CODE */ (NO)) { // Don't allow selections before today
-        NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
-        
-        NSDateComponents *startDate = range.startDay;
-        NSDateComponents *endDate = range.endDay;
-        
-        if ([self day:startDate isBeforeDay:today] && [self day:endDate isBeforeDay:today]) {
-            return nil;
+    else {
+        if ([AppDelegate day:startDate isBeforeDay:today]) {
+            startDate = [today copy];
         }
-        else {
-            if ([self day:startDate isBeforeDay:today]) {
-                startDate = [today copy];
-            }
-            if ([self day:endDate isBeforeDay:today]) {
-                endDate = [today copy];
-            }
-            return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
+        if ([AppDelegate day:endDate isBeforeDay:today]) {
+            endDate = [today copy];
         }
+        return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
     }
     
     return range;
@@ -199,48 +287,30 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
     NSLog(@"Now showing %@", month);
 }
 
-- (BOOL)day:(NSDateComponents*)day1 isBeforeDay:(NSDateComponents*)day2 {
-    return ([day1.date compare:day2.date] == NSOrderedAscending);
-}
-
-- (IBAction)locationField_ValueChanged:(UITextField *)sender {
+- (IBAction)locationField_EditingChanged:(UITextField *)sender {
     self.activeFld = sender;
     [self fetchPlacesForActiveField];
 }
 
-- (void) fleetLocationChanged:(id)sender withValue:(NSString *)value {
-    AppDelegate* app = (AppDelegate* )[UIApplication sharedApplication].delegate;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", value];
-    NSArray *filteredArray = [app.fleetLocations filteredArrayUsingPredicate:predicate];
-    FleetLocations *fl = filteredArray.firstObject;
-    _selectedFleetLocationId = fl.identifier;
-    // set values and titles for menu
-    NSMutableArray *valueArray = [NSMutableArray arrayWithCapacity:fl.locations.count];
-    NSMutableArray *titleArray = [NSMutableArray arrayWithCapacity:fl.locations.count];
-    if (filteredArray.count == 0) {
-        [valueArray addObject:@(-1)];
-        [titleArray addObject:NSLocalizedString(@"No location found", nil)];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    NSMutableDictionary *results = self.stepsController.results;
+    if(self.activeFld == self.pickupTxtFld) {
+        self.pickupTxtFld.text = self.currentLocation.name;
+        self.pickupTxtFld.selectedTextRange = [self.pickupTxtFld textRangeFromPosition:self.pickupTxtFld.beginningOfDocument toPosition:self.pickupTxtFld.beginningOfDocument];
+        results[kResultsPickupLocationId] = @(self.currentLocation.identifier);
     } else {
-        [fl.locations enumerateObjectsUsingBlock:^(Location *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [valueArray addObject:@(obj.identifier)];
-            [titleArray addObject:obj.name];
-        }];
+        self.dropoffTxtFld.text = self.currentLocation.name;
+        self.dropoffTxtFld.selectedTextRange = [self.dropoffTxtFld textRangeFromPosition:self.dropoffTxtFld.beginningOfDocument toPosition:self.dropoffTxtFld.beginningOfDocument];
+        results[kResultsDropoffLocationId] = @(self.currentLocation.identifier);
     }
 }
 
-#pragma mark - menu selection changed
-- (void) DropDownMenuDidChange:(NSString *)identifier withValue:(NSNumber *)value andText:(NSString *)text {
-    NSMutableDictionary *results = self.stepsController.results;
-    if([identifier isEqualToString:@"pickupMenu"]) {
-        self.pickupTxtFld.text = text;
-        results[kResultsPickupLocationId] = value;
-        results[kResultsPickupFleetLocationId] = @(_selectedFleetLocationId);
-    } else {
-        self.dropoffTxtFld.text = text;
-        results[kResultsDropoffLocationId] = value;
-        results[kResultsDropoffFleetLocationId] = @(_selectedFleetLocationId);
-    }
+- (IBAction)locationField_EditingEnd:(UITextField *)sender {
+
 }
+
+
 /*
 #pragma mark - Navigation
 
@@ -252,8 +322,7 @@ NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 */
 #pragma mark - Cancel Action
 -(IBAction)cancelButtonAction:(UIButton *)sender{
-    self.locationsTableView.hidden = YES;
-    self.dateTimeBackView.hidden = YES;
+    [self initControlValues];
 }
 -(IBAction) nextButtonAction:(UIButton *)sender{
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {

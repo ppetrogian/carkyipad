@@ -18,7 +18,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic,strong) CarkyApiClient *api;
 
-@property (strong, nonatomic) NSArray<FleetLocations*> *fleetLocations;
 @property (strong, nonatomic) NSArray<CarType*> *carTypes;
 @property (strong, nonatomic) NSArray<CarCategory*> *carCategories;
 @property (strong, nonatomic) NSArray<CarExtra*> *carExtras;
@@ -45,8 +44,17 @@
 +(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;
 +(UIImage *)imageToGreyImage:(UIImage *)image;
 +(NSString *)urlencode:(NSString *)str;
++(BOOL)day:(NSDateComponents*)day1 isEqual:(NSDateComponents*)day2;
++ (BOOL)day:(NSDateComponents*)day1 isBeforeDay:(NSDateComponents*)day2;
 +(void)addDropShadow:(UIView *)view forUp:(BOOL)up;
 +(void)highlightAttrTextCore:(NSMutableAttributedString *)attrTxt term:(NSString *)term withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font;
 +(void)highlightGoogleText:(NSMutableAttributedString *)attrText  withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font;
 @end
+
+typedef NS_ENUM(NSUInteger, TabletMode) {
+    TabletModeRentalAndTransfer,
+    TabletModeTransfer,
+    TabletModeAll
+};
+
 

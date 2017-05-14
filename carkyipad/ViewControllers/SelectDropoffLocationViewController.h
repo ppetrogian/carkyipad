@@ -11,7 +11,7 @@
 #import "StepViewController.h"
 @class Location,RequestRideViewController;
 
-@interface SelectDropoffLocationViewController : StepViewController
+@interface SelectDropoffLocationViewController : StepViewController <UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *toLocationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *fromLocationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
@@ -19,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (strong,nonatomic) Location *currentLocation;
 @property (weak, nonatomic) UITextField *activeFld;
-
+@property (weak, nonatomic) UITextField *activeDateFld;
 - (void)fetchPlacesForActiveField;
 @end
