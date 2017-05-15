@@ -24,6 +24,9 @@ extern NSString *const kResultsPickupDate;
 extern NSString *const kResultsDropoffDate;
 extern NSString *const kResultsPickupTime;
 extern NSString *const kResultsDropoffTime;
+extern NSString *const kResultsExtras;
+extern NSString *const kResultsCarTypeId;
+extern NSString *const kResultsInsuranceId;
 
 @protocol StepDelegate <NSObject>
 

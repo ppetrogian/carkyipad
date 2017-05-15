@@ -129,7 +129,65 @@
     
 }
 
--(void)payWithCreditCard:(BlockBoolean)b {
+-(RentalBookingRequest *)getRentalRequestWithCC:(BOOL)forCC {
+    NSDateFormatter *dfDate = [NSDateFormatter new];
+    NSDateFormatter *dfTime = [NSDateFormatter new];
+    RentalBookingRequest *request = [RentalBookingRequest new];
+    request.userId = self.userId;
+    request.carTypeId = ((NSNumber*)self.results[kResultsCarTypeId]).integerValue;
+    request.extras = self.results[kResultsExtras];
+    request.carInsuranceId = ((NSNumber*)self.results[kResultsInsuranceId]).integerValue;
+    
+    if(self.selectedDropoffLocation.identifier > 0)
+        request.wellKnowDropoffLocationId = self.selectedDropoffLocation.identifier;
+    else
+        request.dropoffLatLng = self.selectedDropoffLocation.latLng;
+    //request.passengersNumber = cCat.maxPassengers;
+    request.agreedToTermsAndConditions = YES;
+    request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
+    DSLCalendarRange *range = self.results[kResultsDayRange];
+    
+    request.dropoffAddress = self.results[kResultsDropoffLocationName];
+    request.pickupDate = [dfDate stringFromDate:range.startDay.date];
+    request.pickupTime = [dfTime stringFromDate:range.startDay.date];
+    
+    if(self.selectedPickupLocation.identifier > 0)
+        request.wellKnowPickupLocationId = self.selectedPickupLocation.identifier;
+    else
+        request.pickupLatLng = self.selectedPickupLocation.latLng;
+    request.pickupAddress = self.results[kResultsPickupLocationName];
+    request.pickupDate = [dfDate stringFromDate:range.startDay.date];
+    request.pickupTime = [dfTime stringFromDate:range.startDay.date];
+    return request;
+}
+
+- (void)MakeRentalRequest:(BlockBoolean)block request:(RentalBookingRequest *)request {
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
+    [api CreateRentalBookingRequest:request withBlock:^(NSArray *array) {
+        [AppDelegate hideProgressNotification:hud];
+        // todo
+        /*
+        if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
+            TransferBookingResponse *responseObj = array.firstObject;
+            if (responseObj.bookingId.length > 0) {
+                block(YES);
+                //self.transferBookingId = responseObj.bookingId;
+                //[self showNextStep];
+            } else {
+                block(NO);
+                [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
+            }
+        } else {
+            block(NO);
+            [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+        }
+         */
+        block(NO);
+    }];
+}
+
+-(void)payRentalWithCreditCard:(BlockBoolean)block {
     // send payment to back end
     STPAPIClient *stpClient = [STPAPIClient sharedClient];
     
@@ -139,10 +197,10 @@
             [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
             return;
         }
-        b(YES);
-        //TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
-        //request.stripeCardToken = token.tokenId;
-        //[self MakeTransferRequest:block request:request]; // create transfer request
+        RentalBookingRequest *request = [self getRentalRequestWithCC:YES];
+        request.stripeCardId = token.tokenId;
+        [self MakeRentalRequest:block request:request]; // create rental request
+        block(YES);
     }]; // create token
 }
 

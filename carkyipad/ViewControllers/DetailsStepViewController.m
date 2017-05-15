@@ -29,6 +29,9 @@ NSString *const kResultsPickupDate = @"PickupDate";
 NSString *const kResultsDropoffDate = @"DropoffDate";
 NSString *const kResultsPickupTime = @"PickupTime";
 NSString *const kResultsDropoffTime = @"DropoffTime";
+NSString *const kResultsExtras = @"Extras";
+NSString *const kResultsCarTypeId = @"CarTypeId";
+NSString *const kResultsInsuranceId = @"InsuranceId";
 
 @interface DetailsStepViewController ()<DSLCalendarViewDelegate, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;

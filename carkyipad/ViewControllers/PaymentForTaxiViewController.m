@@ -158,7 +158,7 @@
         }];
     }
     else {
-        [self.parentController payWithCreditCard:^(BOOL b) {
+        [self.parentController payRentalWithCreditCard:^(BOOL b) {
             [self.payNowButton enableButton];
             [self displayRentalConfirmationView];
         }];

@@ -25,7 +25,7 @@
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 
--(void)payWithCreditCard:(BlockBoolean)b;
+-(void)payRentalWithCreditCard:(BlockBoolean)b;
 - (IBAction)gotoBack:(id)sender;
 - (IBAction)gotoNext:(id)sender;
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;

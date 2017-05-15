@@ -190,6 +190,19 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
+    AppDelegate *app = [AppDelegate instance];
+    NSMutableArray *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
+    NSMutableArray *insurances = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
+    [selectedListArray enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.section == 0) {
+            [extras addObject:@(app.carExtras[obj.row].Id)];
+        }
+        else {
+            [insurances addObject:@(app.carInsurances[obj.row].Id)];
+        }
+    }];
+    self.stepsController.results[kResultsExtras] = extras;
+    self.stepsController.results[kResultsInsuranceId] = @(insurances.count > 0 ? 0 : ((CarInsurance *)insurances[0]).Id);
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
         [self.stepDelegate didSelectedNext:sender];
     }

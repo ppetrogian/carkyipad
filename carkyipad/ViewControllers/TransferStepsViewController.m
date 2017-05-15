@@ -124,7 +124,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 
-
 - (IBAction)toLocationTextChanged:(UITextField *)textField {
     [self loadLocations:textField.text];
 }

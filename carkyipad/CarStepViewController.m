@@ -175,7 +175,7 @@
     //set car name
     NSString *name = [NSString stringWithFormat:@"%@ %@", car.carsDescription, car.subDescription];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:name];
-    [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[name rangeOfString:car.subDescription]];;
+    [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[name rangeOfString:car.subDescription]];
     cell.nameLabel.attributedText = attributedString;
     NSInteger nDays = ((NSNumber*)self.stepsController.results[kResultsDays]).integerValue;
     //set price
@@ -196,6 +196,8 @@
 }
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
+    NSArray<Cars*> *cars = self.carsDataSource.items;
+     self.stepsController.results[kResultsCarTypeId] = @(cars[selectedIndexPath.row].carsIdentifier);
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
         [self.stepDelegate didSelectedNext:sender];
     }
