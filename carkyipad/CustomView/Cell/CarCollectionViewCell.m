@@ -27,11 +27,6 @@
             return nil;
         }
         self = [arrayOfViews objectAtIndex:0];
-        /*
-        self.contentView.layer.borderColor=[[UIColor lightGrayColor] CGColor];
-        [self.contentView.layer setBorderWidth:1.0];
-        self.contentView.layer.cornerRadius=6;
-        self.contentView.clipsToBounds=YES;*/
     }
     return self;
 }

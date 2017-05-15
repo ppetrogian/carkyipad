@@ -16,6 +16,7 @@
 #import "ShadowViewWithText.h"
 #import "CarExtrasViewController.h"
 #import "StepViewController.h"
+#import <Stripe/Stripe.h>
 
 @interface CarRentalStepsViewController ()<StepDelegate>
 
@@ -85,11 +86,13 @@
     thirdStep.step.title =  NSLocalizedString(@"Extras", nil);
     thirdStep.stepDelegate = self;
     
-    StepViewController *fourthStep = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
-    fourthStep.step.title =  NSLocalizedString(@"Payment", nil) ;
-    fourthStep.stepDelegate = self;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Transfer" bundle:nil];
+    UITabBarController *tabbarController = [storyboard instantiateViewControllerWithIdentifier:@"tabBar"];
     
-    return @[firstStep, secondStep, thirdStep, fourthStep];
+    StepViewController *vc4 = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
+    vc4.stepDelegate = self;
+    
+    return @[firstStep, secondStep, thirdStep, tabbarController.viewControllers[1], tabbarController.viewControllers[2]];
 }
 
 - (void)finishedAllSteps {
@@ -124,6 +127,23 @@
     [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex+1];
     [super showNextStep];
     
+}
+
+-(void)payWithCreditCard:(BlockBoolean)b {
+    // send payment to back end
+    STPAPIClient *stpClient = [STPAPIClient sharedClient];
+    
+    [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
+        if (error) {
+            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
+            [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
+            return;
+        }
+        b(YES);
+        //TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
+        //request.stripeCardToken = token.tokenId;
+        //[self MakeTransferRequest:block request:request]; // create transfer request
+    }]; // create token
 }
 
 - (IBAction)gotoBack:(id)sender {

@@ -185,7 +185,7 @@
                                     <constraint firstItem="5QE-e5-7by" firstAttribute="top" secondItem="auX-03-rEv" secondAttribute="top" id="z3k-gf-wKj"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zch-yc-Xg7">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zch-yc-Xg7">
                                 <rect key="frame" x="30" y="949" width="708" height="45"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -224,6 +224,7 @@
                         <outlet property="carsCollectionView" destination="3Si-Ml-ciJ" id="vo2-nu-ayU"/>
                         <outlet property="dropoffBackView" destination="2cD-D8-F2e" id="1nk-4T-hiC"/>
                         <outlet property="headerBackView" destination="auX-03-rEv" id="UY1-PC-pEw"/>
+                        <outlet property="nextButton" destination="Zch-yc-Xg7" id="AA8-6J-X9V"/>
                         <outlet property="pickupBackView" destination="45C-CJ-Chl" id="ujO-Zl-XCI"/>
                     </connections>
                 </viewController>
@@ -243,11 +244,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xyc-5j-Bq3">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyc-5j-Bq3">
                                 <rect key="frame" x="40" y="290" width="688" height="613"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="100" minimumInteritemSpacing="10" id="80V-FS-rVf">
-                                    <size key="itemSize" width="195" height="155"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="80V-FS-rVf">
+                                    <size key="itemSize" width="190" height="150"/>
                                     <size key="headerReferenceSize" width="500" height="100"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -323,7 +324,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-jK-3bT">
-                                        <rect key="frame" x="145" y="5" width="55" height="55"/>
+                                        <rect key="frame" x="30" y="5" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="efg-5P-JxW"/>
                                             <constraint firstAttribute="height" constant="55" id="gab-2J-Ebs"/>
@@ -337,7 +338,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Wcp-jK-3bT" firstAttribute="leading" secondItem="iP4-em-u0a" secondAttribute="leading" constant="145" id="InX-KR-Z3c"/>
+                                    <constraint firstItem="Wcp-jK-3bT" firstAttribute="leading" secondItem="iP4-em-u0a" secondAttribute="leading" constant="30" id="InX-KR-Z3c"/>
                                     <constraint firstAttribute="bottom" secondItem="h1l-0x-9on" secondAttribute="bottom" id="KKY-Ik-tOO"/>
                                     <constraint firstAttribute="height" constant="150" id="UeJ-Hy-a5Q"/>
                                     <constraint firstItem="h1l-0x-9on" firstAttribute="top" secondItem="iP4-em-u0a" secondAttribute="top" id="beT-mN-5Ph"/>
@@ -347,7 +348,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVI-fp-pky">
                                 <rect key="frame" x="30" y="949" width="708" height="45"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="rX3-gu-cgE"/>
                                 </constraints>
@@ -380,6 +381,7 @@
                         <outlet property="dropoffBackView" destination="koX-E3-qhM" id="YGj-Fl-pvK"/>
                         <outlet property="extrasCollectionView" destination="xyc-5j-Bq3" id="38J-jc-D1B"/>
                         <outlet property="headerBackView" destination="iP4-em-u0a" id="c1Y-Hw-phv"/>
+                        <outlet property="nextButton" destination="KVI-fp-pky" id="svf-1Y-psP"/>
                         <outlet property="pickupBackView" destination="Kuw-N9-8Gv" id="w3r-c4-VOU"/>
                     </connections>
                 </viewController>
@@ -813,7 +815,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY4-ch-e0s">
-                                <rect key="frame" x="145" y="145" width="55" height="55"/>
+                                <rect key="frame" x="30" y="145" width="55" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="UHd-qF-guU"/>
                                     <constraint firstAttribute="width" constant="55" id="yUZ-d6-nA3"/>
@@ -829,7 +831,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="94e-dE-ZWC" firstAttribute="top" secondItem="c1q-Ik-b2s" secondAttribute="top" id="DLw-zq-iSS"/>
-                            <constraint firstItem="jY4-ch-e0s" firstAttribute="leading" secondItem="ZgC-vw-Hgd" secondAttribute="leading" constant="145" id="S6Z-Ky-rQk"/>
+                            <constraint firstItem="jY4-ch-e0s" firstAttribute="leading" secondItem="ZgC-vw-Hgd" secondAttribute="leading" constant="30" id="S6Z-Ky-rQk"/>
                             <constraint firstItem="94e-dE-ZWC" firstAttribute="centerX" secondItem="ZgC-vw-Hgd" secondAttribute="centerX" id="cIK-vV-d0o"/>
                             <constraint firstItem="c1q-Ik-b2s" firstAttribute="centerX" secondItem="ZgC-vw-Hgd" secondAttribute="centerX" id="gFv-YO-ve0"/>
                             <constraint firstItem="jY4-ch-e0s" firstAttribute="top" secondItem="J1e-h7-nO7" secondAttribute="bottom" constant="125" id="kdo-jQ-Lwc"/>

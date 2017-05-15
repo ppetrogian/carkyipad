@@ -9,14 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "RMStepsController.h"
 #import "StepSegmentControllerView.h"
+#import "CarkyApiClient.h"
 
-@class PSStepButton;
-@class ShadowViewWithText;
+@class PSStepButton, ShadowViewWithText, Location, STPCardParams, RegisterClientRequest;
 
 @interface CarRentalStepsViewController : RMStepsController <RMStepsBarDelegate, RMStepsBarDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *stepButtonsStack;
 @property (weak, nonatomic) IBOutlet UIStackView *stepLabelsStack;
 @property (weak, nonatomic) IBOutlet ShadowViewWithText *totalView;
+// data properties
+@property (nonatomic, strong) Location *selectedPickupLocation;
+@property (nonatomic, strong) Location *selectedDropoffLocation;
+@property (strong, nonatomic) Location *currentLocation;
+@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) STPCardParams *cardParams;
+@property (nonatomic, strong) RegisterClientRequest *clientData;
+
+-(void)payWithCreditCard:(BlockBoolean)b;
 - (IBAction)gotoBack:(id)sender;
 - (IBAction)gotoNext:(id)sender;
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;

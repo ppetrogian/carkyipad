@@ -196,14 +196,14 @@
 }
 #pragma mark - Confirmation View
 -(void) displayRentalConfirmationView{
-    RentalConfirmationView *confiramtionView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
-    confiramtionView.frame = [UIScreen mainScreen].bounds;
-    confiramtionView.alpha = 0;
+    RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
+    confirmationView.frame = [UIScreen mainScreen].bounds;
+    confirmationView.alpha = 0;
     //confiramtionView.delegate = self;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.window addSubview:confiramtionView];
+    [appDelegate.window addSubview:confirmationView];
     [UIView animateWithDuration:0.3 animations:^{
-        confiramtionView.alpha = 1.0;
+        confirmationView.alpha = 1.0;
     } completion:^(BOOL finished) {
         
     }];

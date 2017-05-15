@@ -356,11 +356,13 @@ NSString *const kResultsDropoffTime = @"DropoffTime";
         self.pickupTxtFld.selectedTextRange = [self.pickupTxtFld textRangeFromPosition:self.pickupTxtFld.beginningOfDocument toPosition:self.pickupTxtFld.beginningOfDocument];
         results[kResultsPickupLocationId] = @(self.currentLocation.identifier);
         results[kResultsPickupLocationName] = self.currentLocation.name;
+        self.parentController.selectedPickupLocation = self.currentLocation;
     } else {
         self.dropoffTxtFld.text = self.currentLocation.name;
         self.dropoffTxtFld.selectedTextRange = [self.dropoffTxtFld textRangeFromPosition:self.dropoffTxtFld.beginningOfDocument toPosition:self.dropoffTxtFld.beginningOfDocument];
         results[kResultsDropoffLocationId] = @(self.currentLocation.identifier);
         results[kResultsDropoffLocationName] = self.currentLocation.name;
+        self.parentController.selectedDropoffLocation = self.currentLocation;
     }
     [self setEditing:NO];
     self.locationsTableView.hidden = YES;

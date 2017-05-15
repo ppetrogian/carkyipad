@@ -122,9 +122,12 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetCarExtras:(BlockArray)block {
+-(void)GetCarExtrasForDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self GET:@"api/Helper/GetCarExtras" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
+    NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
+
+    [self GET:@"api/Helper/GetCarExtras" parameters:@{@"pickupDate":[dfDate stringFromDate:pickupDate], @"pickupTime":[dfTime stringFromDate:pickupDate]} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carExtrasArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -136,9 +139,12 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetAllCarInsurances:(BlockArray)block {
+-(void)GetAllCarInsurancesForDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self GET:@"api/Helper/GetAllCarInsurances" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
+    NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
+
+    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"pickupDate":[dfDate stringFromDate:pickupDate], @"pickupTime":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carInsArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -316,6 +322,23 @@ static CarkyApiClient *_sharedService = nil;
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         responseObj.errorDescription = errorStr;
+        block([NSArray arrayWithObject:errorMsg]);
+    }];
+}
+
+-(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block {
+    [self setAuthorizationHeader];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self POST:@"api/Partner/CreateRentalBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        //responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        block([NSArray arrayWithObject:@""]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
+        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
+        self.blockErrorDefault(error);
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
         block([NSArray arrayWithObject:errorMsg]);
     }];
 }

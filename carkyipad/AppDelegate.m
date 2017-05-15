@@ -17,7 +17,6 @@
 @import  HockeySDK;
 
 @interface AppDelegate ()
-@property (nonatomic,strong) NSArray *screensData;
 @end
 
 @implementation AppDelegate
@@ -138,17 +137,16 @@
     }];
 }
 
--(void)fetchCarsData:(BlockBoolean)block {
+-(void)fetchCarsDataForDate:(NSDate *)pickupDate {
     //[self.api GetAllCarTypes:^(NSArray *array2) {
         //app.carTypes = array2;
     //}];
-    [self.api GetCarExtras:^(NSArray *array3) {
+    [self.api GetCarExtrasForDate:pickupDate withBlock:^(NSArray *array3) {
         self.carExtras = array3;
     }];
-    [self.api GetAllCarInsurances:^(NSArray *array4) {
+    [self.api GetAllCarInsurancesForDate:pickupDate withBlock:^(NSArray *array4) {
         self.carInsurances = array4;
     }];
-    block(YES);
 }
 
 

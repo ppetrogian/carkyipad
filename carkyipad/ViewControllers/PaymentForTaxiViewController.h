@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet BKCardExpiryField *expiryDateTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *paymentsScrollView;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *agreeWithTermsButton;
 @property (weak, nonatomic) IBOutlet PaymentCardEditorField *stpCardTextField;

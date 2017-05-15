@@ -40,6 +40,7 @@
 }
 -(void) setupInit{
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
+    selectedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
 
     [self setPlaceDetails];
     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
@@ -60,11 +61,12 @@
         [self setCarSegments:array];
         [self selectCarType:0];
     }];
-    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
+    [app fetchCarsDataForDate:selectedRange.endDay.date];
+    //CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
     //parentVc.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
     //[parentVc.totalView setNeedsDisplay];
     // fill segmented control and collection view with available cars
-    parentVc.totalView.hidden = NO;
+    //parentVc.totalView.hidden = NO;
 }
 
 
@@ -184,10 +186,13 @@
     cell.priceLabel.text = @"";
     cell.priceLabel.attributedText = priceAttributedString;
 }
+
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     selectedIndexPath = indexPath;
     [collectionView reloadData];
+    self.nextButton.enabled = YES;
+    self.nextButton.backgroundColor = [UIColor blackColor];
 }
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{

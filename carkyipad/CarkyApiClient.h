@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
-@class MBProgressHUD,CarkyDriverPositionsRequest,TransferBookingRequest,RegisterClientRequest,LatLng;
+@class MBProgressHUD,CarkyDriverPositionsRequest,TransferBookingRequest,RegisterClientRequest,LatLng, RentalBookingRequest;
 
 typedef void(^BlockArray)(NSArray *array);
 typedef void(^BlockString)(NSString *string);
@@ -52,10 +52,10 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)GetAllCarTypes:(BlockArray)block;
 
 //GET /api/Helper/GetCarExtras  extras per car categories
--(void)GetCarExtras:(BlockArray)block;
+-(void)GetCarExtrasForDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
 
 // api/Helper/GetAllCarInsurances
--(void)GetAllCarInsurances:(BlockArray)block;
+-(void)GetAllCarInsurancesForDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
 
 #pragma mark - Taxi Api calls
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
@@ -65,6 +65,8 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)CreateTransferBookingRequestPayPalPayment:(TransferBookingRequest *)request withBlock:(BlockArray)block;
 
 -(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockArray)block;
+
+-(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block;
 
 -(void)GetStripePublishableApiKey:(BlockString)block;
 

@@ -58,14 +58,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkS-LI-aej">
                                 <rect key="frame" x="8" y="168" width="147" height="40"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ee-We-nWc">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car-a" translatesAutoresizingMaskIntoConstraints="NO" id="1Ee-We-nWc">
                                         <rect key="frame" x="0.0" y="10" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="4BW-lE-XPx"/>
                                             <constraint firstAttribute="width" constant="20" id="dUe-Ow-ft9"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-6K-4fj">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car-diesel" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-6K-4fj">
                                         <rect key="frame" x="82" y="10" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="N7D-ZK-5Yy"/>
@@ -144,4 +144,8 @@
             <point key="canvasLocation" x="6.5" y="258.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="car-a" width="29" height="28"/>
+        <image name="car-diesel" width="26" height="32"/>
+    </resources>
 </document>

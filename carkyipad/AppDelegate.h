@@ -29,10 +29,13 @@
 @property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
 @property (assign, nonatomic) BOOL isDemo;
+@property (nonatomic,strong) NSArray *screensData;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
+-(void)fetchCarsDataForDate:(NSDate *)pickupDate;
 +(AppDelegate *)instance;
 // helper methods
+
 +(NSArray *)mapObjectsFromArray:(NSArray *)array withBlock:(id (^)(id obj, NSUInteger idx))block;
 +(UITableView *) parentTableView:(UIView *)view;
 +(UITableViewCell *) parentTableViewCell:(UIView *)view;

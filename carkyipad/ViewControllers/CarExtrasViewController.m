@@ -18,11 +18,15 @@
 #import "AFNetworking.h"
 #import "AFImageDownloader.h"
 #import "ExtrasCollectionViewCell.h"
+#import "InsurancesCollectionViewCell.h"
 #import "ExtrasHeaderCollectionReusableView.h"
 #import "UIController.h"
 #import "CarRentalStepsViewController.h"
 
-@interface CarExtrasViewController () 
+static NSString *extraCellIdentifier = @"extraCellIdentifier";
+static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
+
+@interface CarExtrasViewController ()
 {
     NSMutableArray *selectedListArray;
 }
@@ -44,7 +48,8 @@
     [self setupInit];
 }
 -(void) setupInit{
-    [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
+    [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:extraCellIdentifier];
+    [self.extrasCollectionView registerClass:[InsurancesCollectionViewCell class] forCellWithReuseIdentifier:insuranceCellIdentifier];
      [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
     [self setPlaceDetails];
 }
@@ -78,53 +83,13 @@
 }
 
 #pragma mark -
-/*
--(void)showExtras {
-    AppDelegate *app = [AppDelegate instance];
-    static NSString *reuseIdentifier = @"ExtrasCell";
-    NSInteger lastId = app.carExtras[app.carExtras.count-1].Id;
-    self.carExtrasDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carExtras cellReuseIdentifier:reuseIdentifier configureCellBlock:^(ExtrasTableViewCell *cell, CarExtra *item) {
-        cell.isLast = item.Id == lastId;
-        cell.pricePerDayLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
-        cell.extraTitleLabel.text = item.Name;
-        NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
-        if (iconsDict[item.Name]) {
-            cell.extraImageView.image = [UIImage imageNamed:iconsDict[item.Name]];
-        } else {
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.icon]];
-            [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
-                cell.extraImageView.image = responseObject;
-            } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
-        }
-    }];
-    self.carExtrasTableView.dataSource = self.carExtrasDataSource;
-    self.carExtrasTableView.delegate = self;
-    [self.carExtrasTableView reloadData];
-}
 
--(void)showInsurances {
-    AppDelegate *app = [AppDelegate instance];
-    static NSString *reuseIdentifier = @"InsuranceCell";
-    NSInteger lastId = app.carInsurances[app.carInsurances.count-1].Id;
-    self.carInsurancesDataSource = [[TGRArrayDataSource alloc] initWithItems:app.carInsurances cellReuseIdentifier:reuseIdentifier configureCellBlock:^(InsuranceTableViewCell *cell, CarInsurance *item) {
-        cell.isLast = item.Id == lastId;
-        cell.insurancePriceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
-        cell.insuranceTitleLabel.text = item.title;
-    }];
-    self.carInsurancesTableView.dataSource = self.carInsurancesDataSource;
-    self.carInsurancesTableView.delegate = self;
-    [self.carInsurancesTableView reloadData];
-}
-*/
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (_mustPrepare) {
-//        [self showExtras];
-//        [self showInsurances];
-        _mustPrepare = NO;
-    }
-}
+        //[self showExtras];
+        //[self showInsurances];
 
+}
 
 /*
 #pragma mark - Navigation
@@ -136,27 +101,26 @@
 }
 */
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 4;
+    AppDelegate *app = [AppDelegate instance];
+    return section == 0 ? app.carExtras.count : app.carInsurances.count;
 }
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 2;
 }
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"CellIdentifier";
-    ExtrasCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    [self collectionCell:cell setDetails:nil];
-    /*
-     //update cell appearence
-     if (selectedIndexPath.row == indexPath.row && selectedIndexPath.section == indexPath.section) {
-     cell.containerView.layer.borderWidth = 1;
-     cell.priceBackView.backgroundColor = [UIColor blackColor];
-     cell.priceLabel.textColor = [UIColor whiteColor];
-     }
-     else{
-     cell.containerView.layer.borderWidth = 0;
-     cell.priceBackView.backgroundColor = [UIColor lightGrayColor];
-     cell.priceLabel.textColor = [UIColor blackColor];
-     }*/
+    AppDelegate *app = [AppDelegate instance];
+    ExtrasCollectionViewCell *cell;
+    if (indexPath.section == 0) {
+        ExtrasCollectionViewCell *extraCell = [collectionView dequeueReusableCellWithReuseIdentifier:extraCellIdentifier forIndexPath:indexPath];
+        [self extraCollectionCell:extraCell setDetails:app.carExtras[indexPath.row]];
+        cell = extraCell;
+    }
+    else {
+        InsurancesCollectionViewCell *insCell = [collectionView dequeueReusableCellWithReuseIdentifier:insuranceCellIdentifier forIndexPath:indexPath];
+        [self insuranceCollectionCell:insCell setDetails:app.carInsurances[indexPath.row]];
+        cell = insCell;
+    }
+
     if ([selectedListArray containsObject:indexPath]) {
         cell.selectionImageView.image = [UIImage imageNamed:@"check_on"];
         cell.containerView.layer.borderWidth = 1.0;
@@ -167,11 +131,28 @@
     }
     return cell;
 }
--(void) collectionCell:(ExtrasCollectionViewCell *)cell setDetails:(NSDictionary *)dict{
-    //set car name
-    cell.extraNameLabel.text = @"iPhone";
-    cell.priceLabel.text = @"Total £50";
+-(void) extraCollectionCell:(ExtrasCollectionViewCell *)cell setDetails:(CarExtra *)extra{
+    //set car extra
+    cell.extraNameLabel.text = extra.Name;
+    cell.priceLabel.text = [NSString stringWithFormat: @"Total €%zd", extra.pricePerDay];
+    NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
+    if (iconsDict[extra.Name]) {
+        cell.extraImageView.image = [UIImage imageNamed:iconsDict[extra.Name]];
+    } else {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:extra.icon]];
+        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+            cell.extraImageView.image = responseObject;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    }
+    
 }
+
+-(void) insuranceCollectionCell:(InsurancesCollectionViewCell *)cell setDetails:(CarInsurance *)ins{
+    //set car insurance
+    cell.extraNameLabel.text = ins.title;
+    cell.priceLabel.text = [NSString stringWithFormat: @"Total €%zd", ins.pricePerDay];
+}
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;
@@ -195,7 +176,7 @@
 }*/
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    if (selectedListArray==nil) {
+    if (selectedListArray == nil) {
         selectedListArray = [[NSMutableArray alloc] init];
     }
     if ([selectedListArray containsObject:indexPath]) {
@@ -206,7 +187,8 @@
     }
     [collectionView reloadData];
 }
-#pragma mark - 
+
+#pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
         [self.stepDelegate didSelectedNext:sender];

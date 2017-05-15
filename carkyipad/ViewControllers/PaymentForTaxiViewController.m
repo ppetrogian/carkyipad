@@ -9,6 +9,7 @@
 #import "PaymentForTaxiViewController.h"
 #import <Stripe/Stripe.h>
 #import "TransferStepsViewController.h"
+#import "CarRentalStepsViewController.h"
 #import "CarkyApiClient.h"
 #import "AppDelegate.h"
 #import "DataModels.h"
@@ -18,10 +19,13 @@
 #import "TermsAndConditionsViewController.h"
 #import "ButtonUtils.h"
 #import "PayPalMobile.h"
+#import "RentalConfirmationView.h"
 
 @interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, PayPalPaymentDelegate, UITextFieldDelegate>
-@property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
+@property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
+@property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @property (nonatomic, strong, readwrite) PayPalConfiguration *payPalConfiguration;
+@property (nonatomic, assign) BOOL isForTransfer;
 @end
 
 @implementation PaymentForTaxiViewController
@@ -35,9 +39,8 @@
     [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
     self.stpCardTextField.borderColor = UIColor.blackColor;
     self.stpCardTextField.borderWidth = 1;
-    
+    self.isForTransfer = [self.stepsController isKindOfClass:TransferStepsViewController.class];
 }
-    
     
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -69,7 +72,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    NSInteger price = self.parentController.selectedCarCategory.price;
+    NSInteger price = self.isForTransfer ? self.parentTransferController.selectedCarCategory.price : ((NSNumber*)self.parentController.results[kResultsTotalPrice]).integerValue;
     [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW       %ld€", price] forState: UIControlStateNormal];
 }
 
@@ -85,7 +88,11 @@
     }
 }
 
--(TransferStepsViewController *)parentController {
+-(CarRentalStepsViewController *)parentController {
+    return (CarRentalStepsViewController *)self.stepsController;
+}
+
+-(TransferStepsViewController *)parentTransferController {
     return (TransferStepsViewController *)self.stepsController;
 }
 
@@ -145,9 +152,17 @@
     cardParams.expYear = self.expiryDateTextField.dateComponents.year;
     self.parentController.cardParams = cardParams;
     [self.payNowButton disableButton];
-    [self.parentController payWithCreditCard:^(BOOL b) {
-        [self.payNowButton enableButton];
-    }];
+    if (self.isForTransfer) {
+        [self.parentTransferController payWithCreditCard:^(BOOL b) {
+            [self.payNowButton enableButton];
+        }];
+    }
+    else {
+        [self.parentController payWithCreditCard:^(BOOL b) {
+            [self.payNowButton enableButton];
+            [self displayRentalConfirmationView];
+        }];
+    }
 }
 - (IBAction)agreeWithTermsButton_Click:(id)sender {
     CarkyApiClient *api = [CarkyApiClient sharedService];
@@ -193,18 +208,20 @@
 }
 
 - (IBAction)payWithPaypalButton_click:(UIButton *)sender {
-    TransferBookingRequest *request = [self.parentController getPaymentRequestWithCC:NO];
-    CarkyApiClient *api = [CarkyApiClient sharedService];
-    [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
-        CreateTransferBookingRequestPayPalPaymentResponse *responseObj = array.firstObject;
-        // Create a PayPalPayment
-        PayPalPayment *payment = [[PayPalPayment alloc] init];
-        // Amount, currency, and description
-        payment.amount = [[NSDecimalNumber alloc] initWithString:responseObj.amount];
-        payment.currencyCode = responseObj.currency;
-        payment.shortDescription = responseObj.internalBaseClassDescription;
-        [self showPaypalUIforPayment:payment];
-    }];
+    if (self.isForTransfer) {
+        TransferBookingRequest *request = [self.parentTransferController getPaymentRequestWithCC:NO];
+        CarkyApiClient *api = [CarkyApiClient sharedService];
+        [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
+            CreateTransferBookingRequestPayPalPaymentResponse *responseObj = array.firstObject;
+            // Create a PayPalPayment
+            PayPalPayment *payment = [[PayPalPayment alloc] init];
+            // Amount, currency, and description
+            payment.amount = [[NSDecimalNumber alloc] initWithString:responseObj.amount];
+            payment.currencyCode = responseObj.currency;
+            payment.shortDescription = responseObj.internalBaseClassDescription;
+            [self showPaypalUIforPayment:payment];
+        }];
+    }
 }
     
 #pragma mark - PayPalPaymentDelegate methods
@@ -232,8 +249,24 @@
         // and give the user their goods or services. If the server is not reachable, save
         // the confirmation and try again later.
     NSLog(@"%@", completedPayment.confirmation);
-    
-    [self.parentController payWithPaypal:newStr];
+    if (self.isForTransfer) {
+        [self.parentTransferController payWithPaypal:newStr];
+    }
 }
-    
+
+#pragma mark - Confirmation View
+-(void) displayRentalConfirmationView{ 
+    RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
+    confirmationView.frame = [UIScreen mainScreen].bounds;
+    confirmationView.alpha = 0;
+    //confiramtionView.delegate = self;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.window addSubview:confirmationView];
+    [UIView animateWithDuration:0.3 animations:^{
+        confirmationView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 @end

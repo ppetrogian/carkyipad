@@ -18,7 +18,6 @@
 #import "SharedInstance.h"
 #import <CardIO/CardIO.h>
 #import <Stripe/Stripe.h>
-#import <Bolts/Bolts.h>
 
 #define kLastPayment @"LastPayment"
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
@@ -132,10 +131,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView {
-    self.selectedLocation = (Location *)value;
+    self.selectedDropoffLocation = (Location *)value;
     mapView.selectedMarker = nil;
     [self.locationMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.userData == self.selectedLocation) {
+        if (obj.userData == self.selectedDropoffLocation) {
             mapView.selectedMarker = obj;
         }
     }];
@@ -145,9 +144,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     } else {
         self.targetMarker.map = mapView;
         self.targetMarker.icon = [UIImage imageNamed:@"point-2"];
-        self.targetMarker.position = CLLocationCoordinate2DMake(self.selectedLocation.latLng.lat, self.selectedLocation.latLng.lng);
+        self.targetMarker.position = CLLocationCoordinate2DMake(self.selectedDropoffLocation.latLng.lat, self.selectedDropoffLocation.latLng.lng);
     }
-    [self getDirectionsFrom:self.userPos to:self.selectedLocation.latLng forMap:mapView andMarker:mapView.selectedMarker ? mapView.selectedMarker : self.targetMarker];
+    [self getDirectionsFrom:self.userPos to:self.selectedDropoffLocation.latLng forMap:mapView andMarker:mapView.selectedMarker ? mapView.selectedMarker : self.targetMarker];
 }
 
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
@@ -260,10 +259,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
     request.userId = self.userId;
-    if(self.selectedLocation.identifier > 0)
-    request.dropoffWellKnownLocationId = self.selectedLocation.identifier;
+    if(self.selectedDropoffLocation.identifier > 0)
+    request.dropoffWellKnownLocationId = self.selectedDropoffLocation.identifier;
     else
-    request.dropoffLocation = self.selectedLocation;
+    request.dropoffLocation = self.selectedDropoffLocation;
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
     request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
@@ -314,6 +313,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             block(NO);
             return;
         }
+        
         TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
         request.stripeCardToken = token.tokenId;
         [self MakeTransferRequest:block request:request]; // create transfer request

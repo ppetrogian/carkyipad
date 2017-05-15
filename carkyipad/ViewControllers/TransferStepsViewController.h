@@ -17,12 +17,7 @@
 @interface TransferStepsViewController : CarRentalStepsViewController
 
 // date properties
-@property (nonatomic, strong) Location *selectedLocation;
-@property (strong, nonatomic) Location *currentLocation;
 @property (strong, nonatomic) CarCategory *selectedCarCategory;
-@property (strong, nonatomic) NSString *userId;
-@property (strong, nonatomic) STPCardParams *cardParams;
-@property (nonatomic, strong) RegisterClientRequest *clientData;
 @property (strong, nonatomic) NSString *transferBookingId;
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;

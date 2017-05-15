@@ -175,6 +175,9 @@
 		D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19FF9961E918F1600F735A0 /* PSTextBox.xib */; };
 		D19FF99B1E91908700F735A0 /* PSTextBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF99A1E91908700F735A0 /* PSTextBox.m */; };
 		D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */; };
+		D1AA294B1EC9184B0080AD93 /* RentalBookingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA294A1EC9184B0080AD93 /* RentalBookingRequest.m */; };
+		D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */; };
+		D1AA29501EC926F40080AD93 /* InsurancesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */; };
 		D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1B253DE1E8707A3005365B2 /* PSFleetLocationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B253DD1E8707A3005365B2 /* PSFleetLocationControl.m */; };
@@ -462,6 +465,11 @@
 		D19FF99A1E91908700F735A0 /* PSTextBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PSTextBox.m; path = Controls/PSTextBox/PSTextBox.m; sourceTree = "<group>"; };
 		D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		D1AA29491EC9184B0080AD93 /* RentalBookingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBookingRequest.h; sourceTree = "<group>"; };
+		D1AA294A1EC9184B0080AD93 /* RentalBookingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalBookingRequest.m; sourceTree = "<group>"; };
+		D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InsurancesCollectionViewCell.xib; path = CustomView/Cell/InsurancesCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1AA294E1EC926F30080AD93 /* InsurancesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsurancesCollectionViewCell.h; path = CustomView/Cell/InsurancesCollectionViewCell.h; sourceTree = "<group>"; };
+		D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsurancesCollectionViewCell.m; path = CustomView/Cell/InsurancesCollectionViewCell.m; sourceTree = "<group>"; };
 		D1B253CC1E85F26A005365B2 /* MIRadioButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIRadioButtonGroup.h; sourceTree = "<group>"; };
 		D1B253CD1E85F26A005365B2 /* MIRadioButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIRadioButtonGroup.m; sourceTree = "<group>"; };
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -600,6 +608,8 @@
 				AE6351D31E7415E400065F0F /* CarExtra.m */,
 				D19FF97F1E904C1400F735A0 /* CarRentalModel.h */,
 				D19FF9801E904C1400F735A0 /* CarRentalModel.m */,
+				D1AA29491EC9184B0080AD93 /* RentalBookingRequest.h */,
+				D1AA294A1EC9184B0080AD93 /* RentalBookingRequest.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1154,6 +1164,9 @@
 				E1C2EE591EC339910021BEC2 /* ExtrasCollectionViewCell.h */,
 				E1C2EE5A1EC339910021BEC2 /* ExtrasCollectionViewCell.m */,
 				E1C2EE5B1EC339910021BEC2 /* ExtrasCollectionViewCell.xib */,
+				D1AA294E1EC926F30080AD93 /* InsurancesCollectionViewCell.h */,
+				D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */,
+				D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */,
 				E1C2EE601EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.h */,
 				E1C2EE611EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m */,
 			);
@@ -1297,6 +1310,7 @@
 				E1C2EE5F1EC339910021BEC2 /* ExtrasCollectionViewCell.xib in Resources */,
 				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D19FF9971E918F1600F735A0 /* PSTextBox.xib in Resources */,
+				D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */,
 				E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
@@ -1493,6 +1507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D12802D01E9E0AC000DA05E7 /* CarkyDriverPositionsResponse.m in Sources */,
+				D1AA294B1EC9184B0080AD93 /* RentalBookingRequest.m in Sources */,
 				AE34F15A1E903772000D3997 /* Cars.m in Sources */,
 				E1C2EE6D1EC3AB720021BEC2 /* StepSegmentControllerView.m in Sources */,
 				AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */,
@@ -1547,6 +1562,7 @@
 				AE6352BC1E75DEAF00065F0F /* BaseViewController.m in Sources */,
 				AE63530A1E75E23D00065F0F /* GiFHUD.m in Sources */,
 				AEAF1AF21E87888D00C03768 /* DSLCalendarRange.m in Sources */,
+				D1AA29501EC926F40080AD93 /* InsurancesCollectionViewCell.m in Sources */,
 				AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
