@@ -160,7 +160,6 @@
     else {
         [self.parentController payRentalWithCreditCard:^(BOOL b) {
             [self.payNowButton enableButton];
-            [self displayRentalConfirmationView];
         }];
     }
 }
@@ -254,19 +253,5 @@
     }
 }
 
-#pragma mark - Confirmation View
--(void) displayRentalConfirmationView{ 
-    RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
-    confirmationView.frame = [UIScreen mainScreen].bounds;
-    confirmationView.alpha = 0;
-    //confiramtionView.delegate = self;
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.window addSubview:confirmationView];
-    [UIView animateWithDuration:0.3 animations:^{
-        confirmationView.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        
-    }];
-}
 
 @end

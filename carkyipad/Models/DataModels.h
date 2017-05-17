@@ -26,11 +26,14 @@
 #import "ClientConfigurationResponse.h"
 #import "CarPrice.h"
 #import "CarPriceResponse.h"
-#import "PickupDateTime.h"
+#import "DateTime.h"
 #import "CarkyBookingStatusResponse.h"
 #import "Content.h"
 #import "CreateTransferBookingRequestPayPalPaymentResponse.h"
 #import "RentalBookingRequest.h"
+#import "RentalBookingResponse.h"
+#import "BookingInfo.h"
+#import "PaymentInfo.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;

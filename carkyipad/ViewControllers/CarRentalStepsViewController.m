@@ -12,10 +12,12 @@
 #import "StepViewController.h"
 #import "AppDelegate.h"
 #import "DetailsStepViewController.h"
+#import "RentalConfirmationView.h"
 #import "CarStepViewController.h"
 #import "ShadowViewWithText.h"
 #import "CarExtrasViewController.h"
 #import "StepViewController.h"
+#import "RentalBookingResponse.h"
 #import <Stripe/Stripe.h>
 
 @interface CarRentalStepsViewController ()<StepDelegate>
@@ -130,34 +132,35 @@
 }
 
 -(RentalBookingRequest *)getRentalRequestWithCC:(BOOL)forCC {
-    NSDateFormatter *dfDate = [NSDateFormatter new];
-    NSDateFormatter *dfTime = [NSDateFormatter new];
     RentalBookingRequest *request = [RentalBookingRequest new];
     request.userId = self.userId;
-    request.carTypeId = ((NSNumber*)self.results[kResultsCarTypeId]).integerValue;
-    request.extras = self.results[kResultsExtras];
-    request.carInsuranceId = ((NSNumber*)self.results[kResultsInsuranceId]).integerValue;
+    BookingInfo *bookInfo = [BookingInfo new];
+    PaymentInfo *payInfo = [PaymentInfo new];
+    request.bookingInfo = bookInfo;
+    request.paymentInfo = payInfo;
+    //bookInfo.fleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    bookInfo.commission = 0;
+    bookInfo.carTypeId = ((NSNumber*)self.results[kResultsCarTypeId]).integerValue;
+    bookInfo.extraIds = self.results[kResultsExtras];
+    bookInfo.insuranceId = ((NSNumber*)self.results[kResultsInsuranceId]).integerValue;
+
+    bookInfo.agreedToTermsAndConditions = YES;
+    payInfo.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
+    DSLCalendarRange *range = self.results[kResultsDayRange];
+    // pickup info
+    if(self.selectedPickupLocation.identifier > 0)
+        bookInfo.wellKnownPickupLocationId = self.selectedPickupLocation.identifier;
+    else
+        bookInfo.pickupLocation = self.selectedPickupLocation;
+    bookInfo.pickupLocation.address = self.results[kResultsPickupLocationName];
+    bookInfo.pickupDateTime = [DateTime modelObjectWithDate:range.startDay.date];
     
     if(self.selectedDropoffLocation.identifier > 0)
-        request.wellKnowDropoffLocationId = self.selectedDropoffLocation.identifier;
+        bookInfo.wellKnownDropoffLocationId = self.selectedDropoffLocation.identifier;
     else
-        request.dropoffLatLng = self.selectedDropoffLocation.latLng;
-    //request.passengersNumber = cCat.maxPassengers;
-    request.agreedToTermsAndConditions = YES;
-    request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
-    DSLCalendarRange *range = self.results[kResultsDayRange];
-    
-    request.dropoffAddress = self.results[kResultsDropoffLocationName];
-    request.pickupDate = [dfDate stringFromDate:range.startDay.date];
-    request.pickupTime = [dfTime stringFromDate:range.startDay.date];
-    
-    if(self.selectedPickupLocation.identifier > 0)
-        request.wellKnowPickupLocationId = self.selectedPickupLocation.identifier;
-    else
-        request.pickupLatLng = self.selectedPickupLocation.latLng;
-    request.pickupAddress = self.results[kResultsPickupLocationName];
-    request.pickupDate = [dfDate stringFromDate:range.startDay.date];
-    request.pickupTime = [dfTime stringFromDate:range.startDay.date];
+        bookInfo.dropoffLocation = self.selectedDropoffLocation;
+    bookInfo.dropoffLocation.address = self.results[kResultsDropoffLocationName];
+    bookInfo.dropoffDateTime = [DateTime modelObjectWithDate:range.endDay.date];
     return request;
 }
 
@@ -166,24 +169,53 @@
     MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
     [api CreateRentalBookingRequest:request withBlock:^(NSArray *array) {
         [AppDelegate hideProgressNotification:hud];
-        // todo
-        /*
-        if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
-            TransferBookingResponse *responseObj = array.firstObject;
-            if (responseObj.bookingId.length > 0) {
+        
+        if ([array.firstObject isKindOfClass:RentalBookingResponse.class]) {
+            RentalBookingResponse *responseObj = array.firstObject;
+            if (responseObj.reservationCode.length > 0) {
                 block(YES);
-                //self.transferBookingId = responseObj.bookingId;
-                //[self showNextStep];
+                [self displayRentalConfirmationView:responseObj];
             } else {
                 block(NO);
-                [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
+                [self showAlertViewWithMessage:@"Empty reservation code" andTitle:@"Error"];
             }
         } else {
             block(NO);
             [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
         }
-         */
-        block(NO);
+    }];
+}
+
+#pragma mark - Confirmation View
+-(void) displayRentalConfirmationView:(RentalBookingResponse *)response {
+    RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
+    confirmationView.frame = [UIScreen mainScreen].bounds;
+    confirmationView.alpha = 0;
+    confirmationView.pickupAddressLabel.text = response.pickupAddress;
+    confirmationView.dropoffAddressLabel.text = response.dropoffAddress;
+    confirmationView.pickupDateLabel.text = response.pickupDate;
+    confirmationView.dropoffDateLabel.text = response.dropoffDate;
+    confirmationView.pickupTimeLabel.text = response.pickupTime;
+    confirmationView.dropoffTimeLabel.text = response.dropoffTime;
+    //-----------
+    confirmationView.nameLabel.text = response.displayName;
+    confirmationView.reservationLabel.text = response.reservationCode;
+    NSInteger nDays = ((NSNumber*)self.results[kResultsDays]).integerValue;
+    confirmationView.durationLabel.text = [NSString stringWithFormat:@"%zd days",nDays];
+    //-------------------
+     confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%zd", response.extrasPrice];
+     confirmationView.extrasItemsLabel.text = response.extrasDisplay;
+     confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%zd", response.insurancePrice];
+     confirmationView.insuranceItemsLabel.text = response.insuranceDisplay;
+     confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%zd", response.carPrice];
+     confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%zd", response.total];
+    //confiramtionView.delegate = self;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.window addSubview:confirmationView];
+    [UIView animateWithDuration:0.3 animations:^{
+        confirmationView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
     }];
 }
 
@@ -198,7 +230,7 @@
             return;
         }
         RentalBookingRequest *request = [self getRentalRequestWithCC:YES];
-        request.stripeCardId = token.tokenId;
+        request.paymentInfo.stripeCardId = token.tokenId;
         [self MakeRentalRequest:block request:request]; // create rental request
         block(YES);
     }]; // create token

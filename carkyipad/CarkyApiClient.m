@@ -69,7 +69,7 @@ static CarkyApiClient *_sharedService = nil;
             block(NO);
         } else {
             self.apiKey = responseObject[@"access_token"];
-            NSLog(@"Access token: %@", self.apiKey);
+            //NSLog(@"Access token: %@", self.apiKey);
             block(YES);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -328,11 +328,12 @@ static CarkyApiClient *_sharedService = nil;
 
 -(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
-    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self POST:@"api/Partner/CreateRentalBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         //responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        block([NSArray arrayWithObject:@""]);
+        RentalBookingResponse *resultObj = [RentalBookingResponse modelObjectWithDictionary:responseObject];
+        block([NSArray arrayWithObject:resultObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
         NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];

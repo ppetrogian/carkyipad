@@ -8,7 +8,7 @@
 #import "TransferBookingRequest.h"
 #import "LatLng.h"
 #import "Location.h"
-#import "PickupDateTime.h"
+#import "DateTime.h"
 
 NSString *const kTransferBookingRequestUserId = @"UserId";
 NSString *const kTransferBookingRequestDropoffAddress = @"DropoffAddress";
@@ -61,7 +61,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
         
         self.dateTime = [self objectOrNilForKey:kTransferBookingRequestDateTime fromDictionary:dict];
-        self.pickupDateTime = [PickupDateTime modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupDateTime]];
+        self.pickupDateTime = [DateTime modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupDateTime]];
         self.paymentMethod = [[self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict] integerValue];
         self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupLatLng]];
         self.extras = [self objectOrNilForKey:kTransferBookingRequestExtras fromDictionary:dict];

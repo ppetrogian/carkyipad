@@ -267,9 +267,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
     NSDate *currDate = NSDate.date;
     request.dateTime = [df stringFromDate:currDate];
-    PickupDateTime *pdt = [PickupDateTime new];
-    df.dateFormat = @"yyyy-MM-dd"; pdt.date = [df stringFromDate:currDate];
-    df.dateFormat = @"HH:mm"; pdt.time = [df stringFromDate:currDate];
+    DateTime *pdt = [DateTime modelObjectWithDate:currDate];
     request.pickupDateTime = pdt;
     request.extras = @[];
     request.carkyCategoryId = cCat.Id;

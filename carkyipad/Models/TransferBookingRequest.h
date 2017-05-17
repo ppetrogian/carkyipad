@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class LatLng,PickupDateTime,Location;
+@class LatLng,DateTime,Location;
 
 @interface TransferBookingRequest : NSObject <NSCoding, NSCopying>
 @property (nonatomic, strong) NSString *userId;
@@ -23,7 +23,7 @@
 @property (nonatomic, assign) BOOL agreedToTermsAndConditions;
 
 @property (nonatomic, strong) NSString *dateTime;
-@property (nonatomic, strong) PickupDateTime *pickupDateTime;
+@property (nonatomic, strong) DateTime *pickupDateTime;
 @property (nonatomic, assign) NSInteger paymentMethod;
 @property (nonatomic, strong) LatLng *pickupLatLng;
 @property (nonatomic, strong) NSArray<NSNumber*> *extras;
