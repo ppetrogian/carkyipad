@@ -77,16 +77,20 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.wellKnownDropoffLocationId] forKey:kBookingInfoWellKnownDropoffLocationId];
+    if(self.wellKnownDropoffLocationId > 0)
+        [mutableDict setValue:[NSNumber numberWithInteger:self.wellKnownDropoffLocationId] forKey:kBookingInfoWellKnownDropoffLocationId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.carTypeId] forKey:kBookingInfoCarTypeId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.insuranceId] forKey:kBookingInfoInsuranceId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.commission] forKey:kBookingInfoCommission];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.fleetLocationId] forKey:kBookingInfoFleetLocationId];
+    if(self.fleetLocationId > 0)
+        [mutableDict setValue:[NSNumber numberWithInteger:self.fleetLocationId] forKey:kBookingInfoFleetLocationId];
     [mutableDict setValue:[NSNumber numberWithBool:self.agreedToTermsAndConditions] forKey:kBookingInfoAgreedToTermsAndConditions];
     [mutableDict setValue:[self.pickupDateTime dictionaryRepresentation] forKey:kBookingInfoPickupDateTime];
-    [mutableDict setValue:[self.pickupLocation dictionaryRepresentation] forKey:kBookingInfoPickupLocation];
+    if(self.pickupLocation)
+        [mutableDict setValue:[self.pickupLocation dictionaryRepresentation] forKey:kBookingInfoPickupLocation];
     [mutableDict setValue:[self.dropoffDateTime dictionaryRepresentation] forKey:kBookingInfoDropoffDateTime];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.wellKnownPickupLocationId] forKey:kBookingInfoWellKnownPickupLocationId];
+    if(self.wellKnownPickupLocationId > 0)
+        [mutableDict setValue:[NSNumber numberWithInteger:self.wellKnownPickupLocationId] forKey:kBookingInfoWellKnownPickupLocationId];
     NSMutableArray *tempArrayForExtraIds = [NSMutableArray array];
     
     for (NSObject *subArrayObject in self.extraIds) {
@@ -99,7 +103,8 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
         }
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForExtraIds] forKey:kBookingInfoExtraIds];
-    [mutableDict setValue:[self.dropoffLocation dictionaryRepresentation] forKey:kBookingInfoDropoffLocation];
+    if(self.dropoffLocation)
+        [mutableDict setValue:[self.dropoffLocation dictionaryRepresentation] forKey:kBookingInfoDropoffLocation];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

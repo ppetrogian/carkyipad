@@ -133,7 +133,7 @@
 
 -(RentalBookingRequest *)getRentalRequestWithCC:(BOOL)forCC {
     RentalBookingRequest *request = [RentalBookingRequest new];
-    request.userId = self.userId;
+    request.clientUserId = self.userId;
     BookingInfo *bookInfo = [BookingInfo new];
     PaymentInfo *payInfo = [PaymentInfo new];
     request.bookingInfo = bookInfo;
@@ -148,15 +148,21 @@
     payInfo.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
     DSLCalendarRange *range = self.results[kResultsDayRange];
     // pickup info
-    if(self.selectedPickupLocation.identifier > 0)
-        bookInfo.wellKnownPickupLocationId = self.selectedPickupLocation.identifier;
+    NSInteger pickupWellKnownLocationId = ((NSNumber*)self.results[kResultsPickupLocationId]).integerValue;
+    if(pickupWellKnownLocationId > 0)
+        bookInfo.wellKnownPickupLocationId = pickupWellKnownLocationId;
     else
         bookInfo.pickupLocation = self.selectedPickupLocation;
     bookInfo.pickupLocation.address = self.results[kResultsPickupLocationName];
     bookInfo.pickupDateTime = [DateTime modelObjectWithDate:range.startDay.date];
     
-    if(self.selectedDropoffLocation.identifier > 0)
-        bookInfo.wellKnownDropoffLocationId = self.selectedDropoffLocation.identifier;
+    NSInteger dropoffWellKnownLocationId = ((NSNumber*)self.results[kResultsDropoffLocationId]).integerValue;
+    if(dropoffWellKnownLocationId == 0) {
+        bookInfo.wellKnownDropoffLocationId = bookInfo.wellKnownPickupLocationId;
+        bookInfo.dropoffLocation = bookInfo.pickupLocation;
+    }
+    else if(dropoffWellKnownLocationId > 0)
+        bookInfo.wellKnownDropoffLocationId = dropoffWellKnownLocationId;
     else
         bookInfo.dropoffLocation = self.selectedDropoffLocation;
     bookInfo.dropoffLocation.address = self.results[kResultsDropoffLocationName];
@@ -186,8 +192,13 @@
     }];
 }
 
+-(void)hideKeyboard{
+    [self.view endEditing:YES];
+}
+
 #pragma mark - Confirmation View
 -(void) displayRentalConfirmationView:(RentalBookingResponse *)response {
+    [self hideKeyboard];
     RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
     confirmationView.frame = [UIScreen mainScreen].bounds;
     confirmationView.alpha = 0;
@@ -230,7 +241,7 @@
             return;
         }
         RentalBookingRequest *request = [self getRentalRequestWithCC:YES];
-        request.paymentInfo.stripeCardId = token.tokenId;
+        request.paymentInfo.stripeCardToken = token.tokenId;
         [self MakeRentalRequest:block request:request]; // create rental request
         block(YES);
     }]; // create token

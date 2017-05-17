@@ -12,7 +12,7 @@
 @interface PaymentInfo : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, assign) NSInteger paymentMethod;
-@property (nonatomic, strong) NSString *stripeCardId;
+@property (nonatomic, strong) NSString *stripeCardToken;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

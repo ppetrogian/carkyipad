@@ -326,10 +326,11 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+//POST /api/Partner/CreateRentalBookingRequestForIpad
 -(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self POST:@"api/Partner/CreateRentalBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self POST:@"api/Partner/CreateRentalBookingRequestForIpad" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         //responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         RentalBookingResponse *resultObj = [RentalBookingResponse modelObjectWithDictionary:responseObject];

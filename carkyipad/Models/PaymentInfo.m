@@ -9,7 +9,7 @@
 
 
 NSString *const kPaymentInfoPaymentMethod = @"PaymentMethod";
-NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
+NSString *const kPaymentInfostripeCardToken = @"StripeCardToken";
 
 
 @interface PaymentInfo ()
@@ -21,7 +21,7 @@ NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
 @implementation PaymentInfo
 
 @synthesize paymentMethod = _paymentMethod;
-@synthesize stripeCardId = _stripeCardId;
+
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
@@ -35,7 +35,7 @@ NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
             self.paymentMethod = [[self objectOrNilForKey:kPaymentInfoPaymentMethod fromDictionary:dict] integerValue];
-            self.stripeCardId = [self objectOrNilForKey:kPaymentInfoStripeCardId fromDictionary:dict];
+            self.stripeCardToken = [self objectOrNilForKey:kPaymentInfostripeCardToken fromDictionary:dict];
 
     }
     
@@ -46,7 +46,7 @@ NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kPaymentInfoPaymentMethod];
-    [mutableDict setValue:self.stripeCardId forKey:kPaymentInfoStripeCardId];
+    [mutableDict setValue:self.stripeCardToken forKey:kPaymentInfostripeCardToken];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -68,7 +68,7 @@ NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
     self = [super init];
 
     self.paymentMethod = [aDecoder decodeDoubleForKey:kPaymentInfoPaymentMethod];
-    self.stripeCardId = [aDecoder decodeObjectForKey:kPaymentInfoStripeCardId];
+    self.stripeCardToken = [aDecoder decodeObjectForKey:kPaymentInfostripeCardToken];
     return self;
 }
 
@@ -76,7 +76,7 @@ NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
 {
 
     [aCoder encodeDouble:_paymentMethod forKey:kPaymentInfoPaymentMethod];
-    [aCoder encodeObject:_stripeCardId forKey:kPaymentInfoStripeCardId];
+    [aCoder encodeObject:_stripeCardToken forKey:kPaymentInfostripeCardToken];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -87,7 +87,7 @@ NSString *const kPaymentInfoStripeCardId = @"StripeCardId";
     if (copy) {
 
         copy.paymentMethod = self.paymentMethod;
-        copy.stripeCardId = [self.stripeCardId copyWithZone:zone];
+        copy.stripeCardToken = [self.stripeCardToken copyWithZone:zone];
     }
     
     return copy;

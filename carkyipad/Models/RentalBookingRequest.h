@@ -2,7 +2,7 @@
 //  RentalBookingRequest.h
 //
 //  Created by   on 17/05/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,7 @@
 
 @interface RentalBookingRequest : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *clientUserId;
 @property (nonatomic, strong) BookingInfo *bookingInfo;
 @property (nonatomic, strong) PaymentInfo *paymentInfo;
 

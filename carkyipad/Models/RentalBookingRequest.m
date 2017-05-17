@@ -2,7 +2,7 @@
 //  RentalBookingRequest.m
 //
 //  Created by   on 17/05/2017
-//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2017 Nessos. All rights reserved.
 //
 
 #import "RentalBookingRequest.h"
@@ -10,7 +10,7 @@
 #import "PaymentInfo.h"
 
 
-NSString *const kRentalBookingRequestUserId = @"UserId";
+NSString *const kRentalBookingRequestClientUserId = @"ClientUserId";
 NSString *const kRentalBookingRequestBookingInfo = @"BookingInfo";
 NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
 
@@ -23,7 +23,6 @@ NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
 
 @implementation RentalBookingRequest
 
-@synthesize userId = _userId;
 @synthesize bookingInfo = _bookingInfo;
 @synthesize paymentInfo = _paymentInfo;
 
@@ -38,7 +37,7 @@ NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.userId = [self objectOrNilForKey:kRentalBookingRequestUserId fromDictionary:dict];
+            self.clientUserId = [self objectOrNilForKey:kRentalBookingRequestClientUserId fromDictionary:dict];
             self.bookingInfo = [BookingInfo modelObjectWithDictionary:[dict objectForKey:kRentalBookingRequestBookingInfo]];
             self.paymentInfo = [PaymentInfo modelObjectWithDictionary:[dict objectForKey:kRentalBookingRequestPaymentInfo]];
 
@@ -50,7 +49,7 @@ NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:self.userId forKey:kRentalBookingRequestUserId];
+    [mutableDict setValue:self.clientUserId forKey:kRentalBookingRequestClientUserId];
     [mutableDict setValue:[self.bookingInfo dictionaryRepresentation] forKey:kRentalBookingRequestBookingInfo];
     [mutableDict setValue:[self.paymentInfo dictionaryRepresentation] forKey:kRentalBookingRequestPaymentInfo];
 
@@ -73,7 +72,7 @@ NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.userId = [aDecoder decodeObjectForKey:kRentalBookingRequestUserId];
+    self.clientUserId = [aDecoder decodeObjectForKey:kRentalBookingRequestClientUserId];
     self.bookingInfo = [aDecoder decodeObjectForKey:kRentalBookingRequestBookingInfo];
     self.paymentInfo = [aDecoder decodeObjectForKey:kRentalBookingRequestPaymentInfo];
     return self;
@@ -82,7 +81,7 @@ NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeObject:_userId forKey:kRentalBookingRequestUserId];
+    [aCoder encodeObject:_clientUserId forKey:kRentalBookingRequestClientUserId];
     [aCoder encodeObject:_bookingInfo forKey:kRentalBookingRequestBookingInfo];
     [aCoder encodeObject:_paymentInfo forKey:kRentalBookingRequestPaymentInfo];
 }
@@ -94,7 +93,7 @@ NSString *const kRentalBookingRequestPaymentInfo = @"PaymentInfo";
     
     if (copy) {
 
-        copy.userId = [self.userId copyWithZone:zone];
+        copy.clientUserId = [self.clientUserId copyWithZone:zone];
         copy.bookingInfo = [self.bookingInfo copyWithZone:zone];
         copy.paymentInfo = [self.paymentInfo copyWithZone:zone];
     }
