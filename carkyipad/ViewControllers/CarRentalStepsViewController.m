@@ -138,7 +138,7 @@
     PaymentInfo *payInfo = [PaymentInfo new];
     request.bookingInfo = bookInfo;
     request.paymentInfo = payInfo;
-    //bookInfo.fleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    bookInfo.fleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
     bookInfo.commission = 0;
     bookInfo.carTypeId = ((NSNumber*)self.results[kResultsCarTypeId]).integerValue;
     bookInfo.extraIds = self.results[kResultsExtras];
@@ -151,21 +151,24 @@
     NSInteger pickupWellKnownLocationId = ((NSNumber*)self.results[kResultsPickupLocationId]).integerValue;
     if(pickupWellKnownLocationId > 0)
         bookInfo.wellKnownPickupLocationId = pickupWellKnownLocationId;
-    else
+    else {
         bookInfo.pickupLocation = self.selectedPickupLocation;
-    bookInfo.pickupLocation.address = self.results[kResultsPickupLocationName];
+        bookInfo.pickupLocation.address = self.results[kResultsPickupLocationName];
+    }
     bookInfo.pickupDateTime = [DateTime modelObjectWithDate:range.startDay.date];
     
     NSInteger dropoffWellKnownLocationId = ((NSNumber*)self.results[kResultsDropoffLocationId]).integerValue;
     if(dropoffWellKnownLocationId == 0) {
         bookInfo.wellKnownDropoffLocationId = bookInfo.wellKnownPickupLocationId;
         bookInfo.dropoffLocation = bookInfo.pickupLocation;
+        bookInfo.dropoffLocation.address = bookInfo.pickupLocation.address;
     }
     else if(dropoffWellKnownLocationId > 0)
         bookInfo.wellKnownDropoffLocationId = dropoffWellKnownLocationId;
-    else
+    else {
         bookInfo.dropoffLocation = self.selectedDropoffLocation;
-    bookInfo.dropoffLocation.address = self.results[kResultsDropoffLocationName];
+        bookInfo.dropoffLocation.address = self.results[kResultsDropoffLocationName];
+    }
     bookInfo.dropoffDateTime = [DateTime modelObjectWithDate:range.endDay.date];
     return request;
 }
