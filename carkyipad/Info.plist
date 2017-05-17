@@ -21,9 +21,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1</string>
 	<key>CFBundleVersion</key>
-	<string>20</string>
+	<string>21</string>
 	<key>GoogleApiKey</key>
 	<string>AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -84,15 +86,6 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>UserDefaultLocation</key>
-	<dict>
-		<key>Lat</key>
-		<real>37.448867800000002</real>
-		<key>Lng</key>
-		<real>25.3290808</real>
-		<key>Name</key>
-		<string>Belverede Boutique Hotel</string>
-	</dict>
 	<key>UserFleetLocationId</key>
 	<integer>2</integer>
 </dict>
