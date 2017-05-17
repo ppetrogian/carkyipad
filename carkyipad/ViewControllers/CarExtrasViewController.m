@@ -28,7 +28,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
 @interface CarExtrasViewController ()
 {
-    NSMutableArray *selectedListArray;
+    NSMutableArray *selectedExtrasListArray;
+    NSIndexPath *selectedInsurance;
 }
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
 @property (nonatomic,strong) TGRArrayDataSource* carInsurancesDataSource;
@@ -121,7 +122,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
         cell = insCell;
     }
 
-    if ([selectedListArray containsObject:indexPath]) {
+    if ((indexPath.section == 0 && [selectedExtrasListArray containsObject:indexPath]) ||
+        (indexPath.section == 1 && selectedInsurance.row == indexPath.row)) {
         cell.selectionImageView.image = [UIImage imageNamed:@"check_on"];
         cell.containerView.layer.borderWidth = 1.0;
     }
@@ -176,15 +178,21 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 }*/
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    if (selectedListArray == nil) {
-        selectedListArray = [[NSMutableArray alloc] init];
+    if (selectedExtrasListArray == nil) {
+        selectedExtrasListArray = [[NSMutableArray alloc] init];
     }
-    if ([selectedListArray containsObject:indexPath]) {
-        [selectedListArray removeObject:indexPath];
+    if (indexPath.section == 0) {
+        if ([selectedExtrasListArray containsObject:indexPath]) {
+            [selectedExtrasListArray removeObject:indexPath];
+        }
+        else{
+            [selectedExtrasListArray addObject:indexPath];
+        }
     }
-    else{
-        [selectedListArray addObject:indexPath];
+    else {
+        selectedInsurance = indexPath;
     }
+
     [collectionView reloadData];
 }
 
@@ -192,17 +200,13 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 -(IBAction) nextButtonAction:(UIButton *)sender{
     AppDelegate *app = [AppDelegate instance];
     NSMutableArray *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
-    NSMutableArray *insurances = [[NSMutableArray alloc] initWithCapacity:app.carInsurances.count];
-    [selectedListArray enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [selectedExtrasListArray enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.section == 0) {
             [extras addObject:@(app.carExtras[obj.row].Id)];
         }
-        else {
-            [insurances addObject:@(app.carInsurances[obj.row].Id)];
-        }
     }];
     self.stepsController.results[kResultsExtras] = extras;
-    NSNumber *objInsuranceId = insurances.count == 0 ? @(0) : insurances[0];
+    NSNumber *objInsuranceId = selectedInsurance ? @(selectedInsurance.row) : @(0);
     self.stepsController.results[kResultsInsuranceId] = objInsuranceId;
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
         [self.stepDelegate didSelectedNext:sender];

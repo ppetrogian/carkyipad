@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSString *dropoffAddress;
 @property (nonatomic, strong) NSString *displayName;
-@property (nonatomic, assign) NSInteger carPrice;
+@property (nonatomic, assign) double carPrice;
 @property (nonatomic, strong) NSString *pickupAddress;
 @property (nonatomic, strong) NSString *pickupDate;
 @property (nonatomic, strong) NSString *insuranceDisplay;
@@ -22,9 +22,9 @@
 @property (nonatomic, strong) LatLng *dropoffLatLng;
 @property (nonatomic, strong) NSString *dropoffDate;
 @property (nonatomic, strong) NSString *reservationCode;
-@property (nonatomic, assign) NSInteger extrasPrice;
-@property (nonatomic, assign) NSInteger insurancePrice;
-@property (nonatomic, assign) NSInteger total;
+@property (nonatomic, assign) double extrasPrice;
+@property (nonatomic, assign) double insurancePrice;
+@property (nonatomic, assign) double total;
 @property (nonatomic, strong) LatLng *pickupLatLng;
 @property (nonatomic, strong) NSString *extrasDisplay;
 @property (nonatomic, strong) NSString *payPalPaymentId;

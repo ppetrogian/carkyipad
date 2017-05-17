@@ -50,7 +50,7 @@
     // set number of days
     DSLCalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
     NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
-    self.stepsController.results[kResultsDays] = @(components.day+1);
+    self.stepsController.results[kResultsDays] = @(components.day);
     // load avaailable cars
     AppDelegate *app = [AppDelegate instance];
     CarkyApiClient *api = [CarkyApiClient sharedService];

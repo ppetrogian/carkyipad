@@ -29,5 +29,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *insuranceItemsLabel;
 @property (nonatomic, weak) IBOutlet UILabel *carPriceLabel;
 @property (nonatomic, weak) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *carTypeImageView;
 
 @end

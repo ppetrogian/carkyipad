@@ -332,7 +332,6 @@ static CarkyApiClient *_sharedService = nil;
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self POST:@"api/Partner/CreateRentalBookingRequestForIpad" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        //responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         RentalBookingResponse *resultObj = [RentalBookingResponse modelObjectWithDictionary:responseObject];
         block([NSArray arrayWithObject:resultObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

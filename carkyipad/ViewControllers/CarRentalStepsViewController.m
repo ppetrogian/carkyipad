@@ -159,6 +159,7 @@
     
     NSInteger dropoffWellKnownLocationId = ((NSNumber*)self.results[kResultsDropoffLocationId]).integerValue;
     if(dropoffWellKnownLocationId == 0) {
+        // drop-off same as pickup
         bookInfo.wellKnownDropoffLocationId = bookInfo.wellKnownPickupLocationId;
         bookInfo.dropoffLocation = bookInfo.pickupLocation;
         bookInfo.dropoffLocation.address = bookInfo.pickupLocation.address;
@@ -166,6 +167,7 @@
     else if(dropoffWellKnownLocationId > 0)
         bookInfo.wellKnownDropoffLocationId = dropoffWellKnownLocationId;
     else {
+        // negative well-known locationId means custom location
         bookInfo.dropoffLocation = self.selectedDropoffLocation;
         bookInfo.dropoffLocation.address = self.results[kResultsDropoffLocationName];
     }
@@ -211,18 +213,23 @@
     confirmationView.dropoffDateLabel.text = response.dropoffDate;
     confirmationView.pickupTimeLabel.text = response.pickupTime;
     confirmationView.dropoffTimeLabel.text = response.dropoffTime;
+    // car type image view
+    NSURL *urlCar = [NSURL URLWithString:response.carImage];
+    NSData *dataCar = [NSData dataWithContentsOfURL:urlCar];
+    UIImage *imgCar = [[UIImage alloc] initWithData:dataCar];
+    confirmationView.carTypeImageView.image = imgCar;
     //-----------
     confirmationView.nameLabel.text = response.displayName;
     confirmationView.reservationLabel.text = response.reservationCode;
     NSInteger nDays = ((NSNumber*)self.results[kResultsDays]).integerValue;
     confirmationView.durationLabel.text = [NSString stringWithFormat:@"%zd days",nDays];
     //-------------------
-     confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%zd", response.extrasPrice];
+     confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.extrasPrice];
      confirmationView.extrasItemsLabel.text = response.extrasDisplay;
-     confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%zd", response.insurancePrice];
+     confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.insurancePrice];
      confirmationView.insuranceItemsLabel.text = response.insuranceDisplay;
-     confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%zd", response.carPrice];
-     confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%zd", response.total];
+     confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.carPrice];
+     confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.total];
     //confiramtionView.delegate = self;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.window addSubview:confirmationView];
