@@ -10,7 +10,8 @@
 
 NSString *const kPaymentInfoPaymentMethod = @"PaymentMethod";
 NSString *const kPaymentInfostripeCardToken = @"StripeCardToken";
-
+NSString *const kPaymentInfoPayPalResponse = @"PayPalResponse";
+NSString *const kPaymentInfoPayPalAuthorizationId = @"PayPalAuthorizationId";
 
 @interface PaymentInfo ()
 
@@ -34,9 +35,10 @@ NSString *const kPaymentInfostripeCardToken = @"StripeCardToken";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.paymentMethod = [[self objectOrNilForKey:kPaymentInfoPaymentMethod fromDictionary:dict] integerValue];
-            self.stripeCardToken = [self objectOrNilForKey:kPaymentInfostripeCardToken fromDictionary:dict];
-
+        self.paymentMethod = [[self objectOrNilForKey:kPaymentInfoPaymentMethod fromDictionary:dict] integerValue];
+        self.stripeCardToken = [self objectOrNilForKey:kPaymentInfostripeCardToken fromDictionary:dict];
+        self.payPalResponse = [self objectOrNilForKey:kPaymentInfoPayPalResponse fromDictionary:dict];
+        self.payPalAuthorizationId = [self objectOrNilForKey:kPaymentInfoPayPalAuthorizationId fromDictionary:dict];
     }
     
     return self;
@@ -47,6 +49,8 @@ NSString *const kPaymentInfostripeCardToken = @"StripeCardToken";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kPaymentInfoPaymentMethod];
     [mutableDict setValue:self.stripeCardToken forKey:kPaymentInfostripeCardToken];
+    [mutableDict setValue:self.payPalResponse forKey:kPaymentInfoPayPalResponse];
+    [mutableDict setValue:self.payPalAuthorizationId forKey:kPaymentInfoPayPalAuthorizationId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

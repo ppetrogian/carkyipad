@@ -34,6 +34,9 @@
 #import "RentalBookingResponse.h"
 #import "BookingInfo.h"
 #import "PaymentInfo.h"
+#import "ChargesForIPadResponse.h"
+#import "BookingInfoResponse.h"
+#import "PayPalPaymentInfo.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;

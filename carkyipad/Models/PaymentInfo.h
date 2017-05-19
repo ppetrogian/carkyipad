@@ -13,6 +13,8 @@
 
 @property (nonatomic, assign) NSInteger paymentMethod;
 @property (nonatomic, strong) NSString *stripeCardToken;
+@property (nonatomic, strong) NSString *payPalResponse;
+@property (nonatomic, strong) NSString *payPalAuthorizationId;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

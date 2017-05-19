@@ -22,7 +22,7 @@
 #import "RentalConfirmationView.h"
 
 @interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, PayPalPaymentDelegate, UITextFieldDelegate>
-@property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
+@property (nonatomic, readonly, weak) CarRentalStepsViewController *parentRentalController;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @property (nonatomic, strong, readwrite) PayPalConfiguration *payPalConfiguration;
 @property (nonatomic, assign) BOOL isForTransfer;
@@ -72,8 +72,12 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    NSInteger price = self.isForTransfer ? self.parentTransferController.selectedCarCategory.price : ((NSNumber*)self.parentController.results[kResultsTotalPrice]).integerValue;
-    [self.payNowButton setTitle:[NSString stringWithFormat:@"PAY NOW       %ld€", price] forState: UIControlStateNormal];
+    NSString *strText = @"FIND DRIVER";
+    if (!self.isForTransfer) {
+        double price = ((NSNumber*)self.parentRentalController.results[kResultsTotalPrice]).doubleValue;
+        strText = [NSString stringWithFormat:@"PAY NOW       %.2lf€", price];
+    }
+    [self.payNowButton setTitle:strText forState: UIControlStateNormal];
 }
 
 #pragma mark - Navigation
@@ -88,7 +92,7 @@
     }
 }
 
--(CarRentalStepsViewController *)parentController {
+-(CarRentalStepsViewController *)parentRentalController {
     return (CarRentalStepsViewController *)self.stepsController;
 }
 
@@ -150,15 +154,15 @@
     cardParams.cvc = self.cvvTextField.text;
     cardParams.expMonth = self.expiryDateTextField.dateComponents.month;
     cardParams.expYear = self.expiryDateTextField.dateComponents.year;
-    self.parentController.cardParams = cardParams;
+    self.parentRentalController.cardParams = cardParams;
     [self.payNowButton disableButton];
     if (self.isForTransfer) {
-        [self.parentTransferController payWithCreditCard:^(BOOL b) {
-            [self.payNowButton enableButton];
-        }];
+        [self.payNowButton enableButton];
+        //[self.parentTransferController payTransferWithCreditCard:^(BOOL b) { }];
+        [self.parentTransferController showNextStep];
     }
     else {
-        [self.parentController payRentalWithCreditCard:^(BOOL b) {
+        [self.parentRentalController payRentalWithCreditCard:^(BOOL b) {
             [self.payNowButton enableButton];
         }];
     }
@@ -171,7 +175,7 @@
 }
 
 - (IBAction)backButton_Click:(id)sender {
-    [self.parentController showPreviousStep];
+    [self.parentRentalController showPreviousStep];
 }
 
 - (void)showPaypalUIforPayment:(PayPalPayment *)payment {
@@ -182,7 +186,7 @@
     // To place an Order, and defer both Authorization and Capture to
     // your server, use PayPalPaymentIntentOrder.
     // (PayPalPaymentIntentOrder is valid only for PayPal payments, not credit card payments.)
-    payment.intent = PayPalPaymentIntentSale;
+    payment.intent = PayPalPaymentIntentAuthorize;
     // If your app collects Shipping Address information from the customer,
     // or already stores that information on your server, you may provide it here.
     //payment.shippingAddress = address; // a previously-created PayPalShippingAddress object
@@ -195,7 +199,7 @@
         // If, for example, the amount was negative or the shortDescription was empty, then
         // this payment would not be processable. You would want to handle that here.
         NSLog(@"Error payment not processable");
-        [self.parentController showAlertViewWithMessage:@"Error" andTitle:@"PayPal Payment is not processable"];
+        [self.parentRentalController showAlertViewWithMessage:@"Error" andTitle:@"PayPal Payment is not processable"];
     } else {
         // Create a PayPalPaymentViewController.
         PayPalPaymentViewController *paymentViewController;
@@ -207,9 +211,9 @@
 }
 
 - (IBAction)payWithPaypalButton_click:(UIButton *)sender {
+    CarkyApiClient *api = [CarkyApiClient sharedService];
     if (self.isForTransfer) {
         TransferBookingRequest *request = [self.parentTransferController getPaymentRequestWithCC:NO];
-        CarkyApiClient *api = [CarkyApiClient sharedService];
         [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
             CreateTransferBookingRequestPayPalPaymentResponse *responseObj = array.firstObject;
             // Create a PayPalPayment
@@ -218,6 +222,21 @@
             payment.amount = [[NSDecimalNumber alloc] initWithString:responseObj.amount];
             payment.currencyCode = responseObj.currency;
             payment.shortDescription = responseObj.internalBaseClassDescription;
+            [self showPaypalUIforPayment:payment];
+        }];
+    }
+    else {
+        RentalBookingRequest *request = [self.parentRentalController getRentalRequestWithCC:NO];
+        [api ChargesForIpad:request withBlock:^(NSArray *array) {
+            ChargesForIPadResponse *chargesResponse = array.firstObject;
+            // Create a PayPalPayment
+            PayPalPayment *payment = [[PayPalPayment alloc] init];
+            // Amount, currency, and description
+            NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+            [fmt setPositiveFormat:@"0.##"];
+            payment.amount = [[NSDecimalNumber alloc] initWithString:[fmt stringFromNumber:[NSNumber numberWithFloat:chargesResponse.total]]];
+            payment.currencyCode = chargesResponse.currency;
+            payment.shortDescription = chargesResponse.chargesDescription;
             [self showPaypalUIforPayment:payment];
         }];
     }
@@ -249,7 +268,10 @@
         // the confirmation and try again later.
     NSLog(@"%@", completedPayment.confirmation);
     if (self.isForTransfer) {
-        [self.parentTransferController payWithPaypal:newStr];
+        [self.parentTransferController payTransferWithPaypal:newStr];
+    }
+    else {
+        [self.parentRentalController payRentalWithPaypal:newStr andResponse:completedPayment.confirmation];
     }
 }
 

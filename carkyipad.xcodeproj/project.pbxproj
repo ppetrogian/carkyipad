@@ -13,6 +13,7 @@
 		AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2857611EB01B130047A649 /* PaymentCardEditorField.m */; };
 		AE34F1591E903772000D3997 /* AvailableCars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1561E903772000D3997 /* AvailableCars.m */; };
 		AE34F15A1E903772000D3997 /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1581E903772000D3997 /* Cars.m */; };
+		AE5845AF1ECF27EA0083A296 /* ChargesForIPadResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */; };
 		AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
 		AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
 		AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351BF1E71E32200065F0F /* FleetLocations.m */; };
@@ -90,6 +91,9 @@
 		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
+		AE956AEE1ECF578500041E18 /* BookingInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AED1ECF578500041E18 /* BookingInfoResponse.m */; };
+		AE956AF11ECF57B200041E18 /* PayPalPaymentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AF01ECF57B200041E18 /* PayPalPaymentInfo.m */; };
+		AE956AF41ECF57E200041E18 /* RentalBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AF31ECF57E200041E18 /* RentalBookingResponse.m */; };
 		AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */; };
 		AEA9E92E1EAE30A400CC84D5 /* DateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92D1EAE30A400CC84D5 /* DateTime.m */; };
 		AEA9E9311EAE58C900CC84D5 /* TransferBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */; };
@@ -166,7 +170,6 @@
 		D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */; };
 		D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */; };
 		D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D159515A1EADED4D00540076 /* WaitForDriverViewController.m */; };
-		D1754B8B1ECBBE3F00D700AD /* RentalBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D1754B8A1ECBBE3F00D700AD /* RentalBookingResponse.m */; };
 		D18C67871ECBB84500566DCC /* RentalBookingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D18C67861ECBB84500566DCC /* RentalBookingRequest.m */; };
 		D18C678C1ECBB86300566DCC /* BookingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D18C67891ECBB86300566DCC /* BookingInfo.m */; };
 		D18C678D1ECBB86300566DCC /* PaymentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D18C678B1ECBB86300566DCC /* PaymentInfo.m */; };
@@ -247,6 +250,8 @@
 		AE34F1561E903772000D3997 /* AvailableCars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableCars.m; sourceTree = "<group>"; };
 		AE34F1571E903772000D3997 /* Cars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cars.h; sourceTree = "<group>"; };
 		AE34F1581E903772000D3997 /* Cars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cars.m; sourceTree = "<group>"; };
+		AE5845AD1ECF27EA0083A296 /* ChargesForIPadResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargesForIPadResponse.h; sourceTree = "<group>"; };
+		AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargesForIPadResponse.m; sourceTree = "<group>"; };
 		AE6351B71E6E865600065F0F /* CarkyApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyApiClient.h; sourceTree = "<group>"; };
 		AE6351B81E6E865600065F0F /* CarkyApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyApiClient.m; sourceTree = "<group>"; };
 		AE6351BD1E71E32200065F0F /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
@@ -335,6 +340,12 @@
 		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE956AEC1ECF578500041E18 /* BookingInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingInfoResponse.h; sourceTree = "<group>"; };
+		AE956AED1ECF578500041E18 /* BookingInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingInfoResponse.m; sourceTree = "<group>"; };
+		AE956AEF1ECF57B200041E18 /* PayPalPaymentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentInfo.h; sourceTree = "<group>"; };
+		AE956AF01ECF57B200041E18 /* PayPalPaymentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalPaymentInfo.m; sourceTree = "<group>"; };
+		AE956AF21ECF57E200041E18 /* RentalBookingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBookingResponse.h; sourceTree = "<group>"; };
+		AE956AF31ECF57E200041E18 /* RentalBookingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalBookingResponse.m; sourceTree = "<group>"; };
 		AEA9E9291EAE25FF00CC84D5 /* RegisterClientResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClientResponse.h; sourceTree = "<group>"; };
 		AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClientResponse.m; sourceTree = "<group>"; };
 		AEA9E92C1EAE30A400CC84D5 /* DateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTime.h; sourceTree = "<group>"; };
@@ -451,8 +462,6 @@
 		D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentForTaxiViewController.m; path = ViewControllers/PaymentForTaxiViewController.m; sourceTree = "<group>"; };
 		D15951591EADED4D00540076 /* WaitForDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitForDriverViewController.h; path = ViewControllers/WaitForDriverViewController.h; sourceTree = "<group>"; };
 		D159515A1EADED4D00540076 /* WaitForDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitForDriverViewController.m; path = ViewControllers/WaitForDriverViewController.m; sourceTree = "<group>"; };
-		D1754B891ECBBE3F00D700AD /* RentalBookingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBookingResponse.h; sourceTree = "<group>"; };
-		D1754B8A1ECBBE3F00D700AD /* RentalBookingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalBookingResponse.m; sourceTree = "<group>"; };
 		D18C67851ECBB84500566DCC /* RentalBookingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBookingRequest.h; sourceTree = "<group>"; };
 		D18C67861ECBB84500566DCC /* RentalBookingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalBookingRequest.m; sourceTree = "<group>"; };
 		D18C67881ECBB86300566DCC /* BookingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingInfo.h; sourceTree = "<group>"; };
@@ -1110,12 +1119,18 @@
 			children = (
 				D18C67881ECBB86300566DCC /* BookingInfo.h */,
 				D18C67891ECBB86300566DCC /* BookingInfo.m */,
+				AE956AEC1ECF578500041E18 /* BookingInfoResponse.h */,
+				AE956AED1ECF578500041E18 /* BookingInfoResponse.m */,
+				AE956AEF1ECF57B200041E18 /* PayPalPaymentInfo.h */,
+				AE956AF01ECF57B200041E18 /* PayPalPaymentInfo.m */,
 				D18C678A1ECBB86300566DCC /* PaymentInfo.h */,
 				D18C678B1ECBB86300566DCC /* PaymentInfo.m */,
 				D18C67851ECBB84500566DCC /* RentalBookingRequest.h */,
 				D18C67861ECBB84500566DCC /* RentalBookingRequest.m */,
-				D1754B891ECBBE3F00D700AD /* RentalBookingResponse.h */,
-				D1754B8A1ECBBE3F00D700AD /* RentalBookingResponse.m */,
+				AE956AF21ECF57E200041E18 /* RentalBookingResponse.h */,
+				AE956AF31ECF57E200041E18 /* RentalBookingResponse.m */,
+				AE5845AD1ECF27EA0083A296 /* ChargesForIPadResponse.h */,
+				AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */,
 			);
 			name = Rental;
 			sourceTree = "<group>";
@@ -1401,7 +1416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1431,7 +1446,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1474,7 +1489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1571,6 +1586,7 @@
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */,
 				AE6353031E75E1FA00065F0F /* NBPhoneNumberUtil.m in Sources */,
+				AE5845AF1ECF27EA0083A296 /* ChargesForIPadResponse.m in Sources */,
 				AE63520F1E75B18700065F0F /* FlatPillButtonCell.m in Sources */,
 				E1C2EE5C1EC339910021BEC2 /* CarCollectionViewCell.m in Sources */,
 				D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */,
@@ -1580,6 +1596,7 @@
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				AEAF1A941E876EEF00C03768 /* PSLocationButton.m in Sources */,
 				D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */,
+				AE956AEE1ECF578500041E18 /* BookingInfoResponse.m in Sources */,
 				AE6352FF1E75E1FA00065F0F /* NBPhoneNumberDesc.m in Sources */,
 				D18C678D1ECBB86300566DCC /* PaymentInfo.m in Sources */,
 				AE6352FB1E75E1FA00065F0F /* NBPhoneNumber.m in Sources */,
@@ -1589,6 +1606,7 @@
 				D1AA29501EC926F40080AD93 /* InsurancesCollectionViewCell.m in Sources */,
 				AE6352F11E75E1FA00065F0F /* NBMetadataCoreTestMapper.m in Sources */,
 				AE6352F71E75E1FA00065F0F /* NBPhoneMetaData.m in Sources */,
+				AE956AF11ECF57B200041E18 /* PayPalPaymentInfo.m in Sources */,
 				D18C67871ECBB84500566DCC /* RentalBookingRequest.m in Sources */,
 				AE6352F91E75E1FA00065F0F /* NBPhoneMetaDataGenerator.m in Sources */,
 				D19FF99B1E91908700F735A0 /* PSTextBox.m in Sources */,
@@ -1604,12 +1622,12 @@
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				D143DD1E1EA533C300F12C36 /* RegisterClientRequest.m in Sources */,
+				AE956AF41ECF57E200041E18 /* RentalBookingResponse.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */,
 				AE6352B81E75DE3000065F0F /* HomeViewController.m in Sources */,
 				AE63520E1E75B18700065F0F /* FlatPillButton.m in Sources */,
 				D12218F51E8B121500AABBBE /* CarStepViewController.m in Sources */,
-				D1754B8B1ECBBE3F00D700AD /* RentalBookingResponse.m in Sources */,
 				D15512231EB2AEC300D924C0 /* PSCardExpiryTextField.m in Sources */,
 				AEAF1AEC1E87888D00C03768 /* DSLCalendarDayCalloutView.m in Sources */,
 				D1B253CE1E85F26A005365B2 /* MIRadioButtonGroup.m in Sources */,
@@ -1826,7 +1844,7 @@
 			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = TTAAXU5Z2A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1841,8 +1859,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c73b2f6f-63e9-4227-814f-ccb257837fe0";
-				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
+				PROVISIONING_PROFILE = "b12d2bb7-fce7-4d2d-8dd7-3169151f3f5f";
+				PROVISIONING_PROFILE_SPECIFIER = CarkyIpad_DEV;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -1867,8 +1885,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c73b2f6f-63e9-4227-814f-ccb257837fe0";
-				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
+				PROVISIONING_PROFILE = "d62fca77-ec0b-4568-a171-b036e940e8d0";
+				PROVISIONING_PROFILE_SPECIFIER = "CarkyIpadPROFILE-13Devices";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

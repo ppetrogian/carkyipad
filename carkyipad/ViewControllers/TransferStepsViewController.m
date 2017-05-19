@@ -277,29 +277,29 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     return request;
 }
 
-- (void)MakeTransferRequest:(BlockBoolean)block request:(TransferBookingRequest *)request {
+- (void)MakeTransferRequest:(BlockString)block request:(TransferBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
     MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
-    [api CreateTransferBookingRequest:request withBlock:^(NSArray *array) {
+    [api CreateTransferBooking:request withBlock:^(NSArray *array) {
         [AppDelegate hideProgressNotification:hud];
         if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
             TransferBookingResponse *responseObj = array.firstObject;
             if (responseObj.bookingId.length > 0) {
-                block(YES);
+                block(responseObj.bookingId);
                 self.transferBookingId = responseObj.bookingId;
-                [self showNextStep];
+                //[self showNextStep];
             } else {
-                block(NO);
+                block(@"");
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
             }
         } else {
-            block(NO);
+            block(@"");
             [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
         }
     }];
 }
 
--(void)payWithCreditCard:(BlockBoolean)block; {
+-(void)payTransferWithCreditCard:(BlockString)block; {
     // send payment to back end
     STPAPIClient *stpClient = [STPAPIClient sharedClient];
     
@@ -307,7 +307,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         if (error) {
             NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
             [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
-            block(NO);
+            block(@"");
             return;
         }
         
@@ -318,13 +318,12 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
     
     
--(void)payWithPaypal:(NSString *)confirmation {
+-(void)payTransferWithPaypal:(NSString *)confirmation {
     TransferBookingRequest *request = [self getPaymentRequestWithCC:NO];
-    request.payPalPaymentResponse = confirmation; //[@"response"][@"id"];
+    request.payPalPaymentResponse = confirmation; 
     NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     request.payPalPayerId = identifier;
-    [self MakeTransferRequest:^(BOOL b) {} request:request]; // create transfer request
-    
+    [self MakeTransferRequest:^(NSString *b) {} request:request]; // create transfer request
 }
 
 

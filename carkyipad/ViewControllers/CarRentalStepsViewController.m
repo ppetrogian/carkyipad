@@ -52,12 +52,19 @@
 
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr {
     UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
-    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController]];
+    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController withBlock:^(BOOL b) {}]];
     [self presentViewController:myAlertController animated:YES completion:nil];
 }
 
--(UIAlertAction *)dismissAlertView_OKTapped:(UIAlertController *)myAlertController {
+-(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr withBlock:(BlockBoolean)block {
+    UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
+    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController withBlock:block]];
+    [self presentViewController:myAlertController animated:YES completion:nil];
+}
+
+-(UIAlertAction *)dismissAlertView_OKTapped:(UIAlertController *)myAlertController withBlock:(BlockBoolean)block {
     return [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
+        block(YES);
         [myAlertController dismissViewControllerAnimated:YES completion:nil];
     }];
 }
@@ -175,6 +182,13 @@
     return request;
 }
 
+-(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict  {
+    RentalBookingRequest *request = [self getRentalRequestWithCC:NO];
+    request.paymentInfo.payPalResponse = confirmationString;
+    request.paymentInfo.payPalAuthorizationId = confirmDict[@"response"][@"authorization_id"];
+    [self MakeRentalRequest:^(BOOL b) {} request:request]; // create rental request
+}
+
 - (void)MakeRentalRequest:(BlockBoolean)block request:(RentalBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
     MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
@@ -183,7 +197,7 @@
         
         if ([array.firstObject isKindOfClass:RentalBookingResponse.class]) {
             RentalBookingResponse *responseObj = array.firstObject;
-            if (responseObj.reservationCode.length > 0) {
+            if (responseObj.bookingInfo.reservationCode.length > 0) {
                 block(YES);
                 [self displayRentalConfirmationView:responseObj];
             } else {
@@ -207,29 +221,29 @@
     RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
     confirmationView.frame = [UIScreen mainScreen].bounds;
     confirmationView.alpha = 0;
-    confirmationView.pickupAddressLabel.text = response.pickupAddress;
-    confirmationView.dropoffAddressLabel.text = response.dropoffAddress;
-    confirmationView.pickupDateLabel.text = response.pickupDate;
-    confirmationView.dropoffDateLabel.text = response.dropoffDate;
-    confirmationView.pickupTimeLabel.text = response.pickupTime;
-    confirmationView.dropoffTimeLabel.text = response.dropoffTime;
+    confirmationView.pickupAddressLabel.text = response.bookingInfo.pickupAddress;
+    confirmationView.dropoffAddressLabel.text = response.bookingInfo.dropoffAddress;
+    confirmationView.pickupDateLabel.text = response.bookingInfo.pickupDate;
+    confirmationView.dropoffDateLabel.text = response.bookingInfo.dropoffDate;
+    confirmationView.pickupTimeLabel.text = response.bookingInfo.pickupTime;
+    confirmationView.dropoffTimeLabel.text = response.bookingInfo.dropoffTime;
     // car type image view
-    NSURL *urlCar = [NSURL URLWithString:response.carImage];
+    NSURL *urlCar = [NSURL URLWithString:response.bookingInfo.carImage];
     NSData *dataCar = [NSData dataWithContentsOfURL:urlCar];
     UIImage *imgCar = [[UIImage alloc] initWithData:dataCar];
     confirmationView.carTypeImageView.image = imgCar;
     //-----------
-    confirmationView.nameLabel.text = response.displayName;
-    confirmationView.reservationLabel.text = response.reservationCode;
+    confirmationView.nameLabel.text = response.bookingInfo.displayName;
+    confirmationView.reservationLabel.text = response.bookingInfo.reservationCode;
     NSInteger nDays = ((NSNumber*)self.results[kResultsDays]).integerValue;
     confirmationView.durationLabel.text = [NSString stringWithFormat:@"%zd days",nDays];
     //-------------------
-     confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.extrasPrice];
-     confirmationView.extrasItemsLabel.text = response.extrasDisplay;
-     confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.insurancePrice];
-     confirmationView.insuranceItemsLabel.text = response.insuranceDisplay;
-     confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.carPrice];
-     confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.total];
+     confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.extrasPrice];
+     confirmationView.extrasItemsLabel.text = response.bookingInfo.extrasDisplay;
+     confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.insurancePrice];
+     confirmationView.insuranceItemsLabel.text = response.bookingInfo.insuranceDisplay;
+     confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.carPrice];
+     confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.total];
     //confiramtionView.delegate = self;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.window addSubview:confirmationView];

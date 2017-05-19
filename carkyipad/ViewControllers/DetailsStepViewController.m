@@ -35,7 +35,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 
 @interface DetailsStepViewController ()<DSLCalendarViewDelegate, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;
-@property (nonatomic, readonly, weak) CarRentalStepsViewController *parentController;
+@property (nonatomic, weak) CarRentalStepsViewController *parentRentalController;
 @property (nonatomic, strong) UITextField *highlightedFld;
 @end
 
@@ -47,7 +47,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     // set calendar delegate
     self.calendarView.delegate = self;
     //[self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
-    _parentController = (CarRentalStepsViewController *)self.stepsController;
+    self.parentRentalController = (CarRentalStepsViewController *)self.stepsController;
     
     [self setupInit];
     TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
@@ -286,7 +286,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
                 range = [[DSLCalendarRange alloc] initWithStartDay:newStartDay endDay:range.endDay];
                 calendarView.selectedRange = range;
             } else if([range.endDay.date compare:[NSDate date]] == NSOrderedAscending) {
-                [self.parentController showAlertViewWithMessage:NSLocalizedString(@"A past date cannot be selected", nil) andTitle:@"Error"];
+                [self.parentRentalController showAlertViewWithMessage:NSLocalizedString(@"A past date cannot be selected", nil) andTitle:@"Error"];
                 return;
             }
            // if we selected a range display both fields again
@@ -359,13 +359,13 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         self.pickupTxtFld.selectedTextRange = [self.pickupTxtFld textRangeFromPosition:self.pickupTxtFld.beginningOfDocument toPosition:self.pickupTxtFld.beginningOfDocument];
         results[kResultsPickupLocationId] = @(self.currentLocation.identifier);
         results[kResultsPickupLocationName] = self.currentLocation.name;
-        self.parentController.selectedPickupLocation = self.currentLocation;
+        self.parentRentalController.selectedPickupLocation = self.currentLocation;
     } else {
         self.dropoffTxtFld.text = self.currentLocation.name;
         self.dropoffTxtFld.selectedTextRange = [self.dropoffTxtFld textRangeFromPosition:self.dropoffTxtFld.beginningOfDocument toPosition:self.dropoffTxtFld.beginningOfDocument];
         results[kResultsDropoffLocationId] = @(self.currentLocation.identifier);
         results[kResultsDropoffLocationName] = self.currentLocation.name;
-        self.parentController.selectedDropoffLocation = self.currentLocation;
+        self.parentRentalController.selectedDropoffLocation = self.currentLocation;
     }
     [self setEditing:NO];
     self.locationsTableView.hidden = YES;

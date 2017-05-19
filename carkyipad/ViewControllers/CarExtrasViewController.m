@@ -36,6 +36,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 @property (nonatomic,assign) BOOL mustPrepare;
 @property (nonatomic,assign) NSInteger priceExtras;
 @property (nonatomic,assign) NSInteger priceInsurances;
+@property (nonatomic, weak) CarRentalStepsViewController *parentRentalController;
 @end
 
 @implementation CarExtrasViewController
@@ -46,6 +47,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     // setup table properties
     _priceExtras = 0;
     _priceInsurances = 0;
+    self.parentRentalController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
 }
 -(void) setupInit{
@@ -197,7 +199,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 }
 
 #pragma mark -
--(IBAction) nextButtonAction:(UIButton *)sender{
+-(IBAction) nextButtonAction:(UIButton *)sender {
+    // save selected info to parent results
     AppDelegate *app = [AppDelegate instance];
     NSMutableArray *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
     [selectedExtrasListArray enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -208,10 +211,19 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     self.stepsController.results[kResultsExtras] = extras;
     NSNumber *objInsuranceId = selectedInsurance ? @(selectedInsurance.row) : @(0);
     self.stepsController.results[kResultsInsuranceId] = objInsuranceId;
-    if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
-        [self.stepDelegate didSelectedNext:sender];
-    }
+    
+    // call api to get charges
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    RentalBookingRequest *request = [self.parentRentalController getRentalRequestWithCC:YES];
+    [api ChargesForIpad:request withBlock:^(NSArray *array) {
+        ChargesForIPadResponse *charges = array.firstObject;
+        self.parentRentalController.results[kResultsTotalPrice] = @(charges.total);
+        if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
+            [self.stepDelegate didSelectedNext:sender];
+        }
+    }];
 }
+
 -(IBAction)backButtonAction:(UIButton *)sender{
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedBack:)]) {
         [self.stepDelegate didSelectedBack:sender];

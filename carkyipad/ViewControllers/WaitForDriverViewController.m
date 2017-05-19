@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSTimer *pollTimer;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerViewController *layerVc;
-@property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
+@property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @end
 
 @implementation WaitForDriverViewController
@@ -31,10 +31,11 @@
     self.pollInterval = 5.0;
     self.pollTimeout = 60.0;
     self.pollTime = 0.0;
+    [self findDriverAndMakePayment];
 
     // Do any additional setup after loading the view.
-    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
-    [self handlePollTimer:self.pollTimer];
+    //self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
+    //[self handlePollTimer:self.pollTimer];
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
     self.driverCarPhotoImageView.image = catImage;
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
@@ -46,6 +47,33 @@
     self.layerVc.player = self.player;
     [self.player play];
     self.pickupImageView.alpha = 0;
+}
+
+-(TransferStepsViewController *)parentTransferController {
+    return (TransferStepsViewController *)self.stepsController;
+}
+
+-(void)findDriverAndMakePayment {
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+     [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingId) {
+         if ([bookingId isEqualToString:@"0"]) {
+             [self.parentTransferController showAlertViewWithMessage:@"Could not find driver" andTitle:@"Error" withBlock:^(BOOL b) {
+                 [self newBookingButton_Click:nil];
+             }];
+             return;
+         }
+         [api GetCarkyBookingStatusForUser:self.parentTransferController.userId andBooking:bookingId withBlock:^(NSArray *array) {
+             //[self.pollTimer invalidate];
+             [self loadPickupImage];
+             Content *responseObj = array.firstObject;
+             self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
+             self.registrationNoLabel.text = responseObj.registrationNo;
+             if (responseObj.photo) {
+                 UIImage *driverImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: responseObj.photo]]];
+                 self.driverPhotoImageView.image = driverImg;
+             }
+         }];
+     }];
 }
 
 - (void)loadPickupImage {
@@ -60,6 +88,7 @@
     }];
 }
 
+// de[recated
 - (void)handlePollTimer:(NSTimer *)theTimer {
     self.pollTime += self.pollInterval;
     if (self.pollTime > self.pollTimeout) {
@@ -99,7 +128,8 @@
 - (IBAction)newBookingButton_Click:(UIButton *)sender {
     //[self.parentController loadStepViewControllers];
     //[self.parentController showStepForIndex:0];
-    [[AppDelegate instance] loadInitialControllerForMode:1];
+    AppDelegate *app = [AppDelegate instance];
+    [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
 }
 
 
