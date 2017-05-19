@@ -72,11 +72,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-    NSString *strText = @"FIND DRIVER";
-    if (!self.isForTransfer) {
-        double price = ((NSNumber*)self.parentRentalController.results[kResultsTotalPrice]).doubleValue;
-        strText = [NSString stringWithFormat:@"PAY NOW       %.2lf€", price];
-    }
+    double price = self.isForTransfer ? (double)self.parentTransferController.selectedCarCategory.price : ((NSNumber*)self.parentRentalController.results[kResultsTotalPrice]).doubleValue;
+    NSString *strText = [NSString stringWithFormat:@"PAY NOW       %.2lf€", price];
     [self.payNowButton setTitle:strText forState: UIControlStateNormal];
 }
 
