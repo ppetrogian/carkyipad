@@ -54,26 +54,38 @@
 }
 
 -(void)findDriverAndMakePayment {
+    if (self.parentTransferController.payPalPaymentResponse) {
+        [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSString *bookingId) {
+            [self showBooking:bookingId];
+        }]; // create transfer request
+    }
+    else {
+        [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingId) {
+            [self showBooking:bookingId];
+        }];
+    }
+}
+
+-(void)showBooking:(NSString *)bookingId {
+    self.parentTransferController.transferBookingId = bookingId;
+    if ([bookingId isEqualToString:@"0"]) {
+        [self.parentTransferController showAlertViewWithMessage:@"Could not find driver" andTitle:@"Error" withBlock:^(BOOL b) {
+            [self newBookingButton_Click:nil];
+        }];
+        return;
+    }
     CarkyApiClient *api = [CarkyApiClient sharedService];
-     [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingId) {
-         if ([bookingId isEqualToString:@"0"]) {
-             [self.parentTransferController showAlertViewWithMessage:@"Could not find driver" andTitle:@"Error" withBlock:^(BOOL b) {
-                 [self newBookingButton_Click:nil];
-             }];
-             return;
-         }
-         [api GetCarkyBookingStatusForUser:self.parentTransferController.userId andBooking:bookingId withBlock:^(NSArray *array) {
-             //[self.pollTimer invalidate];
-             [self loadPickupImage];
-             Content *responseObj = array.firstObject;
-             self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
-             self.registrationNoLabel.text = responseObj.registrationNo;
-             if (responseObj.photo) {
-                 UIImage *driverImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: responseObj.photo]]];
-                 self.driverPhotoImageView.image = driverImg;
-             }
-         }];
-     }];
+    [api GetCarkyBookingStatusForUser:self.parentTransferController.userId andBooking:bookingId withBlock:^(NSArray *array) {
+        //[self.pollTimer invalidate];
+        [self loadPickupImage];
+        Content *responseObj = array.firstObject;
+        self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
+        self.registrationNoLabel.text = responseObj.registrationNo;
+        if (responseObj.photo) {
+            UIImage *driverImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: responseObj.photo]]];
+            self.driverPhotoImageView.image = driverImg;
+        }
+    }];
 }
 
 - (void)loadPickupImage {

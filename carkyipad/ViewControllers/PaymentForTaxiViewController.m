@@ -158,7 +158,7 @@
     [self.payNowButton disableButton];
     if (self.isForTransfer) {
         [self.payNowButton enableButton];
-        //[self.parentTransferController payTransferWithCreditCard:^(BOOL b) { }];
+        
         [self.parentTransferController showNextStep];
     }
     else {
@@ -268,7 +268,9 @@
         // the confirmation and try again later.
     NSLog(@"%@", completedPayment.confirmation);
     if (self.isForTransfer) {
-        [self.parentTransferController payTransferWithPaypal:newStr];
+        // go to next page and call service from there
+        self.parentTransferController.payPalPaymentResponse = newStr;
+        [self.parentTransferController showNextStep];
     }
     else {
         [self.parentRentalController payRentalWithPaypal:newStr andResponse:completedPayment.confirmation];

@@ -287,14 +287,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             if (responseObj.bookingId.length > 0) {
                 block(responseObj.bookingId);
                 self.transferBookingId = responseObj.bookingId;
-                //[self showNextStep];
             } else {
-                block(@"");
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
+                block(@"0");
             }
         } else {
-            block(@"");
             [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+            block(@"0");
         }
     }];
 }
@@ -318,12 +317,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
     
     
--(void)payTransferWithPaypal:(NSString *)confirmation {
+-(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockString)block {
     TransferBookingRequest *request = [self getPaymentRequestWithCC:NO];
-    request.payPalPaymentResponse = confirmation; 
+    request.payPalPaymentResponse = confirmation;
     NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     request.payPalPayerId = identifier;
-    [self MakeTransferRequest:^(NSString *b) {} request:request]; // create transfer request
+    [self MakeTransferRequest:^(NSString *bookingId) {
+        self.transferBookingId = bookingId;
+        block(bookingId);
+    } request:request]; // create transfer request
 }
 
 

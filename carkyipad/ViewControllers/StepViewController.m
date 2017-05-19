@@ -14,6 +14,7 @@ NSString *const kResultsTotalPrice = @"TotalPrice";
 NSString *const kResultsTotalPriceCar = @"TotalPriceCar";
 NSString *const kResultsTotalPriceExtras = @"TotalPriceExtras";
 NSString *const kResultsTotalPriceInsurance = @"TotalPriceInsurance";
+NSString *const kResultsBookingId = @"BookingId";
 
 @interface StepViewController ()
 
