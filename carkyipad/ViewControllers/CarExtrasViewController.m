@@ -50,6 +50,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     self.parentRentalController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
 }
+
 -(void) setupInit{
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:extraCellIdentifier];
     [self.extrasCollectionView registerClass:[InsurancesCollectionViewCell class] forCellWithReuseIdentifier:insuranceCellIdentifier];

@@ -77,9 +77,6 @@
  */
 - (void)stepsBar:(RMStepsBar *)bar shouldSelectStepAtIndex:(NSInteger)index;
 
-// philip
-@property (nonatomic, assign) BOOL showArrows;
-
 @end
 
 /** ******************************************************************************************************************************

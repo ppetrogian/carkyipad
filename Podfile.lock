@@ -22,7 +22,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - CardIO (5.4.1)
-  - FSCalendar (2.7.5)
+  - FSCalendar (2.7.7)
   - GoogleMaps (2.2.0):
     - GoogleMaps/Maps (= 2.2.0)
   - GoogleMaps/Base (2.2.0)
@@ -34,7 +34,6 @@ PODS:
     - HockeySDK/DefaultLib (= 4.1.5)
   - HockeySDK/DefaultLib (4.1.5)
   - IIAsyncViewController (1.0.1)
-  - MBCalendarKit (3.0.4)
   - MBProgressHUD (1.0.0)
   - PayPal-iOS-SDK (2.17.0):
     - PayPal-iOS-SDK/CardIO (= 2.17.0)
@@ -56,7 +55,6 @@ DEPENDENCIES:
   - GooglePlaces
   - HockeySDK
   - IIAsyncViewController
-  - MBCalendarKit
   - MBProgressHUD
   - PayPal-iOS-SDK
   - SAMKeychain
@@ -68,18 +66,17 @@ SPEC CHECKSUMS:
   BKCardExpiryField: f2e92c0bbb2363b9e9af80ee8348e43ddeff30db
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
-  FSCalendar: f58e734dd98e4b563ec8e4f20612199a32120889
+  FSCalendar: 8bda3534e8590b87124af9a236887314e0359a27
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
   IIAsyncViewController: 7ce71b1b0afb92327abad77f78ec76989f6d7fa1
-  MBCalendarKit: 2a3a60f902162a03bb4957966a4b795af998211f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   Stripe: 1c7aa951a075cced500a919d92b687b35d410705
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: f291945c9a58ed0386b8664b6a29399937db2a1b
+PODFILE CHECKSUM: 1cdc69dd3114b9e4e83092fa6deeba069d6db9d6
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

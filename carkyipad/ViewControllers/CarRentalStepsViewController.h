@@ -11,7 +11,7 @@
 #import "StepSegmentControllerView.h"
 #import "CarkyApiClient.h"
 
-@class PSStepButton, ShadowViewWithText, Location, STPCardParams, RegisterClientRequest;
+@class ShadowViewWithText, Location, STPCardParams, RegisterClientRequest;
 
 @interface CarRentalStepsViewController : RMStepsController <RMStepsBarDelegate, RMStepsBarDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *stepButtonsStack;

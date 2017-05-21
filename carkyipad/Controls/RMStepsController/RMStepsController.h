@@ -28,7 +28,7 @@
 
 #import "RMStepsBar.h"
 #import "RMStep.h"
-@class PSStepButton;
+
 /**
  `RMStepsController` is an iOS control for guiding a user through a process step-by-step. It uses an instance of `RMStepsBar` for showing the currently selected step and the total number of steps.
  
@@ -42,8 +42,6 @@
 
 @interface RMStepsController : UIViewController
 
-@property (weak, nonatomic) IBOutlet PSStepButton *buttonBack;
-@property (weak, nonatomic) IBOutlet PSStepButton *buttonNext;
 @property (nonatomic, weak) IBOutlet RMStepsBar *stepsBar;
 @property (nonatomic, weak) IBOutlet UIView *stepViewControllerContainer;
 @property (nonatomic, readonly) NSInteger currentStepIndex;

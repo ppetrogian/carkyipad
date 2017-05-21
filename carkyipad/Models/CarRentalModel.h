@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-@class DSLCalendarRange;
+@class CalendarRange;
 
 
 @interface CarRentalModel : NSObject
-@property (nonatomic,assign) DSLCalendarRange *dayRange;
+@property (nonatomic,assign) CalendarRange *dayRange;
 @end

@@ -7,9 +7,6 @@
 //
 
 #import "DetailsStepViewController.h"
-#import "PSTextField.h"
-#import "PSInputBox.h"
-#import "UIDropDownMenu.h"
 #import "NSAttributedString+RZExtensions.h"
 #import "RMStepsController.h"
 #import "CarRentalStepsViewController.h"
@@ -17,6 +14,7 @@
 #import "ShadowViewWithText.h"
 #import "UIController.h"
 #import <Stripe/Stripe.h>
+#import "CalendarRange.h"
 
 NSString *const kResultsDays = @"Days";
 NSString *const kResultsDayRange = @"DayRange";
@@ -33,32 +31,75 @@ NSString *const kResultsExtras = @"Extras";
 NSString *const kResultsCarTypeId = @"CarTypeId";
 NSString *const kResultsInsuranceId = @"InsuranceId";
 
-@interface DetailsStepViewController ()<DSLCalendarViewDelegate, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface DetailsStepViewController ()<FSCalendarDataSource,FSCalendarDelegate, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+    NSDate *_date1,*_date2;
+}
 @property (nonatomic,assign) NSInteger selectedFleetLocationId;
 @property (nonatomic, weak) CarRentalStepsViewController *parentRentalController;
 @property (nonatomic, strong) UITextField *highlightedFld;
+@property (strong, nonatomic) NSCalendar *gregorian;
+@property (weak, nonatomic) IBOutlet UIButton *prevMonth;
+@property (weak, nonatomic) IBOutlet UIButton *nextMonth;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+// The start date of the range
+@property (strong, nonatomic) NSDate *date1;
+// The end date of the range
+@property (strong, nonatomic) NSDate *date2;
 @end
 
 @implementation DetailsStepViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    return self;
+}
+
 -(void)viewDidLoad{
     
     [super viewDidLoad];
-    // set calendar delegate
-    self.calendarView.delegate = self;
+    [self initCalendar];
     //[self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
     self.parentRentalController = (CarRentalStepsViewController *)self.stepsController;
-    
     [self setupInit];
     TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
     if (tm == TabletModeTransfer) {
         self.backButton.hidden = YES;
     }
     for (UIPickerView *p in self.pickerViews) {
+        p.dataSource = self;
         p.delegate = self;
     }
     [self.formatPickerView selectRow:1 inComponent:0 animated:NO];
     [self.pickupTxtFld becomeFirstResponder];
+}
+
+-(void)initCalendar {
+    // set calendar
+    [self.calendar registerClass:[CarCalendarViewCell class] forCellReuseIdentifier:@"cell"];
+    self.gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    self.calendar.dataSource = self;
+    self.calendar.delegate = self;
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateFormat = @"yyyy-MM-dd";
+    //    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    
+    self.calendar.calendarHeaderView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+    self.calendar.calendarWeekdayView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+    self.calendar.appearance.headerMinimumDissolvedAlpha = 0;
+    self.calendar.appearance.eventSelectionColor = [UIColor whiteColor];
+    self.calendar.appearance.eventOffset = CGPointMake(0, -7);
+    //self.calendar.today = nil; // Hide the today circle
+    self.calendar.pagingEnabled = YES;
+    self.calendar.allowsMultipleSelection = YES;
+    self.calendar.rowHeight = 30;
+    self.calendar.placeholderType = FSCalendarPlaceholderTypeNone;
+    
+    self.calendar.appearance.titleDefaultColor = [UIColor blackColor];
+    self.calendar.appearance.headerTitleColor = [UIColor blackColor];
+    self.calendar.appearance.titleFont = [UIFont systemFontOfSize:16];
+    self.calendar.weekdayHeight = 0;
+    //calendar.swipeToChooseGesture.enabled = NO;
+    self.calendar.today = nil; // Hide the today circle
 }
 
 - (IBAction)tapView:(id)sender {
@@ -76,7 +117,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 
 -(void) setupInit {
     UIController *controller = [UIController sharedInstance];
-    [controller addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
+    [controller addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 2) hadowRadius:3 shadowOpacity:0.2];
     [controller addLeftPaddingtoTextField:self.pickupTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_pickup"];
     [controller addLeftPaddingtoTextField:self.dropoffTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_drop"];
     [controller addLeftPaddingtoTextField:self.pickupDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
@@ -99,8 +140,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 }
 
 #pragma mark - UITextField Delegate
--(void) textFieldDidBeginEditing:(UITextField *)textField{
-
+-(void) textFieldDidBeginEditing:(UITextField *)textField {
     [self highLightTextField:textField];
 }
 
@@ -137,12 +177,12 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:KSelectedFieldBorderColor withCornerRadious:0 toView:textField];
     if (textField.tag == 101) {
         self.activeFld = textField;
+        [self selectTimeFromDateComponent];
     }
     else if (textField.tag == 102) {
         self.activeDateFld = textField;
         if (textField.text.length > 0) {
-            // todo: does not work well
-           // [self selectTimeFromDateComponent];
+            [self selectTimeFromDateComponent];
         }
     }
 }
@@ -166,6 +206,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 
 
 #pragma mark -  UIPicker Delegate and Datasource
+
 -(CGFloat) pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
     return 70;
 }
@@ -215,13 +256,15 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 }
 
 #pragma mark - UIPickerViewDelegate methods
+// set time component from picker views
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (self.stepsController.results[kResultsDayRange]) {
-        DSLCalendarRange *range = self.stepsController.results[kResultsDayRange];
+        CalendarRange *range = self.stepsController.results[kResultsDayRange];
         // set date component (start or end) the time
         NSDateComponents *d = self.activeDateFld == self.pickupDateTxtFld ? range.startDay : range.endDay;
         if (pickerView.tag == 0) {
             d.hour = row + 1;
+            // set the format am/pm
             [self pickerView:self.formatPickerView didSelectRow:[self.formatPickerView selectedRowInComponent:0] inComponent:0];
             return;
         }
@@ -239,7 +282,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     }
 }
 
--(void)showSelectedDateRange:(DSLCalendarRange *)range forBothFields:(BOOL)both {
+-(void)showSelectedDateRange:(CalendarRange *)range forBothFields:(BOOL)both {
     // if we need attributed use rz_attributedStringWithStringsAndAttributes
     if(both || self.activeDateFld == self.pickupDateTxtFld)
         [self showSelectedDate:range.startDay inField:self.pickupDateTxtFld];
@@ -247,6 +290,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         [self showSelectedDate:range.endDay inField:self.dropOffDateTxtFld];
 }
 
+// perform did select time picker
 -(void)setDateComponentFromSelectedTimeAndDisplay {
     [self.pickerViews enumerateObjectsUsingBlock:^(UIPickerView *p, NSUInteger idx, BOOL * _Nonnull stop) {
         [self pickerView:p didSelectRow:[p selectedRowInComponent:0] inComponent:0];
@@ -257,92 +301,27 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 }
 
 -(void)selectTimeFromDateComponent {
-    DSLCalendarRange *range = self.stepsController.results[kResultsDayRange];
+    CalendarRange *range = self.stepsController.results[kResultsDayRange];
     if (!range) {
         return;
     }
     NSDateComponents *d = self.activeDateFld == self.pickupDateTxtFld ? range.startDay : range.endDay;
-    if (d.minute > 59) {
-        return;
-    }
-    NSArray *indexes = @[@(d.hour>=12 ? d.hour-11 : d.hour-1), @(d.minute), @(d.hour >= 12 ? 1 : 0)];
+    NSArray *indexes = @[@(d.hour>=12 ? d.hour-13 : d.hour-1), @(d.minute), @(d.hour >= 12 ? 1 : 0)];
     [self.pickerViews enumerateObjectsUsingBlock:^(UIPickerView *pv, NSUInteger idx, BOOL * _Nonnull stop) {
         [pv selectRow:((NSNumber *)indexes[idx]).integerValue inComponent:0 animated:NO];
     }];
 }
 
-#pragma mark - DSLCalendarViewDelegate methods
-- (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
-    
-    if (range != nil) {
-        // change the range if dropoff was selected
-        DSLCalendarRange *prevRange = self.stepsController.results[kResultsDayRange];
-       if ([range.endDay.date compare:[NSDate date]] == NSOrderedDescending) {
-             if(prevRange == nil) prevRange = range;
-            // if we selected a single day for drop-off make it range
-            if (self.activeDateFld == self.dropOffDateTxtFld && [range.startDay.date compare:range.endDay.date] == NSOrderedSame
-                   && [prevRange.startDay.date compare:range.endDay.date] == NSOrderedAscending ) {
-                NSDateComponents *newStartDay = [[NSCalendar currentCalendar] components:NSCalendarUnitCalendar | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday fromDate:[AppDelegate dateOnlyPart:prevRange.startDay.date]];
-                range = [[DSLCalendarRange alloc] initWithStartDay:newStartDay endDay:range.endDay];
-                calendarView.selectedRange = range;
-            } else if([range.endDay.date compare:[NSDate date]] == NSOrderedAscending) {
-                [self.parentRentalController showAlertViewWithMessage:NSLocalizedString(@"A past date cannot be selected", nil) andTitle:@"Error"];
-                return;
-            }
-           // if we selected a range display both fields again
-           if([range.startDay.date compare:range.endDay.date] == NSOrderedAscending) { // && (!prevRange || [prevRange.startDay.date compare:range.startDay.date] != NSOrderedSame)) {
-               self.activeDateFld = self.pickupDateTxtFld;
-                [self setDateComponentFromSelectedTimeAndDisplay];
-                [self deHighLightTextField];
-                [self highLightTextField: self.dropOffDateTxtFld];
-               [self setDateComponentFromSelectedTimeAndDisplay];
-           }
-        }
-        [self.stepsController.results setObject:range forKey:kResultsDayRange];
-        [self setDateComponentFromSelectedTimeAndDisplay];
-        [self evaluateNextButtonEnabled];
-    }
-    else {
-        NSLog( @"No selection" );
-    }
-}
-
-
 -(void)showSelectedDate:(NSDateComponents *)day inField:(UITextField *)textField {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE dd MMMM, h:mm a"];
-    NSString *stringFromDate = [dateFormatter stringFromDate:day.date];
-    textField.text = stringFromDate;
-}
-
-- (DSLCalendarRange*)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range {
-    // Don't allow selections before today
-    NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
-    NSDateComponents *startDate = range.startDay;
-    NSDateComponents *endDate = range.endDay;
-    
-    if ([AppDelegate day:startDate isBeforeDay:today] || [AppDelegate day:endDate isBeforeDay:today]) {
-        return nil;
+    if (day) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"EEE dd MMMM, h:mm a"];
+        NSString *stringFromDate = [dateFormatter stringFromDate:day.date];
+        textField.text = stringFromDate;
     }
     else {
-        if ([AppDelegate day:startDate isBeforeDay:today]) {
-            startDate = [today copy];
-        }
-        if ([AppDelegate day:endDate isBeforeDay:today]) {
-            endDate = [today copy];
-        }
-        return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
+        textField.text = @"";
     }
-    
-    return range;
-}
-
-- (void)calendarView:(DSLCalendarView *)calendarView willChangeToVisibleMonth:(NSDateComponents *)month duration:(NSTimeInterval)duration {
-    NSLog(@"Will show %@ in %.3f seconds", month, duration);
-}
-
-- (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month {
-    NSLog(@"Now showing %@", month);
 }
 
 - (IBAction)locationField_EditingChanged:(UITextField *)sender {
@@ -370,6 +349,13 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     [self setEditing:NO];
     self.locationsTableView.hidden = YES;
     [self evaluateNextButtonEnabled];
+    if (self.activeFld == self.pickupTxtFld) {
+        [self highLightTextField:self.dropoffTxtFld];
+    }
+    else if(self.activeFld == self.dropoffTxtFld) {
+        [self highLightTextField:self.pickupDateTxtFld];
+        [self.pickupDateTxtFld becomeFirstResponder];
+    }
 }
 
 - (IBAction)locationField_EditingEnd:(UITextField *)sender {
@@ -427,4 +413,168 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         [self.stepDelegate didSelectedBack:sender];
     }
 }
+
+- (IBAction)previousMonth_Clicked:(UIButton*)sender {
+    NSDate *currentMonth = self.calendar.currentPage;
+    NSDate *previousMonth = [self.gregorian dateByAddingUnit:NSCalendarUnitMonth value:-1 toDate:currentMonth options:0];
+    [self.calendar setCurrentPage:previousMonth animated:YES];
+}
+
+- (IBAction)nextMonth_Clicked:(UIButton*)sender {
+    NSDate *currentMonth = self.calendar.currentPage;
+    NSDate *nextMonth = [self.gregorian dateByAddingUnit:NSCalendarUnitMonth value:1 toDate:currentMonth options:0];
+    [self.calendar setCurrentPage:nextMonth animated:YES];
+}
+
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
+    calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
+    [self.view layoutIfNeeded];
+}
+
+- (NSArray<UIColor *> *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance eventDefaultColorsForDate:(NSDate *)date {
+    return @[appearance.eventDefaultColor];
+}
+
+
+#pragma mark - FSCalendar Datasource
+-(FSCalendarCell *)calendar:(FSCalendar *)calendar cellForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position {
+    
+    CarCalendarViewCell* carCell = [calendar dequeueReusableCellWithIdentifier:@"cell" forDate:date atMonthPosition:position];
+    
+    return carCell;
+}
+
+-(void)calendar:(FSCalendar *)calendar willDisplayCell:(FSCalendarCell *)cell forDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+    
+    [self configureCell:cell forDate:date atMonthPosition:monthPosition];
+    
+    //CarCalendarViewCell* myCell = (CarCalendarViewCell*)cell;
+   // myCell.backgroundView = [[UIView alloc] initWithFrame:myCell.bounds];
+    //myCell.backgroundView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
+}
+
+-(NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {
+    return 0;
+}
+
+#pragma mark - private methods
+- (void)configureCell:(FSCalendarCell *)cell forDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    CarCalendarViewCell *carCell = (CarCalendarViewCell*)cell;
+    
+    // Custom today circle
+    //diyCell.circleImageView.hidden = YES;
+    //    diyCell.circleImageView.hidden = ![self.gregorian isDateInToday:date];
+        
+    SelectionType selectionType = SelectionTypeNone;
+    if (self.date1 && self.date2) {
+        // The date is in the middle of the range
+        BOOL isMiddle = [date compare:self.date1] == NSOrderedDescending &&
+                        [date compare:self.date2] == NSOrderedAscending;
+        if (isMiddle) {
+            selectionType = SelectionTypeMiddle;
+        }
+        else if(self.date1 && [self.gregorian isDate:date inSameDayAsDate:self.date1]) {
+            selectionType = SelectionTypeSingle; //SelectionTypeLeftBorder;
+        }
+        else if(self.date2 && [self.gregorian isDate:date inSameDayAsDate:self.date2]) {
+            selectionType = SelectionTypeSingle; //SelectionTypeRightBorder;
+        }
+    }
+    else if(self.date1 && [self.gregorian isDate:date inSameDayAsDate:self.date1]) {
+        selectionType = SelectionTypeSingle;
+    }
+    
+    if (selectionType == SelectionTypeNone) {
+        carCell.selectionLayer.hidden = YES;
+        return;
+    }
+    
+    carCell.selectionLayer.hidden = NO;
+    carCell.selectionType = selectionType;
+
+}
+
+-(NSDate *)date1 {
+    return _date1;
+}
+
+-(void)setDate1:(NSDate *)value {
+    CalendarRange *range = [[CalendarRange alloc] init];
+    range.startDay = [self.gregorian components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:value];
+    range.startDay.calendar = self.gregorian;
+    _date1 = value;
+    self.stepsController.results[kResultsDayRange] = range;
+    [self setDateComponentFromSelectedTimeAndDisplay];
+}
+
+-(NSDate *)date2 {
+    return _date2;
+}
+
+-(void)setDate2:(NSDate *)value {
+    CalendarRange *range = self.stepsController.results[kResultsDayRange];
+    if (value) {
+        // prepare for end day
+        [self highLightTextField:self.dropOffDateTxtFld];
+        [self.dropOffDateTxtFld becomeFirstResponder];
+        range.endDay = [self.gregorian components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:value];
+        range.endDay.calendar = self.gregorian;
+        self.stepsController.results[kResultsDayRange] = range;
+        [self setDateComponentFromSelectedTimeAndDisplay];
+    } else {
+        range.endDay = nil;
+        self.dropOffDateTxtFld.text = @"";
+    }
+    _date2 = value;
+    [self evaluateNextButtonEnabled];
+}
+
+#pragma mark - FSCalendarDelegate
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    if (calendar.swipeToChooseGesture.state == UIGestureRecognizerStateChanged) {
+        // If the selection is caused by swipe gestures
+        if (!self.date1) {
+            self.date1 = date;
+        } else {
+            if (self.date2) {
+                [calendar deselectDate:self.date2];
+            }
+            self.date2 = date;
+        }
+    } else {
+        if (self.activeDateFld == self.pickupDateTxtFld) {
+            [calendar deselectDate:self.date1];
+            [calendar deselectDate:self.date2];
+            self.date1 = date;
+            self.date2 = nil;
+        } else {
+            self.date2 = date;
+        }
+    }
+    
+    [self configureVisibleCells];
+}
+
+- (BOOL)calendar:(FSCalendar *)calendar shouldSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+    return [date compare:NSDate.date] != NSOrderedAscending;
+}
+
+- (void)calendar:(FSCalendar *)calendar didDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    NSLog(@"did deselect date %@",[self.dateFormatter stringFromDate:date]);
+    [self configureVisibleCells];
+}
+
+- (void)configureVisibleCells
+{
+    [self.calendar.visibleCells enumerateObjectsUsingBlock:^(__kindof FSCalendarCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDate *date = [self.calendar dateForCell:obj];
+        FSCalendarMonthPosition position = [self.calendar monthPositionForCell:obj];
+        [self configureCell:obj forDate:date atMonthPosition:position];
+    }];
+}
+
+
 @end

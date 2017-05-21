@@ -58,6 +58,7 @@
 @end
 
 typedef NS_ENUM(NSUInteger, TabletMode) {
+    TableModeNone,
     TabletModeRentalAndTransfer,
     TabletModeTransfer,
     TabletModeAll

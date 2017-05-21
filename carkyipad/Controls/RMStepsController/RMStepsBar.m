@@ -28,7 +28,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "RMStep.h"
-#import "CircleLineButton.h"
 #define RM_CANCEL_BUTTON_WIDTH 50
 #define RM_MINIMAL_STEP_WIDTH 40
 #define RM_SEPERATOR_WIDTH 10
@@ -105,7 +104,7 @@
                 //step.stepView.strokeColor = step.enabledBarColor;
                 //step.titleLabel.textColor = step.enabledTextColor;
                 step.numberLabel.textColor = step.enabledTextColor;
-                step.stepView.enabled = NO;
+                //step.stepView.enabled = NO;
                 step.hideNumberLabel = NO;
             };
             
@@ -117,7 +116,7 @@
         } else if(blockself.indexOfSelectedStep == idx) {
             void (^stepAnimations)(void) = ^(void) {
                 //step.stepView.strokeColor = step.selectedBarColor;
-                step.stepView.enabled = YES;
+                //step.stepView.enabled = YES;
                 //step.titleLabel.textColor = step.selectedTextColor;
                 step.numberLabel.textColor = step.selectedTextColor;
                 step.hideNumberLabel = self.hideNumberLabelWhenActiveStep;
@@ -131,7 +130,7 @@
         } else if(blockself.indexOfSelectedStep < idx) {
             void (^stepAnimations)(void) = ^(void) {
                 //step.stepView.strokeColor = step.disabledBarColor;
-                step.stepView.enabled = NO;
+                //step.stepView.enabled = NO;
                 //step.titleLabel.textColor = step.disabledTextColor;
                 step.numberLabel.textColor = step.disabledTextColor;
                 step.hideNumberLabel = NO;
@@ -151,7 +150,7 @@
 #pragma mark - Actions
 - (void)reloadData {
     [self.stepDictionaries enumerateObjectsUsingBlock:^(NSDictionary *aStepDict, NSUInteger idx, BOOL *stop) {
-        [[(RMStep *)aStepDict[RM_STEP_KEY] stepView] removeFromSuperview];
+       // [[(RMStep *)aStepDict[RM_STEP_KEY] stepView] removeFromSuperview];
     }];
     [self.stepDictionaries removeAllObjects];
 
@@ -182,12 +181,12 @@
     for(NSDictionary *aStepDict in self.stepDictionaries) {
         RMStep *step = aStepDict[RM_STEP_KEY];
         
-        if(CGRectContainsPoint(step.stepView.frame, touchLocation)) {
-            NSInteger index = [self.stepDictionaries indexOfObject:aStepDict];
-            if(index < self.indexOfSelectedStep && self.allowBackward) {
-                [self.delegate stepsBar:self shouldSelectStepAtIndex:index];
-            }
-        }
+//        if(CGRectContainsPoint(step.stepView.frame, touchLocation)) {
+//            NSInteger index = [self.stepDictionaries indexOfObject:aStepDict];
+//            if(index < self.indexOfSelectedStep && self.allowBackward) {
+//                [self.delegate stepsBar:self shouldSelectStepAtIndex:index];
+//            }
+//        }
     }
 }
 

@@ -7,8 +7,6 @@
 //
 
 #import "CarRentalStepsViewController.h"
-#import "PSStepButton.h"
-#import "CircleLineButton.h"
 #import "StepViewController.h"
 #import "AppDelegate.h"
 #import "DetailsStepViewController.h"
@@ -19,6 +17,8 @@
 #import "StepViewController.h"
 #import "RentalBookingResponse.h"
 #import <Stripe/Stripe.h>
+#import "CalendarRange.h"
+#define kSegmentHeight 50
 
 @interface CarRentalStepsViewController ()<StepDelegate>
 
@@ -38,13 +38,12 @@
         step.stepView = (CircleLineButton *)self.stepButtonsStack.arrangedSubviews[i];
         step.titleLabel = (UILabel *)self.stepLabelsStack.arrangedSubviews[i];
         step.titleLabel.text = step.title;
-        step.stepView.enabled = i == 0;
     }
 
     [self configureSegmentController];
 }
 -(void) configureSegmentController{
-    self.segmentController.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
+    self.segmentController.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kSegmentHeight);
     [self.segmentController setAllSegmentList:@[NSLocalizedString(@"1. Details", nil), NSLocalizedString(@"2. Car", nil), NSLocalizedString(@"3. Extras", nil), NSLocalizedString(@"4. Payment", nil)]];
     [self.segmentController setSelectedSegmentIndex:0];
 }
@@ -153,7 +152,7 @@
 
     bookInfo.agreedToTermsAndConditions = YES;
     payInfo.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
-    DSLCalendarRange *range = self.results[kResultsDayRange];
+    CalendarRange *range = self.results[kResultsDayRange];
     // pickup info
     NSInteger pickupWellKnownLocationId = ((NSNumber*)self.results[kResultsPickupLocationId]).integerValue;
     if(pickupWellKnownLocationId > 0)
@@ -283,5 +282,13 @@
 }
 -(void) didSelectedBack:(UIButton *)sender{
     [self showPreviousStep];
+}
+
+- (void)stepsBarDidSelectCancelButton:(RMStepsBar *)bar {
+    [self canceled];
+}
+
+- (void)stepsBar:(RMStepsBar *)bar shouldSelectStepAtIndex:(NSInteger)index {
+    
 }
 @end

@@ -9,6 +9,8 @@
 #import "CountryPhoneCodeVC.h"
 #import "CountryCell.h"
 #import "SharedInstance.h"
+#import "NBPhoneNumber.h"
+#import "NBPhoneNumberUtil.h"
 
 @interface CountryPhoneCodeVC ()<UIGestureRecognizerDelegate,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -27,7 +29,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self showNavBar];
+    //[self showNavBar];
     
     self.title =@"Select Country";;
     [self setCountryPopUp];
@@ -173,6 +175,35 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
         [_tableview selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
+}
+
+-(NSArray *)getCountryDataByCodeWithCountryCodeArr:(NSArray *)countryCodeArr{
+    
+    NSMutableArray *countries= [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (NSString *code in countryCodeArr) {
+        
+        id countryName = [[NSLocale currentLocale] displayNameForKey:NSLocaleCountryCode value:code];
+        
+        id phoneNumberLocale = [NBPhoneNumberUtil sharedInstance];
+        
+        NSString *phoneCode= [NSString stringWithFormat:@"+%@",[phoneNumberLocale getCountryCodeForRegion:code]];
+        
+        if (![phoneCode isEqualToString:@"+0"]) {
+            
+            NSDictionary *country = @{
+                                      @"countryCode":code,
+                                      @"countryName":countryName,
+                                      @"phoneCode":phoneCode
+                                      };
+            [countries addObject:country];
+        }
+    }
+    
+    NSSortDescriptor *countryDescriptor= [[NSSortDescriptor alloc] initWithKey:@"countryName" ascending:YES];
+    NSArray*sortDescriptors = [NSArray arrayWithObject:countryDescriptor];
+    countries = [[countries sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+    return countries;
 }
 
 -(void)setCountryPopUp{

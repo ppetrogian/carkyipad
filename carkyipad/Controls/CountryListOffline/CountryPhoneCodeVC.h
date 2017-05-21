@@ -6,7 +6,8 @@
 //  Copyright © 2016 ETPL. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
 @protocol SelectDelegate <NSObject>
 
@@ -14,7 +15,7 @@
 
 @end
 
-@interface CountryPhoneCodeVC : BaseViewController
+@interface CountryPhoneCodeVC : UIViewController
 @property (weak, nonatomic) IBOutlet UISearchBar *searchbar;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic, weak) id<SelectDelegate> delegate;

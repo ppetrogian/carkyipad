@@ -2,7 +2,6 @@
 //  RMViewController.m
 
 #import "RMStepsController.h"
-#import "PSStepButton.h"
 
 @interface RMStepsController () <RMStepsBarDelegate, RMStepsBarDataSource>
 

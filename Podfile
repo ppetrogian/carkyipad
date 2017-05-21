@@ -1,7 +1,8 @@
 platform :ios, '9.3'
 
 target 'carkyipad' do
-
+use_frameworks!
+  
 pod 'SAMKeychain'
 pod 'AFNetworking'
 pod 'TGRDataSource'
@@ -20,7 +21,7 @@ end
 target 'carkyipadTests' do
 pod 'SAMKeychain'    
 pod 'AFNetworking'
-pod 'MBCalendarKit'
+#pod 'MBCalendarKit'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 end

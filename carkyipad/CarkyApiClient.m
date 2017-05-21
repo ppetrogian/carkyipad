@@ -238,7 +238,7 @@ static CarkyApiClient *_sharedService = nil;
     [self setAuthorizationHeader];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
     [self GET:@"api/StripePayment/GetPublishableApiKey" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]; ;
+        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         block(str);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
@@ -467,6 +467,20 @@ static CarkyApiClient *_sharedService = nil;
         block(dict[@"Text"]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
+    }];
+}
+
+-(void)ValidateLocation:(LatLng *)ll forLocation:(NSInteger)fleetLocationId withBlock:(BlockBoolean)block {
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *params =  @{@"model.latLng.lat": @(ll.lat), @"model.latLng.lng": @(ll.lng),@"model.fleetLocationId": @(fleetLocationId)};
+    [self GET:@"api/Web/ValidateLocation" parameters:params  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        BOOL isTrue = [str isEqualToString:@"true"];
+        block(isTrue);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error.localizedDescription);
+        self.blockErrorDefault(error);
+        block(NO);
     }];
 }
 

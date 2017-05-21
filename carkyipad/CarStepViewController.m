@@ -8,7 +8,6 @@
 
 #import "CarStepViewController.h"
 #import "ShadowViewWithText.h"
-#import "MBSegmentedControl.h"
 #import "AppDelegate.h"
 #import "DataModels.h"
 #import "TGRArrayDataSource.h"
@@ -18,10 +17,10 @@
 #import "CarRentalStepsViewController.h"
 #import "AFNetworking.h"
 #import "AFImageDownloader.h"
-#import "DSLCalendarView.h"
 #import "CarCollectionViewCell.h"
 #import "UIController.h"
 #import "DetailsStepViewController.h"
+#import "CalendarRange.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 {
@@ -48,13 +47,13 @@
 
 -(void)prepareCarStep {
     // set number of days
-    DSLCalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
+    CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
     NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
     self.stepsController.results[kResultsDays] = @(components.day);
     // load available cars
     AppDelegate *app = [AppDelegate instance];
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    DSLCalendarRange *range = self.stepsController.results[kResultsDayRange];
+    CalendarRange *range = self.stepsController.results[kResultsDayRange];
     NSDate *pickupDate = range.endDay.date;
     [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andDate:pickupDate withBlock:^(NSArray *array) {
         app.availableCars = array;

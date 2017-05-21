@@ -162,17 +162,23 @@
     }
     Location *loc = value;
     self.dropOffLocationTextField.text = [NSString stringWithFormat:@"        %@", loc.name];
-    if (loc.identifier < 0) {
+    if (loc.identifier <= 0) {
         GMSPlacesClient *placesClient = [GMSPlacesClient sharedClient];
         [placesClient lookUpPlaceID:loc.placeId callback:^(GMSPlace *place, NSError *error) {
             loc.latLng = [[LatLng alloc] initWithDictionary:@{@"Lat":@(place.coordinate.latitude), @"Lng":@(place.coordinate.longitude) }];
-            if ([[AppDelegate instance].locationBounds containsCoordinate:CLLocationCoordinate2DMake(loc.latLng.lat, loc.latLng.lng)]) {
-                [self showLocationAndRouteInMap:loc];
-            } else {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:NSLocalizedString(@"Transfer to the selected place is not available", nil) preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
-                [self presentViewController:alertController animated:YES completion:nil];
-            }
+            CarkyApiClient *api = [CarkyApiClient sharedService];
+            AppDelegate *app = [AppDelegate instance];
+            [api ValidateLocation:loc.latLng forLocation:app.clientConfiguration.areaOfServiceId withBlock:^(BOOL b) {
+                if (b) {
+                    [self showLocationAndRouteInMap:loc];
+                }
+                else {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:NSLocalizedString(@"Transfer to the selected place is not available", nil) preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+            }];
+            //if ([app.locationBounds containsCoordinate:CLLocationCoordinate2DMake(loc.latLng.lat, loc.latLng.lng)]) {
         }];
     } else {
         [self showLocationAndRouteInMap:loc];

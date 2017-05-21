@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "arrow_down@2x-1.png",
+      "filename" : "prevMonth.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "prevMonth@2x.png",
       "scale" : "2x"
     },
     {
