@@ -54,6 +54,7 @@
         // Or if you wish to have the user choose a Shipping Address from those already
         // associated with the user's PayPal account, then add:
         _payPalConfiguration.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
+        _payPalConfiguration.rememberUser = NO;
     }
     self.cvvTextField.delegate = self;
     return self;
