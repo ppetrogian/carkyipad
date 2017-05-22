@@ -46,7 +46,15 @@
     self.layerVc.view.userInteractionEnabled = NO;
     self.layerVc.player = self.player;
     [self.player play];
+    self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.player currentItem]];
     self.pickupImageView.alpha = 0;
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem *p = [notification object];
+    [p seekToTime:kCMTimeZero];
 }
 
 -(TransferStepsViewController *)parentTransferController {
@@ -115,8 +123,10 @@
         if (string) {
             self.bookingRequestId = string;
             [api GetCarkyBookingStatusForUser:self.parentController.userId andBooking:self.bookingRequestId withBlock:^(NSArray *array) {
-                [self.pollTimer invalidate];
-                 [self loadPickupImage];
+                if (self.pollTimer.isValid) {
+                    [self.pollTimer invalidate];
+                }
+                [self loadPickupImage];
                 Content *responseObj = array.firstObject;
                 self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
                 self.registrationNoLabel.text = responseObj.registrationNo;
@@ -140,8 +150,15 @@
 - (IBAction)newBookingButton_Click:(UIButton *)sender {
     //[self.parentController loadStepViewControllers];
     //[self.parentController showStepForIndex:0];
+    [self.player pause];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     AppDelegate *app = [AppDelegate instance];
     [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

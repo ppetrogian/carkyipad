@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -360,6 +360,15 @@
                                 <constraint firstAttribute="width" constant="40" id="pyp-40-NVG"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWp-Jj-SZK">
+                            <rect key="frame" x="259" y="111" width="153" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <state key="normal" title="New Booking">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -465,6 +474,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backView" destination="b1E-cf-DXs" id="KyS-CS-xZZ"/>
+                <outlet property="bookingNewBtn" destination="LWp-Jj-SZK" id="miE-Us-Y5F"/>
                 <outlet property="carPriceLabel" destination="0oq-bz-Shl" id="6C7-h5-qbn"/>
                 <outlet property="carTypeImageView" destination="6rM-rz-Th6" id="TKF-Eh-mLi"/>
                 <outlet property="containerView" destination="FLG-CD-Dbr" id="Dcx-ny-sDr"/>
@@ -478,6 +488,7 @@
                 <outlet property="insuranceItemsLabel" destination="VNN-Yg-Rmn" id="VP4-4q-6CH"/>
                 <outlet property="insurancePriceLabel" destination="ZAz-xB-2xO" id="ghR-YI-qUo"/>
                 <outlet property="nameLabel" destination="nTw-8r-7tY" id="hBl-m7-f7m"/>
+                <outlet property="newBookingButton" destination="LWp-Jj-SZK" id="f2K-1O-g1e"/>
                 <outlet property="pickupAddressLabel" destination="HBf-bf-ha1" id="14d-Ue-NRG"/>
                 <outlet property="pickupDateLabel" destination="Oh0-fA-MyN" id="gRm-iz-hZl"/>
                 <outlet property="pickupTimeLabel" destination="LJz-h9-PiZ" id="jnV-fb-BcB"/>

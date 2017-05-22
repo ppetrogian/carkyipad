@@ -331,6 +331,8 @@ static CarkyApiClient *_sharedService = nil;
     [self setAuthorizationHeader];
     TransferBookingResponse *responseObj = [TransferBookingResponse new];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self.requestSerializer setTimeoutInterval:180]; // 3 minutes timout
+
     [self POST:@"api/Partner/CreateTransferBooking" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -341,7 +343,7 @@ static CarkyApiClient *_sharedService = nil;
         NSString *errorMsg = errorStr.length > 12 ? [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)] : @"Server error";
         self.blockErrorDefault(error);
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        responseObj.errorDescription = errorStr;
+        responseObj.errorDescription = errorMsg;
         responseObj.bookingId = @"0";
         block([NSArray arrayWithObject:responseObj]);
     }];
