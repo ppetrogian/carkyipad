@@ -11,6 +11,7 @@
 
 @interface Company : NSObject <NSCoding, NSCopying>
 
+@property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) double commission;
 @property (nonatomic, strong) NSString *vatNumber;

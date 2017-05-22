@@ -488,7 +488,6 @@
                 <outlet property="insuranceItemsLabel" destination="VNN-Yg-Rmn" id="VP4-4q-6CH"/>
                 <outlet property="insurancePriceLabel" destination="ZAz-xB-2xO" id="ghR-YI-qUo"/>
                 <outlet property="nameLabel" destination="nTw-8r-7tY" id="hBl-m7-f7m"/>
-                <outlet property="newBookingButton" destination="LWp-Jj-SZK" id="f2K-1O-g1e"/>
                 <outlet property="pickupAddressLabel" destination="HBf-bf-ha1" id="14d-Ue-NRG"/>
                 <outlet property="pickupDateLabel" destination="Oh0-fA-MyN" id="gRm-iz-hZl"/>
                 <outlet property="pickupTimeLabel" destination="LJz-h9-PiZ" id="jnV-fb-BcB"/>

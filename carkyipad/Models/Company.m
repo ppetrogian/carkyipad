@@ -11,7 +11,7 @@
 NSString *const kCompanyTitle = @"Title";
 NSString *const kCompanyCommission = @"Commission";
 NSString *const kCompanyVatNumber = @"VatNumber";
-
+NSString *const kCompanyIdentifier = @"Id";
 
 @interface Company ()
 
@@ -36,10 +36,10 @@ NSString *const kCompanyVatNumber = @"VatNumber";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.title = [self objectOrNilForKey:kCompanyTitle fromDictionary:dict];
-            self.commission = [[self objectOrNilForKey:kCompanyCommission fromDictionary:dict] doubleValue];
-            self.vatNumber = [self objectOrNilForKey:kCompanyVatNumber fromDictionary:dict];
-
+        self.title = [self objectOrNilForKey:kCompanyTitle fromDictionary:dict];
+        self.commission = [[self objectOrNilForKey:kCompanyCommission fromDictionary:dict] doubleValue];
+        self.vatNumber = [self objectOrNilForKey:kCompanyVatNumber fromDictionary:dict];
+        self.identifier = [[self objectOrNilForKey:kCompanyIdentifier fromDictionary:dict] integerValue];
     }
     
     return self;
@@ -51,7 +51,7 @@ NSString *const kCompanyVatNumber = @"VatNumber";
     [mutableDict setValue:self.title forKey:kCompanyTitle];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commission] forKey:kCompanyCommission];
     [mutableDict setValue:self.vatNumber forKey:kCompanyVatNumber];
-
+    [mutableDict setValue:[NSNumber numberWithInteger:self.identifier] forKey:kCompanyIdentifier];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

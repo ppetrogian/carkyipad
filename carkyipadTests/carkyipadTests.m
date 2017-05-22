@@ -38,19 +38,6 @@
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
-- (void)testGetFleetLocationsFull {
-    // given
-    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all fleet locations"];
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    [self.api GetFleetLocationsFull:^(NSArray *array) {
-        XCTAssert(array.count>0,"not found locations");
-        FleetLocations *f0 = array[0];
-        XCTAssert([f0 isKindOfClass:[FleetLocations class]], @"wrong class");
-        [expectation fulfill];
-    }];
-    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
-}
-
 
 - (void)testGetAvailableCars {
     // given
@@ -65,31 +52,6 @@
     [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
 }
 
-- (void)testGetExtrasPerCarType {
-    // given
-    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all car extras"];
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    [self.api GetCarExtras:^(NSArray *array) {
-        XCTAssert(array.count>0,"not found car extras");
-        CarExtra *c0 = array[0];
-        XCTAssert([c0 isKindOfClass:[CarExtra class]], @"wrong class");
-        [expectation fulfill];
-    }];
-    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
-}
-
-- (void)testGetAllCarInsurances {
-    // given
-    XCTestExpectation *expectation = [self expectationWithDescription:@" fetch all car insurances"];
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    [self.api GetAllCarInsurances:^(NSArray *array) {
-        XCTAssert(array.count>0,"not found car insurances");
-        CarInsurance *c0 = array[0];
-        XCTAssert([c0 isKindOfClass:[CarInsurance class]], @"wrong class");
-        [expectation fulfill];
-    }];
-    [self waitForExpectationsWithTimeout:20 handler:^(NSError * error) { }];
-}
 
 - (void)testGetAllCarTypes {
     // given

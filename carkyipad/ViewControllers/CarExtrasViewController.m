@@ -216,7 +216,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     // call api to get charges
     CarkyApiClient *api = [CarkyApiClient sharedService];
     RentalBookingRequest *request = [self.parentRentalController getRentalRequestWithCC:YES];
-    [api ChargesForIpad:request withBlock:^(NSArray *array) {
+    [api RentalChargesForIpad:request withBlock:^(NSArray *array) {
         ChargesForIPadResponse *charges = array.firstObject;
         self.parentRentalController.results[kResultsTotalPrice] = @(charges.total);
         if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {

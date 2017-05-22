@@ -224,7 +224,7 @@
     }
     else {
         RentalBookingRequest *request = [self.parentRentalController getRentalRequestWithCC:NO];
-        [api ChargesForIpad:request withBlock:^(NSArray *array) {
+        [api RentalChargesForIpad:request withBlock:^(NSArray *array) {
             ChargesForIPadResponse *chargesResponse = array.firstObject;
             // Create a PayPalPayment
             PayPalPayment *payment = [[PayPalPayment alloc] init];

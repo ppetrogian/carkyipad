@@ -349,10 +349,10 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)ChargesForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block {
+-(void)RentalChargesForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self POST:@"api/Partner/ChargesForIpad" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self POST:@"api/Partner/RentalChargesForIpad" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         ChargesForIPadResponse *responseObj = [ChargesForIPadResponse modelObjectWithDictionary:responseObject];
         block([NSArray arrayWithObject:responseObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

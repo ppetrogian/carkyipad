@@ -70,7 +70,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block;
 
--(void)ChargesForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block;
+-(void)RentalChargesForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block;
 
 -(void)GetStripePublishableApiKey:(BlockString)block;
 
