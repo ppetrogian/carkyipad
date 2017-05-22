@@ -139,12 +139,12 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetAllCarInsurancesForDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
+-(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
     NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
 
-    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"pickupDate":[dfDate stringFromDate:pickupDate], @"pickupTime":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"carCategoryTypeId":@(carTypeId), @"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carInsArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -152,7 +152,7 @@ static CarkyApiClient *_sharedService = nil;
         }];
         block(carInsArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        self.blockErrorDefault(error);
+        [self ShowMessageOnError:error WithBlock:block];
     }];
 }
 
@@ -289,6 +289,19 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+-(void)ShowMessageOnError:(NSError *)error WithBlock:(BlockArray)block {
+    NSLog(@"Error: %@", error.localizedDescription);
+    NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
+    NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
+    NSString *errorMsg = @"Server error";
+    if(errorStr.length > 14)
+        errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
+    NSLog(@"Error Detail: %@", errorMsg);
+    self.blockErrorDefault(error);
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    block([NSArray arrayWithObject:errorMsg]);
+}
+
 -(void)RegisterClient:(RegisterClientRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -296,14 +309,7 @@ static CarkyApiClient *_sharedService = nil;
         RegisterClientResponse *response = [RegisterClientResponse modelObjectWithDictionary:responseObject];
         block([NSArray arrayWithObject:response]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Error: %@", error.localizedDescription);
-        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
-        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
-        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
-        NSLog(@"Error Detail: %@", errorMsg);
-        self.blockErrorDefault(error);
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
-        block([NSArray arrayWithObject:errorMsg]);
+        [self ShowMessageOnError:error WithBlock:block];
     }];
 }
 
@@ -356,17 +362,12 @@ static CarkyApiClient *_sharedService = nil;
         ChargesForIPadResponse *responseObj = [ChargesForIPadResponse modelObjectWithDictionary:responseObject];
         block([NSArray arrayWithObject:responseObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Error: %@", error.localizedDescription);
-        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
-        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
-        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
-        self.blockErrorDefault(error);
-        block([NSArray arrayWithObject:errorMsg]);
+        [self ShowMessageOnError:error WithBlock:block];
     }];
 }
 
 //POST /api/Partner/CreateRentalBookingRequestForIpad
--(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block {
+-(void)CreateRentalBookingRequestForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self POST:@"api/Partner/CreateRentalBookingRequestForIpad" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -391,12 +392,7 @@ static CarkyApiClient *_sharedService = nil;
         CreateTransferBookingRequestPayPalPaymentResponse *responseObj = [CreateTransferBookingRequestPayPalPaymentResponse modelObjectWithDictionary:responseObject];
         block([NSArray arrayWithObject:responseObj]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Error: %@", error.localizedDescription);
-        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
-        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
-        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
-        self.blockErrorDefault(error);
-        block([NSArray arrayWithObject:errorMsg]);
+        [self ShowMessageOnError:error WithBlock:block];
     }];
 }
 

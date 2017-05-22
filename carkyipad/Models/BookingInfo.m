@@ -80,7 +80,8 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
     if(self.wellKnownDropoffLocationId > 0)
         [mutableDict setValue:[NSNumber numberWithInteger:self.wellKnownDropoffLocationId] forKey:kBookingInfoWellKnownDropoffLocationId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.carTypeId] forKey:kBookingInfoCarTypeId];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.insuranceId] forKey:kBookingInfoInsuranceId];
+    if(self.insuranceId > 0)
+        [mutableDict setValue:[NSNumber numberWithInteger:self.insuranceId] forKey:kBookingInfoInsuranceId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.commission] forKey:kBookingInfoCommission];
     if(self.fleetLocationId > 0)
         [mutableDict setValue:[NSNumber numberWithInteger:self.fleetLocationId] forKey:kBookingInfoFleetLocationId];

@@ -14,6 +14,9 @@
 @property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, assign) BOOL availability;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *insuranceDescription;
+@property (nonatomic, strong) NSString *details;
+@property (nonatomic, strong) NSString *icon;
 @property (nonatomic, assign) NSInteger pricePerDay;
 @property (nonatomic, strong) Company *company;
 

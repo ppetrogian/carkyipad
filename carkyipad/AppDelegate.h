@@ -32,7 +32,7 @@
 @property (nonatomic,strong) NSArray *screensData;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
--(void)fetchCarsDataForDate:(NSDate *)pickupDate;
+-(void)fetchCarsDataForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate andBlock:(BlockArray)block;
 +(AppDelegate *)instance;
 // helper methods
 

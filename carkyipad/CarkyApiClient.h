@@ -55,7 +55,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)GetCarExtrasForDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
 
 // api/Helper/GetAllCarInsurances
--(void)GetAllCarInsurancesForDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
+-(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
 
 #pragma mark - Taxi Api calls
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
@@ -68,7 +68,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)CreateTransferBooking:(TransferBookingRequest *)request withBlock:(BlockArray)block;
 
--(void)CreateRentalBookingRequest:(RentalBookingRequest *)request withBlock:(BlockArray)block;
+-(void)CreateRentalBookingRequestForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block;
 
 -(void)RentalChargesForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block;
 

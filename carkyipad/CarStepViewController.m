@@ -37,7 +37,7 @@
     parentController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
 }
--(void) setupInit{
+-(void) setupInit {
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     selectedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
 
@@ -60,12 +60,6 @@
         [self setCarSegments:array];
         [self selectCarType:0];
     }];
-    [app fetchCarsDataForDate:selectedRange.endDay.date];
-    //CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
-    //parentVc.totalView.text = [NSString stringWithFormat:@"%@: --€", NSLocalizedString(@"Total", nil)];
-    //[parentVc.totalView setNeedsDisplay];
-    // fill segmented control and collection view with available cars
-    //parentVc.totalView.hidden = NO;
 }
 
 
@@ -197,9 +191,18 @@
 -(IBAction) nextButtonAction:(UIButton *)sender{
     NSArray<Cars*> *cars = self.carsDataSource.items;
      self.stepsController.results[kResultsCarTypeId] = @(cars[selectedIndexPath.row].carsIdentifier);
-    if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
-        [self.stepDelegate didSelectedNext:sender];
-    }
+    NSInteger carTypeId = cars[selectedIndexPath.row].carsIdentifier;
+    CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
+    AppDelegate *app = [AppDelegate instance];
+    [app fetchCarsDataForType:carTypeId andDate:selectedRange.endDay.date andBlock:^(NSArray *arr) {
+        if ([arr.firstObject isKindOfClass:NSString.class]) {
+            [parentController showAlertViewWithMessage:arr.firstObject andTitle:@"Error"];
+            return;
+        }
+        if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
+            [self.stepDelegate didSelectedNext:sender];
+        }
+    }];
 }
 -(IBAction)backButtonAction:(UIButton *)sender{
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedBack:)]) {

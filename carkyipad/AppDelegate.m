@@ -137,15 +137,16 @@
     }];
 }
 
--(void)fetchCarsDataForDate:(NSDate *)pickupDate {
+-(void)fetchCarsDataForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate andBlock:(BlockArray)block{
     //[self.api GetAllCarTypes:^(NSArray *array2) {
         //app.carTypes = array2;
     //}];
     [self.api GetCarExtrasForDate:pickupDate withBlock:^(NSArray *array3) {
         self.carExtras = array3;
-    }];
-    [self.api GetAllCarInsurancesForDate:pickupDate withBlock:^(NSArray *array4) {
-        self.carInsurances = array4;
+        [self.api GetAllCarInsurancesForType:carTypeId andDate:pickupDate withBlock:^(NSArray *array4) {
+            self.carInsurances = array4;
+            block(array4);
+        }];
     }];
 }
 

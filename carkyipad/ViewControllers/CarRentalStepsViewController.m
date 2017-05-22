@@ -148,8 +148,9 @@
     bookInfo.commission = 0;
     bookInfo.carTypeId = ((NSNumber*)self.results[kResultsCarTypeId]).integerValue;
     bookInfo.extraIds = self.results[kResultsExtras];
-    bookInfo.insuranceId = ((NSNumber*)self.results[kResultsInsuranceId]).integerValue;
-
+    NSInteger carInsuranceId = ((NSNumber*)self.results[kResultsInsuranceId]).integerValue;
+    if(carInsuranceId > 0)
+        bookInfo.insuranceId = carInsuranceId;
     bookInfo.agreedToTermsAndConditions = YES;
     payInfo.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
     CalendarRange *range = self.results[kResultsDayRange];
@@ -191,7 +192,7 @@
 - (void)MakeRentalRequest:(BlockBoolean)block request:(RentalBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
     MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
-    [api CreateRentalBookingRequest:request withBlock:^(NSArray *array) {
+    [api CreateRentalBookingRequestForIpad:request withBlock:^(NSArray *array) {
         [AppDelegate hideProgressNotification:hud];
         
         if ([array.firstObject isKindOfClass:RentalBookingResponse.class]) {

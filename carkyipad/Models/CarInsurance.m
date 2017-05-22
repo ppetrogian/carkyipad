@@ -10,11 +10,13 @@
 
 
 NSString *const kCarInsuranceId = @"Id";
-NSString *const kBaseClassAvailability = @"Availability";
-NSString *const kBaseClassTitle = @"Title";
-NSString *const kBaseClassPricePerDay = @"PricePerDay";
-NSString *const kBaseClassCompany = @"Company";
-
+NSString *const kBCarInsuranceAvailability = @"Availability";
+NSString *const kBCarInsuranceTitle = @"Title";
+NSString *const kBCarInsurancePricePerDay = @"PricePerDay";
+NSString *const kBCarInsuranceCompany = @"Company";
+NSString *const kBCarInsuranceDescription = @"Description";
+NSString *const kBCarInsuranceDetails = @"Details";
+NSString *const kBCarInsuranceIcon = @"Icon";
 
 @interface CarInsurance ()
 
@@ -40,11 +42,14 @@ NSString *const kBaseClassCompany = @"Company";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.availability = [[self objectOrNilForKey:kBaseClassAvailability fromDictionary:dict] boolValue];
+            self.availability = [[self objectOrNilForKey:kBCarInsuranceAvailability fromDictionary:dict] boolValue];
             self.Id = [[self objectOrNilForKey:kCarInsuranceId fromDictionary:dict] integerValue];
-            self.title = [self objectOrNilForKey:kBaseClassTitle fromDictionary:dict];
-            self.pricePerDay = [[self objectOrNilForKey:kBaseClassPricePerDay fromDictionary:dict] integerValue];
-            self.company = [Company modelObjectWithDictionary:[dict objectForKey:kBaseClassCompany]];
+            self.title = [self objectOrNilForKey:kBCarInsuranceTitle fromDictionary:dict];
+            self.pricePerDay = [[self objectOrNilForKey:kBCarInsurancePricePerDay fromDictionary:dict] integerValue];
+            self.company = [Company modelObjectWithDictionary:[dict objectForKey:kBCarInsuranceCompany]];
+        self.insuranceDescription = [self objectOrNilForKey:kBCarInsuranceDescription fromDictionary:dict];
+        self.details = [self objectOrNilForKey:kBCarInsuranceDetails fromDictionary:dict];
+        self.icon = [self objectOrNilForKey:kBCarInsuranceIcon fromDictionary:dict];
 
     }
     
@@ -54,11 +59,14 @@ NSString *const kBaseClassCompany = @"Company";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithBool:self.availability] forKey:kBaseClassAvailability];
+    [mutableDict setValue:[NSNumber numberWithBool:self.availability] forKey:kBCarInsuranceAvailability];
     [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kCarInsuranceId];
-    [mutableDict setValue:self.title forKey:kBaseClassTitle];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kBaseClassPricePerDay];
-    [mutableDict setValue:[self.company dictionaryRepresentation] forKey:kBaseClassCompany];
+    [mutableDict setValue:self.title forKey:kBCarInsuranceTitle];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kBCarInsurancePricePerDay];
+    [mutableDict setValue:[self.company dictionaryRepresentation] forKey:kBCarInsuranceCompany];
+     [mutableDict setValue:self.insuranceDescription forKey:kBCarInsuranceDescription];
+     [mutableDict setValue:self.details forKey:kBCarInsuranceDetails];
+     [mutableDict setValue:self.icon forKey:kBCarInsuranceIcon];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -79,20 +87,20 @@ NSString *const kBaseClassCompany = @"Company";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.availability = [aDecoder decodeBoolForKey:kBaseClassAvailability];
-    self.title = [aDecoder decodeObjectForKey:kBaseClassTitle];
-    self.pricePerDay = [aDecoder decodeDoubleForKey:kBaseClassPricePerDay];
-    self.company = [aDecoder decodeObjectForKey:kBaseClassCompany];
+    self.availability = [aDecoder decodeBoolForKey:kBCarInsuranceAvailability];
+    self.title = [aDecoder decodeObjectForKey:kBCarInsuranceTitle];
+    self.pricePerDay = [aDecoder decodeDoubleForKey:kBCarInsurancePricePerDay];
+    self.company = [aDecoder decodeObjectForKey:kBCarInsuranceCompany];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeBool:_availability forKey:kBaseClassAvailability];
-    [aCoder encodeObject:_title forKey:kBaseClassTitle];
-    [aCoder encodeDouble:_pricePerDay forKey:kBaseClassPricePerDay];
-    [aCoder encodeObject:_company forKey:kBaseClassCompany];
+    [aCoder encodeBool:_availability forKey:kBCarInsuranceAvailability];
+    [aCoder encodeObject:_title forKey:kBCarInsuranceTitle];
+    [aCoder encodeDouble:_pricePerDay forKey:kBCarInsurancePricePerDay];
+    [aCoder encodeObject:_company forKey:kBCarInsuranceCompany];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
