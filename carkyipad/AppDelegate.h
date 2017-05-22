@@ -29,6 +29,7 @@
 @property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
 @property (assign, nonatomic) BOOL isDemo;
+@property (assign, nonatomic) NSInteger environment;
 @property (nonatomic,strong) NSArray *screensData;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;

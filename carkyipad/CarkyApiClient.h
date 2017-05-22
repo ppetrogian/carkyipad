@@ -21,7 +21,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 @interface CarkyApiClient : AFHTTPSessionManager
 //Shared Service
 + (CarkyApiClient *)sharedService;
--(instancetype)initWithDefaultConfiguration;
+-(instancetype)initWithDefaultConfiguration:(NSString *)baseUrl;
 -(void)setAuthorizationHeader;
 @property (nonatomic) NSString *apiKey;
 @property (nonatomic) BOOL isOffline;

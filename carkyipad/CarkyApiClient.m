@@ -11,8 +11,6 @@
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
 
-#define Base_URL @"http://carky-app.azurewebsites.net"
-
 @implementation CarkyApiClient
 static CarkyApiClient *_sharedService = nil;
 
@@ -21,10 +19,24 @@ static CarkyApiClient *_sharedService = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-        // create and init instance
-        _sharedService = [[CarkyApiClient alloc] initWithDefaultConfiguration];
         //Callback for reachability status change
         _sharedService.isOffline = NO;
+        NSString *baseUrl;
+        switch ([AppDelegate instance].environment) {
+            case 0:
+                baseUrl = @"http://carky-app.azurewebsites.net";
+                break;
+            case 1:
+                baseUrl = @"http://carky-api-test.azurewebsites.net";
+                break;
+            case 2:
+                baseUrl = @"https://carky-api-prod.azurewebsites.net";
+                break;
+            default:
+                break;
+        }
+        // create and init instance
+        _sharedService = [[CarkyApiClient alloc] initWithDefaultConfiguration:baseUrl];
         [_sharedService.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
                 _sharedService.isOffline = YES;
@@ -44,10 +56,10 @@ static CarkyApiClient *_sharedService = nil;
     return _sharedService;
 }
 
--(instancetype)initWithDefaultConfiguration {
+-(instancetype)initWithDefaultConfiguration:(NSString *)baseUrl {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     [config setHTTPAdditionalHeaders:@{@"User-Agent": @"Carky iPAD iOS 1.0", @"Accept": @"application/json", @"Accept-Charset": @"UTF-8", @"Accept-Encoding": @"gzip"}];
-    self = [[CarkyApiClient alloc] initWithBaseURL:[NSURL URLWithString:Base_URL] sessionConfiguration:config];
+    self = [[CarkyApiClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl] sessionConfiguration:config];
     self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", nil];
     return self;
 }

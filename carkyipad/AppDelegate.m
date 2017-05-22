@@ -41,6 +41,7 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"demo_preference": @(YES)}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
     // Override point for customization after application launch.
     NSBundle *main = [NSBundle mainBundle];
     //NSString *stripeApiKey = [main objectForInfoDictionaryKey:@"StripeApiKey"];
@@ -97,8 +98,6 @@
 
 // app methods to load data
 -(void)fetchInitialData:(BlockBoolean)block {
-    //fetch initial data
-    self.api = [CarkyApiClient sharedService];
     //self.api.hud = [MBProgressHUD HUDForView:self.view];
     self.api.hud.label.text = NSLocalizedString(@"Fetching data...", nil);
     [self.api.hud showAnimated:YES];
@@ -108,6 +107,10 @@
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
     [AppDelegate instance].isDemo = [[NSUserDefaults standardUserDefaults] boolForKey:@"demo_preference"];
+    [AppDelegate instance].environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
+    //init api client
+    self.api = [CarkyApiClient sharedService];
+
     if (!enabled) {
         return;
     }
