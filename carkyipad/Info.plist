@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>23</string>
 	<key>GoogleApiKey</key>
 	<string>AIzaSyAwAfvg1TIir4cwG3AtN2aJl3yPNAdaxGU</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -60,8 +60,6 @@
 	<string>This app needs access to camera to scan your credit card.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Show your location on the map</string>
-	<key>NSMainNibFile~ipad</key>
-	<string>Loading</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the photo library.</string>
 	<key>StripeApiKey</key>
@@ -74,7 +72,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Loading</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

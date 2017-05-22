@@ -21,21 +21,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mfY-Yi-9c5" customClass="MBProgressHUD">
-                                <rect key="frame" x="67" y="255" width="241" height="158"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Xj-rC-uWQ">
+                                <rect key="frame" x="-13" y="143" width="400" height="380"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="RmW-f8-csb"/>
+                                    <constraint firstAttribute="height" constant="380" id="Ta4-fh-SWz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Xj-rC-uWQ" firstAttribute="centerX" secondItem="uCG-xP-27m" secondAttribute="centerX" id="Rcp-6n-4pK"/>
+                            <constraint firstItem="0Xj-rC-uWQ" firstAttribute="centerY" secondItem="uCG-xP-27m" secondAttribute="centerY" id="xv5-Gd-bJb"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="hud" destination="mfY-Yi-9c5" id="d2Y-d5-yEh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJ1-TJ-rIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="142.57871064467767"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="236" height="219"/>
+    </resources>
 </document>
