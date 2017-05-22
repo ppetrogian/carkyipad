@@ -54,8 +54,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     return self;
 }
 
--(void)viewDidLoad{
-    
+-(void)viewDidLoad {
     [super viewDidLoad];
     [self initCalendar];
     //[self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
@@ -71,6 +70,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     }
     [self.formatPickerView selectRow:1 inComponent:0 animated:NO];
     [self.pickupTxtFld becomeFirstResponder];
+    [self updateTimePickerForDefaultTime];
 }
 
 -(void)initCalendar {
@@ -81,25 +81,17 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     self.calendar.delegate = self;
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
-    //    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-    
-    self.calendar.calendarHeaderView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-    self.calendar.calendarWeekdayView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-    self.calendar.appearance.headerMinimumDissolvedAlpha = 0;
+
     self.calendar.appearance.eventSelectionColor = [UIColor whiteColor];
-    self.calendar.appearance.eventOffset = CGPointMake(0, -7);
-    //self.calendar.today = nil; // Hide the today circle
     self.calendar.pagingEnabled = YES;
     self.calendar.allowsMultipleSelection = YES;
-    self.calendar.rowHeight = 30;
     self.calendar.placeholderType = FSCalendarPlaceholderTypeNone;
     
     self.calendar.appearance.titleDefaultColor = [UIColor blackColor];
     self.calendar.appearance.headerTitleColor = [UIColor blackColor];
     self.calendar.appearance.titleFont = [UIFont systemFontOfSize:16];
     self.calendar.weekdayHeight = 0;
-    //calendar.swipeToChooseGesture.enabled = NO;
-    self.calendar.today = nil; // Hide the today circle
+    self.calendar.swipeToChooseGesture.enabled = NO;
 }
 
 - (IBAction)tapView:(id)sender {
@@ -177,12 +169,12 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     [[UIController sharedInstance] addBorderWithWidth:1.0 withColor:KSelectedFieldBorderColor withCornerRadious:0 toView:textField];
     if (textField.tag == 101) {
         self.activeFld = textField;
-        [self selectTimeFromDateComponent];
+        [self updateTimePickerForSelectedDate];
     }
     else if (textField.tag == 102) {
         self.activeDateFld = textField;
         if (textField.text.length > 0) {
-            [self selectTimeFromDateComponent];
+            [self updateTimePickerForSelectedDate];
         }
     }
 }
@@ -262,23 +254,27 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         CalendarRange *range = self.stepsController.results[kResultsDayRange];
         // set date component (start or end) the time
         NSDateComponents *d = self.activeDateFld == self.pickupDateTxtFld ? range.startDay : range.endDay;
-        if (pickerView.tag == 0) {
-            d.hour = row + 1;
-            // set the format am/pm
-            [self pickerView:self.formatPickerView didSelectRow:[self.formatPickerView selectedRowInComponent:0] inComponent:0];
-            return;
-        }
-        else if(pickerView.tag == 1) {
-            d.minute = row;
-        }
-        else {
-            if(d.hour < 12 && row == 1)
-                d.hour += 12;
-            else if(d.hour >= 12 && row == 0)
-                d.hour -= 12;
-        }
+        [self setTimeToComponents:d fromPicker:pickerView andRow:row];
         self.stepsController.results[kResultsDayRange] = range;
         [self showSelectedDateRange:range forBothFields:NO];
+    }
+}
+
+-(void)setTimeToComponents:(NSDateComponents *)d fromPicker:(UIPickerView *)pickerView andRow:(NSInteger)row {
+    if (pickerView.tag == 0) {
+        d.hour = row + 1;
+        // set the format am/pm
+        [self pickerView:self.formatPickerView didSelectRow:[self.formatPickerView selectedRowInComponent:0] inComponent:0];
+        return;
+    }
+    else if(pickerView.tag == 1) {
+        d.minute = row;
+    }
+    else {
+        if(d.hour < 12 && row == 1)
+            d.hour += 12;
+        else if(d.hour >= 12 && row == 0)
+            d.hour -= 12;
     }
 }
 
@@ -290,7 +286,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         [self showSelectedDate:range.endDay inField:self.dropOffDateTxtFld];
 }
 
-// perform did select time picker
+// perform did select time picker to update the selected date variable
 -(void)setDateComponentFromSelectedTimeAndDisplay {
     [self.pickerViews enumerateObjectsUsingBlock:^(UIPickerView *p, NSUInteger idx, BOOL * _Nonnull stop) {
         [self pickerView:p didSelectRow:[p selectedRowInComponent:0] inComponent:0];
@@ -300,16 +296,27 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     }];
 }
 
--(void)selectTimeFromDateComponent {
+-(void)updateTimePickerForSelectedDate {
     CalendarRange *range = self.stepsController.results[kResultsDayRange];
     if (!range) {
         return;
     }
     NSDateComponents *d = self.activeDateFld == self.pickupDateTxtFld ? range.startDay : range.endDay;
+    [self updateTimePickerForDate:d];
+}
+
+-(void)updateTimePickerForDate:(NSDateComponents *)d {
     NSArray *indexes = @[@(d.hour>=12 ? d.hour-13 : d.hour-1), @(d.minute), @(d.hour >= 12 ? 1 : 0)];
     [self.pickerViews enumerateObjectsUsingBlock:^(UIPickerView *pv, NSUInteger idx, BOOL * _Nonnull stop) {
         [pv selectRow:((NSNumber *)indexes[idx]).integerValue inComponent:0 animated:NO];
     }];
+}
+
+-(void)updateTimePickerForDefaultTime {
+    NSDateComponents *components = [self.gregorian components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:NSDate.date];
+    components.hour = components.hour < 24 ? (components.hour + 1) : 0;
+    components.minute = 0;
+    [self updateTimePickerForDate:components];
 }
 
 -(void)showSelectedDate:(NSDateComponents *)day inField:(UITextField *)textField {
@@ -558,7 +565,20 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 }
 
 - (BOOL)calendar:(FSCalendar *)calendar shouldSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
-    return [date compare:NSDate.date] != NSOrderedAscending;
+    NSDate *today = [self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:NSDate.date options:0];
+    BOOL okPast = [date compare:today] != NSOrderedAscending;
+    if (!okPast) {
+        [self.parentRentalController showAlertViewWithMessage:@"You cannot select a past date" andTitle:@"Validation"];
+        return okPast;
+    }
+    NSDate *date1dateOnly = [self.gregorian dateBySettingHour:0 minute:0 second:0 ofDate:self.date1 options:0];
+    if (self.activeDateFld == self.dropOffDateTxtFld) {
+        okPast = [date compare:date1dateOnly] == NSOrderedDescending;
+        if (!okPast) {
+            [self.parentRentalController showAlertViewWithMessage:@"The dropoff date cannot be equal to the pickup date" andTitle:@"Validation"];
+        }
+    }
+    return okPast;
 }
 
 - (void)calendar:(FSCalendar *)calendar didDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition

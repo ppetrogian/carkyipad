@@ -40,7 +40,7 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"demo_preference": @(YES)}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"demo_preference": @(NO)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
     // Override point for customization after application launch.
     NSBundle *main = [NSBundle mainBundle];
