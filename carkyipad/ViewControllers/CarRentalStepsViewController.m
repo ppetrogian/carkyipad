@@ -244,15 +244,16 @@
      confirmationView.insuranceItemsLabel.text = response.bookingInfo.insuranceDisplay;
      confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.carPrice];
      confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.total];
+    confirmationView.carTypeNameLabel.text = response.bookingInfo.carDisplay;
+    [confirmationView.carTypeNameLabel sizeToFit];
     [confirmationView.bookingNewBtn addTarget:self action:@selector(bookingNew_Click:) forControlEvents:UIControlEventTouchUpInside];
     //confiramtionView.delegate = self;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.window addSubview:confirmationView];
     [UIView animateWithDuration:0.3 animations:^{
         confirmationView.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        
-    }];
+    } completion:^(BOOL finished) {}];
+    [self performSelector:@selector(bookingNew_Click:) withObject:confirmationView.bookingNewBtn afterDelay:20.0];
 }
 
 - (void)bookingNew_Click:(UIButton*)sender {

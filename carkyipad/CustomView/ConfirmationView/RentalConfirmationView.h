@@ -31,5 +31,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *carTypeImageView;
 @property (weak, nonatomic) IBOutlet UIButton *bookingNewBtn;
+@property (weak, nonatomic) IBOutlet UILabel *carTypeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *carTypeSubdescriptionLabel;
 
 @end

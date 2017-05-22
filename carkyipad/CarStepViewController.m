@@ -41,8 +41,12 @@
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     selectedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
 
-    [self setPlaceDetails];
     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setPlaceDetails];
 }
 
 -(void)prepareCarStep {

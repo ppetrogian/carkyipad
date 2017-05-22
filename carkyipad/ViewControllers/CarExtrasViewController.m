@@ -55,6 +55,10 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:extraCellIdentifier];
     [self.extrasCollectionView registerClass:[InsurancesCollectionViewCell class] forCellWithReuseIdentifier:insuranceCellIdentifier];
      [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self setPlaceDetails];
 }
 
@@ -87,13 +91,6 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 }
 
 #pragma mark -
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-        //[self showExtras];
-        //[self showInsurances];
-
-}
 
 /*
 #pragma mark - Navigation
@@ -217,6 +214,10 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     CarkyApiClient *api = [CarkyApiClient sharedService];
     RentalBookingRequest *request = [self.parentRentalController getRentalRequestWithCC:YES];
     [api RentalChargesForIpad:request withBlock:^(NSArray *array) {
+        if ([array.firstObject isKindOfClass:NSString.class]) {
+            [self.parentRentalController showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+            return;
+        }
         ChargesForIPadResponse *charges = array.firstObject;
         self.parentRentalController.results[kResultsTotalPrice] = @(charges.total);
         if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
