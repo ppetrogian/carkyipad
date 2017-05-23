@@ -79,6 +79,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
     [self.dropOffPlaceDetailsView setAllDetails:results isForPickup:NO];
     [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
+    selectedInsurance = [NSIndexPath indexPathForRow:-1 inSection:1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,7 +109,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 2;
 }
--(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AppDelegate *app = [AppDelegate instance];
     ExtrasCollectionViewCell *cell;
     if (indexPath.section == 0) {
@@ -124,18 +125,26 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
     if ((indexPath.section == 0 && [selectedExtrasListArray containsObject:indexPath]) ||
         (indexPath.section == 1 && selectedInsurance.row == indexPath.row)) {
-        cell.selectionImageView.image = [UIImage imageNamed:@"check_on"];
         cell.containerView.layer.borderWidth = 1.0;
+        cell.priceLabel.backgroundColor = [UIColor blackColor];
+        cell.priceLabel.textColor = [UIColor whiteColor];
     }
-    else{
-        cell.selectionImageView.image = [UIImage imageNamed:@"check_off"];
+    else {
         cell.containerView.layer.borderWidth = 0.0;
+        cell.priceLabel.backgroundColor = [UIColor lightGrayColor];
+        cell.priceLabel.textColor = [UIColor blackColor];
+    }
+    if (indexPath.section == 1 && app.carInsurances[indexPath.row].pricePerDay == 0) {
+        cell.priceLabel.text = @"Included";
+        cell.priceLabel.backgroundColor = [UIColor blackColor];
+        cell.priceLabel.textColor = [UIColor whiteColor];
     }
     return cell;
 }
 -(void) extraCollectionCell:(ExtrasCollectionViewCell *)cell setDetails:(CarExtra *)extra{
     //set car extra
     cell.extraNameLabel.text = extra.Name;
+    cell.extraDescriptionLabel.text = extra.Description;
     cell.priceLabel.text = [NSString stringWithFormat: @"Total €%zd", extra.pricePerDay];
     NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
     if (iconsDict[extra.Name]) {
@@ -190,9 +199,15 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
         }
     }
     else {
-        selectedInsurance = indexPath;
+        AppDelegate *app = [AppDelegate instance];
+        if (app.carInsurances[indexPath.row].pricePerDay > 0) {
+            if (indexPath.row == selectedInsurance.row) {
+                selectedInsurance = [NSIndexPath indexPathForRow:-1 inSection:1];
+            } else {
+                selectedInsurance = indexPath;
+            }
+        }
     }
-
     [collectionView reloadData];
 }
 

@@ -11,6 +11,7 @@
 @interface ExtrasCollectionViewCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic, weak) IBOutlet UILabel *extraNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *extraDescriptionLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *extraImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *selectionImageView;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;

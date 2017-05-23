@@ -156,7 +156,7 @@ static CarkyApiClient *_sharedService = nil;
     NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
     NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
 
-    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"carCategoryTypeId":@(carTypeId), @"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"carCategoryId":@(carTypeId), @"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carInsArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
