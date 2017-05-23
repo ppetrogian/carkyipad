@@ -79,7 +79,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
     [self.dropOffPlaceDetailsView setAllDetails:results isForPickup:NO];
     [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
-    selectedInsurance = [NSIndexPath indexPathForRow:-1 inSection:1];
+    selectedInsurance = [NSIndexPath indexPathForRow:0 inSection:1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,7 +119,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     }
     else {
         InsurancesCollectionViewCell *insCell = [collectionView dequeueReusableCellWithReuseIdentifier:insuranceCellIdentifier forIndexPath:indexPath];
-        [self insuranceCollectionCell:insCell setDetails:app.carInsurances[indexPath.row]];
+        [self insuranceCollectionCell:insCell setDetails:app.carInsurances[indexPath.row] forIndexPath:indexPath];
         cell = insCell;
     }
 
@@ -136,8 +136,6 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     }
     if (indexPath.section == 1 && app.carInsurances[indexPath.row].pricePerDay == 0) {
         cell.priceLabel.text = @"Included";
-        cell.priceLabel.backgroundColor = [UIColor blackColor];
-        cell.priceLabel.textColor = [UIColor whiteColor];
     }
     return cell;
 }
@@ -149,7 +147,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
     if (iconsDict[extra.Name]) {
         cell.extraImageView.image = [UIImage imageNamed:iconsDict[extra.Name]];
-    } else {
+    } else if(extra.icon.length > 0) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:extra.icon]];
         [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
             cell.extraImageView.image = responseObject;
@@ -158,16 +156,24 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     
 }
 
--(void) insuranceCollectionCell:(InsurancesCollectionViewCell *)cell setDetails:(CarInsurance *)ins{
+-(void) insuranceCollectionCell:(InsurancesCollectionViewCell *)cell setDetails:(CarInsurance *)ins forIndexPath:(NSIndexPath *)indexPath {
     //set car insurance
     cell.extraNameLabel.text = ins.title;
     cell.priceLabel.text = [NSString stringWithFormat: @"Total €%zd", ins.pricePerDay];
+    NSArray *icons = @[@"Fill 30",@"Fill 30",@"Fill 15"];
+    if (indexPath.row < icons.count) {
+        cell.extraImageView.image = [UIImage imageNamed:icons[indexPath.row]];
+    } else if(ins.icon.length > 0) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:ins.icon]];
+        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+            cell.extraImageView.image = responseObject;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;
-    
     if (kind == UICollectionElementKindSectionHeader) {
         ExtrasHeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         if (indexPath.section == 0) {
@@ -198,15 +204,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
             [selectedExtrasListArray addObject:indexPath];
         }
     }
-    else {
-        AppDelegate *app = [AppDelegate instance];
-        if (app.carInsurances[indexPath.row].pricePerDay > 0) {
-            if (indexPath.row == selectedInsurance.row) {
-                selectedInsurance = [NSIndexPath indexPathForRow:-1 inSection:1];
-            } else {
-                selectedInsurance = indexPath;
-            }
-        }
+    else if (indexPath.row != selectedInsurance.row) {
+       selectedInsurance = indexPath;
     }
     [collectionView reloadData];
 }

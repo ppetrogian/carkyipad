@@ -24,10 +24,10 @@ static CarkyApiClient *_sharedService = nil;
         NSString *baseUrl;
         switch ([AppDelegate instance].environment) {
             case 0:
-                baseUrl = @"http://carky-app.azurewebsites.net";
+                baseUrl = @"https://carky-app.azurewebsites.net";
                 break;
             case 1:
-                baseUrl = @"http://carky-api-test.azurewebsites.net";
+                baseUrl = @"https://carky-api-test.azurewebsites.net";
                 break;
             case 2:
                 baseUrl = @"https://carky-api-prod.azurewebsites.net";
