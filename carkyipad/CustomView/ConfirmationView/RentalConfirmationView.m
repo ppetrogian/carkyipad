@@ -25,8 +25,8 @@
 -(void) defaultSetup{
     self.headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"confirm_HeaderBack"]];
     self.containerView.backgroundColor = [UIColor whiteColor];
-    [[UIController sharedInstance] addShadowToView:self.containerView withOffset:CGSizeMake(-3, 3) hadowRadius:2 shadowOpacity:0.21];
-    [[UIController sharedInstance] addShadowToView:self.backView withOffset:CGSizeMake(3, 3) hadowRadius:2 shadowOpacity:0.21];
+    [[UIController sharedInstance] addShadowToView:self.containerView withOffset:CGSizeMake(-2, 2) hadowRadius:2 shadowOpacity:0.2];
+    [[UIController sharedInstance] addShadowToView:self.backView withOffset:CGSizeMake(2, 2) hadowRadius:2 shadowOpacity:0.2];
 }
 
 @end

@@ -26,7 +26,7 @@
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 
 -(void)payRentalWithCreditCard:(BlockBoolean)b;
--(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict  ;
+-(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict andBlock:(BlockBoolean)block;
 - (IBAction)gotoBack:(id)sender;
 - (IBAction)gotoNext:(id)sender;
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;

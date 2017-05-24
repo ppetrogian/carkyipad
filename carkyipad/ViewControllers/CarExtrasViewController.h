@@ -21,4 +21,5 @@
 @property (nonatomic, strong) PlaceDetailsView *dropOffPlaceDetailsView;
 -(IBAction) nextButtonAction:(UIButton *)sender;
 -(IBAction)backButtonAction:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *carImageView;
 @end

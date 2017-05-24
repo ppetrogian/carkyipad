@@ -117,6 +117,9 @@
 -(void) didSelectedSegmentIndex:(NSInteger)index{
     NSLog(@"Selected index = %zd", index);
     [self selectCarType:index];
+    selectedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
+    self.nextButton.enabled = NO;
+    self.nextButton.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (void)selectCarType:(NSInteger)selIndex {
@@ -184,7 +187,7 @@
     cell.priceLabel.attributedText = priceAttributedString;
 }
 
--(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     selectedIndexPath = indexPath;
     [collectionView reloadData];
@@ -194,8 +197,9 @@
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
     NSArray<Cars*> *cars = self.carsDataSource.items;
-     self.stepsController.results[kResultsCarTypeId] = @(cars[selectedIndexPath.row].carsIdentifier);
     NSInteger carTypeId = cars[selectedIndexPath.row].carsIdentifier;
+    self.stepsController.results[kResultsCarTypeId] = @(carTypeId);
+    self.stepsController.results[kResultsCarTypeIcon] = cars[selectedIndexPath.row].image;
     CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
     AppDelegate *app = [AppDelegate instance];
     [app fetchCarsDataForType:carTypeId andDate:selectedRange.endDay.date andBlock:^(NSArray *arr) {

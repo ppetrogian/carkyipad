@@ -44,11 +44,6 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>carky-app.azurewebsites.net</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
 			<key>maps.googleapis.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

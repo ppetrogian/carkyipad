@@ -22,6 +22,8 @@
 #import "ExtrasHeaderCollectionReusableView.h"
 #import "UIController.h"
 #import "CarRentalStepsViewController.h"
+#import "AFNetworking.h"
+#import "AFImageDownloader.h"
 
 static NSString *extraCellIdentifier = @"extraCellIdentifier";
 static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
@@ -55,6 +57,10 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:extraCellIdentifier];
     [self.extrasCollectionView registerClass:[InsurancesCollectionViewCell class] forCellWithReuseIdentifier:insuranceCellIdentifier];
      [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.stepsController.results[kResultsCarTypeIcon]]];
+    [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+        self.carImageView.image = responseObject;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -221,8 +227,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
         }
     }];
     self.stepsController.results[kResultsExtras] = extras;
-    NSNumber *objInsuranceId = selectedInsurance ? @(selectedInsurance.row) : @(0);
-    self.stepsController.results[kResultsInsuranceId] = objInsuranceId;
+    NSInteger insuranceId = app.carInsurances[selectedInsurance.row].Id;
+    self.stepsController.results[kResultsInsuranceId] = @(insuranceId);
     
     // call api to get charges
     CarkyApiClient *api = [CarkyApiClient sharedService];

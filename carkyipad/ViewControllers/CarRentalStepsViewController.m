@@ -21,7 +21,7 @@
 #define kSegmentHeight 50
 
 @interface CarRentalStepsViewController ()<StepDelegate>
-
+@property(strong, nonatomic) RentalConfirmationView *confirmationView;
 @end
 
 @implementation CarRentalStepsViewController 
@@ -182,11 +182,11 @@
     return request;
 }
 
--(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict  {
+-(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict andBlock:(BlockBoolean)block  {
     RentalBookingRequest *request = [self getRentalRequestWithCC:NO];
     request.paymentInfo.payPalResponse = confirmationString;
     request.paymentInfo.payPalAuthorizationId = confirmDict[@"response"][@"authorization_id"];
-    [self MakeRentalRequest:^(BOOL b) {} request:request]; // create rental request
+    [self MakeRentalRequest:block request:request]; // create rental request
 }
 
 - (void)MakeRentalRequest:(BlockBoolean)block request:(RentalBookingRequest *)request {
@@ -218,45 +218,46 @@
 #pragma mark - Confirmation View
 -(void) displayRentalConfirmationView:(RentalBookingResponse *)response {
     [self hideKeyboard];
-    RentalConfirmationView *confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
-    confirmationView.frame = [UIScreen mainScreen].bounds;
-    confirmationView.alpha = 0;
-    confirmationView.pickupAddressLabel.text = response.bookingInfo.pickupAddress;
-    confirmationView.dropoffAddressLabel.text = response.bookingInfo.dropoffAddress;
-    confirmationView.pickupDateLabel.text = response.bookingInfo.pickupDate;
-    confirmationView.dropoffDateLabel.text = response.bookingInfo.dropoffDate;
-    confirmationView.pickupTimeLabel.text = response.bookingInfo.pickupTime;
-    confirmationView.dropoffTimeLabel.text = response.bookingInfo.dropoffTime;
+    self.confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"RentalConfirmationView" owner:self options:nil] firstObject];
+    self.confirmationView.frame = [UIScreen mainScreen].bounds;
+    self.confirmationView.alpha = 0;
+    self.confirmationView.pickupAddressLabel.text = response.bookingInfo.pickupAddress;
+    self.confirmationView.dropoffAddressLabel.text = response.bookingInfo.dropoffAddress;
+    self.confirmationView.pickupDateLabel.text = response.bookingInfo.pickupDate;
+    self.confirmationView.dropoffDateLabel.text = response.bookingInfo.dropoffDate;
+    self.confirmationView.pickupTimeLabel.text = response.bookingInfo.pickupTime;
+    self.confirmationView.dropoffTimeLabel.text = response.bookingInfo.dropoffTime;
     // car type image view
     NSURL *urlCar = [NSURL URLWithString:response.bookingInfo.carImage];
     NSData *dataCar = [NSData dataWithContentsOfURL:urlCar];
     UIImage *imgCar = [[UIImage alloc] initWithData:dataCar];
-    confirmationView.carTypeImageView.image = imgCar;
+    self.confirmationView.carTypeImageView.image = imgCar;
     //-----------
-    confirmationView.nameLabel.text = response.bookingInfo.displayName;
-    confirmationView.reservationLabel.text = response.bookingInfo.reservationCode;
+    self.confirmationView.nameLabel.text = response.bookingInfo.displayName;
+    self.confirmationView.reservationLabel.text = response.bookingInfo.reservationCode;
     NSInteger nDays = ((NSNumber*)self.results[kResultsDays]).integerValue;
-    confirmationView.durationLabel.text = [NSString stringWithFormat:@"%zd days",nDays];
+    self.confirmationView.durationLabel.text = [NSString stringWithFormat:@"%zd days",nDays];
     //-------------------
-     confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.extrasPrice];
-     confirmationView.extrasItemsLabel.text = response.bookingInfo.extrasDisplay;
-     confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.insurancePrice];
-     confirmationView.insuranceItemsLabel.text = response.bookingInfo.insuranceDisplay;
-     confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.carPrice];
-     confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.total];
-    confirmationView.carTypeNameLabel.text = response.bookingInfo.carDisplay;
-    [confirmationView.carTypeNameLabel sizeToFit];
-    [confirmationView.bookingNewBtn addTarget:self action:@selector(bookingNew_Click:) forControlEvents:UIControlEventTouchUpInside];
+     self.confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.extrasPrice];
+     self.confirmationView.extrasItemsLabel.text = response.bookingInfo.extrasDisplay;
+     self.confirmationView.insurancePriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.insurancePrice];
+     self.confirmationView.insuranceItemsLabel.text = response.bookingInfo.insuranceDisplay;
+     self.confirmationView.carPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.carPrice];
+     self.confirmationView.totalPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.total];
+    self.confirmationView.carTypeNameLabel.text = response.bookingInfo.carDisplay;
+    [self.confirmationView.carTypeNameLabel sizeToFit];
+    [self.confirmationView.bookingNewBtn addTarget:self action:@selector(bookingNew_Click:) forControlEvents:UIControlEventTouchUpInside];
     //confiramtionView.delegate = self;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.window addSubview:confirmationView];
+    [appDelegate.window addSubview:self.confirmationView];
     [UIView animateWithDuration:0.3 animations:^{
-        confirmationView.alpha = 1.0;
+        self.confirmationView.alpha = 1.0;
     } completion:^(BOOL finished) {}];
-    [self performSelector:@selector(bookingNew_Click:) withObject:confirmationView.bookingNewBtn afterDelay:20.0];
+    [self performSelector:@selector(bookingNew_Click:) withObject:self.confirmationView.bookingNewBtn afterDelay:20.0];
 }
 
 - (void)bookingNew_Click:(UIButton*)sender {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(bookingNew_Click:) object:self.confirmationView.bookingNewBtn];
     AppDelegate *app = [AppDelegate instance];
     [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -275,7 +276,6 @@
         RentalBookingRequest *request = [self getRentalRequestWithCC:YES];
         request.paymentInfo.stripeCardToken = token.tokenId;
         [self MakeRentalRequest:block request:request]; // create rental request
-        block(YES);
     }]; // create token
 }
 

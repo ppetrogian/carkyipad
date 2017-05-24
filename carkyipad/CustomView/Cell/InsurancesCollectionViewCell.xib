@@ -32,8 +32,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-Og-40K">
-                                <rect key="frame" x="0.0" y="14" width="189" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="5" y="14" width="179" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -45,9 +45,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QiI-of-8h3" secondAttribute="trailing" id="Br3-d6-IiQ"/>
-                            <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" id="POV-uJ-8F0"/>
+                            <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" constant="5" id="POV-uJ-8F0"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Uu3-Ct-zKA"/>
-                            <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" id="gLD-Go-Be9"/>
+                            <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="gLD-Go-Be9"/>
                             <constraint firstAttribute="bottom" secondItem="QiI-of-8h3" secondAttribute="bottom" id="nG8-wV-kDM"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" id="uWB-Ph-8LN"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="14" id="zCO-xU-oB8"/>

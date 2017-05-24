@@ -254,8 +254,9 @@
 - (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
     // The payment was canceled; dismiss the PayPalPaymentViewController.
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.payNowButton enableButton];
 }
-    
+
 - (void)verifyCompletedPayment:(PayPalPayment *)completedPayment {
         // Send the entire confirmation dictionary
     NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation  options:0 error:nil];
@@ -271,7 +272,9 @@
         [self.parentTransferController showNextStep];
     }
     else {
-        [self.parentRentalController payRentalWithPaypal:newStr andResponse:completedPayment.confirmation];
+        [self.parentRentalController payRentalWithPaypal:newStr andResponse:completedPayment.confirmation andBlock:^(BOOL b) {
+            [self.payNowButton enableButton];
+        }];
     }
 }
 

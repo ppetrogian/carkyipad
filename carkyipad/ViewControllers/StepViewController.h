@@ -26,6 +26,7 @@ extern NSString *const kResultsPickupTime;
 extern NSString *const kResultsDropoffTime;
 extern NSString *const kResultsExtras;
 extern NSString *const kResultsCarTypeId;
+extern NSString *const kResultsCarTypeIcon;
 extern NSString *const kResultsInsuranceId;
 extern NSString *const kResultsBookingId;
 

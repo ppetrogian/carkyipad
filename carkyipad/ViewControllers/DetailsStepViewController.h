@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *hourDown;
 @property (weak, nonatomic) IBOutlet UIButton *apDown;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 
 -(IBAction)cancelButtonAction:(UIButton *)sender;
 -(IBAction) nextButtonAction:(UIButton *)sender;
