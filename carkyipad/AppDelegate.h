@@ -65,4 +65,11 @@ typedef NS_ENUM(NSUInteger, TabletMode) {
     TabletModeAll
 };
 
+typedef NS_ENUM(NSUInteger, CarkyBackendType) {
+    CarkyBackendTypeDev,
+    CarkyBackendTypeTest,
+    CarkyBackendTypeProd
+};
+
+
 

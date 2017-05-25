@@ -36,12 +36,18 @@
     [self.stpCardTextField becomeFirstResponder];
 
     //[self disablePayButton];
-    [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
     self.stpCardTextField.borderColor = UIColor.blackColor;
     self.stpCardTextField.borderWidth = 1;
     self.isForTransfer = [self.stepsController isKindOfClass:TransferStepsViewController.class];
+    CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
+    if (bt == CarkyBackendTypeDev || bt == CarkyBackendTypeProd) {
+        self.cvvTextField.text = @"";
+        self.expiryDateTextField.text = @"";
+    } else {
+        [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
+    }
 }
-    
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -69,7 +75,11 @@
     [super viewWillAppear:animated];
         
     // Start out working with the test environment! When you are ready, switch to PayPalEnvironmentProduction.
-    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
+    if ([[AppDelegate instance].clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
+        [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
+    } else {
+        [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {

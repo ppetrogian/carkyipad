@@ -29,7 +29,14 @@
     
     self.confirmButton.enabled = YES;
     self.confirmButton.backgroundColor = [UIColor blackColor];
-    
+    CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
+    if (bt == CarkyBackendTypeDev || bt == CarkyBackendTypeProd) {
+        self.firstNameTextField.text = @"";
+        self.lastNameTextField.text = @"";
+        self.emailTextField.text = @"";
+        self.confirmEmailTextField.text = @"";
+        self.phoneNumberTextField.text = @"";
+    }
     [self.firstNameTextField becomeFirstResponder];
 
 }

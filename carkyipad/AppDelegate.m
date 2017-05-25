@@ -40,7 +40,6 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"demo_preference": @(NO)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
     // Override point for customization after application launch.
     NSBundle *main = [NSBundle mainBundle];
@@ -104,7 +103,6 @@
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
-    [AppDelegate instance].isDemo = [[NSUserDefaults standardUserDefaults] boolForKey:@"demo_preference"];
     [AppDelegate instance].environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
     //init api client
     self.api = [CarkyApiClient sharedService];
@@ -121,7 +119,7 @@
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
                 // paypal configuration
-                if ([app.clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame ) {
+                if ([app.clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
                     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : app.clientConfiguration.payPalClientId}];
                 } else {
                     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : app.clientConfiguration.payPalClientId}];
@@ -236,10 +234,6 @@
     NSDictionary *leg =  [[firstRoute objectForKey:@"legs"] objectAtIndex:0];
     
     NSMutableArray * legRouteArray=[routes valueForKey:@"legs"];
-//    NSMutableString *startLocationLat=[[[legRouteArray valueForKeyPath:@"start_location.lat"] objectAtIndex:0] objectAtIndex:0];
-//    NSMutableString *startLocationLong=[[[legRouteArray valueForKeyPath:@"start_location.lng"]objectAtIndex:0] objectAtIndex:0];
-    //NSMutableString *endLocationLat=[[[legRouteArray valueForKeyPath:@"end_location.lat"] objectAtIndex:0] objectAtIndex:0];
-    //NSMutableString *endLocationLong=[[[legRouteArray valueForKeyPath:@"end_location.lng"]objectAtIndex:0] objectAtIndex:0];
     
     NSLog(@"duration %@",[[[legRouteArray objectAtIndex:0]valueForKey:@"duration"]valueForKey:@"text"]);
     NSArray *steps = [leg objectForKey:@"steps"];
