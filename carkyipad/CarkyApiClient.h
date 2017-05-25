@@ -43,7 +43,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
--(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
+-(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;
 
 //GET api/Helper/GetAllCarCategories car categories
 -(void)GetAllCarCategories:(BlockArray)block;
@@ -51,11 +51,12 @@ typedef void(^BlockProgress)(NSProgress *progress);
 //GET api/Helper/GetAllCarTypes   car  types
 -(void)GetAllCarTypes:(BlockArray)block;
 
-//GET /api/Helper/GetCarExtras  extras per car categories
--(void)GetCarExtrasForDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
+-(void)GetCarExtrasForTransfer:(NSDate *)pickupDate withBlock:(BlockArray)block;
+
+-(void)GetCarExtrasForRental:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;
 
 // api/Helper/GetAllCarInsurances
--(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block;
+-(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;
 
 #pragma mark - Taxi Api calls
 -(void)GetWellKnownLocations:(NSInteger)fleetLocationId withBlock:(BlockArray)block;

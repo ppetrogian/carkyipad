@@ -16,6 +16,8 @@ NSString *const kClientConfigurationResponseAreaOfServiceId = @"AreaOfServiceId"
 NSString *const kClientConfigurationResponseZoneId = @"ZoneId";
 NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupInstructionsImage";
 NSString *const kClientConfigurationResponseTabletMode = @"TabletMode";
+NSString *const kClientConfigurationResponsePayPalMode = @"PayPalMode";
+NSString *const kClientConfigurationResponsePayPalClientId = @"PayPalClientId";
 
 @interface ClientConfigurationResponse ()
 
@@ -62,6 +64,8 @@ NSString *const kClientConfigurationResponseTabletMode = @"TabletMode";
         self.zoneId = [[self objectOrNilForKey:kClientConfigurationResponseZoneId fromDictionary:dict] integerValue];
         self.pickupInstructionsImage = [self objectOrNilForKey:kClientConfigurationResponsePickupInstructionsImage fromDictionary:dict];
         self.tabletMode = [[self objectOrNilForKey:kClientConfigurationResponseTabletMode fromDictionary:dict] integerValue];
+        self.payPalMode = [self objectOrNilForKey:kClientConfigurationResponsePayPalMode fromDictionary:dict];
+        self.payPalClientId = [self objectOrNilForKey:kClientConfigurationResponsePayPalClientId fromDictionary:dict];
     }
     
     return self;
@@ -87,6 +91,8 @@ NSString *const kClientConfigurationResponseTabletMode = @"TabletMode";
     [mutableDict setValue:[NSNumber numberWithInteger:self.zoneId] forKey:kClientConfigurationResponseZoneId];
     [mutableDict setValue:self.pickupInstructionsImage forKey:kClientConfigurationResponsePickupInstructionsImage];
     [mutableDict setValue:[NSNumber numberWithInteger:self.tabletMode] forKey:kClientConfigurationResponseTabletMode];
+    [mutableDict setValue:self.payPalMode forKey:kClientConfigurationResponsePayPalMode];
+    [mutableDict setValue:self.payPalClientId forKey:kClientConfigurationResponsePayPalClientId];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

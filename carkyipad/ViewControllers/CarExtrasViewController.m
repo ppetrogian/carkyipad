@@ -65,6 +65,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setTotalPrice];
     [self setPlaceDetails];
 }
 
@@ -149,7 +150,10 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     //set car extra
     cell.extraNameLabel.text = extra.Name;
     cell.extraDescriptionLabel.text = extra.Description;
-    cell.priceLabel.text = [NSString stringWithFormat: @"Total €%zd", extra.pricePerDay];
+    NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf\n(€%zd/day)", extra.priceTotal, extra.pricePerDay];
+    NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
+    [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",extra.pricePerDay]]];
+    cell.priceLabel.attributedText = priceAttributedString;
     NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
     if (iconsDict[extra.Name]) {
         cell.extraImageView.image = [UIImage imageNamed:iconsDict[extra.Name]];
@@ -159,13 +163,15 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
             cell.extraImageView.image = responseObject;
         } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
     }
-    
 }
 
 -(void) insuranceCollectionCell:(InsurancesCollectionViewCell *)cell setDetails:(CarInsurance *)ins forIndexPath:(NSIndexPath *)indexPath {
     //set car insurance
     cell.extraNameLabel.text = ins.title;
-    cell.priceLabel.text = [NSString stringWithFormat: @"Total €%zd", ins.pricePerDay];
+    NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf\n(€%zd/day)", ins.priceTotal, ins.pricePerDay];
+    NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
+    [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",ins.pricePerDay]]];
+    cell.priceLabel.attributedText = priceAttributedString;
     NSArray *icons = @[@"Fill 30",@"Fill 30",@"Fill 15"];
     if (indexPath.row < icons.count) {
         cell.extraImageView.image = [UIImage imageNamed:icons[indexPath.row]];
@@ -199,21 +205,35 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 }*/
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    AppDelegate *app = [AppDelegate instance];
+    double extrasTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceExtras]).doubleValue;
     if (selectedExtrasListArray == nil) {
         selectedExtrasListArray = [[NSMutableArray alloc] init];
     }
     if (indexPath.section == 0) {
         if ([selectedExtrasListArray containsObject:indexPath]) {
             [selectedExtrasListArray removeObject:indexPath];
+            extrasTotal -= app.carExtras[indexPath.row].priceTotal;
         }
         else{
             [selectedExtrasListArray addObject:indexPath];
+            extrasTotal += app.carExtras[indexPath.row].priceTotal;
         }
+        self.stepsController.results[kResultsTotalPriceExtras] = @(extrasTotal);
     }
     else if (indexPath.row != selectedInsurance.row) {
        selectedInsurance = indexPath;
+        self.stepsController.results[kResultsTotalPriceInsurance] = @(app.carInsurances[indexPath.row].priceTotal);
     }
+    [self setTotalPrice];
     [collectionView reloadData];
+}
+
+-(void)setTotalPrice {
+    double carTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceCar]).doubleValue;
+    double extrasTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceExtras]).doubleValue;
+    double insTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceInsurance]).doubleValue;
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"Total price\n€%.2lf", carTotal + extrasTotal + insTotal];
 }
 
 #pragma mark -

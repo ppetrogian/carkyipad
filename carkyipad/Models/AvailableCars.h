@@ -8,11 +8,11 @@
 #import <Foundation/Foundation.h>
 
 
-
+@class Cars;
 @interface AvailableCars : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSArray *cars;
+@property (nonatomic, strong) NSArray<Cars*> *cars;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

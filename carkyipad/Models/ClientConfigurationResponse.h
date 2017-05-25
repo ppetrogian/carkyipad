@@ -16,6 +16,8 @@
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *pickupInstructionsImage;
 @property (nonatomic, assign) NSInteger tabletMode;
+@property (nonatomic, strong) NSString *payPalMode;
+@property (nonatomic, strong) NSString *payPalClientId;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

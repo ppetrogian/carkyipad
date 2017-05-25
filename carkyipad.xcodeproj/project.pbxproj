@@ -101,6 +101,7 @@
 		AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */; };
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA24D51EAA349900043423 /* RequestRideViewController.m */; };
+		D10155F81ED66CEA00F69773 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10155F71ED66CEA00F69773 /* Landing.storyboard */; };
 		D113637B1EA0731800EB6279 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363771EA0731800EB6279 /* libCardIO.a */; };
 		D113637C1EA0731800EB6279 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363781EA0731800EB6279 /* libopencv_core.a */; };
 		D113637D1EA0731800EB6279 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363791EA0731800EB6279 /* libopencv_imgproc.a */; };
@@ -340,6 +341,7 @@
 		AEEA24D51EAA349900043423 /* RequestRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestRideViewController.m; path = ViewControllers/RequestRideViewController.m; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7613584469046DC5A94859F /* Pods-carkyipadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadTests/Pods-carkyipadTests.release.xcconfig"; sourceTree = "<group>"; };
+		D10155F71ED66CEA00F69773 /* Landing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Landing.storyboard; path = ../Landing.storyboard; sourceTree = "<group>"; };
 		D11363771EA0731800EB6279 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCardIO.a; path = CardIO/libCardIO.a; sourceTree = "<group>"; };
 		D11363781EA0731800EB6279 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = CardIO/libopencv_core.a; sourceTree = "<group>"; };
 		D11363791EA0731800EB6279 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = CardIO/libopencv_imgproc.a; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 				D1344BF81E7773FB00006FAD /* CarRental.storyboard */,
 				D1344BFB1E77766300006FAD /* Transfer.storyboard */,
 				AE7275B31E6CCA8C00918646 /* Main.storyboard */,
+				D10155F71ED66CEA00F69773 /* Landing.storyboard */,
 				AE7275B61E6CCA8C00918646 /* Assets.xcassets */,
 				AE616DB51ED186E100EA38D6 /* Loading.storyboard */,
 				AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */,
@@ -1156,6 +1159,7 @@
 				AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */,
 				D15951491EACB08B00540076 /* Settings.bundle in Resources */,
 				E1C2EE5F1EC339910021BEC2 /* ExtrasCollectionViewCell.xib in Resources */,
+				D10155F81ED66CEA00F69773 /* Landing.storyboard in Resources */,
 				AE616DB61ED186E100EA38D6 /* Loading.storyboard in Resources */,
 				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */,
@@ -1223,7 +1227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1253,7 +1257,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1296,7 +1300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {

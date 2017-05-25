@@ -58,8 +58,7 @@
     AppDelegate *app = [AppDelegate instance];
     CarkyApiClient *api = [CarkyApiClient sharedService];
     CalendarRange *range = self.stepsController.results[kResultsDayRange];
-    NSDate *pickupDate = range.endDay.date;
-    [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andDate:pickupDate withBlock:^(NSArray *array) {
+    [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andPickupDate:range.startDay.date andDropoffDate:range.endDay.date withBlock:^(NSArray *array) {
         app.availableCars = array;
         [self setCarSegments:array];
         [self selectCarType:0];
@@ -177,13 +176,10 @@
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:name];
     [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[name rangeOfString:car.subDescription]];
     cell.nameLabel.attributedText = attributedString;
-    NSInteger nDays = ((NSNumber*)self.stepsController.results[kResultsDays]).integerValue;
     //set price
-    NSInteger totalprice = car.price * nDays;
-    NSString *priceStr = [NSString stringWithFormat: @"Total €%zd \r\n (€%zd/day)", totalprice, car.price];
+    NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf \n(€%zd/day)", car.priceTotal, car.pricePerDay];
     NSMutableAttributedString * priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
-    [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",car.pricePerDay]]];
-    cell.priceLabel.text = @"";
+    [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",car.pricePerDay]]];
     cell.priceLabel.attributedText = priceAttributedString;
 }
 
@@ -200,9 +196,14 @@
     NSInteger carTypeId = cars[selectedIndexPath.row].carsIdentifier;
     self.stepsController.results[kResultsCarTypeId] = @(carTypeId);
     self.stepsController.results[kResultsCarTypeIcon] = cars[selectedIndexPath.row].image;
+    self.stepsController.results[kResultsTotalPriceCar] = @(cars[selectedIndexPath.row].priceTotal);
+    if(!self.stepsController.results[kResultsTotalPriceExtras])
+        self.stepsController.results[kResultsTotalPriceExtras] = @(0);
+    if(!self.stepsController.results[kResultsTotalPriceInsurance])
+        self.stepsController.results[kResultsTotalPriceInsurance] = @(0);
     CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
     AppDelegate *app = [AppDelegate instance];
-    [app fetchCarsDataForType:carTypeId andDate:selectedRange.endDay.date andBlock:^(NSArray *arr) {
+    [app fetchCarsDataForType:carTypeId andPickupDate:selectedRange.startDay.date andDropoffDate:selectedRange.endDay.date andBlock:^(NSArray *arr) {
         if ([arr.firstObject isKindOfClass:NSString.class]) {
             [parentController showAlertViewWithMessage:arr.firstObject andTitle:@"Error"];
             return;

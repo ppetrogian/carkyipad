@@ -22,4 +22,5 @@
 -(IBAction) nextButtonAction:(UIButton *)sender;
 -(IBAction)backButtonAction:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *carImageView;
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @end

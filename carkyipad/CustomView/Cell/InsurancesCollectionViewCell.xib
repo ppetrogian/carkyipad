@@ -12,22 +12,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" userLabel="Insurances Collection View Cell" customClass="InsurancesCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="195" height="197"/>
+            <rect key="frame" x="0.0" y="0.0" width="195" height="207"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="195" height="197"/>
+                <rect key="frame" x="0.0" y="0.0" width="195" height="207"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q13-Jl-nLz">
-                        <rect key="frame" x="3" y="3" width="189" height="191"/>
+                        <rect key="frame" x="3" y="3" width="189" height="201"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total £50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiI-of-8h3">
-                                <rect key="frame" x="0.0" y="151" width="189" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total £50" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QiI-of-8h3">
+                                <rect key="frame" x="0.0" y="151" width="189" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="R0v-Ya-9wK"/>
+                                    <constraint firstAttribute="height" constant="50" id="R0v-Ya-9wK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -61,14 +61,14 @@
                 <constraint firstAttribute="bottom" secondItem="Q13-Jl-nLz" secondAttribute="bottom" constant="3" id="M0E-s5-sh2"/>
                 <constraint firstAttribute="trailing" secondItem="Q13-Jl-nLz" secondAttribute="trailing" constant="3" id="ZnE-gE-Soo"/>
             </constraints>
-            <size key="customSize" width="153" height="180"/>
+            <size key="customSize" width="153" height="190"/>
             <connections>
                 <outlet property="containerView" destination="Q13-Jl-nLz" id="HKJ-8j-R1i"/>
                 <outlet property="extraImageView" destination="IaF-1T-ioQ" id="aML-Kp-u9s"/>
                 <outlet property="extraNameLabel" destination="kMy-Og-40K" id="nAd-qB-WPV"/>
                 <outlet property="priceLabel" destination="QiI-of-8h3" id="MhF-uo-Bqq"/>
             </connections>
-            <point key="canvasLocation" x="-114.5" y="114.5"/>
+            <point key="canvasLocation" x="-114.5" y="119.5"/>
         </collectionViewCell>
     </objects>
     <resources>

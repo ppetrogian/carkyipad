@@ -12,6 +12,8 @@
 @interface CarExtra : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, assign) NSInteger pricePerDay;
+@property (nonatomic, assign) double priceTotal;
+@property (nonatomic, assign) NSInteger price;
 @property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, strong) NSString *Name;
 @property (nonatomic, strong) NSString *icon;

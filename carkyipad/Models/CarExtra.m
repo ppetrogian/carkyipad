@@ -9,7 +9,9 @@
 #import "CarExtra.h"
 
 
-NSString *const kCarExtraPrice = @"PricePerDay";
+NSString *const kCarExtraPricePerDay = @"PricePerDay";
+NSString *const kCarExtraPriceTotal = @"PriceTotal";
+NSString *const kCarExtraPrice = @"Price";
 NSString *const kCarExtraId = @"Id";
 NSString *const kCarExtraName = @"Name";
 NSString *const kCarExtraIcon = @"Icon";
@@ -40,7 +42,9 @@ NSString *const kCarExtraDescription = @"Description";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-        self.pricePerDay = [[self objectOrNilForKey:kCarExtraPrice fromDictionary:dict] integerValue];
+        self.pricePerDay = [[self objectOrNilForKey:kCarExtraPricePerDay fromDictionary:dict] integerValue];
+        self.price = [[self objectOrNilForKey:kCarExtraPrice fromDictionary:dict] integerValue];
+        self.priceTotal = [[self objectOrNilForKey:kCarExtraPriceTotal fromDictionary:dict] doubleValue];
         self.Id = [[self objectOrNilForKey:kCarExtraId fromDictionary:dict] integerValue];
         self.Name = [self objectOrNilForKey:kCarExtraName fromDictionary:dict];
         self.icon = [self objectOrNilForKey:kCarExtraIcon fromDictionary:dict];
@@ -54,7 +58,9 @@ NSString *const kCarExtraDescription = @"Description";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kCarExtraPrice];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kCarExtraPricePerDay];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarExtraPrice];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.priceTotal] forKey:kCarExtraPriceTotal];
     [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kCarExtraId];
     [mutableDict setValue:self.Name forKey:kCarExtraName];
     [mutableDict setValue:self.icon forKey:kCarExtraIcon];
@@ -79,7 +85,7 @@ NSString *const kCarExtraDescription = @"Description";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
-    self.pricePerDay = [aDecoder decodeIntegerForKey:kCarExtraPrice];
+    self.pricePerDay = [aDecoder decodeIntegerForKey:kCarExtraPricePerDay];
     self.Id = [aDecoder decodeIntegerForKey:kCarExtraId];
     self.Name = [aDecoder decodeObjectForKey:kCarExtraName];
     self.Description = [aDecoder decodeObjectForKey:kCarExtraDescription];
@@ -89,7 +95,7 @@ NSString *const kCarExtraDescription = @"Description";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     
-    [aCoder encodeInteger:_pricePerDay forKey:kCarExtraPrice];
+    [aCoder encodeInteger:_pricePerDay forKey:kCarExtraPricePerDay];
     [aCoder encodeInteger:_Id forKey:kCarExtraId];
     [aCoder encodeObject:_Name forKey:kCarExtraName];
     [aCoder encodeObject:_Description forKey:kCarExtraDescription];

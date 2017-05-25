@@ -134,12 +134,12 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetCarExtrasForDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
+-(void)GetCarExtrasForTransfer:(NSDate *)pickupDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
     NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
-
-    [self GET:@"api/Helper/GetCarExtras" parameters:@{@"pickupDate":[dfDate stringFromDate:pickupDate], @"pickupTime":[dfTime stringFromDate:pickupDate]} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    [self GET:@"api/Helper/GetCarExtrasForTransfer" parameters:@{@"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carExtrasArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -151,12 +151,29 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
+-(void)GetCarExtrasForRental:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
     NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
 
-    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"carCategoryId":@(carTypeId), @"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"api/Helper/GetCarExtrasForRental" parameters:@{@"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate], @"dropoffDateTime.date":[dfDate stringFromDate:dropoffDate], @"dropoffDateTime.time":[dfTime stringFromDate:dropoffDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *array = (NSArray *)responseObject;
+        NSMutableArray *carExtrasArray = [NSMutableArray arrayWithCapacity:array.count];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            carExtrasArray[idx] = [CarExtra modelObjectWithDictionary:obj];
+        }];
+        block(carExtrasArray);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
+-(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block {
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
+    NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
+
+    [self GET:@"api/Helper/GetAllCarInsurances" parameters:@{@"carCategoryId":@(carTypeId), @"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate], @"dropoffDateTime.date":[dfDate stringFromDate:dropoffDate], @"dropoffDateTime.time":[dfTime stringFromDate:dropoffDate]}  progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *array = (NSArray *)responseObject;
         NSMutableArray *carInsArray = [NSMutableArray arrayWithCapacity:array.count];
         [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -223,11 +240,11 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andDate:(NSDate *)pickupDate withBlock:(BlockArray)block {
+-(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
     NSDateFormatter *dfTime = [NSDateFormatter new]; dfTime.dateFormat = @"HH:mm";
-    [self GET:@"api/Web/GetRentServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId), @"pickupDate":[dfDate stringFromDate:pickupDate], @"pickupTime":[dfTime stringFromDate:pickupDate]} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"api/Web/GetRentServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId), @"pickupDateTime.date":[dfDate stringFromDate:pickupDate], @"pickupDateTime.time":[dfTime stringFromDate:pickupDate], @"dropoffDateTime.date":[dfDate stringFromDate:dropoffDate], @"dropoffDateTime.time":[dfTime stringFromDate:dropoffDate]} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject isKindOfClass:NSData.class]) {
             responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         }

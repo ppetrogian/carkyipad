@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,11 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -26,56 +21,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="1Iy-ig-OI1">
-                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-3a-QfM" customClass="FlatPillButton">
-                                <rect key="frame" x="140" y="481" width="261" height="62"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-J9-PNr">
+                                <rect key="frame" x="-36" y="10" width="842" height="525"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
-                                <state key="normal" title="Car Rental">
+                                <state key="normal" image="taxi_main">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dGF-Ga-tOv" kind="show" id="ZTL-NP-vBo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-3a-QfM">
+                                <rect key="frame" x="-41" y="512" width="849" height="525"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
+                                <state key="normal" image="rental_main">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="xNQ-cA-ja5" kind="show" id="ERy-LE-Q0q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-J9-PNr" customClass="FlatPillButton">
-                                <rect key="frame" x="464" y="481" width="164" height="62"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="35"/>
-                                <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
-                                <state key="normal" title="Taxi">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bold" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="dGF-Ga-tOv" kind="show" id="ZTL-NP-vBo"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Qps-3a-QfM" firstAttribute="leading" secondItem="1Iy-ig-OI1" secondAttribute="leading" constant="140" id="3YI-xb-WjP"/>
-                            <constraint firstItem="Qps-3a-QfM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6GF-v9-iyq"/>
-                            <constraint firstItem="1Iy-ig-OI1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9hw-jY-a5c"/>
-                            <constraint firstAttribute="trailing" secondItem="1Iy-ig-OI1" secondAttribute="trailing" id="C0P-hg-1nF"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1Iy-ig-OI1" secondAttribute="bottom" id="MaU-cN-uxt"/>
-                            <constraint firstAttribute="trailing" secondItem="zEa-J9-PNr" secondAttribute="trailing" constant="140" id="RdW-qS-oz9"/>
-                            <constraint firstItem="zEa-J9-PNr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qEv-aR-sPC"/>
-                            <constraint firstItem="1Iy-ig-OI1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rGQ-kY-gbZ"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="buttonCarRental" destination="Qps-3a-QfM" id="lXO-oP-bgo"/>
                         <outlet property="buttonTransfer" destination="zEa-J9-PNr" id="Vp5-Pf-xj9"/>
-                        <outlet property="leftConstraint" destination="3YI-xb-WjP" id="cHe-hW-rNx"/>
-                        <outlet property="rightConstraint" destination="RdW-qS-oz9" id="fwO-aY-0uk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="25" y="40.4296875"/>
         </scene>
         <!--transferSteps-->
         <scene sceneID="WQi-IQ-75I">
@@ -95,6 +73,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="510" height="373"/>
+        <image name="rental_main" width="743" height="509"/>
+        <image name="taxi_main" width="733" height="485"/>
     </resources>
 </document>

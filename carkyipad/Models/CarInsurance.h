@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *details;
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, assign) NSInteger pricePerDay;
+@property (nonatomic, assign) double priceTotal;
 @property (nonatomic, strong) Company *company;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

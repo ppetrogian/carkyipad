@@ -17,6 +17,7 @@
 @property (nonatomic, assign) NSInteger carsIdentifier;
 @property (nonatomic, assign) NSInteger price;
 @property (nonatomic, assign) NSInteger pricePerDay;
+@property (nonatomic, assign) double priceTotal;
 @property (nonatomic, strong) NSString *subDescription;
 @property (nonatomic, strong) NSString *fuelType;
 @property (nonatomic, strong) NSString *carsDescription;

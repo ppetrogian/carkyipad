@@ -36,7 +36,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"Landing"],@[@"CarRental",@"CarRentalSteps"]];
+    self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"home"],@[@"CarRental",@"CarRentalSteps"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
@@ -59,8 +59,6 @@
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    //PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : @"AXQpJ2wZii3nT3iJhO2OCFUEv_7zRk9SkO6PgGeR3lUegEOetVeBkanC1bqEWi9EggNe2NQwtEg1pVOs"}];
     [self fetchInitialData:nil];
     
     return YES;
@@ -122,6 +120,13 @@
                 app.clientConfiguration = array.firstObject;
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+                // paypal configuration
+                if ([app.clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame ) {
+                    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : app.clientConfiguration.payPalClientId}];
+                } else {
+                    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : app.clientConfiguration.payPalClientId}];
+                }
+                
                 [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
                     self.carCategories = array;
                 }];
@@ -140,13 +145,14 @@
     }];
 }
 
--(void)fetchCarsDataForType:(NSInteger)carTypeId andDate:(NSDate *)pickupDate andBlock:(BlockArray)block{
+// used in rental
+-(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block{
     //[self.api GetAllCarTypes:^(NSArray *array2) {
         //app.carTypes = array2;
     //}];
-    [self.api GetCarExtrasForDate:pickupDate withBlock:^(NSArray *array3) {
+    [self.api GetCarExtrasForRental:pickupDate andDropoffDate:dropoffDate withBlock:^(NSArray *array3) {
         self.carExtras = array3;
-        [self.api GetAllCarInsurancesForType:carTypeId andDate:pickupDate withBlock:^(NSArray *array4) {
+        [self.api GetAllCarInsurancesForType:carTypeId andPickupDate:pickupDate andDropoffDate:dropoffDate withBlock:^(NSArray *array4) {
             self.carInsurances = array4;
             block(array4);
         }];
