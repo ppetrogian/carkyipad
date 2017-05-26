@@ -371,6 +371,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textField_edit:" destination="TFL-dj-Zdw" eventType="editingChanged" id="CEc-Bq-trg"/>
                                     <outlet property="delegate" destination="TFL-dj-Zdw" id="CYf-Db-gkM"/>
                                 </connections>
                             </textField>
@@ -386,6 +387,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textField_edit:" destination="TFL-dj-Zdw" eventType="editingChanged" id="GsF-M5-UyT"/>
                                     <outlet property="delegate" destination="TFL-dj-Zdw" id="fwt-LJ-udX"/>
                                 </connections>
                             </textField>
@@ -394,13 +396,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="insetLeft">
                                         <integer key="value" value="200"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textField_edit:" destination="TFL-dj-Zdw" eventType="editingChanged" id="SWN-hn-enH"/>
                                     <outlet property="delegate" destination="TFL-dj-Zdw" id="mzd-UZ-5hg"/>
                                 </connections>
                             </textField>
@@ -454,6 +457,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textField_edit:" destination="TFL-dj-Zdw" eventType="editingChanged" id="2LI-a1-HfZ"/>
                                     <outlet property="delegate" destination="TFL-dj-Zdw" id="fOa-H0-4X3"/>
                                 </connections>
                             </textField>
@@ -768,6 +772,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="cvv_edit:" destination="vXu-HB-Y0v" eventType="editingChanged" id="RFe-cK-oSz"/>
                                     <outlet property="delegate" destination="vXu-HB-Y0v" id="veO-qR-qAb"/>
                                 </connections>
                             </textField>
@@ -783,6 +788,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="expiryDate_edit:" destination="vXu-HB-Y0v" eventType="editingChanged" id="znD-DA-idk"/>
                                     <outlet property="delegate" destination="vXu-HB-Y0v" id="DOn-e4-OnY"/>
                                 </connections>
                             </textField>

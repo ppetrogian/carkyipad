@@ -14,6 +14,7 @@
 #import "DataModels.h"
 #import "SharedInstance.h"
 #import "PhoneNumberConfirmationViewController.h"
+#import "ButtonUtils.h"
 
 @interface ClientDetailsViewController () <SelectDelegate, UITextViewDelegate>
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
@@ -27,15 +28,15 @@
     // Do any additional setup after loading the view.
     self.isPhoneConfirmed = NO;
     
-    self.confirmButton.enabled = YES;
-    self.confirmButton.backgroundColor = [UIColor blackColor];
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
     if (bt == CarkyBackendTypeDev || bt == CarkyBackendTypeProd) {
         self.firstNameTextField.text = @"";
         self.lastNameTextField.text = @"";
         self.emailTextField.text = @"";
-        self.confirmEmailTextField.text = @"";
         self.phoneNumberTextField.text = @"";
+        [self.confirmButton disableButton];
+    } else {
+         [self.confirmButton enableButton];
     }
     [self.firstNameTextField becomeFirstResponder];
 
@@ -78,10 +79,14 @@
     [self presentViewController:vcObj animated:YES completion:nil];
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    if (textView.text.length > 0) {
-        self.confirmButton.enabled = YES;
-        self.confirmButton.backgroundColor = [UIColor blackColor];
+
+- (IBAction)textField_edit:(UITextField *)sender {
+    BOOL mustEnable =  self.firstNameTextField.text.length > 0 && self.lastNameTextField.text.length > 0 && self.emailTextField.text.length > 0 && self.phoneNumberTextField.text.length > 0;
+    if (!mustEnable && self.confirmButton.isEnabled) {
+        [self.confirmButton disableButton];
+    }
+    else if(mustEnable && !self.confirmButton.isEnabled) {
+        [self.confirmButton enableButton];
     }
 }
 
@@ -101,7 +106,7 @@
     RegisterClientRequest *acc = [RegisterClientRequest new];
     acc.phoneNumber = self.phoneNumberTextField.text;
     acc.email = self.emailTextField.text;
-    acc.confirmEmail = self.confirmEmailTextField.text;
+    acc.confirmEmail = self.emailTextField.text;
     acc.firstName = self.firstNameTextField.text;
     acc.lastName = self.lastNameTextField.text;
     acc.phoneNumberCountryCode = self.countryPrefixLabel.text;

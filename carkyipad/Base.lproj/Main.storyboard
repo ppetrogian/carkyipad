@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,12 +44,25 @@
                                     <segue destination="xNQ-cA-ja5" kind="show" id="ERy-LE-Q0q"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9K-Em-Jmn" customClass="GMSMapView">
+                                <rect key="frame" x="234" y="362" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="83H-Ze-6HH"/>
+                                    <constraint firstAttribute="width" secondItem="v9K-Em-Jmn" secondAttribute="height" multiplier="1:1" id="Z9A-C8-uqI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v9K-Em-Jmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Fj-tz-bBm"/>
+                            <constraint firstItem="v9K-Em-Jmn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ks0-WP-Mng"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonCarRental" destination="Qps-3a-QfM" id="lXO-oP-bgo"/>
                         <outlet property="buttonTransfer" destination="zEa-J9-PNr" id="Vp5-Pf-xj9"/>
+                        <outlet property="homeMapView" destination="v9K-Em-Jmn" id="Tec-42-0jg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

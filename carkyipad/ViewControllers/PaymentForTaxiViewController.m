@@ -43,8 +43,10 @@
     if (bt == CarkyBackendTypeDev || bt == CarkyBackendTypeProd) {
         self.cvvTextField.text = @"";
         self.expiryDateTextField.text = @"";
+        [self.payNowButton disableButton];
     } else {
         [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
+        [self.payNowButton enableButton];
     }
 }
 
@@ -59,12 +61,35 @@
         _payPalConfiguration.acceptCreditCards = NO;
         // Or if you wish to have the user choose a Shipping Address from those already
         // associated with the user's PayPal account, then add:
-        _payPalConfiguration.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
+        _payPalConfiguration.payPalShippingAddressOption = PayPalShippingAddressOptionNone;
         _payPalConfiguration.rememberUser = NO;
     }
     self.cvvTextField.delegate = self;
     return self;
 }
+
+- (void)validateCardDetails {
+    STPCardParams *card = [self getCardParamsFromUI];
+    BOOL mustEnable = [STPCardValidator validationStateForCard:card] == STPCardValidationStateValid;
+    if (!mustEnable && self.payNowButton.isEnabled) {
+        [self.payNowButton disableButton];
+    }
+    else if(mustEnable && !self.payNowButton.isEnabled) {
+        [self.payNowButton enableButton];
+    }
+}
+
+- (void)paymentCardTextFieldDidChange:(nonnull STPPaymentCardTextField *)textField {
+    [self validateCardDetails];
+}
+
+- (IBAction)expiryDate_edit:(UITextField *)sender {
+    [self validateCardDetails];
+}
+- (IBAction)cvv_edit:(UITextField *)sender {
+    [self validateCardDetails];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -108,24 +133,9 @@
     return (TransferStepsViewController *)self.stepsController;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.expiryDateTextField) {
-        NSString *expDate = [self.expiryDateTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"" options:0 range:NSMakeRange(0, self.expiryDateTextField.text.length)];
-        expDate = [expDate stringByReplacingOccurrencesOfString:@"/" withString:@"" options:0 range:NSMakeRange(0, expDate.length)];
-        [self.stpCardTextField replaceField:@"expirationField" withValue:expDate];
-    }
-    else if (textField == self.cvvTextField) {
-        [self.stpCardTextField replaceField:@"cvcField" withValue:self.cvvTextField.text];
-    }
-    if (self.stpCardTextField.isValid) {
-        [self.payNowButton enableButton];
-    }
-    return YES;
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (self.cvvTextField == textField) {
-        // Prevent crashing undo bug – see note below.
+        // Prevent crashing undo bug
         if(range.length + range.location > textField.text.length) {
             return NO;
         }
@@ -157,11 +167,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)payNowButton_click:(UIButton *)sender {
+- (STPCardParams *)getCardParamsFromUI {
     STPCardParams *cardParams = self.stpCardTextField.cardParams;
     cardParams.cvc = self.cvvTextField.text;
     cardParams.expMonth = self.expiryDateTextField.dateComponents.month;
     cardParams.expYear = self.expiryDateTextField.dateComponents.year;
+    return cardParams;
+}
+
+- (IBAction)payNowButton_click:(UIButton *)sender {
+    STPCardParams *cardParams;
+  cardParams = [self getCardParamsFromUI];
     self.parentRentalController.cardParams = cardParams;
     [self.payNowButton disableButton];
     if (self.isForTransfer) {
