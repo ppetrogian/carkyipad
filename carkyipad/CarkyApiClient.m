@@ -90,7 +90,7 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
-
+// unused
 -(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self GET:@"api/Web/GetAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -106,6 +106,7 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+// unused
 -(void)GetAllCarCategories:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self GET:@"api/Helper/GetAllCarCategories" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -120,6 +121,7 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+// unused
 -(void)GetAllCarTypes:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self GET:@"api/Helper/GetAllCarTypes" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -134,6 +136,7 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+// unused
 -(void)GetCarExtrasForTransfer:(NSDate *)pickupDate withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     NSDateFormatter *dfDate = [NSDateFormatter new]; dfDate.dateFormat = @"yyyy-MM-dd";
@@ -274,6 +277,7 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+// deprecated / unused
 -(void)GetCarkyBookingId:(NSString *)transferBookingId withBlock:(BlockString)block {
     // todo: allow json fragments or accept plain http
     [self setAuthorizationHeader];

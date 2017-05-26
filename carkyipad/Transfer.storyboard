@@ -648,7 +648,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="digitButton_BeginEdit:" destination="mn9-Xa-Ugq" eventType="editingDidBegin" id="bqY-iV-WWG"/>
-                                    <action selector="digitButton_Edit:" destination="mn9-Xa-Ugq" eventType="editingDidBegin" id="EZp-Hi-yLV"/>
+                                    <action selector="digitButton_Edit:" destination="mn9-Xa-Ugq" eventType="editingChanged" id="XiX-mr-e6H"/>
                                     <outlet property="delegate" destination="mn9-Xa-Ugq" id="mme-sh-cUc"/>
                                 </connections>
                             </textField>

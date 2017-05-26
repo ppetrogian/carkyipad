@@ -285,15 +285,15 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
             TransferBookingResponse *responseObj = array.firstObject;
             if (responseObj.bookingId.length > 0) {
-                block(responseObj.bookingId);
                 self.transferBookingId = responseObj.bookingId;
+                block(responseObj.bookingId);
             } else {
                 [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
                 block(@"0");
             }
         } else {
             [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-            block(@"0");
+            block(@"-1");
         }
     }];
 }
@@ -305,8 +305,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
         if (error) {
             NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
-            [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
-            block(@"");
+            [self showAlertViewWithMessage:strDescr andTitle:@"Error" withBlock:^(BOOL b) {
+                block(@"-1");
+            }];
             return;
         }
         

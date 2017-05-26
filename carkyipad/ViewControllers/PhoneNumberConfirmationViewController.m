@@ -45,6 +45,10 @@
     if(range.length + range.location > textField.text.length)  {
         return NO;
     }
+    // allow backspace
+    if ([textField.text stringByReplacingCharactersInRange:range withString:string].length < textField.text.length) {
+        return YES;
+    }
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     return newLength <= 1;
 }
@@ -67,7 +71,7 @@
     NSInteger tagNo = sender.tag;
     if (tagNo < 6) {
         [[self.view viewWithTag:tagNo+1] becomeFirstResponder];
-    } else {
+    } else if(sender.text.length > 0) {
           [self.submitVerificationCodeButton enableButton];
     }
 }
@@ -77,6 +81,15 @@
     [api SendPhoneNumberConfirmationForUser:self.userId withBlock:^(NSString *str) {
         NSLog(@"Confirm response %@", str);
     }];
+}
+
+-(NSInteger)getCodeLength {
+    NSInteger len = 0;
+    for (NSInteger i=1; i<=6; i++) {
+        UITextField *tf = [self.view viewWithTag:i];
+        len += tf.text.length;
+    }
+    return len;
 }
 
 - (IBAction)submitVerificationCodeButton_Click:(UIButton *)sender {

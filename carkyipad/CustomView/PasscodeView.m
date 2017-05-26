@@ -57,6 +57,7 @@
     [self updateText:string];
     return YES;
 }
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
@@ -72,15 +73,18 @@
         lbl.text = character;
     }
     self.submitButton.backgroundColor = text.length<6?[UIColor lightGrayColor]:[UIColor blackColor];
-    self.submitButton.enabled = text.length<6?NO:YES;
+    self.submitButton.enabled = text.length < 6 ? NO:YES;
 }
+
 -(void) textViewDidChange:(UITextView *)textView{
     [self updateText:textView.text];
 }
+
 -(BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if (text.length>1) {
         return NO;
     }
+    
     if (range.location==6 && range.length == 0) {
         return NO;
     }
