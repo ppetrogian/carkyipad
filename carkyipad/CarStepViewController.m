@@ -167,14 +167,38 @@
 
 -(void) collectionCell:(CarCollectionViewCell *)cell setDetails:(Cars *)car {
     //set car name
-    NSString *name = [NSString stringWithFormat:@"%@ %@", car.carsDescription, car.subDescription];
+    NSString *name = [NSString stringWithFormat:@"%@\n%@", car.carsDescription, car.subDescription];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:name];
     [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:14]} range:[name rangeOfString:car.subDescription]];
     cell.nameLabel.attributedText = attributedString;
     //set price
-    NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf \n(€%zd/day)", car.priceTotal, car.pricePerDay];
+    NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf\n(€%zd/day)", car.priceTotal, car.pricePerDay];
     NSMutableAttributedString * priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
     [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",car.pricePerDay]]];
+
+    switch (car.transmissionType) {
+        case 1:
+             cell.modeLabel.text = NSLocalizedString(@"Manual", nil);
+            break;
+        case 2:
+            cell.modeLabel.text = NSLocalizedString(@"Automatic", nil);
+            break;
+        default:
+            break;
+    }
+    switch (car.fuelType) {
+        case 1:
+            cell.typeLabel.text = NSLocalizedString(@"Gas", nil);
+            break;
+        case 2:
+            cell.typeLabel.text = NSLocalizedString(@"Diesel", nil);
+            break;
+        case 3:
+            cell.typeLabel.text = NSLocalizedString(@"LPG", nil);
+            break;
+        default:
+            break;
+    }
     cell.priceLabel.attributedText = priceAttributedString;
 }
 

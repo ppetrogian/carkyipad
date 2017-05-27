@@ -111,5 +111,8 @@
         }
     }];
 }
+- (IBAction)back_Click:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

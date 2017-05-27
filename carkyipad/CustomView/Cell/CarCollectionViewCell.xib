@@ -21,17 +21,17 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8A3-w6-gsV">
                         <rect key="frame" x="1" y="1" width="163" height="253"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peugeot 108 or similar" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVR-bQ-DIR">
-                                <rect key="frame" x="8" y="8" width="147" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peugeot 108 or similar" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KVR-bQ-DIR">
+                                <rect key="frame" x="8" y="8" width="147" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Egd-bP-Gqf"/>
+                                    <constraint firstAttribute="height" constant="40" id="Egd-bP-Gqf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-SO-pgP">
-                                <rect key="frame" x="8" y="54" width="147" height="100"/>
+                                <rect key="frame" x="8" y="58" width="147" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="4vf-AD-r0j"/>
                                 </constraints>
