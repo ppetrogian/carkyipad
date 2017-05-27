@@ -201,9 +201,11 @@
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
+    //[[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Please wait...", nil) inView:self.view];
     if (mapView.selectedMarker) {
         mapView.selectedMarker.icon = [UIImage imageNamed:@"point-1"];
-    }
+    }    
+    
     id loc = marker.userData;
     if ([loc isKindOfClass:[Location class]]) {
         if (marker != mapView.selectedMarker) {
@@ -215,7 +217,10 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
-    // your code
+    //[[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Please wait...", nil) inView:self.view];
+    if (mapView.selectedMarker) {
+        mapView.selectedMarker.icon = [UIImage imageNamed:@"point-1"];
+    }
     id loc = marker.userData;
     if ([loc isKindOfClass:[Location class]]) {
         if (marker != mapView.selectedMarker) {

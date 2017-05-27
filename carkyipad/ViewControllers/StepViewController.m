@@ -38,17 +38,6 @@ NSString *const kResultsBookingId = @"BookingId";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showPrice:(NSInteger)price forKey:(NSString *)key {
-    // refresh total view
-    NSMutableDictionary* res = self.stepsController.results;
-    [res setObject:@(price) forKey:key];
-    NSInteger totalprice = ((NSNumber *)res[kResultsTotalPriceCar]).integerValue + ((NSNumber *)res[kResultsTotalPriceExtras]).integerValue + ((NSNumber *)res[kResultsTotalPriceInsurance]).integerValue;
-    CarRentalStepsViewController *parentVc = (CarRentalStepsViewController *)self.stepsController;
-    res[kResultsTotalPrice] = @(totalprice);
-    parentVc.totalView.text = [NSString stringWithFormat:@"%@: %ld€", NSLocalizedString(@"Total", nil), totalprice];
-    [parentVc.totalView setNeedsDisplay];
-}
-
 /*
 #pragma mark - Navigation
 

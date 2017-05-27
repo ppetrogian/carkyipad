@@ -177,20 +177,35 @@
 }
 
 - (IBAction)payNowButton_click:(UIButton *)sender {
-    STPCardParams *cardParams;
-  cardParams = [self getCardParamsFromUI];
-    self.parentRentalController.cardParams = cardParams;
     [self.payNowButton disableButton];
-    if (self.isForTransfer) {
-        [self.payNowButton enableButton];
-        
-        [self.parentTransferController showNextStep];
-    }
-    else {
-        [self.parentRentalController payRentalWithCreditCard:^(BOOL b) {
+    [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Card Validation", nil) inView:self.view];
+    STPCardParams *cardParams;
+    cardParams = [self getCardParamsFromUI];
+    self.parentTransferController.cardParams = cardParams;
+    self.parentRentalController.cardParams = cardParams;
+    // send payment to back end
+    STPAPIClient *stpClient = [STPAPIClient sharedClient];
+    [stpClient createTokenWithCard:self.parentTransferController.cardParams completion:^(STPToken *token, NSError *error) {
+        [[AppDelegate instance] hideProgressNotification];
+        if (error) {
+            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
+            [self.parentTransferController showAlertViewWithMessage:strDescr andTitle:@"Error"];
+            return;
+        }
+        // is for transfer or for rental payment
+        if (self.isForTransfer) {
+            self.parentTransferController.stripeCardToken = token.tokenId;
             [self.payNowButton enableButton];
-        }];
-    }
+            [self.parentTransferController showNextStep];
+        }
+        else {
+            [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Requesting", nil) inView:self.view];
+            self.parentRentalController.stripeCardToken = token.tokenId;
+            [self.parentRentalController payRentalWithCreditCard:^(BOOL b) {
+                [self.payNowButton enableButton];
+                [[AppDelegate instance] hideProgressNotification]; }];
+        }
+    }];
 }
 - (IBAction)agreeWithTermsButton_Click:(id)sender {
     CarkyApiClient *api = [CarkyApiClient sharedService];

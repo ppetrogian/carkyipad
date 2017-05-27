@@ -45,6 +45,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [[AppDelegate instance] hideProgressNotification];
     [super viewWillAppear:animated];
     [self setPlaceDetails];
 }

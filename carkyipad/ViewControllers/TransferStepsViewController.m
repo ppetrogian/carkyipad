@@ -146,6 +146,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         self.targetMarker.position = CLLocationCoordinate2DMake(self.selectedDropoffLocation.latLng.lat, self.selectedDropoffLocation.latLng.lng);
     }
     [self getDirectionsFrom:self.userPos to:self.selectedDropoffLocation.latLng forMap:mapView andMarker:mapView.selectedMarker ? mapView.selectedMarker : self.targetMarker];
+    [[AppDelegate instance] hideProgressNotification];
 }
 
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
@@ -275,8 +276,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 - (void)MakeTransferRequest:(BlockString)block request:(TransferBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    self.hud = [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Waiting confirmation...", nil) inView:self.view];
-    self.hud.delegate = self;
     [api CreateTransferBooking:request withBlock:^(NSArray *array) {
         [[AppDelegate instance] hideProgressNotification];
         if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
@@ -296,27 +295,14 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 - (void)hudWasHidden {
-    // Remove HUD from screen
-    [self.hud removeFromSuperview];
+
 }
 
 -(void)payTransferWithCreditCard:(BlockString)block; {
-    // send payment to back end
-    STPAPIClient *stpClient = [STPAPIClient sharedClient];
-    
-    [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
-        if (error) {
-            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
-            [self showAlertViewWithMessage:strDescr andTitle:@"Error" withBlock:^(BOOL b) {
-                block(@"-1");
-            }];
-            return;
-        }
-        
-        TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
-        request.stripeCardToken = token.tokenId;
-        [self MakeTransferRequest:block request:request]; // create transfer request
-    }]; // create token
+    TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
+    request.stripeCardToken = self.stripeCardToken;
+    [self MakeTransferRequest:block request:request]; // create transfer request
+
 }
     
     

@@ -105,19 +105,17 @@
 }
 
 - (void)showPreviousStep {
-    if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
-        self.totalView.hidden = YES;
-    }
     [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex-1];
     [super showPreviousStep];
 }
 
 -(void)showNextStep {
     if ([self.currentStepViewController isKindOfClass:DetailsStepViewController.class]) {
-        self.totalView.hidden = YES;
+        [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString( @"Please wait", nil) inView:self.view];
         CarStepViewController *carVc = self.childViewControllers[self.currentStepIndex + 1];
         [carVc prepareCarStep];
     } else if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
+        [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString( @"Please wait", nil) inView:self.view];
         CarExtrasViewController *carExtrasVc = self.childViewControllers[self.currentStepIndex + 1];
         [carExtrasVc prepareCarStep];
     }
@@ -180,8 +178,6 @@
 
 - (void)MakeRentalRequest:(BlockBoolean)block request:(RentalBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    self.hud = [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Waiting confirmation...", nil) inView:self.view];
-    self.hud.delegate = self;
     [api CreateRentalBookingRequestForIpad:request withBlock:^(NSArray *array) {
         [[AppDelegate instance] hideProgressNotification];
         
@@ -194,7 +190,8 @@
                 block(NO);
                 [self showAlertViewWithMessage:@"Empty reservation code" andTitle:@"Error"];
             }
-        } else {
+        }
+        else {
             block(NO);
             [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
         }
@@ -202,8 +199,7 @@
 }
 
 - (void)hudWasHidden {
-    // Remove HUD from screen
-    [self.hud removeFromSuperview];
+
 }
 
 -(void)hideKeyboard{
@@ -259,19 +255,9 @@
 }
 
 -(void)payRentalWithCreditCard:(BlockBoolean)block {
-    // send payment to back end
-    STPAPIClient *stpClient = [STPAPIClient sharedClient];
-    
-    [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
-        if (error) {
-            NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
-            [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
-            return;
-        }
-        RentalBookingRequest *request = [self getRentalRequestWithCC:YES];
-        request.paymentInfo.stripeCardToken = token.tokenId;
-        [self MakeRentalRequest:block request:request]; // create rental request
-    }]; // create token
+    RentalBookingRequest *request = [self getRentalRequestWithCC:YES];
+    request.paymentInfo.stripeCardToken = self.stripeCardToken;
+    [self MakeRentalRequest:block request:request]; // create rental request
 }
 
 - (IBAction)gotoBack:(id)sender {

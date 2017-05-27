@@ -38,6 +38,5 @@ extern NSString *const kResultsBookingId;
 @end
 
 @interface StepViewController : UIViewController
-- (void)showPrice:(NSInteger)price forKey:(NSString *)key;
 @property (nonatomic, weak) id <StepDelegate> stepDelegate;
 @end

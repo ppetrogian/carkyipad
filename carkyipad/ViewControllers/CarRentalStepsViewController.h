@@ -16,15 +16,13 @@
 @interface CarRentalStepsViewController : RMStepsController <RMStepsBarDelegate, RMStepsBarDataSource>
 @property (weak, nonatomic) IBOutlet UIStackView *stepButtonsStack;
 @property (weak, nonatomic) IBOutlet UIStackView *stepLabelsStack;
-@property (weak, nonatomic) IBOutlet ShadowViewWithText *totalView;
-// data properties
+@property (nonatomic, strong) NSString *stripeCardToken;
 @property (nonatomic, strong) Location *selectedPickupLocation;
 @property (nonatomic, strong) Location *selectedDropoffLocation;
 @property (strong, nonatomic) Location *currentLocation;
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
-@property (nonatomic, strong) MBProgressHUD *hud;
 
 -(void)payRentalWithCreditCard:(BlockBoolean)b;
 -(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict andBlock:(BlockBoolean)block;

@@ -24,6 +24,7 @@
 #import "CarRentalStepsViewController.h"
 #import "AFNetworking.h"
 #import "AFImageDownloader.h"
+#import "ButtonUtils.h"
 
 static NSString *extraCellIdentifier = @"extraCellIdentifier";
 static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
@@ -65,7 +66,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setTotalPrice];
+    [[AppDelegate instance] hideProgressNotification];
+   [self setTotalPrice];
     [self setPlaceDetails];
 }
 
@@ -249,7 +251,9 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender {
+    [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Please wait...", nil) inView:self.view];
     // save selected info to parent results
+    [self.nextButton disableButton];
     AppDelegate *app = [AppDelegate instance];
     NSMutableArray *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
     if (selectedExtra > 0) {
@@ -263,14 +267,16 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     CarkyApiClient *api = [CarkyApiClient sharedService];
     RentalBookingRequest *request = [self.parentRentalController getRentalRequestWithCC:YES];
     [api RentalChargesForIpad:request withBlock:^(NSArray *array) {
+        [self.nextButton enableButton];
+        [[AppDelegate instance] hideProgressNotification];
         if ([array.firstObject isKindOfClass:NSString.class]) {
             [self.parentRentalController showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-            return;
-        }
-        ChargesForIPadResponse *charges = array.firstObject;
-        self.parentRentalController.results[kResultsTotalPrice] = @(charges.total);
-        if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
-            [self.stepDelegate didSelectedNext:sender];
+        } else {
+            ChargesForIPadResponse *charges = array.firstObject;
+            self.parentRentalController.results[kResultsTotalPrice] = @(charges.total);
+            if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
+                [self.stepDelegate didSelectedNext:sender];
+            }
         }
     }];
 }

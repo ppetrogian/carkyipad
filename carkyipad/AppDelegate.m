@@ -34,6 +34,11 @@
     self.window.rootViewController = viewController;
     // Should be initialized with the windows frame so the HUD disables all user input by covering the entire screen
     self.mHud = [[MBProgressHUD alloc] initWithView:viewController.view];
+    self.mHud.removeFromSuperViewOnHide = YES;
+    _mHud.bezelView.color = [UIColor blackColor];
+    _mHud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    _mHud.contentColor = [UIColor whiteColor];
+    _mHud.tintColor = [UIColor whiteColor];
     [CarkyApiClient sharedService].hud = self.mHud;
     [self.window makeKeyAndVisible];
 }
@@ -206,7 +211,7 @@
 -(MBProgressHUD *)showProgressNotificationWithText:(NSString *)text inView:(UIView *)view{
     _mHud.mode = MBProgressHUDModeIndeterminate;
     _mHud.label.text = text != nil ? text : NSLocalizedString(@"Please wait...", nil);
-    _mHud.backgroundColor = [UIColor blackColor];
+    //_mHud.backgroundView.color = [UIColor blackColor];
     [view addSubview:_mHud];
     [_mHud showAnimated:YES];
     return _mHud;
