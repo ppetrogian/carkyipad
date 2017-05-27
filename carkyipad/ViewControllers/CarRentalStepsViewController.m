@@ -20,7 +20,7 @@
 #import "CalendarRange.h"
 #define kSegmentHeight 50
 
-@interface CarRentalStepsViewController ()<StepDelegate>
+@interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate>
 @property(strong, nonatomic) RentalConfirmationView *confirmationView;
 @end
 
@@ -191,9 +191,10 @@
 
 - (void)MakeRentalRequest:(BlockBoolean)block request:(RentalBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
+    self.hud = [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Waiting confirmation...", nil) inView:self.view];
+    self.hud.delegate = self;
     [api CreateRentalBookingRequestForIpad:request withBlock:^(NSArray *array) {
-        [AppDelegate hideProgressNotification:hud];
+        [[AppDelegate instance] hideProgressNotification];
         
         if ([array.firstObject isKindOfClass:RentalBookingResponse.class]) {
             RentalBookingResponse *responseObj = array.firstObject;
@@ -209,6 +210,11 @@
             [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
         }
     }];
+}
+
+- (void)hudWasHidden {
+    // Remove HUD from screen
+    [self.hud removeFromSuperview];
 }
 
 -(void)hideKeyboard{

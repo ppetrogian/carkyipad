@@ -40,7 +40,7 @@
     self.stpCardTextField.borderWidth = 1;
     self.isForTransfer = [self.stepsController isKindOfClass:TransferStepsViewController.class];
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if (bt == CarkyBackendTypeDev || bt == CarkyBackendTypeProd) {
+    if (bt == CarkyBackendTypeTest || bt == CarkyBackendTypeProd) {
         self.cvvTextField.text = @"";
         self.expiryDateTextField.text = @"";
         [self.payNowButton disableButton];
@@ -49,6 +49,7 @@
         [self.payNowButton enableButton];
     }
 }
+
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];

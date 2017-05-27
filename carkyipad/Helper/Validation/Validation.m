@@ -9,7 +9,26 @@
 #import "Validation.h"
 #import "Reachability.h"
 #import "Macros.h"
+
+@interface Validation()
+@property (nonatomic, strong) NSCharacterSet *numbersOnly;
+@property (nonatomic, strong) NSCharacterSet *setAlphaNumbericInverted;
+@property (nonatomic, strong) NSString *emailRegex;
+@end
+
 @implementation Validation
+
+-(instancetype)init {
+    if (self == [super init]) {
+        self.numbersOnly = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        self.setAlphaNumbericInverted = [NSCharacterSet characterSetWithCharactersInString:APHANUMERIC_CHARACTERS];
+        self.setAlphaNumbericInverted = [self.setAlphaNumbericInverted invertedSet];
+        self.emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    }
+    return self;
+}
+
+
 #pragma mark - validation
 -(BOOL)checkNet
 {
@@ -19,7 +38,7 @@
 }
 -(BOOL)netWorkStatus
 {
-    SCNetworkReachabilityFlags flags;
+    SCNetworkReachabilityFlags flags = kSCNetworkReachabilityFlagsReachable;
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability networkStatusForFlags:flags];
     return networkStatus;
@@ -27,9 +46,7 @@
 
 - (BOOL)isAlphaNumeric:(NSString *)zipCode
 {
-    NSCharacterSet *s = [NSCharacterSet characterSetWithCharactersInString:APHANUMERIC_CHARACTERS];
-    s = [s invertedSet];
-    NSRange r = [zipCode rangeOfCharacterFromSet:s];
+    NSRange r = [zipCode rangeOfCharacterFromSet:self.setAlphaNumbericInverted];
     if (r.location == NSNotFound) {
         return NO;
     } else {
@@ -55,8 +72,7 @@
 }
 #pragma mark  emailvalidation
 -(BOOL)emailValidation:(NSString *)emailvalid{
-    NSString *emailRegex=@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailtest=[NSPredicate predicateWithFormat:@"Self matches %@",emailRegex];
+    NSPredicate *emailtest=[NSPredicate predicateWithFormat:@"Self matches %@",self.emailRegex];
     return [emailtest evaluateWithObject:emailvalid];
 }
 #pragma mark - MobileNumberValidate
@@ -70,9 +86,8 @@
 }
 -(BOOL)isDigit:(NSString*)string
 {
-    NSCharacterSet *numbersOnly = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
     NSCharacterSet *characterSetFromTextField = [NSCharacterSet characterSetWithCharactersInString:string];
-    BOOL stringIsValid = [numbersOnly isSupersetOfSet:characterSetFromTextField];
+    BOOL stringIsValid = [self.numbersOnly isSupersetOfSet:characterSetFromTextField];
     return stringIsValid;
 }
 #pragma mark - phoneParsing

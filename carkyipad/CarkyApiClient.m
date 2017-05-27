@@ -231,7 +231,7 @@ static CarkyApiClient *_sharedService = nil;
         }
         if ([responseObject isKindOfClass:NSArray.class]) {
             NSArray *array = (NSArray *)responseObject;
-            //[self.hud hideAnimated:YES];
+            [self.hud hideAnimated:YES];
             NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
             [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 carsArray[idx] = [CarCategory modelObjectWithDictionary:obj];
@@ -253,7 +253,7 @@ static CarkyApiClient *_sharedService = nil;
         }
         if ([responseObject isKindOfClass:NSArray.class]) {
             NSArray *array = (NSArray *)responseObject;
-            //[self.hud hideAnimated:YES];
+            [self.hud hideAnimated:YES];
             NSMutableArray *availableCarsArray = [NSMutableArray arrayWithCapacity:array.count];
             [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 availableCarsArray[idx] = [AvailableCars modelObjectWithDictionary:obj];

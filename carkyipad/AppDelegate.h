@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray<CarInsurance*> *carInsurances;
 @property (strong, nonatomic) NSArray<Location*> *wellKnownLocations;
 
+@property (strong, nonatomic) MBProgressHUD *mHud;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
 @property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
@@ -44,8 +45,8 @@
 +(UICollectionViewCell *)parentCollectionViewCell:(UIView *)view;
 -(void)fetchInitialData:(BlockBoolean)block;
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location;
-+(MBProgressHUD *)showProgressNotification:(UIView *)view withText:(NSString *)text;
-+(void)hideProgressNotification:(MBProgressHUD *)hud;
+-(MBProgressHUD *)showProgressNotificationWithText:(NSString *)text inView:(UIView *)view;
+-(void)hideProgressNotification;
 +(void)configurePSTextField:(UITextField *)tf withColor:(UIColor *)color;
 +(GMSPolyline *)showRouteInMap:(GMSMapView *)mapView withResults:(NSDictionary *)results forMarker:(GMSMarker *)targetMarker;
 +(UIImage *)imageToGreyImage:(UIImage *)image;

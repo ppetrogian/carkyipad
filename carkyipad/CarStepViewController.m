@@ -21,12 +21,13 @@
 #import "UIController.h"
 #import "DetailsStepViewController.h"
 #import "CalendarRange.h"
+#import "ButtonUtils.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 {
-    NSIndexPath *selectedIndexPath;
     CarRentalStepsViewController *parentController;
 }
+@property (nonatomic, assign) NSInteger selectedCarOrder;
 @property (nonatomic,strong) TGRArrayDataSource *carsDataSource;
 @end
 
@@ -39,8 +40,7 @@
 }
 -(void) setupInit {
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
-    selectedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
-
+    self.selectedCarOrder = -1;
     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
 }
 
@@ -116,7 +116,7 @@
 -(void) didSelectedSegmentIndex:(NSInteger)index{
     NSLog(@"Selected index = %zd", index);
     [self selectCarType:index];
-    selectedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:0];
+    self.selectedCarOrder = -1;
     self.nextButton.enabled = NO;
     self.nextButton.backgroundColor = [UIColor lightGrayColor];
 }
@@ -124,30 +124,32 @@
 - (void)selectCarType:(NSInteger)selIndex {
     NSArray<AvailableCars*> *availCarsArray = [AppDelegate instance].availableCars;
     NSArray<Cars*> *cars = availCarsArray[selIndex].cars;
+    [cars enumerateObjectsUsingBlock:^(Cars * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.order = idx;
+    }];
 
     // bind cars to collection view
     self.carsDataSource = [[TGRArrayDataSource alloc] initWithItems:cars cellReuseIdentifier:@"CellIdentifier" configureCellBlock:^(CarCollectionViewCell *cell, Cars *item) {
-        //cell.priceLabel.text = [NSString stringWithFormat:@"%ld€/day",item.pricePerDay];
-        //cell.carDescriptionLabel.text = item.carsDescription;
-        //cell.orSimilarLabel.text = item.subDescription;
         [self collectionCell:cell setDetails:item];
         //update cell appearence
-        NSIndexPath *indexPath = [self.carsCollectionView indexPathForCell:cell];
-        if (selectedIndexPath.row == indexPath.row && selectedIndexPath.section == indexPath.section) {
+        if (self.selectedCarOrder == item.order) {
             cell.containerView.layer.borderWidth = 1;
             cell.priceBackView.backgroundColor = [UIColor blackColor];
             cell.priceLabel.textColor = [UIColor whiteColor];
         }
-        else{
+        else {
             cell.containerView.layer.borderWidth = 0;
             cell.priceBackView.backgroundColor = [UIColor lightGrayColor];
             cell.priceLabel.textColor = [UIColor blackColor];
         }
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image]];
-        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
-            cell.carImageView.image = responseObject;
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+        if (![item.image isEqualToString:cell.imageHiddenLabel.text]) {
+            cell.imageHiddenLabel.text = item.image;
+            cell.carImageView.image = nil;
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image]];
+            [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+                cell.carImageView.image = responseObject;
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+        }
     }];
     self.carsCollectionView.dataSource = self.carsDataSource;
     self.carsCollectionView.delegate = self;
@@ -162,14 +164,7 @@
  // Pass the selected object to the new view controller.
  }
  */
--(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 20;
-}
--(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"CellIdentifier";
-    CarCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    return cell;
-}
+
 -(void) collectionCell:(CarCollectionViewCell *)cell setDetails:(Cars *)car {
     //set car name
     NSString *name = [NSString stringWithFormat:@"%@ %@", car.carsDescription, car.subDescription];
@@ -184,19 +179,31 @@
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    selectedIndexPath = indexPath;
-    [collectionView reloadData];
-    self.nextButton.enabled = YES;
-    self.nextButton.backgroundColor = [UIColor blackColor];
+
+    if (self.selectedCarOrder != indexPath.row) {
+        [collectionView performBatchUpdates:^{
+            NSMutableArray *temp = [NSMutableArray arrayWithCapacity:2];
+            if(self.selectedCarOrder >= 0)
+               [temp addObject:[NSIndexPath indexPathForRow:self.selectedCarOrder inSection:0]];
+            [temp addObject:indexPath];
+            self.selectedCarOrder = indexPath.row;
+            [collectionView reloadItemsAtIndexPaths:temp];
+        } completion:^(BOOL finished) {
+          
+        }];
+        //[collectionView reloadData];
+    }
+    if (self.selectedCarOrder >= 0) {
+        [self.nextButton enableButton];
+    }
 }
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
     NSArray<Cars*> *cars = self.carsDataSource.items;
-    NSInteger carTypeId = cars[selectedIndexPath.row].carsIdentifier;
+    NSInteger carTypeId = cars[self.selectedCarOrder].carsIdentifier;
     self.stepsController.results[kResultsCarTypeId] = @(carTypeId);
-    self.stepsController.results[kResultsCarTypeIcon] = cars[selectedIndexPath.row].image;
-    self.stepsController.results[kResultsTotalPriceCar] = @(cars[selectedIndexPath.row].priceTotal);
+    self.stepsController.results[kResultsCarTypeIcon] = cars[self.selectedCarOrder].image;
+    self.stepsController.results[kResultsTotalPriceCar] = @(cars[self.selectedCarOrder].priceTotal);
     if(!self.stepsController.results[kResultsTotalPriceExtras])
         self.stepsController.results[kResultsTotalPriceExtras] = @(0);
     if(!self.stepsController.results[kResultsTotalPriceInsurance])

@@ -15,10 +15,12 @@
 #import "SharedInstance.h"
 #import "PhoneNumberConfirmationViewController.h"
 #import "ButtonUtils.h"
+#import "Validation.h"
 
 @interface ClientDetailsViewController () <SelectDelegate, UITextViewDelegate>
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
 @property (nonatomic, strong) RegisterClientResponse *registerClientResponse;
+@property (nonatomic, strong) Validation *validator;
 @end
 
 @implementation ClientDetailsViewController
@@ -27,9 +29,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.isPhoneConfirmed = NO;
+    self.validator = [Validation new];
     
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if (bt == CarkyBackendTypeDev || bt == CarkyBackendTypeProd) {
+    if (bt == CarkyBackendTypeTest || bt == CarkyBackendTypeProd) {
         self.firstNameTextField.text = @"";
         self.lastNameTextField.text = @"";
         self.emailTextField.text = @"";
@@ -47,6 +50,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (self.phoneNumberTextField == textField) {
+        // Prevent crashing undo bug
+        if(range.length + range.location > textField.text.length) {
+            return NO;
+        }
+        if (![self.validator isDigit:string]) {
+            return NO;
+        }
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        return newLength <= 10;
+    }
+    return YES;
+}
 
 #pragma mark - Navigation
 

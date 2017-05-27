@@ -104,6 +104,13 @@
                                     <constraint firstItem="vG0-sC-Kq7" firstAttribute="centerY" secondItem="pkS-LI-aej" secondAttribute="centerY" id="uDS-sO-AFF"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-Ef-8iK">
+                                <rect key="frame" x="56" y="59" width="61" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -133,6 +140,7 @@
             <connections>
                 <outlet property="carImageView" destination="pT5-SO-pgP" id="4R8-vg-eZb"/>
                 <outlet property="containerView" destination="8A3-w6-gsV" id="EON-h7-Byr"/>
+                <outlet property="imageHiddenLabel" destination="2hw-Ef-8iK" id="vY5-ep-KTd"/>
                 <outlet property="modeImageView" destination="1Ee-We-nWc" id="f8h-h7-6Gr"/>
                 <outlet property="modeLabel" destination="vG0-sC-Kq7" id="wP8-ni-eny"/>
                 <outlet property="nameLabel" destination="KVR-bQ-DIR" id="Pmo-p3-5X3"/>
@@ -143,6 +151,14 @@
             </connections>
             <point key="canvasLocation" x="6.5" y="258.5"/>
         </collectionViewCell>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8gE-CP-jZw">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+            <point key="canvasLocation" x="194" y="404"/>
+        </label>
     </objects>
     <resources>
         <image name="car-a" width="29" height="28"/>

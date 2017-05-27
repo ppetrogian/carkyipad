@@ -19,5 +19,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *typeLabel;
 @property (nonatomic, weak) IBOutlet UIView *priceBackView;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *imageHiddenLabel;
 
 @end

@@ -23,7 +23,7 @@
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
-@interface TransferStepsViewController () <UITextFieldDelegate>
+@interface TransferStepsViewController () <UITextFieldDelegate, MBProgressHUDDelegate>
 @property (nonatomic, strong) LatLng* userPos;
 
 @property (nonatomic, assign) NSInteger userFleetLocationId;
@@ -279,9 +279,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 - (void)MakeTransferRequest:(BlockString)block request:(TransferBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    MBProgressHUD *hud = [AppDelegate showProgressNotification:nil withText:@"Waiting confirmation..."];
+    self.hud = [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Waiting confirmation...", nil) inView:self.view];
+    self.hud.delegate = self;
     [api CreateTransferBooking:request withBlock:^(NSArray *array) {
-        [AppDelegate hideProgressNotification:hud];
+        [[AppDelegate instance] hideProgressNotification];
         if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
             TransferBookingResponse *responseObj = array.firstObject;
             if (responseObj.bookingId.length > 0) {
@@ -296,6 +297,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             block(@"-1");
         }
     }];
+}
+
+- (void)hudWasHidden {
+    // Remove HUD from screen
+    [self.hud removeFromSuperview];
 }
 
 -(void)payTransferWithCreditCard:(BlockString)block; {

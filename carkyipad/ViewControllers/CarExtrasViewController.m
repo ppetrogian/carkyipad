@@ -30,7 +30,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 
 @interface CarExtrasViewController ()
 {
-    NSMutableArray *selectedExtrasListArray;
+    NSIndexPath *selectedExtra;
     NSIndexPath *selectedInsurance;
 }
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
@@ -87,6 +87,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.dropOffPlaceDetailsView setAllDetails:results isForPickup:NO];
     [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
     selectedInsurance = [NSIndexPath indexPathForRow:0 inSection:1];
+    selectedExtra = [NSIndexPath indexPathForRow:-1 inSection:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -130,7 +131,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
         cell = insCell;
     }
 
-    if ((indexPath.section == 0 && [selectedExtrasListArray containsObject:indexPath]) ||
+    if ((indexPath.section == 0 && selectedExtra.row == indexPath.row) ||
         (indexPath.section == 1 && selectedInsurance.row == indexPath.row)) {
         cell.containerView.layer.borderWidth = 1.0;
         cell.priceLabel.backgroundColor = [UIColor blackColor];
@@ -206,20 +207,12 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     AppDelegate *app = [AppDelegate instance];
-    double extrasTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceExtras]).doubleValue;
-    if (selectedExtrasListArray == nil) {
-        selectedExtrasListArray = [[NSMutableArray alloc] init];
-    }
+
     if (indexPath.section == 0) {
-        if ([selectedExtrasListArray containsObject:indexPath]) {
-            [selectedExtrasListArray removeObject:indexPath];
-            extrasTotal -= app.carExtras[indexPath.row].priceTotal;
+        if (selectedExtra.row  != indexPath.row) {
+            selectedInsurance = indexPath;
+            self.stepsController.results[kResultsTotalPriceExtras] = @(app.carExtras[indexPath.row].priceTotal);
         }
-        else{
-            [selectedExtrasListArray addObject:indexPath];
-            extrasTotal += app.carExtras[indexPath.row].priceTotal;
-        }
-        self.stepsController.results[kResultsTotalPriceExtras] = @(extrasTotal);
     }
     else if (indexPath.row != selectedInsurance.row) {
        selectedInsurance = indexPath;
@@ -241,11 +234,9 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     // save selected info to parent results
     AppDelegate *app = [AppDelegate instance];
     NSMutableArray *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
-    [selectedExtrasListArray enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.section == 0) {
-            [extras addObject:@(app.carExtras[obj.row].Id)];
-        }
-    }];
+    if (selectedExtra.row > 0) {
+       [extras addObject:@(app.carExtras[selectedExtra.row].Id)];
+    }
     self.stepsController.results[kResultsExtras] = extras;
     NSInteger insuranceId = app.carInsurances[selectedInsurance.row].Id;
     self.stepsController.results[kResultsInsuranceId] = @(insuranceId);

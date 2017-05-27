@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *fuelType;
 @property (nonatomic, strong) NSString *carsDescription;
 @property (nonatomic, strong) NSString *image;
+@property (nonatomic, assign) NSInteger order;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
