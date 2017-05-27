@@ -97,18 +97,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Transfer" bundle:nil];
     UITabBarController *tabbarController = [storyboard instantiateViewControllerWithIdentifier:@"tabBar"];
     
-    StepViewController *vc4 = [self.storyboard instantiateViewControllerWithIdentifier:@"Payment"];
-    vc4.stepDelegate = self;
-    
     return @[firstStep, secondStep, thirdStep, tabbarController.viewControllers[1], tabbarController.viewControllers[2]];
-}
-
-- (void)finishedAllSteps {
-    UIAlertAction *actionYes = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {        
-    }];
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Wizard finish",nil) message:NSLocalizedString(@"Payment done", nil) preferredStyle:UIAlertControllerStyleAlert];
-    [alertVC addAction:actionYes];
-    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (void)canceled {

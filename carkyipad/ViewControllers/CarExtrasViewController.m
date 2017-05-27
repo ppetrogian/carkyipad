@@ -209,17 +209,29 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     AppDelegate *app = [AppDelegate instance];
 
     if (indexPath.section == 0) {
-        if (selectedExtra.row  != indexPath.row) {
-            selectedInsurance = indexPath;
+        if (selectedExtra.row != indexPath.row) {
             self.stepsController.results[kResultsTotalPriceExtras] = @(app.carExtras[indexPath.row].priceTotal);
         }
     }
     else if (indexPath.row != selectedInsurance.row) {
-       selectedInsurance = indexPath;
         self.stepsController.results[kResultsTotalPriceInsurance] = @(app.carInsurances[indexPath.row].priceTotal);
     }
     [self setTotalPrice];
-    [collectionView reloadData];
+    [collectionView performBatchUpdates:^{
+        NSMutableArray *temp = [NSMutableArray arrayWithCapacity:2];
+        if (indexPath.section == 0) {
+            if(selectedExtra.row >= 0)
+                [temp addObject:selectedExtra];
+                selectedExtra = indexPath;
+        } else {
+            if(selectedInsurance.row >= 0)
+                [temp addObject:selectedInsurance];
+                selectedInsurance = indexPath;
+        }
+        [temp addObject:indexPath];
+        [collectionView reloadItemsAtIndexPaths:temp];
+    } completion:nil];
+    //[collectionView reloadData];
 }
 
 -(void)setTotalPrice {

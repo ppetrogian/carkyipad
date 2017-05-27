@@ -149,7 +149,7 @@
 #pragma mark - Actions
 - (void)showNextStep {
     NSInteger index = [self.childViewControllers indexOfObject:self.currentStepViewController];
-    if(index < [self.childViewControllers count]-1) {
+    if(index < self.childViewControllers.count-1) {
         UIViewController *nextStepViewController = [self.childViewControllers objectAtIndex:index+1];
         [self showStepViewController:nextStepViewController animated:YES];
     } else {

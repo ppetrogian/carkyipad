@@ -218,10 +218,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     return tb.viewControllers;
 }
 
-- (void)finishedAllSteps {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)canceled {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

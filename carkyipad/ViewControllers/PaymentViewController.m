@@ -1,12 +1,12 @@
 //
-//  PaymentForTaxiViewController.m
+//  PaymentViewController.m
 //  carkyipad
 //
 //  Created by Filippos Sakellaropoulos on 24/04/2017.
 //  Copyright © 2017 Nessos. All rights reserved.
 //
 
-#import "PaymentForTaxiViewController.h"
+#import "PaymentViewController.h"
 #import <Stripe/Stripe.h>
 #import "TransferStepsViewController.h"
 #import "CarRentalStepsViewController.h"
@@ -21,14 +21,14 @@
 #import "PayPalMobile.h"
 #import "RentalConfirmationView.h"
 
-@interface PaymentForTaxiViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, PayPalPaymentDelegate, UITextFieldDelegate>
+@interface PaymentViewController () <CardIOPaymentViewControllerDelegate, STPPaymentCardTextFieldDelegate, PayPalPaymentDelegate, UITextFieldDelegate>
 @property (nonatomic, readonly, weak) CarRentalStepsViewController *parentRentalController;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @property (nonatomic, strong, readwrite) PayPalConfiguration *payPalConfiguration;
 @property (nonatomic, assign) BOOL isForTransfer;
 @end
 
-@implementation PaymentForTaxiViewController
+@implementation PaymentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

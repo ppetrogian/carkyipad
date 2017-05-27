@@ -1,5 +1,4 @@
-//
-//  PaymentForTaxiViewController.h
+
 //  carkyipad
 //
 //  Created by Filippos Sakellaropoulos on 24/04/2017.
@@ -9,7 +8,7 @@
 #import "StepViewController.h"
 @class PaymentCardEditorField,ClientDetailsViewController,BKCardExpiryField;
 
-@interface PaymentForTaxiViewController : StepViewController
+@interface PaymentViewController : StepViewController
 @property (weak, nonatomic) IBOutlet UIButton *payNowButton;
 @property (weak, nonatomic) IBOutlet UIButton *payWithPaypalButton;
 @property (weak, nonatomic) IBOutlet UITextField *cvvTextField;

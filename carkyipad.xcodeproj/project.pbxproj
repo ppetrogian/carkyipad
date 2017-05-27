@@ -149,7 +149,7 @@
 		D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */; };
 		D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951511EAD732900540076 /* ClientDetailsViewController.m */; };
 		D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */; };
-		D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */; };
+		D15951581EADCA5500540076 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D15951571EADCA5500540076 /* PaymentViewController.m */; };
 		D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D159515A1EADED4D00540076 /* WaitForDriverViewController.m */; };
 		D18C67871ECBB84500566DCC /* RentalBookingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D18C67861ECBB84500566DCC /* RentalBookingRequest.m */; };
 		D18C678C1ECBB86300566DCC /* BookingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D18C67891ECBB86300566DCC /* BookingInfo.m */; };
@@ -160,7 +160,6 @@
 		D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */; };
 		D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9911E91187100F735A0 /* CarExtrasViewController.m */; };
 		D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */; };
-		D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */; };
 		D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */; };
 		D1AA29501EC926F40080AD93 /* InsurancesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
@@ -407,8 +406,8 @@
 		D15951511EAD732900540076 /* ClientDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientDetailsViewController.m; path = ViewControllers/ClientDetailsViewController.m; sourceTree = "<group>"; };
 		D15951531EADC60F00540076 /* PhoneNumberConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneNumberConfirmationViewController.h; path = ViewControllers/PhoneNumberConfirmationViewController.h; sourceTree = "<group>"; };
 		D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneNumberConfirmationViewController.m; path = ViewControllers/PhoneNumberConfirmationViewController.m; sourceTree = "<group>"; };
-		D15951561EADCA5500540076 /* PaymentForTaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentForTaxiViewController.h; path = ViewControllers/PaymentForTaxiViewController.h; sourceTree = "<group>"; };
-		D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentForTaxiViewController.m; path = ViewControllers/PaymentForTaxiViewController.m; sourceTree = "<group>"; };
+		D15951561EADCA5500540076 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentViewController.h; path = ViewControllers/PaymentViewController.h; sourceTree = "<group>"; };
+		D15951571EADCA5500540076 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentViewController.m; path = ViewControllers/PaymentViewController.m; sourceTree = "<group>"; };
 		D15951591EADED4D00540076 /* WaitForDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitForDriverViewController.h; path = ViewControllers/WaitForDriverViewController.h; sourceTree = "<group>"; };
 		D159515A1EADED4D00540076 /* WaitForDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitForDriverViewController.m; path = ViewControllers/WaitForDriverViewController.m; sourceTree = "<group>"; };
 		D18C67851ECBB84500566DCC /* RentalBookingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBookingRequest.h; sourceTree = "<group>"; };
@@ -429,8 +428,6 @@
 		D19FF9911E91187100F735A0 /* CarExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarExtrasViewController.m; path = ViewControllers/CarExtrasViewController.m; sourceTree = "<group>"; };
 		D19FF9931E91774400F735A0 /* InsuranceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsuranceTableViewCell.h; path = ViewControllers/InsuranceTableViewCell.h; sourceTree = "<group>"; };
 		D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsuranceTableViewCell.m; path = ViewControllers/InsuranceTableViewCell.m; sourceTree = "<group>"; };
-		D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
-		D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InsurancesCollectionViewCell.xib; path = CustomView/Cell/InsurancesCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1AA294E1EC926F30080AD93 /* InsurancesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsurancesCollectionViewCell.h; path = CustomView/Cell/InsurancesCollectionViewCell.h; sourceTree = "<group>"; };
 		D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsurancesCollectionViewCell.m; path = CustomView/Cell/InsurancesCollectionViewCell.m; sourceTree = "<group>"; };
@@ -631,6 +628,8 @@
 				AE6352B71E75DE3000065F0F /* HomeViewController.m */,
 				D1344C0A1E78CF8F00006FAD /* StepViewController.h */,
 				D1344C0B1E78CF8F00006FAD /* StepViewController.m */,
+				D15951561EADCA5500540076 /* PaymentViewController.h */,
+				D15951571EADCA5500540076 /* PaymentViewController.m */,
 				AE616DB71ED1879D00EA38D6 /* LoadingViewController.h */,
 				AE616DB81ED1879D00EA38D6 /* LoadingViewController.m */,
 			);
@@ -794,8 +793,6 @@
 				D15951511EAD732900540076 /* ClientDetailsViewController.m */,
 				D15951531EADC60F00540076 /* PhoneNumberConfirmationViewController.h */,
 				D15951541EADC60F00540076 /* PhoneNumberConfirmationViewController.m */,
-				D15951561EADCA5500540076 /* PaymentForTaxiViewController.h */,
-				D15951571EADCA5500540076 /* PaymentForTaxiViewController.m */,
 				D15951591EADED4D00540076 /* WaitForDriverViewController.h */,
 				D159515A1EADED4D00540076 /* WaitForDriverViewController.m */,
 				D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */,
@@ -818,8 +815,6 @@
 				D12218F41E8B121500AABBBE /* CarStepViewController.m */,
 				D19FF9901E91187100F735A0 /* CarExtrasViewController.h */,
 				D19FF9911E91187100F735A0 /* CarExtrasViewController.m */,
-				D19FF99C1E9199DA00F735A0 /* PaymentViewController.h */,
-				D19FF99D1E9199DA00F735A0 /* PaymentViewController.m */,
 				E1C2EE7C1EC4DF8A0021BEC2 /* RentalConfirmationView.h */,
 				E1C2EE7D1EC4DF8A0021BEC2 /* RentalConfirmationView.m */,
 				E1C2EE7F1EC4DFB10021BEC2 /* RentalConfirmationView.xib */,
@@ -1361,7 +1356,7 @@
 				AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */,
 				E1C2EE501EC3363A0021BEC2 /* UIController.m in Sources */,
 				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,
-				D15951581EADCA5500540076 /* PaymentForTaxiViewController.m in Sources */,
+				D15951581EADCA5500540076 /* PaymentViewController.m in Sources */,
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
 				AE6352F51E75E1FA00065F0F /* NBNumberFormat.m in Sources */,
@@ -1438,7 +1433,6 @@
 				E1C2EE5E1EC339910021BEC2 /* ExtrasCollectionViewCell.m in Sources */,
 				D19FF9811E904C1400F735A0 /* CarRentalModel.m in Sources */,
 				AE6351C61E71E32200065F0F /* LatLng.m in Sources */,
-				D19FF99E1E9199DA00F735A0 /* PaymentViewController.m in Sources */,
 				AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */,
 				E1C2EE541EC339540021BEC2 /* CarTypeSegmentView.m in Sources */,
 				AE616DB41ED1855700EA38D6 /* CalendarRange.m in Sources */,

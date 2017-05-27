@@ -98,7 +98,7 @@
 
 
 - (IBAction)textField_edit:(UITextField *)sender {
-    BOOL mustEnable =  self.firstNameTextField.text.length > 0 && self.lastNameTextField.text.length > 0 && self.emailTextField.text.length > 0 && self.phoneNumberTextField.text.length > 0;
+    BOOL mustEnable =  self.firstNameTextField.text.length > 0 && self.lastNameTextField.text.length > 0 && self.emailTextField.text.length > 0 && self.phoneNumberTextField.text.length > 0 && [self.validator emailValidation:self.emailTextField.text];
     if (!mustEnable && self.confirmButton.isEnabled) {
         [self.confirmButton disableButton];
     }

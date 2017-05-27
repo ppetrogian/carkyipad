@@ -188,9 +188,7 @@
             [temp addObject:indexPath];
             self.selectedCarOrder = indexPath.row;
             [collectionView reloadItemsAtIndexPaths:temp];
-        } completion:^(BOOL finished) {
-          
-        }];
+        } completion:nil];
         //[collectionView reloadData];
     }
     if (self.selectedCarOrder >= 0) {
