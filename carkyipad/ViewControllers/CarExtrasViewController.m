@@ -175,6 +175,8 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
     [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",ins.pricePerDay]]];
     cell.priceLabel.attributedText = priceAttributedString;
+    cell.insuranceDescriptionLabel.text = ins.insuranceDescription;
+    cell.insuranceDetailsLabel.text = ins.details;
     NSArray *icons = @[@"Fill 30",@"Fill 30",@"Fill 15"];
     if (indexPath.row < icons.count) {
         cell.extraImageView.image = [UIImage imageNamed:icons[indexPath.row]];

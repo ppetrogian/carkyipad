@@ -83,6 +83,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
 
     self.calendar.appearance.eventSelectionColor = [UIColor whiteColor];
+    self.calendar.appearance.separators = FSCalendarSeparatorInterRows | FSCalendarSeparatorBelowWeekdays;
     self.calendar.pagingEnabled = YES;
     self.calendar.allowsMultipleSelection = YES;
     self.calendar.placeholderType = FSCalendarPlaceholderTypeNone;
@@ -326,7 +327,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 }
 
 -(void)updateTimePickerForDate:(NSDateComponents *)d {
-    if (self.timePicker) {
+    if (self.timePicker && d != nil) {
         self.timePicker.date = d.date;
     } else {
         NSArray *indexes = @[@(d.hour>=12 ? d.hour-13 : d.hour-1), @(d.minute), @(d.hour >= 12 ? 1 : 0)];
@@ -505,24 +506,29 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
                         [date compare:self.date2] == NSOrderedAscending;
         if (isMiddle) {
             selectionType = SelectionTypeMiddle;
+            carCell.selectionLayer.hidden = NO;
+            carCell.circleLayer.hidden = YES;
         }
         else if(self.date1 && [self.gregorian isDate:date inSameDayAsDate:self.date1]) {
-            selectionType = SelectionTypeSingle; //SelectionTypeLeftBorder;
+            selectionType = SelectionTypeLeftBorder;
+            carCell.selectionLayer.hidden = NO;
+            carCell.circleLayer.hidden = NO;
         }
         else if(self.date2 && [self.gregorian isDate:date inSameDayAsDate:self.date2]) {
-            selectionType = SelectionTypeSingle; //SelectionTypeRightBorder;
+            selectionType = SelectionTypeRightBorder;
+            carCell.selectionLayer.hidden = NO;
+            carCell.circleLayer.hidden = NO;
         }
     }
     else if(self.date1 && [self.gregorian isDate:date inSameDayAsDate:self.date1]) {
-        selectionType = SelectionTypeSingle;
+        selectionType = SelectionTypeLeftBorder;
+        carCell.selectionLayer.hidden = YES;
     }
     
     if (selectionType == SelectionTypeNone) {
         carCell.selectionLayer.hidden = YES;
-        return;
+        carCell.circleLayer.hidden = YES;
     }
-    
-    carCell.selectionLayer.hidden = NO;
     carCell.selectionType = selectionType;
 }
 
@@ -573,21 +579,20 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
             self.date1 = date;
         } else {
             if (self.date2) {
-                [calendar deselectDate:self.date2];
+                //[calendar deselectDate:self.date2];
             }
             self.date2 = date;
         }
     } else {
         if (self.activeDateFld == self.pickupDateTxtFld) {
-            [calendar deselectDate:self.date1];
-            [calendar deselectDate:self.date2];
+            //[calendar deselectDate:self.date1];
+            //[calendar deselectDate:self.date2];
             self.date1 = date;
             self.date2 = nil;
         } else {
             self.date2 = date;
         }
     }
-    
     [self configureVisibleCells];
 }
 

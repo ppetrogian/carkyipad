@@ -19,7 +19,6 @@
 		AE616DB61ED186E100EA38D6 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE616DB51ED186E100EA38D6 /* Loading.storyboard */; };
 		AE616DB91ED1879D00EA38D6 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE616DB81ED1879D00EA38D6 /* LoadingViewController.m */; };
 		AE616DBC1ED198B200EA38D6 /* CarCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE616DBB1ED198B200EA38D6 /* CarCalendarViewCell.m */; };
-		AE616DBF1ED1ADB900EA38D6 /* RangePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE616DBE1ED1ADB900EA38D6 /* RangePickerCell.m */; };
 		AE6351B91E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
 		AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351B81E6E865600065F0F /* CarkyApiClient.m */; };
 		AE6351C41E71E32200065F0F /* FleetLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351BF1E71E32200065F0F /* FleetLocations.m */; };
@@ -235,8 +234,6 @@
 		AE616DB81ED1879D00EA38D6 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingViewController.m; path = ViewControllers/LoadingViewController.m; sourceTree = "<group>"; };
 		AE616DBA1ED198B200EA38D6 /* CarCalendarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCalendarViewCell.h; sourceTree = "<group>"; };
 		AE616DBB1ED198B200EA38D6 /* CarCalendarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCalendarViewCell.m; sourceTree = "<group>"; };
-		AE616DBD1ED1ADB900EA38D6 /* RangePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangePickerCell.h; sourceTree = "<group>"; };
-		AE616DBE1ED1ADB900EA38D6 /* RangePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangePickerCell.m; sourceTree = "<group>"; };
 		AE6351B71E6E865600065F0F /* CarkyApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarkyApiClient.h; sourceTree = "<group>"; };
 		AE6351B81E6E865600065F0F /* CarkyApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyApiClient.m; sourceTree = "<group>"; };
 		AE6351BD1E71E32200065F0F /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
@@ -981,8 +978,6 @@
 		E1C2EE511EC3391E0021BEC2 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				AE616DBD1ED1ADB900EA38D6 /* RangePickerCell.h */,
-				AE616DBE1ED1ADB900EA38D6 /* RangePickerCell.m */,
 				AE616DBA1ED198B200EA38D6 /* CarCalendarViewCell.h */,
 				AE616DBB1ED198B200EA38D6 /* CarCalendarViewCell.m */,
 				E1C2EE521EC339540021BEC2 /* CarTypeSegmentView.h */,
@@ -1409,7 +1404,6 @@
 				D12218F21E8B0F9C00AABBBE /* ShadowViewWithText.m in Sources */,
 				AE616DB91ED1879D00EA38D6 /* LoadingViewController.m in Sources */,
 				D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */,
-				AE616DBF1ED1ADB900EA38D6 /* RangePickerCell.m in Sources */,
 				D15951471EACA1CA00540076 /* CarPriceResponse.m in Sources */,
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,

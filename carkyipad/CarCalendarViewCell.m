@@ -11,19 +11,26 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        UIImageView *circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"calendar_circle"]];
-        [self.contentView insertSubview:circleImageView atIndex:0];
-        self.circleImageView = circleImageView;
+        //UIImageView *circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"circle"]];
+        //[self.contentView insertSubview:circleImageView atIndex:0];
+        //self.circleImageView = circleImageView;
         
+        // gray selection layer
         CAShapeLayer *selectionLayer = [[CAShapeLayer alloc] init];
-        selectionLayer.strokeColor = self.tintColor.CGColor;
-        
-        selectionLayer.fillColor = [UIColor clearColor].CGColor;
+        self.selectionLayer.strokeColor = nil;
+        self.selectionLayer.fillColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:1.0].CGColor;
         selectionLayer.actions = @{@"hidden":[NSNull null]};
         [self.contentView.layer insertSublayer:selectionLayer below:self.titleLabel.layer];
         self.selectionLayer = selectionLayer;
-        
         self.shapeLayer.hidden = YES;
+        // circle layer for begin-end
+        CAShapeLayer *circleLayer = [[CAShapeLayer alloc] init];
+        circleLayer.strokeColor = [UIColor colorWithRed:0.22 green:0.75 blue:0.76 alpha:1.0].CGColor;
+        circleLayer.fillColor = nil;
+        circleLayer.actions = @{@"hidden":[NSNull null]};
+        [self.contentView.layer insertSublayer:circleLayer below:self.titleLabel.layer];
+        self.circleLayer = circleLayer;
+
         //self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
         //self.backgroundView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
         
@@ -36,28 +43,27 @@
     [super layoutSubviews];
     
     self.backgroundView.frame = CGRectInset(self.bounds, 1, 1);
-    self.circleImageView.frame = self.backgroundView.frame;
+    //self.circleImageView.frame = self.backgroundView.frame;
     self.selectionLayer.frame = self.bounds;
+    self.circleLayer.frame = self.bounds;
+    CGFloat dx = MIN(self.selectionLayer.fs_height, self.selectionLayer.fs_width)-5;
+    CGFloat dy = dx - 5;
     
     if (self.selectionType == SelectionTypeMiddle) {
-        
-        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectInset(self.selectionLayer.bounds, 0, 8) ].CGPath;
-        self.selectionLayer.fillColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        self.selectionLayer.strokeColor = [UIColor darkGrayColor].CGColor;
-        
-    } else if (self.selectionType == SelectionTypeLeftBorder) {
-        
-        self.selectionLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.selectionLayer.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerBottomLeft cornerRadii:CGSizeMake(self.selectionLayer.fs_width/2, self.selectionLayer.fs_width/2)].CGPath;
-        
-    } else if (self.selectionType == SelectionTypeRightBorder) {
-        
-        self.selectionLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.selectionLayer.bounds byRoundingCorners:UIRectCornerTopRight|UIRectCornerBottomRight cornerRadii:CGSizeMake(self.selectionLayer.fs_width/2, self.selectionLayer.fs_width/2)].CGPath;
-        
-    } else if (self.selectionType == SelectionTypeSingle) {
-        
-        CGFloat diameter = MIN(self.selectionLayer.fs_height, self.selectionLayer.fs_width)-5;
-        self.selectionLayer.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.contentView.fs_width/2-diameter/2, self.contentView.fs_height/2-diameter/2, diameter, diameter)].CGPath;
-        self.selectionLayer.fillColor = [UIColor clearColor].CGColor;
+        self.circleLayer.hidden = YES;
+        // middle
+        self.selectionLayer.fillColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:1.0].CGColor;
+        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(self.selectionLayer.bounds, 0, 8), 0, -3) ].CGPath;
+     } else if (self.selectionType == SelectionTypeLeftBorder || self.selectionType == SelectionTypeRightBorder) {
+        // single
+        self.circleLayer.hidden = NO;
+        self.selectionLayer.fillColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:1.0].CGColor;
+        self.circleLayer.strokeColor = [UIColor colorWithRed:0.22 green:0.75 blue:0.76 alpha:1.0].CGColor;
+        self.circleLayer.fillColor = [UIColor whiteColor].CGColor;
+        NSInteger xOffset = self.selectionType == SelectionTypeLeftBorder ? self.contentView.fs_width/2+2 : 0;
+        CGRect halfBounds = CGRectMake(xOffset, 0, self.selectionLayer.bounds.size.width/2, self.selectionLayer.bounds.size.height);
+        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(halfBounds, 0, 8), 0, -3) ].CGPath;
+        self.circleLayer.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.contentView.fs_width/2-dx/2, self.contentView.fs_height/2-dy/2-3, dx, dy)].CGPath;
     }
 
 }

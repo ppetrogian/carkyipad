@@ -9,5 +9,6 @@
 #import "ExtrasCollectionViewCell.h"
 
 @interface InsurancesCollectionViewCell : ExtrasCollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *insuranceDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *insuranceDetailsLabel;
 @end

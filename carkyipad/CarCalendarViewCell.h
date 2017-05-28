@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, SelectionType) {
 
 @property (weak, nonatomic) UIImageView *circleImageView;
 @property (weak, nonatomic) CAShapeLayer *selectionLayer;
+@property (weak, nonatomic) CAShapeLayer *circleLayer;
 @property (assign, nonatomic) SelectionType selectionType;
 
 @end

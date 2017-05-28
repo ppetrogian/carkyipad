@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" userLabel="Insurances Collection View Cell" customClass="InsurancesCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="195" height="207"/>
+            <rect key="frame" x="0.0" y="0.0" width="195" height="240"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="195" height="207"/>
+                <rect key="frame" x="0.0" y="0.0" width="195" height="240"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q13-Jl-nLz">
-                        <rect key="frame" x="3" y="3" width="189" height="201"/>
+                        <rect key="frame" x="3" y="3" width="189" height="234"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total £50" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QiI-of-8h3">
-                                <rect key="frame" x="0.0" y="151" width="189" height="50"/>
+                                <rect key="frame" x="0.0" y="184" width="189" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="R0v-Ya-9wK"/>
@@ -37,19 +37,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-1T-ioQ">
-                                <rect key="frame" x="86" y="72" width="16" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-1T-ioQ">
+                                <rect key="frame" x="86.5" y="50" width="16" height="34"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKM-5k-oCX">
+                                <rect key="frame" x="5" y="99" width="179" height="14.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NH-8B-216">
+                                <rect key="frame" x="6" y="127" width="177" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2bj-bd-zy4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9NH-8B-216" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="8fY-kI-nRM"/>
                             <constraint firstAttribute="trailing" secondItem="QiI-of-8h3" secondAttribute="trailing" id="Br3-d6-IiQ"/>
+                            <constraint firstItem="9NH-8B-216" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="6" id="FdJ-cH-hL9"/>
+                            <constraint firstAttribute="trailing" secondItem="9NH-8B-216" secondAttribute="trailing" constant="6" id="Iah-0K-n37"/>
+                            <constraint firstItem="MKM-5k-oCX" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="J5E-b0-EBz"/>
+                            <constraint firstItem="MKM-5k-oCX" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Kai-f4-mxz"/>
+                            <constraint firstItem="IaF-1T-ioQ" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="16" id="NLb-J8-IS0"/>
                             <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" constant="5" id="POV-uJ-8F0"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Uu3-Ct-zKA"/>
+                            <constraint firstItem="IaF-1T-ioQ" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="cBx-JR-n2I"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="gLD-Go-Be9"/>
+                            <constraint firstItem="MKM-5k-oCX" firstAttribute="top" secondItem="IaF-1T-ioQ" secondAttribute="bottom" constant="15" id="ldd-sj-QFU"/>
                             <constraint firstAttribute="bottom" secondItem="QiI-of-8h3" secondAttribute="bottom" id="nG8-wV-kDM"/>
+                            <constraint firstItem="9NH-8B-216" firstAttribute="top" secondItem="MKM-5k-oCX" secondAttribute="bottom" constant="13.5" id="p4k-0v-28M"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" id="uWB-Ph-8LN"/>
+                            <constraint firstAttribute="trailing" secondItem="MKM-5k-oCX" secondAttribute="trailing" constant="5" id="vH9-3y-CA6"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="14" id="zCO-xU-oB8"/>
                         </constraints>
                     </view>
@@ -61,14 +85,16 @@
                 <constraint firstAttribute="bottom" secondItem="Q13-Jl-nLz" secondAttribute="bottom" constant="3" id="M0E-s5-sh2"/>
                 <constraint firstAttribute="trailing" secondItem="Q13-Jl-nLz" secondAttribute="trailing" constant="3" id="ZnE-gE-Soo"/>
             </constraints>
-            <size key="customSize" width="153" height="190"/>
+            <size key="customSize" width="153" height="223"/>
             <connections>
                 <outlet property="containerView" destination="Q13-Jl-nLz" id="HKJ-8j-R1i"/>
                 <outlet property="extraImageView" destination="IaF-1T-ioQ" id="aML-Kp-u9s"/>
                 <outlet property="extraNameLabel" destination="kMy-Og-40K" id="nAd-qB-WPV"/>
+                <outlet property="insuranceDescriptionLabel" destination="MKM-5k-oCX" id="rSS-in-vdw"/>
+                <outlet property="insuranceDetailsLabel" destination="9NH-8B-216" id="13T-W6-DQI"/>
                 <outlet property="priceLabel" destination="QiI-of-8h3" id="MhF-uo-Bqq"/>
             </connections>
-            <point key="canvasLocation" x="-114.5" y="119.5"/>
+            <point key="canvasLocation" x="-114.5" y="136"/>
         </collectionViewCell>
     </objects>
     <resources>
