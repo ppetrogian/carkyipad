@@ -22,6 +22,7 @@
 #import "DetailsStepViewController.h"
 #import "CalendarRange.h"
 #import "ButtonUtils.h"
+#import "CarTypeSegmentView.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 {
@@ -41,6 +42,7 @@
 -(void) setupInit {
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     self.selectedCarOrder = -1;
+    self.selCategoryIndex = 0;
     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
 }
 
@@ -123,6 +125,7 @@
 }
 
 - (void)selectCarType:(NSInteger)selIndex {
+    self.selCategoryIndex = selIndex;
     NSArray<AvailableCars*> *availCarsArray = [AppDelegate instance].availableCars;
     NSArray<Cars*> *cars = availCarsArray[selIndex].cars;
     [cars enumerateObjectsUsingBlock:^(Cars * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -220,6 +223,25 @@
         [self.nextButton enableButton];
     }
 }
+
+-(void)performSelectCategory:(NSInteger)index {
+    UIButton *button = [self.carSegmentView getSegmentedButtonForIndex:index];
+    [button sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
+- (IBAction)rightSGR_swipe:(UISwipeGestureRecognizer *)sender {
+    NSArray<AvailableCars*> *availCarsArray = [AppDelegate instance].availableCars;
+    if (self.selCategoryIndex < availCarsArray.count - 1) {
+        [self performSelectCategory:self.selCategoryIndex+1];
+    }
+}
+
+- (IBAction)leftSGR_swipe:(UISwipeGestureRecognizer *)sender {
+    if (self.selCategoryIndex > 0) {
+        [self performSelectCategory:self.selCategoryIndex - 1];
+    }
+}
+
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
     NSArray<Cars*> *cars = self.carsDataSource.items;

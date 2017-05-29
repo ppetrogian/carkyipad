@@ -22,4 +22,5 @@
 -(void) updateSegmentFrame:(CGRect)frame;
 -(void) updateSegmentTitles:(NSArray *)list;
 -(instancetype) initWithFrame:(CGRect)frame withSegmentList:(NSArray *)list;
+-(UIButton *)getButtonForIndex:(NSInteger)index;
 @end

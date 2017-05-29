@@ -32,22 +32,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-Og-40K">
-                                <rect key="frame" x="5" y="14" width="179" height="20"/>
+                                <rect key="frame" x="5" y="10" width="179" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-1T-ioQ">
-                                <rect key="frame" x="86.5" y="50" width="16" height="34"/>
+                                <rect key="frame" x="86.5" y="40" width="16" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKM-5k-oCX">
-                                <rect key="frame" x="5" y="99" width="179" height="14.5"/>
+                                <rect key="frame" x="5" y="86" width="179" height="14.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NH-8B-216">
-                                <rect key="frame" x="6" y="127" width="177" height="44"/>
+                                <rect key="frame" x="5" y="105.5" width="179" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2bj-bd-zy4"/>
                                 </constraints>
@@ -60,21 +60,20 @@
                         <constraints>
                             <constraint firstItem="9NH-8B-216" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="8fY-kI-nRM"/>
                             <constraint firstAttribute="trailing" secondItem="QiI-of-8h3" secondAttribute="trailing" id="Br3-d6-IiQ"/>
-                            <constraint firstItem="9NH-8B-216" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="6" id="FdJ-cH-hL9"/>
-                            <constraint firstAttribute="trailing" secondItem="9NH-8B-216" secondAttribute="trailing" constant="6" id="Iah-0K-n37"/>
+                            <constraint firstItem="9NH-8B-216" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="FdJ-cH-hL9"/>
                             <constraint firstItem="MKM-5k-oCX" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="J5E-b0-EBz"/>
                             <constraint firstItem="MKM-5k-oCX" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Kai-f4-mxz"/>
-                            <constraint firstItem="IaF-1T-ioQ" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="16" id="NLb-J8-IS0"/>
+                            <constraint firstItem="IaF-1T-ioQ" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="10" id="NLb-J8-IS0"/>
                             <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" constant="5" id="POV-uJ-8F0"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Uu3-Ct-zKA"/>
                             <constraint firstItem="IaF-1T-ioQ" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="cBx-JR-n2I"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="gLD-Go-Be9"/>
-                            <constraint firstItem="MKM-5k-oCX" firstAttribute="top" secondItem="IaF-1T-ioQ" secondAttribute="bottom" constant="15" id="ldd-sj-QFU"/>
+                            <constraint firstItem="MKM-5k-oCX" firstAttribute="top" secondItem="IaF-1T-ioQ" secondAttribute="bottom" constant="12" id="ldd-sj-QFU"/>
                             <constraint firstAttribute="bottom" secondItem="QiI-of-8h3" secondAttribute="bottom" id="nG8-wV-kDM"/>
-                            <constraint firstItem="9NH-8B-216" firstAttribute="top" secondItem="MKM-5k-oCX" secondAttribute="bottom" constant="13.5" id="p4k-0v-28M"/>
+                            <constraint firstItem="9NH-8B-216" firstAttribute="top" secondItem="MKM-5k-oCX" secondAttribute="bottom" constant="5" id="p4k-0v-28M"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" id="uWB-Ph-8LN"/>
                             <constraint firstAttribute="trailing" secondItem="MKM-5k-oCX" secondAttribute="trailing" constant="5" id="vH9-3y-CA6"/>
-                            <constraint firstItem="kMy-Og-40K" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="14" id="zCO-xU-oB8"/>
+                            <constraint firstItem="kMy-Og-40K" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="10" id="zCO-xU-oB8"/>
                         </constraints>
                     </view>
                 </subviews>

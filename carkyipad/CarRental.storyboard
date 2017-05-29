@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFD-Ti-eXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1085.15625" y="-346.09375"/>
+            <point key="canvasLocation" x="-1085.15625" y="-346.2890625"/>
         </scene>
         <!--Step View Controller - Car-->
         <scene sceneID="L4h-gz-m5F">
@@ -183,6 +183,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="auX-03-rEv" firstAttribute="top" secondItem="fJH-sP-X8b" secondAttribute="bottom" constant="100" id="6wP-D0-By2"/>
                             <constraint firstAttribute="trailing" secondItem="auX-03-rEv" secondAttribute="trailing" id="Cin-eG-1D8"/>
@@ -198,6 +199,10 @@
                             <constraint firstItem="Zch-yc-Xg7" firstAttribute="leading" secondItem="SEd-iF-ZZs" secondAttribute="leading" constant="30" id="pmt-JI-7ld"/>
                             <constraint firstItem="uQC-pP-QSQ" firstAttribute="top" secondItem="Zch-yc-Xg7" secondAttribute="bottom" constant="30" id="tZZ-rn-Tjz"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="B1P-Qe-p90" appends="YES" id="EOT-Xh-6cX"/>
+                            <outletCollection property="gestureRecognizers" destination="uiS-H7-fn8" appends="YES" id="pKz-tz-HWi"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="carSegmentView" destination="jbD-UR-vV0" id="8Li-h9-cgh"/>
@@ -206,9 +211,21 @@
                         <outlet property="headerBackView" destination="auX-03-rEv" id="UY1-PC-pEw"/>
                         <outlet property="nextButton" destination="Zch-yc-Xg7" id="AA8-6J-X9V"/>
                         <outlet property="pickupBackView" destination="45C-CJ-Chl" id="ujO-Zl-XCI"/>
+                        <outlet property="swipeLeftRecognizer" destination="B1P-Qe-p90" id="gdj-bW-3S7"/>
+                        <outlet property="swipeRightRecognizer" destination="uiS-H7-fn8" id="v7X-bw-JDl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKG-Bd-OPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer cancelsTouchesInView="NO" direction="right" id="B1P-Qe-p90">
+                    <connections>
+                        <action selector="leftSGR_swipe:" destination="cle-sK-BW3" id="jpC-gl-yFd"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer cancelsTouchesInView="NO" direction="left" id="uiS-H7-fn8">
+                    <connections>
+                        <action selector="rightSGR_swipe:" destination="cle-sK-BW3" id="z0M-ZK-F37"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="419.53125" y="-211.71875"/>
         </scene>
@@ -228,20 +245,20 @@
                                 <rect key="frame" x="40" y="290" width="688" height="613"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="80V-FS-rVf">
-                                    <size key="itemSize" width="190" height="200"/>
-                                    <size key="headerReferenceSize" width="500" height="100"/>
+                                    <size key="itemSize" width="190" height="240"/>
+                                    <size key="headerReferenceSize" width="500" height="55"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="DPC-Z0-GvP" customClass="ExtrasHeaderCollectionReusableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="688" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="688" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1M-lp-9Co">
-                                            <rect key="frame" x="5" y="64.5" width="673" height="20.5"/>
+                                            <rect key="frame" x="5" y="20" width="673" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="lJw-wZ-WxX"/>
+                                                <constraint firstAttribute="height" constant="30" id="lJw-wZ-WxX"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -251,7 +268,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="R1M-lp-9Co" secondAttribute="trailing" constant="10" id="N6O-or-B2f"/>
-                                        <constraint firstAttribute="bottom" secondItem="R1M-lp-9Co" secondAttribute="bottom" constant="15" id="g1h-O2-kqo"/>
+                                        <constraint firstAttribute="bottom" secondItem="R1M-lp-9Co" secondAttribute="bottom" constant="5" id="g1h-O2-kqo"/>
                                         <constraint firstItem="R1M-lp-9Co" firstAttribute="leading" secondItem="DPC-Z0-GvP" secondAttribute="leading" constant="5" id="sr9-Me-ImA"/>
                                     </constraints>
                                     <connections>
@@ -358,6 +375,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="bST-Nb-IPm" firstAttribute="top" secondItem="xyc-5j-Bq3" secondAttribute="bottom" constant="121" id="7QV-GV-JWi"/>
                             <constraint firstItem="gDP-Ix-UAw" firstAttribute="height" secondItem="KVI-fp-pky" secondAttribute="height" id="8mv-Sz-bdQ"/>
@@ -891,7 +909,7 @@
                                         <rect key="frame" x="0.0" y="28" width="524" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dz3-SZ-2La" id="6rU-ec-WxN">
-                                            <rect key="frame" x="0.0" y="0.0" width="524" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="524" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUA-aQ-45D">

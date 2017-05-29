@@ -18,15 +18,15 @@
 @end
 
 @interface CarTypeSegmentView : UIView
-{
-    NSInteger selectedIndex;
-}
+
 //an array of string
 @property (nonatomic, strong) NSArray *segmentList;
 @property (nonatomic, weak) id <CarSegmentDelegate> delegate;
+@property (nonatomic, assign) NSInteger selectedIndex;
 -(void) setSelectedSegmentIndex:(NSInteger)index;
 -(void) setAllSegmentList:(NSArray *)list;
 -(void) updateSegmentFrame:(CGRect)frame;
 -(void) updateSegmentTitles:(NSArray *)list;
 -(instancetype) initWithFrame:(CGRect)frame withSegmentList:(NSArray *)list;
+-(UIButton *) getSegmentedButtonForIndex:(NSInteger)index;
 @end

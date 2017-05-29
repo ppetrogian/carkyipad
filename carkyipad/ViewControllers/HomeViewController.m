@@ -15,8 +15,9 @@
 #import "MBProgressHUD/MBProgressHUD.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <GooglePlaces/GooglePlaces.h>
+@import SafariServices;
 
-@interface HomeViewController ()
+@interface HomeViewController () <SFSafariViewControllerDelegate>
 @property (nonatomic,strong) CarkyApiClient *api;
 
 @end
@@ -56,10 +57,17 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)showBook:(UIButton *)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.booking.com"]];
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.booking.com"]];
+    [self presentViewController:svc animated:YES completion:nil];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.booking.com"]];
 }
 - (IBAction)showFlight:(UIButton *)sender {
-   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.booking.com"]];
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.airtickets.com"]];
+    [self presentViewController:svc animated:YES completion:nil];
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

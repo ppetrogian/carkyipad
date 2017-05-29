@@ -41,7 +41,6 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 @property (strong, nonatomic) NSCalendar *gregorian;
 @property (weak, nonatomic) IBOutlet UIButton *prevMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 // The start date of the range
 @property (strong, nonatomic) NSDate *date1;
 // The end date of the range
@@ -79,9 +78,8 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     self.gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     self.calendar.dataSource = self;
     self.calendar.delegate = self;
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy-MM-dd";
 
+    self.calendar.rowHeight = 30;
     self.calendar.appearance.eventSelectionColor = [UIColor whiteColor];
     self.calendar.appearance.separators = FSCalendarSeparatorInterRows | FSCalendarSeparatorBelowWeekdays;
     self.calendar.pagingEnabled = YES;
@@ -90,6 +88,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     self.calendar.appearance.titleDefaultColor = [UIColor blackColor];
     self.calendar.appearance.titleFont = [UIFont systemFontOfSize:16];
     self.calendar.swipeToChooseGesture.enabled = NO;
+    //[self.calendar reloadData];
 }
 
 - (IBAction)tapView:(id)sender {
@@ -427,6 +426,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 -(IBAction)cancelButtonAction:(UIButton *)sender{
     [self initControlValues];
 }
+
 -(IBAction) nextButtonAction:(UIButton *)sender{
     NSMutableDictionary *results = self.stepsController.results;
     //pickup
@@ -578,15 +578,11 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         if (!self.date1) {
             self.date1 = date;
         } else {
-            if (self.date2) {
-                //[calendar deselectDate:self.date2];
-            }
             self.date2 = date;
         }
     } else {
         if (self.activeDateFld == self.pickupDateTxtFld) {
             //[calendar deselectDate:self.date1];
-            //[calendar deselectDate:self.date2];
             self.date1 = date;
             self.date2 = nil;
         } else {
@@ -613,9 +609,20 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     return okPast;
 }
 
+- (BOOL)calendar:(FSCalendar *)calendar shouldDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+    BOOL okPast = [self calendar:calendar shouldSelectDate:date atMonthPosition:monthPosition];
+    return okPast;
+}
+
 - (void)calendar:(FSCalendar *)calendar didDeselectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
-    NSLog(@"did deselect date %@",[self.dateFormatter stringFromDate:date]);
+    if (self.activeDateFld == self.pickupDateTxtFld) {
+        //[calendar deselectDate:self.date1];
+        self.date1 = date;
+        self.date2 = nil;
+    } else {
+        self.date2 = date;
+    }
     [self configureVisibleCells];
 }
 
@@ -626,6 +633,10 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
         FSCalendarMonthPosition position = [self.calendar monthPositionForCell:obj];
         [self configureCell:obj forDate:date atMonthPosition:position];
     }];
+}
+
+-(void)dealloc {
+    NSLog(@"Deallocateing details controller");
 }
 
 

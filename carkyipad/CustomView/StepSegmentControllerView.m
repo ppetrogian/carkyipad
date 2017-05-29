@@ -74,7 +74,7 @@
     //[self addSubview:segButton];
     return segButton;
 }
--(UIButton *) getButtonForIndex:(NSInteger)index{
+-(UIButton *)getButtonForIndex:(NSInteger)index{
     UIButton *segButton;
     segButton = [self viewWithTag:index];
     return segButton;

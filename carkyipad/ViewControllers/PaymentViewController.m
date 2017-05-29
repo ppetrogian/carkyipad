@@ -70,6 +70,10 @@
 }
 
 - (void)validateCardDetails {
+    double price = [self getTotalPrice];
+    if (price <= 0) {
+        return;
+    }
     STPCardParams *card = [self getCardParamsFromUI];
     BOOL mustEnable = [STPCardValidator validationStateForCard:card] == STPCardValidationStateValid;
     if (!mustEnable && self.payNowButton.isEnabled) {
@@ -108,8 +112,13 @@
     }
 }
 
--(void)viewDidAppear:(BOOL)animated {
+-(double)getTotalPrice {
     double price = self.isForTransfer ? (double)self.parentTransferController.selectedCarCategory.price : ((NSNumber*)self.parentRentalController.results[kResultsTotalPrice]).doubleValue;
+    return price;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    double price = [self getTotalPrice];
     NSString *strText = [NSString stringWithFormat:@"PAY NOW       %.2lf€", price];
     [self.payNowButton setTitle:strText forState: UIControlStateNormal];
 }

@@ -133,7 +133,9 @@
     if (self.isPhoneConfirmed) {
         [self.parentController showNextStep];
     } else {
+        [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
         [api RegisterClient:acc withBlock:^(NSArray *arr) {
+            [[AppDelegate instance] hideProgressNotification];
             if (arr && arr.count > 0) {
                 if ([arr.firstObject isKindOfClass:RegisterClientResponse.class]) {
                     self.registerClientResponse = arr.firstObject;

@@ -10,4 +10,5 @@
 
 @interface TermsAndConditionsViewController : UIViewController
 @property (strong, nonatomic) NSString *terms;
+@property (weak, nonatomic) IBOutlet UITextView *termsView;
 @end

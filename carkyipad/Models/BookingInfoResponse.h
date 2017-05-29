@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSString *extrasDisplay;
 @property (nonatomic, strong) NSString *pickupDate;
 @property (nonatomic, strong) NSString *carDisplay;
+@property (nonatomic, assign) double actualDurationInDays;
+@property (nonatomic, assign) double pricingDurationInDays;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

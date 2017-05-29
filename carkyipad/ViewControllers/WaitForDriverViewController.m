@@ -29,13 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pollInterval = 5.0;
-    self.pollTimeout = 60.0;
+    self.pollTimeout = 120.0;
     self.pollTime = 0.0;
     [self findDriverAndMakePayment];
 
     // Do any additional setup after loading the view.
-    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
-    [self handlePollTimer:self.pollTimer];
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
     self.driverCarPhotoImageView.image = catImage;
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
@@ -93,6 +91,8 @@
             [self.pollTimer invalidate];
         }
         if (array.count > 0 && [array.firstObject isKindOfClass:Content.class]) {
+            self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
+            [self handlePollTimer:self.pollTimer];
             [self loadPickupImage];
             Content *responseObj = array.firstObject;
             self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
@@ -127,7 +127,6 @@
         if (self.pollTimer.isValid) {
             [self.pollTimer invalidate];
         }
-        //[self.parentController showAlertViewWithMessage:@"Timeout" andTitle:@"Error"];
         [self newBookingButton_Click: self.makeBookingButton];
     }
 }

@@ -89,13 +89,20 @@
     //Add CAShapeLayer to subview
     sender.layer.mask = shapeLayer;
 }
+
+-(UIButton *) getSegmentedButtonForIndex:(NSInteger)index{
+    return [self getButtonForIndex:index + KSegmentIndexTagPadding];
+}
+
 -(UIButton *) getButtonForIndex:(NSInteger)index{
     UIButton *segButton;
     segButton = [self viewWithTag:index];
     return segButton;
 }
+
+
 -(void) segmentButtonAction:(UIButton *)sender{
-    if (selectedIndex == sender.tag) {
+    if (self.selectedIndex == sender.tag) {
         NSLog(@"Already selected");
         return;
     }
@@ -115,7 +122,7 @@
         NSInteger indexTag = KSegmentIndexTagPadding+i;
         segButton = [self getButtonForIndex:indexTag];
         if (indexTag == index) {
-            selectedIndex = indexTag;
+            self.selectedIndex = indexTag;
             [segButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [segButton setBackgroundColor:[UIColor blackColor]];
             [self updateIndicatorForSelectedButtonFrame:segButton.frame];

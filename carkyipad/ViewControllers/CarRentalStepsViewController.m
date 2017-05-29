@@ -226,8 +226,7 @@
     //-----------
     self.confirmationView.nameLabel.text = response.bookingInfo.displayName;
     self.confirmationView.reservationLabel.text = response.bookingInfo.reservationCode;
-    NSInteger nDays = ((NSNumber*)self.results[kResultsDays]).integerValue;
-    self.confirmationView.durationLabel.text = [NSString stringWithFormat:@"%zd days",nDays];
+    self.confirmationView.durationLabel.text = [NSString stringWithFormat:@"%.1lf days", response.bookingInfo.actualDurationInDays];
     //-------------------
      self.confirmationView.extrasPriceLabel.text = [NSString stringWithFormat:@"€%.2lf", response.bookingInfo.extrasPrice];
      self.confirmationView.extrasItemsLabel.text = response.bookingInfo.extrasDisplay;

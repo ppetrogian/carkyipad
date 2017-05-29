@@ -25,6 +25,9 @@
 @property (nonatomic, weak) IBOutlet UIView * dropoffBackView;
 @property (nonatomic, strong) PlaceDetailsView *pickupPlaceDetailsView;
 @property (nonatomic, strong) PlaceDetailsView *dropOffPlaceDetailsView;
+@property (nonatomic, assign) NSInteger selCategoryIndex;
 -(IBAction) nextButtonAction:(UIButton *)sender;
 -(IBAction)backButtonAction:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeLeftRecognizer;
+@property (weak, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRightRecognizer;
 @end

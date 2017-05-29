@@ -27,7 +27,8 @@ NSString *const kBookingInfoPickupLatLng = @"PickupLatLng";
 NSString *const kBookingInfoExtrasDisplay = @"ExtrasDisplay";
 NSString *const kBookingInfoPickupDate = @"PickupDate";
 NSString *const kBookingInfoCarDisplay = @"CarDisplay";
-
+NSString *const kBookingInfoActualDurationInDays = @"ActualDurationInDays";
+NSString *const kBookingInfoPricingDurationInDays = @"PricingDurationInDays";
 
 @interface BookingInfoResponse ()
 
@@ -67,25 +68,26 @@ NSString *const kBookingInfoCarDisplay = @"CarDisplay";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.dropoffAddress = [self objectOrNilForKey:kBookingInfoDropoffAddress fromDictionary:dict];
-            self.displayName = [self objectOrNilForKey:kBookingInfoDisplayName fromDictionary:dict];
-            self.carPrice = [[self objectOrNilForKey:kBookingInfoCarPrice fromDictionary:dict] doubleValue];
-            self.pickupAddress = [self objectOrNilForKey:kBookingInfoPickupAddress fromDictionary:dict];
-            self.carImage = [self objectOrNilForKey:kBookingInfoCarImage fromDictionary:dict];
-            self.insuranceDisplay = [self objectOrNilForKey:kBookingInfoInsuranceDisplay fromDictionary:dict];
-            self.pickupTime = [self objectOrNilForKey:kBookingInfoPickupTime fromDictionary:dict];
-            self.dropoffTime = [self objectOrNilForKey:kBookingInfoDropoffTime fromDictionary:dict];
-            self.dropoffLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kBookingInfoDropoffLatLng]];
-            self.dropoffDate = [self objectOrNilForKey:kBookingInfoDropoffDate fromDictionary:dict];
-            self.reservationCode = [self objectOrNilForKey:kBookingInfoReservationCode fromDictionary:dict];
-            self.extrasPrice = [[self objectOrNilForKey:kBookingInfoExtrasPrice fromDictionary:dict] doubleValue];
-            self.insurancePrice = [[self objectOrNilForKey:kBookingInfoInsurancePrice fromDictionary:dict] doubleValue];
-            self.total = [[self objectOrNilForKey:kBookingInfoTotal fromDictionary:dict] doubleValue];
-            self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kBookingInfoPickupLatLng]];
-            self.extrasDisplay = [self objectOrNilForKey:kBookingInfoExtrasDisplay fromDictionary:dict];
-            self.pickupDate = [self objectOrNilForKey:kBookingInfoPickupDate fromDictionary:dict];
-            self.carDisplay = [self objectOrNilForKey:kBookingInfoCarDisplay fromDictionary:dict];
-
+        self.dropoffAddress = [self objectOrNilForKey:kBookingInfoDropoffAddress fromDictionary:dict];
+        self.displayName = [self objectOrNilForKey:kBookingInfoDisplayName fromDictionary:dict];
+        self.carPrice = [[self objectOrNilForKey:kBookingInfoCarPrice fromDictionary:dict] doubleValue];
+        self.pickupAddress = [self objectOrNilForKey:kBookingInfoPickupAddress fromDictionary:dict];
+        self.carImage = [self objectOrNilForKey:kBookingInfoCarImage fromDictionary:dict];
+        self.insuranceDisplay = [self objectOrNilForKey:kBookingInfoInsuranceDisplay fromDictionary:dict];
+        self.pickupTime = [self objectOrNilForKey:kBookingInfoPickupTime fromDictionary:dict];
+        self.dropoffTime = [self objectOrNilForKey:kBookingInfoDropoffTime fromDictionary:dict];
+        self.dropoffLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kBookingInfoDropoffLatLng]];
+        self.dropoffDate = [self objectOrNilForKey:kBookingInfoDropoffDate fromDictionary:dict];
+        self.reservationCode = [self objectOrNilForKey:kBookingInfoReservationCode fromDictionary:dict];
+        self.extrasPrice = [[self objectOrNilForKey:kBookingInfoExtrasPrice fromDictionary:dict] doubleValue];
+        self.insurancePrice = [[self objectOrNilForKey:kBookingInfoInsurancePrice fromDictionary:dict] doubleValue];
+        self.total = [[self objectOrNilForKey:kBookingInfoTotal fromDictionary:dict] doubleValue];
+        self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kBookingInfoPickupLatLng]];
+        self.extrasDisplay = [self objectOrNilForKey:kBookingInfoExtrasDisplay fromDictionary:dict];
+        self.pickupDate = [self objectOrNilForKey:kBookingInfoPickupDate fromDictionary:dict];
+        self.carDisplay = [self objectOrNilForKey:kBookingInfoCarDisplay fromDictionary:dict];
+        self.actualDurationInDays = [[self objectOrNilForKey:kBookingInfoActualDurationInDays fromDictionary:dict] doubleValue];
+        self.pricingDurationInDays = [[self objectOrNilForKey:kBookingInfoPricingDurationInDays fromDictionary:dict] doubleValue];
     }
     
     return self;
@@ -112,6 +114,8 @@ NSString *const kBookingInfoCarDisplay = @"CarDisplay";
     [mutableDict setValue:self.extrasDisplay forKey:kBookingInfoExtrasDisplay];
     [mutableDict setValue:self.pickupDate forKey:kBookingInfoPickupDate];
     [mutableDict setValue:self.carDisplay forKey:kBookingInfoCarDisplay];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.actualDurationInDays] forKey:kBookingInfoActualDurationInDays];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.pricingDurationInDays] forKey:kBookingInfoPricingDurationInDays];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

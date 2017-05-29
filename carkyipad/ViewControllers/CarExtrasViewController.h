@@ -17,10 +17,12 @@
 //--------------
 @property (nonatomic, weak) IBOutlet UIView *pickupBackView;
 @property (nonatomic, weak) IBOutlet UIView * dropoffBackView;
-@property (nonatomic, strong) PlaceDetailsView *pickupPlaceDetailsView;
-@property (nonatomic, strong) PlaceDetailsView *dropOffPlaceDetailsView;
+@property (nonatomic, weak) PlaceDetailsView *pickupPlaceDetailsView;
+@property (nonatomic, weak) PlaceDetailsView *dropOffPlaceDetailsView;
 -(IBAction) nextButtonAction:(UIButton *)sender;
 -(IBAction)backButtonAction:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *carImageView;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+
+
 @end

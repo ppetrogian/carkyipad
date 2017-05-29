@@ -9,7 +9,6 @@
 #import "TermsAndConditionsViewController.h"
 
 @interface TermsAndConditionsViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *termsLabel;
 
 @end
 
@@ -18,7 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.termsLabel.text = self.terms;
+    self.termsView.attributedText =[[NSAttributedString alloc] initWithData:[self.terms dataUsingEncoding:NSUTF8StringEncoding]
+                                     options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                               NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
+                          documentAttributes:nil error:nil];
 }
 
 - (void)didReceiveMemoryWarning {

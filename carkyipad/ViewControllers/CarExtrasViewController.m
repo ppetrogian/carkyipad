@@ -119,6 +119,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 2;
 }
+
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AppDelegate *app = [AppDelegate instance];
     ExtrasCollectionViewCell *cell;
@@ -282,6 +283,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
         }
     }];
 }
+
 
 -(IBAction)backButtonAction:(UIButton *)sender{
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedBack:)]) {

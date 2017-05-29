@@ -1001,25 +1001,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qTO-Wu-lYP">
-                                <rect key="frame" x="30" y="10" width="480" height="560"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEV-M1-byp">
                                 <rect key="frame" x="239" y="585" width="62" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ao4-MB-vL3"/>
                                     <constraint firstAttribute="width" constant="62" id="cib-Os-qyr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
-                                <state key="normal" title="I agree">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="I agree"/>
                                 <connections>
                                     <action selector="IAgree_Click:" destination="Dfm-YZ-eor" eventType="touchUpInside" id="b0V-E0-PrF"/>
                                 </connections>
@@ -1028,19 +1019,27 @@
                                 <rect key="frame" x="210" y="591" width="21" height="16"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qov-Jq-6Fc">
+                                <rect key="frame" x="20" y="10" width="500" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" flightNumber="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="qTO-Wu-lYP" secondAttribute="trailing" constant="10" id="0Oz-LI-iJ3"/>
-                            <constraint firstItem="HUf-le-eJN" firstAttribute="top" secondItem="qTO-Wu-lYP" secondAttribute="bottom" constant="50" id="7RB-SD-fwx"/>
+                            <constraint firstItem="qov-Jq-6Fc" firstAttribute="leading" secondItem="Bns-Ds-fro" secondAttribute="leadingMargin" id="3vE-PG-ZcU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qov-Jq-6Fc" secondAttribute="trailing" id="PgC-mz-XYJ"/>
                             <constraint firstItem="HUf-le-eJN" firstAttribute="top" secondItem="rEV-M1-byp" secondAttribute="bottom" constant="5" id="aBl-8j-2a0"/>
-                            <constraint firstItem="qTO-Wu-lYP" firstAttribute="top" secondItem="f0v-d9-D7s" secondAttribute="bottom" constant="10" id="h6j-5M-Vzq"/>
-                            <constraint firstItem="qTO-Wu-lYP" firstAttribute="leading" secondItem="Bns-Ds-fro" secondAttribute="leadingMargin" constant="10" id="qIe-VP-U2p"/>
+                            <constraint firstItem="qov-Jq-6Fc" firstAttribute="top" secondItem="f0v-d9-D7s" secondAttribute="bottom" constant="10" id="cTH-j0-YGd"/>
+                            <constraint firstItem="rEV-M1-byp" firstAttribute="top" secondItem="qov-Jq-6Fc" secondAttribute="bottom" constant="12" id="pC0-a2-COi"/>
                             <constraint firstItem="rEV-M1-byp" firstAttribute="centerX" secondItem="Bns-Ds-fro" secondAttribute="centerX" id="zmO-yN-p2K"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="termsLabel" destination="qTO-Wu-lYP" id="a12-kc-6Pi"/>
+                        <outlet property="termsView" destination="qov-Jq-6Fc" id="6Tf-ZL-mkb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEb-Mn-ghM" userLabel="First Responder" sceneMemberID="firstResponder"/>
