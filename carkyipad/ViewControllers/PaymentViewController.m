@@ -40,7 +40,7 @@
     self.stpCardTextField.borderWidth = 1;
     self.isForTransfer = [self.stepsController isKindOfClass:TransferStepsViewController.class];
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if (bt == CarkyBackendTypeTest || bt == CarkyBackendTypeProd) {
+    if (bt == CarkyBackendTypeTest || bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
         self.cvvTextField.text = @"";
         self.expiryDateTextField.text = @"";
         [self.payNowButton disableButton];
@@ -104,7 +104,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
         
-    // Start out working with the test environment! When you are ready, switch to PayPalEnvironmentProduction.
+    // Start out working with the test! When you are ready, switch to PayPalEnvironmentProduction.
     if ([[AppDelegate instance].clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
         [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
     } else {

@@ -71,13 +71,15 @@
 			<array>
 				<string>Dev</string>
 				<string>Test</string>
-				<string>Prod</string>
+				<string>Stage</string>
+				<string>Live</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
 				<integer>1</integer>
 				<integer>2</integer>
+				<string>4</string>
 			</array>
 		</dict>
 	</array>

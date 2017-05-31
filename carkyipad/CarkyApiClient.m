@@ -23,17 +23,11 @@ static CarkyApiClient *_sharedService = nil;
         _sharedService.isOffline = NO;
         NSString *baseUrl;
         switch ([AppDelegate instance].environment) {
-            case 0:
-                baseUrl = @"https://carky-app.azurewebsites.net";
-                break;
-            case 1:
-                baseUrl = @"https://carky-api-test.azurewebsites.net";
-                break;
-            case 2:
-                baseUrl = @"https://carky-api-prod.azurewebsites.net";
-                break;
-            default:
-                break;
+            case 0: baseUrl = @"https://carky-app.azurewebsites.net"; break;
+            case 1: baseUrl = @"https://carky-api-test.azurewebsites.net"; break;
+            case 2: baseUrl = @"https://carky-api-stage.azurewebsites.net";break;
+            case 3: baseUrl = @"https://carky-api-live.azurewebsites.net";break;
+            default: break;
         }
         // create and init instance
         _sharedService = [[CarkyApiClient alloc] initWithDefaultConfiguration:baseUrl];
@@ -168,6 +162,7 @@ static CarkyApiClient *_sharedService = nil;
         block(carExtrasArray);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.blockErrorDefault(error);
+        [self ShowMessageOnError:error WithBlock:block];
     }];
 }
 

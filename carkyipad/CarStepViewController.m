@@ -244,6 +244,8 @@
 
 #pragma mark -
 -(IBAction) nextButtonAction:(UIButton *)sender{
+    [self.nextButton disableButton];
+    [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
     NSArray<Cars*> *cars = self.carsDataSource.items;
     NSInteger carTypeId = cars[self.selectedCarOrder].carsIdentifier;
     self.stepsController.results[kResultsCarTypeId] = @(carTypeId);
@@ -256,6 +258,8 @@
     CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
     AppDelegate *app = [AppDelegate instance];
     [app fetchCarsDataForType:carTypeId andPickupDate:selectedRange.startDay.date andDropoffDate:selectedRange.endDay.date andBlock:^(NSArray *arr) {
+        [self.nextButton enableButton];
+        [[AppDelegate instance] hideProgressNotification];
         if ([arr.firstObject isKindOfClass:NSString.class]) {
             [parentController showAlertViewWithMessage:arr.firstObject andTitle:@"Error"];
             return;

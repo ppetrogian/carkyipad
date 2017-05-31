@@ -157,9 +157,14 @@
         //app.carTypes = array2;
     //}];
     [self.api GetCarExtrasForRental:pickupDate andDropoffDate:dropoffDate withBlock:^(NSArray *array3) {
-        self.carExtras = array3;
+        if ([array3.firstObject isKindOfClass:CarExtra.class]) {
+            self.carExtras = array3;
+        }
+        
         [self.api GetAllCarInsurancesForType:carTypeId andPickupDate:pickupDate andDropoffDate:dropoffDate withBlock:^(NSArray *array4) {
-            self.carInsurances = array4;
+            if ([array4.firstObject isKindOfClass:CarInsurance.class]) {
+                self.carInsurances = array4;
+            }
             block(array4);
         }];
     }];
