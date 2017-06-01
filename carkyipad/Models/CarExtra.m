@@ -1,21 +1,20 @@
 //
 //  CarExtra.m
-//  carkyipad
 //
-//  Created by Filippos Sakellaropoulos on 11/3/17.
-//  Copyright © 2017 Nessos. All rights reserved.
+//  Created by   on 01/06/2017
+//  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
 #import "CarExtra.h"
+#import "Price.h"
 
 
-NSString *const kCarExtraPricePerDay = @"PricePerDay";
-NSString *const kCarExtraPriceTotal = @"PriceTotal";
-NSString *const kCarExtraPrice = @"Price";
-NSString *const kCarExtraId = @"Id";
-NSString *const kCarExtraName = @"Name";
 NSString *const kCarExtraIcon = @"Icon";
 NSString *const kCarExtraDescription = @"Description";
+NSString *const kCarExtraName = @"Name";
+NSString *const kCarExtraPrice = @"Price";
+NSString *const kCarExtraPriceTotal = @"PriceTotal";
+NSString *const kCarExtraId = @"Id";
 
 
 @interface CarExtra ()
@@ -26,11 +25,10 @@ NSString *const kCarExtraDescription = @"Description";
 
 @implementation CarExtra
 
-@synthesize pricePerDay = _pricePerDay;
-@synthesize Id = _Id;
-@synthesize Name = _Name;
-@synthesize Description = _Description;
-
+@synthesize icon = _icon;
+@synthesize name = _name;
+@synthesize price = _price;
+@synthesize priceTotal = _priceTotal;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
     return [[self alloc] initWithDictionary:dict];
@@ -42,14 +40,13 @@ NSString *const kCarExtraDescription = @"Description";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-        self.pricePerDay = [[self objectOrNilForKey:kCarExtraPricePerDay fromDictionary:dict] integerValue];
-        self.price = [[self objectOrNilForKey:kCarExtraPrice fromDictionary:dict] integerValue];
-        self.priceTotal = [[self objectOrNilForKey:kCarExtraPriceTotal fromDictionary:dict] doubleValue];
-        self.Id = [[self objectOrNilForKey:kCarExtraId fromDictionary:dict] integerValue];
-        self.Name = [self objectOrNilForKey:kCarExtraName fromDictionary:dict];
-        self.icon = [self objectOrNilForKey:kCarExtraIcon fromDictionary:dict];
-        self.Description = [self objectOrNilForKey:kCarExtraDescription fromDictionary:dict];
-        
+            self.icon = [self objectOrNilForKey:kCarExtraIcon fromDictionary:dict];
+            self.carExtraDescription = [self objectOrNilForKey:kCarExtraDescription fromDictionary:dict];
+            self.name = [self objectOrNilForKey:kCarExtraName fromDictionary:dict];
+            self.price = [Price modelObjectWithDictionary:[dict objectForKey:kCarExtraPrice]];
+            self.priceTotal = [[self objectOrNilForKey:kCarExtraPriceTotal fromDictionary:dict] doubleValue];
+            self.carExtraIdentifier = [[self objectOrNilForKey:kCarExtraId fromDictionary:dict] integerValue];
+
     }
     
     return self;
@@ -58,14 +55,13 @@ NSString *const kCarExtraDescription = @"Description";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.pricePerDay] forKey:kCarExtraPricePerDay];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.price] forKey:kCarExtraPrice];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.priceTotal] forKey:kCarExtraPriceTotal];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.Id] forKey:kCarExtraId];
-    [mutableDict setValue:self.Name forKey:kCarExtraName];
     [mutableDict setValue:self.icon forKey:kCarExtraIcon];
-    [mutableDict setValue:self.Description forKey:kCarExtraDescription];
-    
+    [mutableDict setValue:self.carExtraDescription forKey:kCarExtraDescription];
+    [mutableDict setValue:self.name forKey:kCarExtraName];
+    [mutableDict setValue:[self.price dictionaryRepresentation] forKey:kCarExtraPrice];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.priceTotal] forKey:kCarExtraPriceTotal];
+    [mutableDict setValue:[NSNumber numberWithInteger:self.carExtraIdentifier] forKey:kCarExtraId];
+
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -84,21 +80,25 @@ NSString *const kCarExtraDescription = @"Description";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
-    
-    self.pricePerDay = [aDecoder decodeIntegerForKey:kCarExtraPricePerDay];
-    self.Id = [aDecoder decodeIntegerForKey:kCarExtraId];
-    self.Name = [aDecoder decodeObjectForKey:kCarExtraName];
-    self.Description = [aDecoder decodeObjectForKey:kCarExtraDescription];
+
+    self.icon = [aDecoder decodeObjectForKey:kCarExtraIcon];
+    self.carExtraDescription = [aDecoder decodeObjectForKey:kCarExtraDescription];
+    self.name = [aDecoder decodeObjectForKey:kCarExtraName];
+    self.price = [aDecoder decodeObjectForKey:kCarExtraPrice];
+    self.priceTotal = [aDecoder decodeDoubleForKey:kCarExtraPriceTotal];
+    self.carExtraIdentifier = [aDecoder decodeIntegerForKey:kCarExtraId];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    
-    [aCoder encodeInteger:_pricePerDay forKey:kCarExtraPricePerDay];
-    [aCoder encodeInteger:_Id forKey:kCarExtraId];
-    [aCoder encodeObject:_Name forKey:kCarExtraName];
-    [aCoder encodeObject:_Description forKey:kCarExtraDescription];
+
+    [aCoder encodeObject:_icon forKey:kCarExtraIcon];
+    [aCoder encodeObject:_carExtraDescription forKey:kCarExtraDescription];
+    [aCoder encodeObject:_name forKey:kCarExtraName];
+    [aCoder encodeObject:_price forKey:kCarExtraPrice];
+    [aCoder encodeDouble:_priceTotal forKey:kCarExtraPriceTotal];
+    [aCoder encodeInteger:_carExtraIdentifier forKey:kCarExtraId];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -107,11 +107,13 @@ NSString *const kCarExtraDescription = @"Description";
     
     
     if (copy) {
-        
-        copy.pricePerDay = self.pricePerDay;
-        copy.Id = self.Id;
-        copy.Name = [self.Name copyWithZone:zone];
-        copy.Description = [self.Description copyWithZone:zone];
+
+        copy.icon = [self.icon copyWithZone:zone];
+        copy.carExtraDescription = [self.carExtraDescription copyWithZone:zone];
+        copy.name = [self.name copyWithZone:zone];
+        copy.price = [self.price copyWithZone:zone];
+        copy.priceTotal = self.priceTotal;
+        copy.carExtraIdentifier = self.carExtraIdentifier;
     }
     
     return copy;

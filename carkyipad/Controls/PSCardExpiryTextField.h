@@ -6,7 +6,7 @@
 //  Copyright © 2017 Nessos. All rights reserved.
 //
 
-#import <BKCardExpiryField/BKCardExpiryField.h>
+#import "BKCardExpiryField.h"
 
 @interface PSCardExpiryTextField : BKCardExpiryField
 @property (assign, nonatomic) NSInteger insetLeft;

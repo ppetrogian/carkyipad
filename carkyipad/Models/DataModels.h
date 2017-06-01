@@ -27,6 +27,7 @@
 #import "CarPrice.h"
 #import "CarPriceResponse.h"
 #import "DateTime.h"
+#import "Price.h"
 #import "CarkyBookingStatusResponse.h"
 #import "Content.h"
 #import "CreateTransferBookingRequestPayPalPaymentResponse.h"

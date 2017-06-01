@@ -38,16 +38,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-1T-ioQ">
-                                <rect key="frame" x="86.5" y="40" width="16" height="34"/>
+                                <rect key="frame" x="86.5" y="42" width="16" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKM-5k-oCX">
-                                <rect key="frame" x="5" y="86" width="179" height="14.5"/>
+                                <rect key="frame" x="5" y="88" width="179" height="14.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NH-8B-216">
-                                <rect key="frame" x="5" y="105.5" width="179" height="44"/>
+                                <rect key="frame" x="5" y="107.5" width="179" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2bj-bd-zy4"/>
                                 </constraints>
@@ -63,7 +63,7 @@
                             <constraint firstItem="9NH-8B-216" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="FdJ-cH-hL9"/>
                             <constraint firstItem="MKM-5k-oCX" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="J5E-b0-EBz"/>
                             <constraint firstItem="MKM-5k-oCX" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Kai-f4-mxz"/>
-                            <constraint firstItem="IaF-1T-ioQ" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="10" id="NLb-J8-IS0"/>
+                            <constraint firstItem="IaF-1T-ioQ" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="12" id="NLb-J8-IS0"/>
                             <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" constant="5" id="POV-uJ-8F0"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Uu3-Ct-zKA"/>
                             <constraint firstItem="IaF-1T-ioQ" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="cBx-JR-n2I"/>

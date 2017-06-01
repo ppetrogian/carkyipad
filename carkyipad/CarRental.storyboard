@@ -1088,7 +1088,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDU-Nf-N2Q">
-                                        <rect key="frame" x="676" y="20" width="76" height="30"/>
+                                        <rect key="frame" x="661" y="20" width="76" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="76" id="cJk-G4-GWg"/>
                                             <constraint firstAttribute="height" constant="30" id="xuF-NB-VJU"/>
@@ -1099,7 +1099,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqe-xR-WRe" userLabel="BackButton">
-                                        <rect key="frame" x="17" y="5" width="55" height="55"/>
+                                        <rect key="frame" x="42" y="5" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="Ce2-XR-Yei"/>
                                             <constraint firstAttribute="width" constant="55" id="zaO-tB-BkR"/>
@@ -1113,13 +1113,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Ozy-tM-KrL" secondAttribute="bottom" id="HLD-r9-G3n"/>
-                                    <constraint firstItem="Ozy-tM-KrL" firstAttribute="leading" secondItem="mqe-xR-WRe" secondAttribute="trailing" constant="50" id="Spx-K4-VeF"/>
+                                    <constraint firstItem="Ozy-tM-KrL" firstAttribute="leading" secondItem="mqe-xR-WRe" secondAttribute="trailing" constant="25" id="Spx-K4-VeF"/>
                                     <constraint firstItem="Ozy-tM-KrL" firstAttribute="centerX" secondItem="tJr-Un-XIG" secondAttribute="centerX" id="bAa-xt-LQb"/>
                                     <constraint firstItem="mqe-xR-WRe" firstAttribute="centerY" secondItem="F8X-7V-8d6" secondAttribute="centerY" id="cEN-0Y-o1D"/>
                                     <constraint firstItem="eDU-Nf-N2Q" firstAttribute="top" secondItem="tJr-Un-XIG" secondAttribute="top" constant="20" id="mFX-pM-CID"/>
                                     <constraint firstAttribute="height" constant="140" id="nA6-It-A2h"/>
                                     <constraint firstItem="Ozy-tM-KrL" firstAttribute="top" secondItem="tJr-Un-XIG" secondAttribute="top" id="x8L-CP-hVb"/>
-                                    <constraint firstItem="eDU-Nf-N2Q" firstAttribute="leading" secondItem="Ozy-tM-KrL" secondAttribute="trailing" constant="30" id="z6p-VV-QrH"/>
+                                    <constraint firstItem="eDU-Nf-N2Q" firstAttribute="leading" secondItem="Ozy-tM-KrL" secondAttribute="trailing" constant="15" id="z6p-VV-QrH"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vR8-f9-NSn">

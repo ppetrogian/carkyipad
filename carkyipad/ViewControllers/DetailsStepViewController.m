@@ -635,9 +635,5 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     }];
 }
 
--(void)dealloc {
-    NSLog(@"Deallocateing details controller");
-}
-
 
 @end

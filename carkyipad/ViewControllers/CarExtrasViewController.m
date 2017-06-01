@@ -152,20 +152,26 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 }
 -(void) extraCollectionCell:(ExtrasCollectionViewCell *)cell setDetails:(CarExtra *)extra{
     //set car extra
-    cell.extraNameLabel.text = extra.Name;
-    cell.extraDescriptionLabel.text = extra.Description;
-    NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf\n(€%zd/day)", extra.priceTotal, extra.pricePerDay];
-    NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
-    [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",extra.pricePerDay]]];
-    cell.priceLabel.attributedText = priceAttributedString;
+    cell.extraNameLabel.text = extra.name;
+    cell.extraDescriptionLabel.text = extra.carExtraDescription;
+    if ([extra.price.type isEqualToString:@"PerDay"]) {
+        NSString *priceStr = [NSString stringWithFormat: @"Total €%.2lf\n(€%zd/day)", extra.priceTotal, extra.price.price];
+        NSMutableAttributedString *priceAttributedString = [[NSMutableAttributedString alloc] initWithString:priceStr];
+        [priceAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor], NSFontAttributeName : [UIFont systemFontOfSize:12]} range:[priceStr rangeOfString:[NSString stringWithFormat:@"(€%zd/day)",extra.price.price]]];
+        cell.priceLabel.attributedText = priceAttributedString;
+    } else {
+        cell.priceLabel.text =[NSString stringWithFormat: @"Total €%.2lf", extra.priceTotal];
+    }
+
     NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
-    if (iconsDict[extra.Name]) {
-        cell.extraImageView.image = [UIImage imageNamed:iconsDict[extra.Name]];
-    } else if(extra.icon.length > 0) {
+    // show server icon first, if not exists saved asset
+    if(extra.icon.length > 0) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:extra.icon]];
         [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
             cell.extraImageView.image = responseObject;
         } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    } else if (iconsDict[extra.name]) {
+        cell.extraImageView.image = [UIImage imageNamed:iconsDict[extra.name]];
     }
 }
 
@@ -179,13 +185,14 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     cell.insuranceDescriptionLabel.text = ins.insuranceDescription;
     cell.insuranceDetailsLabel.text = ins.details;
     NSArray *icons = @[@"Fill 30",@"Fill 30",@"Fill 15"];
-    if (indexPath.row < icons.count) {
-        cell.extraImageView.image = [UIImage imageNamed:icons[indexPath.row]];
-    } else if(ins.icon.length > 0) {
+    
+    if(ins.icon.length > 0) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:ins.icon]];
         [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
             cell.extraImageView.image = responseObject;
         } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    } else if (indexPath.row < icons.count) {
+        cell.extraImageView.image = [UIImage imageNamed:icons[indexPath.row]];
     }
 }
 
@@ -265,7 +272,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     NSMutableArray<NSNumber*> *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
     if (selectedExtras.count > 0) {
         [selectedExtras enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [extras addObject:@(app.carExtras[obj.integerValue].Id)];
+            [extras addObject:@(app.carExtras[obj.integerValue].carExtraIdentifier)];
         }];
     }
     self.stepsController.results[kResultsExtras] = extras;

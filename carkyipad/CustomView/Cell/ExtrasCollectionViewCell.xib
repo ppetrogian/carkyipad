@@ -22,7 +22,7 @@
                         <rect key="frame" x="3" y="3" width="189" height="220"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-fg-tnB">
-                                <rect key="frame" x="86.5" y="39.5" width="16" height="34"/>
+                                <rect key="frame" x="86.5" y="47" width="16" height="34"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-Og-40K">
                                 <rect key="frame" x="5" y="12" width="179" height="20"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NWZ-lu-own">
-                                <rect key="frame" x="5" y="88.5" width="179" height="57"/>
+                                <rect key="frame" x="5" y="96" width="179" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="D8f-dR-hMd"/>
                                 </constraints>
@@ -59,7 +59,7 @@
                             <constraint firstItem="gcy-fg-tnB" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="TxC-Sx-MJp"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="12" id="WBu-PX-z3a"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="fik-5K-cs7"/>
-                            <constraint firstItem="gcy-fg-tnB" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="7.5" id="jBe-QM-OYe"/>
+                            <constraint firstItem="gcy-fg-tnB" firstAttribute="top" secondItem="kMy-Og-40K" secondAttribute="bottom" constant="15" id="jBe-QM-OYe"/>
                             <constraint firstAttribute="trailing" secondItem="kMy-Og-40K" secondAttribute="trailing" constant="5" id="jJO-kv-2Z8"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="nAi-ct-0ra"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="s1j-hf-Jsq"/>

@@ -29,8 +29,6 @@
 		AE6351C91E71E32200065F0F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351C31E71E32200065F0F /* Location.m */; };
 		AE6351D01E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
 		AE6351D11E71F52700065F0F /* CarCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351CF1E71F52700065F0F /* CarCategory.m */; };
-		AE6351D41E7415E400065F0F /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351D31E7415E400065F0F /* CarExtra.m */; };
-		AE6351D51E7415E400065F0F /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351D31E7415E400065F0F /* CarExtra.m */; };
 		AE6351EC1E746BBB00065F0F /* CarType.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351EB1E746BBB00065F0F /* CarType.m */; };
 		AE6351ED1E746BBB00065F0F /* CarType.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351EB1E746BBB00065F0F /* CarType.m */; };
 		AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6351F71E746CB200065F0F /* CarInsurance.m */; };
@@ -159,6 +157,8 @@
 		D19FF98F1E9112FE00F735A0 /* ExtrasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF98E1E9112FE00F735A0 /* ExtrasTableViewCell.m */; };
 		D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9911E91187100F735A0 /* CarExtrasViewController.m */; };
 		D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */; };
+		D1A99E171EE0B0D80003A00E /* Price.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A99E161EE0B0D80003A00E /* Price.m */; };
+		D1A99E1A1EE0B1160003A00E /* CarExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A99E191EE0B1160003A00E /* CarExtra.m */; };
 		D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */; };
 		D1AA29501EC926F40080AD93 /* InsurancesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */; };
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
@@ -245,8 +245,6 @@
 		AE6351C31E71E32200065F0F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		AE6351CE1E71F52700065F0F /* CarCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCategory.h; sourceTree = "<group>"; };
 		AE6351CF1E71F52700065F0F /* CarCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCategory.m; sourceTree = "<group>"; };
-		AE6351D21E7415E400065F0F /* CarExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarExtra.h; sourceTree = "<group>"; };
-		AE6351D31E7415E400065F0F /* CarExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarExtra.m; sourceTree = "<group>"; };
 		AE6351EA1E746BBB00065F0F /* CarType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarType.h; sourceTree = "<group>"; };
 		AE6351EB1E746BBB00065F0F /* CarType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarType.m; sourceTree = "<group>"; };
 		AE6351F61E746CB200065F0F /* CarInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInsurance.h; sourceTree = "<group>"; };
@@ -425,6 +423,10 @@
 		D19FF9911E91187100F735A0 /* CarExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarExtrasViewController.m; path = ViewControllers/CarExtrasViewController.m; sourceTree = "<group>"; };
 		D19FF9931E91774400F735A0 /* InsuranceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsuranceTableViewCell.h; path = ViewControllers/InsuranceTableViewCell.h; sourceTree = "<group>"; };
 		D19FF9941E91774400F735A0 /* InsuranceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsuranceTableViewCell.m; path = ViewControllers/InsuranceTableViewCell.m; sourceTree = "<group>"; };
+		D1A99E151EE0B0D80003A00E /* Price.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Price.h; sourceTree = "<group>"; };
+		D1A99E161EE0B0D80003A00E /* Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Price.m; sourceTree = "<group>"; };
+		D1A99E181EE0B1150003A00E /* CarExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarExtra.h; sourceTree = "<group>"; };
+		D1A99E191EE0B1160003A00E /* CarExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarExtra.m; sourceTree = "<group>"; };
 		D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InsurancesCollectionViewCell.xib; path = CustomView/Cell/InsurancesCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1AA294E1EC926F30080AD93 /* InsurancesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsurancesCollectionViewCell.h; path = CustomView/Cell/InsurancesCollectionViewCell.h; sourceTree = "<group>"; };
 		D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsurancesCollectionViewCell.m; path = CustomView/Cell/InsurancesCollectionViewCell.m; sourceTree = "<group>"; };
@@ -561,8 +563,10 @@
 				AE6351C31E71E32200065F0F /* Location.m */,
 				AE616DB21ED1855700EA38D6 /* CalendarRange.h */,
 				AE616DB31ED1855700EA38D6 /* CalendarRange.m */,
-				AE6351D21E7415E400065F0F /* CarExtra.h */,
-				AE6351D31E7415E400065F0F /* CarExtra.m */,
+				D1A99E151EE0B0D80003A00E /* Price.h */,
+				D1A99E161EE0B0D80003A00E /* Price.m */,
+				D1A99E181EE0B1150003A00E /* CarExtra.h */,
+				D1A99E191EE0B1160003A00E /* CarExtra.m */,
 				D19FF97F1E904C1400F735A0 /* CarRentalModel.h */,
 				D19FF9801E904C1400F735A0 /* CarRentalModel.m */,
 			);
@@ -1218,7 +1222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1248,7 +1252,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1304,7 +1308,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1379,13 +1383,13 @@
 				AE6352FD1E75E1FA00065F0F /* NBPhoneNumberDefines.m in Sources */,
 				AE6352F31E75E1FA00065F0F /* NBMetadataHelper.m in Sources */,
 				E1C2EE7E1EC4DF8A0021BEC2 /* RentalConfirmationView.m in Sources */,
-				AE6351D41E7415E400065F0F /* CarExtra.m in Sources */,
 				D14DF0AB1E757F940040B97F /* RMStep.m in Sources */,
 				AE7275AF1E6CCA8C00918646 /* AppDelegate.m in Sources */,
 				D18C678C1ECBB86300566DCC /* BookingInfo.m in Sources */,
 				D14DF0AD1E757F940040B97F /* RMStepsBar.m in Sources */,
 				D15951521EAD732900540076 /* ClientDetailsViewController.m in Sources */,
 				AEA9E92E1EAE30A400CC84D5 /* DateTime.m in Sources */,
+				D1A99E171EE0B0D80003A00E /* Price.m in Sources */,
 				D15951401EAC9AC400540076 /* CarServices.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
 				E1C2EE621EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m in Sources */,
@@ -1422,6 +1426,7 @@
 				AE6351FC1E746CB200065F0F /* Company.m in Sources */,
 				AE6352ED1E75E1FA00065F0F /* NBMetadataCoreMapper.m in Sources */,
 				D143DD1E1EA533C300F12C36 /* RegisterClientRequest.m in Sources */,
+				D1A99E1A1EE0B1160003A00E /* CarExtra.m in Sources */,
 				AE956AF41ECF57E200041E18 /* RentalBookingResponse.m in Sources */,
 				AE6351FA1E746CB200065F0F /* CarInsurance.m in Sources */,
 				D15951551EADC60F00540076 /* PhoneNumberConfirmationViewController.m in Sources */,
@@ -1462,7 +1467,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE6351D51E7415E400065F0F /* CarExtra.m in Sources */,
 				AE6351FD1E746CB200065F0F /* Company.m in Sources */,
 				AE6351D11E71F52700065F0F /* CarCategory.m in Sources */,
 				AE6351ED1E746BBB00065F0F /* CarType.m in Sources */,
