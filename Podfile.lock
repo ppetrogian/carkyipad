@@ -43,7 +43,6 @@ PODS:
   - PayPal-iOS-SDK/CardIO (2.17.0):
     - CardIO (~> 5.4.1)
   - PayPal-iOS-SDK/Core (2.17.0)
-  - SAMKeychain (1.5.2)
   - Stripe (10.1.0)
   - TGRDataSource (0.2)
 
@@ -60,7 +59,6 @@ DEPENDENCIES:
   - HockeySDK
   - MBProgressHUD
   - PayPal-iOS-SDK
-  - SAMKeychain
   - Stripe
   - TGRDataSource
 
@@ -77,10 +75,9 @@ SPEC CHECKSUMS:
   HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
-  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   Stripe: 1c7aa951a075cced500a919d92b687b35d410705
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: ce2ef4de1bfb68279d93df05261bd7a9c2cec7ef
+PODFILE CHECKSUM: 1bedf5eaa195d077b2b735559060c94753c6003d
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

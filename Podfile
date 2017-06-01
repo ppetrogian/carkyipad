@@ -3,7 +3,7 @@ platform :ios, '9.3'
 target 'carkyipad' do
 use_frameworks!
   
-pod 'SAMKeychain'
+  #pod 'SAMKeychain'
 pod 'AFNetworking'
 pod 'TGRDataSource'
 pod 'MBProgressHUD'
