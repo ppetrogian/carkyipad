@@ -13,6 +13,8 @@
 #import <Stripe/Stripe.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import "PayPalMobile.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import  HockeySDK;
 
@@ -44,6 +46,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[[Crashlytics class], [STPAPIClient class]]];
     self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"home"],@[@"CarRental",@"CarRentalSteps"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
@@ -62,6 +65,7 @@
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+    [BITHockeyManager sharedHockeyManager].disableCrashManager = YES;
 
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];
