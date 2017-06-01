@@ -37,7 +37,9 @@
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
     self.driverCarPhotoImageView.image = catImage;
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
-    self.player = [AVPlayer playerWithURL:videoURL];
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+    AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
+    self.player = [AVPlayer playerWithPlayerItem:avPlayerItem];
     //self.layer = [AVPlayerLayer layer];
     self.videoContainerView.frame = self.view.frame;
     self.layerVc.showsPlaybackControls = NO;
@@ -117,7 +119,7 @@
         self.pickupImageView.alpha = 1;
         self.videoContainerView.alpha = 0;
     } completion:^(BOOL finished) {
-        [self.videoContainerView removeFromSuperview];
+        [self.layerVc.view removeFromSuperview];
     }];
 }
 
@@ -147,7 +149,9 @@
     }
     [self.player pause];
     self.player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
-    self.player = nil; self.layerVc = nil;
+    self.player = nil;
+    
+    [self.layerVc.view removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     AppDelegate *app = [AppDelegate instance];
     [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
