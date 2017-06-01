@@ -8,7 +8,6 @@
 #import "BaseViewController.h"
 #import "HomeViewController.h"
 #import "FlatPillButton.h"
-#import "IIAsyncViewController.h"
 #import "AppDelegate.h"
 #import "CarkyApiClient.h"
 #import "DataModels.h"

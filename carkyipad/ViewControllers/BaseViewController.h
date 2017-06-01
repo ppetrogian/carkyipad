@@ -3,7 +3,6 @@
 
 //
 #import <UIKit/UIKit.h>
-#import "IIAsyncViewController.h"
 @class AppDelegate;
 
 @class Validation;

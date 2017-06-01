@@ -36,7 +36,6 @@ PODS:
   - HockeySDK (4.1.5):
     - HockeySDK/DefaultLib (= 4.1.5)
   - HockeySDK/DefaultLib (4.1.5)
-  - IIAsyncViewController (1.0.1)
   - MBProgressHUD (1.0.0)
   - PayPal-iOS-SDK (2.17.0):
     - PayPal-iOS-SDK/CardIO (= 2.17.0)
@@ -59,7 +58,6 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - HockeySDK
-  - IIAsyncViewController
   - MBProgressHUD
   - PayPal-iOS-SDK
   - SAMKeychain
@@ -77,13 +75,12 @@ SPEC CHECKSUMS:
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
-  IIAsyncViewController: 7ce71b1b0afb92327abad77f78ec76989f6d7fa1
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   Stripe: 1c7aa951a075cced500a919d92b687b35d410705
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: d5b78d882f8f5e6186779015d1c35290c10dbbb9
+PODFILE CHECKSUM: ce2ef4de1bfb68279d93df05261bd7a9c2cec7ef
 
 COCOAPODS: 1.2.1
