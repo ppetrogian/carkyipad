@@ -40,7 +40,7 @@
     self.stpCardTextField.borderWidth = 1;
     self.isForTransfer = [self.stepsController isKindOfClass:TransferStepsViewController.class];
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if (bt == CarkyBackendTypeTest || bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
+    if (bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
         self.cvvTextField.text = @"";
         self.expiryDateTextField.text = @"";
         [self.payNowButton disableButton];
@@ -165,6 +165,7 @@
     NSLog(@"Scan succeeded with info: %@", info);
     // Do whatever needs to be done to deliver the purchased items.
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.payNowButton enableButton];
     [self.stpCardTextField replaceField: @"numberField" withValue:info.cardNumber];
     self.expiryDateTextField.dateComponents.month = info.expiryMonth;
     self.expiryDateTextField.dateComponents.year = info.expiryYear;
@@ -175,6 +176,7 @@
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
     NSLog(@"User cancelled scan");
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.payNowButton enableButton];
 }
 
 - (STPCardParams *)getCardParamsFromUI {
@@ -323,8 +325,10 @@
         [self.parentTransferController showNextStep];
     }
     else {
+        [[AppDelegate instance] showProgressNotificationWithText:@"Requesting" inView:self.view];
         [self.parentRentalController payRentalWithPaypal:newStr andResponse:completedPayment.confirmation andBlock:^(BOOL b) {
             [self.payNowButton enableButton];
+            [[AppDelegate instance] hideProgressNotification];
         }];
     }
 }

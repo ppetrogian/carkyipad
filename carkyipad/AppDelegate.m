@@ -45,7 +45,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"home"],@[@"CarRental",@"CarRentalSteps"]];
-    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel@gmail.com"}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
@@ -111,7 +111,11 @@
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
-    [AppDelegate instance].environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
+    if ([userName containsString:@"phisakel"] && [userName containsString:@"@gmail.com"]) {
+        [AppDelegate instance].environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
+    } else {
+        [AppDelegate instance].environment = CarkyBackendTypeLive;
+    }
     //init api client
     self.api = [CarkyApiClient sharedService];
 

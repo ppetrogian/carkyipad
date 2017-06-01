@@ -47,13 +47,13 @@
     self.selectionLayer.frame = self.bounds;
     self.circleLayer.frame = self.bounds;
     CGFloat dx = MIN(self.selectionLayer.fs_height, self.selectionLayer.fs_width)-5;
-    CGFloat dy = dx - 5;
+    CGFloat dy = dx;
     
     if (self.selectionType == SelectionTypeMiddle) {
         self.circleLayer.hidden = YES;
         // middle
         self.selectionLayer.fillColor = [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:1.0].CGColor;
-        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(self.selectionLayer.bounds, 0, 8), 0, -3) ].CGPath;
+        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(self.selectionLayer.bounds, 0, 8), 0, 0) ].CGPath;
      } else if (self.selectionType == SelectionTypeLeftBorder || self.selectionType == SelectionTypeRightBorder) {
         // single
         self.circleLayer.hidden = NO;
@@ -62,8 +62,8 @@
         self.circleLayer.fillColor = [UIColor whiteColor].CGColor;
         NSInteger xOffset = self.selectionType == SelectionTypeLeftBorder ? self.contentView.fs_width/2+2 : 0;
         CGRect halfBounds = CGRectMake(xOffset, 0, self.selectionLayer.bounds.size.width/2, self.selectionLayer.bounds.size.height);
-        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(halfBounds, 0, 8), 0, -3) ].CGPath;
-        self.circleLayer.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.contentView.fs_width/2-dx/2, self.contentView.fs_height/2-dy/2-3, dx, dy)].CGPath;
+        self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(halfBounds, 0, 8), 0, 0) ].CGPath;
+        self.circleLayer.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.contentView.fs_width/2-dx/2, self.contentView.fs_height/2-dy/2, dx, dy)].CGPath;
     }
 
 }

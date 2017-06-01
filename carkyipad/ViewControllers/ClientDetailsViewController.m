@@ -32,7 +32,7 @@
     self.validator = [Validation new];
     
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if (bt == CarkyBackendTypeTest || bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
+    if (bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
         self.firstNameTextField.text = @"";
         self.lastNameTextField.text = @"";
         self.emailTextField.text = @"";
