@@ -8,8 +8,7 @@
 
 #import "StepViewController.h"
 #import "SelectDropoffLocationViewController.h"
-#import <FSCalendar/FSCalendar.h>
-#import "CarCalendarViewCell.h"
+@class FSCalendar;
 
 #define KDateTxtFldBackgroundColor [UIColor colorWithRed:(CGFloat)237/255 green:(CGFloat)237/255 blue:(CGFloat)237/255 alpha:1.0]
 #define KPlaceTxtFldBackgroundColor [UIColor colorWithRed:(CGFloat)249/255 green:(CGFloat)249/255 blue:(CGFloat)249/255 alpha:1.0]

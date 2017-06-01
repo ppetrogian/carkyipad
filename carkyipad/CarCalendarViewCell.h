@@ -3,7 +3,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import <FSCalendar/FSCalendar.h>
+#import "FSCalendar.h"
 
 typedef NS_ENUM(NSUInteger, SelectionType) {
     SelectionTypeNone,

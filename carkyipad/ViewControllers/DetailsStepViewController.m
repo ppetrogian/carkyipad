@@ -15,6 +15,7 @@
 #import "UIController.h"
 #import <Stripe/Stripe.h>
 #import "CalendarRange.h"
+#import "CarCalendarViewCell.h"
 
 NSString *const kResultsDays = @"Days";
 NSString *const kResultsDayRange = @"DayRange";
