@@ -55,6 +55,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1F-th-Rg9">
+                                <rect key="frame" x="148" y="40" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -91,6 +98,7 @@
                 <outlet property="extraNameLabel" destination="kMy-Og-40K" id="nAd-qB-WPV"/>
                 <outlet property="insuranceDescriptionLabel" destination="MKM-5k-oCX" id="rSS-in-vdw"/>
                 <outlet property="insuranceDetailsLabel" destination="9NH-8B-216" id="13T-W6-DQI"/>
+                <outlet property="insuranceImageHiddenLabel" destination="j1F-th-Rg9" id="p88-Gz-2Bl"/>
                 <outlet property="priceLabel" destination="QiI-of-8h3" id="MhF-uo-Bqq"/>
             </connections>
             <point key="canvasLocation" x="-114.5" y="136"/>

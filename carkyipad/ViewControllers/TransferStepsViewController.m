@@ -131,6 +131,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView {
     self.selectedDropoffLocation = (Location *)value;
+    self.selectedDropoffLocation.address = self.selectedDropoffLocation.name;
     mapView.selectedMarker = nil;
     [self.locationMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.userData == self.selectedDropoffLocation) {
@@ -255,10 +256,12 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     CarCategory *cCat = self.selectedCarCategory;
     TransferBookingRequest *request = [TransferBookingRequest new];
     request.userId = self.userId;
-    if(self.selectedDropoffLocation.identifier > 0)
-    request.dropoffWellKnownLocationId = self.selectedDropoffLocation.identifier;
-    else
-    request.dropoffLocation = self.selectedDropoffLocation;
+    if(self.selectedDropoffLocation.identifier > 0) {
+        request.dropoffWellKnownLocationId = self.selectedDropoffLocation.identifier;
+    }
+    else {
+        request.dropoffLocation = self.selectedDropoffLocation;
+    }
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
     request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2

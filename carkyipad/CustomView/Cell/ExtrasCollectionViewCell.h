@@ -16,5 +16,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *selectionImageView;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *widthConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *imageHiddenLabel;
 
 @end

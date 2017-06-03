@@ -37,8 +37,6 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
 @property (nonatomic,strong) TGRArrayDataSource* carInsurancesDataSource;
 @property (nonatomic,assign) BOOL mustPrepare;
-@property (nonatomic,assign) NSInteger priceExtras;
-@property (nonatomic,assign) NSInteger priceInsurances;
 @property (nonatomic, weak) CarRentalStepsViewController *parentRentalController;
 @end
 
@@ -47,9 +45,6 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // setup table properties
-    _priceExtras = 0;
-    _priceInsurances = 0;
     self.parentRentalController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
 }
@@ -62,13 +57,27 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
         self.carImageView.image = responseObject;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    selectedExtras = [NSMutableArray array];
+    selectedInsurance = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[AppDelegate instance] hideProgressNotification];
-   [self setTotalPrice];
     [self setPlaceDetails];
+    [self.extrasCollectionView reloadData];
+    [self updatePricesFromUI];
+    [self setTotalPrice];
+}
+
+-(void)updatePricesFromUI {
+    __block double totalExtras = 0;
+    AppDelegate *app = [AppDelegate instance];
+    [selectedExtras enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        totalExtras += app.carExtras[obj.integerValue].priceTotal;
+    }];
+    self.stepsController.results[kResultsTotalPriceExtras] = @(totalExtras);
+    self.stepsController.results[kResultsTotalPriceInsurance] = @(app.carInsurances[selectedInsurance].priceTotal);
 }
 
 -(void) setPlaceDetails {
@@ -88,8 +97,6 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.dropOffPlaceDetailsView setPlaceLableText:@"Drop off:" andImage:@"arrow_drop"];
     [self.dropOffPlaceDetailsView setAllDetails:results isForPickup:NO];
     [self.dropoffBackView addSubview:self.dropOffPlaceDetailsView];
-    selectedExtras = [NSMutableArray array];
-    selectedInsurance = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -166,10 +173,13 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     NSDictionary *iconsDict = @{@"iPhone":@"carExtra_iphone",@"Wi-Fi":@"carExtra_wifi",@"Child Seat":@"carExtra_childseat",@"Sim card":@"carExtra_SimCard",@"iPhone 6":@"carExtra_iphone"};
     // show server icon first, if not exists saved asset
     if(extra.icon.length > 0) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:extra.icon]];
-        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
-            cell.extraImageView.image = responseObject;
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+        if (![extra.icon isEqualToString:cell.imageHiddenLabel.text]) {
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:extra.icon]];
+            [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+                cell.extraImageView.image = responseObject;
+                cell.imageHiddenLabel.text = extra.icon;
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+        }
     } else if (iconsDict[extra.name]) {
         cell.extraImageView.image = [UIImage imageNamed:iconsDict[extra.name]];
     }
@@ -187,10 +197,13 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     NSArray *icons = @[@"Fill 30",@"Fill 30",@"Fill 15"];
     
     if(ins.icon.length > 0) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:ins.icon]];
-        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
-            cell.extraImageView.image = responseObject;
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+        if (![ins.icon isEqualToString:cell.insuranceImageHiddenLabel.text]) {
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:ins.icon]];
+            [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+                cell.extraImageView.image = responseObject;
+                cell.insuranceImageHiddenLabel.text = ins.icon;
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+        }
     } else if (indexPath.row < icons.count) {
         cell.extraImageView.image = [UIImage imageNamed:icons[indexPath.row]];
     }
@@ -256,6 +269,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     //[collectionView reloadData];
 }
 
+// display total price by adding car extras and insurance
 -(void)setTotalPrice {
     double carTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceCar]).doubleValue;
     double extrasTotal = ((NSNumber*)self.stepsController.results[kResultsTotalPriceExtras]).doubleValue;
