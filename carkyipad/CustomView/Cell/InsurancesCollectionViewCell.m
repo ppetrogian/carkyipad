@@ -28,7 +28,7 @@
             return nil;
         }
         self = [arrayOfViews objectAtIndex:0];
-        [[UIController sharedInstance] addShadowToView:self.containerView withOffset:CGSizeMake(0, 2) hadowRadius:3 shadowOpacity:0.2];
+        [[UIController sharedInstance] addShadowToView:self.containerView withOffset:CGSizeMake(0, 2) shadowRadius:3 shadowOpacity:0.2];
     }
     return self;
 }

@@ -430,6 +430,7 @@
 		D1AA294C1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InsurancesCollectionViewCell.xib; path = CustomView/Cell/InsurancesCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1AA294E1EC926F30080AD93 /* InsurancesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsurancesCollectionViewCell.h; path = CustomView/Cell/InsurancesCollectionViewCell.h; sourceTree = "<group>"; };
 		D1AA294F1EC926F30080AD93 /* InsurancesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsurancesCollectionViewCell.m; path = CustomView/Cell/InsurancesCollectionViewCell.m; sourceTree = "<group>"; };
+		D1B246961EE3516E00EFB922 /* RefreshableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RefreshableViewController.h; path = ViewControllers/RefreshableViewController.h; sourceTree = "<group>"; };
 		D1B253D01E868EBE005365B2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "Pods/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		D1BD78481EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTransferBookingRequestPayPalPaymentResponse.h; sourceTree = "<group>"; };
 		D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTransferBookingRequestPayPalPaymentResponse.m; sourceTree = "<group>"; };
@@ -785,6 +786,7 @@
 		AEEA24D11EAA2B7900043423 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
+				D1B246961EE3516E00EFB922 /* RefreshableViewController.h */,
 				AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
@@ -1046,7 +1048,6 @@
 				CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */,
 				2F336A66542EBF7722C7BCA9 /* [CP] Copy Pods Resources */,
 				D1B253CF1E868B92005365B2 /* ShellScript */,
-				D1DA15E71EDF94A2004E9C14 /* ShellScript */,
 			);
 			buildRules = (
 				AE7B5EFF1EC58F6A003AB713 /* PBXBuildRule */,
@@ -1222,7 +1223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1252,7 +1253,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1283,19 +1284,6 @@
 			shellPath = /bin/sh;
 			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
 		};
-		D1DA15E71EDF94A2004E9C14 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 2edb48eaee8fe682031acb0ab6a9d40d8ca8b14c 921d9388fc1d51682600f051af70335d8f7a035cb1ae90bf1bfb3526cff232c5";
-		};
 		DA5401BAA47A951861094269 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1308,7 +1296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {

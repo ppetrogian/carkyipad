@@ -13,8 +13,6 @@
 #import <Stripe/Stripe.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import "PayPalMobile.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 
 @import  HockeySDK;
 
@@ -46,7 +44,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Fabric with:@[[Crashlytics class], [STPAPIClient class]]];
     self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"home"],@[@"CarRental",@"CarRentalSteps"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
@@ -54,8 +51,6 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
     // Override point for customization after application launch.
     NSBundle *main = [NSBundle mainBundle];
-    //NSString *stripeApiKey = [main objectForInfoDictionaryKey:@"StripeApiKey"];
-    //[[STPPaymentConfiguration sharedConfiguration] setPublishableKey: stripeApiKey];
     
     NSString *googleApiKey = [main objectForInfoDictionaryKey:@"GoogleApiKey"];
     [GMSServices provideAPIKey:googleApiKey];
@@ -65,7 +60,6 @@
     // Do some additional configuration if needed here
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-    [BITHockeyManager sharedHockeyManager].disableCrashManager = YES;
 
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];

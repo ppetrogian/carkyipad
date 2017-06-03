@@ -122,7 +122,7 @@ static UIController *sharedInstance;
     [gradientView.layer addSublayer:firstLeftLayer];
 }
 #pragma mark -
--(void) addShadowToView:(UIView *)view withOffset:(CGSize)offSet hadowRadius:(CGFloat)radius shadowOpacity:(CGFloat)opacity{
+-(void) addShadowToView:(UIView *)view withOffset:(CGSize)offSet shadowRadius:(CGFloat)radius shadowOpacity:(CGFloat)opacity{
     view.layer.masksToBounds = NO;
     view.layer.shadowOffset = offSet;
     view.layer.shadowRadius = radius;//1.5;

@@ -18,6 +18,7 @@
 #import "RentalBookingResponse.h"
 #import <Stripe/Stripe.h>
 #import "CalendarRange.h"
+#import "RefreshableViewController.h"
 #define kSegmentHeight 50
 
 @interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate>
@@ -110,15 +111,6 @@
 }
 
 -(void)showNextStep {
-    if ([self.currentStepViewController isKindOfClass:DetailsStepViewController.class]) {
-        [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString( @"Please wait", nil) inView:self.view];
-        CarStepViewController *carVc = self.childViewControllers[self.currentStepIndex + 1];
-        [carVc prepareCarStep];
-    } else if ([self.currentStepViewController isKindOfClass:CarStepViewController.class]) {
-        [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString( @"Please wait", nil) inView:self.view];
-        CarExtrasViewController *carExtrasVc = self.childViewControllers[self.currentStepIndex + 1];
-        [carExtrasVc prepareCarStep];
-    }
     [self.segmentController setSelectedSegmentIndex:self.segmentController.selectedIndex+1];
     [super showNextStep];
     

@@ -9,9 +9,10 @@
 #import "StepViewController.h"
 #import "CarTypeSegmentView.h"
 #import "PlaceDetailsView.h"
+#import "RefreshableViewController.h"
 @class ShadowViewWithText;
 
-@interface CarStepViewController : StepViewController<UICollectionViewDelegate, UICollectionViewDataSource, CarSegmentDelegate>
+@interface CarStepViewController : StepViewController<UICollectionViewDelegate, CarSegmentDelegate, RefreshableViewController>
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, weak) IBOutlet CarTypeSegmentView *carSegmentView;
@@ -19,7 +20,6 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *carsCollectionView;
 
--(void)prepareCarStep;
 //--------------
 @property (nonatomic, weak) IBOutlet UIView *pickupBackView;
 @property (nonatomic, weak) IBOutlet UIView * dropoffBackView;

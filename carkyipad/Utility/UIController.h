@@ -19,7 +19,7 @@
 -(void) addLeftPaddingtoTextField:(UITextField *)textField withFrame:(CGRect)frame withBackgroundColor:(UIColor *)color withImage:(NSString *)imageName;
 -(void) addRightPaddingtoTextField:(UITextField *)textField withFrame:(CGRect)frame withBackgroundColor:(UIColor *)color withImage:(NSString *)imageName;
 -(void) addGrandientlayerToView:(UIView *)gradientView;
--(void) addShadowToView:(UIView *)view withOffset:(CGSize)offSet hadowRadius:(CGFloat)radius shadowOpacity:(CGFloat)opacity;
+-(void) addShadowToView:(UIView *)view withOffset:(CGSize)offSet shadowRadius:(CGFloat)radius shadowOpacity:(CGFloat)opacity;
 @end
 
 

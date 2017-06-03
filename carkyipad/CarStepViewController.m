@@ -30,6 +30,7 @@
 }
 @property (nonatomic, assign) NSInteger selectedCarOrder;
 @property (nonatomic,strong) TGRArrayDataSource *carsDataSource;
+@property (nonatomic,assign) BOOL needRefresh;
 @end
 
 @implementation CarStepViewController
@@ -39,33 +40,26 @@
     parentController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
 }
+
 -(void) setupInit {
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     self.selectedCarOrder = -1;
     self.selCategoryIndex = 0;
-    [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
+    [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) shadowRadius:3 shadowOpacity:0.3];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    [[AppDelegate instance] hideProgressNotification];
+    AppDelegate *app = [AppDelegate instance];
+    [app hideProgressNotification];
     [super viewWillAppear:animated];
     [self setPlaceDetails];
-}
-
--(void)prepareCarStep {
-    // set number of days
-    CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
-    self.stepsController.results[kResultsDays] = @(components.day);
-    // load available cars
-    AppDelegate *app = [AppDelegate instance];
-    CarkyApiClient *api = [CarkyApiClient sharedService];
-    CalendarRange *range = self.stepsController.results[kResultsDayRange];
-    [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andPickupDate:range.startDay.date andDropoffDate:range.endDay.date withBlock:^(NSArray *array) {
-        app.availableCars = array;
-        [self setCarSegments:array];
+    if (self.carsDataSource.items.count == 0 || self.needRefresh) {
+        self.selectedCarOrder = -1;
+        [self.nextButton disableButton];
+        self.needRefresh = NO;
+        [self setCarSegments:app.availableCars];
         [self selectCarType:0];
-    }];
+    }
 }
 
 
@@ -120,8 +114,7 @@
     NSLog(@"Selected index = %zd", index);
     [self selectCarType:index];
     self.selectedCarOrder = -1;
-    self.nextButton.enabled = NO;
-    self.nextButton.backgroundColor = [UIColor lightGrayColor];
+    [self.nextButton disableButton];
 }
 
 - (void)selectCarType:(NSInteger)selIndex {
@@ -217,7 +210,6 @@
             self.selectedCarOrder = indexPath.row;
             [collectionView reloadItemsAtIndexPaths:temp];
         } completion:nil];
-        //[collectionView reloadData];
     }
     if (self.selectedCarOrder >= 0) {
         [self.nextButton enableButton];

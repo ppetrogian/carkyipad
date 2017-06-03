@@ -33,10 +33,10 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 {
     NSMutableArray<NSNumber*> *selectedExtras;
     NSInteger selectedInsurance;
+    NSString *carImageURL;
 }
 @property (nonatomic,strong) TGRArrayDataSource* carExtrasDataSource;
 @property (nonatomic,strong) TGRArrayDataSource* carInsurancesDataSource;
-@property (nonatomic,assign) BOOL mustPrepare;
 @property (nonatomic, weak) CarRentalStepsViewController *parentRentalController;
 @end
 
@@ -49,16 +49,13 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self setupInit];
 }
 
--(void) setupInit{
+-(void) setupInit {
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:extraCellIdentifier];
     [self.extrasCollectionView registerClass:[InsurancesCollectionViewCell class] forCellWithReuseIdentifier:insuranceCellIdentifier];
-     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) hadowRadius:3 shadowOpacity:0.3];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.stepsController.results[kResultsCarTypeIcon]]];
-    [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
-        self.carImageView.image = responseObject;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) shadowRadius:3 shadowOpacity:0.3];
     selectedExtras = [NSMutableArray array];
     selectedInsurance = 0;
+    carImageURL = @"";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -68,6 +65,13 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     [self.extrasCollectionView reloadData];
     [self updatePricesFromUI];
     [self setTotalPrice];
+    NSString *newImageURL = self.stepsController.results[kResultsCarTypeIcon];
+    if (![newImageURL isEqualToString:carImageURL]) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:newImageURL]];
+        [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
+            self.carImageView.image = responseObject;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
+    }
 }
 
 -(void)updatePricesFromUI {
@@ -104,9 +108,6 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
--(void)prepareCarStep {
-    self.mustPrepare = YES; // see view-will-appear
-}
 
 #pragma mark -
 

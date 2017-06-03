@@ -16,6 +16,7 @@
 #import <Stripe/Stripe.h>
 #import "CalendarRange.h"
 #import "CarCalendarViewCell.h"
+#import "RefreshableViewController.h"
 
 NSString *const kResultsDays = @"Days";
 NSString *const kResultsDayRange = @"DayRange";
@@ -107,7 +108,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 
 -(void) setupInit {
     UIController *controller = [UIController sharedInstance];
-    [controller addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 2) hadowRadius:3 shadowOpacity:0.2];
+    [controller addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 2) shadowRadius:3 shadowOpacity:0.2];
     [controller addLeftPaddingtoTextField:self.pickupTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_pickup"];
     [controller addLeftPaddingtoTextField:self.dropoffTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"arrow_drop"];
     [controller addLeftPaddingtoTextField:self.pickupDateTxtFld withFrame:CGRectMake(0, 0, 50, 45) withBackgroundColor:[UIColor clearColor] withImage:@"calendar_icon"];
@@ -441,11 +442,33 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     NSArray<NSString*> *dropoffDateParts = [self.dropOffDateTxtFld.text componentsSeparatedByString:@","];
     results[kResultsDropoffDate] = dropoffDateParts[0];
     results[kResultsDropoffTime] = dropoffDateParts[1];
-    
-    if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedNext:)]) {
-        [self.stepDelegate didSelectedNext:sender];
-    }
+    [self prepareCarStep];
 }
+
+-(void)prepareCarStep {
+    // set number of days
+    CalendarRange *selectedRange = self.stepsController.results[kResultsDayRange];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay fromDate: selectedRange.startDay.date toDate: selectedRange.endDay.date options: 0];
+    self.stepsController.results[kResultsDays] = @(components.day);
+    // load available cars
+    AppDelegate *app = [AppDelegate instance];
+    CarkyApiClient *api = [CarkyApiClient sharedService];
+    CalendarRange *range = self.stepsController.results[kResultsDayRange];
+    [app showProgressNotificationWithText:nil inView:self.view];
+    id<RefreshableViewController> nextVc = self.parentRentalController.childViewControllers[1];
+    [nextVc setNeedRefresh:YES];
+    [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andPickupDate:range.startDay.date andDropoffDate:range.endDay.date withBlock:^(NSArray *array) {
+        [app hideProgressNotification];
+        app.availableCars = array;
+        if (array.count > 0) {
+            [self.parentRentalController showNextStep];
+        }
+        else {
+            [self.parentRentalController showAlertViewWithMessage:NSLocalizedString(@"No available cars found for the selected date range", nil)  andTitle:@"Error"];
+        }
+    }];
+}
+
 -(IBAction)backButtonAction:(UIButton *)sender{
     if (self.stepDelegate && [self.stepDelegate respondsToSelector:@selector(didSelectedBack:)]) {
         [self.stepDelegate didSelectedBack:sender];

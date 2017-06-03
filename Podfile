@@ -16,8 +16,8 @@ pod 'Stripe'
 pod 'BKCardExpiryField'
 pod 'HockeySDK'
 pod 'PayPal-iOS-SDK'
-pod 'Fabric'
-pod 'Crashlytics'
+#pod 'Fabric'
+#pod 'Crashlytics'
 end
 
 target 'carkyipadTests' do

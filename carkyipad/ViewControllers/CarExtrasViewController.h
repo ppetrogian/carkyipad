@@ -12,7 +12,6 @@
 @interface CarExtrasViewController : StepViewController<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, weak) IBOutlet UICollectionView *extrasCollectionView;
 @property (nonatomic, weak) IBOutlet UIView *headerBackView;
--(void)prepareCarStep;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 //--------------
 @property (nonatomic, weak) IBOutlet UIView *pickupBackView;
