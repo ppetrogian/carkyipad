@@ -15,6 +15,7 @@
 @property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *image;
+@property (nonatomic, assign) NSInteger order;
 @property (nonatomic, assign) NSInteger maxPassengers;
 @property (nonatomic, assign) NSInteger maxLuggages;
 

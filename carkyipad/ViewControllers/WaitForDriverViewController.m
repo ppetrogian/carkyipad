@@ -60,6 +60,9 @@
 }
 
 -(void)deinitControls {
+    if(!self.loaded) {
+        return;
+    }
     self.loaded = NO;
     AppDelegate *app = [AppDelegate instance];
     [app.qplayer pause];
@@ -99,13 +102,13 @@
     AppDelegate *app = [AppDelegate instance];
     self.parentTransferController.transferBookingId = bookingId;
     if ([bookingId isEqualToString:@"0"]) {
-        [app.qplayer pause];
+        [self deinitControls];
         [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"Drivers_busy") andTitle:@"Booking" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
         }];
         return;
     } else if([bookingId isEqualToString:@"-1"]) {
-        [app.qplayer pause];
+        [self deinitControls];
         // stripe error, already have shown message
         [self newBookingButton_Click:nil];
     }
@@ -114,6 +117,7 @@
         if (self.pollTimer.isValid) {
             [self.pollTimer invalidate];
         }
+        [self deinitControls];
         if (array.count > 0 && [array.firstObject isKindOfClass:Content.class]) {
             self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
             [self handlePollTimer:self.pollTimer];
@@ -167,7 +171,6 @@
         [self.pollTimer invalidate];
     }
     AppDelegate *app = [AppDelegate instance];
-    [app.qplayer pause];
     [self deinitControls];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];

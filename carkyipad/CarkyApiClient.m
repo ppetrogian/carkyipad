@@ -289,6 +289,9 @@ static CarkyApiClient *_sharedService = nil;
 }
 
 -(void)GetCarkyBookingStatusForUser:(NSString *)userId andBooking:(NSString *)bookingId withBlock:(BlockArray)block {
+    //Content *respObjdummy = [Content new];
+    //block([NSArray arrayWithObject:respObjdummy]);
+    //return;
     [self setAuthorizationHeader];
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self GET:@"api/Client/GetCarkyBookingStatus" parameters:@{@"bookingId":bookingId, @"userId": userId} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {

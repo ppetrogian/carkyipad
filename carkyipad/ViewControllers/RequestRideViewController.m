@@ -89,9 +89,9 @@
         NSArray<NSString*> *tempImages = @[@"audi",@"range rover",@"vito"];
         [arrayCategories enumerateObjectsUsingBlock:^(CarCategory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             arrayCategories[idx].image = tempImages[idx];
+            arrayCategories[idx].order = idx;
         }];
     }
-
     self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:arrayCategories cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
         cell.contentView.backgroundColor = [UIColor whiteColor];
         UILabel *nameLabel = [cell.contentView viewWithTag:1];
@@ -107,10 +107,10 @@
         [ccImageButton setImage:image forState:UIControlStateSelected];
         UIImage *image_blank = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blank", item.image]];
         [ccImageButton setImage:image_blank forState:UIControlStateNormal];
+        ccImageButton.selected = item.order == 0 ? YES : NO;
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
         // price dependent on zone
         UILabel *priceLabel = [cell.contentView viewWithTag:8];
-        //priceLabel.hidden = (item.price <= 0);
         if(item.price > 0)
             priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
         else
