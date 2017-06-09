@@ -13,6 +13,7 @@
 #import <Stripe/Stripe.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import "PayPalMobile.h"
+#import "ViewControllers/InitViewController.h"
 @import AVFoundation;
 @import AVKit;
 @import  HockeySDK;
@@ -28,11 +29,28 @@
 }
 
 - (void)loadInitialController:(NSString *)controllerIdentifier FromStoryboard:(NSString *)storyboardName {
-    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:controllerIdentifier];
-    self.window.rootViewController = viewController;
+
+     UIViewController *viewController = nil;
+    if (!self.viewControllersDict[storyboardName]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        viewController = [storyboard instantiateViewControllerWithIdentifier:controllerIdentifier];
+        // todo: investigate caching view controller
+        //self.viewControllersDict[storyboardName] = viewController;
+    } else {
+        viewController = self.viewControllersDict[storyboardName];
+        if ([viewController conformsToProtocol:@protocol(InitViewController)]) {
+            id<InitViewController> initVc = (id<InitViewController>)viewController;
+            [initVc initControls];
+        }
+    }
+    if(!self.loaded) {
+        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        self.window.rootViewController = viewController;
+        //self.loaded = YES;
+    }
+    else {
+        return;
+    }
     // Should be initialized with the windows frame so the HUD disables all user input by covering the entire screen
     self.mHud = [[MBProgressHUD alloc] initWithView:viewController.view];
     self.mHud.removeFromSuperViewOnHide = YES;
@@ -45,7 +63,9 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.loaded = NO;
     self.screensData =@[@[], @[@"Main",@"home"],@[@"Transfer",@"transferSteps"],@[@"Landing",@"home"],@[@"CarRental",@"CarRentalSteps"]];
+    self.viewControllersDict = [NSMutableDictionary dictionaryWithCapacity:4];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];

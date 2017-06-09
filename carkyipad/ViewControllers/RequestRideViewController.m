@@ -31,7 +31,9 @@
     CarkyApiClient *api = [CarkyApiClient sharedService];
     
     NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+    [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
     [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
+        [[AppDelegate instance] hideProgressNotification];
         [self loadCarCategories:array];
     }];
     [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];
@@ -108,8 +110,11 @@
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
         // price dependent on zone
         UILabel *priceLabel = [cell.contentView viewWithTag:8];
-        priceLabel.hidden = (item.price <= 0);
-        priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
+        //priceLabel.hidden = (item.price <= 0);
+        if(item.price > 0)
+            priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
+        else
+            priceLabel.text = @"€__";
     }];
     self.carCategoriesCollectionView.allowsSelection = YES;
     self.carCategoriesCollectionView.dataSource = self.carCategoriesDataSource;

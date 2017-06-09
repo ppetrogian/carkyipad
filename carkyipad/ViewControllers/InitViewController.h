@@ -10,5 +10,6 @@
 
 @protocol InitViewController <NSObject>
 -(void)initControls;
+@optional
 -(void)deinitControls;
 @end

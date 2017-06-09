@@ -12,6 +12,7 @@
 #import "DataModels.h"
 #import "TransferStepsViewController.h"
 #import "InitViewController.h"
+#import "RequestRideViewController.h"
 @import AVFoundation;
 @import AVKit;
 
@@ -21,6 +22,7 @@
 @property (nonatomic, assign) NSTimeInterval pollTimeout;
 @property (nonatomic, strong) NSTimer *pollTimer;
 @property (nonatomic, strong) AVPlayerViewController *layerVc;
+
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @end
@@ -38,29 +40,50 @@
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
     self.driverCarPhotoImageView.image = catImage;
     [self initControls];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    AppDelegate *app = [AppDelegate instance];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:app.qplayer. currentItem];
     self.pickupImageView.alpha = 0;
 }
 
 -(void)initControls {
     //self.player = queuePlayer;
+    //self.layerVc = [[AVPlayerViewController alloc] init];
     self.videoContainerView.frame = self.view.frame;
     self.layerVc.showsPlaybackControls = NO;
     self.layerVc.view.userInteractionEnabled = NO;
-    self.layerVc.player = [[AppDelegate instance] loadTransferVideoPlayer];
-    [self.layerVc.player play];
-    self.layerVc.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    AppDelegate *app = [AppDelegate instance];
+    if(!app.qplayer) {
+        app.qplayer = [app loadTransferVideoPlayer];
+        //self.layerVc.player = app.qplayer;
+        app.playerLayer = [AVPlayerLayer playerLayerWithPlayer:app.qplayer];
+        app.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    }
+    self.videoContainerView.hidden = YES;
+    app.playerLayer.frame = self.view.layer.bounds;
+    [self.view.layer addSublayer:app.playerLayer];
+    
+    [app.qplayer play];
+    app.qplayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     self.loaded = YES;
 }
 
 -(void)deinitControls {
     self.loaded = NO;
-    //[self.player removeAllItems];
+    AppDelegate *app = [AppDelegate instance];
+    [app.qplayer pause];
+    [app.playerLayer removeFromSuperlayer];
+    // clear gmap resources
+    RequestRideViewController *rvc = self.parentTransferController.childViewControllers[0];
+    GMSMapView *mapView = rvc.mapView;
+    [mapView clear] ;
+    [mapView removeFromSuperview] ;
+    //AVQueuePlayer *qplayer = (AVQueuePlayer *)self.layerVc.player;
+    //[qplayer removeAllItems];
+    //qplayer = [[AVQueuePlayer alloc] init];
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
-    AVPlayerItem *p =  self.layerVc.player.currentItem; // [notification object];
+    AVPlayerItem *p =  [notification object];
     if (self.loaded) {
         [p seekToTime:kCMTimeZero];
         [self.layerVc.player play];
@@ -158,7 +181,6 @@
         [self.pollTimer invalidate];
     }
     [self.layerVc.player pause];
-    //[self.layerVc.view removeFromSuperview];
     [self deinitControls];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     AppDelegate *app = [AppDelegate instance];

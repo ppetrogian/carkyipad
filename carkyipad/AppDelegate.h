@@ -12,7 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "CarkyApiClient.h"
-@class AVQueuePlayer;
+@class AVQueuePlayer,AVPlayerLayer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray<CarExtra*> *carExtras;
 @property (strong, nonatomic) NSArray<CarInsurance*> *carInsurances;
 @property (strong, nonatomic) NSArray<Location*> *wellKnownLocations;
+@property (strong, nonatomic) NSMutableDictionary<NSString*,UIViewController*> *viewControllersDict;
 
 @property (strong, nonatomic) MBProgressHUD *mHud;
 @property (strong, nonatomic) CarRentalModel *carRentalModel;
@@ -33,7 +34,9 @@
 @property (assign, nonatomic) BOOL isDemo;
 @property (assign, nonatomic) NSInteger environment;
 @property (nonatomic,strong) NSArray *screensData;
-@property (nonatomic, strong) AVQueuePlayer* videoPlayerTransfer;
+@property (nonatomic, assign) BOOL loaded;
+@property (nonatomic, strong) AVQueuePlayer *qplayer;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
 -(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block;

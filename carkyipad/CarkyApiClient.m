@@ -10,7 +10,7 @@
 #import "DataModels.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
-#define TRANSFER_TIMEOUT 30
+#define TRANSFER_TIMEOUT 180
 
 @implementation CarkyApiClient
 static CarkyApiClient *_sharedService = nil;
@@ -222,6 +222,7 @@ static CarkyApiClient *_sharedService = nil;
 -(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [self GET:@"api/Partner/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self.hud hideAnimated:YES];
         if ([responseObject isKindOfClass:NSData.class]) {
             responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         }

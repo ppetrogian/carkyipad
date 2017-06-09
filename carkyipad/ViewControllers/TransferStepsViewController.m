@@ -18,12 +18,13 @@
 #import "SharedInstance.h"
 #import <CardIO/CardIO.h>
 #import <Stripe/Stripe.h>
+#import "InitViewController.h"
 
 #define kLastPayment @"LastPayment"
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&sensor=false";
 
-@interface TransferStepsViewController () <UITextFieldDelegate, MBProgressHUDDelegate>
+@interface TransferStepsViewController () <UITextFieldDelegate, MBProgressHUDDelegate, InitViewController>
 @property (nonatomic, strong) LatLng* userPos;
 
 @property (nonatomic, assign) NSInteger userFleetLocationId;
@@ -48,6 +49,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.selectedCarTypes = [NSMutableArray arrayWithArray:@[@(0),@(0),@(0)]];
     self.targetMarker = [[GMSMarker alloc] init];
     [CardIOUtilities preload];
+}
+
+-(void)initControls {
+    UIViewController *firstStepViewController = self.childViewControllers[0];
+    [self showViewController:firstStepViewController sender:nil];
 }
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView {
