@@ -21,7 +21,6 @@
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
 @property (nonatomic, assign) NSTimeInterval pollTimeout;
 @property (nonatomic, strong) NSTimer *pollTimer;
-@property (nonatomic, strong) AVPlayerViewController *layerVc;
 
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
@@ -46,22 +45,15 @@
 }
 
 -(void)initControls {
-    //self.player = queuePlayer;
-    //self.layerVc = [[AVPlayerViewController alloc] init];
-    self.videoContainerView.frame = self.view.frame;
-    self.layerVc.showsPlaybackControls = NO;
-    self.layerVc.view.userInteractionEnabled = NO;
     AppDelegate *app = [AppDelegate instance];
     if(!app.qplayer) {
         app.qplayer = [app loadTransferVideoPlayer];
-        //self.layerVc.player = app.qplayer;
         app.playerLayer = [AVPlayerLayer playerLayerWithPlayer:app.qplayer];
         app.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     }
-    self.videoContainerView.hidden = YES;
     app.playerLayer.frame = self.view.layer.bounds;
     [self.view.layer addSublayer:app.playerLayer];
-    
+    [app.qplayer seekToTime:kCMTimeZero];
     [app.qplayer play];
     app.qplayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     self.loaded = YES;
@@ -77,16 +69,12 @@
     GMSMapView *mapView = rvc.mapView;
     [mapView clear] ;
     [mapView removeFromSuperview] ;
-    //AVQueuePlayer *qplayer = (AVQueuePlayer *)self.layerVc.player;
-    //[qplayer removeAllItems];
-    //qplayer = [[AVQueuePlayer alloc] init];
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
     AVPlayerItem *p =  [notification object];
     if (self.loaded) {
         [p seekToTime:kCMTimeZero];
-        [self.layerVc.player play];
     }
 }
 
@@ -108,15 +96,16 @@
 }
 
 -(void)showBooking:(NSString *)bookingId {
+    AppDelegate *app = [AppDelegate instance];
     self.parentTransferController.transferBookingId = bookingId;
     if ([bookingId isEqualToString:@"0"]) {
-        [self.layerVc.player pause];
+        [app.qplayer pause];
         [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"Drivers_busy") andTitle:@"Booking" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
         }];
         return;
     } else if([bookingId isEqualToString:@"-1"]) {
-        [self.layerVc.player pause];
+        [app.qplayer pause];
         // stripe error, already have shown message
         [self newBookingButton_Click:nil];
     }
@@ -150,10 +139,7 @@
         self.pickupImageView.image = waitImg;
     [UIView animateWithDuration:0.4 animations:^{
         self.pickupImageView.alpha = 1;
-        self.videoContainerView.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self.layerVc.view removeFromSuperview];
-    }];
+    } completion:^(BOOL finished) {}];
 }
 
 - (void)handlePollTimer:(NSTimer *)theTimer {
@@ -180,10 +166,10 @@
     if (self.pollTimer.isValid) {
         [self.pollTimer invalidate];
     }
-    [self.layerVc.player pause];
+    AppDelegate *app = [AppDelegate instance];
+    [app.qplayer pause];
     [self deinitControls];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    AppDelegate *app = [AppDelegate instance];
     [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
@@ -196,13 +182,10 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"avPlayer"]) {
-        self.layerVc = (AVPlayerViewController *)segue.destinationViewController;
-    }
 }
-
+*/
 
 @end

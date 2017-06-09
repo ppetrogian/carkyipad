@@ -964,13 +964,6 @@
                                     <action selector="newBookingButton_Click:" destination="gJi-Rh-MvU" eventType="touchUpInside" id="ZV0-TM-RD1"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YO-9l-ZMh">
-                                <rect key="frame" x="264" y="285" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="nnD-w3-S6I" kind="embed" identifier="avPlayer" id="VJn-dX-9uZ"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -982,7 +975,6 @@
                         <outlet property="makeBookingButton" destination="33l-Wg-QEd" id="Nhl-DI-aKC"/>
                         <outlet property="pickupImageView" destination="30d-Mo-q48" id="O0F-zZ-J8P"/>
                         <outlet property="registrationNoLabel" destination="neX-wO-CJT" id="Z9O-TU-YH5"/>
-                        <outlet property="videoContainerView" destination="9YO-9l-ZMh" id="Mte-Sm-SMM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8W-rf-pEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1045,14 +1037,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEb-Mn-ghM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4241" y="676"/>
-        </scene>
-        <!--AV Player View Controller-->
-        <scene sceneID="zxa-fY-GDj">
-            <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspectFill" id="nnD-w3-S6I" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e2M-SM-Del" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5367" y="83"/>
         </scene>
         <!--tabBar-->
         <scene sceneID="Urc-ku-9mn">

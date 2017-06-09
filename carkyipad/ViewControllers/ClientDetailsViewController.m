@@ -144,6 +144,7 @@
                     if (!self.isPhoneConfirmed) {
                         [self performSegueWithIdentifier:@"phoneConfirmSegue" sender:nil];
                     } else {
+                        self.isPhoneConfirmed = NO;
                         [self.parentController showNextStep];
                     }
                 } else {
