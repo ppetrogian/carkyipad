@@ -13,7 +13,8 @@
 #import <Stripe/Stripe.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import "PayPalMobile.h"
-
+@import AVFoundation;
+@import AVKit;
 @import  HockeySDK;
 
 @interface AppDelegate ()
@@ -126,9 +127,10 @@
         [self.api GetClientConfiguration:^(NSArray *array) {
             if (array.count > 0) {
                 AppDelegate *app = [AppDelegate instance];
+                
                 app.clientConfiguration = array.firstObject;
                 CarkyApiClient *api = [CarkyApiClient sharedService];
-                NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
+                NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;
                 // paypal configuration
                 if ([app.clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
                     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : app.clientConfiguration.payPalClientId}];
@@ -173,6 +175,13 @@
     }];
 }
 
+-(AVQueuePlayer *)loadTransferVideoPlayer {
+    NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+    AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
+    AVQueuePlayer *queuePlayer = [AVQueuePlayer playerWithPlayerItem:avPlayerItem];
+    return queuePlayer;
+}
 
 // ------------ utility functions here ---------------------------
 +(NSDate *)dateOnlyPart:(NSDate *)dt {

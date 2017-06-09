@@ -11,16 +11,17 @@
 #import "AppDelegate.h"
 #import "DataModels.h"
 #import "TransferStepsViewController.h"
+#import "InitViewController.h"
 @import AVFoundation;
 @import AVKit;
 
-@interface WaitForDriverViewController ()
+@interface WaitForDriverViewController () <InitViewController>
 @property (nonatomic, assign) NSTimeInterval pollInterval;
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
 @property (nonatomic, assign) NSTimeInterval pollTimeout;
 @property (nonatomic, strong) NSTimer *pollTimer;
-@property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerViewController *layerVc;
+@property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @end
 
@@ -36,25 +37,34 @@
     // Do any additional setup after loading the view.
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
     self.driverCarPhotoImageView.image = catImage;
-    NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
-    AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
-    self.player = [AVPlayer playerWithPlayerItem:avPlayerItem];
-    //self.layer = [AVPlayerLayer layer];
-    self.videoContainerView.frame = self.view.frame;
-    self.layerVc.showsPlaybackControls = NO;
-    self.layerVc.view.userInteractionEnabled = NO;
-    self.layerVc.player = self.player;
-    [self.player play];
-    self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    [self initControls];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:[self.player currentItem]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
     self.pickupImageView.alpha = 0;
 }
 
+-(void)initControls {
+    //self.player = queuePlayer;
+    self.videoContainerView.frame = self.view.frame;
+    self.layerVc.showsPlaybackControls = NO;
+    self.layerVc.view.userInteractionEnabled = NO;
+    self.layerVc.player = [[AppDelegate instance] loadTransferVideoPlayer];
+    [self.layerVc.player play];
+    self.layerVc.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    self.loaded = YES;
+}
+
+-(void)deinitControls {
+    self.loaded = NO;
+    //[self.player removeAllItems];
+}
+
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
-    AVPlayerItem *p = [notification object];
-    [p seekToTime:kCMTimeZero];
+    AVPlayerItem *p =  self.layerVc.player.currentItem; // [notification object];
+    if (self.loaded) {
+        [p seekToTime:kCMTimeZero];
+        [self.layerVc.player play];
+    }
 }
 
 -(TransferStepsViewController *)parentTransferController {
@@ -77,13 +87,13 @@
 -(void)showBooking:(NSString *)bookingId {
     self.parentTransferController.transferBookingId = bookingId;
     if ([bookingId isEqualToString:@"0"]) {
-        [self.player pause];
+        [self.layerVc.player pause];
         [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"Drivers_busy") andTitle:@"Booking" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
         }];
         return;
     } else if([bookingId isEqualToString:@"-1"]) {
-        [self.player pause];
+        [self.layerVc.player pause];
         // stripe error, already have shown message
         [self newBookingButton_Click:nil];
     }
@@ -147,11 +157,9 @@
     if (self.pollTimer.isValid) {
         [self.pollTimer invalidate];
     }
-    [self.player pause];
-    self.player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
-    self.player = nil;
-    
-    [self.layerVc.view removeFromSuperview];
+    [self.layerVc.player pause];
+    //[self.layerVc.view removeFromSuperview];
+    [self deinitControls];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     AppDelegate *app = [AppDelegate instance];
     [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];

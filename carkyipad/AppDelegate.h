@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "CarkyApiClient.h"
+@class AVQueuePlayer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -32,9 +33,11 @@
 @property (assign, nonatomic) BOOL isDemo;
 @property (assign, nonatomic) NSInteger environment;
 @property (nonatomic,strong) NSArray *screensData;
+@property (nonatomic, strong) AVQueuePlayer* videoPlayerTransfer;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
 -(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block;
+-(AVQueuePlayer *)loadTransferVideoPlayer;
 +(AppDelegate *)instance;
 // helper methods
 

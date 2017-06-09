@@ -10,6 +10,7 @@
 #import "DataModels.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
+#define TRANSFER_TIMEOUT 30
 
 @implementation CarkyApiClient
 static CarkyApiClient *_sharedService = nil;
@@ -365,7 +366,7 @@ static CarkyApiClient *_sharedService = nil;
     [self setAuthorizationHeader];
     TransferBookingResponse *responseObj = [TransferBookingResponse new];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [self.requestSerializer setTimeoutInterval:180]; // 3 minutes timout
+    [self.requestSerializer setTimeoutInterval:TRANSFER_TIMEOUT]; // 3 minutes timout
 
     [self POST:@"api/Partner/CreateTransferBooking" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
