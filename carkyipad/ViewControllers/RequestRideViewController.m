@@ -31,9 +31,10 @@
     CarkyApiClient *api = [CarkyApiClient sharedService];
     
     NSInteger userFleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
-    [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
+    AppDelegate *app = [AppDelegate instance];
+    [app showProgressNotificationWithText:nil inView:self.view];
     [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
-        [[AppDelegate instance] hideProgressNotification];
+        [app hideProgressNotification];
         [self loadCarCategories:array];
     }];
     [self.parentController getWellKnownLocations:userFleetLocationId forMap:self.mapView];

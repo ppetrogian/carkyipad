@@ -51,14 +51,16 @@
     else {
         return;
     }
-    // Should be initialized with the windows frame so the HUD disables all user input by covering the entire screen
-    self.mHud = [[MBProgressHUD alloc] initWithView:viewController.view];
-    self.mHud.removeFromSuperViewOnHide = YES;
-    _mHud.bezelView.color = [UIColor blackColor];
-    _mHud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    _mHud.contentColor = [UIColor whiteColor];
-    _mHud.tintColor = [UIColor whiteColor];
-    [CarkyApiClient sharedService].hud = self.mHud;
+    if(!self.mHud) {
+        // Should be initialized with the windows frame so the HUD disables all user input by covering the entire screen
+        self.mHud = [[MBProgressHUD alloc] initWithView:viewController.view];
+        self.mHud.removeFromSuperViewOnHide = YES;
+        _mHud.bezelView.color = [UIColor blackColor];
+        _mHud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+        _mHud.contentColor = [UIColor whiteColor];
+        _mHud.tintColor = [UIColor whiteColor];
+        [CarkyApiClient sharedService].hud = self.mHud;
+    }
     [self.window makeKeyAndVisible];
 }
 
