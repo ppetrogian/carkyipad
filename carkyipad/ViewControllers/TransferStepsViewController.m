@@ -19,6 +19,8 @@
 #import <CardIO/CardIO.h>
 #import <Stripe/Stripe.h>
 #import "InitViewController.h"
+#import "StepViewController.h"
+#import "CalendarRange.h"
 
 #define kLastPayment @"LastPayment"
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
@@ -133,7 +135,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (IBAction)toLocationTextChanged:(UITextField *)textField {
     [self loadLocations:textField.text];
 }
-
 
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView {
     self.selectedDropoffLocation = (Location *)value;
@@ -255,12 +256,23 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         [self showPreviousStep];
 }
 
-
 - (void)paymentCardTextFieldDidBeginEditingNumber:(nonnull STPPaymentCardTextField *)textField {
     self.activeField = textField;
 }
+
+-(NSDate *)getPickupDateTime {
+    AppDelegate *app = [AppDelegate instance];
+    if (!app.clientConfiguration.booksLater) {
+        return NSDate.date;
+    }
+    else {
+        CalendarRange *range = self.results[kResultsDayRange];
+        return range.startDay.date;
+    }
+}
     
 -(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC {
+    AppDelegate *app = [AppDelegate instance];
     NSDateFormatter *df = [NSDateFormatter new];
     // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
@@ -276,36 +288,53 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
     request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
-    NSDate *currDate = NSDate.date;
-    request.dateTime = [df stringFromDate:currDate];
-    DateTime *pdt = [DateTime modelObjectWithDate:currDate];
+    NSDate *pickupDate = [self getPickupDateTime];
+    request.dateTime = [df stringFromDate:pickupDate];
+    DateTime *pdt = [DateTime modelObjectWithDate:pickupDate];
     request.pickupDateTime = pdt;
-    request.extras = @[];
+    request.extras = @[]; // no extras for transfer
     request.carkyCategoryId = cCat.Id;
     request.luggagePiecesNumber = cCat.maxLuggages;
     request.payPalPaymentResponse = @"";
     request.payPalPayerId = @"";
+    if (app.clientConfiguration.booksLater)
+        request.notes = self.results[kResultsPickupNotes];
     return request;
 }
 
 - (void)MakeTransferRequest:(BlockString)block request:(TransferBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
-    [api CreateTransferBooking:request withBlock:^(NSArray *array) {
-        [[AppDelegate instance] hideProgressNotification];
-        if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
-            TransferBookingResponse *responseObj = array.firstObject;
-            if (responseObj.bookingId.length > 0) {
-                self.transferBookingId = responseObj.bookingId;
-                block(responseObj.bookingId);
+    AppDelegate *app = [AppDelegate instance];
+    if (app.clientConfiguration.booksLater) {
+        [api CreateTransferBookingForLater:request withBlock:^(NSArray *array) {
+            [[AppDelegate instance] hideProgressNotification];
+            if ([array.firstObject isKindOfClass:TransferBookingForLaterResponse.class]) {
+                TransferBookingForLaterResponse *responseObj = array.firstObject;
+                block(responseObj.internalBaseClassDescription);
             } else {
-                [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
-                block(@"0");
+                [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+                block(@"-1");
             }
-        } else {
-            [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-            block(@"-1");
-        }
-    }];
+        }];
+    }
+    else {
+        [api CreateTransferBooking:request withBlock:^(NSArray *array) {
+            [[AppDelegate instance] hideProgressNotification];
+            if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
+                TransferBookingResponse *responseObj = array.firstObject;
+                if (responseObj.bookingId.length > 0) {
+                    self.transferBookingId = responseObj.bookingId;
+                    block(responseObj.bookingId);
+                } else {
+                    [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
+                    block(@"0");
+                }
+            } else {
+                [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
+                block(@"-1");
+            }
+        }];
+    }
 }
 
 - (void)hudWasHidden {

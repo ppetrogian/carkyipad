@@ -100,6 +100,13 @@
 
 -(void)showBooking:(NSString *)bookingId {
     AppDelegate *app = [AppDelegate instance];
+    if (app.clientConfiguration.booksLater) {
+        [self deinitControls];
+        [self.parentTransferController showAlertViewWithMessage:bookingId andTitle:@"Booking" withBlock:^(BOOL b) {
+            [self newBookingButton_Click:nil];
+        }];
+        return;
+    }
     self.parentTransferController.transferBookingId = bookingId;
     if ([bookingId isEqualToString:@"0"]) {
         [self deinitControls];
@@ -112,6 +119,7 @@
         // stripe error, already have shown message
         [self newBookingButton_Click:nil];
     }
+
     CarkyApiClient *api = [CarkyApiClient sharedService];
     [api GetCarkyBookingStatusForUser:self.parentTransferController.userId andBooking:bookingId withBlock:^(NSArray *array) {
         if (self.pollTimer.isValid) {

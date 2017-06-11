@@ -21,6 +21,7 @@ extern NSString *const kResultsDropoffLocationName;
 extern NSString *const kResultsPickupLocationId;
 extern NSString *const kResultsDropoffLocationId;
 extern NSString *const kResultsPickupDate;
+extern NSString *const kResultsPickupNotes;
 extern NSString *const kResultsDropoffDate;
 extern NSString *const kResultsPickupTime;
 extern NSString *const kResultsDropoffTime;

@@ -26,6 +26,7 @@ NSString *const kResultsDropoffLocationName = @"DropoffLocationName";
 NSString *const kResultsPickupLocationId = @"PickupLocationId";
 NSString *const kResultsDropoffLocationId = @"DropoffLocationId";
 NSString *const kResultsPickupDate = @"PickupDate";
+NSString *const kResultsPickupNotes = @"PickupNotes";
 NSString *const kResultsDropoffDate = @"DropoffDate";
 NSString *const kResultsPickupTime = @"PickupTime";
 NSString *const kResultsDropoffTime = @"DropoffTime";
@@ -499,19 +500,12 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
 
 #pragma mark - FSCalendar Datasource
 -(FSCalendarCell *)calendar:(FSCalendar *)calendar cellForDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position {
-    
     CarCalendarViewCell* carCell = [calendar dequeueReusableCellWithIdentifier:@"cell" forDate:date atMonthPosition:position];
-    
     return carCell;
 }
 
 -(void)calendar:(FSCalendar *)calendar willDisplayCell:(FSCalendarCell *)cell forDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
-    
     [self configureCell:cell forDate:date atMonthPosition:monthPosition];
-    
-    //CarCalendarViewCell* myCell = (CarCalendarViewCell*)cell;
-   // myCell.backgroundView = [[UIView alloc] initWithFrame:myCell.bounds];
-    //myCell.backgroundView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
 }
 
 -(NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {

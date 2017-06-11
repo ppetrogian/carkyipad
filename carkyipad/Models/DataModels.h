@@ -38,6 +38,7 @@
 #import "ChargesForIPadResponse.h"
 #import "BookingInfoResponse.h"
 #import "PayPalPaymentInfo.h"
+#import "TransferBookingForLaterResponse.h"
 
 extern NSString* kCarCategoryPrice;
 extern NSString* kCarCategoryId;

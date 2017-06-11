@@ -870,12 +870,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-c2-6RV">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-c2-6RV">
                                 <rect key="frame" x="573" y="250" width="26" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="26" id="ORy-nh-Uxo"/>
-                                    <constraint firstAttribute="height" constant="19" id="OV4-xR-f1d"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="TakePic"/>
                                 <connections>
                                     <action selector="takePhoto_click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="KqQ-7Q-UYa"/>
@@ -886,7 +883,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="back_button"/>
                                 <connections>
-                                    <action selector="backButton_Click:" destination="tY0-YJ-Ovq" eventType="touchUpInside" id="5qo-2T-ofi"/>
                                     <action selector="backButton_Click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="6Ww-ox-Pah"/>
                                 </connections>
                             </button>
@@ -897,10 +893,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="6oV-c2-6RV" secondAttribute="trailing" constant="149" id="Eqt-vp-P7d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0uh-g0-M8F" secondAttribute="trailing" constant="141" id="OJc-TQ-Wky"/>
                             <constraint firstItem="0uh-g0-M8F" firstAttribute="top" secondItem="u8v-Zs-AiR" secondAttribute="bottom" constant="128" id="ZWb-gd-2cT"/>
-                            <constraint firstItem="6oV-c2-6RV" firstAttribute="top" secondItem="0uh-g0-M8F" secondAttribute="bottom" constant="86" id="utj-2K-xFC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Payment" badgeValue="3" id="Wxu-t1-rhj"/>
@@ -1005,8 +999,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6RN-dg-nBf" userLabel="CalendarTimebackView">
-                                <rect key="frame" x="144" y="107" width="524" height="620"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6RN-dg-nBf" userLabel="CalendarTimebackView">
+                                <rect key="frame" x="132" y="170" width="524" height="550"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ucj-WG-tGL" customClass="FSCalendar">
@@ -1043,50 +1037,48 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-Xp-l1R">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-Xp-l1R" userLabel="next mo">
                                         <rect key="frame" x="454" y="14" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="nextMonth"/>
+                                        <connections>
+                                            <action selector="nextMonth_Clicked:" destination="iAD-hz-QYa" eventType="touchUpInside" id="enH-Rj-3vI"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNQ-m8-CH2">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNQ-m8-CH2" userLabel="prev mo">
                                         <rect key="frame" x="27" y="15" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="prevMonth"/>
+                                        <connections>
+                                            <action selector="previousMonth_Clicked:" destination="iAD-hz-QYa" eventType="touchUpInside" id="cpu-CF-g5m"/>
+                                        </connections>
                                     </button>
                                     <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="G6y-h3-1vl">
-                                        <rect key="frame" x="107" y="378" width="310" height="216"/>
+                                        <rect key="frame" x="107" y="378" width="310" height="148"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <date key="date" timeIntervalSinceReferenceDate="517271562.524032">
                                             <!--2017-05-23 22:32:42 +0000-->
                                         </date>
+                                        <connections>
+                                            <action selector="timePicker_ValueChanged:" destination="iAD-hz-QYa" eventType="valueChanged" id="JpN-Pz-3Hj"/>
+                                        </connections>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYH-vm-Kjs">
-                                <rect key="frame" x="29" y="939" width="708" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZL-Rq-vdy" userLabel="backButton">
-                                <rect key="frame" x="46" y="81" width="56" height="60"/>
+                                <rect key="frame" x="49" y="36" width="56" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="back_button"/>
                                 <connections>
-                                    <action selector="backButton_Click:" destination="tY0-YJ-Ovq" eventType="touchUpInside" id="7RR-nz-Y0J"/>
-                                    <action selector="backButton_Click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="GFv-Rk-1mp"/>
+                                    <action selector="goBack_Clicked:" destination="iAD-hz-QYa" eventType="touchUpInside" id="tsF-uH-TwF"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Akis" borderStyle="line" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iaO-V7-yB4" customClass="PSInsetTextField">
-                                <rect key="frame" x="146" y="750" width="509" height="122"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iaO-V7-yB4" customClass="PSInsetTextField">
+                                <rect key="frame" x="138" y="78" width="509" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="insetLeft">
@@ -1098,28 +1090,40 @@
                                     <outlet property="delegate" destination="TFL-dj-Zdw" id="9bD-ZF-vka"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arrival date &amp; time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1G-fu-QWl">
-                                <rect key="frame" x="146" y="76" width="248" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter vessel information &amp; select pickup date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-0k-ljI">
+                                <rect key="frame" x="140" y="43" width="458" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes for arrival" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-0k-ljI">
-                                <rect key="frame" x="146" y="717" width="248" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYH-vm-Kjs">
+                                <rect key="frame" x="159" y="731" width="480" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goNext_Clicked:" destination="iAD-hz-QYa" eventType="touchUpInside" id="ljl-Xp-LHZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Transfer later" id="FYg-FJ-8gC"/>
+                    <connections>
+                        <outlet property="calendar" destination="ucj-WG-tGL" id="Sqg-Kj-pPK"/>
+                        <outlet property="nextButton" destination="BYH-vm-Kjs" id="XVW-rp-uec"/>
+                        <outlet property="notesTextField" destination="iaO-V7-yB4" id="qG9-N2-aBd"/>
+                        <outlet property="timePicker" destination="G6y-h3-1vl" id="ds6-7n-xoZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfG-Fx-YWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5497.65625" y="154.6875"/>
+            <point key="canvasLocation" x="5491.40625" y="182.8125"/>
         </scene>
         <!--Terms And Conditions View Controller-->
         <scene sceneID="5W9-a2-yhn">

@@ -151,9 +151,8 @@
                 AppDelegate *app = [AppDelegate instance];
                 app.clientConfiguration = array.firstObject;
                 // debug only SOS
-                if ([userName isEqualToString:@"phisakel@gmail.com"]) {
-                    app.clientConfiguration.booksLater = YES;
-                }
+                //if ([userName isEqualToString:@"phisakel@gmail.com"])  app.clientConfiguration.booksLater = YES;
+                
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;
                 // paypal configuration

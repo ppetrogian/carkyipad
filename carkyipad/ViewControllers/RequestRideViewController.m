@@ -143,13 +143,10 @@
     if(self.selectedCarType == indexPath.row) {
         return; // guard
     }
-    NSArray<NSIndexPath *> *paths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:self.selectedCarType inSection:0], indexPath, nil];
     self.selectedCarType = indexPath.row;
     [self.requestRideButton enableButton];
     CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
-    [self.carCategoriesCollectionView performBatchUpdates:^{
-        [self.carCategoriesCollectionView reloadItemsAtIndexPaths:paths];
-    } completion:nil];
+    [self.carCategoriesCollectionView reloadData];
     [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
 }
 
@@ -181,6 +178,8 @@
     } else {
         [self showLocationAndRouteInMap:loc];
     }
+    CarCategory *cCat = self.carCategoriesDataSource.items[self.selectedCarType];
+    [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
     [self.requestRideButton enableButton];
 }
      
