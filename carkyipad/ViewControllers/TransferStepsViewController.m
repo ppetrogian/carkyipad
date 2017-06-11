@@ -223,6 +223,11 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (NSArray *)stepViewControllers {
     // we keep them in an array via an unused tab-bar
     UITabBarController *tb = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBar"];
+    if (![AppDelegate instance].clientConfiguration.booksLater) {
+        NSMutableArray *vcs = [NSMutableArray arrayWithArray:tb.viewControllers];
+        [vcs removeObjectAtIndex:1];
+        return vcs;
+    }
     return tb.viewControllers;
 }
 

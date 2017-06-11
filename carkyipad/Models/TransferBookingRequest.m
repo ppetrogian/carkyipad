@@ -28,7 +28,7 @@ NSString *const kTransferBookingRequestPickupDateTime = @"PickupDateTime";
 NSString *const kTransferBookingRequestExtras = @"Extras";
 NSString *const kTransferBookingRequestCarkyCategoryId = @"CarkyCategoryId";
 NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumber";
-
+NSString *const kTransferBookingRequestNotes = @"Notes";
 
 @interface TransferBookingRequest ()
 
@@ -56,7 +56,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         self.stripeCardToken = [self objectOrNilForKey:kTransferBookingRequestStripeCardToken fromDictionary:dict];
         self.payPalPaymentResponse = [self objectOrNilForKey:kTransferBookingRequestPayPalPaymentResponse fromDictionary:dict];
         self.payPalPayerId = [self objectOrNilForKey:kTransferBookingRequestPayPalPayerId fromDictionary:dict];
-
+        
         self.passengersNumber = [[self objectOrNilForKey:kTransferBookingRequestPassengersNumber fromDictionary:dict] integerValue];
         self.agreedToTermsAndConditions = [[self objectOrNilForKey:kTransferBookingRequestAgreedToTermsAndConditions fromDictionary:dict] boolValue];
         
@@ -67,7 +67,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
         self.extras = [self objectOrNilForKey:kTransferBookingRequestExtras fromDictionary:dict];
         self.carkyCategoryId = [[self objectOrNilForKey:kTransferBookingRequestCarkyCategoryId fromDictionary:dict] integerValue];
         self.luggagePiecesNumber = [[self objectOrNilForKey:kTransferBookingRequestLuggagePiecesNumber fromDictionary:dict] integerValue];
-
+        self.notes = [self objectOrNilForKey:kTransferBookingRequestNotes fromDictionary:dict];
     }
     
     return self;
@@ -106,7 +106,7 @@ NSString *const kTransferBookingRequestLuggagePiecesNumber = @"LuggagePiecesNumb
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForExtras] forKey:kTransferBookingRequestExtras];
     [mutableDict setValue:[NSNumber numberWithInteger:self.carkyCategoryId] forKey:kTransferBookingRequestCarkyCategoryId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.luggagePiecesNumber] forKey:kTransferBookingRequestLuggagePiecesNumber];
-
+    [mutableDict setValue:self.notes forKey:kTransferBookingRequestNotes];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

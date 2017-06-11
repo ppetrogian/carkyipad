@@ -18,6 +18,7 @@ NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupIn
 NSString *const kClientConfigurationResponseTabletMode = @"TabletMode";
 NSString *const kClientConfigurationResponsePayPalMode = @"PayPalMode";
 NSString *const kClientConfigurationResponsePayPalClientId = @"PayPalClientId";
+NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
 
 @interface ClientConfigurationResponse ()
 
@@ -66,6 +67,7 @@ NSString *const kClientConfigurationResponsePayPalClientId = @"PayPalClientId";
         self.tabletMode = [[self objectOrNilForKey:kClientConfigurationResponseTabletMode fromDictionary:dict] integerValue];
         self.payPalMode = [self objectOrNilForKey:kClientConfigurationResponsePayPalMode fromDictionary:dict];
         self.payPalClientId = [self objectOrNilForKey:kClientConfigurationResponsePayPalClientId fromDictionary:dict];
+        self.booksLater = [[self objectOrNilForKey:kClientConfigurationResponseBooksLater fromDictionary:dict] boolValue];
     }
     
     return self;
@@ -93,6 +95,7 @@ NSString *const kClientConfigurationResponsePayPalClientId = @"PayPalClientId";
     [mutableDict setValue:[NSNumber numberWithInteger:self.tabletMode] forKey:kClientConfigurationResponseTabletMode];
     [mutableDict setValue:self.payPalMode forKey:kClientConfigurationResponsePayPalMode];
     [mutableDict setValue:self.payPalClientId forKey:kClientConfigurationResponsePayPalClientId];
+    [mutableDict setValue:[NSNumber numberWithBool:self.booksLater] forKey:kClientConfigurationResponseBooksLater];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

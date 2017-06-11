@@ -18,6 +18,7 @@
 @property (nonatomic, assign) NSInteger tabletMode;
 @property (nonatomic, strong) NSString *payPalMode;
 @property (nonatomic, strong) NSString *payPalClientId;
+@property (nonatomic, assign) BOOL booksLater;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

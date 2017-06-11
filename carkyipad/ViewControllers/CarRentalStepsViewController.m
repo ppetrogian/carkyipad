@@ -33,13 +33,6 @@
     
     self.stepsBar.barStyle = UIBarStyleBlack;
     self.stepsBar.backgroundColor = [UIColor blackColor];
-    
-    for (NSInteger i = 0; i < self.stepViewControllers.count; i++) {
-        RMStep *step = [self stepsBar:self.stepsBar stepAtIndex:i];
-        step.stepView = (CircleLineButton *)self.stepButtonsStack.arrangedSubviews[i];
-        step.titleLabel = (UILabel *)self.stepLabelsStack.arrangedSubviews[i];
-        step.titleLabel.text = step.title;
-    }
 
     [self configureSegmentController];
 }

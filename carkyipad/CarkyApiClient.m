@@ -329,6 +329,8 @@ static CarkyApiClient *_sharedService = nil;
     NSString *errorMsg = @"Server error";
     if(errorStr.length > 14)
         errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
+    else
+        errorMsg = @"An error has occured";
     NSLog(@"Error Detail: %@", errorMsg);
     self.blockErrorDefault(error);
     self.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -343,26 +345,6 @@ static CarkyApiClient *_sharedService = nil;
         block([NSArray arrayWithObject:response]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self ShowMessageOnError:error WithBlock:block];
-    }];
-}
-
-// deprecated
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockArray)block {
-    [self setAuthorizationHeader];
-    TransferBookingResponse *responseObj = [TransferBookingResponse new];
-    self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [self POST:@"api/Partner/CreateTransferBookingRequest" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
-        responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        block([NSArray arrayWithObject:responseObj]);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSData *errorData = error.userInfo[@"com.alamofire.serialization.response.error.data"];
-        NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
-        NSString *errorMsg = [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)];
-        self.blockErrorDefault(error);
-        self.responseSerializer = [AFJSONResponseSerializer serializer];
-        responseObj.errorDescription = errorStr;
-        block([NSArray arrayWithObject:errorMsg]);
     }];
 }
 
@@ -387,6 +369,22 @@ static CarkyApiClient *_sharedService = nil;
         block([NSArray arrayWithObject:responseObj]);
     }];
 }
+
+-(void)CreateTransferBookingForLater:(TransferBookingRequest *)request withBlock:(BlockArray)block {
+    [self setAuthorizationHeader];
+    TransferBookingResponse *responseObj = [TransferBookingResponse new];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self.requestSerializer setTimeoutInterval:TRANSFER_TIMEOUT]; // 3 minutes timout
+    
+    [self POST:@"api/Partner/CreateTransferBookingForLater" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        block([NSArray arrayWithObject:responseObj]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self ShowMessageOnError:error WithBlock:block];
+    }];
+}
+
 
 -(void)RentalChargesForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];

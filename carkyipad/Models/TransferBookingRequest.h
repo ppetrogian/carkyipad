@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *payPalPaymentResponse;
 @property (nonatomic, strong) NSString *payPalPayerId;
 
+@property (nonatomic, strong) NSString *notes;
 @property (nonatomic, assign) NSInteger passengersNumber;
 @property (nonatomic, strong) Location *dropoffLocation;
 @property (nonatomic, assign) NSInteger dropoffWellKnownLocationId;
@@ -35,3 +36,31 @@
 - (NSDictionary *)dictionaryRepresentation;
 
 @end
+
+/*
+ {
+ "UserId": "string",
+ "PaymentMethod": 0,
+ "StripeCardToken": "string",
+ "PayPalPaymentResponse": "string",
+ "CarkyCategoryId": 0,
+ "Extras": [
+ 0
+ ],
+ "DropoffWellKnownLocationId": 0,
+ "DropoffLocation": {
+    "Address": "string",
+    "Geography": {
+        "Lat": 0,"Lng": 0
+    }
+ },
+ "Notes": "string",
+ "PickupDateTime": {
+    "Date": "string",
+    "Time": "string"
+ },
+ "PassengersNumber": 0,
+ "LuggagePiecesNumber": 0,
+ "AgreedToTermsAndConditions": true
+ }
+*/

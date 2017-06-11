@@ -164,6 +164,7 @@
 		D1B253D11E868EBE005365B2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B253D01E868EBE005365B2 /* HockeySDK.framework */; };
 		D1BD784A1EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */; };
 		D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */; };
+		D1F83A161EED7CE100CC4F83 /* TransferLaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F83A151EED7CE100CC4F83 /* TransferLaterViewController.m */; };
 		E1C2EE501EC3363A0021BEC2 /* UIController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE4F1EC3363A0021BEC2 /* UIController.m */; };
 		E1C2EE541EC339540021BEC2 /* CarTypeSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE531EC339540021BEC2 /* CarTypeSegmentView.m */; };
 		E1C2EE5C1EC339910021BEC2 /* CarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C2EE571EC339910021BEC2 /* CarCollectionViewCell.m */; };
@@ -437,6 +438,8 @@
 		D1BD78491EC4432A0061D25D /* CreateTransferBookingRequestPayPalPaymentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTransferBookingRequestPayPalPaymentResponse.m; sourceTree = "<group>"; };
 		D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsAndConditionsViewController.h; path = ViewControllers/TermsAndConditionsViewController.h; sourceTree = "<group>"; };
 		D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsAndConditionsViewController.m; path = ViewControllers/TermsAndConditionsViewController.m; sourceTree = "<group>"; };
+		D1F83A141EED7CE100CC4F83 /* TransferLaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransferLaterViewController.h; path = ViewControllers/TransferLaterViewController.h; sourceTree = "<group>"; };
+		D1F83A151EED7CE100CC4F83 /* TransferLaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransferLaterViewController.m; path = ViewControllers/TransferLaterViewController.m; sourceTree = "<group>"; };
 		E1C2EE4E1EC3363A0021BEC2 /* UIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIController.h; path = Utility/UIController.h; sourceTree = "<group>"; };
 		E1C2EE4F1EC3363A0021BEC2 /* UIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIController.m; path = Utility/UIController.m; sourceTree = "<group>"; };
 		E1C2EE521EC339540021BEC2 /* CarTypeSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarTypeSegmentView.h; path = CustomView/CarTypeSegmentView.h; sourceTree = "<group>"; };
@@ -794,6 +797,8 @@
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				AEEA24D41EAA349900043423 /* RequestRideViewController.h */,
 				AEEA24D51EAA349900043423 /* RequestRideViewController.m */,
+				D1F83A141EED7CE100CC4F83 /* TransferLaterViewController.h */,
+				D1F83A151EED7CE100CC4F83 /* TransferLaterViewController.m */,
 				D159514D1EAD498300540076 /* SelectDropoffLocationViewController.h */,
 				D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */,
 				D15951501EAD732900540076 /* ClientDetailsViewController.h */,
@@ -1367,6 +1372,7 @@
 				E1C2EE661EC367110021BEC2 /* PlaceDetailsView.m in Sources */,
 				D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
+				D1F83A161EED7CE100CC4F83 /* TransferLaterViewController.m in Sources */,
 				D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */,
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,
 				D155121C1EB280F500D924C0 /* PSInsetTextField.m in Sources */,
@@ -1631,7 +1637,7 @@
 			baseConfigurationReference = 5354D900812E591C07A1E865 /* Pods-carkyipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = TTAAXU5Z2A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1644,10 +1650,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b12d2bb7-fce7-4d2d-8dd7-3169151f3f5f";
-				PROVISIONING_PROFILE_SPECIFIER = CarkyIpad_DEV;
+				PROVISIONING_PROFILE = "ce23da59-4924-455a-9200-0a2cbfd57d5a";
+				PROVISIONING_PROFILE_SPECIFIER = "com-carky-ipad (beta)";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -1670,10 +1676,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/CardIO/CardIO",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carky.carkyipad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d62fca77-ec0b-4568-a171-b036e940e8d0";
-				PROVISIONING_PROFILE_SPECIFIER = "CarkyIpadPROFILE-13Devices";
+				PROVISIONING_PROFILE = "ce23da59-4924-455a-9200-0a2cbfd57d5a";
+				PROVISIONING_PROFILE_SPECIFIER = "com-carky-ipad (beta)";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

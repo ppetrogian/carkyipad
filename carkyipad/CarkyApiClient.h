@@ -65,9 +65,9 @@ typedef void(^BlockProgress)(NSProgress *progress);
     
 -(void)CreateTransferBookingRequestPayPalPayment:(TransferBookingRequest *)request withBlock:(BlockArray)block;
 
--(void)CreateTransferBookingRequest:(TransferBookingRequest *)request withBlock:(BlockArray)block;
-
 -(void)CreateTransferBooking:(TransferBookingRequest *)request withBlock:(BlockArray)block;
+
+-(void)CreateTransferBookingForLater:(TransferBookingRequest *)request withBlock:(BlockArray)block;
 
 -(void)CreateRentalBookingRequestForIpad:(RentalBookingRequest *)request withBlock:(BlockArray)block;
 

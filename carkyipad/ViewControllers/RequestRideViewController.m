@@ -11,6 +11,7 @@
 #import "CarkyApiClient.h"
 #import "AppDelegate.h"
 #import "DataModels.h"
+#import "ButtonUtils.h"
 #import "TransferStepsViewController.h"
 #import "SelectDropoffLocationViewController.h"
 #import <GooglePlaces/GooglePlaces.h>
@@ -25,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.selectedCarType = -1;
+    self.selectedCarType = 0;
     [self.dropOffLocationTextField addTarget:self action:@selector(dropOffLocationTextField_Clicked:) forControlEvents:UIControlEventTouchDown];
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
@@ -108,7 +109,7 @@
         [ccImageButton setImage:image forState:UIControlStateSelected];
         UIImage *image_blank = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blank", item.image]];
         [ccImageButton setImage:image_blank forState:UIControlStateNormal];
-        ccImageButton.selected = item.order == 0 ? YES : NO;
+        ccImageButton.selected = item.order == self.selectedCarType ? YES : NO;
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
         // price dependent on zone
         UILabel *priceLabel = [cell.contentView viewWithTag:8];
@@ -135,30 +136,21 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(self.selectedCarType != indexPath.row) {
-        if (self.dropOffLocationTextField.text.length == 0) {
-            [self.parentController showAlertViewWithMessage:@"Please select location first!" andTitle:@"Error"];
-            return;
-        }
-        NSIndexPath *prevPath = [NSIndexPath indexPathForItem:self.selectedCarType inSection:0];
-        [collectionView cellForItemAtIndexPath:prevPath].selected = NO;
-        [self collectionView:collectionView didDeselectItemAtIndexPath:prevPath]; // single selection
-        self.selectedCarType = indexPath.row;
-        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-        cell.selected = YES;
-        UIButton *ccImageButton = [cell.contentView viewWithTag:4];
-        ccImageButton.selected = YES;
-        self.requestRideButton.enabled = YES;
-        self.requestRideButton.backgroundColor = [UIColor blackColor];
-        CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
-        [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
+    if (self.dropOffLocationTextField.text.length == 0) {
+        [self.parentController showAlertViewWithMessage:@"Please select location first!" andTitle:@"Error"];
+        return;
     }
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    UIButton *ccImageButton = [cell.contentView viewWithTag:4];
-    ccImageButton.selected = NO;
+    if(self.selectedCarType == indexPath.row) {
+        return; // guard
+    }
+    NSArray<NSIndexPath *> *paths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:self.selectedCarType inSection:0], indexPath, nil];
+    self.selectedCarType = indexPath.row;
+    [self.requestRideButton enableButton];
+    CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
+    [self.carCategoriesCollectionView performBatchUpdates:^{
+        [self.carCategoriesCollectionView reloadItemsAtIndexPaths:paths];
+    } completion:nil];
+    [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
 }
 
 //selected from popup screen
@@ -189,6 +181,7 @@
     } else {
         [self showLocationAndRouteInMap:loc];
     }
+    [self.requestRideButton enableButton];
 }
      
 -(void)showLocationAndRouteInMap:(Location *)loc {
