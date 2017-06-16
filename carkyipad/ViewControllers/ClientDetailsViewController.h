@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailRequiredLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *countryPrefixLabel;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;

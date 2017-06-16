@@ -526,6 +526,7 @@
                         <outlet property="confirmButton" destination="ejq-qO-0rU" id="z6l-SX-CaP"/>
                         <outlet property="countryPrefixLabel" destination="Tio-St-i4J" id="F8h-8l-wnF"/>
                         <outlet property="emailLabel" destination="eU4-kg-eGQ" id="wtY-4i-j96"/>
+                        <outlet property="emailRequiredLabel" destination="0gg-iz-Hq6" id="W8f-fZ-Ayv"/>
                         <outlet property="emailTextField" destination="iE7-vC-Jow" id="rsG-Bl-u6e"/>
                         <outlet property="firstNameTextField" destination="8tI-3a-csY" id="t1i-ce-k7X"/>
                         <outlet property="flagButton" destination="Ghy-wO-gC0" id="FwK-ix-MIZ"/>
@@ -897,7 +898,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="PAY WITH CASH">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="payWithCashButton_Click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="FKB-ZC-Hck"/>

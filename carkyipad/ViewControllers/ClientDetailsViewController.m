@@ -53,6 +53,7 @@
     if(tm == TabletModeReception) {
         self.emailTextField.hidden = YES;
         self.emailLabel.hidden = YES;
+        self.emailRequiredLabel.hidden = YES;
     }
     [self.firstNameTextField becomeFirstResponder];
 

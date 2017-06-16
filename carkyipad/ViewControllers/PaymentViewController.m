@@ -53,6 +53,7 @@
         self.payWithCashButton.hidden = NO;
         [self.payWithCashButton enableButton];
         self.payWithCashButton.backgroundColor = [UIColor blueColor];
+        //self.payWithCashButton.titleLabel.textColor = [UIColor blackColor];
     }
 }
 
@@ -205,6 +206,7 @@
     [[AppDelegate instance] hideProgressNotification];
     [self.payWithCashButton enableButton];
     self.payWithCashButton.backgroundColor = [UIColor blueColor];
+    //self.payWithCashButton.titleLabel.textColor = [UIColor blackColor];
 }
 
 - (IBAction)payNowButton_click:(UIButton *)sender {
