@@ -28,6 +28,7 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
 NSString *const kClientConfigurationResponseRentalBackgroundImage = @"RentalBackgroundImage";
 NSString *const kClientConfigurationResponseTransferBackgroundImage = @"TransferBackgroundImage";
 NSString *const kClientConfigurationResponseConfirmationVideo = @"ConfirmationVideo";
+NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
 
 @interface ClientConfigurationResponse ()
 
@@ -86,6 +87,7 @@ NSString *const kClientConfigurationResponseConfirmationVideo = @"ConfirmationVi
         self.rentalBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseRentalBackgroundImage fromDictionary:dict];
         self.transferBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseTransferBackgroundImage fromDictionary:dict];
         self.confirmationVideo = [self objectOrNilForKey:kClientConfigurationResponseConfirmationVideo fromDictionary:dict];
+        self.acceptsCash = [[self objectOrNilForKey:kClientConfigurationResponseAcceptsCash fromDictionary:dict] boolValue];
     }
     
     return self;
@@ -123,6 +125,7 @@ NSString *const kClientConfigurationResponseConfirmationVideo = @"ConfirmationVi
     [mutableDict setValue:self.rentalBackgroundImage forKey:kClientConfigurationResponseRentalBackgroundImage];
     [mutableDict setValue:self.transferBackgroundImage forKey:kClientConfigurationResponseTransferBackgroundImage];
     [mutableDict setValue:self.confirmationVideo forKey:kClientConfigurationResponseConfirmationVideo];
+    [mutableDict setValue:[NSNumber numberWithBool:self.acceptsCash] forKey:kClientConfigurationResponseAcceptsCash];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

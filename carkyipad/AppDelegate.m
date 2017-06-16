@@ -71,6 +71,7 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"hotel_prefilled": @(NO)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
     // Override point for customization after application launch.
     NSBundle *main = [NSBundle mainBundle];
@@ -133,10 +134,11 @@
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
+    self.hotelPrefilled = [[NSUserDefaults standardUserDefaults] boolForKey:@"hotel_prefilled"];
     if ([userName containsString:@"phisakel"] && [userName containsString:@"@gmail.com"]) {
-        [AppDelegate instance].environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
+        self.environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
     } else {
-        [AppDelegate instance].environment = CarkyBackendTypeLive;
+        self.environment = CarkyBackendTypeLive;
     }
     //init api client
     self.api = [CarkyApiClient sharedService];

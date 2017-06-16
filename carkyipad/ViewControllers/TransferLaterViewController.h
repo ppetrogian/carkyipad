@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (weak, nonatomic) IBOutlet PSInsetTextField *notesTextField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 
 @end

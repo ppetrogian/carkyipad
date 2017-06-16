@@ -30,6 +30,7 @@
     // Do any additional setup after loading the view.
     self.isPhoneConfirmed = NO;
     self.validator = [Validation new];
+    AppDelegate *app = [AppDelegate instance];
     
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
     if (bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
@@ -40,6 +41,13 @@
         [self.confirmButton disableButton];
     } else {
          [self.confirmButton enableButton];
+    }
+    if (app.hotelPrefilled) {
+        //self.firstNameTextField.text = app.clientConfiguration.firstName;
+        //self.lastNameTextField.text = app.clientConfiguration.lastName;
+        self.emailTextField.text = app.clientConfiguration.email;
+        self.phoneNumberTextField.text = app.clientConfiguration.telephone;
+        [self.confirmButton enableButton];
     }
     [self.firstNameTextField becomeFirstResponder];
 

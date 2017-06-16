@@ -58,6 +58,16 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
+            <string>Hotel data prefilled</string>
+            <key>Key</key>
+            <string>hotel_prefilled</string>
+            <key>DefaultValue</key>
+            <false/>
+        </dict>
 		<dict>
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>

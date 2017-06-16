@@ -32,6 +32,7 @@
 @property (strong, nonatomic) GMSCoordinateBounds *locationBounds;
 @property (strong, nonatomic) ClientConfigurationResponse *clientConfiguration;
 @property (assign, nonatomic) BOOL isDemo;
+@property (assign, nonatomic) BOOL hotelPrefilled;
 @property (assign, nonatomic) NSInteger environment;
 @property (nonatomic,strong) NSArray *screensData;
 @property (nonatomic, assign) BOOL loaded;
