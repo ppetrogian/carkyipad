@@ -54,7 +54,7 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)GetCarExtrasForTransfer:(NSDate *)pickupDate withBlock:(BlockArray)block;
 
 -(void)GetCarExtrasForRental:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;
-
+-(void)ValidatePhoneNumber:(NSString *)countryCode andPhone:(NSString *)phone andBlock:(BlockString)block;
 // api/Helper/GetAllCarInsurances
 -(void)GetAllCarInsurancesForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;
 

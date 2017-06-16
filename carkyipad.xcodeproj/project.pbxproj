@@ -99,6 +99,8 @@
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		AEE65A151EF4024300700DF3 /* TransferLanding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */; };
 		AEE65A171EF4025E00700DF3 /* RentalLanding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE65A161EF4025E00700DF3 /* RentalLanding.storyboard */; };
+		AEE65A1A1EF41A1500700DF3 /* ValidatePhoneRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE65A191EF41A1500700DF3 /* ValidatePhoneRequest.m */; };
+		AEE65A1B1EF41A1500700DF3 /* ValidatePhoneRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE65A191EF41A1500700DF3 /* ValidatePhoneRequest.m */; };
 		AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA24D51EAA349900043423 /* RequestRideViewController.m */; };
 		D10155F81ED66CEA00F69773 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10155F71ED66CEA00F69773 /* Landing.storyboard */; };
 		D113637B1EA0731800EB6279 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363771EA0731800EB6279 /* libCardIO.a */; };
@@ -338,6 +340,8 @@
 		AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZExtensions.h"; sourceTree = "<group>"; };
 		AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TransferLanding.storyboard; path = ../TransferLanding.storyboard; sourceTree = "<group>"; };
 		AEE65A161EF4025E00700DF3 /* RentalLanding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RentalLanding.storyboard; path = ../RentalLanding.storyboard; sourceTree = "<group>"; };
+		AEE65A181EF41A1500700DF3 /* ValidatePhoneRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidatePhoneRequest.h; sourceTree = "<group>"; };
+		AEE65A191EF41A1500700DF3 /* ValidatePhoneRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidatePhoneRequest.m; sourceTree = "<group>"; };
 		AEEA24D41EAA349900043423 /* RequestRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestRideViewController.h; path = ViewControllers/RequestRideViewController.h; sourceTree = "<group>"; };
 		AEEA24D51EAA349900043423 /* RequestRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestRideViewController.m; path = ViewControllers/RequestRideViewController.m; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -577,6 +581,8 @@
 				AE616DB31ED1855700EA38D6 /* CalendarRange.m */,
 				D1A99E151EE0B0D80003A00E /* Price.h */,
 				D1A99E161EE0B0D80003A00E /* Price.m */,
+				AEE65A181EF41A1500700DF3 /* ValidatePhoneRequest.h */,
+				AEE65A191EF41A1500700DF3 /* ValidatePhoneRequest.m */,
 				D1A99E181EE0B1150003A00E /* CarExtra.h */,
 				D1A99E191EE0B1160003A00E /* CarExtra.m */,
 				D19FF97F1E904C1400F735A0 /* CarRentalModel.h */,
@@ -1377,6 +1383,7 @@
 				AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */,
 				E1C2EE501EC3363A0021BEC2 /* UIController.m in Sources */,
 				D19FF98C1E910BAA00F735A0 /* CarViewCell.m in Sources */,
+				AEE65A1A1EF41A1500700DF3 /* ValidatePhoneRequest.m in Sources */,
 				D15951581EADCA5500540076 /* PaymentViewController.m in Sources */,
 				AE6352E11E75E1FA00065F0F /* CountryCell.m in Sources */,
 				AE6352EB1E75E1FA00065F0F /* NBMetadataCore.m in Sources */,
@@ -1483,6 +1490,7 @@
 				AE6351C51E71E32200065F0F /* FleetLocations.m in Sources */,
 				AE6351C91E71E32200065F0F /* Location.m in Sources */,
 				AE6351C71E71E32200065F0F /* LatLng.m in Sources */,
+				AEE65A1B1EF41A1500700DF3 /* ValidatePhoneRequest.m in Sources */,
 				AE6351FB1E746CB200065F0F /* CarInsurance.m in Sources */,
 				AE6351BA1E6E865600065F0F /* CarkyApiClient.m in Sources */,
 				AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */,

@@ -101,6 +101,19 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+-(void)ValidatePhoneNumber:(NSString *)countryCode andPhone:(NSString *)phone andBlock:(BlockString)block {
+    ValidatePhoneRequest *vpn = [ValidatePhoneRequest new];
+    vpn.countryCode = countryCode;
+    vpn.number = phone;
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self GET:@"api/Helper/ValidatePhoneNumber" parameters:vpn.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *str = (NSString *)responseObject;
+        block(str);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+    }];
+}
+
 // unused
 -(void)GetAllCarCategories:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializer];

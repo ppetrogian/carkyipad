@@ -51,6 +51,10 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSInteger maxPhoneLen = 10;
+    if ([self.countryPrefixLabel.text isEqualToString:@"+55"] ) {
+        maxPhoneLen = 11;
+    }
     if (self.phoneNumberTextField == textField) {
         // Prevent crashing undo bug
         if(range.length + range.location > textField.text.length) {
@@ -60,7 +64,7 @@
             return NO;
         }
         NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        return newLength <= 10;
+        return newLength <= maxPhoneLen;
     }
     return YES;
 }
