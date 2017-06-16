@@ -12,6 +12,12 @@
 
 NSString *const kClientConfigurationResponseCarServices = @"CarServices";
 NSString *const kClientConfigurationResponseLocation = @"Location";
+NSString *const kClientConfigurationResponseTradingName = @"TradingName";
+NSString *const kClientConfigurationResponseEmail = @"Email";
+NSString *const kClientConfigurationResponseName = @"Name";
+NSString *const kClientConfigurationResponseLastName = @"LastName";
+NSString *const kClientConfigurationResponseTelephone = @"Telephone";
+NSString *const kClientConfigurationResponseFirstName = @"FirstName";
 NSString *const kClientConfigurationResponseAreaOfServiceId = @"AreaOfServiceId";
 NSString *const kClientConfigurationResponseZoneId = @"ZoneId";
 NSString *const kClientConfigurationResponsePickupInstructionsImage = @"PickupInstructionsImage";
@@ -19,6 +25,9 @@ NSString *const kClientConfigurationResponseTabletMode = @"TabletMode";
 NSString *const kClientConfigurationResponsePayPalMode = @"PayPalMode";
 NSString *const kClientConfigurationResponsePayPalClientId = @"PayPalClientId";
 NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
+NSString *const kClientConfigurationResponseRentalBackgroundImage = @"RentalBackgroundImage";
+NSString *const kClientConfigurationResponseTransferBackgroundImage = @"TransferBackgroundImage";
+NSString *const kClientConfigurationResponseConfirmationVideo = @"ConfirmationVideo";
 
 @interface ClientConfigurationResponse ()
 
@@ -61,6 +70,12 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
         NSDictionary *locDictionary = [dict objectForKey:kClientConfigurationResponseLocation];
         self.location = [Location modelObjectWithDictionary:locDictionary];
         self.location.latLng = [LatLng modelObjectWithDictionary:[locDictionary objectForKey:@"Geography"]];
+        self.tradingName = [self objectOrNilForKey:kClientConfigurationResponseTradingName fromDictionary:dict];
+        self.email = [self objectOrNilForKey:kClientConfigurationResponseEmail fromDictionary:dict];
+        self.name = [self objectOrNilForKey:kClientConfigurationResponseName fromDictionary:dict];
+        self.lastName = [self objectOrNilForKey:kClientConfigurationResponseLastName fromDictionary:dict];
+        self.telephone = [self objectOrNilForKey:kClientConfigurationResponseTelephone fromDictionary:dict];
+        self.firstName = [self objectOrNilForKey:kClientConfigurationResponseFirstName fromDictionary:dict];
         self.areaOfServiceId = [[self objectOrNilForKey:kClientConfigurationResponseAreaOfServiceId fromDictionary:dict] integerValue];
         self.zoneId = [[self objectOrNilForKey:kClientConfigurationResponseZoneId fromDictionary:dict] integerValue];
         self.pickupInstructionsImage = [self objectOrNilForKey:kClientConfigurationResponsePickupInstructionsImage fromDictionary:dict];
@@ -68,6 +83,9 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
         self.payPalMode = [self objectOrNilForKey:kClientConfigurationResponsePayPalMode fromDictionary:dict];
         self.payPalClientId = [self objectOrNilForKey:kClientConfigurationResponsePayPalClientId fromDictionary:dict];
         self.booksLater = [[self objectOrNilForKey:kClientConfigurationResponseBooksLater fromDictionary:dict] boolValue];
+        self.rentalBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseRentalBackgroundImage fromDictionary:dict];
+        self.transferBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseTransferBackgroundImage fromDictionary:dict];
+        self.confirmationVideo = [self objectOrNilForKey:kClientConfigurationResponseConfirmationVideo fromDictionary:dict];
     }
     
     return self;
@@ -89,6 +107,12 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
     }
     [mutableDict setValue:[NSArray arrayWithArray:tempArrayForCarServices] forKey:kClientConfigurationResponseCarServices];
     [mutableDict setValue:[self.location dictionaryRepresentation] forKey:kClientConfigurationResponseLocation];
+    [mutableDict setValue:self.tradingName forKey:kClientConfigurationResponseTradingName];
+    [mutableDict setValue:self.email forKey:kClientConfigurationResponseEmail];
+    [mutableDict setValue:self.name forKey:kClientConfigurationResponseName];
+    [mutableDict setValue:self.lastName forKey:kClientConfigurationResponseLastName];
+    [mutableDict setValue:self.telephone forKey:kClientConfigurationResponseTelephone];
+    [mutableDict setValue:self.firstName forKey:kClientConfigurationResponseFirstName];
     [mutableDict setValue:[NSNumber numberWithInteger:self.areaOfServiceId] forKey:kClientConfigurationResponseAreaOfServiceId];
     [mutableDict setValue:[NSNumber numberWithInteger:self.zoneId] forKey:kClientConfigurationResponseZoneId];
     [mutableDict setValue:self.pickupInstructionsImage forKey:kClientConfigurationResponsePickupInstructionsImage];
@@ -96,6 +120,9 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
     [mutableDict setValue:self.payPalMode forKey:kClientConfigurationResponsePayPalMode];
     [mutableDict setValue:self.payPalClientId forKey:kClientConfigurationResponsePayPalClientId];
     [mutableDict setValue:[NSNumber numberWithBool:self.booksLater] forKey:kClientConfigurationResponseBooksLater];
+    [mutableDict setValue:self.rentalBackgroundImage forKey:kClientConfigurationResponseRentalBackgroundImage];
+    [mutableDict setValue:self.transferBackgroundImage forKey:kClientConfigurationResponseTransferBackgroundImage];
+    [mutableDict setValue:self.confirmationVideo forKey:kClientConfigurationResponseConfirmationVideo];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -129,6 +156,15 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
     [aCoder encodeDouble:_areaOfServiceId forKey:kClientConfigurationResponseAreaOfServiceId];
     [aCoder encodeDouble:_zoneId forKey:kClientConfigurationResponseZoneId];
     [aCoder encodeObject:_pickupInstructionsImage forKey:kClientConfigurationResponsePickupInstructionsImage];
+    [aCoder encodeObject:_tradingName forKey:kClientConfigurationResponseTradingName];
+    [aCoder encodeObject:_email forKey:kClientConfigurationResponseEmail];
+    [aCoder encodeObject:_name forKey:kClientConfigurationResponseName];
+    [aCoder encodeObject:_lastName forKey:kClientConfigurationResponseLastName];
+    [aCoder encodeObject:_telephone forKey:kClientConfigurationResponseTelephone];
+    [aCoder encodeObject:_firstName forKey:kClientConfigurationResponseFirstName];
+    [aCoder encodeObject:_rentalBackgroundImage forKey:kClientConfigurationResponseRentalBackgroundImage];
+    [aCoder encodeObject:_transferBackgroundImage forKey:kClientConfigurationResponseTransferBackgroundImage];
+    [aCoder encodeObject:_confirmationVideo forKey:kClientConfigurationResponseConfirmationVideo];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -137,11 +173,19 @@ NSString *const kClientConfigurationResponseBooksLater = @"BooksLater";
     
     
     if (copy) {
-
+        copy.tradingName = [self.tradingName copyWithZone:zone];
+        copy.email = [self.email copyWithZone:zone];
+        copy.name = [self.name copyWithZone:zone];
+        copy.lastName = [self.lastName copyWithZone:zone];
+        copy.telephone = [self.telephone copyWithZone:zone];
+        copy.firstName = [self.firstName copyWithZone:zone];
         copy.carServices = [self.carServices copyWithZone:zone];
         copy.areaOfServiceId = self.areaOfServiceId;
         copy.zoneId = self.zoneId;
         copy.pickupInstructionsImage = [self.pickupInstructionsImage copyWithZone:zone];
+        copy.rentalBackgroundImage = [self.rentalBackgroundImage copyWithZone:zone];
+        copy.transferBackgroundImage = [self.transferBackgroundImage copyWithZone:zone];
+        copy.confirmationVideo = [self.confirmationVideo copyWithZone:zone];
     }
     
     return copy;
