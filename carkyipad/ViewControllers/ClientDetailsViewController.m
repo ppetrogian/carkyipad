@@ -52,6 +52,7 @@
     TabletMode tm = (TabletMode)app.clientConfiguration.tabletMode;
     if(tm == TabletModeReception) {
         self.emailTextField.hidden = YES;
+        self.emailLabel.hidden = YES;
     }
     [self.firstNameTextField becomeFirstResponder];
 

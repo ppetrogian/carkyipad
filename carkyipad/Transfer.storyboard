@@ -525,6 +525,7 @@
                     <connections>
                         <outlet property="confirmButton" destination="ejq-qO-0rU" id="z6l-SX-CaP"/>
                         <outlet property="countryPrefixLabel" destination="Tio-St-i4J" id="F8h-8l-wnF"/>
+                        <outlet property="emailLabel" destination="eU4-kg-eGQ" id="wtY-4i-j96"/>
                         <outlet property="emailTextField" destination="iE7-vC-Jow" id="rsG-Bl-u6e"/>
                         <outlet property="firstNameTextField" destination="8tI-3a-csY" id="t1i-ce-k7X"/>
                         <outlet property="flagButton" destination="Ghy-wO-gC0" id="FwK-ix-MIZ"/>
