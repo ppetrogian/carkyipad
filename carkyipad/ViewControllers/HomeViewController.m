@@ -40,8 +40,22 @@
         self.homeMapView.layer.borderWidth = 4.0;
         self.homeMapView.layer.borderColor = [UIColor whiteColor].CGColor;
     }
-    self.homeMapView.mapType = kGMSTypeNormal;
+    NSString *backImageUrlForMainButton = nil;
     AppDelegate *app = [AppDelegate instance];
+    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
+    if (tm == TabletModeTransfer) {
+        backImageUrlForMainButton = app.clientConfiguration.transferBackgroundImage;
+    } else if(tm == TabletModeRental) {
+        backImageUrlForMainButton = app.clientConfiguration.rentalBackgroundImage;
+    }
+    if (backImageUrlForMainButton) {
+        UIImage *showImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: backImageUrlForMainButton]]];
+        if (showImg.size.width > 0) {
+            UIButton *mainButton = [self.view viewWithTag:1];
+            [mainButton setImage:showImg forState:UIControlStateNormal];
+        }
+    }
+    self.homeMapView.mapType = kGMSTypeNormal;
     self.homeMapView.settings.myLocationButton = NO;
     self.homeMapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
     CLLocationCoordinate2D positionCenter = CLLocationCoordinate2DMake(app.clientConfiguration.location.latLng.lat, app.clientConfiguration.location.latLng.lng);
