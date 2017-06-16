@@ -87,7 +87,7 @@ NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
         self.rentalBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseRentalBackgroundImage fromDictionary:dict];
         self.transferBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseTransferBackgroundImage fromDictionary:dict];
         self.confirmationVideo = [self objectOrNilForKey:kClientConfigurationResponseConfirmationVideo fromDictionary:dict];
-        self.acceptsCash = [[self objectOrNilForKey:kClientConfigurationResponseAcceptsCash fromDictionary:dict] boolValue];
+
     }
     
     return self;
@@ -125,7 +125,6 @@ NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
     [mutableDict setValue:self.rentalBackgroundImage forKey:kClientConfigurationResponseRentalBackgroundImage];
     [mutableDict setValue:self.transferBackgroundImage forKey:kClientConfigurationResponseTransferBackgroundImage];
     [mutableDict setValue:self.confirmationVideo forKey:kClientConfigurationResponseConfirmationVideo];
-    [mutableDict setValue:[NSNumber numberWithBool:self.acceptsCash] forKey:kClientConfigurationResponseAcceptsCash];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

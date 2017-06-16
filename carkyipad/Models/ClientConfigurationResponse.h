@@ -28,7 +28,6 @@
 @property (nonatomic, strong) NSString *rentalBackgroundImage;
 @property (nonatomic, strong) NSString *transferBackgroundImage;
 @property (nonatomic, strong) NSString *confirmationVideo;
-@property (nonatomic, assign) BOOL acceptsCash;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

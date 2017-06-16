@@ -52,6 +52,7 @@
     if(tm == TabletModeReception && self.isForTransfer) { //acceptsCash
         self.payWithCashButton.hidden = NO;
         [self.payWithCashButton enableButton];
+        self.payWithCashButton.backgroundColor = [UIColor blueColor];
     }
 }
 
@@ -196,17 +197,22 @@
 - (IBAction)payWithCashButton_Click:(UIButton *)sender {
     // only for transfer
     [self.payWithCashButton disableButton];
-    self.parentTransferController.payWithCash = YES;
+    if (self.isForTransfer) {
+        self.parentTransferController.payWithCash = YES;
+    }
     [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
     [self.parentTransferController showNextStep];
     [[AppDelegate instance] hideProgressNotification];
     [self.payWithCashButton enableButton];
+    self.payWithCashButton.backgroundColor = [UIColor blueColor];
 }
 
 - (IBAction)payNowButton_click:(UIButton *)sender {
     [self.payNowButton disableButton];
     [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Card Validation", nil) inView:self.view];
-    self.parentTransferController.payWithCash = NO;
+    if (self.isForTransfer) {
+        self.parentTransferController.payWithCash = NO;
+    }
     STPCardParams *cardParams;
     cardParams = [self getCardParamsFromUI];
     self.parentTransferController.cardParams = cardParams;
