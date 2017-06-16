@@ -45,8 +45,6 @@
     TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
     if (tm == TabletModeTransfer) {
         backImageUrlForMainButton = app.clientConfiguration.transferBackgroundImage;
-    } else if(tm == TabletModeRental) {
-        backImageUrlForMainButton = app.clientConfiguration.rentalBackgroundImage;
     }
     if (backImageUrlForMainButton) {
         UIImage *showImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: backImageUrlForMainButton]]];

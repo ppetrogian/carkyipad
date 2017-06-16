@@ -43,11 +43,15 @@
          [self.confirmButton enableButton];
     }
     if (app.hotelPrefilled) {
-        //self.firstNameTextField.text = app.clientConfiguration.firstName;
-        //self.lastNameTextField.text = app.clientConfiguration.lastName;
+        self.firstNameTextField.text = app.clientConfiguration.firstName;
+        self.lastNameTextField.text = app.clientConfiguration.lastName;
         self.emailTextField.text = app.clientConfiguration.email;
         self.phoneNumberTextField.text = app.clientConfiguration.telephone;
         [self.confirmButton enableButton];
+    }
+    TabletMode tm = (TabletMode)app.clientConfiguration.tabletMode;
+    if(tm == TabletModeReception) {
+        self.emailTextField.hidden = YES;
     }
     [self.firstNameTextField becomeFirstResponder];
 
@@ -108,9 +112,14 @@
     [self presentViewController:vcObj animated:YES completion:nil];
 }
 
-
 - (IBAction)textField_edit:(UITextField *)sender {
-    BOOL mustEnable =  self.firstNameTextField.text.length > 0 && self.lastNameTextField.text.length > 0 && self.emailTextField.text.length > 0 && self.phoneNumberTextField.text.length > 0 && [self.validator emailValidation:self.emailTextField.text];
+    BOOL mustEnable =  self.firstNameTextField.text.length > 0 && self.lastNameTextField.text.length > 0 && self.phoneNumberTextField.text.length > 0;
+    if (self.emailTextField.hidden == NO) {
+        mustEnable = mustEnable && self.emailTextField.text.length > 0  && [self.validator emailValidation:self.emailTextField.text];
+    }
+    else {
+        self.emailTextField.text = [NSString stringWithFormat:@"phone%@@eageantaxi.com", self.phoneNumberTextField.text];
+    }
     if (!mustEnable && self.confirmButton.isEnabled) {
         [self.confirmButton disableButton];
     }

@@ -48,7 +48,8 @@
         [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
         [self.payNowButton enableButton];
     }
-    if(app.clientConfiguration.acceptsCash && self.isForTransfer) {
+    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
+    if(tm == TabletModeReception && self.isForTransfer) { //acceptsCash
         self.payWithCashButton.hidden = NO;
         [self.payWithCashButton enableButton];
     }

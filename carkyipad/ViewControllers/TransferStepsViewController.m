@@ -286,7 +286,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
-    request.paymentMethod = withCash ? 1 : (forCC ? 3 : 2); //3 credit card, paypal 2
+    request.paymentMethod = withCash ? 1 : (forCC ? 3 : 2); //1  cash, 3 credit card, paypal 2
     NSDate *pickupDate = [self getPickupDateTime];
     request.dateTime = [df stringFromDate:pickupDate];
     DateTime *pdt = [DateTime modelObjectWithDate:pickupDate];

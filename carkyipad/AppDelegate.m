@@ -66,7 +66,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.loaded = NO;
-    self.screensData =@[@[], @[@"Main",@"home"],@[@"TransferLanding",@"home"],@[@"Landing",@"home"],@[@"RentalLanding",@"home"]];
+    self.screensData =@[@[], @[@"Main",@"home"],@[@"TransferLanding",@"home"],@[@"Landing",@"home"],@[@"TransferLanding",@"home"]]; // 4 is transfer with cash (reception)
     self.viewControllersDict = [NSMutableDictionary dictionaryWithCapacity:4];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
@@ -134,7 +134,7 @@
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
-    self.hotelPrefilled = [[NSUserDefaults standardUserDefaults] boolForKey:@"hotel_prefilled"];
+    self.hotelPrefilled = NO; //[[NSUserDefaults standardUserDefaults] boolForKey:@"hotel_prefilled"];
     if ([userName containsString:@"phisakel"] && [userName containsString:@"@gmail.com"]) {
         self.environment = [[NSUserDefaults standardUserDefaults] integerForKey:@"environment_preference"];
     } else {
@@ -142,11 +142,9 @@
     }
     //init api client
     self.api = [CarkyApiClient sharedService];
-
     if (!enabled) {
         return;
     }
-    
     [self.api loginWithUsername:userName andPassword:password withTokenBlock:^(BOOL result) {
         [self.api GetClientConfiguration:^(NSArray *array) {
             if (array.count > 0) {

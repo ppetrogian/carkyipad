@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, TabletMode) {
     TabletModeRentalAndTransfer,
     TabletModeTransfer,
     TabletModeAll,
-    TabletModeRental
+    TabletModeReception
 };
 
 typedef NS_ENUM(NSUInteger, CarkyBackendType) {
