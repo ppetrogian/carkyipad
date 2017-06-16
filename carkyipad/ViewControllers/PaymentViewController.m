@@ -171,12 +171,14 @@
     self.expiryDateTextField.dateComponents.year = info.expiryYear;
     self.expiryDateTextField.text = [NSString stringWithFormat:@"%02lu/%lu", (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear % 2000];
     self.cvvTextField.text = info.cvv;
+    [self validateCardDetails];
 }
 
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController {
     NSLog(@"User cancelled scan");
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.payNowButton enableButton];
+    [self validateCardDetails];
 }
 
 - (STPCardParams *)getCardParamsFromUI {
