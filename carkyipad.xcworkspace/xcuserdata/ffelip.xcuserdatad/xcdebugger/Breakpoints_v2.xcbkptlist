@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "carkyipad/ViewControllers/CarRentalStepsViewController.m"
-            timestampString = "518733094.135225"
+            timestampString = "519308466.490521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "-bookingNew_Click:"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "-payRentalWithCreditCard:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "carkyipad/Models/ClientConfigurationResponse.m"
-            timestampString = "519306861.461063"
+            timestampString = "519307209.285809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-copyWithZone:"
             landmarkType = "7">
          </BreakpointContent>

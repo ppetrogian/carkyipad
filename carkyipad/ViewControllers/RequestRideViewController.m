@@ -42,10 +42,6 @@
 
     [AppDelegate addDropShadow:self.shadowView forUp:YES];
     self.mapView.delegate = self;
-    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
-    if (tm == TabletModeTransfer) {
-        self.backButton.hidden = YES;
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {

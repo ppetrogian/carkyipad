@@ -63,10 +63,7 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     //[self setLocationDropMenus:[NSMutableArray array] withTexts:[NSMutableArray array]];
     self.parentRentalController = (CarRentalStepsViewController *)self.stepsController;
     [self setupInit];
-    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
-    if (tm == TabletModeTransfer) {
-        self.backButton.hidden = YES;
-    }
+
     for (UIPickerView *p in self.pickerViews) {
         p.dataSource = self;
         p.delegate = self;

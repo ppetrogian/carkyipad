@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightConstraint;
 @property (weak, nonatomic) IBOutlet GMSMapView *homeMapView;
-
+@property (nonatomic, assign) BOOL circularMap;
 @end

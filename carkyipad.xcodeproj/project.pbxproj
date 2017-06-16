@@ -97,6 +97,8 @@
 		AEA9E9371EAE68CC00CC84D5 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9361EAE68CC00CC84D5 /* Content.m */; };
 		AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */; };
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
+		AEE65A151EF4024300700DF3 /* TransferLanding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */; };
+		AEE65A171EF4025E00700DF3 /* RentalLanding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE65A161EF4025E00700DF3 /* RentalLanding.storyboard */; };
 		AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA24D51EAA349900043423 /* RequestRideViewController.m */; };
 		D10155F81ED66CEA00F69773 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10155F71ED66CEA00F69773 /* Landing.storyboard */; };
 		D113637B1EA0731800EB6279 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11363771EA0731800EB6279 /* libCardIO.a */; };
@@ -334,6 +336,8 @@
 		AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2848220705019691240.mp4; sourceTree = "<group>"; };
 		AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RZExtensions.m"; sourceTree = "<group>"; };
 		AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZExtensions.h"; sourceTree = "<group>"; };
+		AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TransferLanding.storyboard; path = ../TransferLanding.storyboard; sourceTree = "<group>"; };
+		AEE65A161EF4025E00700DF3 /* RentalLanding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RentalLanding.storyboard; path = ../RentalLanding.storyboard; sourceTree = "<group>"; };
 		AEEA24D41EAA349900043423 /* RequestRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestRideViewController.h; path = ViewControllers/RequestRideViewController.h; sourceTree = "<group>"; };
 		AEEA24D51EAA349900043423 /* RequestRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestRideViewController.m; path = ViewControllers/RequestRideViewController.m; sourceTree = "<group>"; };
 		B721B99E3657D196CDC9B13B /* Pods-carkyipadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipadUITests/Pods-carkyipadUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -744,6 +748,8 @@
 				D10155F71ED66CEA00F69773 /* Landing.storyboard */,
 				AE7275B61E6CCA8C00918646 /* Assets.xcassets */,
 				AE616DB51ED186E100EA38D6 /* Loading.storyboard */,
+				AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */,
+				AEE65A161EF4025E00700DF3 /* RentalLanding.storyboard */,
 				AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */,
 				AE7275BB1E6CCA8C00918646 /* Info.plist */,
 				AE7275AA1E6CCA8C00918646 /* Supporting Files */,
@@ -1171,6 +1177,7 @@
 				AE616DB61ED186E100EA38D6 /* Loading.storyboard in Resources */,
 				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */,
+				AEE65A151EF4024300700DF3 /* TransferLanding.storyboard in Resources */,
 				E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
@@ -1180,6 +1187,7 @@
 				D1344BFC1E77766300006FAD /* Transfer.storyboard in Resources */,
 				AE7275B71E6CCA8C00918646 /* Assets.xcassets in Resources */,
 				AE6352AA1E75DBF800065F0F /* Loading_new.gif in Resources */,
+				AEE65A171EF4025E00700DF3 /* RentalLanding.storyboard in Resources */,
 				D12802CB1E9D6EE900DA05E7 /* Roboto-Regular.ttf in Resources */,
 				AE7275B51E6CCA8C00918646 /* Main.storyboard in Resources */,
 				D12802CD1E9D6EF700DA05E7 /* Roboto-Bold.ttf in Resources */,

@@ -35,9 +35,11 @@
     // Do any additional setup after loading the view.
     //self.asyncView.data = 0; // dummy data
     //self.buttonTransfer.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:35];
-    self.homeMapView.layer.cornerRadius = self.homeMapView.frame.size.width / 2;
-    self.homeMapView.layer.borderWidth = 4.0;
-    self.homeMapView.layer.borderColor = [UIColor whiteColor].CGColor;
+    if (self.circularMap) {
+        self.homeMapView.layer.cornerRadius = self.homeMapView.frame.size.width / 2;
+        self.homeMapView.layer.borderWidth = 4.0;
+        self.homeMapView.layer.borderColor = [UIColor whiteColor].CGColor;
+    }
     self.homeMapView.mapType = kGMSTypeNormal;
     AppDelegate *app = [AppDelegate instance];
     self.homeMapView.settings.myLocationButton = NO;

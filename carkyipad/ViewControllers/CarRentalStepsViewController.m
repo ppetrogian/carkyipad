@@ -88,10 +88,11 @@
     thirdStep.step.title =  NSLocalizedString(@"Extras", nil);
     thirdStep.stepDelegate = self;
     
+    // add client details, payment screen from transfer storyboard
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Transfer" bundle:nil];
     UITabBarController *tabbarController = [storyboard instantiateViewControllerWithIdentifier:@"tabBar"];
     
-    return @[firstStep, secondStep, thirdStep, tabbarController.viewControllers[1], tabbarController.viewControllers[2]];
+    return @[firstStep, secondStep, thirdStep, tabbarController.viewControllers[2], tabbarController.viewControllers[3]];
 }
 
 - (void)canceled {
