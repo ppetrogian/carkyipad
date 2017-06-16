@@ -34,12 +34,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.stpCardTextField becomeFirstResponder];
-
+    AppDelegate *app = [AppDelegate instance];
     //[self disablePayButton];
     self.stpCardTextField.borderColor = UIColor.blackColor;
     self.stpCardTextField.borderWidth = 1;
     self.isForTransfer = [self.stepsController isKindOfClass:TransferStepsViewController.class];
-    CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
+    CarkyBackendType bt = (CarkyBackendType)app.environment;
     if (bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
         self.cvvTextField.text = @"";
         self.expiryDateTextField.text = @"";
@@ -47,6 +47,10 @@
     } else {
         [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
         [self.payNowButton enableButton];
+    }
+    if(app.clientConfiguration.acceptsCash && self.isForTransfer) {
+        self.payWithCashButton.hidden = NO;
+        [self.payWithCashButton enableButton];
     }
 }
 
@@ -188,9 +192,20 @@
     return cardParams;
 }
 
+- (IBAction)payWithCashButton_Click:(UIButton *)sender {
+    // only for transfer
+    [self.payWithCashButton disableButton];
+    self.parentTransferController.payWithCash = YES;
+    [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
+    [self.parentTransferController showNextStep];
+    [[AppDelegate instance] hideProgressNotification];
+    [self.payWithCashButton enableButton];
+}
+
 - (IBAction)payNowButton_click:(UIButton *)sender {
     [self.payNowButton disableButton];
     [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Card Validation", nil) inView:self.view];
+    self.parentTransferController.payWithCash = NO;
     STPCardParams *cardParams;
     cardParams = [self getCardParamsFromUI];
     self.parentTransferController.cardParams = cardParams;
@@ -265,7 +280,7 @@
 - (IBAction)payWithPaypalButton_click:(UIButton *)sender {
     CarkyApiClient *api = [CarkyApiClient sharedService];
     if (self.isForTransfer) {
-        TransferBookingRequest *request = [self.parentTransferController getPaymentRequestWithCC:NO];
+        TransferBookingRequest *request = [self.parentTransferController getPaymentRequestWithCC:NO orWithCash:NO];
         [api CreateTransferBookingRequestPayPalPayment:request withBlock:^(NSArray *array) {
             CreateTransferBookingRequestPayPalPaymentResponse *responseObj = array.firstObject;
             // Create a PayPalPayment

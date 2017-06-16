@@ -180,7 +180,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }];
 }
 
-
 -(CarkyDriverPositionsRequest *)getDriversRequest:(NSInteger)carCategory {
     CarkyDriverPositionsRequest *request = [CarkyDriverPositionsRequest new];
     request.carkyCategoryId = carCategory;
@@ -271,7 +270,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }
 }
     
--(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC {
+-(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC orWithCash:(BOOL)withCash {
     AppDelegate *app = [AppDelegate instance];
     NSDateFormatter *df = [NSDateFormatter new];
     // df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
@@ -287,7 +286,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }
     request.passengersNumber = cCat.maxPassengers;
     request.agreedToTermsAndConditions = YES;
-    request.paymentMethod = forCC ? 3 : 2; //3 credit card, paypal 2
+    request.paymentMethod = withCash ? 1 : (forCC ? 3 : 2); //3 credit card, paypal 2
     NSDate *pickupDate = [self getPickupDateTime];
     request.dateTime = [df stringFromDate:pickupDate];
     DateTime *pdt = [DateTime modelObjectWithDate:pickupDate];
@@ -341,16 +340,19 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 }
 
--(void)payTransferWithCreditCard:(BlockString)block; {
-    TransferBookingRequest *request = [self getPaymentRequestWithCC:YES];
+-(void)payTransferWithCash:(BlockString)block {
+    TransferBookingRequest *request = [self getPaymentRequestWithCC:NO orWithCash:YES];
+    [self MakeTransferRequest:block request:request]; // create transfer request
+}
+
+-(void)payTransferWithCreditCard:(BlockString)block {
+    TransferBookingRequest *request = [self getPaymentRequestWithCC:YES orWithCash:NO];
     request.stripeCardToken = self.stripeCardToken;
     [self MakeTransferRequest:block request:request]; // create transfer request
-
 }
     
-    
 -(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockString)block {
-    TransferBookingRequest *request = [self getPaymentRequestWithCC:NO];
+    TransferBookingRequest *request = [self getPaymentRequestWithCC:NO orWithCash:NO];
     request.payPalPaymentResponse = confirmation;
     NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     request.payPalPayerId = identifier;

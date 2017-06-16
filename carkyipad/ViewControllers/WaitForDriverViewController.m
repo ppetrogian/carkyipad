@@ -92,9 +92,16 @@
         }]; // create transfer request
     }
     else {
-        [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingId) {
-            [self showBooking:bookingId];
-        }];
+        if (self.parentTransferController.payWithCash) {
+            [self.parentTransferController payTransferWithCash:^(NSString *bookingId) {
+                [self showBooking:bookingId];
+            }];
+        }
+        else {
+            [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingId) {
+                [self showBooking:bookingId];
+            }];
+        }
     }
 }
 

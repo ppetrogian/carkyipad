@@ -9,6 +9,7 @@
 @class PaymentCardEditorField,ClientDetailsViewController,BKCardExpiryField;
 
 @interface PaymentViewController : StepViewController
+@property (weak, nonatomic) IBOutlet UIButton *payWithCashButton;
 @property (weak, nonatomic) IBOutlet UIButton *payNowButton;
 @property (weak, nonatomic) IBOutlet UIButton *payWithPaypalButton;
 @property (weak, nonatomic) IBOutlet UITextField *cvvTextField;

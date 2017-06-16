@@ -19,14 +19,15 @@
 // date properties
 @property (strong, nonatomic) CarCategory *selectedCarCategory;
 @property (strong, nonatomic) NSString *transferBookingId;
+@property (nonatomic, assign) BOOL payWithCash;
 @property (strong, nonatomic) NSString *payPalPaymentResponse;
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;
 // methods
-
+-(void)payTransferWithCash:(BlockString)block;
 -(void)payTransferWithCreditCard:(BlockString)block;
 -(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockString)block;
--(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC;
+-(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC orWithCash:(BOOL)withCash;
 @end

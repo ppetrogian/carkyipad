@@ -708,21 +708,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I agree to the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27i-Nm-UJd">
-                                <rect key="frame" x="192" y="598" width="116" height="25"/>
+                                <rect key="frame" x="192" y="608" width="116" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All payment transactions are 128-bit SSL encrypted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8w-hz-mJm">
-                                <rect key="frame" x="197" y="629" width="283" height="25"/>
+                                <rect key="frame" x="197" y="639" width="283" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VA-Py-xTx">
-                                <rect key="frame" x="276" y="596" width="163" height="30"/>
+                                <rect key="frame" x="276" y="606" width="163" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Terms and Conditions"/>
@@ -731,7 +731,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQf-ud-yJI">
-                                <rect key="frame" x="163" y="488" width="451" height="51"/>
+                                <rect key="frame" x="163" y="480" width="451" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
@@ -843,7 +843,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utg-XA-aye">
-                                <rect key="frame" x="162" y="415" width="451" height="47"/>
+                                <rect key="frame" x="162" y="413" width="451" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
@@ -855,11 +855,11 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="lock-icon_31851 copy" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-v6-NFP">
-                                <rect key="frame" x="164" y="633" width="19" height="19"/>
+                                <rect key="frame" x="164" y="643" width="19" height="19"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Ye4-bp-X9v">
-                                <rect key="frame" x="159" y="599" width="30" height="25"/>
+                                <rect key="frame" x="159" y="609" width="30" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -887,9 +887,21 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="PayPal" translatesAutoresizingMaskIntoConstraints="NO" id="hTx-TN-897">
-                                <rect key="frame" x="400" y="505" width="68" height="19"/>
+                                <rect key="frame" x="400" y="498" width="68" height="19"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctd-8b-NuS">
+                                <rect key="frame" x="163" y="549" width="451" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="PAY WITH CASH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="payWithCashButton_Click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="FKB-ZC-Hck"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -903,6 +915,7 @@
                         <outlet property="cvvTextField" destination="53X-ze-Zuw" id="kV6-Dl-43l"/>
                         <outlet property="expiryDateTextField" destination="WGO-1K-n1m" id="De0-7d-Ndl"/>
                         <outlet property="payNowButton" destination="Utg-XA-aye" id="seX-eu-tEi"/>
+                        <outlet property="payWithCashButton" destination="ctd-8b-NuS" id="KaO-yl-udh"/>
                         <outlet property="payWithPaypalButton" destination="uQf-ud-yJI" id="suO-df-Apv"/>
                         <outlet property="stpCardTextField" destination="p9k-uu-6Ws" id="x7f-Ta-emq"/>
                         <outlet property="takePhotoButton" destination="6oV-c2-6RV" id="m8Z-E0-iaf"/>
