@@ -21,13 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usX-5L-7q6" customClass="GMSMapView">
-                                <rect key="frame" x="72" y="27" width="626" height="170"/>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usX-5L-7q6" customClass="GMSMapView">
+                                <rect key="frame" x="72" y="27" width="79" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-yM-D6B" userLabel="ButtonTaxi">
-                                <rect key="frame" x="20" y="192" width="728" height="824"/>
+                                <rect key="frame" x="-30" y="20" width="820" height="996"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
                                 <state key="normal" image="taxi_Landing">

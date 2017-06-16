@@ -43,7 +43,7 @@
     NSString *backImageUrlForMainButton = nil;
     AppDelegate *app = [AppDelegate instance];
     TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
-    if (tm == TabletModeTransfer) {
+    if (tm == TabletModeTransfer || tm == TabletModeReception) {
         backImageUrlForMainButton = app.clientConfiguration.transferBackgroundImage;
     }
     if (backImageUrlForMainButton) {

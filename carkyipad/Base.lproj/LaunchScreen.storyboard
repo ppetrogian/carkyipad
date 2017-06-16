@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,18 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OvT-JU-WTR">
-                                <rect key="frame" x="312" y="194" width="400" height="380"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="0y7-21-6i3"/>
-                                    <constraint firstAttribute="height" constant="380" id="2Vq-og-ivZ"/>
-                                </constraints>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="aegean_logo" translatesAutoresizingMaskIntoConstraints="NO" id="qhM-u0-YHF">
+                                <rect key="frame" x="362" y="234" width="300" height="300"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OvT-JU-WTR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="70x-69-K8T"/>
-                            <constraint firstItem="OvT-JU-WTR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="akt-hR-Q4B"/>
+                            <constraint firstItem="qhM-u0-YHF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Yi-NA-yBs"/>
+                            <constraint firstItem="qhM-u0-YHF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="S4H-S8-eKX"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -42,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="236" height="219"/>
+        <image name="aegean_logo" width="300" height="300"/>
     </resources>
 </document>
