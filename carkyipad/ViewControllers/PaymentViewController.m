@@ -52,8 +52,7 @@
     if(tm == TabletModeReception && self.isForTransfer) { //acceptsCash
         self.payWithCashButton.hidden = NO;
         [self.payWithCashButton enableButton];
-        self.payWithCashButton.backgroundColor = [UIColor blueColor];
-        //self.payWithCashButton.titleLabel.textColor = [UIColor blackColor];
+        self.payWithCashButton.backgroundColor = [UIColor magentaColor];
     }
 }
 
@@ -205,8 +204,7 @@
     [self.parentTransferController showNextStep];
     [[AppDelegate instance] hideProgressNotification];
     [self.payWithCashButton enableButton];
-    self.payWithCashButton.backgroundColor = [UIColor blueColor];
-    //self.payWithCashButton.titleLabel.textColor = [UIColor blackColor];
+    self.payWithCashButton.backgroundColor = [UIColor magentaColor];
 }
 
 - (IBAction)payNowButton_click:(UIButton *)sender {

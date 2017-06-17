@@ -33,7 +33,7 @@
     AppDelegate *app = [AppDelegate instance];
     
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if (1 ==1 ) { //bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
+    if (1 == 1 ) { //bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
         self.firstNameTextField.text = @"";
         self.lastNameTextField.text = @"";
         self.emailTextField.text = @"";
@@ -42,6 +42,7 @@
     } else {
          [self.confirmButton enableButton];
     }
+    // obsolete not used
     if (app.hotelPrefilled) {
         self.firstNameTextField.text = app.clientConfiguration.firstName;
         self.lastNameTextField.text = app.clientConfiguration.lastName;
@@ -49,11 +50,13 @@
         self.phoneNumberTextField.text = app.clientConfiguration.telephone;
         [self.confirmButton enableButton];
     }
+    // IMPORTANT for reception mode hide some ui
     TabletMode tm = (TabletMode)app.clientConfiguration.tabletMode;
     if(tm == TabletModeReception) {
         self.emailTextField.hidden = YES;
         self.emailLabel.hidden = YES;
         self.emailRequiredLabel.hidden = YES;
+        self.phoneVerificationLabel.hidden = YES;
     }
     [self.firstNameTextField becomeFirstResponder];
 

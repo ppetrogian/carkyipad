@@ -532,6 +532,7 @@
                         <outlet property="flagButton" destination="Ghy-wO-gC0" id="FwK-ix-MIZ"/>
                         <outlet property="lastNameTextField" destination="tmv-Gj-rLu" id="F8W-eq-kK2"/>
                         <outlet property="phoneNumberTextField" destination="JXx-FZ-3Xf" id="ks1-TM-anA"/>
+                        <outlet property="phoneVerificationLabel" destination="rxQ-P5-efu" id="86b-Gw-8cg"/>
                         <segue destination="mn9-Xa-Ugq" kind="presentation" identifier="phoneConfirmSegue" modalPresentationStyle="formSheet" id="YMP-37-cf7"/>
                     </connections>
                 </viewController>
@@ -898,7 +899,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="PAY WITH CASH">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="payWithCashButton_Click:" destination="vXu-HB-Y0v" eventType="touchUpInside" id="FKB-ZC-Hck"/>
