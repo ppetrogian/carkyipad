@@ -180,10 +180,10 @@
 -(NSArray *)getCountryDataByCodeWithCountryCodeArr:(NSArray *)countryCodeArr{
     
     NSMutableArray *countries= [[NSMutableArray alloc] initWithCapacity:0];
-    
+    NSLocale *appLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     for (NSString *code in countryCodeArr) {
         
-        id countryName = [[NSLocale currentLocale] displayNameForKey:NSLocaleCountryCode value:code];
+        id countryName = [appLocale displayNameForKey:NSLocaleCountryCode value:code];
         
         id phoneNumberLocale = [NBPhoneNumberUtil sharedInstance];
         
