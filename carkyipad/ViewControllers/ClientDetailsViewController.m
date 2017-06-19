@@ -123,7 +123,7 @@
         mustEnable = mustEnable && self.emailTextField.text.length > 0  && [self.validator emailValidation:self.emailTextField.text];
     }
     else {
-        self.emailTextField.text = [NSString stringWithFormat:@"phone%@@eageantaxi.com", self.phoneNumberTextField.text];
+        self.emailTextField.text = [NSString stringWithFormat:@"phone%@@aegeantaxi.com", self.phoneNumberTextField.text];
     }
     if (!mustEnable && self.confirmButton.isEnabled) {
         [self.confirmButton disableButton];
