@@ -61,6 +61,20 @@
         [myAlertController dismissViewControllerAnimated:YES completion:nil];
     }];
 }
+
+-(void)showRetryDialogViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr withBlockYes:(BlockBoolean)blockYes andBlockNo:(BlockBoolean)blockNo {
+    UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
+    [myAlertController addAction: [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
+        blockYes(YES);
+        [myAlertController dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [myAlertController addAction: [UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * action)  {
+        blockNo(NO);
+        [myAlertController dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [self presentViewController:myAlertController animated:YES completion:nil];
+}
+
 #pragma mark -
 - (UIStatusBarStyle)preferredStatusBarStyle
 {

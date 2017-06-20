@@ -31,6 +31,7 @@
 - (IBAction)gotoNext:(id)sender;
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr;
 -(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr withBlock:(BlockBoolean)block;
+-(void)showRetryDialogViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr withBlockYes:(BlockBoolean)blockYes andBlockNo:(BlockBoolean)blockNo;
 -(RentalBookingRequest *)getRentalRequestWithCC:(BOOL)forCC;
 @property (nonatomic, weak) IBOutlet StepSegmentControllerView *segmentController;
 @end

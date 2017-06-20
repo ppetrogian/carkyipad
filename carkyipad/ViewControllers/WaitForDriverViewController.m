@@ -13,16 +13,18 @@
 #import "TransferStepsViewController.h"
 #import "InitViewController.h"
 #import "RequestRideViewController.h"
+#import "RefreshableViewController.h"
 @import AVFoundation;
 @import AVKit;
 
-@interface WaitForDriverViewController () <InitViewController>
+@interface WaitForDriverViewController () <InitViewController, RefreshableViewController>
 @property (nonatomic, assign) NSTimeInterval pollInterval;
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
 @property (nonatomic, assign) NSTimeInterval pollTimeout;
 @property (nonatomic, strong) NSTimer *pollTimer;
 
 @property (nonatomic, assign) BOOL loaded;
+@property (nonatomic, assign) BOOL retriedFromBusy;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentTransferController;
 @end
 
@@ -33,7 +35,7 @@
     self.pollInterval = 5.0;
     self.pollTimeout = 120.0;
     self.pollTime = 0.0;
-    [self findDriverAndMakePayment];
+    self.retriedFromBusy = NO;
 
     // Do any additional setup after loading the view.
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
@@ -42,6 +44,13 @@
     AppDelegate *app = [AppDelegate instance];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:app.qplayer. currentItem];
     self.pickupImageView.alpha = 0;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.loaded) {
+        [self setNeedRefresh:YES];
+    }
 }
 
 -(void)initControls {
@@ -54,9 +63,16 @@
     app.playerLayer.frame = self.view.layer.bounds;
     [self.view.layer addSublayer:app.playerLayer];
     [app.qplayer seekToTime:kCMTimeZero];
-    [app.qplayer play];
     app.qplayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     self.loaded = YES;
+}
+
+-(void)setNeedRefresh:(BOOL)value {
+    if (value) {
+         AppDelegate *app = [AppDelegate instance];
+        [app.qplayer play];
+        [self findDriverAndMakePayment];
+    }
 }
 
 -(void)deinitControls {
@@ -107,22 +123,42 @@
 
 -(void)showBooking:(NSString *)bookingId {
     AppDelegate *app = [AppDelegate instance];
+    NSString *retryMsg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
+    self.parentTransferController.transferBookingId = bookingId;
     if (app.clientConfiguration.booksLater) {
-        [self deinitControls];
+        [app.qplayer pause];
         [self.parentTransferController showAlertViewWithMessage:bookingId andTitle:@"Booking" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
         }];
         return;
     }
-    self.parentTransferController.transferBookingId = bookingId;
-    if ([bookingId isEqualToString:@"0"]) {
-        [self deinitControls];
-        [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"Drivers_busy") andTitle:@"Booking" withBlock:^(BOOL b) {
-            [self newBookingButton_Click:nil];
-        }];
+    if ([bookingId isEqualToString:@"-402"]) { // 402 error = payment failed
+        [app.qplayer pause];
+        NSString *paymentMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking.",@"Payment error");
+        NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", paymentMsg, retryMsg];
+        [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
+            [self.parentTransferController showPreviousStep];
+        } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         return;
-    } else if([bookingId isEqualToString:@"-1"]) {
-        [self deinitControls];
+    }
+    else if ([bookingId isEqualToString:@"0"]) {
+          [app.qplayer pause];
+        NSString *busyMsg = NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"Drivers_busy");
+        NSString *retryMsg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
+        if (!self.retriedFromBusy) {
+            self.retriedFromBusy = YES;
+            NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", busyMsg, retryMsg];
+            [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
+                [self setNeedRefresh:YES];
+            } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
+        }
+        else {
+            [self.parentTransferController showAlertViewWithMessage:busyMsg andTitle:@"Booking" withBlock:^(BOOL b) {  [self newBookingButton_Click:nil];
+            }];
+        }
+        return;
+    }
+    else if([bookingId isEqualToString:@"-1"]) {
         // stripe error, already have shown message
         [self newBookingButton_Click:nil];
     }
