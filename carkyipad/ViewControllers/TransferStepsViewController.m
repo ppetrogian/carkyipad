@@ -241,6 +241,9 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         NSURL *url = [NSURL URLWithString:baseUrl];
         NSData *directionsData = [NSData dataWithContentsOfURL: url];
         NSError *error;
+        if (!directionsData) {
+            return;
+        }
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:directionsData options:NSJSONReadingMutableContainers error:&error];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.polyline.map = nil;
@@ -305,6 +308,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     CarkyApiClient *api = [CarkyApiClient sharedService];
     AppDelegate *app = [AppDelegate instance];
     if (app.clientConfiguration.booksLater) {
+        // books later
         [api CreateTransferBookingForLater:request withBlock:^(NSArray *array) {
             [[AppDelegate instance] hideProgressNotification];
             if ([array.firstObject isKindOfClass:TransferBookingForLaterResponse.class]) {
@@ -317,6 +321,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         }];
     }
     else {
+        // books immediately
         [api CreateTransferBooking:request withBlock:^(NSArray *array) {
             [[AppDelegate instance] hideProgressNotification];
             if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {

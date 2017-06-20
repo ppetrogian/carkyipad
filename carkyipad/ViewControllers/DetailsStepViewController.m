@@ -455,6 +455,9 @@ NSString *const kResultsInsuranceId = @"InsuranceId";
     [app showProgressNotificationWithText:nil inView:self.view];
     id<RefreshableViewController> nextVc = self.parentRentalController.childViewControllers[1];
     [nextVc setNeedRefresh:YES];
+    if (!selectedRange.startDay.date || !selectedRange.endDay.date) {
+        return;
+    }
     [api GetRentServiceAvailableCarsForLocation:app.clientConfiguration.areaOfServiceId andPickupDate:range.startDay.date andDropoffDate:range.endDay.date withBlock:^(NSArray *array) {
         [app hideProgressNotification];
         app.availableCars = array;

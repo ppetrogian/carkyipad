@@ -322,12 +322,17 @@ static CarkyApiClient *_sharedService = nil;
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self setAuthorizationHeader];
     [self POST:@"api/Client/FindNearestCarkyDriverPositions" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *array = (NSArray *)responseObject;
-        NSMutableArray *driversArray = [NSMutableArray arrayWithCapacity:array.count];
-        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            driversArray[idx] = [CarkyDriverPositionsResponse modelObjectWithDictionary:obj];
-        }];
-        block(driversArray);
+        if ([responseObject isKindOfClass:NSArray.class]) {
+            NSArray *array = (NSArray *)responseObject;
+            NSMutableArray *driversArray = [NSMutableArray arrayWithCapacity:array.count];
+            [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                driversArray[idx] = [CarkyDriverPositionsResponse modelObjectWithDictionary:obj];
+            }];
+            block(driversArray);
+        }
+        else {
+            block([NSArray array]);
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error.localizedDescription);
         self.blockErrorDefault(error);
