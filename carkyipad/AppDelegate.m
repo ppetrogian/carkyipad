@@ -151,7 +151,8 @@
                 AppDelegate *app = [AppDelegate instance];
                 app.clientConfiguration = array.firstObject;
                 // debug only SOS
-                //if ([userName isEqualToString:@"phisakel@gmail.com"])  app.clientConfiguration.booksLater = YES;
+                //app.clientConfiguration.location.latLng.lat = 37.421932;
+                //app.clientConfiguration.location.latLng.lng = 25.396646;
                 
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;
