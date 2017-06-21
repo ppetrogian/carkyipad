@@ -58,12 +58,12 @@
                   moduleName = "carkyipad"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/CarkyApiClient.m"
-                  timestampString = "519626274.003491"
+                  timestampString = "519763400.308051"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "375"
                   endingLineNumber = "375"
-                  offsetFromSymbolStart = "280">
+                  offsetFromSymbolStart = "299">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -73,7 +73,7 @@
                   moduleName = "carkyipad"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/CarkyApiClient.m"
-                  timestampString = "519626274.008155"
+                  timestampString = "519763400.31404"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "375"
@@ -224,6 +224,38 @@
             startingLineNumber = "363"
             endingLineNumber = "363"
             landmarkName = "-payTransferWithCreditCard:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/CarkyApiClient.m"
+            timestampString = "519763343.119747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "+sharedService"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
+            timestampString = "519763593.757031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-showBooking:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

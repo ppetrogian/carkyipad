@@ -10,7 +10,7 @@
 #import "DataModels.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
-#define TRANSFER_TIMEOUT 4
+#define TRANSFER_TIMEOUT 180
 
 @implementation CarkyApiClient
 static CarkyApiClient *_sharedService = nil;

@@ -52,7 +52,7 @@
     if(tm == TabletModeReception && self.isForTransfer) { //acceptsCash
         self.payWithCashButton.hidden = NO;
         [self.payWithCashButton enableButton];
-        self.payWithCashButton.backgroundColor = [UIColor magentaColor];
+        self.payWithCashButton.backgroundColor = [UIColor lightGrayColor];
     }
 }
 
@@ -125,6 +125,7 @@
     double price = [self getTotalPrice];
     NSString *strText = [NSString stringWithFormat:@"PAY NOW       %.2lf€", price];
     [self.payNowButton setTitle:strText forState: UIControlStateNormal];
+    self.cvvTextField.text = @"";
 }
 
 #pragma mark - Navigation
@@ -203,7 +204,7 @@
     [self.parentTransferController showNextStep];
     [[AppDelegate instance] hideProgressNotification];
     [self.payWithCashButton enableButton];
-    self.payWithCashButton.backgroundColor = [UIColor magentaColor];
+    self.payWithCashButton.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (IBAction)payNowButton_click:(UIButton *)sender {
@@ -334,7 +335,7 @@
 
 - (void)verifyCompletedPayment:(PayPalPayment *)completedPayment {
         // Send the entire confirmation dictionary
-    NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation  options:0 error:nil];
+    NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation options:0 error:nil];
     NSString* newStr = [[NSString alloc] initWithData:confirmation encoding:NSUTF8StringEncoding];
     
         // Send confirmation to your server; your server should verify the proof of payment
