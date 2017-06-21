@@ -21,7 +21,7 @@
 @property (nonatomic, assign) NSTimeInterval pollInterval;
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
 @property (nonatomic, assign) NSTimeInterval pollTimeout;
-@property (nonatomic, strong) NSTimer *pollTimer;
+@property (nonatomic, strong) NSTimer *timeoutTimer;
 
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, assign) BOOL retriedFromBusy;
@@ -165,13 +165,13 @@
 
     CarkyApiClient *api = [CarkyApiClient sharedService];
     [api GetCarkyBookingStatusForUser:self.parentTransferController.userId andBooking:bookingId withBlock:^(NSArray *array) {
-        if (self.pollTimer.isValid) {
-            [self.pollTimer invalidate];
+        if (self.timeoutTimer.isValid) {
+            [self.timeoutTimer invalidate];
         }
         [self deinitControls];
         if (array.count > 0 && [array.firstObject isKindOfClass:Content.class]) {
-            self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
-            [self handlePollTimer:self.pollTimer];
+            self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
+            [self handlePollTimer:self.timeoutTimer];
             [self loadPickupImage];
             Content *responseObj = array.firstObject;
             self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
@@ -200,8 +200,8 @@
 - (void)handlePollTimer:(NSTimer *)theTimer {
     self.pollTime += self.pollInterval;
     if (self.pollTime > self.pollTimeout) {
-        if (self.pollTimer.isValid) {
-            [self.pollTimer invalidate];
+        if (self.timeoutTimer.isValid) {
+            [self.timeoutTimer invalidate];
         }
         [self newBookingButton_Click: self.makeBookingButton];
     }
@@ -218,20 +218,15 @@
 - (IBAction)newBookingButton_Click:(UIButton *)sender {
     //[self.parentController loadStepViewControllers];
     //[self.parentController showStepForIndex:0];
-    if (self.pollTimer.isValid) {
-        [self.pollTimer invalidate];
+    if (self.timeoutTimer.isValid) {
+        [self.timeoutTimer invalidate];
     }
     AppDelegate *app = [AppDelegate instance];
     [self deinitControls];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
     [self dismissViewControllerAnimated:NO completion:nil];
+    [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
 }
-
--(void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 
 #pragma mark - Navigation
 

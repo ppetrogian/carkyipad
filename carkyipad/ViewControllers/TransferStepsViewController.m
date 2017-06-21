@@ -351,8 +351,23 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 }
 
 -(void)payTransferWithCreditCard:(BlockString)block {
+    if (!self.stripeCardToken) {
+        STPAPIClient *stpClient = [STPAPIClient sharedClient];
+        [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
+            [[AppDelegate instance] hideProgressNotification];
+            if (error) {
+                NSString *strDescr = [NSString stringWithFormat: @"Credit card error: %@", error.localizedDescription];
+                [self showAlertViewWithMessage:strDescr andTitle:@"Error"];
+                return;
+            }
+            self.stripeCardToken = token.tokenId;
+            [self payTransferWithCreditCard:block];
+        }];
+        return;
+    }
     TransferBookingRequest *request = [self getPaymentRequestWithCC:YES orWithCash:NO];
     request.stripeCardToken = self.stripeCardToken;
+    self.stripeCardToken = nil;
     [self MakeTransferRequest:block request:request]; // create transfer request
 }
     

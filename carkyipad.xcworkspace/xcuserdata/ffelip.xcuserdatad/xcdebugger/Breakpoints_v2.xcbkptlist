@@ -201,13 +201,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
-            timestampString = "519630968.29895"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "519711538.617732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
+            landmarkName = "-payTransferWithCreditCard:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,29 +217,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
-            timestampString = "519630968.29895"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "519711643.790345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-viewDidAppear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
-            timestampString = "519630953.147567"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-findDriverAndMakePayment"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "-payTransferWithCreditCard:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
