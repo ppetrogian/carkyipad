@@ -45,6 +45,8 @@ typedef void(^BlockProgress)(NSProgress *progress);
 
 -(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;
 
+-(void)Heartbeat;
+
 //GET api/Helper/GetAllCarCategories car categories
 -(void)GetAllCarCategories:(BlockArray)block;
 

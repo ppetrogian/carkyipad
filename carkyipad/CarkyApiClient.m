@@ -316,6 +316,18 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
+//POST /api/Partner/Heartbeat
+-(void)Heartbeat {
+    [self setAuthorizationHeader];
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self POST:@"api/Partner/Heartbeat" parameters:nil progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
+       // NSLog(@"Heartbeat ok");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.blockErrorDefault(error);
+        //NSLog(@"Heartbeat error");
+    }];
+}
+
 // Find nearest carky driver positions
 //CarkyCategoryId 1=Executive  2=Luxury  3=Suv
 -(void)FindNearestCarkyDriverPositions:(CarkyDriverPositionsRequest *)request withBlock:(BlockArray)block {

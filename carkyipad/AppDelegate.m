@@ -19,6 +19,7 @@
 @import  HockeySDK;
 
 @interface AppDelegate ()
+@property (nonatomic, strong) NSTimer *heartbeatTimer;
 @end
 
 @implementation AppDelegate
@@ -80,7 +81,7 @@
     [GMSServices provideAPIKey:googleApiKey];
     [GMSPlacesClient provideAPIKey:googleApiKey];
     
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"bafb4bfd3a514cdbb91b676e8a384daa"];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"a129e5fddb2541efb97119cbc33e389a"];
     // Do some additional configuration if needed here
     [BITHockeyManager sharedHockeyManager].disableUpdateManager = YES;
     [[BITHockeyManager sharedHockeyManager] startManager];
@@ -90,9 +91,13 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self fetchInitialData:nil];
-    
     return YES;
 }
+                           
+ -(void)sendHeartbeat {
+     CarkyApiClient *api = [CarkyApiClient sharedService];
+     [api Heartbeat];
+ }
 
 +(AppDelegate *)instance {
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -153,6 +158,7 @@
                 // debug only SOS
                 //app.clientConfiguration.location.latLng.lat = 37.421932;
                 //app.clientConfiguration.location.latLng.lng = 25.396646;
+                self.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
                 
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;

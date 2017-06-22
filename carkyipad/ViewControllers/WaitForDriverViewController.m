@@ -125,7 +125,7 @@
 
 -(void)showBooking:(NSString *)bookingId {
     AppDelegate *app = [AppDelegate instance];
-    NSString *retryMsg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
+    NSString *retryMsg = NSLocalizedString(@"Do you want to retry again for the same car category?",@"want_retry");
     self.parentTransferController.transferBookingId = bookingId;
     if (app.clientConfiguration.booksLater) {
         [app.qplayer pause];
