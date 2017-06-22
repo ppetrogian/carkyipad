@@ -41,6 +41,7 @@ PODS:
     - CardIO (~> 5.4.1)
   - PayPal-iOS-SDK/Core (2.17.0)
   - Stripe (10.1.0)
+  - SVWebViewController (1.0)
   - TGRDataSource (0.2)
 
 DEPENDENCIES:
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - PayPal-iOS-SDK
   - Stripe
+  - SVWebViewController
   - TGRDataSource
 
 SPEC CHECKSUMS:
@@ -69,8 +71,9 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
   Stripe: 1c7aa951a075cced500a919d92b687b35d410705
+  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: faa6ede44e2dbde85cf4f00419a3a7e5259306c0
+PODFILE CHECKSUM: daac8f95539d7c65c782d6ca474b38775103e45d
 
 COCOAPODS: 1.2.0

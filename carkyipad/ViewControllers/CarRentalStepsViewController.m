@@ -19,9 +19,12 @@
 #import <Stripe/Stripe.h>
 #import "CalendarRange.h"
 #import "RefreshableViewController.h"
+#import "ResetsForIdle.h"
+#import "RequestRideViewController.h"
 #define kSegmentHeight 50
+#define kMaxIdleTimeSeconds 120
 
-@interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate>
+@interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate,ResetsForIdle>
 @property(strong, nonatomic) RentalConfirmationView *confirmationView;
 @end
 
@@ -35,7 +38,9 @@
     self.stepsBar.backgroundColor = [UIColor blackColor];
 
     [self configureSegmentController];
+    [self resetIdleTimer];
 }
+
 -(void) configureSegmentController{
     self.segmentController.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, kSegmentHeight);
     [self.segmentController setAllSegmentList:@[NSLocalizedString(@"1. Details", nil), NSLocalizedString(@"2. Car", nil), NSLocalizedString(@"3. Extras", nil), NSLocalizedString(@"4. Payment", nil)]];
@@ -280,4 +285,46 @@
 - (void)stepsBar:(RMStepsBar *)bar shouldSelectStepAtIndex:(NSInteger)index {
     
 }
+
+#pragma mark -
+#pragma mark Handling idle timeout
+
+-(void)resetForIdleTimer {
+    if ([self.childViewControllers[0] isKindOfClass:RequestRideViewController.class]) {
+        // clear gmap resources
+        RequestRideViewController *rrvc = self.childViewControllers[0];
+        GMSMapView *mapView = rrvc.mapView;
+        [mapView clear] ;
+        [mapView removeFromSuperview];
+    }
+    if ([self.currentStepViewController conformsToProtocol:@protocol(ResetsForIdle)]) {
+        id<ResetsForIdle> rvc = (id<ResetsForIdle>)self.currentStepViewController;
+        [rvc resetForIdleTimer];
+    }
+    AppDelegate *app = [AppDelegate instance];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
+}
+
+- (void)resetIdleTimer {
+    if (!self.idleTimer) {
+        self.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
+    }
+    else {
+        if (fabs([self.idleTimer.fireDate timeIntervalSinceNow]) < kMaxIdleTimeSeconds-1.0) {
+            [self.idleTimer setFireDate:[NSDate dateWithTimeIntervalSinceNow:kMaxIdleTimeSeconds]];
+        }
+    }
+}
+
+- (void)idleTimerExceeded {
+    [self.idleTimer invalidate];
+    [self resetForIdleTimer];
+}
+
+- (UIResponder *)nextResponder {
+    [self resetIdleTimer];
+    return [super nextResponder];
+}
+
 @end

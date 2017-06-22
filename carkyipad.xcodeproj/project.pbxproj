@@ -223,6 +223,7 @@
 		71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-carkyipadTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
 		9B10A3E12CC84D0EE9CDB959 /* Pods_carkyipad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_carkyipad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE23F4661EFB7BF000EBF538 /* ResetsForIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetsForIdle.h; path = ViewControllers/ResetsForIdle.h; sourceTree = "<group>"; };
 		AE270A8B1E875580000A8C7B /* DetailsStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailsStepViewController.h; path = ViewControllers/DetailsStepViewController.h; sourceTree = "<group>"; };
 		AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailsStepViewController.m; path = ViewControllers/DetailsStepViewController.m; sourceTree = "<group>"; };
 		AE2857601EB01B130047A649 /* PaymentCardEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentCardEditorField.h; path = Controls/PaymentCardEditorField.h; sourceTree = "<group>"; };
@@ -653,6 +654,8 @@
 				D15951571EADCA5500540076 /* PaymentViewController.m */,
 				AE616DB71ED1879D00EA38D6 /* LoadingViewController.h */,
 				AE616DB81ED1879D00EA38D6 /* LoadingViewController.m */,
+				D1B246961EE3516E00EFB922 /* RefreshableViewController.h */,
+				AE23F4661EFB7BF000EBF538 /* ResetsForIdle.h */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -806,7 +809,6 @@
 			isa = PBXGroup;
 			children = (
 				AE424A591EEB03F20081A879 /* InitViewController.h */,
-				D1B246961EE3516E00EFB922 /* RefreshableViewController.h */,
 				AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,

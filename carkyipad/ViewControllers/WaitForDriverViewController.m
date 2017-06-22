@@ -14,10 +14,11 @@
 #import "InitViewController.h"
 #import "RequestRideViewController.h"
 #import "RefreshableViewController.h"
+#import "ResetsForIdle.h"
 @import AVFoundation;
 @import AVKit;
 
-@interface WaitForDriverViewController () <InitViewController, RefreshableViewController>
+@interface WaitForDriverViewController () <InitViewController, RefreshableViewController, ResetsForIdle>
 @property (nonatomic, assign) NSTimeInterval pollInterval;
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
 @property (nonatomic, assign) NSTimeInterval pollTimeout;
@@ -36,6 +37,7 @@
     self.pollTimeout = 120.0;
     self.pollTime = 0.0;
     self.retriedFromBusy = NO;
+    [self.parentTransferController.idleTimer invalidate];
 
     // Do any additional setup after loading the view.
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
@@ -87,7 +89,7 @@
     RequestRideViewController *rvc = self.parentTransferController.childViewControllers[0];
     GMSMapView *mapView = rvc.mapView;
     [mapView clear] ;
-    [mapView removeFromSuperview] ;
+    [mapView removeFromSuperview];
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
@@ -215,17 +217,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)newBookingButton_Click:(UIButton *)sender {
-    //[self.parentController loadStepViewControllers];
-    //[self.parentController showStepForIndex:0];
+    id<ResetsForIdle> rvc = (id<ResetsForIdle>)self.parentTransferController;
+    [rvc resetForIdleTimer];
+}
+
+-(void)resetForIdleTimer {
     if (self.timeoutTimer.isValid) {
         [self.timeoutTimer invalidate];
     }
-    AppDelegate *app = [AppDelegate instance];
     [self deinitControls];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self dismissViewControllerAnimated:NO completion:nil];
-    [app loadInitialControllerForMode:app.clientConfiguration.tabletMode];
 }
 
 #pragma mark - Navigation

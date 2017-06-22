@@ -14,6 +14,7 @@
 #import "MBProgressHUD/MBProgressHUD.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <GooglePlaces/GooglePlaces.h>
+#import <SVWebViewController/SVWebViewController.h>
 @import SafariServices;
 
 @interface HomeViewController () <SFSafariViewControllerDelegate>
@@ -70,9 +71,10 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)showBook:(UIButton *)sender {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.booking.com"]];
+    NSURL *nsUrl = [NSURL URLWithString:@"https://www.booking.com"];
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:nsUrl];
+    //SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithAddress:nsUrl.absoluteString];
     [self presentViewController:svc animated:YES completion:nil];
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.booking.com"]];
 }
 - (IBAction)showFlight:(UIButton *)sender {
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.airtickets.com"]];
@@ -81,6 +83,10 @@
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
     [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    
 }
 
 /*
