@@ -16,7 +16,7 @@ pod 'Stripe'
 pod 'BKCardExpiryField'
 pod 'HockeySDK'
 pod 'PayPal-iOS-SDK'
-pod 'SVWebViewController'
+#pod 'SVWebViewController'
 #pod 'Fabric'
 #pod 'Crashlytics'
 end

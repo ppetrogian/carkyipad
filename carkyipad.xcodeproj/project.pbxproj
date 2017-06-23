@@ -10,6 +10,9 @@
 		2573DD0B8DC12BF9B2213DCF /* Pods_carkyipad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B10A3E12CC84D0EE9CDB959 /* Pods_carkyipad.framework */; };
 		7C871C8776B99A099382CA76 /* libPods-carkyipadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 528B6F30D0179E93BAD52988 /* libPods-carkyipadUITests.a */; };
 		A58C0434A949DD241BF69FDA /* libPods-carkyipadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71022BD56FCA663788E92527 /* libPods-carkyipadTests.a */; };
+		AE24FA601EFDB5FE000BCCF7 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE24FA5C1EFDB5FE000BCCF7 /* SVModalWebViewController.m */; };
+		AE24FA611EFDB5FE000BCCF7 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE24FA5D1EFDB5FE000BCCF7 /* SVWebViewController.bundle */; };
+		AE24FA621EFDB5FE000BCCF7 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE24FA5F1EFDB5FE000BCCF7 /* SVWebViewController.m */; };
 		AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */; };
 		AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2857611EB01B130047A649 /* PaymentCardEditorField.m */; };
 		AE34F1591E903772000D3997 /* AvailableCars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1561E903772000D3997 /* AvailableCars.m */; };
@@ -224,6 +227,11 @@
 		934D892CC42D9967E077AFAE /* Pods-carkyipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-carkyipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-carkyipad/Pods-carkyipad.release.xcconfig"; sourceTree = "<group>"; };
 		9B10A3E12CC84D0EE9CDB959 /* Pods_carkyipad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_carkyipad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE23F4661EFB7BF000EBF538 /* ResetsForIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetsForIdle.h; path = ViewControllers/ResetsForIdle.h; sourceTree = "<group>"; };
+		AE24FA5B1EFDB5FE000BCCF7 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVModalWebViewController.h; path = ViewControllers/SVModalWebViewController.h; sourceTree = "<group>"; };
+		AE24FA5C1EFDB5FE000BCCF7 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVModalWebViewController.m; path = ViewControllers/SVModalWebViewController.m; sourceTree = "<group>"; };
+		AE24FA5D1EFDB5FE000BCCF7 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVWebViewController.bundle; path = ViewControllers/SVWebViewController.bundle; sourceTree = "<group>"; };
+		AE24FA5E1EFDB5FE000BCCF7 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVWebViewController.h; path = ViewControllers/SVWebViewController.h; sourceTree = "<group>"; };
+		AE24FA5F1EFDB5FE000BCCF7 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVWebViewController.m; path = ViewControllers/SVWebViewController.m; sourceTree = "<group>"; };
 		AE270A8B1E875580000A8C7B /* DetailsStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailsStepViewController.h; path = ViewControllers/DetailsStepViewController.h; sourceTree = "<group>"; };
 		AE270A8C1E875580000A8C7B /* DetailsStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailsStepViewController.m; path = ViewControllers/DetailsStepViewController.m; sourceTree = "<group>"; };
 		AE2857601EB01B130047A649 /* PaymentCardEditorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentCardEditorField.h; path = Controls/PaymentCardEditorField.h; sourceTree = "<group>"; };
@@ -656,6 +664,11 @@
 				AE616DB81ED1879D00EA38D6 /* LoadingViewController.m */,
 				D1B246961EE3516E00EFB922 /* RefreshableViewController.h */,
 				AE23F4661EFB7BF000EBF538 /* ResetsForIdle.h */,
+				AE24FA5B1EFDB5FE000BCCF7 /* SVModalWebViewController.h */,
+				AE24FA5C1EFDB5FE000BCCF7 /* SVModalWebViewController.m */,
+				AE24FA5D1EFDB5FE000BCCF7 /* SVWebViewController.bundle */,
+				AE24FA5E1EFDB5FE000BCCF7 /* SVWebViewController.h */,
+				AE24FA5F1EFDB5FE000BCCF7 /* SVWebViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1186,6 +1199,7 @@
 				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */,
 				AEE65A151EF4024300700DF3 /* TransferLanding.storyboard in Resources */,
+				AE24FA611EFDB5FE000BCCF7 /* SVWebViewController.bundle in Resources */,
 				E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
 				AE6352E31E75E1FA00065F0F /* CountryCell.xib in Resources */,
@@ -1395,6 +1409,7 @@
 				D159515B1EADED4D00540076 /* WaitForDriverViewController.m in Sources */,
 				AE270A8D1E875580000A8C7B /* DetailsStepViewController.m in Sources */,
 				D1F83A161EED7CE100CC4F83 /* TransferLaterViewController.m in Sources */,
+				AE24FA621EFDB5FE000BCCF7 /* SVWebViewController.m in Sources */,
 				D19FF9951E91774400F735A0 /* InsuranceTableViewCell.m in Sources */,
 				D1344C031E777F4B00006FAD /* TransferStepsViewController.m in Sources */,
 				D155121C1EB280F500D924C0 /* PSInsetTextField.m in Sources */,
@@ -1457,6 +1472,7 @@
 				AE6351EC1E746BBB00065F0F /* CarType.m in Sources */,
 				D15951461EACA1CA00540076 /* CarPrice.m in Sources */,
 				AE34F1591E903772000D3997 /* AvailableCars.m in Sources */,
+				AE24FA601EFDB5FE000BCCF7 /* SVModalWebViewController.m in Sources */,
 				D19FF9921E91187100F735A0 /* CarExtrasViewController.m in Sources */,
 				AE7275AC1E6CCA8C00918646 /* main.m in Sources */,
 				D12802C71E9D691500DA05E7 /* CarkyDriverPositionsRequest.m in Sources */,

@@ -14,7 +14,7 @@
 #import "MBProgressHUD/MBProgressHUD.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <GooglePlaces/GooglePlaces.h>
-#import <SVWebViewController/SVWebViewController.h>
+#import "SVWebViewController.h"
 @import SafariServices;
 
 @interface HomeViewController () <SFSafariViewControllerDelegate>
@@ -71,13 +71,15 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)showBook:(UIButton *)sender {
-    NSURL *nsUrl = [NSURL URLWithString:@"https://www.booking.com"];
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:nsUrl];
-    //SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithAddress:nsUrl.absoluteString];
+    NSURL *nsUrl = [NSURL URLWithString:@"https://www.airshop.gr/hotels?micro=true&app_ipad=1"];
+    //SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:nsUrl];
+    SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:nsUrl];
+    SVWebViewController *wb = (SVWebViewController *)svc.topViewController;
+    //wb.actionBarButtonItem.v
     [self presentViewController:svc animated:YES completion:nil];
 }
 - (IBAction)showFlight:(UIButton *)sender {
-    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.airtickets.com"]];
+    SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.airshop.gr/airtickets?micro=true&app_ipad=1"]];
     [self presentViewController:svc animated:YES completion:nil];
 }
 
