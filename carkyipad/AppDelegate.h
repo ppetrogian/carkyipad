@@ -12,6 +12,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "CarkyApiClient.h"
+#define kMaxIdleTimeSeconds 300
+#define TRANSFER_TIMEOUT 180
+#define kHeartBeatInterval 180
+
 @class AVQueuePlayer,AVPlayerLayer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -38,7 +42,7 @@
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, strong) AVQueuePlayer *qplayer;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
-@property (nonatomic, strong) NSTimer *idleTimer;
+@property (nonatomic, strong) NSTimer *heartbeatTimer;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
 -(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block;

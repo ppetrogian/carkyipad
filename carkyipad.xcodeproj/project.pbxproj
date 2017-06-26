@@ -17,6 +17,7 @@
 		AE2857621EB01B130047A649 /* PaymentCardEditorField.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2857611EB01B130047A649 /* PaymentCardEditorField.m */; };
 		AE34F1591E903772000D3997 /* AvailableCars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1561E903772000D3997 /* AvailableCars.m */; };
 		AE34F15A1E903772000D3997 /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1581E903772000D3997 /* Cars.m */; };
+		AE563E321F018F3A00E80FB0 /* UIViewController_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE563E311F018F3A00E80FB0 /* UIViewController_Additions.m */; };
 		AE5845AF1ECF27EA0083A296 /* ChargesForIPadResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */; };
 		AE616DB41ED1855700EA38D6 /* CalendarRange.m in Sources */ = {isa = PBXBuildFile; fileRef = AE616DB31ED1855700EA38D6 /* CalendarRange.m */; };
 		AE616DB61ED186E100EA38D6 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE616DB51ED186E100EA38D6 /* Loading.storyboard */; };
@@ -241,6 +242,8 @@
 		AE34F1571E903772000D3997 /* Cars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cars.h; sourceTree = "<group>"; };
 		AE34F1581E903772000D3997 /* Cars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cars.m; sourceTree = "<group>"; };
 		AE424A591EEB03F20081A879 /* InitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitViewController.h; path = ViewControllers/InitViewController.h; sourceTree = "<group>"; };
+		AE563E301F018F3A00E80FB0 /* UIViewController_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewController_Additions.h; sourceTree = "<group>"; };
+		AE563E311F018F3A00E80FB0 /* UIViewController_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewController_Additions.m; sourceTree = "<group>"; };
 		AE5845AD1ECF27EA0083A296 /* ChargesForIPadResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargesForIPadResponse.h; sourceTree = "<group>"; };
 		AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargesForIPadResponse.m; sourceTree = "<group>"; };
 		AE616DB21ED1855700EA38D6 /* CalendarRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarRange.h; sourceTree = "<group>"; };
@@ -1016,6 +1019,8 @@
 			children = (
 				E1C2EE4E1EC3363A0021BEC2 /* UIController.h */,
 				E1C2EE4F1EC3363A0021BEC2 /* UIController.m */,
+				AE563E301F018F3A00E80FB0 /* UIViewController_Additions.h */,
+				AE563E311F018F3A00E80FB0 /* UIViewController_Additions.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1265,7 +1270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B7325E9BB6CD9F704953D65 /* [CP] Embed Pods Frameworks */ = {
@@ -1295,7 +1300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA032E798D9994716DCE9288 /* [CP] Embed Pods Frameworks */ = {
@@ -1338,7 +1343,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DDE135BA23413176A54D9E42 /* [CP] Copy Pods Resources */ = {
@@ -1426,6 +1431,7 @@
 				D15951401EAC9AC400540076 /* CarServices.m in Sources */,
 				AE6353111E75E2F900065F0F /* SharedInstance.m in Sources */,
 				E1C2EE621EC358E90021BEC2 /* ExtrasHeaderCollectionReusableView.m in Sources */,
+				AE563E321F018F3A00E80FB0 /* UIViewController_Additions.m in Sources */,
 				AEEA24D61EAA349900043423 /* RequestRideViewController.m in Sources */,
 				D1344BFF1E777C9600006FAD /* CarRentalStepsViewController.m in Sources */,
 				E1C2EE771EC446450021BEC2 /* PasscodeView.m in Sources */,

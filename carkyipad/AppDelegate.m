@@ -19,7 +19,7 @@
 @import  HockeySDK;
 
 @interface AppDelegate ()
-@property (nonatomic, strong) NSTimer *heartbeatTimer;
+
 @end
 
 @implementation AppDelegate
@@ -93,11 +93,6 @@
     [self fetchInitialData:nil];
     return YES;
 }
-                           
- -(void)sendHeartbeat {
-     CarkyApiClient *api = [CarkyApiClient sharedService];
-     [api Heartbeat];
- }
 
 +(AppDelegate *)instance {
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -158,7 +153,6 @@
                 // debug only SOS
                 //app.clientConfiguration.location.latLng.lat = 37.421932;
                 //app.clientConfiguration.location.latLng.lng = 25.396646;
-                self.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
                 
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;

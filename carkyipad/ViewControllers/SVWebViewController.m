@@ -8,10 +8,9 @@
 
 
 #import "SVWebViewController.h"
-
+#import "AppDelegate.h"
+#import "UIViewController_Additions.h"
 @interface SVWebViewController () <UIWebViewDelegate>
-
-
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSURL *URL;
@@ -264,7 +263,9 @@
 
 - (void)idleTimerExceeded {
     [self.idleTimer invalidate];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    if ([self isVisible]) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 - (UIResponder *)nextResponder {

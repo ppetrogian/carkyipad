@@ -15,9 +15,9 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import "SVWebViewController.h"
-@import SafariServices;
+#import "UIViewController_Additions.h"
 
-@interface HomeViewController () <SFSafariViewControllerDelegate>
+@interface HomeViewController ()
 @property (nonatomic,strong) CarkyApiClient *api;
 
 @end
@@ -41,8 +41,11 @@
         self.homeMapView.layer.borderWidth = 4.0;
         self.homeMapView.layer.borderColor = [UIColor whiteColor].CGColor;
     }
-    NSString *backImageUrlForMainButton = nil;
     AppDelegate *app = [AppDelegate instance];
+    if (app.heartbeatTimer)
+        [app.heartbeatTimer invalidate];
+    app.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:kHeartBeatInterval target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
+    NSString *backImageUrlForMainButton = nil;
     TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
     if (tm == TabletModeTransfer || tm == TabletModeReception) {
         backImageUrlForMainButton = app.clientConfiguration.transferBackgroundImage;
@@ -52,6 +55,18 @@
         if (showImg.size.width > 0) {
             UIButton *mainButton = [self.view viewWithTag:1];
             [mainButton setImage:showImg forState:UIControlStateNormal];
+        }
+    }
+    if (self.ticketsButton) {
+        UIImage *ticketsImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: app.clientConfiguration.airTicketsImage]]];
+        if (ticketsImg.size.width > 0) {
+            [self.ticketsButton setImage:ticketsImg forState:UIControlStateNormal];
+        }
+    }
+    if (self.bookHotelButton) {
+        UIImage *bookHotelImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: app.clientConfiguration.hotelBookingImage]]];
+        if (bookHotelImg.size.width > 0) {
+            [self.bookHotelButton setImage:bookHotelImg forState:UIControlStateNormal];
         }
     }
     self.homeMapView.mapType = kGMSTypeNormal;
@@ -66,29 +81,39 @@
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
 }
 
+
+-(void)sendHeartbeat {
+    if ([self isVisible]) {
+        CarkyApiClient *api = [CarkyApiClient sharedService];
+        [api Heartbeat];
+        NSLog(@"Sending heartbeat...");
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)showBook:(UIButton *)sender {
-    NSURL *nsUrl = [NSURL URLWithString:@"https://www.airshop.gr/hotels?micro=true&app_ipad=1"];
-    //SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:nsUrl];
+    AppDelegate *app = [AppDelegate instance];
+    NSString *url = @"https://www.airshop.gr/hotels?micro=true&app_ipad=1";
+    if (app.clientConfiguration.hotelBookingUrl) {
+        url = app.clientConfiguration.hotelBookingUrl;
+    }
+    NSURL *nsUrl = [NSURL URLWithString:url];
     SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:nsUrl];
-    SVWebViewController *wb = (SVWebViewController *)svc.topViewController;
-    //wb.actionBarButtonItem.v
     [self presentViewController:svc animated:YES completion:nil];
 }
+
 - (IBAction)showFlight:(UIButton *)sender {
-    SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.airshop.gr/airtickets?micro=true&app_ipad=1"]];
+    AppDelegate *app = [AppDelegate instance];
+    NSString *url = @"https://www.airshop.gr/airtickets?micro=true&app_ipad=1";
+    if (app.clientConfiguration.airTicketsUrl) {
+        url = app.clientConfiguration.airTicketsUrl;
+    }
+    NSURL *nsUrl = [NSURL URLWithString:url];
+    SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:nsUrl];
     [self presentViewController:svc animated:YES completion:nil];
-}
-
-- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
-    [controller dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
-    
 }
 
 /*

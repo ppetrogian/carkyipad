@@ -38,7 +38,6 @@
     self.pollTimeout = 120.0;
     self.pollTime = 0.0;
     self.retriedFromBusy = NO;
-    [app.idleTimer invalidate];
 
     // Do any additional setup after loading the view.
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];

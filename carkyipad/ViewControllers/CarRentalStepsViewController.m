@@ -22,7 +22,7 @@
 #import "ResetsForIdle.h"
 #import "RequestRideViewController.h"
 #define kSegmentHeight 50
-#define kMaxIdleTimeSeconds 120
+#import "UIViewController_Additions.h"
 
 @interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate,ResetsForIdle>
 @property(strong, nonatomic) RentalConfirmationView *confirmationView;
@@ -38,8 +38,7 @@
     self.stepsBar.backgroundColor = [UIColor blackColor];
 
     [self configureSegmentController];
-    AppDelegate *app = [AppDelegate instance];
-    app.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
+    [self resetIdleTimer];
 }
 
 -(void) configureSegmentController{
@@ -116,8 +115,7 @@
 }
 
 - (void)canceled {
-    AppDelegate *app = [AppDelegate instance];
-    [app.idleTimer invalidate];
+    [self.idleTimer invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -311,20 +309,21 @@
 
 - (void)resetIdleTimer {
     AppDelegate *app = [AppDelegate instance];
-    if (!app.idleTimer) {
-        app.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
+    if (!self.idleTimer) {
+        self.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
     }
-    else {
-        if (fabs([app.idleTimer.fireDate timeIntervalSinceNow]) < kMaxIdleTimeSeconds-1.0)
-            [app.idleTimer setFireDate:[NSDate dateWithTimeIntervalSinceNow:kMaxIdleTimeSeconds]];
+    else if (self.idleTimer.isValid) {
+        if (fabs([self.idleTimer.fireDate timeIntervalSinceNow]) < kMaxIdleTimeSeconds-1.0)
+            [self.idleTimer setFireDate:[NSDate dateWithTimeIntervalSinceNow:kMaxIdleTimeSeconds]];
     }
 }
 
 - (void)idleTimerExceeded {
-    AppDelegate *app = [AppDelegate instance];
-    NSLog(@"Exceeded timer for class %@", self.class);
-    [app.idleTimer invalidate];
-    [self resetForIdleTimer];
+    NSLog(@"Exceeded rentall timer for class %@", self.class);
+    [self.idleTimer invalidate];
+    if ([self isVisible]) {
+         [self resetForIdleTimer];
+    }
 }
 
 - (UIResponder *)nextResponder {

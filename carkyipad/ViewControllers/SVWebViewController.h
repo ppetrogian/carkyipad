@@ -17,5 +17,4 @@
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *stopBarButtonItem;
 @property (nonatomic, strong) NSTimer *idleTimer;
-#define kMaxIdleTimeSeconds 180
 @end

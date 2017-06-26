@@ -29,6 +29,10 @@ NSString *const kClientConfigurationResponseRentalBackgroundImage = @"RentalBack
 NSString *const kClientConfigurationResponseTransferBackgroundImage = @"TransferBackgroundImage";
 NSString *const kClientConfigurationResponseConfirmationVideo = @"ConfirmationVideo";
 NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
+NSString *const kClientConfigurationResponseAirTicketsUrl = @"AirTicketsUrl";
+NSString *const kClientConfigurationResponseHotelBookingImage = @"HotelBookingImage";
+NSString *const kClientConfigurationResponseHotelBookingUrl = @"HotelBookingUrl";
+NSString *const kClientConfigurationResponseAirTicketsImage = @"AirTicketsImage";
 
 @interface ClientConfigurationResponse ()
 
@@ -87,7 +91,10 @@ NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
         self.rentalBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseRentalBackgroundImage fromDictionary:dict];
         self.transferBackgroundImage = [self objectOrNilForKey:kClientConfigurationResponseTransferBackgroundImage fromDictionary:dict];
         self.confirmationVideo = [self objectOrNilForKey:kClientConfigurationResponseConfirmationVideo fromDictionary:dict];
-
+        self.airTicketsUrl = [self objectOrNilForKey:kClientConfigurationResponseAirTicketsUrl fromDictionary:dict];
+        self.hotelBookingImage = [self objectOrNilForKey:kClientConfigurationResponseHotelBookingImage fromDictionary:dict];
+        self.hotelBookingUrl = [self objectOrNilForKey:kClientConfigurationResponseHotelBookingUrl fromDictionary:dict];
+        self.airTicketsImage = [self objectOrNilForKey:kClientConfigurationResponseAirTicketsImage fromDictionary:dict];
     }
     
     return self;
@@ -125,6 +132,10 @@ NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
     [mutableDict setValue:self.rentalBackgroundImage forKey:kClientConfigurationResponseRentalBackgroundImage];
     [mutableDict setValue:self.transferBackgroundImage forKey:kClientConfigurationResponseTransferBackgroundImage];
     [mutableDict setValue:self.confirmationVideo forKey:kClientConfigurationResponseConfirmationVideo];
+    [mutableDict setValue:self.airTicketsUrl forKey:kClientConfigurationResponseAirTicketsUrl];
+    [mutableDict setValue:self.hotelBookingImage forKey:kClientConfigurationResponseHotelBookingImage];
+    [mutableDict setValue:self.hotelBookingUrl forKey:kClientConfigurationResponseHotelBookingUrl];
+    [mutableDict setValue:self.airTicketsImage forKey:kClientConfigurationResponseAirTicketsImage];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -137,7 +148,6 @@ NSString *const kClientConfigurationResponseAcceptsCash = @"AcceptsCash";
     id object = [dict objectForKey:aKey];
     return [object isEqual:[NSNull null]] ? nil : object;
 }
-
 
 #pragma mark - NSCoding Methods
 

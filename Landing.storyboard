@@ -85,7 +85,9 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="circularMap" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="bookHotelButton" destination="xGU-Ji-wip" id="xVt-JZ-eMP"/>
                         <outlet property="homeMapView" destination="9Hh-t5-1JH" id="SlW-Fc-mSK"/>
+                        <outlet property="ticketsButton" destination="fWh-gU-v7a" id="sSt-Tb-sQN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pv1-sg-Irf" userLabel="First Responder" sceneMemberID="firstResponder"/>

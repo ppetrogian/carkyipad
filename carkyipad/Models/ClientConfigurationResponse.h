@@ -28,6 +28,10 @@
 @property (nonatomic, strong) NSString *rentalBackgroundImage;
 @property (nonatomic, strong) NSString *transferBackgroundImage;
 @property (nonatomic, strong) NSString *confirmationVideo;
+@property (nonatomic, strong) NSString *airTicketsUrl;
+@property (nonatomic, strong) NSString *airTicketsImage;
+@property (nonatomic, strong) NSString *hotelBookingImage;
+@property (nonatomic, strong) NSString *hotelBookingUrl;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

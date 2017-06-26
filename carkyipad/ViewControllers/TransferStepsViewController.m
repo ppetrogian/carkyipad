@@ -21,6 +21,8 @@
 #import "InitViewController.h"
 #import "StepViewController.h"
 #import "CalendarRange.h"
+#import "UIViewController_Additions.h"
+#import "WaitForDriverViewController.h"
 
 #define kLastPayment @"LastPayment"
 #define baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
@@ -382,7 +384,16 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     } request:request]; // create transfer request
 }
 
-
+- (void)idleTimerExceeded {
+    NSLog(@"Exceeded Transfer timer for class %@", self.class);
+    [self.idleTimer invalidate];
+    if ([self isVisible]) {
+        if ([self.currentStepViewController isKindOfClass:WaitForDriverViewController.class]) {
+            return;
+        }
+        [super resetForIdleTimer];
+    }
+}
 
 // methods
 
