@@ -247,6 +247,7 @@
 
 
 - (void)doneButtonClicked:(id)sender {
+    [self.idleTimer invalidate];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
