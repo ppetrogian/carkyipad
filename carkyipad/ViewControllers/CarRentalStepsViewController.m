@@ -38,7 +38,8 @@
     self.stepsBar.backgroundColor = [UIColor blackColor];
 
     [self configureSegmentController];
-    [self resetIdleTimer];
+    AppDelegate *app = [AppDelegate instance];
+    app.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
 }
 
 -(void) configureSegmentController{
@@ -115,6 +116,8 @@
 }
 
 - (void)canceled {
+    AppDelegate *app = [AppDelegate instance];
+    [app.idleTimer invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -307,18 +310,20 @@
 }
 
 - (void)resetIdleTimer {
-    if (!self.idleTimer) {
-        self.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
+    AppDelegate *app = [AppDelegate instance];
+    if (!app.idleTimer) {
+        app.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
     }
     else {
-        if (fabs([self.idleTimer.fireDate timeIntervalSinceNow]) < kMaxIdleTimeSeconds-1.0) {
-            [self.idleTimer setFireDate:[NSDate dateWithTimeIntervalSinceNow:kMaxIdleTimeSeconds]];
-        }
+        if (fabs([app.idleTimer.fireDate timeIntervalSinceNow]) < kMaxIdleTimeSeconds-1.0)
+            [app.idleTimer setFireDate:[NSDate dateWithTimeIntervalSinceNow:kMaxIdleTimeSeconds]];
     }
 }
 
 - (void)idleTimerExceeded {
-    [self.idleTimer invalidate];
+    AppDelegate *app = [AppDelegate instance];
+    NSLog(@"Exceeded timer for class %@", self.class);
+    [app.idleTimer invalidate];
     [self resetForIdleTimer];
 }
 

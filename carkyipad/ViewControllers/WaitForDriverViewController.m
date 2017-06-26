@@ -32,18 +32,18 @@
 @implementation WaitForDriverViewController
 
 - (void)viewDidLoad {
+    AppDelegate *app = [AppDelegate instance];
     [super viewDidLoad];
     self.pollInterval = 5.0;
     self.pollTimeout = 120.0;
     self.pollTime = 0.0;
     self.retriedFromBusy = NO;
-    [self.parentTransferController.idleTimer invalidate];
+    [app.idleTimer invalidate];
 
     // Do any additional setup after loading the view.
     UIImage *catImage = [UIImage imageNamed: self.parentController.selectedCarCategory.image];
     self.driverCarPhotoImageView.image = catImage;
     [self initControls];
-    AppDelegate *app = [AppDelegate instance];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:app.qplayer. currentItem];
     self.pickupImageView.alpha = 0;
 }
@@ -220,6 +220,7 @@
 
 - (IBAction)newBookingButton_Click:(UIButton *)sender {
     id<ResetsForIdle> rvc = (id<ResetsForIdle>)self.parentTransferController;
+    // transfer controller will call this self -> reset-for idle timer
     [rvc resetForIdleTimer];
 }
 

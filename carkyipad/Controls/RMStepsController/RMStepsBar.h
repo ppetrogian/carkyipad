@@ -34,7 +34,7 @@
  */
 
 @protocol RMStepsBarDataSource <NSObject>
-
+@optional
 /**
  Returns the number of steps for a certain `RMStepsBar`.
  

@@ -25,7 +25,6 @@
 @property (strong, nonatomic) STPCardParams *cardParams;
 @property (nonatomic, strong) RegisterClientRequest *clientData;
 @property (nonatomic, assign) BOOL payWithCash;
-@property (nonatomic, strong) NSTimer *idleTimer;
 
 -(void)payRentalWithCreditCard:(BlockBoolean)b;
 -(void)payRentalWithPaypal:(NSString *)confirmationString andResponse:(NSDictionary *)confirmDict andBlock:(BlockBoolean)block;

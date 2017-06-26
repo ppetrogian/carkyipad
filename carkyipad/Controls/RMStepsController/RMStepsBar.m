@@ -177,9 +177,9 @@
 }
 
 - (void)recognizedTap:(UIGestureRecognizer *)recognizer {
-    CGPoint touchLocation = [recognizer locationInView:self];
-    for(NSDictionary *aStepDict in self.stepDictionaries) {
-        RMStep *step = aStepDict[RM_STEP_KEY];
+ //   CGPoint touchLocation = [recognizer locationInView:self];
+ //   for(NSDictionary *aStepDict in self.stepDictionaries) {
+ //       RMStep *step = aStepDict[RM_STEP_KEY];
         
 //        if(CGRectContainsPoint(step.stepView.frame, touchLocation)) {
 //            NSInteger index = [self.stepDictionaries indexOfObject:aStepDict];
@@ -187,7 +187,7 @@
 //                [self.delegate stepsBar:self shouldSelectStepAtIndex:index];
 //            }
 //        }
-    }
+//    }
 }
 
 @end

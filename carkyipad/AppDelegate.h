@@ -38,6 +38,7 @@
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, strong) AVQueuePlayer *qplayer;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) NSTimer *idleTimer;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
 -(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block;
