@@ -114,6 +114,9 @@
     } else {
         [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
     }
+    if (self.isForTransfer && self.parentTransferController.payPalPaymentResponse) {
+        [self payWithPaypalButton_click:self.payWithPaypalButton];
+    }
 }
 
 -(double)getTotalPrice {
@@ -199,6 +202,7 @@
     [self.payWithCashButton disableButton];
     if (self.isForTransfer) {
         self.parentTransferController.payWithCash = YES;
+        self.parentTransferController.payPalPaymentResponse = nil;
     }
     [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
     [self.parentTransferController showNextStep];
@@ -212,6 +216,7 @@
     [[AppDelegate instance] showProgressNotificationWithText:NSLocalizedString(@"Card Validation", nil) inView:self.view];
     if (self.isForTransfer) {
         self.parentTransferController.payWithCash = NO;
+        self.parentTransferController.payPalPaymentResponse = nil;
     }
     STPCardParams *cardParams;
     cardParams = [self getCardParamsFromUI];
@@ -337,7 +342,7 @@
         // Send the entire confirmation dictionary
     NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation options:0 error:nil];
     NSString* newStr = [[NSString alloc] initWithData:confirmation encoding:NSUTF8StringEncoding];
-    
+    AppDelegate *app = [AppDelegate instance];
         // Send confirmation to your server; your server should verify the proof of payment
         // and give the user their goods or services. If the server is not reachable, save
         // the confirmation and try again later.
@@ -348,10 +353,10 @@
         [self.parentTransferController showNextStep];
     }
     else {
-        [[AppDelegate instance] showProgressNotificationWithText:@"Requesting" inView:self.view];
+        [app showProgressNotificationWithText:@"Requesting" inView:self.view];
         [self.parentRentalController payRentalWithPaypal:newStr andResponse:completedPayment.confirmation andBlock:^(BOOL b) {
             [self.payNowButton enableButton];
-            [[AppDelegate instance] hideProgressNotification];
+            [app hideProgressNotification];
         }];
     }
 }

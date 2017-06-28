@@ -150,7 +150,12 @@
             self.retriedFromBusy = YES;
             NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", busyMsg, retryMsg];
             [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
-                [self setNeedRefresh:YES];
+                if (self.parentTransferController.payPalPaymentResponse) {
+                    [self.parentTransferController showPreviousStep];
+                }
+                else {
+                    [self setNeedRefresh:YES];
+                }
             } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         }
         else {
