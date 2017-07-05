@@ -16,8 +16,11 @@
 #import <GooglePlaces/GooglePlaces.h>
 #import "SVWebViewController.h"
 #import "UIViewController_Additions.h"
+#import <TCBlobDownload/TCBlobDownload.h>
+@import AVFoundation;
+@import AVKit;
 
-@interface HomeViewController ()
+@interface HomeViewController () <TCBlobDownloaderDelegate>
 @property (nonatomic,strong) CarkyApiClient *api;
 
 @end
@@ -42,6 +45,7 @@
         self.homeMapView.layer.borderColor = [UIColor whiteColor].CGColor;
     }
     AppDelegate *app = [AppDelegate instance];
+
     if (app.heartbeatTimer)
         [app.heartbeatTimer invalidate];
     app.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:kHeartBeatInterval target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
@@ -80,7 +84,6 @@
     marker.title = app.clientConfiguration.location.name;
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
 }
-
 
 -(void)sendHeartbeat {
     if ([self isVisible]) {

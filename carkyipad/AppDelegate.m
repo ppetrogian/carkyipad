@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HockeySDK/HockeySDK.h"
+#import <TCBlobDownload/TCBlobDownload.h>
 #import "CarkyApiClient.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Stripe/Stripe.h>
@@ -63,6 +64,7 @@
         [CarkyApiClient sharedService].hud = self.mHud;
     }
     [self.window makeKeyAndVisible];
+    [self checkDownloadVideoInView:viewController.view];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -150,10 +152,10 @@
             if (array.count > 0) {
                 AppDelegate *app = [AppDelegate instance];
                 app.clientConfiguration = array.firstObject;
+
                 // debug only SOS
                 //app.clientConfiguration.location.latLng.lat = 37.421932;
                 //app.clientConfiguration.location.latLng.lng = 25.396646;
-                
                 CarkyApiClient *api = [CarkyApiClient sharedService];
                 NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;
                 // paypal configuration
@@ -202,10 +204,57 @@
 
 -(AVQueuePlayer *)loadTransferVideoPlayer {
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource: @"2848220705019691240" withExtension:@"mp4"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if (self.confirmationVideoLocalPath && [fm fileExistsAtPath:self.confirmationVideoLocalPath]) {
+        videoURL = [NSURL fileURLWithPath:self.confirmationVideoLocalPath];
+    }
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
     AVPlayerItem *avPlayerItem = [AVPlayerItem playerItemWithAsset:asset];
     AVQueuePlayer *queuePlayer = [AVQueuePlayer playerWithPlayerItem:avPlayerItem];
     return queuePlayer;
+}
+
+-(void)checkDownloadVideoInView:(UIView *)view {
+    AppDelegate *app = self;
+    if (app.clientConfiguration.confirmationVideo) {
+        TCBlobDownloadManager *sharedManager = [TCBlobDownloadManager sharedInstance];
+        NSURL *url = [NSURL URLWithString:app.clientConfiguration.confirmationVideo];
+        NSString *fileName = [[NSURL URLWithString:[url absoluteString]] lastPathComponent];
+        NSString *filePath = [sharedManager.defaultDownloadPath stringByAppendingPathComponent:fileName];
+        app.confirmationVideoLocalPath = filePath;
+        NSFileManager *fm = [NSFileManager defaultManager];
+        if (![fm fileExistsAtPath:filePath]) {
+            [app startDownloadVideoInView:view];
+        }
+        else {
+            NSURL *movieURL = [NSURL fileURLWithPath:filePath];
+            AVURLAsset *avUrl = [AVURLAsset assetWithURL:movieURL];
+            CMTime time1 = [avUrl duration];
+            if (time1.value == 0) {
+                [app startDownloadVideoInView:view];
+            }
+        }
+    }
+}
+
+-(void)startDownloadVideoInView:(UIView *)view {
+    AppDelegate *app = self;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    TCBlobDownloadManager *sharedManager = [TCBlobDownloadManager sharedInstance];
+    NSURL *urlVideo = [NSURL URLWithString:app.clientConfiguration.confirmationVideo];
+    [sharedManager startDownloadWithURL:urlVideo customPath:nil firstResponse:^(NSURLResponse *response) {
+        [app showProgressNotificationWithText:nil inView:view];
+    } progress:^(uint64_t receivedLength, uint64_t totalLength, NSInteger remainingTime, float progress) {
+        NSString *strFmt = [NSString stringWithFormat: @"Downloading %.0f%%...",progress * 100];
+        app.mHud.label.text = strFmt;
+        [app.mHud.label sizeToFit];
+    } error:^(NSError *error) {
+        if([fm fileExistsAtPath:app.confirmationVideoLocalPath])
+            [fm removeItemAtPath:app.confirmationVideoLocalPath error:nil];
+        [app hideProgressNotification];
+    } complete:^(BOOL downloadFinished, NSString *pathToFile) {
+        [app hideProgressNotification];
+    }];
 }
 
 // ------------ utility functions here ---------------------------
@@ -253,7 +302,6 @@
 -(MBProgressHUD *)showProgressNotificationWithText:(NSString *)text inView:(UIView *)view{
     _mHud.mode = MBProgressHUDModeIndeterminate;
     _mHud.label.text = text != nil ? text : NSLocalizedString(@"Please wait...", nil);
-    //_mHud.backgroundView.color = [UIColor blackColor];
     [view addSubview:_mHud];
     [_mHud showAnimated:YES];
     return _mHud;

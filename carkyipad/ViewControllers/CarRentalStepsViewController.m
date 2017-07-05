@@ -308,7 +308,6 @@
 }
 
 - (void)resetIdleTimer {
-    AppDelegate *app = [AppDelegate instance];
     if (!self.idleTimer) {
         self.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kMaxIdleTimeSeconds target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
     }

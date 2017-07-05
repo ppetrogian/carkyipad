@@ -39,8 +39,6 @@ typedef void(^BlockProgress)(NSProgress *progress);
 //GET api/Web/GetAvailableCars   car categories
 -(void)GetAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
--(void)GetTransferServiceWebAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
-
 -(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block;
 
 -(void)GetRentServiceAvailableCarsForLocation:(NSInteger)fleetLocationId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate withBlock:(BlockArray)block;

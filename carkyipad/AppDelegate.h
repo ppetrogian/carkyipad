@@ -42,11 +42,14 @@
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, strong) AVQueuePlayer *qplayer;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) NSString *confirmationVideoLocalPath;
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 
 - (void)loadInitialControllerForMode:(NSInteger)mode;
 -(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block;
 -(AVQueuePlayer *)loadTransferVideoPlayer;
+-(void)startDownloadVideoInView:(UIView *)view;
+-(void)checkDownloadVideoInView:(UIView *)view;
 +(AppDelegate *)instance;
 // helper methods
 

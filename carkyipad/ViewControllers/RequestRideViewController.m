@@ -85,9 +85,16 @@
 -(void)loadCarCategories:(NSArray<CarCategory*> *)arrayCategories {
     if (arrayCategories.count > 0 ) {
         NSArray<NSString*> *tempImages = @[@"audi",@"range rover",@"vito"];
+        NSMutableArray<CarCategory*> *resList = [NSMutableArray arrayWithCapacity:tempImages.count];
         [arrayCategories enumerateObjectsUsingBlock:^(CarCategory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            arrayCategories[idx].image = tempImages[idx];
-            arrayCategories[idx].order = idx;
+            if (idx < tempImages.count) {
+                arrayCategories[idx].image = tempImages[idx];
+                arrayCategories[idx].order = idx;
+                [resList addObject:arrayCategories[idx]];
+            }
+            else {
+                *stop = YES;
+            }
         }];
     }
     self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:arrayCategories cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {

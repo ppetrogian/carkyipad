@@ -216,21 +216,6 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)GetTransferServiceWebAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self GET:@"api/Web/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *array = (NSArray *)responseObject;
-        [self.hud hideAnimated:YES];
-        NSMutableArray *carsArray = [NSMutableArray arrayWithCapacity:array.count];
-        [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            carsArray[idx] = [Cars modelObjectWithDictionary:obj];
-        }];
-        block(carsArray);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        self.blockErrorDefault(error);
-    }];
-}
-
 -(void)GetTransferServicePartnerAvailableCars:(NSInteger)fleetLocationId withBlock:(BlockArray)block {
     self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [self GET:@"api/Partner/GetTransferServiceAvailableCars" parameters:@{@"fleetLocationId": @(fleetLocationId)} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
