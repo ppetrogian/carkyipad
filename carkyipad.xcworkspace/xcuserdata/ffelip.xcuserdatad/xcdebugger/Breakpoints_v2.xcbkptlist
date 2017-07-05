@@ -271,7 +271,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
             endingLineNumber = "229"
-            landmarkName = "-resetForIdleTimer"
+            landmarkName = "-newBookingButton_Click:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
