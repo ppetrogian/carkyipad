@@ -362,13 +362,11 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
--(void)CreateTransferBooking:(TransferBookingRequest *)request withBlock:(BlockArray)block {
+-(void)CheckTransferBookingRequest:(NSString *)transferBookingRequestId withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
     TransferBookingResponse *responseObj = [TransferBookingResponse new];
     self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [self.requestSerializer setTimeoutInterval:TRANSFER_TIMEOUT]; // 3 minutes timout
-
-    [self POST:@"api/Partner/CreateTransferBooking" parameters:request.dictionaryRepresentation progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"api/Partner/CheckTransferBookingRequest" parameters:@{@"transferBookingRequestId":transferBookingRequestId} progress:self.blockProgressDefault  success:^(NSURLSessionDataTask *task, id responseObject) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         responseObj.bookingId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         block([NSArray arrayWithObject:responseObj]);
@@ -391,6 +389,23 @@ static CarkyApiClient *_sharedService = nil;
         block([NSArray arrayWithObject:responseObj]);
     }];
 }
+
+-(void)CreateTransferBookingAsync:(TransferBookingRequest *)request withBlock:(BlockArray)block {
+    [self setAuthorizationHeader];
+    TransferBookingResponse *responseObj = [TransferBookingResponse new];
+    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //[self.requestSerializer setTimeoutInterval:TRANSFER_TIMEOUT]; // 3 minutes timout
+    NSString *url = @"api/Partner/CreateTransferBookingAsync";
+    [self POST:url parameters:request.dictionaryRepresentation progress:self.blockProgressDefault success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        responseObj.bookingRequestId = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        block([NSArray arrayWithObject:responseObj]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        block([NSArray arrayWithObject:responseObj]);
+    }];
+}
+
+
 
 -(void)CreateTransferBookingForLater:(TransferBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];

@@ -10,5 +10,6 @@
 
 @interface TransferBookingResponse : NSObject
 @property (nonatomic, strong) NSString *bookingId;
+@property (nonatomic, strong) NSString *bookingRequestId;
 @property (nonatomic, strong) NSString *errorDescription;
 @end

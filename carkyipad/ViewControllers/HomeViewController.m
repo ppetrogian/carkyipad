@@ -88,8 +88,8 @@
 -(void)sendHeartbeat {
     if ([self isVisible]) {
         CarkyApiClient *api = [CarkyApiClient sharedService];
-        [api Heartbeat];
-        NSLog(@"Sending heartbeat...");
+        //[api Heartbeat];
+        NSLog(@"TODO refresh client configuration ...");
     }
 }
 

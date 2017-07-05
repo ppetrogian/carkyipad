@@ -324,13 +324,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     }
     else {
         // books immediately
-        [api CreateTransferBooking:request withBlock:^(NSArray *array) {
+        [api CreateTransferBookingAsync:request withBlock:^(NSArray *array) {
             [[AppDelegate instance] hideProgressNotification];
             if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
                 TransferBookingResponse *responseObj = array.firstObject;
-                if (responseObj.bookingId.length > 0) {
-                    self.transferBookingId = responseObj.bookingId;
-                    block(responseObj.bookingId);
+                if (responseObj.bookingRequestId.length > 0) {
+                    self.transferBookingRequestId = responseObj.bookingRequestId;
+                    block(responseObj.bookingRequestId);
                 } else {
                     [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
                     block(@"0");
@@ -378,9 +378,8 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.payPalPaymentResponse = confirmation;
     NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     request.payPalPayerId = identifier;
-    [self MakeTransferRequest:^(NSString *bookingId) {
-        self.transferBookingId = bookingId;
-        block(bookingId);
+    [self MakeTransferRequest:^(NSString *bookingRequestId) {
+        block(bookingRequestId);
     } request:request]; // create transfer request
 }
 

@@ -9,7 +9,7 @@
 #import "StepViewController.h"
 
 @interface WaitForDriverViewController : StepViewController
-@property (atomic, strong) NSString *bookingRequestId;
+@property (nonatomic, strong) NSString *bookingRequestId;
 
 @property (weak, nonatomic) IBOutlet UILabel *registrationNoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *driverNoLabel;

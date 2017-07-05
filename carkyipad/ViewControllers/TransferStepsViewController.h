@@ -18,8 +18,7 @@
 
 // date properties
 @property (strong, nonatomic) CarCategory *selectedCarCategory;
-@property (strong, nonatomic) NSString *transferBookingId;
-@property (nonatomic, assign) BOOL payWithCash;
+@property (strong, nonatomic) NSString *transferBookingRequestId;
 @property (strong, nonatomic) NSString *payPalPaymentResponse;
 
 -(void)getWellKnownLocations:(NSInteger)locationId forMap:(GMSMapView *)mapView;

@@ -41,6 +41,7 @@ PODS:
     - CardIO (~> 5.4.1)
   - PayPal-iOS-SDK/Core (2.17.0)
   - Stripe (10.1.0)
+  - TCBlobDownload (2.1.1)
   - TGRDataSource (0.2)
 
 DEPENDENCIES:
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - PayPal-iOS-SDK
   - Stripe
+  - TCBlobDownload
   - TGRDataSource
 
 SPEC CHECKSUMS:
@@ -62,15 +64,16 @@ SPEC CHECKSUMS:
   BKCardExpiryField: f2e92c0bbb2363b9e9af80ee8348e43ddeff30db
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
-  FSCalendar: '09369a2bf554ba71cd8e8cfb627e2df22a2c2af4'
+  FSCalendar: 09369a2bf554ba71cd8e8cfb627e2df22a2c2af4
   GoogleMaps: 340a6a0bebd17c2db8abcd3921976c7c53c86cb8
   GooglePlaces: 74d322c74184ea4576184089b496d291cf0dcd38
   HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
   Stripe: 1c7aa951a075cced500a919d92b687b35d410705
+  TCBlobDownload: 8726f054cc00bb5f66a57bb0c99764842dfa5c9f
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: '0111831fe9560425de41e7ada0d8354cb6761e70'
+PODFILE CHECKSUM: 2d06e374e252243592683d3c24737228af088517
 
-COCOAPODS: 1.3.0.beta.1
+COCOAPODS: 1.2.0

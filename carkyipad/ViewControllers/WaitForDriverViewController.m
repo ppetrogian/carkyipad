@@ -17,11 +17,14 @@
 #import "ResetsForIdle.h"
 @import AVFoundation;
 @import AVKit;
+#define TRANSFER_TIMEOUT 180
 
-@interface WaitForDriverViewController () <InitViewController, RefreshableViewController, ResetsForIdle>
+@interface WaitForDriverViewController () <InitViewController, RefreshableViewController, ResetsForIdle> {
+    NSString * _bookingRequestId;
+}
 @property (nonatomic, assign) NSTimeInterval pollInterval;
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
-@property (nonatomic, assign) NSTimeInterval pollTimeout;
+@property (nonatomic, strong) NSTimer *pollTimer;
 @property (nonatomic, strong) NSTimer *timeoutTimer;
 
 @property (nonatomic, assign) BOOL loaded;
@@ -34,8 +37,7 @@
 - (void)viewDidLoad {
     AppDelegate *app = [AppDelegate instance];
     [super viewDidLoad];
-    self.pollInterval = 5.0;
-    self.pollTimeout = 120.0;
+    self.pollInterval = 3.0;
     self.pollTime = 0.0;
     self.retriedFromBusy = NO;
 
@@ -103,29 +105,42 @@
 }
 
 -(void)findDriverAndMakePayment {
+    self.bookingRequestId = nil;
     if (self.parentTransferController.payPalPaymentResponse) {
-        [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSString *bookingId) {
-            [self showBooking:bookingId];
+        [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSString *bookingRequestId) {
+            self.bookingRequestId = bookingRequestId;
         }]; // create transfer request
     }
     else {
         if (self.parentTransferController.payWithCash) {
-            [self.parentTransferController payTransferWithCash:^(NSString *bookingId) {
-                [self showBooking:bookingId];
+            [self.parentTransferController payTransferWithCash:^(NSString *bookingRequestId) {
+                self.bookingRequestId = bookingRequestId;
             }];
         }
         else {
-            [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingId) {
-                [self showBooking:bookingId];
+            [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingRequestId) {
+                self.bookingRequestId = bookingRequestId;
             }];
         }
     }
 }
 
+-(NSString *)bookingRequestId {
+    return  _bookingRequestId;
+}
+
+-(void)setBookingRequestId:(NSString *)value {
+    _bookingRequestId = value;
+    self.pollTime = 0;
+    if (!value) {
+        return;
+    }
+    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
+}
+
 -(void)showBooking:(NSString *)bookingId {
     AppDelegate *app = [AppDelegate instance];
     NSString *retryMsg = NSLocalizedString(@"Do you want to retry again for the same car category?",@"want_retry");
-    self.parentTransferController.transferBookingId = bookingId;
     if (app.clientConfiguration.booksLater) {
         [app.qplayer pause];
         [self.parentTransferController showAlertViewWithMessage:bookingId andTitle:@"Booking" withBlock:^(BOOL b) {
@@ -135,9 +150,9 @@
     }
     if ([bookingId isEqualToString:@"-402"]) { // 402 error = payment failed
         [app.qplayer pause];
-        NSString *paymentMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking.",@"Payment error");
+        NSString *paymentMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking.",@"Payment Failed");
         NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", paymentMsg, retryMsg];
-        [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
+        [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Payment Failed" withBlockYes:^(BOOL b) {
             [self.parentTransferController showPreviousStep];
         } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         return;
@@ -171,13 +186,9 @@
 
     CarkyApiClient *api = [CarkyApiClient sharedService];
     [api GetCarkyBookingStatusForUser:self.parentTransferController.userId andBooking:bookingId withBlock:^(NSArray *array) {
-        if (self.timeoutTimer.isValid) {
-            [self.timeoutTimer invalidate];
-        }
         [self deinitControls];
         if (array.count > 0 && [array.firstObject isKindOfClass:Content.class]) {
-            self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
-            [self handlePollTimer:self.timeoutTimer];
+            self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(handleTimoutTimer:) userInfo:nil repeats:NO];
             [self loadPickupImage];
             Content *responseObj = array.firstObject;
             self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
@@ -205,12 +216,26 @@
 
 - (void)handlePollTimer:(NSTimer *)theTimer {
     self.pollTime += self.pollInterval;
-    if (self.pollTime > self.pollTimeout) {
-        if (self.timeoutTimer.isValid) {
-            [self.timeoutTimer invalidate];
-        }
-        [self newBookingButton_Click: self.makeBookingButton];
+    if (self.pollTime > TRANSFER_TIMEOUT || !self.bookingRequestId) {
+        [self.pollTimer invalidate];
+        [self showBooking:@"0"];
     }
+    else {
+        CarkyApiClient *api = [CarkyApiClient sharedService];
+        [api CheckTransferBookingRequest:self.bookingRequestId withBlock:^(NSArray *array) {
+            if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
+                TransferBookingResponse *obj = array.firstObject;
+                NSLog(@"Received bookingId %@", obj.bookingId);
+                if (obj.bookingId && ![obj.bookingId isEqualToString:@"0"]) {
+                    [self showBooking:obj.bookingId];
+                }
+            }
+        }];
+    }
+}
+
+- (void)handleTimoutTimer:(NSTimer *)theTimer {
+    [self newBookingButton_Click: self.makeBookingButton];
 }
 
 -(TransferStepsViewController *)parentController {
