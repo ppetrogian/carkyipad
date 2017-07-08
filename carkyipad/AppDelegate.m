@@ -164,7 +164,7 @@
             //app.clientConfiguration.location.latLng.lng = 25.396646;
             CarkyApiClient *api = [CarkyApiClient sharedService];
             // paypal configuration
-            if (isInitial || clientConf.payPalMode != app.clientConfiguration.payPalMode) {
+            if (isInitial || clientConf.payPalMode != app.clientConfiguration.payPalMode || clientConf.areaOfServiceId != app.clientConfiguration.areaOfServiceId) {
                 if ([clientConf.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
                     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : clientConf.payPalClientId}];
                 } else {
@@ -172,15 +172,13 @@
                 }
                 [api GetStripePublishableApiKey:^(NSString *str) {
                     [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [str substringWithRange:NSMakeRange(1, str.length-2)]];
-                }];
-            }
-            if (isInitial || clientConf.areaOfServiceId != app.clientConfiguration.areaOfServiceId) {
-                [api GetTransferServicePartnerAvailableCars:clientConf.areaOfServiceId withBlock:^(NSArray *array) {
-                    self.carCategories = array;
-                }];
-                [api GetWellKnownLocations:clientConf.areaOfServiceId withBlock:^(NSArray<Location *> *array) {
-                    self.wellKnownLocations = array;
-                    self.locationBounds = [AppDelegate findCoordBounds:self.wellKnownLocations];
+                    [api GetTransferServicePartnerAvailableCars:clientConf.areaOfServiceId withBlock:^(NSArray *array) {
+                        self.carCategories = array;
+                    }];
+                    [api GetWellKnownLocations:clientConf.areaOfServiceId withBlock:^(NSArray<Location *> *array) {
+                        self.wellKnownLocations = array;
+                        self.locationBounds = [AppDelegate findCoordBounds:self.wellKnownLocations];
+                    }];
                 }];
             }
             BOOL bNeedReload = isInitial || NO == [app.clientConfiguration.description isEqualToString:clientConf.description];

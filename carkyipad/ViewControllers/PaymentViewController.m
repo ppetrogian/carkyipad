@@ -129,6 +129,7 @@
     NSString *strText = [NSString stringWithFormat:@"PAY NOW       %.2lf€", price];
     [self.payNowButton setTitle:strText forState: UIControlStateNormal];
     self.cvvTextField.text = @"";
+    [self.payNowButton disableButton];
 }
 
 #pragma mark - Navigation
