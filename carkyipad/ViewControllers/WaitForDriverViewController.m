@@ -15,9 +15,9 @@
 #import "RequestRideViewController.h"
 #import "RefreshableViewController.h"
 #import "ResetsForIdle.h"
+#import "Constants.h"
 @import AVFoundation;
 @import AVKit;
-#define TRANSFER_TIMEOUT 180
 
 @interface WaitForDriverViewController () <InitViewController, RefreshableViewController, ResetsForIdle> {
     NSString * _bookingRequestId;
@@ -85,6 +85,7 @@
     self.loaded = NO;
     AppDelegate *app = [AppDelegate instance];
     [app.qplayer pause];
+    [self.pollTimer invalidate];
     [app.playerLayer removeFromSuperlayer];
     // clear gmap resources
     RequestRideViewController *rvc = self.parentTransferController.childViewControllers[0];
@@ -106,6 +107,9 @@
 
 -(void)findDriverAndMakePayment {
     self.bookingRequestId = nil;
+    if ([CarkyApiClient sharedService].isOffline) {
+        [self showBooking:@"-400"];
+    }
     if (self.parentTransferController.payPalPaymentResponse) {
         [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSString *bookingRequestId) {
             self.bookingRequestId = bookingRequestId;
@@ -130,6 +134,7 @@
 }
 
 -(void)setBookingRequestId:(NSString *)value {
+    NSLog(@"Received bookingRequestId: %@", value);
     _bookingRequestId = value;
     self.pollTime = 0;
     if (!value) {
@@ -140,16 +145,17 @@
 
 -(void)showBooking:(NSString *)bookingId {
     AppDelegate *app = [AppDelegate instance];
+    [app.qplayer pause];
+    [self.pollTimer invalidate];
+
     NSString *retryMsg = NSLocalizedString(@"Do you want to retry again for the same car category?",@"want_retry");
     if (app.clientConfiguration.booksLater) {
-        [app.qplayer pause];
         [self.parentTransferController showAlertViewWithMessage:bookingId andTitle:@"Booking" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
         }];
         return;
     }
     if ([bookingId isEqualToString:@"-402"]) { // 402 error = payment failed
-        [app.qplayer pause];
         NSString *paymentMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking.",@"Payment Failed");
         NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", paymentMsg, retryMsg];
         [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Payment Failed" withBlockYes:^(BOOL b) {
@@ -157,14 +163,15 @@
         } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         return;
     }
-    else if ([bookingId isEqualToString:@"0"]) {
-          [app.qplayer pause];
-        NSString *busyMsg = NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"Drivers_busy");
-        NSString *retryMsg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
+    else if ([bookingId isEqualToString:@"0"] || [bookingId isEqualToString:@"-400"]) {
+        NSString *retry1Msg = [bookingId isEqualToString:@"0"] == NO ? NSLocalizedString(NO_INTERNET, @"no_conn") :
+            NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"drivers_busy");
+        NSString *retry2Msg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
         if (!self.retriedFromBusy) {
-            self.retriedFromBusy = YES;
-            NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", busyMsg, retryMsg];
-            [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
+            if([bookingId isEqualToString:@"0"])
+                self.retriedFromBusy = YES;
+            NSString *retryMsg = [NSString stringWithFormat:@"%@\n%@", retry1Msg, retry2Msg];
+            [self.parentTransferController showRetryDialogViewWithMessage:retryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
                 if (self.parentTransferController.payPalPaymentResponse) {
                     [self.parentTransferController showPreviousStep];
                 }
@@ -174,7 +181,7 @@
             } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         }
         else {
-            [self.parentTransferController showAlertViewWithMessage:busyMsg andTitle:@"Booking" withBlock:^(BOOL b) {  [self newBookingButton_Click:nil];
+            [self.parentTransferController showAlertViewWithMessage:retry1Msg andTitle:@"Booking" withBlock:^(BOOL b) {  [self newBookingButton_Click:nil];
             }];
         }
         return;
@@ -191,7 +198,7 @@
             self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(handleTimoutTimer:) userInfo:nil repeats:NO];
             [self loadPickupImage];
             Content *responseObj = array.firstObject;
-            self.driverNoLabel.text = [NSString stringWithFormat:@"%@ %.2lf", responseObj.name, responseObj.rating];
+            self.driverNoLabel.text = responseObj.name;
             self.registrationNoLabel.text = responseObj.registrationNo;
             if (responseObj.photo) {
                 UIImage *driverImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: responseObj.photo]]];

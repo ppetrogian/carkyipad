@@ -21,8 +21,8 @@
 #import "RefreshableViewController.h"
 #import "ResetsForIdle.h"
 #import "RequestRideViewController.h"
-#define kSegmentHeight 50
 #import "UIViewController_Additions.h"
+#import "Constants.h"
 
 @interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate,ResetsForIdle>
 @property(strong, nonatomic) RentalConfirmationView *confirmationView;

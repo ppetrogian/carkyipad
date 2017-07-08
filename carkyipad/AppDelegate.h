@@ -12,8 +12,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "CarkyApiClient.h"
-#define kMaxIdleTimeSeconds 300
-#define kHeartBeatInterval 180
 
 @class AVQueuePlayer,AVPlayerLayer;
 

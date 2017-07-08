@@ -15,6 +15,7 @@
 #import "TransferStepsViewController.h"
 #import "SelectDropoffLocationViewController.h"
 #import <GooglePlaces/GooglePlaces.h>
+#import "Constants.h"
 
 @interface RequestRideViewController () <GMSMapViewDelegate, UITableViewDelegate, UICollectionViewDelegate, UITextFieldDelegate>
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
@@ -128,6 +129,10 @@
 }
 
 -(IBAction)requestRideButton_Click:(UIButton *)sender {
+    if ([CarkyApiClient sharedService].isOffline) {
+        [self.parentController showAlertViewWithMessage:NO_INTERNET andTitle:@"Offline"];
+        return;
+    }
     [self.parentController showNextStep];
 }
 
