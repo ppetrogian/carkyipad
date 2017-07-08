@@ -56,6 +56,7 @@
 +(UICollectionView *)parentCollectionView:(UIView *)view;
 +(UICollectionViewCell *)parentCollectionViewCell:(UIView *)view;
 -(void)fetchInitialData:(BlockBoolean)block;
+-(void)refreshClientConfiguration:(BlockBoolean)block;
 +(CLLocationCoordinate2D)coordinateWithLocation:(NSDictionary*)location;
 -(MBProgressHUD *)showProgressNotificationWithText:(NSString *)text inView:(UIView *)view;
 -(void)hideProgressNotification;

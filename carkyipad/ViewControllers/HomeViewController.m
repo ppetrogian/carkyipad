@@ -88,9 +88,10 @@
 
 -(void)sendHeartbeat {
     if ([self isVisible]) {
-        CarkyApiClient *api = [CarkyApiClient sharedService];
+        AppDelegate *app = [AppDelegate instance];
         //[api Heartbeat];
-        NSLog(@"TODO refresh client configuration ...");
+        NSLog(@"refresh client configuration ...");
+        [app refreshClientConfiguration:nil];
     }
 }
 

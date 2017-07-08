@@ -148,38 +148,49 @@
         return;
     }
     [self.api loginWithUsername:userName andPassword:password withTokenBlock:^(BOOL result) {
-        [self.api GetClientConfiguration:^(NSArray *array) {
-            if (array.count > 0) {
-                AppDelegate *app = [AppDelegate instance];
-                app.clientConfiguration = array.firstObject;
+        [self refreshClientConfiguration:block];
+    }];
+}
 
-                // debug only SOS
-                //app.clientConfiguration.location.latLng.lat = 37.421932;
-                //app.clientConfiguration.location.latLng.lng = 25.396646;
-                CarkyApiClient *api = [CarkyApiClient sharedService];
-                NSInteger userFleetLocationId = app.clientConfiguration.areaOfServiceId;
-                // paypal configuration
-                if ([app.clientConfiguration.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
-                    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : app.clientConfiguration.payPalClientId}];
+-(void)refreshClientConfiguration:(BlockBoolean)block {
+    [self.api GetClientConfiguration:^(NSArray *array) {
+        if (array.count > 0) {
+            ClientConfigurationResponse *clientConf = array.firstObject;
+            AppDelegate *app = [AppDelegate instance];
+            BOOL isInitial = (app.clientConfiguration == nil);
+            
+            // debug only SOS
+            //app.clientConfiguration.location.latLng.lat = 37.421932;
+            //app.clientConfiguration.location.latLng.lng = 25.396646;
+            CarkyApiClient *api = [CarkyApiClient sharedService];
+            // paypal configuration
+            if (isInitial || clientConf.payPalMode != app.clientConfiguration.payPalMode) {
+                if ([clientConf.payPalMode caseInsensitiveCompare:@"sandbox"] == NSOrderedSame) {
+                    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentSandbox : clientConf.payPalClientId}];
                 } else {
-                    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : app.clientConfiguration.payPalClientId}];
+                    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : clientConf.payPalClientId}];
                 }
-                
-                [api GetTransferServicePartnerAvailableCars:userFleetLocationId withBlock:^(NSArray *array) {
-                    self.carCategories = array;
-                }];
-                [api GetWellKnownLocations:userFleetLocationId withBlock:^(NSArray<Location *> *array) {
-                    self.wellKnownLocations = array;
-                    self.locationBounds = [AppDelegate findCoordBounds:self.wellKnownLocations];
-                    [api GetStripePublishableApiKey:^(NSString *str) {
-                        [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [str substringWithRange:NSMakeRange(1, str.length-2)]];
-                        [self loadInitialControllerForMode:app.clientConfiguration.tabletMode];
-                        if(block)
-                        { block(YES); }
-                    }];
+                [api GetStripePublishableApiKey:^(NSString *str) {
+                    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey: [str substringWithRange:NSMakeRange(1, str.length-2)]];
                 }];
             }
-        }];
+            if (isInitial || clientConf.areaOfServiceId != app.clientConfiguration.areaOfServiceId) {
+                [api GetTransferServicePartnerAvailableCars:clientConf.areaOfServiceId withBlock:^(NSArray *array) {
+                    self.carCategories = array;
+                }];
+                [api GetWellKnownLocations:clientConf.areaOfServiceId withBlock:^(NSArray<Location *> *array) {
+                    self.wellKnownLocations = array;
+                    self.locationBounds = [AppDelegate findCoordBounds:self.wellKnownLocations];
+                }];
+            }
+            BOOL bNeedReload = isInitial || NO == [app.clientConfiguration.description isEqualToString:clientConf.description];
+            app.clientConfiguration = clientConf;
+            if (bNeedReload) {
+                [self loadInitialControllerForMode:app.clientConfiguration.tabletMode];
+                if(block)
+                { block(YES); }
+            }
+        }
     }];
 }
 
