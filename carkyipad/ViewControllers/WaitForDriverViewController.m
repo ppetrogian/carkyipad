@@ -108,7 +108,9 @@
 -(void)findDriverAndMakePayment {
     self.bookingRequestId = nil;
     if ([CarkyApiClient sharedService].isOffline) {
-        [self showBooking:@"-400"];
+        [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(NO_INTERNET, @"no_internet") andTitle:@"Offline" withBlock:^(BOOL b) {
+            [self newBookingButton_Click:nil];
+        }];
     }
     if (self.parentTransferController.payPalPaymentResponse) {
         [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSString *bookingRequestId) {
@@ -148,7 +150,6 @@
     [app.qplayer pause];
     [self.pollTimer invalidate];
 
-    NSString *retryMsg = NSLocalizedString(@"Do you want to retry again for the same car category?",@"want_retry");
     if (app.clientConfiguration.booksLater) {
         [self.parentTransferController showAlertViewWithMessage:bookingId andTitle:@"Booking" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
@@ -156,9 +157,8 @@
         return;
     }
     if ([bookingId isEqualToString:@"-402"]) { // 402 error = payment failed
-        NSString *paymentMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking.",@"Payment Failed");
-        NSString *busyRetryMsg = [NSString stringWithFormat:@"%@\n%@", paymentMsg, retryMsg];
-        [self.parentTransferController showRetryDialogViewWithMessage:busyRetryMsg andTitle:@"Payment Failed" withBlockYes:^(BOOL b) {
+        NSString *paymentRetryMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking. Do you want to retry again for the same car category?",@"Payment Failed");
+        [self.parentTransferController showRetryDialogViewWithMessage:paymentRetryMsg andTitle:@"Payment Failed" withBlockYes:^(BOOL b) {
             [self.parentTransferController showPreviousStep];
         } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         return;
@@ -167,11 +167,10 @@
         NSString *retry1Msg = [bookingId isEqualToString:@"0"] == NO ? NSLocalizedString(NO_INTERNET, @"no_conn") :
             NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"drivers_busy");
         NSString *retry2Msg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
-        if (!self.retriedFromBusy) {
-            if([bookingId isEqualToString:@"0"])
-                self.retriedFromBusy = YES;
-            NSString *retryMsg = [NSString stringWithFormat:@"%@\n%@", retry1Msg, retry2Msg];
-            [self.parentTransferController showRetryDialogViewWithMessage:retryMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
+        if (!self.retriedFromBusy && ![CarkyApiClient sharedService].isOffline) {
+            self.retriedFromBusy = YES;
+            NSString *retryFullMsg = [NSString stringWithFormat:@"%@\n%@", retry1Msg, retry2Msg];
+            [self.parentTransferController showRetryDialogViewWithMessage:retryFullMsg andTitle:@"Booking" withBlockYes:^(BOOL b) {
                 if (self.parentTransferController.payPalPaymentResponse) {
                     [self.parentTransferController showPreviousStep];
                 }
@@ -225,7 +224,8 @@
     self.pollTime += self.pollInterval;
     if (self.pollTime > TRANSFER_TIMEOUT || !self.bookingRequestId) {
         [self.pollTimer invalidate];
-        [self showBooking:@"0"];
+        CarkyApiClient *api = [CarkyApiClient sharedService];
+        [self showBooking:api.isOffline ? @"-400" : @"0"];
     }
     else {
         CarkyApiClient *api = [CarkyApiClient sharedService];

@@ -385,8 +385,6 @@ static CarkyApiClient *_sharedService = nil;
         responseObj.bookingId = @"0";
         if (statusCode == 402)
             responseObj.bookingId = @"-402";
-        else if(statusCode == 400 || self.isOffline || [error.localizedDescription isEqualToString:@"The Internet connection appears to be offline."])
-            responseObj.bookingId = @"-400";
         block([NSArray arrayWithObject:responseObj]);
     }];
 }

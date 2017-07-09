@@ -121,6 +121,27 @@
     [self presentViewController:svc animated:YES completion:nil];
 }
 
+-(UIAlertAction *)dismissAlertView_OKTapped:(UIAlertController *)myAlertController withBlock:(BlockBoolean)block {
+    return [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * action)  {
+        block(YES);
+        [myAlertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
+-(void)showAlertViewWithMessage:(NSString *)messageStr andTitle:(NSString *)titleStr {
+    UIAlertController *myAlertController = [UIAlertController alertControllerWithTitle:titleStr  message: messageStr preferredStyle:UIAlertControllerStyleAlert];
+    [myAlertController addAction: [self dismissAlertView_OKTapped:myAlertController withBlock:^(BOOL b) {}]];
+    [self presentViewController:myAlertController animated:YES completion:nil];
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    BOOL res = ![CarkyApiClient sharedService].isOffline;
+    if (!res) {
+        [self showAlertViewWithMessage:NO_INTERNET andTitle:@"Offline"];
+    }
+    return res;
+}
+
 /*
 #pragma mark - Navigation
 
