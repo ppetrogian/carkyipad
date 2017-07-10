@@ -404,8 +404,6 @@ static CarkyApiClient *_sharedService = nil;
     }];
 }
 
-
-
 -(void)CreateTransferBookingForLater:(TransferBookingRequest *)request withBlock:(BlockArray)block {
     [self setAuthorizationHeader];
         self.responseSerializer = [AFJSONResponseSerializer serializer];

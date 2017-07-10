@@ -94,12 +94,12 @@
 		AE956AEE1ECF578500041E18 /* BookingInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AED1ECF578500041E18 /* BookingInfoResponse.m */; };
 		AE956AF11ECF57B200041E18 /* PayPalPaymentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AF01ECF57B200041E18 /* PayPalPaymentInfo.m */; };
 		AE956AF41ECF57E200041E18 /* RentalBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AF31ECF57E200041E18 /* RentalBookingResponse.m */; };
+		AEA97A941F13B6FE004106C6 /* SearchingForDrivers_Mykonos.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AEA97A931F13B6FE004106C6 /* SearchingForDrivers_Mykonos.mp4 */; };
 		AEA9E92B1EAE25FF00CC84D5 /* RegisterClientResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */; };
 		AEA9E92E1EAE30A400CC84D5 /* DateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E92D1EAE30A400CC84D5 /* DateTime.m */; };
 		AEA9E9311EAE58C900CC84D5 /* TransferBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9301EAE58C900CC84D5 /* TransferBookingResponse.m */; };
 		AEA9E9341EAE68A900CC84D5 /* CarkyBookingStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */; };
 		AEA9E9371EAE68CC00CC84D5 /* Content.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA9E9361EAE68CC00CC84D5 /* Content.m */; };
-		AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */; };
 		AEAF1B271E885F1100C03768 /* NSAttributedString+RZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */; };
 		AEE65A151EF4024300700DF3 /* TransferLanding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */; };
 		AEE65A171EF4025E00700DF3 /* RentalLanding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE65A161EF4025E00700DF3 /* RentalLanding.storyboard */; };
@@ -337,6 +337,7 @@
 		AE956AF01ECF57B200041E18 /* PayPalPaymentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPalPaymentInfo.m; sourceTree = "<group>"; };
 		AE956AF21ECF57E200041E18 /* RentalBookingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBookingResponse.h; sourceTree = "<group>"; };
 		AE956AF31ECF57E200041E18 /* RentalBookingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalBookingResponse.m; sourceTree = "<group>"; };
+		AEA97A931F13B6FE004106C6 /* SearchingForDrivers_Mykonos.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SearchingForDrivers_Mykonos.mp4; sourceTree = "<group>"; };
 		AEA9E9291EAE25FF00CC84D5 /* RegisterClientResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterClientResponse.h; sourceTree = "<group>"; };
 		AEA9E92A1EAE25FF00CC84D5 /* RegisterClientResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterClientResponse.m; sourceTree = "<group>"; };
 		AEA9E92C1EAE30A400CC84D5 /* DateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTime.h; sourceTree = "<group>"; };
@@ -347,7 +348,6 @@
 		AEA9E9331EAE68A900CC84D5 /* CarkyBookingStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarkyBookingStatusResponse.m; sourceTree = "<group>"; };
 		AEA9E9351EAE68CC00CC84D5 /* Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Content.h; sourceTree = "<group>"; };
 		AEA9E9361EAE68CC00CC84D5 /* Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Content.m; sourceTree = "<group>"; };
-		AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2848220705019691240.mp4; sourceTree = "<group>"; };
 		AEAF1B251E885F1100C03768 /* NSAttributedString+RZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+RZExtensions.m"; sourceTree = "<group>"; };
 		AEAF1B261E885F1100C03768 /* NSAttributedString+RZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RZExtensions.h"; sourceTree = "<group>"; };
 		AEE65A141EF4024300700DF3 /* TransferLanding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TransferLanding.storyboard; path = ../TransferLanding.storyboard; sourceTree = "<group>"; };
@@ -826,8 +826,8 @@
 		AEEA24D11EAA2B7900043423 /* Taxi */ = {
 			isa = PBXGroup;
 			children = (
+				AEA97A931F13B6FE004106C6 /* SearchingForDrivers_Mykonos.mp4 */,
 				AE424A591EEB03F20081A879 /* InitViewController.h */,
-				AEAA3BE61EC6119E004ED9C1 /* 2848220705019691240.mp4 */,
 				D1344C011E777F4B00006FAD /* TransferStepsViewController.h */,
 				D1344C021E777F4B00006FAD /* TransferStepsViewController.m */,
 				AEEA24D41EAA349900043423 /* RequestRideViewController.h */,
@@ -1198,7 +1198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEAA3BE71EC611A6004ED9C1 /* 2848220705019691240.mp4 in Resources */,
 				D15951491EACB08B00540076 /* Settings.bundle in Resources */,
 				E1C2EE5F1EC339910021BEC2 /* ExtrasCollectionViewCell.xib in Resources */,
 				D10155F81ED66CEA00F69773 /* Landing.storyboard in Resources */,
@@ -1206,6 +1205,7 @@
 				E1C2EE781EC446450021BEC2 /* PasscodeView.xib in Resources */,
 				D1AA294D1EC923FA0080AD93 /* InsurancesCollectionViewCell.xib in Resources */,
 				AEE65A151EF4024300700DF3 /* TransferLanding.storyboard in Resources */,
+				AEA97A941F13B6FE004106C6 /* SearchingForDrivers_Mykonos.mp4 in Resources */,
 				AE24FA611EFDB5FE000BCCF7 /* SVWebViewController.bundle in Resources */,
 				E1C2EE671EC367110021BEC2 /* PlaceDetailsView.xib in Resources */,
 				AE6353011E75E1FA00065F0F /* NBPhoneNumberMetadata.plist in Resources */,
