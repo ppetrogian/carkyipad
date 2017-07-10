@@ -113,19 +113,28 @@
         }];
     }
     if (self.parentTransferController.payPalPaymentResponse) {
-        [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSString *bookingRequestId) {
-            self.bookingRequestId = bookingRequestId;
+        [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSArray *array) {
+            if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
+                TransferBookingResponse *response = array.firstObject;
+                self.bookingRequestId = response.bookingRequestId;
+            }
         }]; // create transfer request
     }
     else {
         if (self.parentTransferController.payWithCash) {
-            [self.parentTransferController payTransferWithCash:^(NSString *bookingRequestId) {
-                self.bookingRequestId = bookingRequestId;
+            [self.parentTransferController payTransferWithCash:^(NSArray *array) {
+                if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
+                    TransferBookingResponse *response = array.firstObject;
+                    self.bookingRequestId = response.bookingRequestId;
+                }
             }];
         }
         else {
-            [self.parentTransferController payTransferWithCreditCard:^(NSString *bookingRequestId) {
-                self.bookingRequestId = bookingRequestId;
+            [self.parentTransferController payTransferWithCreditCard:^(NSArray *array) {
+                if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
+                    TransferBookingResponse *response = array.firstObject;
+                    self.bookingRequestId = response.bookingRequestId;
+                }
             }];
         }
     }
@@ -145,7 +154,7 @@
     self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
 }
 
--(void)showBooking:(NSString *)bookingId {
+-(void)showBooking:(NSString *)bookingId andMessage:(NSString *)message {
     AppDelegate *app = [AppDelegate instance];
     [app.qplayer pause];
     [self.pollTimer invalidate];
@@ -157,15 +166,15 @@
         return;
     }
     if ([bookingId isEqualToString:@"-402"]) { // 402 error = payment failed
-        NSString *paymentRetryMsg = NSLocalizedString(@"Payment failed. You have not been charged for this booking. Do you want to retry again for the same car category?",@"Payment Failed");
+        NSString *paymentRetryMsg = message ? message : NSLocalizedString(@"Payment failed. You have not been charged for this booking. Do you want to retry again for the same car category?",@"Payment Failed");
         [self.parentTransferController showRetryDialogViewWithMessage:paymentRetryMsg andTitle:@"Payment Failed" withBlockYes:^(BOOL b) {
             [self.parentTransferController showPreviousStep];
         } andBlockNo:^(BOOL b) {  [self newBookingButton_Click:nil]; }];
         return;
     }
-    else if ([bookingId isEqualToString:@"0"] || [bookingId isEqualToString:@"-400"]) {
-        NSString *retry1Msg = [bookingId isEqualToString:@"0"] == NO ? NSLocalizedString(NO_INTERNET, @"no_conn") :
-            NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"drivers_busy");
+    else if ([bookingId isEqualToString:@"0"] || [bookingId isEqualToString:@"-403"]) {
+        NSString *retry1Msg = message ? message : ([bookingId isEqualToString:@"0"] == NO ? NSLocalizedString(NO_INTERNET, @"no_conn") :
+            NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"drivers_busy"));
         NSString *retry2Msg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
         if (!self.retriedFromBusy && ![CarkyApiClient sharedService].isOffline) {
             self.retriedFromBusy = YES;
@@ -225,7 +234,7 @@
     if (self.pollTime > TRANSFER_TIMEOUT || !self.bookingRequestId) {
         [self.pollTimer invalidate];
         CarkyApiClient *api = [CarkyApiClient sharedService];
-        [self showBooking:api.isOffline ? @"-400" : @"0"];
+        [self showBooking:api.isOffline ? @"-400" : @"0" andMessage:nil];
     }
     else {
         CarkyApiClient *api = [CarkyApiClient sharedService];
@@ -234,7 +243,7 @@
                 TransferBookingResponse *obj = array.firstObject;
                 NSLog(@"Received bookingId %@", obj.bookingId);
                 if (obj.bookingId && ![obj.bookingId isEqualToString:@"0"]) {
-                    [self showBooking:obj.bookingId];
+                    [self showBooking:obj.bookingId andMessage:obj.errorDescription];
                 }
             }
         }];

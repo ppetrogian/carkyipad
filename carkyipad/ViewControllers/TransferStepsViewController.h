@@ -25,8 +25,8 @@
 - (void) didSelectLocation:(NSInteger)identifier withValue:(id)value andText:(NSString *)t forMap:(GMSMapView *)mapView;
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView;
 // methods
--(void)payTransferWithCash:(BlockString)block;
--(void)payTransferWithCreditCard:(BlockString)block;
--(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockString)block;
+-(void)payTransferWithCash:(BlockArray)block;
+-(void)payTransferWithCreditCard:(BlockArray)block;
+-(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockArray)block;
 -(TransferBookingRequest *)getPaymentRequestWithCC:(BOOL)forCC orWithCash:(BOOL)withCash;
 @end

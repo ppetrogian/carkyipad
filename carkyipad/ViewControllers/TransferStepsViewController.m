@@ -306,7 +306,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     return request;
 }
 
-- (void)MakeTransferRequest:(BlockString)block request:(TransferBookingRequest *)request {
+- (void)MakeTransferRequest:(BlockArray)block request:(TransferBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
     AppDelegate *app = [AppDelegate instance];
     if (app.clientConfiguration.booksLater) {
@@ -315,10 +315,10 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             [[AppDelegate instance] hideProgressNotification];
             if ([array.firstObject isKindOfClass:TransferBookingForLaterResponse.class]) {
                 TransferBookingForLaterResponse *responseObj = array.firstObject;
-                block(responseObj.internalBaseClassDescription);
+                block(@[responseObj]);
             } else {
                 [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-                block(@"-1");
+                block(@[@"-1"]);
             }
         }];
     }
@@ -330,14 +330,18 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
                 TransferBookingResponse *responseObj = array.firstObject;
                 if (responseObj.bookingRequestId.length > 0) {
                     self.transferBookingRequestId = responseObj.bookingRequestId;
-                    block(responseObj.bookingRequestId);
+                    block(@[responseObj]);
                 } else {
                     [self showAlertViewWithMessage:responseObj.errorDescription andTitle:@"Error"];
-                    block(@"0");
+                    TransferBookingResponse *responseObj = [TransferBookingResponse new];
+                    responseObj.bookingRequestId = @"0";
+                    block(@[responseObj]);
                 }
             } else {
                 [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-                block(@"-1");
+                TransferBookingResponse *responseObj = [TransferBookingResponse new];
+                responseObj.bookingRequestId = @"-1";
+                block(@[responseObj]);
             }
         }];
     }
@@ -347,12 +351,12 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 }
 
--(void)payTransferWithCash:(BlockString)block {
+-(void)payTransferWithCash:(BlockArray)block {
     TransferBookingRequest *request = [self getPaymentRequestWithCC:NO orWithCash:YES];
     [self MakeTransferRequest:block request:request]; // create transfer request
 }
 
--(void)payTransferWithCreditCard:(BlockString)block {
+-(void)payTransferWithCreditCard:(BlockArray)block {
     if (!self.stripeCardToken) {
         STPAPIClient *stpClient = [STPAPIClient sharedClient];
         [stpClient createTokenWithCard:self.cardParams completion:^(STPToken *token, NSError *error) {
@@ -373,13 +377,13 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     [self MakeTransferRequest:block request:request]; // create transfer request
 }
     
--(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockString)block {
+-(void)payTransferWithPaypal:(NSString *)confirmation withBlock:(BlockArray)block {
     TransferBookingRequest *request = [self getPaymentRequestWithCC:NO orWithCash:NO];
     request.payPalPaymentResponse = confirmation;
     NSString* identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     request.payPalPayerId = identifier;
-    [self MakeTransferRequest:^(NSString *bookingRequestId) {
-        block(bookingRequestId);
+    [self MakeTransferRequest:^(NSArray *bookingRequest) {
+        block(bookingRequest);
     } request:request]; // create transfer request
 }
 

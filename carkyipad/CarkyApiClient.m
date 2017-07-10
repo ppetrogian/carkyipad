@@ -383,8 +383,12 @@ static CarkyApiClient *_sharedService = nil;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         responseObj.errorDescription = errorMsg;
         responseObj.bookingId = @"0";
-        if (statusCode == 402)
-            responseObj.bookingId = @"-402";
+        if (statusCode == 402) {
+            NSDictionary* jsonError = [NSJSONSerialization JSONObjectWithData:errorData options:0 error:nil];
+            NSString *stringCode = jsonError[@"StatusCode"];
+            responseObj.bookingId = [stringCode isEqualToString:@"PAYMENT_ERROR"] ? @"-402" : @"-403";
+            responseObj.errorDescription = jsonError[@"Message"];
+        }
         block([NSArray arrayWithObject:responseObj]);
     }];
 }
