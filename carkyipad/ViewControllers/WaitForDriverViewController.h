@@ -7,9 +7,10 @@
 //
 
 #import "StepViewController.h"
+@class TransferBookingResponse;
 
 @interface WaitForDriverViewController : StepViewController
-@property (nonatomic, strong) NSString *bookingRequestId;
+@property (nonatomic, strong) TransferBookingResponse *bookingResponse;
 
 @property (weak, nonatomic) IBOutlet UILabel *registrationNoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *driverNoLabel;

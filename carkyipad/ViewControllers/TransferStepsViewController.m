@@ -313,12 +313,16 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
         // books later
         [api CreateTransferBookingForLater:request withBlock:^(NSArray *array) {
             [[AppDelegate instance] hideProgressNotification];
+            TransferBookingResponse *responseObj = [TransferBookingResponse new];
             if ([array.firstObject isKindOfClass:TransferBookingForLaterResponse.class]) {
-                TransferBookingForLaterResponse *responseObj = array.firstObject;
+                TransferBookingForLaterResponse *temp = array.firstObject;
+                responseObj.bookingRequestId = [NSString stringWithFormat:@"%.0lf", temp.internalBaseClassIdentifier];
+                responseObj.errorDescription = temp.internalBaseClassDescription;
                 block(@[responseObj]);
             } else {
-                [self showAlertViewWithMessage:array.firstObject andTitle:@"Error"];
-                block(@[@"-1"]);
+                responseObj.bookingRequestId = @"-1";
+                responseObj.errorDescription = array.firstObject;
+                block(@[responseObj]);
             }
         }];
     }

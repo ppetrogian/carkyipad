@@ -20,7 +20,7 @@
 @import AVKit;
 
 @interface WaitForDriverViewController () <InitViewController, RefreshableViewController, ResetsForIdle> {
-    NSString * _bookingRequestId;
+    TransferBookingResponse* _bookingResponse;
 }
 @property (nonatomic, assign) NSTimeInterval pollInterval;
 @property (nonatomic, assign) NSTimeInterval pollTime; // time that has passed
@@ -106,7 +106,7 @@
 }
 
 -(void)findDriverAndMakePayment {
-    self.bookingRequestId = nil;
+    self.bookingResponse = nil;
     if ([CarkyApiClient sharedService].isOffline) {
         [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(NO_INTERNET, @"no_internet") andTitle:@"Offline" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
@@ -116,7 +116,7 @@
         [self.parentTransferController payTransferWithPaypal:self.parentTransferController.payPalPaymentResponse withBlock:^(NSArray *array) {
             if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
                 TransferBookingResponse *response = array.firstObject;
-                self.bookingRequestId = response.bookingRequestId;
+                self.bookingResponse = response;
             }
         }]; // create transfer request
     }
@@ -125,7 +125,7 @@
             [self.parentTransferController payTransferWithCash:^(NSArray *array) {
                 if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
                     TransferBookingResponse *response = array.firstObject;
-                    self.bookingRequestId = response.bookingRequestId;
+                    self.bookingResponse = response;
                 }
             }];
         }
@@ -133,25 +133,31 @@
             [self.parentTransferController payTransferWithCreditCard:^(NSArray *array) {
                 if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
                     TransferBookingResponse *response = array.firstObject;
-                    self.bookingRequestId = response.bookingRequestId;
+                    self.bookingResponse = response;
                 }
             }];
         }
     }
 }
 
--(NSString *)bookingRequestId {
-    return  _bookingRequestId;
+-(TransferBookingResponse *)bookingResponse {
+    return _bookingResponse;
 }
 
--(void)setBookingRequestId:(NSString *)value {
+-(void)setBookingResponse:(TransferBookingResponse *)value {
     NSLog(@"Received bookingRequestId: %@", value);
-    _bookingRequestId = value;
+    _bookingResponse = value;
     self.pollTime = 0;
     if (!value) {
         return;
     }
-    self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
+    AppDelegate *app = [AppDelegate instance];
+    if (app.clientConfiguration.booksLater) {
+        [self showBooking:value.bookingRequestId andMessage:value.errorDescription];
+    }
+    else {
+        self.pollTimer = [NSTimer scheduledTimerWithTimeInterval:self.pollInterval target:self selector:@selector(handlePollTimer:) userInfo:nil repeats:YES];
+    }
 }
 
 -(void)showBooking:(NSString *)bookingId andMessage:(NSString *)message {
@@ -160,7 +166,9 @@
     [self.pollTimer invalidate];
 
     if (app.clientConfiguration.booksLater) {
-        [self.parentTransferController showAlertViewWithMessage:bookingId andTitle:@"Booking" withBlock:^(BOOL b) {
+        NSString *detail = message ? message : NSLocalizedString(@"Booking is confirmed", nil);
+        NSString *title = [bookingId isEqualToString:@"-1"] ? @"Error" : @"Booking";
+        [self.parentTransferController showAlertViewWithMessage:detail andTitle:title withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
         }];
         return;
@@ -231,14 +239,14 @@
 
 - (void)handlePollTimer:(NSTimer *)theTimer {
     self.pollTime += self.pollInterval;
-    if (self.pollTime > TRANSFER_TIMEOUT || !self.bookingRequestId) {
+    if (self.pollTime > TRANSFER_TIMEOUT || !self.bookingResponse) {
         [self.pollTimer invalidate];
         CarkyApiClient *api = [CarkyApiClient sharedService];
         [self showBooking:api.isOffline ? @"-400" : @"0" andMessage:nil];
     }
     else {
         CarkyApiClient *api = [CarkyApiClient sharedService];
-        [api CheckTransferBookingRequest:self.bookingRequestId withBlock:^(NSArray *array) {
+        [api CheckTransferBookingRequest:self.bookingResponse.bookingRequestId withBlock:^(NSArray *array) {
             if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
                 TransferBookingResponse *obj = array.firstObject;
                 NSLog(@"Received bookingId %@", obj.bookingId);
