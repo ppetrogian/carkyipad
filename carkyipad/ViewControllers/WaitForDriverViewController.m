@@ -181,7 +181,7 @@
         return;
     }
     else if ([bookingId isEqualToString:@"0"] || [bookingId isEqualToString:@"-403"]) {
-        NSString *retry1Msg = message ? message : ([bookingId isEqualToString:@"0"] == NO ? NSLocalizedString(NO_INTERNET, @"no_conn") :
+        NSString *retry1Msg = message ? message : ([bookingId isEqualToString:@"0"] == NO ? NSLocalizedString(@"The Internet connection appears to be offline. If a driver has been found, an SMS was sent to your cell phone", @"no_conn") :
             NSLocalizedString(@"All our drivers are currently busy, please try again shortly or choose another car category. You have not been charged for this booking.",@"drivers_busy"));
         NSString *retry2Msg = NSLocalizedString(@"Do you want to retry?",@"want_retry");
         if (!self.retriedFromBusy && ![CarkyApiClient sharedService].isOffline) {
