@@ -82,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Si-Ml-ciJ">
-                                <rect key="frame" x="40" y="412" width="688" height="491"/>
+                                <rect key="frame" x="40" y="402" width="688" height="501"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HU4-Dk-E5v">
                                     <size key="itemSize" width="155" height="255"/>
@@ -95,14 +95,14 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbD-UR-vV0" customClass="CarTypeSegmentView">
-                                <rect key="frame" x="40" y="322" width="688" height="70"/>
+                                <rect key="frame" x="40" y="312" width="688" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="Ca8-h1-tno"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auX-03-rEv">
-                                <rect key="frame" x="0.0" y="120" width="768" height="150"/>
+                                <rect key="frame" x="0.0" y="110" width="768" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QE-e5-7by" userLabel="PlaceDetailsView">
                                         <rect key="frame" x="84" y="0.0" width="600" height="150"/>
@@ -184,7 +184,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="auX-03-rEv" firstAttribute="top" secondItem="fJH-sP-X8b" secondAttribute="bottom" constant="100" id="6wP-D0-By2"/>
+                            <constraint firstItem="auX-03-rEv" firstAttribute="top" secondItem="fJH-sP-X8b" secondAttribute="bottom" constant="90" id="6wP-D0-By2"/>
                             <constraint firstAttribute="trailing" secondItem="auX-03-rEv" secondAttribute="trailing" id="Cin-eG-1D8"/>
                             <constraint firstItem="jbD-UR-vV0" firstAttribute="top" secondItem="auX-03-rEv" secondAttribute="bottom" constant="52" id="Cqq-40-T7O"/>
                             <constraint firstItem="3Si-Ml-ciJ" firstAttribute="leading" secondItem="SEd-iF-ZZs" secondAttribute="leading" constant="40" id="FeK-Pu-LWD"/>
@@ -226,7 +226,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="419.53125" y="-211.71875"/>
+            <point key="canvasLocation" x="419.53125" y="-212.109375"/>
         </scene>
         <!--Step View Controller - Extras-->
         <scene sceneID="ZS6-E7-K3H">
@@ -241,7 +241,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyc-5j-Bq3">
-                                <rect key="frame" x="40" y="290" width="688" height="613"/>
+                                <rect key="frame" x="40" y="280" width="688" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="80V-FS-rVf">
                                     <size key="itemSize" width="190" height="240"/>
@@ -280,7 +280,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iP4-em-u0a">
-                                <rect key="frame" x="0.0" y="120" width="768" height="150"/>
+                                <rect key="frame" x="0.0" y="110" width="768" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1l-0x-9on" userLabel="PlaceDetailsView">
                                         <rect key="frame" x="84" y="0.0" width="600" height="150"/>
@@ -378,7 +378,7 @@
                         <constraints>
                             <constraint firstItem="bST-Nb-IPm" firstAttribute="top" secondItem="xyc-5j-Bq3" secondAttribute="bottom" constant="121" id="7QV-GV-JWi"/>
                             <constraint firstItem="gDP-Ix-UAw" firstAttribute="height" secondItem="KVI-fp-pky" secondAttribute="height" id="8mv-Sz-bdQ"/>
-                            <constraint firstItem="iP4-em-u0a" firstAttribute="top" secondItem="gXH-0h-Bqf" secondAttribute="bottom" constant="100" id="Ctt-CS-q85"/>
+                            <constraint firstItem="iP4-em-u0a" firstAttribute="top" secondItem="gXH-0h-Bqf" secondAttribute="bottom" constant="90" id="Ctt-CS-q85"/>
                             <constraint firstItem="KVI-fp-pky" firstAttribute="leading" secondItem="9VB-RS-tBI" secondAttribute="leading" constant="-20" id="Jst-EV-YCF"/>
                             <constraint firstItem="KVI-fp-pky" firstAttribute="leading" secondItem="9Ba-qc-IxV" secondAttribute="leading" constant="30" id="NIw-7O-765"/>
                             <constraint firstItem="bST-Nb-IPm" firstAttribute="top" secondItem="KVI-fp-pky" secondAttribute="bottom" constant="30" id="SQj-FM-rw4"/>
