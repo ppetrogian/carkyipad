@@ -27,8 +27,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "aegean167-2.png",
       "scale" : "2x"
     },
     {
@@ -39,7 +40,7 @@
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "aegean152.png",
+      "filename" : "aegean167-1.png",
       "scale" : "2x"
     },
     {
@@ -55,7 +56,7 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "aegean76-1.png",
+      "filename" : "aegean76.png",
       "scale" : "1x"
     },
     {
