@@ -52,7 +52,7 @@ NSString *const kLatLngLng = @"Lng";
 }
 
 - (NSString *)description  {
-    return [NSString stringWithFormat:@"%@", [self dictionaryRepresentation]];
+    return [NSString stringWithFormat:@"%.5lf %.5lf ",self.lat, self.lng];
 }
 
 #pragma mark - Helper Method

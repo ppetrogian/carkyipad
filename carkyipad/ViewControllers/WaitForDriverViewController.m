@@ -18,6 +18,7 @@
 #import "Constants.h"
 @import AVFoundation;
 @import AVKit;
+@import MapKit;
 
 @interface WaitForDriverViewController () <InitViewController, RefreshableViewController, ResetsForIdle> {
     TransferBookingResponse* _bookingResponse;
@@ -107,6 +108,7 @@
 
 -(void)findDriverAndMakePayment {
     self.bookingResponse = nil;
+    self.etaLabel.text = @"";
     if ([CarkyApiClient sharedService].isOffline) {
         [self.parentTransferController showAlertViewWithMessage:NSLocalizedString(NO_INTERNET, @"no_internet") andTitle:@"Offline" withBlock:^(BOOL b) {
             [self newBookingButton_Click:nil];
@@ -214,8 +216,13 @@
         if (array.count > 0 && [array.firstObject isKindOfClass:Content.class]) {
             self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(handleTimoutTimer:) userInfo:nil repeats:NO];
             [self loadPickupImage];
+            AppDelegate *app = [AppDelegate instance];
             Content *responseObj = array.firstObject;
             self.driverNoLabel.text = responseObj.name;
+            [AppDelegate getEtaFrom: responseObj.driverPosition to:app.clientConfiguration.location.latLng andBlock:^(NSArray *array) {
+                MKRoute *route = array.firstObject;
+                self.etaLabel.text = [NSString stringWithFormat:@"ETA:%.0f min", route.expectedTravelTime/60.0];
+            }];
             self.registrationNoLabel.text = responseObj.registrationNo;
             if (responseObj.photo) {
                 UIImage *driverImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: responseObj.photo]]];

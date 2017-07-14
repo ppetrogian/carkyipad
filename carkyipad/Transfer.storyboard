@@ -942,7 +942,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="driverCar" translatesAutoresizingMaskIntoConstraints="NO" id="drm-T9-czf">
-                                <rect key="frame" x="531" y="818" width="81" height="81"/>
+                                <rect key="frame" x="558" y="818" width="81" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*Please check your text messages for more details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byb-Fl-bao">
@@ -953,18 +953,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="driverPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-YM-uWe">
-                                <rect key="frame" x="179" y="818" width="81" height="81"/>
+                                <rect key="frame" x="158" y="818" width="81" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0hB-jH-i0R">
-                                <rect key="frame" x="91" y="747" width="257" height="49"/>
+                                <rect key="frame" x="91" y="747" width="212" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Registration No." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neX-wO-CJT">
-                                <rect key="frame" x="494" y="761" width="154" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reg No." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neX-wO-CJT">
+                                <rect key="frame" x="522" y="761" width="154" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -986,6 +986,13 @@
                                     <action selector="newBookingButton_Click:" destination="gJi-Rh-MvU" eventType="touchUpInside" id="ZV0-TM-RD1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ETA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eij-xU-jaV">
+                                <rect key="frame" x="314" y="761" width="154" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -994,6 +1001,7 @@
                         <outlet property="driverCarPhotoImageView" destination="drm-T9-czf" id="TUb-62-3jo"/>
                         <outlet property="driverNoLabel" destination="0hB-jH-i0R" id="vU7-XQ-A0V"/>
                         <outlet property="driverPhotoImageView" destination="uqa-YM-uWe" id="BAK-No-ssW"/>
+                        <outlet property="etaLabel" destination="Eij-xU-jaV" id="4J7-u7-EsD"/>
                         <outlet property="makeBookingButton" destination="33l-Wg-QEd" id="Nhl-DI-aKC"/>
                         <outlet property="pickupImageView" destination="30d-Mo-q48" id="O0F-zZ-J8P"/>
                         <outlet property="registrationNoLabel" destination="neX-wO-CJT" id="Z9O-TU-YH5"/>

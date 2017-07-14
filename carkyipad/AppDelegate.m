@@ -18,6 +18,7 @@
 @import AVFoundation;
 @import AVKit;
 @import  HockeySDK;
+@import MapKit;
 
 @interface AppDelegate ()
 
@@ -532,6 +533,29 @@
         }
     }
     return output;
+}
+
++(void)getEtaFrom:(LatLng *)p1 to:(LatLng *)p2 andBlock:(BlockArray)travel {
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    MKPlacemark *placemark1 = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(p1.lat, p1.lng) addressDictionary:nil];
+    MKMapItem *mapItem1 = [[MKMapItem alloc] initWithPlacemark:placemark1];
+    [mapItem1 setName:@"Name From"];
+    [request setSource:mapItem1];
+    MKPlacemark *placemark2 = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(p2.lat, p2.lng) addressDictionary:nil];
+    MKMapItem *mapItem2 = [[MKMapItem alloc] initWithPlacemark:placemark2];
+    [mapItem2 setName:@"Name To"];
+    [request setDestination:mapItem2];
+    [request setTransportType:MKDirectionsTransportTypeAutomobile];
+    [request setRequestsAlternateRoutes:NO];
+    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+        if (!error && [response routes] > 0) {
+            MKRoute *route = [[response routes] objectAtIndex:0];
+            travel(@[route]);
+            //route.distance  = The distance
+            //route.expectedTravelTime = The ETA
+        } 
+    }];
 }
 
 

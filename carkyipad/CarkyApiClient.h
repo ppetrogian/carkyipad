@@ -94,4 +94,5 @@ typedef void(^BlockProgress)(NSProgress *progress);
 -(void)FetchTerms:(NSString *)culture withBlock:(BlockString)block;
 
 -(void)ValidateLocation:(LatLng *)ll forLocation:(NSInteger)fleetLocationId withBlock:(BlockBoolean)block;
+
 @end

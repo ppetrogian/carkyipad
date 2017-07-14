@@ -70,6 +70,7 @@
 +(void)highlightAttrTextCore:(NSMutableAttributedString *)attrTxt term:(NSString *)term withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font;
 +(void)highlightGoogleText:(NSMutableAttributedString *)attrText  withBackground:(UIColor *)backColor withBlack:(BOOL)bBlack andFont:(UIFont *)font;
 +(NSDate *)dateOnlyPart:(NSDate *)dt;
++(void)getEtaFrom:(LatLng *)p1 to:(LatLng *)p2 andBlock:(BlockArray)travel;
 @end
 
 typedef NS_ENUM(NSUInteger, TabletMode) {

@@ -42,6 +42,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 @property (nonatomic, assign) NSInteger totalPrice;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic,strong) UIControl *activeField;
+@property (nonatomic, strong) NSArray<CarkyDriverPositionsResponse *> *lastDriversResponse;
 @end
 
 @implementation TransferStepsViewController
@@ -162,23 +163,46 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 - (void) didSelectCarCategory:(NSInteger)identifier withValue:(id)value andText:(NSString *)text forMap:(GMSMapView *)mapView  {
     CarkyDriverPositionsRequest *req = [self getDriversRequest:identifier];
     CarkyApiClient *api = [CarkyApiClient sharedService];
+    BOOL bSameCat = self.selectedCarCategory == value;
     self.selectedCarCategory = value;
     self.totalPrice = self.selectedCarCategory.price;
 
-    [self.driverMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.map = nil;
-    }];
     [api FindNearestCarkyDriverPositions:req withBlock:^(NSArray<CarkyDriverPositionsResponse*> *array) {
         self.driverMarkers = [NSMutableArray arrayWithCapacity:array.count];
-         [array enumerateObjectsUsingBlock:^(CarkyDriverPositionsResponse * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            GMSMarker *marker = [[GMSMarker alloc] init];
-            marker.position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
-            marker.icon = [UIImage imageNamed:@"car copy 3"];
-            marker.userData = obj;
-             marker.map = mapView;
-            //marker.title = obj.d
-             [self.driverMarkers addObject:marker];
-        }];
+        __block BOOL bSame = YES;
+        if (_lastDriversResponse && _lastDriversResponse.count == array.count) {
+            // appear same, compare positions
+            [array enumerateObjectsUsingBlock:^(CarkyDriverPositionsResponse * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                CarkyDriverPositionsResponse *lastObj = _lastDriversResponse[idx];
+                if (![obj.latLng.description isEqualToString:lastObj.latLng.description]) {
+                    bSame = NO;
+                    *stop = YES;
+                }
+            }];
+        }
+        else {
+            if (_lastDriversResponse && bSameCat && _lastDriversResponse.count > 0 && array.count == 0) {
+                // same category do not erase if empty
+                bSame = YES;
+            }
+            else
+                bSame = NO;
+        }
+        _lastDriversResponse = array;
+        if (bSame == NO) {
+            [self.driverMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                obj.map = nil;
+            }];
+            [array enumerateObjectsUsingBlock:^(CarkyDriverPositionsResponse * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                GMSMarker *marker = [[GMSMarker alloc] init];
+                marker.position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);
+                marker.icon = [UIImage imageNamed:@"car copy 3"];
+                marker.userData = obj;
+                marker.map = mapView;
+                //marker.title = obj.d
+                [self.driverMarkers addObject:marker];
+            }];
+        }
     }];
 }
 
