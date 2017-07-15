@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fromLocationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
 @property (weak,nonatomic) RequestRideViewController *delegateRequestRide;
-@property (weak, nonatomic) IBOutlet UIView *viewForShadow;
+
 @property (weak, nonatomic) IBOutlet UIView *selectLocationsBox;
 @property (strong,nonatomic) Location *currentLocation;
 @property (weak, nonatomic) UITextField *activeFld;

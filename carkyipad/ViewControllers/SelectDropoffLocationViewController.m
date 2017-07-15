@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view.
     [self loadLocations:nil andPredictions:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
-    [[UIController sharedInstance] addShadowToView:self.viewForShadow withOffset:CGSizeMake(0, -3) shadowRadius:1.5 shadowOpacity:0.1];
+    [[UIController sharedInstance] addShadowToView:self.selectLocationsBox withOffset:CGSizeMake(0, 3) shadowRadius:1.5 shadowOpacity:0.1];
     // Set up the autocomplete filter.
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
     filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter;
