@@ -11,6 +11,7 @@
 #import "TransferStepsViewController.h"
 #import "TGRArrayDataSource.h"
 #import "DataModels.h"
+#import "UIController.h"
 #import "RequestRideViewController.h"
 
 @interface SelectDropoffLocationViewController () <UITextFieldDelegate, GMSAutocompleteFetcherDelegate>
@@ -26,10 +27,10 @@
     // Do any additional setup after loading the view.
     [self loadLocations:nil andPredictions:nil];
     self.fromLocationTextField.text = self.currentLocation.name;
-    [AppDelegate addDropShadow:self.shadowView forUp:YES];
+    [[UIController sharedInstance] addShadowToView:self.viewForShadow withOffset:CGSizeMake(0, -3) shadowRadius:1.5 shadowOpacity:0.1];
     // Set up the autocomplete filter.
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
-    filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter; // kGMSPlacesAutocompleteTypeFilterEstablishment;
+    filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter;
     filter.country = @"GR";
     // Create the fetcher.
     _fetcherPlaces = [[GMSAutocompleteFetcher alloc] initWithBounds:[AppDelegate instance].locationBounds filter:filter];
