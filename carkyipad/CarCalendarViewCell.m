@@ -11,10 +11,6 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        //UIImageView *circleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"circle"]];
-        //[self.contentView insertSubview:circleImageView atIndex:0];
-        //self.circleImageView = circleImageView;
-        
         // gray selection layer
         CAShapeLayer *selectionLayer = [[CAShapeLayer alloc] init];
         self.selectionLayer.strokeColor = nil;
@@ -30,20 +26,15 @@
         circleLayer.actions = @{@"hidden":[NSNull null]};
         [self.contentView.layer insertSublayer:circleLayer below:self.titleLabel.layer];
         self.circleLayer = circleLayer;
-
-        //self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-        //self.backgroundView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.1];
-        
     }
     return self;
 }
 
 -(void)layoutSubviews {
-    
     [super layoutSubviews];
-    
+    self.titleLabel.fs_top += 4;
     self.backgroundView.frame = CGRectInset(self.bounds, 1, 1);
-    //self.circleImageView.frame = self.backgroundView.frame;
+   
     self.selectionLayer.frame = self.bounds;
     self.circleLayer.frame = self.bounds;
     CGFloat dx = MIN(self.selectionLayer.fs_height, self.selectionLayer.fs_width)-5;
@@ -65,7 +56,6 @@
         self.selectionLayer.path = [UIBezierPath bezierPathWithRect: CGRectOffset(CGRectInset(halfBounds, 0, 8), 0, 0) ].CGPath;
         self.circleLayer.path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(self.contentView.fs_width/2-dx/2, self.contentView.fs_height/2-dy/2, dx, dy)].CGPath;
     }
-
 }
 
 - (void)configureAppearance
