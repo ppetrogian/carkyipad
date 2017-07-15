@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "DataModels.h"
 #import "ButtonUtils.h"
+#import "UIController.h"
 #import "TransferStepsViewController.h"
 #import "SelectDropoffLocationViewController.h"
 #import <GooglePlaces/GooglePlaces.h>
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     self.selectedCarType = 0;
     [self.dropOffLocationTextField addTarget:self action:@selector(dropOffLocationTextField_Clicked:) forControlEvents:UIControlEventTouchDown];
+    [[UIController sharedInstance] addShadowToView:self.dropOffLocationTextField withOffset:CGSizeMake(5, 5) shadowRadius:3 shadowOpacity:0.3];
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
     
