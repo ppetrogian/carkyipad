@@ -52,7 +52,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
 -(void) setupInit {
     [self.extrasCollectionView registerClass:[ExtrasCollectionViewCell class] forCellWithReuseIdentifier:extraCellIdentifier];
     [self.extrasCollectionView registerClass:[InsurancesCollectionViewCell class] forCellWithReuseIdentifier:insuranceCellIdentifier];
-     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) shadowRadius:3 shadowOpacity:0.3];
+     [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 3) shadowRadius:3 shadowOpacity:0.2];
     selectedExtras = [NSMutableArray array];
     selectedInsurance = 0;
     carImageURL = @"";

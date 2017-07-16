@@ -45,7 +45,7 @@
     [self.carsCollectionView registerClass:[CarCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     self.selectedCarOrder = -1;
     self.selCategoryIndex = 0;
-    [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 5) shadowRadius:3 shadowOpacity:0.3];
+    [[UIController sharedInstance] addShadowToView:self.headerBackView withOffset:CGSizeMake(0, 3) shadowRadius:3 shadowOpacity:0.2];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

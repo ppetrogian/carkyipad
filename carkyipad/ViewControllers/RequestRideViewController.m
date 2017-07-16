@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.selectedCarType = 0;
     [self.dropOffLocationTextField addTarget:self action:@selector(dropOffLocationTextField_Clicked:) forControlEvents:UIControlEventTouchDown];
-    [[UIController sharedInstance] addShadowToView:self.dropOffLocationTextField withOffset:CGSizeMake(5, 5) shadowRadius:3 shadowOpacity:0.3];
+    [[UIController sharedInstance] addShadowToView:self.dropOffLocationTextField withOffset:CGSizeMake(5, 5) shadowRadius:3 shadowOpacity:0.2];
     // Do any additional setup after loading the view.
     CarkyApiClient *api = [CarkyApiClient sharedService];
     
