@@ -91,6 +91,7 @@
 		AE7275BA1E6CCA8C00918646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7275B81E6CCA8C00918646 /* LaunchScreen.storyboard */; };
 		AE7275C51E6CCA8D00918646 /* carkyipadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275C41E6CCA8D00918646 /* carkyipadTests.m */; };
 		AE7275D01E6CCA8D00918646 /* carkyipadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */; };
+		AE8DF0AC1F1953AA000F6B58 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8DF0AB1F1953AA000F6B58 /* MapKit.framework */; };
 		AE956AEE1ECF578500041E18 /* BookingInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AED1ECF578500041E18 /* BookingInfoResponse.m */; };
 		AE956AF11ECF57B200041E18 /* PayPalPaymentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AF01ECF57B200041E18 /* PayPalPaymentInfo.m */; };
 		AE956AF41ECF57E200041E18 /* RentalBookingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE956AF31ECF57E200041E18 /* RentalBookingResponse.m */; };
@@ -331,6 +332,7 @@
 		AE7275CB1E6CCA8D00918646 /* carkyipadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carkyipadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7275CF1E6CCA8D00918646 /* carkyipadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carkyipadUITests.m; sourceTree = "<group>"; };
 		AE7275D11E6CCA8D00918646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE8DF0AB1F1953AA000F6B58 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AE956AEC1ECF578500041E18 /* BookingInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingInfoResponse.h; sourceTree = "<group>"; };
 		AE956AED1ECF578500041E18 /* BookingInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingInfoResponse.m; sourceTree = "<group>"; };
 		AE956AEF1ECF57B200041E18 /* PayPalPaymentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentInfo.h; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 			files = (
 				D11363911EA073D600EB6279 /* Security.framework in Frameworks */,
 				D113638F1EA073CD00EB6279 /* QuartzCore.framework in Frameworks */,
+				AE8DF0AC1F1953AA000F6B58 /* MapKit.framework in Frameworks */,
 				D113638D1EA073C600EB6279 /* OpenGLES.framework in Frameworks */,
 				D113638B1EA073C000EB6279 /* MobileCoreServices.framework in Frameworks */,
 				D11363891EA073B600EB6279 /* CoreVideo.framework in Frameworks */,
@@ -536,6 +539,7 @@
 		604D34F28EA76BDADD70C80C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE8DF0AB1F1953AA000F6B58 /* MapKit.framework */,
 				D11363901EA073D600EB6279 /* Security.framework */,
 				D113638E1EA073CD00EB6279 /* QuartzCore.framework */,
 				D113638C1EA073C600EB6279 /* OpenGLES.framework */,
@@ -1160,6 +1164,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = TTAAXU5Z2A;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					AE7275BF1E6CCA8D00918646 = {
 						CreatedOnToolsVersion = 8.2.1;
