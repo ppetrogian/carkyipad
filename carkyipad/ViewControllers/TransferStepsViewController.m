@@ -168,7 +168,6 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     self.totalPrice = self.selectedCarCategory.price;
 
     [api FindNearestCarkyDriverPositions:req withBlock:^(NSArray<CarkyDriverPositionsResponse*> *array) {
-        self.driverMarkers = [NSMutableArray arrayWithCapacity:array.count];
         __block BOOL bSame = YES;
         if (_lastDriversResponse && _lastDriversResponse.count == array.count) {
             // appear same, compare positions
@@ -193,6 +192,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
             [self.driverMarkers enumerateObjectsUsingBlock:^(GMSMarker *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 obj.map = nil;
             }];
+            self.driverMarkers = [NSMutableArray arrayWithCapacity:array.count];
             [array enumerateObjectsUsingBlock:^(CarkyDriverPositionsResponse * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 GMSMarker *marker = [[GMSMarker alloc] init];
                 marker.position = CLLocationCoordinate2DMake(obj.latLng.lat,obj.latLng.lng);

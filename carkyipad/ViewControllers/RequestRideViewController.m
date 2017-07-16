@@ -183,7 +183,6 @@
                     [self presentViewController:alertController animated:YES completion:nil];
                 }
             }];
-            //if ([app.locationBounds containsCoordinate:CLLocationCoordinate2DMake(loc.latLng.lat, loc.latLng.lng)]) {
         }];
     } else {
         [self showLocationAndRouteInMap:loc];
