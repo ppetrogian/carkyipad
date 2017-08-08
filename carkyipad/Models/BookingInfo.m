@@ -8,7 +8,7 @@
 #import "BookingInfo.h"
 #import "DateTime.h"
 #import "Location.h"
-
+#import "ExtraWithAmount.h"
 
 NSString *const kBookingInfoWellKnownDropoffLocationId = @"WellKnownDropoffLocationId";
 NSString *const kBookingInfoCarTypeId = @"CarTypeId";
@@ -22,7 +22,7 @@ NSString *const kBookingInfoDropoffDateTime = @"DropoffDateTime";
 NSString *const kBookingInfoWellKnownPickupLocationId = @"WellKnownPickupLocationId";
 NSString *const kBookingInfoExtraIds = @"ExtraIds";
 NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
-
+NSString *const kBookingInfoExtras = @"Extras";
 
 @interface BookingInfo ()
 
@@ -42,7 +42,6 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
 @synthesize pickupLocation = _pickupLocation;
 @synthesize dropoffDateTime = _dropoffDateTime;
 @synthesize wellKnownPickupLocationId = _wellKnownPickupLocationId;
-@synthesize extraIds = _extraIds;
 @synthesize dropoffLocation = _dropoffLocation;
 
 
@@ -66,7 +65,21 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
             self.pickupLocation = [Location modelObjectWithDictionary:[dict objectForKey:kBookingInfoPickupLocation]];
             self.dropoffDateTime = [DateTime modelObjectWithDictionary:[dict objectForKey:kBookingInfoDropoffDateTime]];
             self.wellKnownPickupLocationId = [[self objectOrNilForKey:kBookingInfoWellKnownPickupLocationId fromDictionary:dict] integerValue];
-            self.extraIds = [self objectOrNilForKey:kBookingInfoExtraIds fromDictionary:dict];
+            NSObject *receivedExtras = [dict objectForKey:kBookingInfoExtras];
+            NSMutableArray *parsedExtras = [NSMutableArray array];
+            
+            if ([receivedExtras isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *item in (NSArray *)receivedExtras) {
+                    if ([item isKindOfClass:[NSDictionary class]]) {
+                        [parsedExtras addObject:[ExtraWithAmount modelObjectWithDictionary:item]];
+                    }
+                }
+            } else if ([receivedExtras isKindOfClass:[NSDictionary class]]) {
+                [parsedExtras addObject:[ExtraWithAmount modelObjectWithDictionary:(NSDictionary *)receivedExtras]];
+            }
+        
+        self.extras = [NSArray arrayWithArray:parsedExtras];
+        
             self.dropoffLocation = [Location modelObjectWithDictionary:[dict objectForKey:kBookingInfoDropoffLocation]];
 
     }
@@ -92,18 +105,18 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
     [mutableDict setValue:[self.dropoffDateTime dictionaryRepresentation] forKey:kBookingInfoDropoffDateTime];
     if(self.wellKnownPickupLocationId > 0)
         [mutableDict setValue:[NSNumber numberWithInteger:self.wellKnownPickupLocationId] forKey:kBookingInfoWellKnownPickupLocationId];
-    NSMutableArray *tempArrayForExtraIds = [NSMutableArray array];
+    NSMutableArray *tempArrayForExtras = [NSMutableArray array];
     
-    for (NSObject *subArrayObject in self.extraIds) {
+    for (NSObject *subArrayObject in self.extras) {
         if ([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
             // This class is a model object
-            [tempArrayForExtraIds addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+            [tempArrayForExtras addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
         } else {
             // Generic object
-            [tempArrayForExtraIds addObject:subArrayObject];
+            [tempArrayForExtras addObject:subArrayObject];
         }
     }
-    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForExtraIds] forKey:kBookingInfoExtraIds];
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForExtras] forKey:kBookingInfoExtras];
     if(self.dropoffLocation)
         [mutableDict setValue:[self.dropoffLocation dictionaryRepresentation] forKey:kBookingInfoDropoffLocation];
 
@@ -136,7 +149,7 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
     self.pickupLocation = [aDecoder decodeObjectForKey:kBookingInfoPickupLocation];
     self.dropoffDateTime = [aDecoder decodeObjectForKey:kBookingInfoDropoffDateTime];
     self.wellKnownPickupLocationId = [aDecoder decodeDoubleForKey:kBookingInfoWellKnownPickupLocationId];
-    self.extraIds = [aDecoder decodeObjectForKey:kBookingInfoExtraIds];
+    self.extras = [aDecoder decodeObjectForKey:kBookingInfoExtraIds];
     self.dropoffLocation = [aDecoder decodeObjectForKey:kBookingInfoDropoffLocation];
     return self;
 }
@@ -154,7 +167,7 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
     [aCoder encodeObject:_pickupLocation forKey:kBookingInfoPickupLocation];
     [aCoder encodeObject:_dropoffDateTime forKey:kBookingInfoDropoffDateTime];
     [aCoder encodeDouble:_wellKnownPickupLocationId forKey:kBookingInfoWellKnownPickupLocationId];
-    [aCoder encodeObject:_extraIds forKey:kBookingInfoExtraIds];
+    [aCoder encodeObject:_extras forKey:kBookingInfoExtraIds];
     [aCoder encodeObject:_dropoffLocation forKey:kBookingInfoDropoffLocation];
 }
 
@@ -175,7 +188,7 @@ NSString *const kBookingInfoDropoffLocation = @"DropoffLocation";
         copy.pickupLocation = [self.pickupLocation copyWithZone:zone];
         copy.dropoffDateTime = [self.dropoffDateTime copyWithZone:zone];
         copy.wellKnownPickupLocationId = self.wellKnownPickupLocationId;
-        copy.extraIds = [self.extraIds copyWithZone:zone];
+        copy.extras = [self.extras copyWithZone:zone];
         copy.dropoffLocation = [self.dropoffLocation copyWithZone:zone];
     }
     

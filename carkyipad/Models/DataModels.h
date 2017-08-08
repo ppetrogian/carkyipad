@@ -35,6 +35,7 @@
 #import "RentalBookingResponse.h"
 #import "BookingInfo.h"
 #import "PaymentInfo.h"
+#import "ExtraWithAmount.h"
 #import "ChargesForIPadResponse.h"
 #import "BookingInfoResponse.h"
 #import "PayPalPaymentInfo.h"

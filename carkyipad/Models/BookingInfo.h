@@ -21,7 +21,7 @@
 @property (nonatomic, strong) Location *pickupLocation;
 @property (nonatomic, strong) DateTime *dropoffDateTime;
 @property (nonatomic, assign) NSInteger wellKnownPickupLocationId;
-@property (nonatomic, strong) NSArray *extraIds;
+@property (nonatomic, strong) NSArray *extras;
 @property (nonatomic, strong) Location *dropoffLocation;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

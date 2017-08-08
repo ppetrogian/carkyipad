@@ -140,7 +140,7 @@
     bookInfo.fleetLocationId = [AppDelegate instance].clientConfiguration.areaOfServiceId;
     bookInfo.commission = 0;
     bookInfo.carTypeId = ((NSNumber*)self.results[kResultsCarTypeId]).integerValue;
-    bookInfo.extraIds = self.results[kResultsExtras];
+    bookInfo.extras = self.results[kResultsExtras];
     NSInteger carInsuranceId = ((NSNumber*)self.results[kResultsInsuranceId]).integerValue;
     if(carInsuranceId > 0)
         bookInfo.insuranceId = carInsuranceId;

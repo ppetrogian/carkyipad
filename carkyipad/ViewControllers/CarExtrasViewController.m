@@ -25,6 +25,7 @@
 #import "AFNetworking.h"
 #import "AFImageDownloader.h"
 #import "ButtonUtils.h"
+#import "ExtraWithAmount.h"
 
 static NSString *extraCellIdentifier = @"extraCellIdentifier";
 static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
@@ -284,10 +285,12 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     // save selected info to parent results
     [self.nextButton disableButton];
     AppDelegate *app = [AppDelegate instance];
-    NSMutableArray<NSNumber*> *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
+    NSMutableArray<ExtraWithAmount*> *extras = [[NSMutableArray alloc] initWithCapacity:app.carExtras.count];
     if (selectedExtras.count > 0) {
         [selectedExtras enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [extras addObject:@(app.carExtras[obj.integerValue].carExtraIdentifier)];
+            ExtraWithAmount *ext = [ExtraWithAmount new];
+            ext.identifier = app.carExtras[obj.integerValue].carExtraIdentifier;
+            [extras addObject:ext];
         }];
     }
     self.stepsController.results[kResultsExtras] = extras;
