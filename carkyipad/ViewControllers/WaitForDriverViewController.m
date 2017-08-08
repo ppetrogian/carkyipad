@@ -252,7 +252,7 @@
         [self.pollTimer invalidate];
         [self showBooking:@"0" andMessage:nil];
     }
-    else {
+    else if(self.bookingResponse.bookingRequestId > 0) {
         CarkyApiClient *api = [CarkyApiClient sharedService];
         [api CheckTransferBookingRequest:self.bookingResponse.bookingRequestId withBlock:^(NSArray *array) {
             if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
