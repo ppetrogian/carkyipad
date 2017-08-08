@@ -848,10 +848,10 @@
 				D159514E1EAD498300540076 /* SelectDropoffLocationViewController.m */,
 				D15951501EAD732900540076 /* ClientDetailsViewController.h */,
 				D15951511EAD732900540076 /* ClientDetailsViewController.m */,
-				D15951591EADED4D00540076 /* WaitForDriverViewController.h */,
-				D159515A1EADED4D00540076 /* WaitForDriverViewController.m */,
 				D1E54CE61EBFD5E80034D9FB /* TermsAndConditionsViewController.h */,
 				D1E54CE71EBFD5E80034D9FB /* TermsAndConditionsViewController.m */,
+				D15951591EADED4D00540076 /* WaitForDriverViewController.h */,
+				D159515A1EADED4D00540076 /* WaitForDriverViewController.m */,
 			);
 			name = Taxi;
 			sourceTree = "<group>";

@@ -22,6 +22,8 @@
 @property (nonatomic,strong) TGRArrayDataSource* carCategoriesDataSource;
 @property (nonatomic, readonly, weak) TransferStepsViewController *parentController;
 @property (nonatomic,assign) NSInteger selectedCarType;
+@property (nonatomic, assign) NSInteger carTypesCount;
+@property (nonatomic, assign) CGSize carTypesSize;
 @end
 
 @implementation RequestRideViewController
@@ -45,6 +47,9 @@
 
     [AppDelegate addDropShadow:self.shadowView forUp:YES];
     self.mapView.delegate = self;
+    self.carCategoriesCollectionView.delegate = self;
+    self.carTypesCount = 3;
+    self.carTypesSize = CGSizeMake(220, 200);
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -93,10 +98,12 @@
             arrayCategories[idx].order = idx;
         }];
     }
-//    if (arrayCategories.count > 3) {
-//        UICollectionViewFlowLayout *fl = (UICollectionViewFlowLayout *)self.carCategoriesCollectionView.collectionViewLayout;
-//        fl.minimumInteritemSpacing *= (3.0 / arrayCategories.count);
-//    }
+    if (arrayCategories.count > self.carTypesCount) {
+        self.carTypesCount = arrayCategories.count;
+        UICollectionViewFlowLayout *fl = (UICollectionViewFlowLayout *)self.carCategoriesCollectionView.collectionViewLayout;
+        fl.minimumInteritemSpacing *= (3.0 / arrayCategories.count);
+        self.carTypesSize = CGSizeMake(150, 200);
+    }
     self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:arrayCategories cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
         cell.contentView.backgroundColor = [UIColor whiteColor];
         UILabel *nameLabel = [cell.contentView viewWithTag:1];
@@ -125,6 +132,13 @@
     self.carCategoriesCollectionView.dataSource = self.carCategoriesDataSource;
     self.carCategoriesCollectionView.delegate = self;
     [self.carCategoriesCollectionView reloadData];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath: (NSIndexPath *)indexPath {
+    if(collectionView == self.carCategoriesCollectionView) {
+        return self.carTypesSize;
+    }
+    return CGSizeZero;
 }
 
 -(IBAction)requestRideButton_Click:(UIButton *)sender {
