@@ -4,18 +4,28 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
-            timestampString = "520976400.295345"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "521749890.907176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "-handlePollTimer:"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-didSelectLocation:withValue:andText:forMap:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,62 +35,206 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
-            timestampString = "520976400.295345"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "521756771.08325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "-handlePollTimer:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "carkyipad/ViewControllers/WaitForDriverViewController.m"
-            timestampString = "520976400.295345"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "-handlePollTimer:"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-didSelectCarCategory:withValue:andText:forMap:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[WaitForDriverViewController handlePollTimer:]"
+                  symbolName = "-[TransferStepsViewController didSelectCarCategory:withValue:andText:forMap:]"
                   moduleName = "carkyipad"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/ViewControllers/WaitForDriverViewController.m"
-                  timestampString = "520974358.514124"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/ViewControllers/TransferStepsViewController.m"
+                  timestampString = "521758326.493024"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "225"
-                  endingLineNumber = "225"
-                  offsetFromSymbolStart = "336">
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "405">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__47-[WaitForDriverViewController handlePollTimer:]_block_invoke"
+                  symbolName = "__77-[TransferStepsViewController didSelectCarCategory:withValue:andText:forMap:]_block_invoke"
                   moduleName = "carkyipad"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/ViewControllers/WaitForDriverViewController.m"
-                  timestampString = "520974358.516893"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/ViewControllers/TransferStepsViewController.m"
+                  timestampString = "521758326.497611"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "226"
-                  endingLineNumber = "226"
-                  offsetFromSymbolStart = "47">
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "19">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/CarkyApiClient.m"
+            timestampString = "521747715.937166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
+            landmarkName = "-FindNearestCarkyDriverPositions:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "521756771.08325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-getDriversRequest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/CarkyApiClient.m"
+            timestampString = "521747837.278335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "-FindNearestCarkyDriverPositions:withBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "521891420.203572"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-didSelectCarCategory:withValue:andText:forMap:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77-[TransferStepsViewController didSelectCarCategory:withValue:andText:forMap:]_block_invoke"
+                  moduleName = "carkyipad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/ViewControllers/TransferStepsViewController.m"
+                  timestampString = "521756804.159478"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "806">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77-[TransferStepsViewController didSelectCarCategory:withValue:andText:forMap:]_block_invoke.220"
+                  moduleName = "carkyipad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ffelip/Projects/DefaultCollection/Nessos/carkyipad/carkyipad/ViewControllers/TransferStepsViewController.m"
+                  timestampString = "521756804.16235"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "74">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "521891420.203572"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-didSelectCarCategory:withValue:andText:forMap:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/TransferStepsViewController.m"
+            timestampString = "521891420.203572"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-didSelectCarCategory:withValue:andText:forMap:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/AppDelegate.m"
+            timestampString = "523904243.834479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-refreshClientConfiguration:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "carkyipad/ViewControllers/RequestRideViewController.m"
+            timestampString = "523907941.820854"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-loadCarCategories:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

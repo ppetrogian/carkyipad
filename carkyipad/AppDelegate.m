@@ -15,9 +15,10 @@
 #import <GooglePlaces/GooglePlaces.h>
 #import "PayPalMobile.h"
 #import "ViewControllers/InitViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 @import AVFoundation;
 @import AVKit;
-@import  HockeySDK;
 @import MapKit;
 
 @interface AppDelegate ()
@@ -69,6 +70,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[[Crashlytics class]]];
     self.loaded = NO;
     self.screensData =@[@[], @[@"Main",@"home"],@[@"TransferLanding",@"home"],@[@"Landing",@"home"],@[@"TransferLanding",@"home"]]; // 4 is transfer with cash (reception)
     self.viewControllersDict = [NSMutableDictionary dictionaryWithCapacity:4];
@@ -84,11 +86,11 @@
     [GMSServices provideAPIKey:googleApiKey];
     [GMSPlacesClient provideAPIKey:googleApiKey];
     
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"a129e5fddb2541efb97119cbc33e389a"];
-    // Do some additional configuration if needed here
-    [BITHockeyManager sharedHockeyManager].disableUpdateManager = YES;
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"a129e5fddb2541efb97119cbc33e389a"];
+//    // Do some additional configuration if needed here
+//    [BITHockeyManager sharedHockeyManager].disableUpdateManager = YES;
+//    [[BITHockeyManager sharedHockeyManager] startManager];
+//    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"language"];
     [[NSUserDefaults standardUserDefaults] synchronize];

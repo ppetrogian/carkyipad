@@ -1346,7 +1346,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 1dab136ed1f772a17f40bf5241dfd9c65b84e482 3d81c4a29eafb7899fef37531ab5621fd41a00b4cf030b85d68c9f6cb0aa1d81";
 		};
 		DA5401BAA47A951861094269 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
