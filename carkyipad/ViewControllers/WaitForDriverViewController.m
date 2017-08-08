@@ -221,7 +221,8 @@
             self.driverNoLabel.text = responseObj.name;
             [AppDelegate getEtaFrom: responseObj.driverPosition to:app.clientConfiguration.location.latLng andBlock:^(NSArray *array) {
                 MKRoute *route = array.firstObject;
-                self.etaLabel.text = [NSString stringWithFormat:@"ETA:%.0f min", route.expectedTravelTime/60.0];
+                // increase estimated eta by 20%
+                self.etaLabel.text = [NSString stringWithFormat:@"ETA:%.0f min", (route.expectedTravelTime*1.2)/60.0];
             }];
             self.registrationNoLabel.text = responseObj.registrationNo;
             if (responseObj.photo) {
