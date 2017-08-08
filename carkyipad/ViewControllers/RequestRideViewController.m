@@ -87,19 +87,16 @@
 
 -(void)loadCarCategories:(NSArray<CarCategory*> *)arrayCategories {
     if (arrayCategories.count > 0 ) {
-        NSArray<NSString*> *tempImages = @[@"audi",@"range rover",@"vito"];
-        NSMutableArray<CarCategory*> *resList = [NSMutableArray arrayWithCapacity:tempImages.count];
+        NSArray<NSString*> *tempImages = @[@"audi",@"range rover",@"vito",@"range rover"];
         [arrayCategories enumerateObjectsUsingBlock:^(CarCategory * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (idx < tempImages.count) {
-                arrayCategories[idx].image = tempImages[idx];
-                arrayCategories[idx].order = idx;
-                [resList addObject:arrayCategories[idx]];
-            }
-            else {
-                *stop = YES;
-            }
+            arrayCategories[idx].image = tempImages[idx % tempImages.count];
+            arrayCategories[idx].order = idx;
         }];
     }
+//    if (arrayCategories.count > 3) {
+//        UICollectionViewFlowLayout *fl = (UICollectionViewFlowLayout *)self.carCategoriesCollectionView.collectionViewLayout;
+//        fl.minimumInteritemSpacing *= (3.0 / arrayCategories.count);
+//    }
     self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:arrayCategories cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
         cell.contentView.backgroundColor = [UIColor whiteColor];
         UILabel *nameLabel = [cell.contentView viewWithTag:1];
