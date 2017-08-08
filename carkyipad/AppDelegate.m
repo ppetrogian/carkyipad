@@ -70,7 +70,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Fabric with:@[[Crashlytics class]]];
+    [Fabric with:@[[Crashlytics class], [STPAPIClient class]]];
+
     self.loaded = NO;
     self.screensData =@[@[], @[@"Main",@"home"],@[@"TransferLanding",@"home"],@[@"Landing",@"home"],@[@"TransferLanding",@"home"]]; // 4 is transfer with cash (reception)
     self.viewControllersDict = [NSMutableDictionary dictionaryWithCapacity:4];

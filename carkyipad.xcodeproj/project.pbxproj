@@ -1717,8 +1717,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ce23da59-4924-455a-9200-0a2cbfd57d5a";
-				PROVISIONING_PROFILE_SPECIFIER = "com-carky-ipad (beta)";
+				PROVISIONING_PROFILE = "1bb65b3c-050d-4fe7-915d-382fc13ec3b8";
+				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -1743,8 +1743,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ce23da59-4924-455a-9200-0a2cbfd57d5a";
-				PROVISIONING_PROFILE_SPECIFIER = "com-carky-ipad (beta)";
+				PROVISIONING_PROFILE = "1bb65b3c-050d-4fe7-915d-382fc13ec3b8";
+				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

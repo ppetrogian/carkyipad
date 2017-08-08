@@ -27,7 +27,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>2edb48eaee8fe682031acb0ab6a9d40d8ca8b14c</string>
+		<string>1dab136ed1f772a17f40bf5241dfd9c65b84e482</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -99,19 +99,5 @@
 	<false/>
 	<key>UserFleetLocationId</key>
 	<integer>2</integer>
-    <key>Fabric</key>
-    <dict>
-        <key>APIKey</key>
-        <string>1dab136ed1f772a17f40bf5241dfd9c65b84e482</string>
-        <key>Kits</key>
-        <array>
-            <dict>
-                <key>KitInfo</key>
-                <dict/>
-                <key>KitName</key>
-                <string>Crashlytics</string>
-            </dict>
-        </array>
-    </dict>
 </dict>
 </plist>
