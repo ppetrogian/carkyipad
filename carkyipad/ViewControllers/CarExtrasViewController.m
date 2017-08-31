@@ -26,6 +26,7 @@
 #import "AFImageDownloader.h"
 #import "ButtonUtils.h"
 #import "ExtraWithAmount.h"
+#import "NSString+UrlTemplates.h"
 
 static NSString *extraCellIdentifier = @"extraCellIdentifier";
 static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
@@ -176,7 +177,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     // show server icon first, if not exists saved asset
     if(extra.icon.length > 0) {
         if (![extra.icon isEqualToString:cell.imageHiddenLabel.text]) {
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:extra.icon]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [extra.icon replaceForIpad:YES]  ]];
             [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
                 cell.extraImageView.image = responseObject;
                 cell.imageHiddenLabel.text = extra.icon;
@@ -200,7 +201,7 @@ static NSString *insuranceCellIdentifier = @"insuranceCellIdentifier";
     
     if(ins.icon.length > 0) {
         if (![ins.icon isEqualToString:cell.insuranceImageHiddenLabel.text]) {
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:ins.icon]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[ins.icon replaceForIpad:YES] ]];
             [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
                 cell.extraImageView.image = responseObject;
                 cell.insuranceImageHiddenLabel.text = ins.icon;

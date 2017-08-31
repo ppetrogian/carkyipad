@@ -19,6 +19,7 @@
 		AE34F15A1E903772000D3997 /* Cars.m in Sources */ = {isa = PBXBuildFile; fileRef = AE34F1581E903772000D3997 /* Cars.m */; };
 		AE563E321F018F3A00E80FB0 /* UIViewController_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE563E311F018F3A00E80FB0 /* UIViewController_Additions.m */; };
 		AE5845AF1ECF27EA0083A296 /* ChargesForIPadResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */; };
+		AE5D45501F58CE4900E07F80 /* NSString+UrlTemplates.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5D454F1F58CE4900E07F80 /* NSString+UrlTemplates.m */; };
 		AE616DB41ED1855700EA38D6 /* CalendarRange.m in Sources */ = {isa = PBXBuildFile; fileRef = AE616DB31ED1855700EA38D6 /* CalendarRange.m */; };
 		AE616DB61ED186E100EA38D6 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE616DB51ED186E100EA38D6 /* Loading.storyboard */; };
 		AE616DB91ED1879D00EA38D6 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE616DB81ED1879D00EA38D6 /* LoadingViewController.m */; };
@@ -249,6 +250,8 @@
 		AE563E311F018F3A00E80FB0 /* UIViewController_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewController_Additions.m; sourceTree = "<group>"; };
 		AE5845AD1ECF27EA0083A296 /* ChargesForIPadResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargesForIPadResponse.h; sourceTree = "<group>"; };
 		AE5845AE1ECF27EA0083A296 /* ChargesForIPadResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargesForIPadResponse.m; sourceTree = "<group>"; };
+		AE5D454E1F58CE4900E07F80 /* NSString+UrlTemplates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UrlTemplates.h"; sourceTree = "<group>"; };
+		AE5D454F1F58CE4900E07F80 /* NSString+UrlTemplates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UrlTemplates.m"; sourceTree = "<group>"; };
 		AE616DB21ED1855700EA38D6 /* CalendarRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarRange.h; sourceTree = "<group>"; };
 		AE616DB31ED1855700EA38D6 /* CalendarRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarRange.m; sourceTree = "<group>"; };
 		AE616DB51ED186E100EA38D6 /* Loading.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
@@ -610,6 +613,8 @@
 				D1A99E191EE0B1160003A00E /* CarExtra.m */,
 				D19FF97F1E904C1400F735A0 /* CarRentalModel.h */,
 				D19FF9801E904C1400F735A0 /* CarRentalModel.m */,
+				AE5D454E1F58CE4900E07F80 /* NSString+UrlTemplates.h */,
+				AE5D454F1F58CE4900E07F80 /* NSString+UrlTemplates.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1460,6 +1465,7 @@
 				E1C2EE5C1EC339910021BEC2 /* CarCollectionViewCell.m in Sources */,
 				D1E54CE81EBFD5E80034D9FB /* TermsAndConditionsViewController.m in Sources */,
 				E1C2EE7B1EC44BB80021BEC2 /* CheckMarkButton.m in Sources */,
+				AE5D45501F58CE4900E07F80 /* NSString+UrlTemplates.m in Sources */,
 				D14DF0AF1E757F940040B97F /* RMStepsController.m in Sources */,
 				D159514F1EAD498300540076 /* SelectDropoffLocationViewController.m in Sources */,
 				AE956AEE1ECF578500041E18 /* BookingInfoResponse.m in Sources */,

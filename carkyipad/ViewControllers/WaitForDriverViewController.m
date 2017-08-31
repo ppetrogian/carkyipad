@@ -16,6 +16,7 @@
 #import "RefreshableViewController.h"
 #import "ResetsForIdle.h"
 #import "Constants.h"
+#import "NSString+UrlTemplates.h"
 @import AVFoundation;
 @import AVKit;
 @import MapKit;
@@ -239,7 +240,7 @@
 
 - (void)loadPickupImage {
   AppDelegate *app = [AppDelegate instance];
-  UIImage *waitImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: app.clientConfiguration.pickupInstructionsImage]]];
+    UIImage *waitImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [app.clientConfiguration.pickupInstructionsImage replaceForIpad:YES] ]]];
         self.pickupImageView.image = waitImg;
     [UIView animateWithDuration:0.4 animations:^{
         self.pickupImageView.alpha = 1;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,19 +40,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-1T-ioQ">
-                                <rect key="frame" x="86.5" y="64" width="16" height="34"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="IaF-1T-ioQ">
+                                <rect key="frame" x="54.5" y="64" width="80" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Enq-ed-KpZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="XlZ-eD-Rm0"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKM-5k-oCX">
-                                <rect key="frame" x="5" y="110" width="179" height="14.5"/>
+                                <rect key="frame" x="5" y="113" width="179" height="14.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NH-8B-216">
-                                <rect key="frame" x="5" y="129.5" width="179" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9NH-8B-216">
+                                <rect key="frame" x="5" y="135.5" width="179" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2bj-bd-zy4"/>
+                                    <constraint firstAttribute="height" constant="40" id="2bj-bd-zy4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -78,9 +82,9 @@
                             <constraint firstItem="QiI-of-8h3" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="Uu3-Ct-zKA"/>
                             <constraint firstItem="IaF-1T-ioQ" firstAttribute="centerX" secondItem="Q13-Jl-nLz" secondAttribute="centerX" id="cBx-JR-n2I"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" constant="5" id="gLD-Go-Be9"/>
-                            <constraint firstItem="MKM-5k-oCX" firstAttribute="top" secondItem="IaF-1T-ioQ" secondAttribute="bottom" constant="12" id="ldd-sj-QFU"/>
+                            <constraint firstItem="MKM-5k-oCX" firstAttribute="top" secondItem="IaF-1T-ioQ" secondAttribute="bottom" constant="9" id="ldd-sj-QFU"/>
                             <constraint firstAttribute="bottom" secondItem="QiI-of-8h3" secondAttribute="bottom" id="nG8-wV-kDM"/>
-                            <constraint firstItem="9NH-8B-216" firstAttribute="top" secondItem="MKM-5k-oCX" secondAttribute="bottom" constant="5" id="p4k-0v-28M"/>
+                            <constraint firstItem="9NH-8B-216" firstAttribute="top" secondItem="MKM-5k-oCX" secondAttribute="bottom" constant="8" id="p4k-0v-28M"/>
                             <constraint firstItem="QiI-of-8h3" firstAttribute="leading" secondItem="Q13-Jl-nLz" secondAttribute="leading" id="uWB-Ph-8LN"/>
                             <constraint firstAttribute="trailing" secondItem="MKM-5k-oCX" secondAttribute="trailing" constant="5" id="vH9-3y-CA6"/>
                             <constraint firstItem="kMy-Og-40K" firstAttribute="top" secondItem="Q13-Jl-nLz" secondAttribute="top" constant="10" id="zCO-xU-oB8"/>

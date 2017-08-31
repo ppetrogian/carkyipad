@@ -18,6 +18,7 @@
 #import "UIViewController_Additions.h"
 #import <TCBlobDownload/TCBlobDownload.h>
 #import "Constants.h"
+#import "NSString+UrlTemplates.h"
 @import AVFoundation;
 @import AVKit;
 
@@ -34,6 +35,8 @@
     }
     return nil;
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +56,7 @@
     NSString *backImageUrlForMainButton = nil;
     TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
     if (tm == TabletModeTransfer || tm == TabletModeReception) {
-        backImageUrlForMainButton = app.clientConfiguration.transferBackgroundImage;
+        backImageUrlForMainButton = [app.clientConfiguration.transferBackgroundImage replaceForIpad:YES];
     }
     if (backImageUrlForMainButton) {
         UIImage *showImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: backImageUrlForMainButton]]];
@@ -63,13 +66,13 @@
         }
     }
     if (self.ticketsButton) {
-        UIImage *ticketsImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: app.clientConfiguration.airTicketsImage]]];
+        UIImage *ticketsImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [app.clientConfiguration.airTicketsImage replaceForIpad:YES] ]]];
         if (ticketsImg.size.width > 0) {
             [self.ticketsButton setImage:ticketsImg forState:UIControlStateNormal];
         }
     }
     if (self.bookHotelButton) {
-        UIImage *bookHotelImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: app.clientConfiguration.hotelBookingImage]]];
+        UIImage *bookHotelImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [app.clientConfiguration.hotelBookingImage replaceForIpad:YES] ]]];
         if (bookHotelImg.size.width > 0) {
             [self.bookHotelButton setImage:bookHotelImg forState:UIControlStateNormal];
         }
@@ -103,7 +106,7 @@
     AppDelegate *app = [AppDelegate instance];
     NSString *url = @"https://www.airshop.gr/hotels?micro=true&app_ipad=1";
     if (app.clientConfiguration.hotelBookingUrl) {
-        url = app.clientConfiguration.hotelBookingUrl;
+        url = [app.clientConfiguration.hotelBookingUrl replaceForIpad:YES];
     }
     NSURL *nsUrl = [NSURL URLWithString:url];
     SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:nsUrl];
@@ -114,7 +117,7 @@
     AppDelegate *app = [AppDelegate instance];
     NSString *url = @"https://www.airshop.gr/airtickets?micro=true&app_ipad=1";
     if (app.clientConfiguration.airTicketsUrl) {
-        url = app.clientConfiguration.airTicketsUrl;
+        url = [app.clientConfiguration.airTicketsUrl replaceForIpad:YES];
     }
     NSURL *nsUrl = [NSURL URLWithString:url];
     SVModalWebViewController *svc = [[SVModalWebViewController alloc] initWithURL:nsUrl];

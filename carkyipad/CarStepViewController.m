@@ -23,6 +23,7 @@
 #import "CalendarRange.h"
 #import "ButtonUtils.h"
 #import "CarTypeSegmentView.h"
+#import "NSString+UrlTemplates.h"
 
 @interface CarStepViewController () <UICollectionViewDelegate>
 {
@@ -142,7 +143,7 @@
         if (![item.image isEqualToString:cell.imageHiddenLabel.text]) {
             cell.imageHiddenLabel.text = item.image;
             cell.carImageView.image = nil;
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: [item.image replaceForIpad:YES] ]];
             [[AFImageDownloader defaultInstance] downloadImageForURLRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse  * _Nullable response, UIImage *responseObject) {
                 cell.carImageView.image = responseObject;
             } failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error) {}];
@@ -241,7 +242,7 @@
     NSArray<Cars*> *cars = self.carsDataSource.items;
     NSInteger carTypeId = cars[self.selectedCarOrder].carsIdentifier;
     self.stepsController.results[kResultsCarTypeId] = @(carTypeId);
-    self.stepsController.results[kResultsCarTypeIcon] = cars[self.selectedCarOrder].image;
+    self.stepsController.results[kResultsCarTypeIcon] = [cars[self.selectedCarOrder].image replaceForIpad:YES];
     self.stepsController.results[kResultsTotalPriceCar] = @(cars[self.selectedCarOrder].priceTotal);
     if(!self.stepsController.results[kResultsTotalPriceExtras])
         self.stepsController.results[kResultsTotalPriceExtras] = @(0);
