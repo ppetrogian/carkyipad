@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSString *airTicketsImage;
 @property (nonatomic, strong) NSString *hotelBookingImage;
 @property (nonatomic, strong) NSString *hotelBookingUrl;
+@property (nonatomic, assign) BOOL allowCash;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

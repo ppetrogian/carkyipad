@@ -33,6 +33,7 @@ NSString *const kClientConfigurationResponseAirTicketsUrl = @"AirTicketsUrl";
 NSString *const kClientConfigurationResponseHotelBookingImage = @"HotelBookingImage";
 NSString *const kClientConfigurationResponseHotelBookingUrl = @"HotelBookingUrl";
 NSString *const kClientConfigurationResponseAirTicketsImage = @"AirTicketsImage";
+NSString *const kClientConfigurationResponseAllowCash = @"AllowCash";
 
 @interface ClientConfigurationResponse ()
 
@@ -95,6 +96,7 @@ NSString *const kClientConfigurationResponseAirTicketsImage = @"AirTicketsImage"
         self.hotelBookingImage = [self objectOrNilForKey:kClientConfigurationResponseHotelBookingImage fromDictionary:dict];
         self.hotelBookingUrl = [self objectOrNilForKey:kClientConfigurationResponseHotelBookingUrl fromDictionary:dict];
         self.airTicketsImage = [self objectOrNilForKey:kClientConfigurationResponseAirTicketsImage fromDictionary:dict];
+        self.allowCash = [[self objectOrNilForKey:kClientConfigurationResponseAllowCash fromDictionary:dict] boolValue];
     }
     
     return self;
@@ -136,6 +138,7 @@ NSString *const kClientConfigurationResponseAirTicketsImage = @"AirTicketsImage"
     [mutableDict setValue:self.hotelBookingImage forKey:kClientConfigurationResponseHotelBookingImage];
     [mutableDict setValue:self.hotelBookingUrl forKey:kClientConfigurationResponseHotelBookingUrl];
     [mutableDict setValue:self.airTicketsImage forKey:kClientConfigurationResponseAirTicketsImage];
+    [mutableDict setValue:[NSNumber numberWithBool:self.allowCash] forKey:kClientConfigurationResponseAllowCash];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

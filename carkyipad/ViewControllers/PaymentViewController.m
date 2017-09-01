@@ -48,8 +48,8 @@
         [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
         [self.payNowButton enableButton];
     }
-    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
-    if(tm == TabletModeReception && self.isForTransfer) { //acceptsCash
+    TabletMode tm = (TabletMode)app.clientConfiguration.tabletMode;
+    if(tm == TabletModeReception && self.isForTransfer && app.clientConfiguration.allowCash) { //acceptsCash
         self.payWithCashButton.hidden = NO;
         [self.payWithCashButton enableButton];
         self.payWithCashButton.backgroundColor = [UIColor lightGrayColor];
