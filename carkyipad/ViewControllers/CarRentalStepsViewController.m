@@ -23,6 +23,7 @@
 #import "RequestRideViewController.h"
 #import "UIViewController_Additions.h"
 #import "Constants.h"
+#import "NSString+UrlTemplates.h"
 
 @interface CarRentalStepsViewController ()<StepDelegate, MBProgressHUDDelegate,ResetsForIdle>
 @property(strong, nonatomic) RentalConfirmationView *confirmationView;
@@ -225,7 +226,7 @@
     self.confirmationView.pickupTimeLabel.text = response.bookingInfo.pickupTime;
     self.confirmationView.dropoffTimeLabel.text = response.bookingInfo.dropoffTime;
     // car type image view
-    NSURL *urlCar = [NSURL URLWithString:response.bookingInfo.carImage];
+    NSURL *urlCar = [NSURL URLWithString: [response.bookingInfo.carImage replaceForIpad:YES]];
     NSData *dataCar = [NSData dataWithContentsOfURL:urlCar];
     UIImage *imgCar = [[UIImage alloc] initWithData:dataCar];
     self.confirmationView.carTypeImageView.image = imgCar;
