@@ -11,7 +11,7 @@
 
 @interface PaymentInfo : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, assign) NSInteger paymentMethod;
+@property (nonatomic, assign) NSString *paymentMethod;
 @property (nonatomic, strong) NSString *stripeCardToken;
 @property (nonatomic, strong) NSString *payPalResponse;
 @property (nonatomic, strong) NSString *payPalAuthorizationId;
