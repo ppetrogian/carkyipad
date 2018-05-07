@@ -18,8 +18,8 @@ pod 'HockeySDK'
 pod 'PayPal-iOS-SDK'
 pod 'TCBlobDownload'
 #pod 'SVWebViewController'
-#pod 'Fabric'
-#pod 'Crashlytics'
+pod 'Fabric'
+pod 'Crashlytics'
 end
 
 target 'carkyipadTests' do

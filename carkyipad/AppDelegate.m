@@ -22,12 +22,20 @@
 @import MapKit;
 
 @interface AppDelegate ()
-
 @end
+
+NSString * const TableModeNone = @"None";
+NSString * const TabletModeRentalAndTransfer = @"RentalAndTransfer";
+NSString * const TabletModeTransfer = @"Transfer";
+NSString * const TabletModeAll = @"All";
+NSString * const TabletModeReception = @"Reception";
+NSString * const TransferModeArray[] = { TableModeNone, TabletModeRentalAndTransfer, TabletModeTransfer, TabletModeAll, TabletModeReception, nil };
 
 @implementation AppDelegate
 
-- (void)loadInitialControllerForMode:(NSInteger)mode {
+- (void)loadInitialControllerForMode:(NSString *)tm {
+    NSArray *arr = [NSArray arrayWithObjects: TableModeNone, TabletModeRentalAndTransfer, TabletModeTransfer, TabletModeAll, TabletModeReception, nil];
+    NSUInteger mode = [arr indexOfObject:tm];
     NSArray *scrData = self.screensData[mode];
     [self loadInitialController:scrData[1] FromStoryboard:scrData[0]];
 }

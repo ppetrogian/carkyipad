@@ -22,6 +22,9 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - CardIO (5.4.1)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - FSCalendar (2.7.8)
   - GoogleMaps (2.3.0):
     - GoogleMaps/Maps (= 2.3.0)
@@ -49,6 +52,8 @@ DEPENDENCIES:
   - BKCardExpiryField
   - Bolts
   - CardIO
+  - Crashlytics
+  - Fabric
   - FSCalendar
   - GoogleMaps
   - GooglePlaces
@@ -59,12 +64,32 @@ DEPENDENCIES:
   - TCBlobDownload
   - TGRDataSource
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - BKCardExpiryField
+    - Bolts
+    - CardIO
+    - Crashlytics
+    - Fabric
+    - FSCalendar
+    - GoogleMaps
+    - GooglePlaces
+    - HockeySDK
+    - MBProgressHUD
+    - PayPal-iOS-SDK
+    - Stripe
+    - TCBlobDownload
+    - TGRDataSource
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BKCardExpiryField: f2e92c0bbb2363b9e9af80ee8348e43ddeff30db
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
-  FSCalendar: '09369a2bf554ba71cd8e8cfb627e2df22a2c2af4'
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  FSCalendar: 09369a2bf554ba71cd8e8cfb627e2df22a2c2af4
   GoogleMaps: 340a6a0bebd17c2db8abcd3921976c7c53c86cb8
   GooglePlaces: 74d322c74184ea4576184089b496d291cf0dcd38
   HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
@@ -74,6 +99,6 @@ SPEC CHECKSUMS:
   TCBlobDownload: 8726f054cc00bb5f66a57bb0c99764842dfa5c9f
   TGRDataSource: 9ab4ed589fae145f94b234a0ca1094aba35af473
 
-PODFILE CHECKSUM: 2d06e374e252243592683d3c24737228af088517
+PODFILE CHECKSUM: c310e5b01e436b86e9bc186275842f025d631d83
 
-COCOAPODS: 1.3.0.beta.1
+COCOAPODS: 1.5.0

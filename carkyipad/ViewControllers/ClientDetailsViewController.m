@@ -51,8 +51,8 @@
         [self.confirmButton enableButton];
     }
     // IMPORTANT for reception mode hide some ui
-    TabletMode tm = (TabletMode)app.clientConfiguration.tabletMode;
-    if(tm == TabletModeReception) {
+    NSString *tm = app.clientConfiguration.tabletMode;
+    if([tm isEqualToString: TabletModeReception]) {
         self.emailTextField.hidden = YES;
         self.emailLabel.hidden = YES;
         self.emailRequiredLabel.hidden = YES;

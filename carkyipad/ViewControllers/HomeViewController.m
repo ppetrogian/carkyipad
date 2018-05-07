@@ -54,8 +54,8 @@
         [app.heartbeatTimer invalidate];
     app.heartbeatTimer = [NSTimer scheduledTimerWithTimeInterval:kHeartBeatInterval target:self selector:@selector(sendHeartbeat) userInfo:nil repeats:YES];
     NSString *backImageUrlForMainButton = nil;
-    TabletMode tm = (TabletMode)[AppDelegate instance].clientConfiguration.tabletMode;
-    if (tm == TabletModeTransfer || tm == TabletModeReception) {
+    NSString *tm = [AppDelegate instance].clientConfiguration.tabletMode;
+    if ([tm isEqualToString: TabletModeTransfer] || [tm isEqualToString: TabletModeReception]) {
         backImageUrlForMainButton = [app.clientConfiguration.transferBackgroundImage replaceForIpad:YES];
     }
     if (backImageUrlForMainButton) {

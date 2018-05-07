@@ -42,7 +42,7 @@
 @property (nonatomic, strong) NSString *confirmationVideoLocalPath;
 @property (nonatomic, strong) NSTimer *heartbeatTimer;
 
-- (void)loadInitialControllerForMode:(NSInteger)mode;
+- (void)loadInitialControllerForMode:(NSString *)mode;
 -(void)fetchCarsDataForType:(NSInteger)carTypeId andPickupDate:(NSDate *)pickupDate andDropoffDate:(NSDate *)dropoffDate andBlock:(BlockArray)block;
 -(AVQueuePlayer *)loadTransferVideoPlayer;
 -(void)startDownloadVideoInView:(UIView *)view;
@@ -73,14 +73,6 @@
 +(void)getEtaFrom:(LatLng *)p1 to:(LatLng *)p2 andBlock:(BlockArray)travel;
 @end
 
-typedef NS_ENUM(NSUInteger, TabletMode) {
-    TableModeNone,
-    TabletModeRentalAndTransfer,
-    TabletModeTransfer,
-    TabletModeAll,
-    TabletModeReception
-};
-
 typedef NS_ENUM(NSUInteger, CarkyBackendType) {
     CarkyBackendTypeDev,
     CarkyBackendTypeTest,
@@ -88,5 +80,11 @@ typedef NS_ENUM(NSUInteger, CarkyBackendType) {
     CarkyBackendTypeLive
 };
 
+extern NSString * const TableModeNone;
+extern NSString * const TabletModeRentalAndTransfer;
+extern NSString * const TabletModeTransfer;
+extern NSString * const TabletModeAll;
+extern NSString * const TabletModeReception;
 
+extern NSString * const TransferModeArray[];
 
