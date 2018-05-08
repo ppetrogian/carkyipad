@@ -62,7 +62,7 @@ NSString *const kTransferBookingRequestNotes = @"Notes";
         
         self.dateTime = [self objectOrNilForKey:kTransferBookingRequestDateTime fromDictionary:dict];
         self.pickupDateTime = [DateTime modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupDateTime]];
-        self.paymentMethod = [[self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict] integerValue];
+        self.paymentMethod = [self objectOrNilForKey:kTransferBookingRequestPaymentMethod fromDictionary:dict];
         self.pickupLatLng = [LatLng modelObjectWithDictionary:[dict objectForKey:kTransferBookingRequestPickupLatLng]];
         self.extras = [self objectOrNilForKey:kTransferBookingRequestExtras fromDictionary:dict];
         self.carkyCategoryId = [[self objectOrNilForKey:kTransferBookingRequestCarkyCategoryId fromDictionary:dict] integerValue];
@@ -90,7 +90,7 @@ NSString *const kTransferBookingRequestNotes = @"Notes";
 
     [mutableDict setValue:self.dateTime forKey:kTransferBookingRequestDateTime];
     [mutableDict setValue:[self.pickupDateTime dictionaryRepresentation] forKey:kTransferBookingRequestPickupDateTime];
-    [mutableDict setValue:[NSNumber numberWithInteger:self.paymentMethod] forKey:kTransferBookingRequestPaymentMethod];
+    [mutableDict setValue:self.paymentMethod forKey:kTransferBookingRequestPaymentMethod];
     [mutableDict setValue:[self.pickupLatLng dictionaryRepresentation] forKey:kTransferBookingRequestPickupLatLng];
     NSMutableArray *tempArrayForExtras = [NSMutableArray array];
     
@@ -133,7 +133,7 @@ NSString *const kTransferBookingRequestNotes = @"Notes";
     self.agreedToTermsAndConditions = [aDecoder decodeBoolForKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //self.accountBindingModel = [aDecoder decodeObjectForKey:kTransferBookingRequestAccountBindingModel];
     self.dateTime = [aDecoder decodeObjectForKey:kTransferBookingRequestDateTime];
-    self.paymentMethod = [aDecoder decodeIntegerForKey:kTransferBookingRequestPaymentMethod];
+    self.paymentMethod = [aDecoder decodeObjectForKey:kTransferBookingRequestPaymentMethod];
     self.pickupLatLng = [aDecoder decodeObjectForKey:kTransferBookingRequestPickupLatLng];
     self.extras = [aDecoder decodeObjectForKey:kTransferBookingRequestExtras];
     self.carkyCategoryId = [aDecoder decodeIntegerForKey:kTransferBookingRequestCarkyCategoryId];
@@ -151,7 +151,7 @@ NSString *const kTransferBookingRequestNotes = @"Notes";
     [aCoder encodeBool:_agreedToTermsAndConditions forKey:kTransferBookingRequestAgreedToTermsAndConditions];
     //[aCoder encodeObject:_accountBindingModel forKey:kTransferBookingRequestAccountBindingModel];
     [aCoder encodeObject:_dateTime forKey:kTransferBookingRequestDateTime];
-    [aCoder encodeInteger:_paymentMethod forKey:kTransferBookingRequestPaymentMethod];
+    [aCoder encodeObject:_paymentMethod forKey:kTransferBookingRequestPaymentMethod];
     [aCoder encodeObject:_pickupLatLng forKey:kTransferBookingRequestPickupLatLng];
     [aCoder encodeObject:_extras forKey:kTransferBookingRequestExtras];
     [aCoder encodeInteger:_carkyCategoryId forKey:kTransferBookingRequestCarkyCategoryId];

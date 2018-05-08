@@ -29,6 +29,11 @@ NSString * const TabletModeRentalAndTransfer = @"RentalAndTransfer";
 NSString * const TabletModeTransfer = @"Transfer";
 NSString * const TabletModeAll = @"All";
 NSString * const TabletModeReception = @"Reception";
+//Cash, PayPal, CreditCard
+NSString * const PaymentMethodCreditCard = @"CreditCard";
+NSString * const PaymentMethodPayPal = @"PayPal";
+NSString * const PaymentMethodCash = @"Cash";
+
 NSString * const TransferModeArray[] = { TableModeNone, TabletModeRentalAndTransfer, TabletModeTransfer, TabletModeAll, TabletModeReception, nil };
 
 @implementation AppDelegate

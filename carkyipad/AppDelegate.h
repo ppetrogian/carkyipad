@@ -86,5 +86,9 @@ extern NSString * const TabletModeTransfer;
 extern NSString * const TabletModeAll;
 extern NSString * const TabletModeReception;
 
+extern NSString * const PaymentMethodCreditCard;
+extern NSString * const PaymentMethodPayPal;
+extern NSString * const PaymentMethodCash;
+
 extern NSString * const TransferModeArray[];
 

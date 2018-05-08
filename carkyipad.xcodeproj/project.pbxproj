@@ -1762,8 +1762,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carky.ipad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1bb65b3c-050d-4fe7-915d-382fc13ec3b8";
-				PROVISIONING_PROFILE_SPECIFIER = "xcwildcard-13devices";
+				PROVISIONING_PROFILE = "d8399dfa-874c-4183-9a89-9fa9982eedc0";
+				PROVISIONING_PROFILE_SPECIFIER = ComCarkyIpadDistribution;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

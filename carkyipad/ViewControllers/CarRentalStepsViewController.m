@@ -146,7 +146,7 @@
     if(carInsuranceId > 0)
         bookInfo.insuranceId = carInsuranceId;
     bookInfo.agreedToTermsAndConditions = YES;
-    payInfo.paymentMethod = forCC ? @"Credit Card" : @"Paypal"; //3 credit card, paypal 2
+    payInfo.paymentMethod = forCC ? PaymentMethodCreditCard : PaymentMethodPayPal; 
     CalendarRange *range = self.results[kResultsDayRange];
     // pickup info
     NSInteger pickupWellKnownLocationId = ((NSNumber*)self.results[kResultsPickupLocationId]).integerValue;

@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong) NSString *dateTime;
 @property (nonatomic, strong) DateTime *pickupDateTime;
-@property (nonatomic, assign) NSInteger paymentMethod;
+@property (nonatomic, assign) NSString *paymentMethod;
 @property (nonatomic, strong) LatLng *pickupLatLng;
 @property (nonatomic, strong) NSArray<NSNumber*> *extras;
 @property (nonatomic, assign) NSInteger carkyCategoryId;
