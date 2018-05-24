@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,14 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bo3-SQ-uit" customClass="GMSMapView">
-                                <rect key="frame" x="75" y="32" width="609" height="207"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo3-SQ-uit" customClass="GMSMapView">
+                                <rect key="frame" x="75" y="32" width="618" height="220"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="EQ1-dc-R5G"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDD-bI-eYl" userLabel="ButtonTaxi">
-                                <rect key="frame" x="0.0" y="235" width="764" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDD-bI-eYl" userLabel="ButtonTaxi">
+                                <rect key="frame" x="0.0" y="235" width="768" height="779"/>
                                 <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
                                 <state key="normal" image="rental_Landing">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,6 +41,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bo3-SQ-uit" firstAttribute="top" secondItem="UVp-s4-UeS" secondAttribute="bottom" constant="12" id="6bX-9Y-6JQ"/>
+                            <constraint firstItem="YDD-bI-eYl" firstAttribute="top" secondItem="Bo3-SQ-uit" secondAttribute="bottom" constant="-17" id="Ew2-d9-4kN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bo3-SQ-uit" secondAttribute="trailing" constant="55" id="Gxt-Tt-giK"/>
+                            <constraint firstItem="YDD-bI-eYl" firstAttribute="centerX" secondItem="r0f-vi-Dxa" secondAttribute="centerX" id="TQW-gC-GhK"/>
+                            <constraint firstItem="Bo3-SQ-uit" firstAttribute="leading" secondItem="r0f-vi-Dxa" secondAttribute="leadingMargin" constant="55" id="UI1-18-zwX"/>
+                            <constraint firstItem="0Vu-GI-Ttr" firstAttribute="top" secondItem="YDD-bI-eYl" secondAttribute="bottom" constant="10" id="dxo-Bw-x2S"/>
+                            <constraint firstItem="YDD-bI-eYl" firstAttribute="width" secondItem="r0f-vi-Dxa" secondAttribute="width" id="jOY-in-foe"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="homeMapView" destination="Bo3-SQ-uit" id="RjV-Kv-yvK"/>
@@ -46,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLW-L8-PnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144.53125" y="87.890625"/>
+            <point key="canvasLocation" x="144.140625" y="87.84773060029282"/>
         </scene>
         <!--CarRentalSteps-->
         <scene sceneID="Jtg-bM-zbC">

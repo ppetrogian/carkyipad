@@ -148,7 +148,7 @@
 }
 
 -(void)setBookingResponse:(TransferBookingResponse *)value {
-    NSLog(@"Received bookingRequestId: %@", value);
+    NSLog(@"Received bookingRequestId: %@", value.bookingRequestId);
     _bookingResponse = value;
     self.pollTime = 0;
     if (!value) {
@@ -258,8 +258,8 @@
         [api CheckTransferBookingRequest:self.bookingResponse.bookingRequestId withBlock:^(NSArray *array) {
             if ([array.firstObject isKindOfClass:TransferBookingResponse.class]) {
                 TransferBookingResponse *obj = array.firstObject;
-                NSLog(@"Received bookingId %@", obj.bookingId);
                 if (obj.bookingId && ![obj.bookingId isEqualToString:@"0"]) {
+                    NSLog(@"Received bookingId %@", obj.bookingId);
                     [self showBooking:obj.bookingId andMessage:obj.errorDescription];
                 }
             }

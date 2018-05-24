@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,33 +19,36 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-J9-PNr">
-                                <rect key="frame" x="-36" y="10" width="842" height="525"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
-                                <state key="normal" image="taxi_main">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="dGF-Ga-tOv" kind="show" id="ZTL-NP-vBo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-3a-QfM">
-                                <rect key="frame" x="-41" y="512" width="849" height="525"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
-                                <state key="normal" image="rental_main">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="xNQ-cA-ja5" kind="show" id="ERy-LE-Q0q"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="FiE-60-YMa">
+                                <rect key="frame" x="-20" y="10" width="1054" height="1346"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-J9-PNr">
+                                        <rect key="frame" x="0.0" y="0.0" width="1054" height="657.5"/>
+                                        <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
+                                        <state key="normal" image="taxi_main">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="dGF-Ga-tOv" kind="show" id="ZTL-NP-vBo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-3a-QfM">
+                                        <rect key="frame" x="0.0" y="657.5" width="1054" height="688.5"/>
+                                        <inset key="contentEdgeInsets" minX="50" minY="10" maxX="50" maxY="10"/>
+                                        <state key="normal" image="rental_main">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="xNQ-cA-ja5" kind="show" id="ERy-LE-Q0q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9K-Em-Jmn" customClass="GMSMapView">
-                                <rect key="frame" x="234" y="362" width="300" height="300"/>
+                                <rect key="frame" x="362" y="533" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="83H-Ze-6HH"/>
@@ -57,6 +60,10 @@
                         <constraints>
                             <constraint firstItem="v9K-Em-Jmn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Fj-tz-bBm"/>
                             <constraint firstItem="v9K-Em-Jmn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ks0-WP-Mng"/>
+                            <constraint firstItem="FiE-60-YMa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="10" id="Nv7-aI-Gm1"/>
+                            <constraint firstAttribute="trailing" secondItem="FiE-60-YMa" secondAttribute="trailing" constant="-10" id="SRS-x4-MuD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FiE-60-YMa" secondAttribute="bottom" constant="10" id="Wmd-xd-cuA"/>
+                            <constraint firstItem="FiE-60-YMa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-20" id="wpz-2m-ZvZ"/>
                         </constraints>
                     </view>
                     <userDefinedRuntimeAttributes>

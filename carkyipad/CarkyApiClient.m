@@ -373,6 +373,7 @@ static CarkyApiClient *_sharedService = nil;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSData *errorData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
         NSString* errorStr = [[NSString alloc] initWithData:errorData encoding:NSUTF8StringEncoding];
+        NSLog(@"ERROR IN CheckTransferBookingRequest %@", errorStr);
         NSString *errorMsg = errorStr.length > 12 ? [errorStr substringWithRange:NSMakeRange(12, errorStr.length-14)] : error.localizedDescription;
         NSInteger statusCode = 0;
         if ([error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey] isKindOfClass:NSHTTPURLResponse.class]) {
