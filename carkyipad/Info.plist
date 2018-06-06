@@ -23,7 +23,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.6</string>
 	<key>CFBundleVersion</key>
-	<string>63</string>
+	<string>67</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -99,5 +99,7 @@
 	<false/>
 	<key>UserFleetLocationId</key>
 	<integer>2</integer>
+	<key>MapStyle</key>
+	<string>[   {       &quot;featureType&quot;: &quot;administrative&quot;,       &quot;elementType&quot;: &quot;labels.text.fill&quot;,       &quot;stylers&quot;: [         {           &quot;color&quot;: &quot;#444444&quot;         }       ]    },    {      &quot;featureType&quot;: &quot;landscape&quot;,      &quot;elementType&quot;: &quot;all&quot;,      &quot;stylers&quot;: [        {         &quot;color&quot;: &quot;#dee4e4&quot;        }       ]     },     {     &quot;featureType&quot;: &quot;landscape.man_made&quot;,     &quot;elementType&quot;: &quot;geometry.fill&quot;,     &quot;stylers&quot;: [       {         &quot;color&quot;: &quot;#dee4e4&quot;       }      ]    },    {       &quot;featureType&quot;: &quot;poi&quot;,       &quot;elementType&quot;: &quot;all&quot;,       &quot;stylers&quot;: [         {           &quot;visibility&quot;: &quot;on&quot;         }       ]     },     {       &quot;featureType&quot;: &quot;poi.park&quot;,       &quot;elementType&quot;: &quot;geometry.fill&quot;,       &quot;stylers&quot;: [       {           &quot;color&quot;: &quot;#a8df82&quot;       }      ]     },     {       &quot;featureType&quot;: &quot;road&quot;,       &quot;elementType&quot;: &quot;all&quot;,       &quot;stylers&quot;: [     {       &quot;saturation&quot;: -100     },     {       &quot;lightness&quot;: 45     }    ]   },   {       &quot;featureType&quot;: &quot;road.highway&quot;,       &quot;elementType&quot;: &quot;all&quot;,       &quot;stylers&quot;: [     {       &quot;visibility&quot;: &quot;simplified&quot;     }    ]   },   {        &quot;featureType&quot;: &quot;road.highway&quot;,        &quot;elementType&quot;: &quot;geometry.fill&quot;,        &quot;stylers&quot;: [           {               &quot;color&quot;: &quot;#ffffff&quot;           }         ]       },       {           &quot;featureType&quot;: &quot;road.arterial&quot;,           &quot;elementType&quot;: &quot;labels.icon&quot;,           &quot;stylers&quot;: [               {                   &quot;visibility&quot;: &quot;on&quot;               }              ]           },           {               &quot;featureType&quot;: &quot;transit&quot;,               &quot;elementType&quot;: &quot;all&quot;,               &quot;stylers&quot;: [           {               &quot;visibility&quot;: &quot;on&quot;+           }          ]         },         {           &quot;featureType&quot;: &quot;water&quot;,           &quot;elementType&quot;: &quot;all&quot;,           &quot;stylers&quot;: [         {           &quot;visibility&quot;: &quot;on&quot;+         }       ]      },      {        &quot;featureType&quot;: &quot;water&quot;,        &quot;elementType&quot;: &quot;geometry.fill&quot;,        &quot;stylers&quot;: [      {        &quot;color&quot;: &quot;#b7ebf8&quot;+      }     ]    }   ]</string>
 </dict>
 </plist>

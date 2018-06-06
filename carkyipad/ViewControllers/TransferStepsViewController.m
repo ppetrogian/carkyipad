@@ -70,6 +70,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     mapView.mapType = kGMSTypeNormal;
     mapView.settings.myLocationButton = NO;
     mapView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
+    mapView.mapStyle = [GMSMapStyle styleWithJSONString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"MapStyle"] error:nil];
     [self loadLocations:nil];
     
     self.locationMarkers = [NSMutableArray arrayWithCapacity:app.wellKnownLocations.count];
