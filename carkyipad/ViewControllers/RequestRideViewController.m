@@ -116,10 +116,12 @@
         numLabel.text = [NSString stringWithFormat:@"%ld",(long)0];
         UIButton *ccImageButton = [cell.contentView viewWithTag:4];
         UIImage *image = [UIImage imageNamed:item.image];
-        [ccImageButton setImage:image forState:UIControlStateSelected];
+        //[ccImageButton setImage:image forState:UIControlStateSelected];
         UIImage *image_blank = [UIImage imageNamed:[NSString stringWithFormat:@"%@_blank", item.image]];
-        [ccImageButton setImage:image_blank forState:UIControlStateNormal];
+        UIImageView *ccImage = [cell.contentView viewWithTag:10];
+        //[ccImageButton setImage:image_blank forState:UIControlStateNormal];
         ccImageButton.selected = item.order == self.selectedCarType ? YES : NO;
+        [ccImage setImage:ccImageButton.selected ? image : image_blank];
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
         // price dependent on zone
         UILabel *priceLabel = [cell.contentView viewWithTag:8];

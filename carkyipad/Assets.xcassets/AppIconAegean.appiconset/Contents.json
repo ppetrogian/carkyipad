@@ -18,7 +18,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "aegean58.png",
+      "filename" : "Icon-App-29x29@2x.png",
       "scale" : "2x"
     },
     {
@@ -29,7 +29,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "aegean167-2.png",
+      "filename" : "Icon-App-40x40@2x.png",
       "scale" : "2x"
     },
     {
@@ -38,9 +38,8 @@
       "scale" : "1x"
     },
     {
-      "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "aegean167-1.png",
+      "size" : "50x50",
       "scale" : "2x"
     },
     {
@@ -54,27 +53,26 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "aegean76.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "aegean152-1.png",
+      "filename" : "Icon-App-76x76@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "aegean167.png",
+      "filename" : "logo83.5@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "aegean_logo_1024.png",
+      "filename" : "loho.png",
       "scale" : "1x"
     }
   ],

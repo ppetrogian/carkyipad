@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g2Z-xh-Nsb">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g2Z-xh-Nsb">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="y8P-cq-0q1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uCG-xP-27m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aegean_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Xj-rC-uWQ">
-                                <rect key="frame" x="-13" y="143" width="400" height="380"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aegean_new_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Xj-rC-uWQ">
+                                <rect key="frame" x="217" y="366" width="400" height="380"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="RmW-f8-csb"/>
                                     <constraint firstAttribute="height" constant="380" id="Ta4-fh-SWz"/>
@@ -49,7 +49,7 @@
                         <viewControllerLayoutGuide type="bottom" id="04G-eR-YpU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LfG-Dh-ahA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CV8-Np-C51" userLabel="FormatBackView">
@@ -128,7 +128,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aegean_logo" width="300" height="300"/>
+        <image name="aegean_new_logo" width="120" height="120"/>
         <image name="arrow_down" width="32" height="18"/>
         <image name="arrow_up" width="32" height="18"/>
     </resources>

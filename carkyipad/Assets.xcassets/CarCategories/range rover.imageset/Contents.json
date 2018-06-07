@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "range rover.png",
+      "filename" : "unknown-3.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "range rover@2x.png",
       "scale" : "2x"
     },
     {

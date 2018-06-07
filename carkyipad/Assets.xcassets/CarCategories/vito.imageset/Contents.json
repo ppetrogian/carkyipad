@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "vito.png",
+      "filename" : "unknown.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "vito@2x.png",
       "scale" : "2x"
     },
     {

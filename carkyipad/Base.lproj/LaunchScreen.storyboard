@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,14 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="aegean_logo" translatesAutoresizingMaskIntoConstraints="NO" id="qhM-u0-YHF">
-                                <rect key="frame" x="362" y="234" width="300" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aegean_new_logo" translatesAutoresizingMaskIntoConstraints="NO" id="joE-jK-TOs">
+                                <rect key="frame" x="312" y="194" width="400" height="380"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="OO0-BH-gW1"/>
+                                    <constraint firstAttribute="height" constant="380" id="fuV-38-9mo"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qhM-u0-YHF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Yi-NA-yBs"/>
-                            <constraint firstItem="qhM-u0-YHF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="S4H-S8-eKX"/>
+                            <constraint firstItem="joE-jK-TOs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="V2d-6s-cCk"/>
+                            <constraint firstItem="joE-jK-TOs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qbo-2O-Coh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +42,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aegean_logo" width="300" height="300"/>
+        <image name="aegean_new_logo" width="120" height="120"/>
     </resources>
 </document>
