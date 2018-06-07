@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "van.png",
+      "filename" : "vant-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "van@2x.png",
+      "filename" : "vant@2x-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "van@3x.png",
+      "filename" : "vant@3x-1.png",
       "scale" : "3x"
     }
   ],
