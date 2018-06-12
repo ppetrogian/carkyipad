@@ -21,7 +21,7 @@
 @property (nonatomic, assign) NSInteger zoneId;
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *pickupInstructionsImage;
-@property (nonatomic, assign) NSString *tabletMode;
+@property (nonatomic, strong) NSString *tabletMode;
 @property (nonatomic, strong) NSString *payPalMode;
 @property (nonatomic, strong) NSString *payPalClientId;
 @property (nonatomic, assign) BOOL booksLater;

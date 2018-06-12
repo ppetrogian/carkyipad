@@ -180,6 +180,7 @@ NSString *const kClientConfigurationResponseAllowCash = @"AllowCash";
     [aCoder encodeObject:_rentalBackgroundImage forKey:kClientConfigurationResponseRentalBackgroundImage];
     [aCoder encodeObject:_transferBackgroundImage forKey:kClientConfigurationResponseTransferBackgroundImage];
     [aCoder encodeObject:_confirmationVideo forKey:kClientConfigurationResponseConfirmationVideo];
+    [aCoder encodeObject:_tabletMode forKey:kClientConfigurationResponseTabletMode];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -201,6 +202,7 @@ NSString *const kClientConfigurationResponseAllowCash = @"AllowCash";
         copy.rentalBackgroundImage = [self.rentalBackgroundImage copyWithZone:zone];
         copy.transferBackgroundImage = [self.transferBackgroundImage copyWithZone:zone];
         copy.confirmationVideo = [self.confirmationVideo copyWithZone:zone];
+        copy.tabletMode = [self.tabletMode copyWithZone:zone];
     }
     
     return copy;
