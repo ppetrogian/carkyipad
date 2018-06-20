@@ -63,6 +63,10 @@
             [mainButton setImage:showImg forState:UIControlStateNormal];
         }
     }
+    UIView *labelVersion = [self.view viewWithTag:2];
+    if (labelVersion && [labelVersion isKindOfClass:UILabel.class]) {
+        [labelVersion.superview bringSubviewToFront:labelVersion];
+    }
     if (self.ticketsButton) {
         UIImage *ticketsImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [app.clientConfiguration.airTicketsImage replaceForIpad:YES] ]]];
         if (ticketsImg.size.width > 0) {

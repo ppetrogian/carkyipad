@@ -12,7 +12,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "CarkyApiClient.h"
-
+#define USERNAME_DEFAULT @"phisakel2@gmail.com"
+#define PASSWORD_DEFAULT @"12345678"
 @class AVQueuePlayer,AVPlayerLayer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

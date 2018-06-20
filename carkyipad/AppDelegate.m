@@ -88,8 +88,8 @@ NSString * const TransferModeArray[] = { TableModeNone, TabletModeRentalAndTrans
     self.loaded = NO;
     self.screensData =@[@[], @[@"Main",@"home"],@[@"TransferLanding",@"home"],@[@"Landing",@"home"],@[@"TransferLanding",@"home"]]; // 4 is transfer with cash (reception)
     self.viewControllersDict = [NSMutableDictionary dictionaryWithCapacity:4];
-    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":@"phisakel2@gmail.com"}];
-    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":@"12345678"}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"username_preference":USERNAME_DEFAULT}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: @{@"password_preference":PASSWORD_DEFAULT}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"enabled_preference": @(YES)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"hotel_prefilled": @(NO)}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"environment_preference": @(0)}];
@@ -152,6 +152,10 @@ NSString * const TransferModeArray[] = { TableModeNone, TabletModeRentalAndTrans
     [[NSUserDefaults standardUserDefaults] synchronize];
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username_preference"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password_preference"];
+    if (!userName || !userName.length) {
+        userName = USERNAME_DEFAULT;
+        password = PASSWORD_DEFAULT;
+    }
     BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"enabled_preference"];
     self.hotelPrefilled = NO; //[[NSUserDefaults standardUserDefaults] boolForKey:@"hotel_prefilled"];
     if ([userName containsString:@"phisakel"] && [userName containsString:@"@gmail.com"]) {
