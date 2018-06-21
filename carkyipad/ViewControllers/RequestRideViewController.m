@@ -131,7 +131,7 @@
             priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
         }
         else
-            priceLabel.text = @"€--";
+            priceLabel.text = @"€ --";
     }];
     self.carCategoriesCollectionView.allowsSelection = YES;
     self.carCategoriesCollectionView.dataSource = self.carCategoriesDataSource;
