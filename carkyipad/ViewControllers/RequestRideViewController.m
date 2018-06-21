@@ -24,6 +24,7 @@
 @property (nonatomic,assign) NSInteger selectedCarType;
 @property (nonatomic, assign) NSInteger carTypesCount;
 @property (nonatomic, assign) CGSize carTypesSize;
+@property (nonatomic, assign) BOOL bFirst;
 @end
 
 @implementation RequestRideViewController
@@ -49,7 +50,8 @@
     self.mapView.delegate = self;
     self.carCategoriesCollectionView.delegate = self;
     self.carTypesCount = 3;
-    self.carTypesSize = CGSizeMake(220, 200);
+    self.bFirst = YES;
+    self.carTypesSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width - 40 / self.carTypesCount , 200);
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -99,10 +101,10 @@
         }];
     }
     if (arrayCategories.count > self.carTypesCount) {
-        self.carTypesCount = arrayCategories.count;
+        // self.carTypesCount = arrayCategories.count; // we want 2 big categories
         UICollectionViewFlowLayout *fl = (UICollectionViewFlowLayout *)self.carCategoriesCollectionView.collectionViewLayout;
         fl.minimumInteritemSpacing *= (3.0 / arrayCategories.count);
-        self.carTypesSize = CGSizeMake(150, 200);
+        //self.carTypesSize = CGSizeMake(150, 200);
     }
     self.carCategoriesDataSource = [[TGRArrayDataSource alloc] initWithItems:arrayCategories cellReuseIdentifier:@"carCategoryCell" configureCellBlock:^(UICollectionViewCell *cell, CarCategory *item) {
         cell.contentView.backgroundColor = [UIColor whiteColor];
@@ -121,27 +123,29 @@
         UIImageView *ccImage = [cell.contentView viewWithTag:10];
         //[ccImageButton setImage:image_blank forState:UIControlStateNormal];
         ccImageButton.selected = item.order == self.selectedCarType ? YES : NO;
-        [ccImage setImage:ccImageButton.selected ? image : image_blank];
+        [ccImage setImage:ccImageButton.selected || self.bFirst ? image : image_blank];
         [ccImageButton addTarget:self action:@selector(carButton_Clicked:) forControlEvents:UIControlEventTouchUpInside];
         // price dependent on zone
         UILabel *priceLabel = [cell.contentView viewWithTag:8];
-        if(item.price > 0)
+        if(item.price > 0) {
             priceLabel.text = [NSString stringWithFormat:@"€%ld",(long)item.price];
+        }
         else
-            priceLabel.text = @"€__";
+            priceLabel.text = @"€--";
     }];
     self.carCategoriesCollectionView.allowsSelection = YES;
     self.carCategoriesCollectionView.dataSource = self.carCategoriesDataSource;
     self.carCategoriesCollectionView.delegate = self;
     [self.carCategoriesCollectionView reloadData];
 }
-
+/*
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath: (NSIndexPath *)indexPath {
     if(collectionView == self.carCategoriesCollectionView) {
         return self.carTypesSize;
     }
     return CGSizeZero;
 }
+ */
 
 -(IBAction)requestRideButton_Click:(UIButton *)sender {
     if ([CarkyApiClient sharedService].isOffline) {
@@ -166,10 +170,19 @@
     if(self.selectedCarType == indexPath.row) {
         return; // guard
     }
+    NSMutableArray<NSIndexPath*> *temp = [NSMutableArray arrayWithCapacity:2];
+    //BOOL bFirst = self.selectedCarType < 0;
+    if (!self.bFirst) {
+        [temp addObject:indexPath];
+        [temp addObject:[NSIndexPath indexPathForRow:self.selectedCarType inSection:0]];
+    }
     self.selectedCarType = indexPath.row;
     [self.requestRideButton enableButton];
     CarCategory *cCat = self.carCategoriesDataSource.items[indexPath.row];
-    [self.carCategoriesCollectionView reloadData];
+    if(self.bFirst)
+        [self.carCategoriesCollectionView reloadData];
+    else
+        [collectionView performBatchUpdates:^{ [collectionView reloadItemsAtIndexPaths:temp]; } completion:nil];
     [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
 }
 
@@ -200,9 +213,15 @@
     } else {
         [self showLocationAndRouteInMap:loc];
     }
-    CarCategory *cCat = self.carCategoriesDataSource.items[self.selectedCarType];
-    [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
-    [self.requestRideButton enableButton];
+    if(self.selectedCarType > -1){
+        if (self.bFirst) {
+            self.bFirst = NO;
+            [self.carCategoriesCollectionView reloadData];
+        }
+        CarCategory *cCat = self.carCategoriesDataSource.items[self.selectedCarType];
+        [self.parentController didSelectCarCategory:cCat.Id withValue:cCat andText:cCat.name forMap:self.mapView];
+        [self.requestRideButton enableButton];
+    }
 }
      
 -(void)showLocationAndRouteInMap:(Location *)loc {
