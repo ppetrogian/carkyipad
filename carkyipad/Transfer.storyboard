@@ -972,8 +972,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="driverCar" translatesAutoresizingMaskIntoConstraints="NO" id="drm-T9-czf">
-                                <rect key="frame" x="539" y="800" width="150" height="100"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="audi" translatesAutoresizingMaskIntoConstraints="NO" id="drm-T9-czf">
+                                <rect key="frame" x="535" y="826" width="150" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*Please check your text messages for more details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byb-Fl-bao">
@@ -995,7 +995,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reg No." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neX-wO-CJT">
-                                <rect key="frame" x="540" y="760" width="150" height="21"/>
+                                <rect key="frame" x="535" y="760" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -1276,7 +1276,6 @@
         <image name="back_button" width="55" height="55"/>
         <image name="check" width="21" height="16"/>
         <image name="cvv_logo" width="14" height="20"/>
-        <image name="driverCar" width="81" height="81"/>
         <image name="driverPhoto" width="81" height="81"/>
         <image name="gr" width="20" height="15"/>
         <image name="hand" width="44" height="60"/>
