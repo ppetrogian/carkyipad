@@ -155,7 +155,7 @@
         return;
     }
     AppDelegate *app = [AppDelegate instance];
-    if (app.clientConfiguration.booksLater) {
+    if (1 == 0) { //app.clientConfiguration.booksLater) {
         [self showBooking:value.bookingRequestId andMessage:value.errorDescription];
     }
     else {
@@ -168,7 +168,7 @@
     [app.qplayer pause];
     [self.pollTimer invalidate];
 
-    if (app.clientConfiguration.booksLater) {
+    if (1 == 0) { //app.clientConfiguration.booksLater) {
         NSString *detail = message ? message : NSLocalizedString(@"Booking is confirmed", nil);
         NSString *title = [bookingId isEqualToString:@"-1"] ? @"Error" : @"Booking";
         [self.parentTransferController showAlertViewWithMessage:detail andTitle:title withBlock:^(BOOL b) {

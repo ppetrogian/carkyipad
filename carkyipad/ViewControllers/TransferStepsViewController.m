@@ -326,15 +326,16 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     request.luggagePiecesNumber = cCat.maxLuggages;
     request.payPalPaymentResponse = @"";
     request.payPalPayerId = @"";
-    if (app.clientConfiguration.booksLater)
+    if (app.clientConfiguration.booksLater && self.results[kResultsPickupNotes]) {
         request.notes = self.results[kResultsPickupNotes];
+    }
     return request;
 }
 
 - (void)MakeTransferRequest:(BlockArray)block request:(TransferBookingRequest *)request {
     CarkyApiClient *api = [CarkyApiClient sharedService];
     AppDelegate *app = [AppDelegate instance];
-    if (app.clientConfiguration.booksLater) {
+    if (1 == 0) { //app.clientConfiguration.booksLater) {
         // books later
         [api CreateTransferBookingForLater:request withBlock:^(NSArray *array) {
             [[AppDelegate instance] hideProgressNotification];

@@ -38,7 +38,7 @@
     }
     
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
-    if ( bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
+    if (1 == 1) { //} bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
         self.firstNameTextField.text = @"";
         self.lastNameTextField.text = @"";
         self.emailTextField.text = @"";

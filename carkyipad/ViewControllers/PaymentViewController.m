@@ -45,7 +45,7 @@
         self.expiryDateTextField.text = @"";
         [self.payNowButton disableButton];
     } else {
-        [self.stpCardTextField replaceField:@"numberField" withValue:@"4242424242424242"];
+        [self.stpCardTextField replaceField:@"numberField" withValue:@"4000000000000341"]; //4242424242424242
         [self.payNowButton enableButton];
     }
     NSString *tm = app.clientConfiguration.tabletMode;

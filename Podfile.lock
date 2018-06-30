@@ -65,7 +65,7 @@ DEPENDENCIES:
   - TGRDataSource
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BKCardExpiryField
     - Bolts
@@ -101,4 +101,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 725b7dd2d79c7c99eee3d9073357bd329eb6c299
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
