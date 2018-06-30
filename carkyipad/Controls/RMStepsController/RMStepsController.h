@@ -69,6 +69,8 @@
  */
 - (void)showNextStep;
 
+- (void)showNextStepWithSkip:(NSInteger)skip;
+
 /**
  Call this method to proceed to the needed step.
  */
@@ -78,6 +80,8 @@
  Call this method to go one step back. When you call this method when already in the first step `-[RMStepsController canceled]`will be called.
  */
 - (void)showPreviousStep;
+
+- (void)showPreviousStepWithSkip:(NSInteger)skip;
 
 /**
  This method is called after `-[RMStepsController showNextStep]` has been called in the last step. A subclass of `RMStepsController` is supposed to do whatever needs to be done here after all steps have been finished.

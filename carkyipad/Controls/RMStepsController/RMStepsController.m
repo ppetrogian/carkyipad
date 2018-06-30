@@ -157,10 +157,30 @@
     }
 }
 
+- (void)showNextStepWithSkip:(NSInteger)skip {
+    NSInteger index = [self.childViewControllers indexOfObject:self.currentStepViewController];
+    if(index < self.childViewControllers.count-1 + skip) {
+        UIViewController *nextStepViewController = [self.childViewControllers objectAtIndex:index+1+skip];
+        [self showStepViewController:nextStepViewController animated:YES];
+    } else {
+        [self finishedAllSteps];
+    }
+}
+
 - (void)showPreviousStep {
     NSInteger index = [self.childViewControllers indexOfObject:self.currentStepViewController];
     if(index > 0) {
         UIViewController *nextStepViewController = [self.childViewControllers objectAtIndex:index-1];
+        [self showStepViewController:nextStepViewController animated:YES];
+    } else {
+        [self canceled];
+    }
+}
+
+- (void)showPreviousStepWithSkip:(NSInteger)skip  {
+    NSInteger index = [self.childViewControllers indexOfObject:self.currentStepViewController];
+    if(index-skip > 0) {
+        UIViewController *nextStepViewController = [self.childViewControllers objectAtIndex:index-1-skip];
         [self showStepViewController:nextStepViewController animated:YES];
     } else {
         [self canceled];

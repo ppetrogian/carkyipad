@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryPrefixLabel;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
+@property (weak, nonatomic) IBOutlet UIButton *bookLaterButton;
 
 @property (nonatomic, assign) BOOL isPhoneConfirmed;
 @end
