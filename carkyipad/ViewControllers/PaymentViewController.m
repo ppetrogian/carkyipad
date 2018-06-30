@@ -255,7 +255,15 @@
 }
 
 - (IBAction)backButton_Click:(id)sender {
-    [self.parentRentalController showPreviousStep];
+    if (self.isForTransfer) {
+        if (!self.parentTransferController.results[kResultsDayRange]) {
+            [self.parentTransferController showPreviousStepWithSkip:1];
+        } else {
+            [self.parentTransferController showPreviousStep];
+        }
+    } else {
+        [self.parentRentalController showPreviousStep];
+    }
 }
 
 - (void)showPaypalUIforPayment:(PayPalPayment *)payment {

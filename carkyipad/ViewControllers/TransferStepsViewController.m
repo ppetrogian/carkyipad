@@ -252,7 +252,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
     UITabBarController *tb = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBar"];
     if (![AppDelegate instance].clientConfiguration.booksLater) {
         NSMutableArray *vcs = [NSMutableArray arrayWithArray:tb.viewControllers];
-        [vcs removeObjectAtIndex:1];
+        [vcs removeObjectAtIndex:2];
         return vcs;
     }
     return tb.viewControllers;
@@ -291,7 +291,7 @@ NSString * const URLDirectionsFmt = @"https://maps.googleapis.com/maps/api/direc
 
 -(NSDate *)getPickupDateTime {
     AppDelegate *app = [AppDelegate instance];
-    if (!app.clientConfiguration.booksLater) {
+    if (!app.clientConfiguration.booksLater || !self.results[kResultsDayRange]) {
         return NSDate.date;
     }
     else {

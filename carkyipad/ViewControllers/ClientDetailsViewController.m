@@ -31,6 +31,11 @@
     self.isPhoneConfirmed = NO;
     self.validator = [Validation new];
     AppDelegate *app = [AppDelegate instance];
+    if(!app.clientConfiguration.booksLater) {
+        CGFloat newWidth = CGRectGetMaxX(self.bookLaterButton.frame) - CGRectGetMinX(self.confirmButton.frame);
+        self.confirmButton.frame = CGRectMake(CGRectGetMinX(self.confirmButton.frame), CGRectGetMinY(self.confirmButton.frame), newWidth, self.confirmButton.frame.size.height);
+        self.bookLaterButton.hidden = true;
+    }
     
     CarkyBackendType bt = (CarkyBackendType)[AppDelegate instance].environment;
     if ( bt == CarkyBackendTypeStage || bt == CarkyBackendTypeLive) {
@@ -38,9 +43,9 @@
         self.lastNameTextField.text = @"";
         self.emailTextField.text = @"";
         self.phoneNumberTextField.text = @"";
-        [self.confirmButton disableButton];
+        [self.confirmButton disableButton]; [self.bookLaterButton disableButton];
     } else {
-         [self.confirmButton enableButton];
+        [self.confirmButton enableButton]; [self.bookLaterButton enableButton];
     }
     // obsolete not used
     if (app.hotelPrefilled) {
@@ -48,7 +53,7 @@
         self.lastNameTextField.text = app.clientConfiguration.lastName;
         self.emailTextField.text = app.clientConfiguration.email;
         self.phoneNumberTextField.text = app.clientConfiguration.telephone;
-        [self.confirmButton enableButton];
+        [self.confirmButton enableButton];  [self.bookLaterButton enableButton];
     }
     // IMPORTANT for reception mode hide some ui
     NSString *tm = app.clientConfiguration.tabletMode;
@@ -126,10 +131,10 @@
         self.emailTextField.text = [NSString stringWithFormat:@"phone%@@aegeantaxi.com", self.phoneNumberTextField.text];
     }
     if (!mustEnable && self.confirmButton.isEnabled) {
-        [self.confirmButton disableButton];
+        [self.confirmButton disableButton]; [self.bookLaterButton disableButton];
     }
     else if(mustEnable && !self.confirmButton.isEnabled) {
-        [self.confirmButton enableButton];
+        [self.confirmButton enableButton];  [self.bookLaterButton enableButton];
     }
 }
 
@@ -145,6 +150,14 @@
     [self.parentController showPreviousStep];
 }
 
+-(void)gotoNextPage:(UIButton *)sender  {
+    if(sender == self.confirmButton) {
+        [self.parentController showNextStepWithSkip:1];
+    } else {
+        [self.parentController showNextStep];
+    }
+}
+
 - (IBAction)confirmButton_Click:(UIButton *)sender {
     RegisterClientRequest *acc = [RegisterClientRequest new];
     acc.phoneNumber = self.phoneNumberTextField.text;
@@ -157,11 +170,7 @@
     self.parentController.clientData = acc;
     CarkyApiClient *api = [CarkyApiClient sharedService];
     if (self.isPhoneConfirmed) {
-        if(sender == self.bookLaterButton) {
-            [self.parentController showNextStepWithSkip:1];
-        } else {
-            [self.parentController showNextStep];
-        }
+        [self gotoNextPage:sender];
     } else {
         [[AppDelegate instance] showProgressNotificationWithText:nil inView:self.view];
         [api RegisterClient:acc withBlock:^(NSArray *arr) {
@@ -175,7 +184,7 @@
                         [self performSegueWithIdentifier:@"phoneConfirmSegue" sender:nil];
                     } else {
                         self.isPhoneConfirmed = NO;
-                        [self.parentController showNextStep];
+                        [self gotoNextPage:sender];
                     }
                 } else {
                     [self.parentController showAlertViewWithMessage:arr.firstObject andTitle:@"Error"];

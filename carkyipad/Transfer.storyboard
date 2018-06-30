@@ -551,7 +551,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6L-Qm-Qh7">
                                 <rect key="frame" x="402" y="614" width="211" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <state key="normal" title="BOOK LATER">
@@ -1158,8 +1158,8 @@
                                     <outlet property="delegate" destination="TFL-dj-Zdw" id="9bD-ZF-vka"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter vessel information &amp; select pickup date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-0k-ljI">
-                                <rect key="frame" x="140" y="43" width="458" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter comments &amp; select pickup date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-0k-ljI">
+                                <rect key="frame" x="140" y="28" width="458" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -1262,8 +1262,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="379-va-vZ1" kind="relationship" relationship="viewControllers" id="8PP-rL-qKy"/>
-                        <segue destination="iAD-hz-QYa" kind="relationship" relationship="viewControllers" id="CZI-wA-nuh"/>
                         <segue destination="TFL-dj-Zdw" kind="relationship" relationship="viewControllers" id="rP1-I7-yFq"/>
+                        <segue destination="iAD-hz-QYa" kind="relationship" relationship="viewControllers" id="CZI-wA-nuh"/>
                         <segue destination="vXu-HB-Y0v" kind="relationship" relationship="viewControllers" id="P4N-6r-aLM"/>
                         <segue destination="gJi-Rh-MvU" kind="relationship" relationship="viewControllers" id="TRY-yr-i2t"/>
                     </connections>
