@@ -151,7 +151,8 @@
 }
 
 -(void)gotoNextPage:(UIButton *)sender  {
-    if(sender == self.confirmButton) {
+    if(sender == self.confirmButton && [AppDelegate instance].clientConfiguration.booksLater) {
+        [self.parentController.results removeObjectForKey:kResultsDayRange];
         [self.parentController showNextStepWithSkip:1];
     } else {
         [self.parentController showNextStep];

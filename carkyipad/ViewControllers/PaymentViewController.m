@@ -256,7 +256,7 @@
 
 - (IBAction)backButton_Click:(id)sender {
     if (self.isForTransfer) {
-        if (!self.parentTransferController.results[kResultsDayRange]) {
+        if (!self.parentTransferController.results[kResultsDayRange] && [AppDelegate instance].clientConfiguration.booksLater) {
             [self.parentTransferController showPreviousStepWithSkip:1];
         } else {
             [self.parentTransferController showPreviousStep];
